@@ -38,49 +38,13 @@ yo baukasten
 ### Settings
 You can find this stuff here: `___src/assets/css/_______settings`
 
-- **_settings.borderradius.scss**
-- **_settings.boxshadows.scss**
-- **_settings.breakpoints.scss**
-- **_settings.colors.scss**
-- **_settings.easings.scss**
-- **_settings.fontfamilies.scss**
-- **_settings.fonts.scss**
-- **_settings.fontsizes.scss**
-- **_settings.grid.scss**
-
 
 ### Sass Functions
 You can find this stuff here: `___src/assets/css/______tools`
 
-- `borderradius('level-x')` or `br('level-x')`
-- `boxshadow('level-x')` or `bs('level-x')`
-- `color('color-name')` or `c('color-name')
-- `ease('easing-name')` or `e('easing-name')`
-- `fontfamily('font-name')` or `ff('font-name')`
-- `space(i)` or `s(i)` to use the default spacing with a custom multiplicator => **_settings.grid.scss**
-
 
 ### Sass Mixins
 You can find this stuff here: `___src/assets/css/_______settings`
-
-- `@include center` — to center an element.
-- `@include clearfix` — add clearfix stuff magix.
-- `@include filter(filter-name, value%)` — to use CSS Filters
-- `@include fluid($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include f($properties, $min-vw, $max-vw, $min-value, $max-value)` — to use Fluid CSS Properties dependent to the current viewport. Next level shit!
-- `@include fontsize('base', 1)` or `@include fs('base', 1)` — to set a Font Family in Combination with Line Height. Default Line Height => **_settings.fontssizes.scss**
-- `@include make-section($behaviour: fixed)` — to create a section
-- `@include make-row($factorMin: 1, $factorMax: 1)` — to create a row
-- `@include make-col($columns: 12)` — to create a col
-- `@include make-vr($factor: 1)` — to create vertical rhythm (margin-top)
-- `@include make-section-padding($factor: 1)` — to create vertical rhythm (margin-top)
-- `@include make-col--padding($factor: 1)` — to create col padding
-- `@mixin make-section-float($behaviour: fixed)` — to create a non flexbox section
-- `@mixin make-col-float($columns: 12)` — to create a floating col
-- `@include offsett(i)` — to set an offset for a column. It use **margin-left** to do that.
-- `@include push(i)` — to push a column. It use **left** to do that.
-- `@include pull(i)` — to pull a column. It use **right** to do that.
-- `@include valign` — to arrange a element vertical centered.
-- `@include visuallyhidden` or `@include vh` — to hide an element visual.
 
 
 ## Install NPM Packages
