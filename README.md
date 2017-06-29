@@ -6,23 +6,14 @@
 [![bitHound Dependencies](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/dependencies.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten/master/dependencies/npm)
 
 ```
-              dddddddd
-              d::::::dhhhhhhh
-              d::::::dh:::::h
-              d::::::dh:::::h
-              d:::::d h:::::h
-      ddddddddd:::::d  h::::h hhhhh
-    dd::::::::::::::d  h::::hh:::::hhh
-   d::::::::::::::::d  h::::::::::::::hh
-  d:::::::ddddd:::::d  h:::::::hhh::::::h
-  d::::::d    d:::::d  h::::::h   h::::::h
-  d:::::d     d:::::d  h:::::h     h:::::h
-  d:::::d     d:::::d  h:::::h     h:::::h
-  d:::::d     d:::::d  h:::::h     h:::::h
-  d::::::ddddd::::::dd h:::::h     h:::::h
-   d:::::::::::::::::d h:::::h     h:::::h
-    d:::::::::ddd::::d h:::::h     h:::::h
-     ddddddddd   ddddd hhhhhhh     hhhhhhh
+   888                        888                        888                                                
+   888                        888                        888                                                
+   888                        888                        888                                                
+   88888b.   8888b.  888  888 888  888  8888b.  .d8888b  888888 .d88b.  88888b.                             
+   888 "88b     "88b 888  888 888 .88P     "88b 88K      888   d8P  Y8b 888 "88b                            
+   888  888 .d888888 888  888 888888K  .d888888 "Y8888b. 888   88888888 888  888                            
+   888 d88P 888  888 Y88b 888 888 "88b 888  888      X88 Y88b. Y8b.     888  888                            
+   88888P"  "Y888888  "Y88888 888  888 "Y888888  88888P'  "Y888 "Y8888  888  888   
 
 
    baukasten made with love & help.
