@@ -23,7 +23,7 @@ const branding = (version, author, website, repoURL) => {
                                                                                                         
             ${chalk.styles.magenta.close}
             ${chalk.styles.yellow.open}                                                               
-                                        • • • dhBoilerplate made with love & help • • •      
+                                         • • • baukasten made with love & help • • •      
                                                                                                    
             ${chalk.styles.yellow.close}
             ${chalk.styles.cyan.open}

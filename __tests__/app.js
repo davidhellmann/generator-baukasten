@@ -21,7 +21,7 @@ const author = {
 
 const run = () => helpers.run(path.join(__dirname, '../generators/app'))
 /* eslint-disable */
-describe('dh-boilerplate', () => {
+describe('baukasten', () => {
     beforeAll(() => {
         return run()
             .withPrompts({

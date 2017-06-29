@@ -1,7 +1,7 @@
 # <%= projectName %>
 ## Version <%= projectVersion %>
 
-## Runs with YO Generator dhBoilerplate
+## Runs with Baukasten
 
 ```
               dddddddd
@@ -23,22 +23,22 @@
      ddddddddd   ddddd hhhhhhh     hhhhhhh
 
 
-   dhBoilerplate made with love & help.
+   baukasten made with love & help.
    ---------------------------------------
    Author   :   David Hellmann
    Website  :   https://davidhellmann.com
-   Github   :   https://github.com/davidhellmann/generator-dhBoilerplate
+   Github   :   https://github.com/davidhellmann/generator-baukasten
 ```
 
-## Install dhBoilerplate
+## Install baukasten
 ```
-npm i generator-dhboilerplate -g
+npm i generator-baukasten -g
 ```
 
 ## Start Generator
 ```
 // Go to your project directory and do that
-yo dhboilerplate
+yo baukasten
 ```
 
 ## Description

@@ -1,6 +1,6 @@
-# YO Generator dhBoilerplate
+# Baukasten
 
-[![Build Status](https://travis-ci.org/davidhellmann/generator-dhBoilerplate.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-dhBoilerplate)
+[![Build Status](https://travis-ci.org/davidhellmann/generator-baukasten.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-baukasten)
 
 ```
               dddddddd
@@ -22,28 +22,28 @@
      ddddddddd   ddddd hhhhhhh     hhhhhhh
 
 
-   dhBoilerplate made with love & help.
+   baukasten made with love & help.
    ---------------------------------------
    Author   :   David Hellmann
    Website  :   https://davidhellmann.com
-   Github   :   https://github.com/davidhellmann/generator-dhBoilerplate
+   Github   :   https://github.com/davidhellmann/generator-baukasten
 ```
 
-## Install dhBoilerplate
+## Install baukasten
 ```
-npm i generator-dhboilerplate -g
+npm i generator-baukasten -g
 ```
 
 ## Start Generator
 ```
 // Go to your project directory and do that
-yo dhboilerplate
+yo baukasten
 ```
 
 ## Intro
-That's my own YO Generator who fits for my own requirements.
-Last year I go most of the time with CodeKit and a more oldsql workflow.
-Now, this one is more up to date :)
+It's just a little 'Baukasten' or Boilerplate for your next Craft CMS or Prototyping Project. WordPress is also on Board
+but has not the priority as the other ones. Most of the stuff fits for my own requirements and maybe you have the same
+you can have a lot of fun with it. Give it a try. 
 
 ## IMPORTANT NOTE
 Actually the WordPress Version has no Focus. Craft CMS + Prototyping have priority! But you can use it, no problem.
@@ -205,4 +205,8 @@ gulp minify:images
 - @LukyVj - for family.scss: [Website](http://lukyvj.github.io/family.scss/)
 - inuitcss - for some snippets and inspiration: [website](https://github.com/inuitcss/inuitcss)
 
-[![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate)
+[![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten)
+
+[![bitHound Code](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/code.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten)
+
+[![bitHound Dependencies](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/dependencies.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten/master/dependencies/npm)

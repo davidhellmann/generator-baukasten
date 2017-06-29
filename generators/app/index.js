@@ -84,7 +84,7 @@ module.exports = class extends Generator {
     prompting() {
         // Have Yeoman greet the user.
         this.log(yosay(
-            `Welcome to the impressive ${chalk.magenta('dhBoilerplate')} generator!`
+            `Welcome to the impressive ${chalk.magenta('Baukasten')} generator!`
         ))
 
         if (process.env.NODE_ENV !== 'test') {

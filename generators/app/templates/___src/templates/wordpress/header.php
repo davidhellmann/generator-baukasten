@@ -2,7 +2,7 @@
 <html class="" lang="de_DE">
 <head>
 
-    <title>{% block appTitle %}DEVELOPMENT &mdash; dhBoilerplate{% endblock %}</title>
+    <title>{% block appTitle %}DEVELOPMENT &mdash; Baukasten{% endblock %}</title>
     <?php require_once('_partials/_global/_checkJS.php'); ?>
     <?php require_once('_partials/_header/_meta.php'); ?>
     <?php require_once('_partials/_header/_scripts.php'); ?>
