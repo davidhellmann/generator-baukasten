@@ -3,7 +3,7 @@
 
 ## Runs with Baukasten
 
-![Baukasten](https://github.com/davidhellmann/generator-baukasten/baukasten.png "Baukasten")
+![Baukasten](https://raw.githubusercontent.com/davidhellmann/generator-baukasten/master/baukasten.png "Baukasten")
 
 ```
    888                        888                        888                                                
