@@ -1,0 +1,29 @@
+{#
+  News Entry Template
+  --------------------------------------------------
+
+  When you view a single news on the website, this template gets loaded.
+#}
+
+
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-newsSingle" %}
+
+{# start: Rel Nav #}
+{% block siteHeader %}
+  {% set vars = {
+    section: 'neuigkeiten',
+    order: 'postDate'
+  } %}
+  {% include '_partials/_header/_siteHeaderLinks--single.html' with vars %}
+{% endblock %}
+
+{% block appContent %}
+  <article>
+    <h1>{{ entry.title }}</h1>
+
+    {# Content Builder #}
+    {% include '_contentBuilders/_contentBuilderNeo' %}
+  </article>
+{% endblock %}

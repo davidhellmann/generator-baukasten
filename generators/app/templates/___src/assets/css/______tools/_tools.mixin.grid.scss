@@ -1,0 +1,116 @@
+/* -------------------------------------------------- */
+/*    Grid Flex
+/* -------------------------------------------------- */
+
+// Vertical Rhythmu Mixin
+@mixin make-vr($factor: 1) {
+  $multi: $factor * 2;
+  @include f($dh-gutterWidthMin * $multi, $dh-gutterWidthMax * $multi, margin-top);
+}
+
+// Vertical Rhythmu Mixin
+@mixin make-section-padding($factor: 1) {
+  @if $factor <= 1 {
+    $factor: $factor * 2;
+    padding-top: 0;
+    @include f($dh-gutterWidthMin * $factor, $dh-gutterWidthMax * $factor, padding-bottom);
+
+  } @else {
+    $factor: $factor * 2;
+    @include f($dh-gutterWidthMin * ($factor - 2), $dh-gutterWidthMax * ($factor - 2), padding-top);
+    @include f($dh-gutterWidthMin * ($factor), $dh-gutterWidthMax * ($factor), padding-bottom);
+  }
+}
+
+// Col Padding
+@mixin make-col-padding() {
+  @include f($dh-gutterWidthMin, $dh-gutterWidthMax, padding-left padding-right);
+}
+
+// Make Section Mixin
+@mixin make-section($behaviour: fixed) {
+  width: 100%;
+  @if $behaviour != 'fluid' {
+    max-width: $dh-maxWidth;
+  } @else {
+    max-width: none;
+  }
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  @include f($dh-gutterWidthMin * 2, $dh-gutterWidthMax * 2, padding-left padding-right);
+}
+
+@mixin make-row($factorMin: 1, $factorMax: 1) {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  @include f(-$dh-gutterWidthMin * $factorMin, -$dh-gutterWidthMax * $factorMax, margin-left margin-right);
+}
+
+// Make Col Mixin
+@mixin make-col($columns: 0, $context: $dh-columns) {
+  // Force Columns to 12 if it > as 12
+  @if $columns > $dh-columns {
+    $columns: $dh-columns;
+  }
+
+  // Basics
+  position: relative;
+  // width: 100%;
+  min-height: 1px;
+
+  // Col Width
+  @if $columns == 0 {
+    flex: 1 1 0;
+  } @else {
+    max-width: calc(#{$columns} / #{$context} * 100%);
+    flex: 1 1 calc(#{$columns} / #{$context} * 100%);
+  }
+
+  // Set Padding
+  @include make-col-padding();
+}
+
+
+/* -------------------------------------------------- */
+/*    Grid Float
+/* -------------------------------------------------- */
+
+// Make Section Mixin
+@mixin make-section-float($behaviour: fixed) {
+  width: 100%;
+  @if $behaviour != 'fluid' {
+    max-width: $dh-maxWidth;
+  } @else {
+    max-width: none;
+  }
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  @include f($dh-gutterWidthMin * 2, $dh-gutterWidthMax * 2, padding-left padding-right);
+}
+
+@mixin make-row-float($factorMin: 1, $factorMax: 1) {
+  @include f(-$dh-gutterWidthMin * $factorMin, -$dh-gutterWidthMax * $factorMax, margin-left margin-right);
+}
+
+// Make Col Mixin
+@mixin make-col-float($columns: 0, $context: $dh-columns) {
+  // Force Columns to 12 if it > as 12
+  @if $columns > $dh-columns {
+    $columns: $dh-columns;
+  }
+
+  // Basics
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  float: left;
+
+  // Col Width
+  max-width: calc(#{$columns} / #{$context} * 100%);
+
+  // Set Padding
+  @include make-col-padding();
+}

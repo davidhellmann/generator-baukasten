@@ -1,0 +1,14 @@
+/*--------------------------------------------------
+    #SPACE
+  --------------------------------------------------*/
+
+@import 'tools.function.calc-rem';
+
+@function space($key) {
+  @return (calc-rem($dh-gutterWidth) * $key);
+}
+
+// Shorthand Version
+@function s($key) {
+  @return space($key);
+}

@@ -1,0 +1,24 @@
+/* -------------------------------------------------- */
+/*    Quotes
+/* -------------------------------------------------- */
+
+blockquote {
+  p {
+    @include f(fs('ms0'), fs('ms3'));
+    font-style: italic;
+
+    .wf-loaded & {
+      font-family: ff('serif');
+    }
+  }
+
+  footer {
+    /* empty */
+    margin-top: s(1);
+
+    cite {
+      /* empty */
+      font-style: normal;
+    }
+  }
+}

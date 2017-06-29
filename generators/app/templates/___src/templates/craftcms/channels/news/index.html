@@ -1,0 +1,36 @@
+{#
+  News Overview
+  --------------------------------------------------
+
+  When you view the news overview on the website, this template gets loaded.
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-news" %}
+
+{# Set Query #}
+{% set data = craft.entries({
+  section: 'neuigkeiten',
+  limit: 12
+}) %}
+{% paginate data as pageInfo, pageEntries %}
+
+{# start: Rel Nav #}
+{% block appHeader %}
+  {% set vars = {
+    pageInfo: pageInfo
+  } %}
+  {% include '_partials/_header/_siteHeaderLinks.html' with vars %}
+{% endblock %}
+
+
+{% block appContent %}
+  {% for entry in data %}
+    <article>
+      <h1>{{ entry.title }}</h1>
+      <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+      <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+      <p><a href="{{ entry.url }}">Continue reading</a></p>
+    </article>
+  {% endfor %}
+{% endblock %}

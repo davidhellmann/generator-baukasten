@@ -1,0 +1,20 @@
+{#
+  Home Page
+  --------------------------------------------------
+
+  This is your Homepage!
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-home" %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{% block appContent %}
+  <h1>{{ entry.title }}</h1>
+{% endblock %}

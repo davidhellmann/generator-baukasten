@@ -1,0 +1,57 @@
+/* -------------------------------------------------- */
+/*    .o-section
+/* -------------------------------------------------- */
+
+.o-section {
+  @include make-section();
+  @include make-section-padding(1);
+  // background-color: rgba(c('red'), 0.1);
+}
+
+// Width
+.o-section--width-full {
+  @include make-section('fluid');
+}
+
+// Background Color
+.o-section--bgColor-white {
+  background-color: c('white');
+}
+
+.o-section--bgColor-black {
+  background-color: c('black');
+}
+
+// Padding Vertical
+.o-section--paddingVertical-none {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.o-section--paddingVertical-medium {
+  @include make-section-padding(2);
+}
+
+.o-section--paddingVertical-large {
+  @include make-section-padding(3);
+}
+
+// Headline
+.o-section__headline {
+  @include make-col(12);
+  @include f(s(2), s(4), padding-left padding-right);
+  @include f(s(2), s(8), margin-top);
+  text-align: center;
+}
+
+// Subline
+.o-section__subline {
+  @include make-col(12);
+  @include f(s(2), s(4), padding-left padding-right);
+  @include f(s(2), s(8), margin-top);
+  text-align: center;
+
+  .o-section__headline + & {
+    @include f(s(-1), s(-6), margin-top);
+  }
+}

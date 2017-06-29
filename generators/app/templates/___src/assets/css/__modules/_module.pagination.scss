@@ -1,0 +1,43 @@
+/* -------------------------------------------------- */
+/*    Pagination
+/* -------------------------------------------------- */
+
+.m-paginationWrapper {
+  /* empty */
+}
+
+.m-pagination {
+  @include make-vr();
+  width: 100%;
+  list-style: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.m-pagination__link {
+  background-color: transparent;
+  color: color('black', '80');
+  line-height: 38px;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 300px;
+  flex: 0 0 40px;
+
+  .wf-loaded & {
+    font-family: ff('sans-serif');
+  }
+
+  &:hover {
+    background: c('black', '80');
+    color: c('white');
+  }
+
+  &--current {
+    background: c('black', '80');
+    color: c('white');
+  }
+}

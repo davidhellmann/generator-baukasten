@@ -1,0 +1,25 @@
+/* -------------------------------------------------- */
+/*    Shared Styles
+/* -------------------------------------------------- */
+
+// Same Margins for for Elements
+address,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre
+dl, ol, ul,
+figure,
+hr,
+table,
+fieldset {
+  @include make-vr();
+}
+
+// Consistent indentation for lists.
+dd, ol, ul {
+
+}
+
+::selection {
+  background-color: c('black');
+  color: c('white');
+}

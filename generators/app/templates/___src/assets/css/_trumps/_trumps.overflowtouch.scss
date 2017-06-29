@@ -1,0 +1,10 @@
+/* -------------------------------------------------- */
+/*    Overflow Touch
+/* -------------------------------------------------- */
+
+.t-overflowTouch {
+  white-space: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}

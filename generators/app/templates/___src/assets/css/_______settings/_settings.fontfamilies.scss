@@ -1,0 +1,15 @@
+/* -------------------------------------------------- */
+/*    Font Families
+/* -------------------------------------------------- */
+
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-sans-serif:  Helvetica, Arial, sans-serif;
+$font-family-base:        Georgia, "Times New Roman", Times, serif;
+$font-family-headline:    Helvetica, Arial, sans-serif;
+
+$dh-fontfamilies: (
+  'serif':                $font-family-serif,
+  'sans-serif':           $font-family-sans-serif,
+  'base':                 $font-family-base,
+  'headline':             $font-family-headline,
+);
