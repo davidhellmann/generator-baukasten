@@ -12,7 +12,7 @@ import errorHandler from '../lib/errorHandler'
 const $ = gulpLoadPlugins()
 
 // Overwrite the Changed Check
-global.checkChanged = true
+global.checkChanged = false
 
 <% if (projectType === 'prototyping' ) { %>
 // Work with multiple Files
@@ -41,7 +41,7 @@ const templates = () => {
         .on('error', errorHandler)
         //.pipe($.changed(pkg.dist.markup))
 
-        //.pipe(global.checkChanged === true ? $.changed(pkg.dist.markup) : gutil.noop())
+        .pipe(global.checkChanged === true ? $.changed(pkg.dist.markup) : gutil.noop())
         .pipe(gulp.dest(pkg.dist.markup))
 
   <% } else { %>

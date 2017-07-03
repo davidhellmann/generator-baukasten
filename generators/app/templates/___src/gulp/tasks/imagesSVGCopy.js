@@ -9,7 +9,7 @@ const vectorSource = `${pkg.src.images.svg.single}**/*.svg`
 const vectorDist = pkg.dist.images.svg.single
 
 // Overwrite the Changed Check
-global.checkChanged = true
+global.checkChanged = false
 
 const copyVectors = () => {
   return gulp
@@ -19,7 +19,7 @@ const copyVectors = () => {
       svgoPlugins:  pkg.minify.images.svgoPlugins
     }))
     .on('error', errorHandler)
-    //.pipe(global.checkChanged === true ? $.changed(vectorDist) : gutil.noop())
+    .pipe(global.checkChanged === true ? $.changed(vectorDist) : gutil.noop())
     .pipe(gulp.dest(vectorDist))
     .pipe($.size())
     .pipe($.rename({

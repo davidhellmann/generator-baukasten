@@ -5,13 +5,13 @@ import errorHandler from '../lib/errorHandler'
 const $ = gulpLoadPlugins()
 
 // Overwrite the Changed Check
-global.checkChanged = true
+global.checkChanged = false
 
 const copyImagesLib = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)
     .on('error', errorHandler)
-    //.pipe(global.checkChanged === true ? $.changed(distFiles) : gutil.noop())
+    .pipe(global.checkChanged === true ? $.changed(distFiles) : gutil.noop())
     .pipe(gulp.dest(distFiles))
 }
 
