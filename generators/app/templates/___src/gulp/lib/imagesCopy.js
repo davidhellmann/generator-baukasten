@@ -11,7 +11,7 @@ const copyImagesLib = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)
     .on('error', errorHandler)
-    .pipe(global.checkChanged === true ? $.changed(distFiles) : gutil.noop())
+    //.pipe(global.checkChanged === true ? $.changed(distFiles) : gutil.noop())
     .pipe(gulp.dest(distFiles))
 }
 

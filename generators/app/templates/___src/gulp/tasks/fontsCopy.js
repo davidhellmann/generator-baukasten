@@ -10,7 +10,7 @@ global.checkChanged = true
 const copyFonts = () => {
   return gulp
     .src(`${pkg.src.fonts}**/*.{ttf,woff,eof,svg,eot,woff2}`)
-    .pipe(global.checkChanged === true ? $.changed(pkg.dist.fonts) : gutil.noop())
+    //.pipe(global.checkChanged === true ? $.changed(pkg.dist.fonts) : gutil.noop())
     .pipe(gulp.dest(pkg.dist.fonts))
 }
 
