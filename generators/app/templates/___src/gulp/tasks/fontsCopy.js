@@ -4,9 +4,6 @@ import pkg from '../../package.json';
 
 const $ = gulpLoadPlugins()
 
-// Overwrite the Changed Check
-global.checkChanged = true
-
 const copyFonts = () => {
   return gulp
     .src(`${pkg.src.fonts}**/*.{ttf,woff,eof,svg,eot,woff2}`)

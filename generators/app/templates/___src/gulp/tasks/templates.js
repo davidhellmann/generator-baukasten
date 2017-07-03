@@ -11,9 +11,6 @@ import errorHandler from '../lib/errorHandler'
 
 const $ = gulpLoadPlugins()
 
-// Overwrite the Changed Check
-global.checkChanged = true
-
 <% if (projectType === 'prototyping' ) { %>
 // Work with multiple Files
 var getDataMultiple = function(file) {
