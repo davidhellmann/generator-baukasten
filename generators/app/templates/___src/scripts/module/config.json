@@ -1,0 +1,9 @@
+{
+  "title": "<%= moduleName %>",
+  "status": "ready",
+  "context": {
+    "options": {
+      "classname": "m-<%= moduleName %>"
+    }
+  }
+}
