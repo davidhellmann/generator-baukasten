@@ -8,9 +8,6 @@ const $ = gulpLoadPlugins()
 const vectorSource = `${pkg.src.images.svg.single}**/*.svg`
 const vectorDist = pkg.dist.images.svg.single
 
-// Overwrite the Changed Check
-global.checkChanged = false
-
 const copyVectors = () => {
   return gulp
     .src(vectorSource)

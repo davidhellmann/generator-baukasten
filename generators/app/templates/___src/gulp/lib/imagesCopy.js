@@ -4,9 +4,6 @@ import errorHandler from '../lib/errorHandler'
 
 const $ = gulpLoadPlugins()
 
-// Overwrite the Changed Check
-global.checkChanged = false
-
 const copyImagesLib = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)

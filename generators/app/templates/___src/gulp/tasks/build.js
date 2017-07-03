@@ -2,6 +2,10 @@ import gulp from 'gulp'
 import runSequence from 'run-sequence'
 
 const buildTask = (cb) => {
+
+    // Overwrite the Changed Check
+    global.checkChanged = true
+
     runSequence(
         [
             'clean:templates',
