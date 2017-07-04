@@ -1,0 +1,18 @@
+{
+	"name": "davidhellmann/baukasten-neo-styles",
+	"description": "Flat Structure Neo Contentbuilder needs some CSS to work propely, adding this as a Plugin instead of using Custom CSS Plugin",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Martin Herweg",
+			"homepage": "https://martinherweg.de"
+		},
+		{
+			"name": "David Hellmann",
+			"homepage": "https://davidhellmann.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
