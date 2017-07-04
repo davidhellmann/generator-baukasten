@@ -23,9 +23,10 @@ function addSrcPaths(files = {}) {
             templates: '___src/templates/',
             modules: {
                 base: '___src/templates/_modules/',
-                jsFile: '_main.js',
-                cssFile: '_style.scss',
-                templateFile: '_template.html',
+                jsFile: 'main.js',
+                cssFile: 'style.scss',
+                templateFile: 'template.html',
+                configFile: 'config.json',
             },
             system: '___src/_system/',
             dataDir: '___src/_data/',

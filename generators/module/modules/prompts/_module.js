@@ -28,16 +28,20 @@ No whitespaces allowed!${chalk.styles.red.close}`
         message: "What files do you need?",
         choices: [
             {
-                name: 'JavaScript File (_main.js)',
+                name: 'JavaScript File (main.js)',
                 value: 'js',
                 checked: true
             }, {
-                name: 'Sass File (_style.scss)',
+                name: 'Sass File (style.scss)',
                 value: 'css',
                 checked: true
             }, {
-                name: 'Template File (_template.html)',
+                name: 'Template File (template.html)',
                 value: 'template',
+                checked: true
+            }, {
+                name: 'Config File (config.json)',
+                value: 'config',
                 checked: true
             }]
     },
@@ -53,7 +57,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a JavaScript File Name or go with the default one:',
             defaultValue: false
         }),
-        default: '_main.js',
+        default: 'main.js',
     },
     {
         when(props) {
@@ -67,7 +71,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a CSS File Name or go with the default one:',
             defaultValue: false
         }),
-        default: '_style.scss',
+        default: 'style.scss',
     },
     {
         when(props) {
@@ -81,7 +85,21 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a Template File Name or go with the default one:',
             defaultValue: false
         }),
-        default: '_template.html',
+        default: 'template.html',
+    },
+    {
+        when(props) {
+            const _isInArray = props.moduleFiles.includes('config')
+            return _isInArray
+        },
+        type: 'input',
+        name: 'configFileName',
+        message: message({
+            headline: 'Config Filename',
+            description: 'Choose a Config File Name or go with the default one:',
+            defaultValue: false
+        }),
+        default: 'config.json',
     }
 ]
 
