@@ -1,18 +1,27 @@
 {% macro srcset(image, aspectRatio, outputWidths) %}
   {# setup #}
-  {%- set outputWidths = outputWidths | default([300, 500, 800, 1100, 1400]) -%}
+  {%- set outputWidths = outputWidths | default([160, 320, 640, 960, 1280, 1600]) -%}
   {%- set srcset = [] -%}
+  
+  {% if image.focalPoint is defined and image.focalPoint %}
+    {% set position = image.focalPoint %}
+  {% else %}
+    {% set position = 'center-center' %}
+  {% endif %}
+  
+  
   {# if output width is smaller than or equal to the original image width #}
   {%- for outputWidth in outputWidths -%}
     {%- if outputWidth <= image.width -%}
       {%- if aspectRatio -%}
-        {%- set transformOptions = { width: outputWidth, height: outputWidth * aspectRatio } -%}
+        {%- set transformOptions = { width: outputWidth, height: outputWidth * aspectRatio, position: position } -%}
       {%- else -%}
-        {%- set transformOptions = { width: outputWidth } -%}
+        {%- set transformOptions = { width: outputWidth, position: position } -%}
       {%- endif -%}
       {%- set srcset = srcset | merge([image.url(transformOptions) ~ ' ' ~ outputWidth ~ 'w']) -%}
     {%- endif -%}
   {%- endfor -%}
+  
   {# output srcset #}
   {{- srcset | join(', ') -}}
 {% endmacro %}
