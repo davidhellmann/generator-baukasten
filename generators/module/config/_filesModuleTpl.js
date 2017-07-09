@@ -16,17 +16,17 @@ const filesModuleTpl = (context, destPath) => {
     return {
         files: [
             {
-                src: `___src/example/main.js`,
+                src: `___src/example/_main.js`,
                 dest: `${destPath}/${context.props.moduleName}/${context.props.jsFileName}`,
                 type: 'js'
             },
             {
-                src: `___src/example/style.scss`,
+                src: `___src/example/_style.scss`,
                 dest: `${destPath}/${context.props.moduleName}/${context.props.cssFileName}`,
                 type: 'css'
             },
             {
-                src: `___src/example/template.html`,
+                src: `___src/example/_template.html`,
                 dest: `${destPath}/${context.props.moduleName}/${context.props.templateFileName}`,
                 type: 'template'
             },

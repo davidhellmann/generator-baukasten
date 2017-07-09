@@ -57,7 +57,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a JavaScript File Name or go with the default one:',
             defaultValue: false
         }),
-        default: 'main.js',
+        default: '_main.js',
     },
     {
         when(props) {
@@ -71,7 +71,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a CSS File Name or go with the default one:',
             defaultValue: false
         }),
-        default: 'style.scss',
+        default: '_style.scss',
     },
     {
         when(props) {
@@ -85,7 +85,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a Template File Name or go with the default one:',
             defaultValue: false
         }),
-        default: 'template.html',
+        default: '_template.html',
     },
     {
         when(props) {
@@ -99,7 +99,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
             description: 'Choose a Config File Name or go with the default one:',
             defaultValue: false
         }),
-        default: 'config.json',
+        default: '_config.json',
     }
 ]
 
