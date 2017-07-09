@@ -7,7 +7,6 @@ const Generator = require('yeoman-generator')
 const yosay = require('yosay')
 
 // Import Helpers & Package File
-const _pkg = require('../../package.json')
 const branding = require('./helpers/messages/_branding')
 const logMessage = require('./helpers/messages/_logMessage')
 let destPath = './'
