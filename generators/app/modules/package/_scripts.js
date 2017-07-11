@@ -3,10 +3,10 @@ const extend = require('deep-extend')
 function addNPMScripts(files = {}) {
     extend(files.pkg, {
         scripts: {
-            start: 'gulp init',
-            dev: 'gulp',
-            build: 'gulp build',
-            module: 'node scripts/module.js',
+            'start': 'gulp init',
+            'dev': 'gulp build && gulp',
+            'build': 'gulp build',
+            'module': 'node scripts/module.js',
             'clean:dist': 'gulp clean:dist',
             'clean:templates': 'gulp clean:templates',
             'clean:images': 'gulp clean:images',
