@@ -16,7 +16,7 @@ const copyVectors = () => {
       svgoPlugins:  pkg.minify.images.svgoPlugins
     }))
     .on('error', errorHandler)
-    .pipe(global.checkChanged === true ? $.changed(vectorDist) : gutil.noop())
+    .pipe(global.checkChanged === true ? $.changed(vectorDist) : $.util.noop())
     .pipe(gulp.dest(vectorDist))
     .pipe($.size())
     .pipe($.rename({
