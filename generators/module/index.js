@@ -90,3 +90,4 @@ module.exports = class extends Generator {
         this.logMessage({message: `Module ${this.props.moduleName} created!`})
     }
 }
+
