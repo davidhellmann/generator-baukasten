@@ -26,14 +26,7 @@
 <html class="" lang="de">
 <head>
 
-  {# -- LOADS CSS -- #}
-  <script>
-    {{ source('_inlineJS/loadCSS.min.js') }}
-    {{ source('_inlineJS/cssrelpreload.min.js') }}
-  </script>
-
-  {# -- WEBFONTS HERE -- #}
-
+  
   {# -- CRITICAL CSS -- #}
   {% set cacheVal = getCookie('critical-css') %}
   {% if not cacheVal or craft.config.devMode %}
@@ -41,42 +34,21 @@
     {% block appInlineCSS %}
     {% endblock %}
     
-  {% if craft.cacheBuster is defined %}
+    <link rel="preload" href="{{ rootUrl ~ 'assets/css/app.min.css' | cacheBuster }}" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ rootUrl ~ 'assets/css/app.min.css' }}"></noscript>
+    
+    {# -- LOADS CSS -- #}
     <script>
-      loadCSS("{{ cacheBuster( '/assets/css/app.min.css') }}");
+      {{ source('_inlineJS/loadCSS.min.js') }}
+      {{ source('_inlineJS/cssrelpreload.min.js') }}
     </script>
-    <noscript>
-      <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
-    </noscript>
+  
   {% else %}
-    <script>
-      loadCSS("{{ rootUrl }}assets/css/app.min.css");
-    </script>
-    <noscript>
-      <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
-    </noscript>
-  {% endif %}
-
-  {% else %}
-    <script>
-      document.documentElement.className += " wf-loaded"
-    </script>
-
-  {% if craft.cacheBuster is defined %}
-    <script>
-      loadCSS("{{ cacheBuster( '/assets/css/app.min.css') }}");
-    </script>
-    <noscript>
-      <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
-    </noscript>
-  {% else %}
-    <script>
-      loadCSS("{{ rootUrl }}assets/css/app.min.css");
-    </script>
-    <noscript>
-      <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
-    </noscript>
-  {% endif %}
+    {% if craft.cacheBuster is defined %}
+      <link rel="stylesheet" href="{{ rootUrl ~ 'assets/css/app.min.css' | cacheBuster }}">
+    {% else %}
+      <link rel="stylesheet" href="{{ rootUrl ~ 'assets/css/app.min.css' }}">
+    {% endif %}
   {% endif %}
 
   {# -- CHECK JS -- #}
