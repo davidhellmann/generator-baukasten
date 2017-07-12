@@ -10,6 +10,9 @@
 import 'babel-polyfill'
 import 'svgxuse'
 
+// Lib
+import './lib/bling'
+
 // Scripts
 import './scripts/example'
 // import './scripts/pagetransition'
