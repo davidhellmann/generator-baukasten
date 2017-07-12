@@ -39,7 +39,7 @@ function processCriticalCSS(element, i, callback) {
         src: criticalSrc,
         dest: criticalDest,
         inline: false,
-        ignore: ['font-family'],
+        ignore: ['font-face'],
         // base: pkg.dist.markup,
         css: [
             pkg.dist.css + 'app.min.css',
