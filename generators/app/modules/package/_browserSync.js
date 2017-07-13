@@ -4,7 +4,7 @@ function addBrowserSyncSettings(files = {}, context) {
     extend(files.pkg, {
         browsersync: {
             openbrowser: false,
-            proxy: context.props.projectProxy
+            proxy: `http://${context.props.projectProxy}`
         }
     })
 }

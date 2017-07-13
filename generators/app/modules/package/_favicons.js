@@ -6,7 +6,7 @@ function addFaviconsSettings(files = {}, context) {
             appName: context.props.projectName,
             appDescription: context.props.projectDescription,
             version: context.props.projectVersion,
-            url: context.props.projectProxy,
+            url: `http://${context.props.projectProxy}`,
             developerName: context.props.authorName,
             developerURL: context.props.authorHomepage,
             srcImage: '_favicon.png',
