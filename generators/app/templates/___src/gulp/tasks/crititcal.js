@@ -28,15 +28,14 @@ function doSynchronousLoop(data, processData, done) {
 function processCriticalCSS(element, i, callback) {
     const argv = yargs.argv
     const url = argv.url || pkg.urls.critical
-    const criticalSrc = url + element.url
-    const criticalDest = pkg.dist.markup + element.template + '_critical.min.css'
+    const criticalSrc = `${url}${element.url}`
+    const criticalDest = `${element.template}_critical.min.css`
     log(`-> Generating critical CSS: ${chalk.cyan(criticalSrc)} -> ${chalk.magenta(criticalDest)}`)
     critical.generate({
         src: criticalSrc,
         dest: criticalDest,
         inline: false,
         ignore: ['font-face'],
-        base: pkg.dist.markup,
         css: [
             pkg.dist.css + 'app.min.css',
         ],
