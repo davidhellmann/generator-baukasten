@@ -98,7 +98,7 @@ There are some other Tasks there…
 "clean:js": "gulp clean:js",
 "clean:css": "gulp clean:css",
 "copy:fonts": "gulp copy:fonts",
-"copy:images": "gulp 'copy:images",
+"copy:images": "gulp copy:images",
 "copy:svg": "gulp copy:svg",
 "copy:svg-single": "gulp copy:svg-single",
 "create:svg-sprite": "gulp create:svg-sprite",
