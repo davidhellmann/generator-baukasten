@@ -9,6 +9,7 @@ const addCriticalCSSSettings = require('../../package/_criticalCSS')
 const addCSSSettings = require('../../package/_css')
 const addDependencies = require('../../package/_dependencies')
 const addDevDependencies = require('../../package/_devDependencies')
+const addEngines = require('../../package/_engines')
 const addFaviconsSettings = require('../../package/_favicons')
 const addSystemFiles = require('../../package/_sytemFiles')
 const addInlineJSFiles = require('../../package/_inlineJS')
@@ -62,6 +63,7 @@ const writePackageJSON = () => {
                 // Dependencies
                 addDependencies({pkg})
                 addDevDependencies({pkg})
+                addEngines({pkg})
 
                 // If jQuery True
                 if (context.props.projectJquery === true) {

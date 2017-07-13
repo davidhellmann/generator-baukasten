@@ -64,7 +64,7 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
         validate(input) {
             if (!input.match(false)) {
                 if (input.match(/(http|https):\/\//g) ||
-                    !input.match(/^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
+                    !input.match(/^([a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
                     // Pass the return value in the done callback
                     return `${chalk.styles.red.open}
 Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`

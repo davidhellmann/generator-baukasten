@@ -1,11 +1,83 @@
+### Node ###
+
+# Logs
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# Dependency directories
+/node_modules
+/jspm_packages
+/bower_components
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file(s)
+.env
+.env.*
+
+
+### SublimeText ###
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### WebStorm/IntelliJ ###
+/.idea
+modules.xml
+*.ipr
+
+### System Files ###
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+
 # Ignore hidden folders #
 # This takes care of .tmp, .sass-cache, and many others #
 .*/
-
-# Ignore OS generated files #
-.DS_Store*
-ehthumbs.db
-Thumbs.db
 
 # Always-ignore files and folders #
 *.diff
@@ -19,23 +91,10 @@ Thumbs.db
 ._*
 *~
 
-# Ignore packages #
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Ignore project specifics #
-bower/
-node_modules/
-.tmp
 
 <% if (projectType === 'prototyping' ) { %>
 ___dist/
+styleguide/
 <% } %>
 
 <% if (projectType === 'wordpress' ) { %>
@@ -59,6 +118,7 @@ ___dist/craft/*
 ___dist/public/uploads
 ___dist/public/assets
 ___dist/.env.php
+styleguide/
 <% } %>
 
 <% if (projectType === 'craftCMS3' ) { %>
@@ -71,4 +131,5 @@ ___dist/web/assets
 ___dist/web/cpresources
 ___dist/web/uploads
 ___dist/.env.php
+styleguide/
 <% } %>

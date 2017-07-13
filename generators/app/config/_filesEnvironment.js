@@ -43,6 +43,10 @@ module.exports = {
         {
             src: 'babelrc',
             dest: '.babelrc'
+        },
+        {
+            src: 'nvmrc',
+            dest: '.nvmrc'
         }
     ]
 }
