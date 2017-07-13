@@ -5,8 +5,8 @@ function addProjectSettings(files = {}, context) {
         projectName: context.props.projectName,
         projectDescription: context.props.projectDescription,
         urls: {
-            local: `http://${context.props.projectProxy}`,
-            critical: `http://${context.props.projectProxy}`
+            local: `http://${context.props.projectProxy}/`,
+            critical: `http://${context.props.projectProxy}/`
         },
         projectType: context.props.projectType,
         projectVresion: context.props.projectVersion
