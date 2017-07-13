@@ -87,13 +87,13 @@ const compileCss = () => {
                   in ${err.relativePath} on line ${err.line}:${err.column} 
                 </p>
                 <p>${err.messageOriginal}</p>
-              </div>`;
+              </div>`
             browserSync.notify(error, 100000)
             this.emit('end')
         })
         .on('error', errorHandler))
         .pipe($.postcss(postCssConfig()))
-        .pipe(env == 'development' ? $.sourcemaps.write('./maps/') : $.util.noop())
+        .pipe(env === 'development' ? $.sourcemaps.write('./maps/') : $.util.noop())
         .pipe(gulp.dest(pkg.dist.css))
         .pipe($.size({
             title: '>>> CSS File Size: '

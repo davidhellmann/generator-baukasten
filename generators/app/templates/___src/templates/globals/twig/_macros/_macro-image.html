@@ -1,5 +1,5 @@
 {# Set Attributes
-  {% set options = {
+  macroImage.image(image, {
     classname: 'm-image',
     sizes: [
       { width: 1400 },
@@ -7,7 +7,27 @@
       { width: 800 },
       { width: 500 },
       { width: 300 },
-      { width: 30 }
+      { width: 10, jpegQuality: 0 }
+    ],
+    mode: 'crop',
+    position: false,
+    ratio: false,
+    externalSource: false,
+    dominantColor: true
+  })
+#}
+
+{% macro image(image, options) %}
+
+  {% set defaults = {
+    classname: 'm-image',
+    sizes: [
+      { width: 1400 },
+      { width: 1100 },
+      { width: 800 },
+      { width: 500 },
+      { width: 300 },
+      { width: 10, jpegQuality: 0 }
     ],
     mode: 'crop',
     position: false,
@@ -16,31 +36,9 @@
     dominantColor: true
   } %}
 
-  macroImage.image(image, options)
-#}
-
-{% macro image(image, options) %}
-  
-  {% set defaults = {
-  classname: 'm-image',
-  sizes: [
-  { width: 1400 },
-  { width: 1100 },
-  { width: 800 },
-  { width: 500 },
-  { width: 300 },
-  { width: 10 }
-  ],
-  mode: 'crop',
-  position: false,
-  ratio: false,
-  externalSource: false,
-  dominantColor: true
-  } %}
-  
   {% set options = options is defined ? defaults|merge(options) : defaults %}
   {% if image %}
-    
+
     {# -- Ratio -- #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
@@ -53,7 +51,7 @@
     {% else %}
       {% set ratio = '' %}
     {% endif %}
-    
+
     {# -- Set Position -- #}
     {% if options.position %}
       {% set position = options.position %}
@@ -62,24 +60,24 @@
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
-    
+
     {# -- Define global variables -- #}
     {% set imageSettings = {
     mode: options.mode,
     position: position,
     ratio: ratio
     } %}
-    
+
     {# -- Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
-    
+
     {# -- External Source --#}
     {# Reset the Base64 Size to the First Image Dimensions  #}
     {% if options.externalSource %}
       {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
       {% set base64Ratio = base64Ratio|split(':') %}
     {% endif %}
-    
+
     {# -- Dominatn Color -- #}
     {% if options.dominantColor %}
       {% if image.pluginPreparseDominantColor is defined and image.pluginPreparseDominantColor is not empty %}
@@ -91,7 +89,7 @@
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
-    
+
     <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%;">
       <img class="{{ options.classname }}  lazyload"
            src="{{ images|last.url }}"
@@ -103,7 +101,3 @@
     </div>
   {% endif %}
 {% endmacro %}
-
-{# -- Reset Options Variable -- #}
-{% set options = null %}
-

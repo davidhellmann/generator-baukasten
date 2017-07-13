@@ -64,6 +64,7 @@
   @if $columns == 0 {
     flex: 1 1 0;
   } @else {
+    width: 100%;
     max-width: calc(#{$columns} / #{$context} * 100%);
     flex: 1 1 calc(#{$columns} / #{$context} * 100%);
   }
