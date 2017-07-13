@@ -1,145 +1,111 @@
+![Logo of the project](./images/logo.sample.png)
+
 # <%= projectName %>
-## Version <%= projectVersion %>
+> Additional information or tag line. Edit or remove.
+
+## Installing / Getting started
+```shell
+// Install NPM
+npm install npm@latest -g
+<% if (projectType === 'craftCMS3' ) { %>
+// Install Compser
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+chmod +x composer.phar
+sudo mv composer.phar /usr/local/bin/composer<% } %>
+```
+
+Installed NPM Global
+<% if (projectType === 'craftCMS3' ) { %>Installed Composer Global<% } %>
+
+## Developing
+### Built With
+<% if (projectType === 'craftCMS' ) { %>- [Craft CMS](https://craftcms.com/)<% } %>
+<% if (projectType === 'craftCMS3' ) { %>- [Craft CMS](https://craftcms.com/)<% } %>
+<% if (projectType === 'wordpress' ) { %>- [WordPress](https://wordpress.org/)<% } %>
+<% if (projectType === 'prototyping' ) { %>- [Twig](https://twig.symfony.com/)<% } %>
+
+### Requirements
+- [NodeJS](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/) or [YARN](https://yarnpkg.com/lang/en/)
+<% if (projectType === 'craftCMS' ) { %>- [PHP](http://php.net/)
+- [MySQL](https://www.mysql.com)<% } %>
+<% if (projectType === 'craftCMS3' ) { %>- [PHP](http://php.net/)
+- [MySQL](https://www.mysql.com)
+- [Composer](https://getcomposer.org/)<% } %>
+<% if (projectType === 'wordpress' ) { %>- [PHP](http://php.net/)
+- [MySQL](https://www.mysql.com)<% } %>
+
+### Setting up Dev Environment
+```shell
+git clone https://github.com/your/your-project.git
+cd your-project/
+npm start
+```
+
+Needs more description…
+
+### Developing
+```shell
+npm dev
+```
+
+Needs more description…
+
+### Building
+```shell
+npm build
+```
+
+We use [Buddy](https://buddy.works/) (or something similar) for Deploying.
+
+## Gulp Tasks & NPM Scripts
+```shell
+npm start
+npm dev
+<% if (projectType === 'craftCMS3' ) { %>npm update<% } %>
+npm build
+npm module
+npm critical
+npm clean:dist
+npm clean:templates
+npm clean:images
+npm clean:js
+npm clean:css
+npm copy:fonts
+npm copy:images
+npm copy:svg
+npm copy:svg-single
+npm create:svg-sprite
+npm copy:systemFiles
+npm compile:css
+npm compile:js
+npm compile:templates
+npm create:criticalcss
+npm create:favicons
+npm create:inlineJS
+```
+
+All scripts are also executable with YARN.
+More detailed Infos about this Tasks & Scripts: [scripts.md](./docs/scripts-tasks.md)
+
+## Sass Functions & Mixins
+```scss
+later
+```
+
+More detailed Infos about this Sass Functions & Mixins: [scripts.md](./docs/functions-mixins.md)
+
+## Style guide
+[Fractal](http://fractal.build/) is out tool of choice but it's not implemented for now. Update here when its done.
 
 ## Runs with Baukasten
-
-<img alt="Baukasten" src="https://raw.githubusercontent.com/davidhellmann/generator-baukasten/master/baukasten.png" width="300">
-
-```
+```txt
    baukasten made with love & help.
    ---------------------------------------
    Author   :   David Hellmann
    Website  :   https://davidhellmann.com
    Github   :   https://github.com/davidhellmann/generator-baukasten
 ```
-
-## Install baukasten
-```
-npm i generator-baukasten -g
-```
-
-## Start Generator
-```
-// Go to your project directory and do that
-yo baukasten
-```
-
-## Description
-<%= projectDescription %>
-
-
-## What's inside? A lot! :-)
-### This three scenarios are covered by the generator:
-- Craft CMS — Up to Date
-- Craft CMS Beta 3 — Not for production
-- WordPress — No up to date but a good startpoint
-- Prototyping (with Twig) — No up to date but a good startpoint
-
-### Settings
-You can find this stuff here: `___src/assets/css/_______settings`
-
-
-### Sass Functions
-You can find this stuff here: `___src/assets/css/______tools`
-
-
-### Sass Mixins
-You can find this stuff here: `___src/assets/css/_______settings`
-
-
-## Install NPM Packages
-```
-npm install // yarn install
-```
-
-
-## Initialize Project
-```
-gulp init  // npm run init OR yarn init
-```
-
-
-### Default Task with BrowserSync
-```
-gulp // npm run dev OR yarn dev
-```
-
-
-### Task for Building
-This Task clean the folder, build the stuff from ground up and optimize the images and minifiy JS / CSS files. Ready for live!
-
-```
-gulp build // npm run build OR yarn build
-```
-
-
-### Other Tasks
-There are some other Tasks there…
-
-```
-// NPM RUN / YARN COMMANDS
-"start": "gulp init",
-"dev": "gulp",
-"build": "gulp build",
-"clean:dist": "gulp clean:dist",
-"clean:templates": "gulp clean:templates",
-"clean:images": "gulp clean:images",
-"clean:js": "gulp clean:js",
-"clean:css": "gulp clean:css",
-"copy:fonts": "gulp copy:fonts",
-"copy:images": "gulp 'copy:images",
-"copy:svg": "gulp copy:svg",
-"copy:svg-single": "gulp copy:svg-single",
-"create:svg-sprite": "gulp create:svg-sprite",
-"copy:systemFiles": "gulp copy:systemFiles",
-"compile:css": "gulp compile:css",
-"compile:js": "gulp compile:js",
-"compile:templates": "gulp compile:templates",
-"create:criticalcss": "gulp create:criticalcss",
-"create:favicons": "gulp create:favicons",
-"create:inlineJS": "gulp create:inlineJS"
-```
-
-```
-// Clean Tasks
-// Clean the specific folder in the "___dist" dir
-gulp clean:templates
-gulp clean:css
-gulp clean:js
-gulp clean:images
-```
-
-```
-// Main Tasks
-// All this are triggered within "gulp init" & "gulp build" task.
-// Some of this are triggered within the "gulp" task.
-gulp compile:templates
-gulp create:inlineJS,
-gulp copy:systemFiles
-gulp modernizr
-gulp compile:js
-gulp compile:css
-gulp copy:fonts
-gulp copy:images
-gulp copy:svg-single
-gulp create:svg-sprite
-```
-
-```
-// Minify Tasks
-// This task are triggered within the "guld build" task.
-gulp minify:js
-gulp minify:sass
-gulp minify:images
-```
-
-
-## Thanks to
-- webdevs - for so many things: [Website](http://webdevs.xyz)
-- Sascha Fuchs - for help help help: [Website](https://github.com/gisu)
-- Martin Herweg - for help help help: [Website](https://github.com/martinherweg)
-- CSS Tricks -  for Easing Map: [Website](https://css-tricks.com/snippets/sass/easing-map-get-function/)
-- Florian Kutschera - for the Material Design Box Shadows: [Website](https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d#.f1fz5ac2o)
-- Hugo Giraudel & Eduardo Bouças - for include media: [Website](http://include-media.com/)
-- @LukyVj - for family.scss: [Website](http://lukyvj.github.io/family.scss/)
-- inuitcss - for some snippets and inspiration: [website](https://github.com/inuitcss/inuitcss)

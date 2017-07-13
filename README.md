@@ -1,6 +1,6 @@
 # Baukasten
 
-[![Build Status](https://travis-ci.org/davidhellmann/generator-baukasten.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-baukasten) 
+[![Build Status](https://travis-ci.org/davidhellmann/generator-baukasten.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-baukasten)
 [![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten)
 [![bitHound Code](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/code.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten)
 [![bitHound Dependencies](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/dependencies.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten/master/dependencies/npm)
@@ -29,7 +29,7 @@ yo baukasten
 ## Intro
 It's just a little 'Baukasten' or Boilerplate for your next Craft CMS or Prototyping Project. WordPress is also on Board
 but has not the priority as the other ones. Most of the stuff fits for my own requirements and maybe you have the same
-you can have a lot of fun with it. Give it a try. 
+you can have a lot of fun with it. Give it a try.
 
 ## IMPORTANT NOTE
 Actually the WordPress Version has no Focus. Craft CMS + Prototyping have priority! But you can use it, no problem.
@@ -98,7 +98,7 @@ There are some other Tasks there…
 "clean:js": "gulp clean:js",
 "clean:css": "gulp clean:css",
 "copy:fonts": "gulp copy:fonts",
-"copy:images": "gulp 'copy:images",
+"copy:images": "gulp copy:images",
 "copy:svg": "gulp copy:svg",
 "copy:svg-single": "gulp copy:svg-single",
 "create:svg-sprite": "gulp create:svg-sprite",

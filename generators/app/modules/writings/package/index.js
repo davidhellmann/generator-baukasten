@@ -42,7 +42,7 @@ const writePackageJSON = () => {
                 addProjectSettings({pkg}, context)
 
                 // NPM Scripts
-                addNPMScripts({pkg})
+                addNPMScripts({pkg}, context)
 
                 // Paths
                 addSrcPaths({pkg})

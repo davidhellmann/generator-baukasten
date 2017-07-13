@@ -72,5 +72,25 @@ module.exports = {
             src: '___src/scripts/',
             dest: 'scripts/'
         },
+        {
+            projectContext: [
+                'craftCMS',
+                'craftCMS3',
+                'prototyping',
+                'wordpress'
+            ],
+            src: 'images/',
+            dest: 'images/'
+        },
+        {
+            projectContext: [
+                'craftCMS',
+                'craftCMS3',
+                'prototyping',
+                'wordpress'
+            ],
+            src: 'docs/',
+            dest: 'docs/'
+        }
     ]
 }

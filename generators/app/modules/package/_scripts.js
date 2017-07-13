@@ -1,10 +1,16 @@
 const extend = require('deep-extend')
 
-function addNPMScripts(files = {}) {
+function addNPMScripts(files = {}, context) {
+    let initCommands = 'gulp init'
+    if (context.props.projectType === 'craftCMS3') {
+        initCommands = 'gulp init && cd ___dist && composer install'
+    }
+
     extend(files.pkg, {
         scripts: {
-            'start': 'gulp init',
+            'start': initCommands,
             'dev': 'gulp build && gulp',
+            'update': 'cd ___dist && composer update',
             'build': 'gulp build',
             'module': 'node scripts/module.js',
             'critical': 'node scripts/critical.js',
