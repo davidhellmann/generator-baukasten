@@ -154,4 +154,3 @@ gulp minify:images
 - Hugo Giraudel & Eduardo Bouças - for include media: [Website](http://include-media.com/)
 - @LukyVj - for family.scss: [Website](http://lukyvj.github.io/family.scss/)
 - inuitcss - for some snippets and inspiration: [website](https://github.com/inuitcss/inuitcss)
-
