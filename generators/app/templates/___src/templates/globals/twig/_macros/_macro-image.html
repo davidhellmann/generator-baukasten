@@ -90,8 +90,8 @@
       {% set dominantColor = '' %}
     {% endif %}
 
-    <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%;">
-      <img class="{{ options.classname }}  lazyload"
+    <div class="{{ options.classname }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%;">
+      <img class="{{ options.classname ~ '__inner' }}  lazyload"
            src="{{ images|last.url }}"
            {#src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"#}
            data-srcset="{{ craft.imager.srcset(images) }}"
