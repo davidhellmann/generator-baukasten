@@ -145,7 +145,6 @@ gulp minify:images
 ```
 
 
-
 ## Thanks to
 - webdevs - for so many things: [Website](http://webdevs.xyz)
 - Sascha Fuchs - for help help help: [Website](https://github.com/gisu)
