@@ -25,5 +25,7 @@
   { "name": "Platform: Windows", "color": "#bfd4f2"},
   { "name": "Platform: Windows Mobile", "color": "#bfd4f2"},
   { "name": "Problems: Bug", "color": "#EE3F46"},
-  { "name": "Problems: Critical", "color": "#EE3F46"}
+  { "name": "Problems: Critical", "color": "#EE3F46"},
+  { "name": "Type: Frontend", "color": "#428BCA"},
+  { "name": "Type: Backend", "color": "#428BCA"}
 ]
