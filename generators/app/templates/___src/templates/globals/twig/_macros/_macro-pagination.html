@@ -36,10 +36,15 @@
     nextText: 'Weiter zur nächsten Seite',
     jumpText: 'Sprung zur Seite'
   } %}
-  
+
   {# Merge Options with Defaults #}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
-  
+
+  {% if options is defined %}
+      {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+      {% set options = defaults %}
+  {% endif %}
+
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}
     <div class="o-col  {{ options.classname ~ 'Wrapper' }}">
@@ -48,33 +53,33 @@
         {% if pages.currentPage > 2 and pages.prevUrl %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--first' }}" href="{{ pages.firstUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.firstPageText }}">{{ options.fistPageSign|raw }}</a>
         {% endif %}
-        
+
         {# Display the Previous Link if available #}
         {% if pages.prevUrl %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--prev' }}" href="{{ pages.prevUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.prevText }}">{{ options.prevSign|raw }}</a>
         {% endif %}
-        
+
         {# With Pagenumber higher than zero the pagination will display pages #}
         {% if options.pagenumber > 0 %}
           {# Display prev 5 Page Links#}
           {% for page, url in pages.getPrevUrls(options.pagenumber) %}
             <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--number' }}" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
           {% endfor %}
-          
+
           {# Diplay Current Page#}
           <span class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--current' }}">{{ pages.currentPage }}</span>
-          
+
           {# Display next 5 Page Links #}
           {% for page, url in pages.getNextUrls(options.pagenumber) %}
             <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--number' }}" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
           {% endfor %}
         {% endif %}
-        
+
         {# Display next Page Link if available#}
         {% if pages.nextUrl %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--next' }}" href="{{ pages.nextUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.nextText }}">{{ options.nextSign|raw }}</a>
         {% endif %}
-        
+
         {# Dont display when on the last page #}
         {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--last' }}" href="{{ pages.lastUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.lastPageText }}">{{ options.lastPageSign|raw }}</a>

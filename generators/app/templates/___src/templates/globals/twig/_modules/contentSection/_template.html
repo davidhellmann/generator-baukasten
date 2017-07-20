@@ -11,7 +11,11 @@
   anchor: null
 } %}
 
-{% set options = options is defined ? defaults|merge(options) : defaults %}
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
 
 {# -- Modul -- #}
 <div class="o-section  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}" {{ options.anchor ? 'id="' ~ options.anchor|replace({' ': '-'})|lower ~ '"' }}>

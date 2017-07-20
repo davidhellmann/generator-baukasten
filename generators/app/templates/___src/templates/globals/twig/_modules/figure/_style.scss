@@ -1,11 +1,13 @@
 /* -------------------------------------------------- */
-/*    Figure
+/*    Image
 /* -------------------------------------------------- */
 
-.m-figure__imageBackground {
+.m-image,
+.m-bgImage {
   background-color: c('black');
 }
 
-.m-figure img {
+.m-image img,
+.m-bgImage img {
   width: 100%;
 }

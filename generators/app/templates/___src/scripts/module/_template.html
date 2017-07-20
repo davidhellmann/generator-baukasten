@@ -9,7 +9,11 @@
   foo: 'bar'
 } %}
 
-{% set options = options is defined ? defaults|merge(options) : defaults %}
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
 
 {# -- Modul -- #}
 <div class="o-col  {{ options.classname }}">
