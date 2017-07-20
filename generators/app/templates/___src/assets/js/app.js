@@ -15,11 +15,11 @@ import './lib/bling'
 
 // Scripts
 import './scripts/example'
-// import './scripts/pagetransition'
-// import './scripts/preloader'
 import './scripts/bodyclass'
 import './scripts/lazyloading'
 import './scripts/fontfaceobserver'
+// import './scripts/pagetransition'
+// import './scripts/preloader'
 // import './scripts/smoothScroll'
 // import './scripts/waypoints.anime'
 
