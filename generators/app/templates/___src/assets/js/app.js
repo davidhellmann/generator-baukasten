@@ -27,9 +27,11 @@ import './scripts/fontfaceobserver'
 // Modules
 import '../../templates/_modules/accordion/_main'
 import '../../templates/_modules/cookiebar/_main'
-import '../../templates/_modules/contentToggle/_main'
 import '../../templates/_modules/imageSlider/_main'
 import '../../templates/_modules/imageGallery/_main'
+
+// Templates
+import '../../templates/_templates/toggleContent/_main'
 <% } %>
 
 // Debugging
