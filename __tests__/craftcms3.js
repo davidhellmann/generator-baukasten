@@ -25,8 +25,8 @@ describe('It is a Craft CMS 3 Project, Yay!', () => {
         assert.file([
             '___src/templates/index.html',
             '___src/templates/_layouts/_master.html',
-            '___src/templates/_partials/_header/_scripts.html',
-            '___src/templates/_partials/_footer/_scripts.html'
+            '___src/templates/_partials/header/_scripts.html',
+            '___src/templates/_partials/footer/_scripts.html'
         ])
     })
 })
