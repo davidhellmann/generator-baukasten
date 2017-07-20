@@ -1,0 +1,100 @@
+/* -------------------------------------------------- */
+/*    Two Columns
+/* -------------------------------------------------- */
+
+.m-twoColumns {
+  $root: &;
+
+  &__inner {
+    @include make-row();
+  }
+
+  &__column {
+    @include make-col(12);
+
+    @include media('>=m') {
+      @include make-col(6);
+    }
+  }
+
+  // Rich Text
+  .m-richText {
+    @include make-col(12);
+    @include offset(0);
+  }
+
+  // Headline
+  .m-headline {
+    @include make-col(12);
+  }
+
+  &--ratio-50-50 {
+    #{$root}__column {
+      @include media('>=m') {
+        &:first-child {
+          @include make-col(6);
+        }
+
+        &:last-child {
+          @include make-col(6);
+        }
+      }
+    }
+  }
+
+  &--ratio-66-33 {
+    #{$root}__column {
+      @include media('>=m') {
+        &:first-child {
+          @include make-col(8);
+        }
+
+        &:last-child {
+          @include make-col(4);
+        }
+      }
+    }
+  }
+
+  &--ratio-75-25 {
+    #{$root}__column {
+      @include media('>=m') {
+        &:first-child {
+          @include make-col(9);
+        }
+
+        &:last-child {
+          @include make-col(3);
+        }
+      }
+    }
+  }
+
+  &--ratio-33-66 {
+    #{$root}__column {
+      @include media('>=m') {
+        &:first-child {
+          @include make-col(4);
+        }
+
+        &:last-child {
+          @include make-col(8);
+        }
+      }
+    }
+  }
+
+  &--ratio-25-75 {
+    #{$root}__column {
+      @include media('>=m') {
+        &:first-child {
+          @include make-col(3);
+        }
+
+        &:last-child {
+          @include make-col(9);
+        }
+      }
+    }
+  }
+}

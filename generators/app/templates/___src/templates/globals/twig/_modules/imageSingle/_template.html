@@ -1,0 +1,65 @@
+{#
+  Image Cover
+  ===========
+#}
+
+{# -- Macros -- #}
+{% import '_macros/_macro-image.html' as macroImage %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-imageSingle',
+  modifiers: [],
+  image: null,
+  ratio: null,
+  caption: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.image %}
+
+  {# -- Settings -- #}
+  {% if options.ratio %}
+    {% switch options.ratio %}
+
+    {% case "landscape" %}
+      {% set ratio = '16:10' %}
+
+    {% case "square" %}
+      {% set ratio = '1:1' %}
+
+    {% case "portrait" %}
+      {% set ratio = '10:16' %}
+
+    {% case "auto" %}
+      {% set ratio = '' %}
+
+    {% endswitch %}
+
+  {% else %}
+    {% set ratio = '' %}
+  {% endif %}
+
+  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <div class="{{ options.classname ~ '__inner' }}">
+      <div class="m-figure  {{ options.classname ~ '__figure' }}">
+
+        {# -- Image -- #}
+        {{ macroImage.image(options.image, {
+          ratio: ratio
+        }) }}
+
+        {# -- Caption -- #}
+        {% if options.caption and options.image %}
+          {% include '_modules/caption/_template.html' with {
+            options: {
+              image: options.image
+            }
+          } %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}

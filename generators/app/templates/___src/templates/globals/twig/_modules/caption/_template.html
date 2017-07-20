@@ -1,0 +1,64 @@
+{#
+  Caption
+  =======
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-caption',
+  image: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.image %}
+
+  {# -- Image Caption -- #}
+  {% set caption = options.image.groupedCaption is defined ? options.image.groupedCaption : null %}
+  {% if caption %}
+
+    {# -- Image Caption Vars -- #}
+    {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle : null %}
+    {% set captionCaption = caption.caption is defined ? caption.caption : null %}
+    {% set captionSource = caption.source is defined ? caption.source : null %}
+    {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl : null %}
+
+    {# -- Image Caption Output -- #}
+    {% if captionTitle or captionCaption %}
+      <figcaption class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}" itemprop="caption description">
+
+        {# -- Caption Title -- #}
+        {% if captionTitle %}
+          <span class="{{ options.classname ~ '__headline' }}">
+            {{ captionTitle|raw }}{{ captionCaption and captionTitle ? ': '  }}
+          </span>
+        {% endif %}
+
+        {# -- Caption Caption -- #}
+        {% if captionCaption %}
+          <span class="{{ options.classname ~ '__body' }}">
+            {{ captionCaption|raw }}
+          </span>
+        {% endif %}
+
+        {# -- Caption Source Url -- #}
+        {% if captionSourceUrl %}
+      &mdash;   <a class="{{ options.classname ~ '__link' }}"
+             href="{{ captionSourceUrl.url }}"
+             target="_blank">
+          {% endif %}
+
+          {# -- Caption Source -- #}
+          {% if captionSource %}
+            {{ captionSource }}
+          {% endif %}
+
+          {# -- Caption Source Url -- #}
+          {% if captionSourceUrl %}
+        </a>
+        {% endif %}
+      </figcaption>
+    {% endif %}
+  {% endif %}
+{% endif %}

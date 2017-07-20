@@ -11,7 +11,7 @@ function addMinifyImagesSettings(files = {}) {
                     max: 95
                 },
                 pngquant: {
-                    quality: '75-95',
+                    quality: '90',
                     speed: 4
                 },
                 svgoPlugins: [

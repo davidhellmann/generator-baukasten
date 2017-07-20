@@ -1,0 +1,9 @@
+{
+  "title": "SVG Sprite",
+  "status": "ready",
+  "context": {
+    "options": {
+      "classname": "m-svgSprite"
+    }
+  }
+}

@@ -63,11 +63,11 @@
     "spaced-comment": [2, "always"],
     "use-isnan": 2,
     "valid-jsdoc": [2, {
-        "prefer": { "returns": "return" },
-        "requireParamDescription": false,
-        "requireReturn": false,
-        "requireReturnDescription": false
-      }
+      "prefer": { "returns": "return" },
+      "requireParamDescription": false,
+      "requireReturn": false,
+      "requireReturnDescription": false
+    }
     ],
     "valid-typeof": 2,
     "vars-on-top": 1,

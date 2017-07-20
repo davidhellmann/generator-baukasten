@@ -1,0 +1,15 @@
+/* -------------------------------------------------- */
+/*    Headline
+/* -------------------------------------------------- */
+
+.m-headline {
+  $root: &;
+  @include make-col(12);
+
+  .m-contentBuilder__row--headline & {
+    @include media('>=m') {
+      @include make-col(9);
+      @include offset(3);
+    }
+  }
+}

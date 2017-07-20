@@ -1,0 +1,20 @@
+{#
+  App Footer
+  ==========
+#}
+
+{# Set Vars #}
+{% set defaults = {
+  classname: 'm-appFooter'
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Modul #}
+<footer class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  <div class="{{ options.classname ~ '__inner' }}">
+    {% block appFooter %}
+      Footer
+    {% endblock %}
+  </div>
+</footer>

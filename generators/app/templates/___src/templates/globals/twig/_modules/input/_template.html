@@ -1,0 +1,47 @@
+{#
+  Input
+  =====
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+classname: 'm-input',
+name: null,
+id: null,
+type: null,
+label: null,
+labelText: null,
+value: null,
+placeholder: null,
+checked: null,
+disabled: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Module -- #}
+{% if options.name %}
+  {% if options.label %}
+    <label class="o-col  {{ options.classname }}  {{ options.class ~ '--' ~ options.type }}" for="{{ options.id }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    {% if options.type != 'checkbox' or options.type != 'radio' %}
+      <span class="{{ options.classname ~ '__labelText' }}">{{ options.labelText }}</span>
+    {% endif %}
+  {% endif %}
+
+  <input class="{{ options.classname ~ '__field' }}"
+          {{ options.name ? 'name="' ~ options.name ~ '"' }}
+          {{ options.id ? 'id="' ~ options.id ~ '"' }}
+          {{ options.type ? 'type="' ~ options.type ~ '"' }}
+          {{ options.value ? 'value="' ~ options.value ~ '"' }}
+          {{ options.placeholder ? 'placeholder="' ~ options.placeholder ~ '"' }}
+          {{ options.checked ? 'checked' }}
+          {{ options.disabled ? 'disabled' }}>
+
+    {% if options.type == 'checkbox' or options.type == 'radio' %}
+      <span class="{{ options.classname ~ '__labelText' }}">{{ options.labelText }}</span>
+    {% endif %}
+
+    {% if options.label %}
+      </label>
+    {% endif %}
+{% endif %}

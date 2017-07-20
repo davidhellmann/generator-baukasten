@@ -4,106 +4,212 @@
 #}
 
 {% switch data.type %}
-  {# Accordion Modul #}
+  {# -- Accordion Modul -- #}
   {% case 'accordion' %}
-    {% include '_modules/_accordion/_template' with {
-      data: data
+    {% include '_modules/accordion/_template.html' with {
+      options: {
+        rows: data.children
+      }
     } only %}
 
-  {# Button Modul #}
+  {# -- Button Modul -- #}
   {% case 'button' %}
-    {% include '_modules/_button/_template' with {
-      data: data
+    {% include '_modules/button/_template.html' with {
+      options: {
+        url: data.singleButton.url,
+        modifiers: [
+          data.settingsButton.style,
+          data.settingsButton.size,
+          data.settingsButton.alignment
+        ],
+        target: data.singleButton.target,
+        text: data.singleButton.text
+      }
     } only %}
 
-  {# Button Group Modul #}
+  {# -- Button Group Modul -- #}
   {% case 'buttonGroup' %}
-    {% include '_modules/_buttonGroup/_template' with {
-      data: data
+    {% include '_modules/buttonGroup/_template.html' with {
+      options: {
+        buttons: data.singleButtonGroup,
+        modifiers: [
+          data.settingsButtonGroup.style,
+          data.settingsButtonGroup.size
+        ],
+        alignment: data.settingsButtonGroup.alignment
+      }
     } only %}
 
-  {# Content Section Modul #}
+  {# -- Content Section Modul -- #}
   {% case 'contentSection' %}
-    {% include '_modules/_contentSection/_template' with {
-      data: data
+    {% include '_modules/contentSection/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsSection.backgroundColor,
+          data.settingsSection.paddingVertical,
+          data.settingsSection.width
+        ],
+        headline: data.singleHeadline,
+        anchor: data.singleAnchor
+      }
     } only %}
 
-  {# Definiton List Modul #}
+  {# -- Definiton List Modul -- #}
   {% case 'definitionList' %}
-    {% include '_modules/_definitionList/_template' with {
-      data: data
+    {% include '_modules/definitionList/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsDefinitionList.layout,
+          data.settingsDefinitionList.ratio
+        ],
+        items: data.singleDefinitionList
+      }
     } only %}
 
-  {# Embed Modul #}
+  {# -- Embed Modul -- #}
   {% case 'embed' %}
-    {% include '_modules/_embed/_template' with {
-      data: data
+    {% include '_modules/embed/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsEmbed.position,
+          data.settingsEmbed.width
+        ],
+        embedCode: data.singleEmbedCode
+      }
     } only %}
 
-  {# Headline Modul #}
+  {# -- Headline Modul -- #}
   {% case 'headline' %}
-    {% include '_modules/_headline/_template' with {
-      data: data
+    {% include '_modules/headline/_template.html' with {
+      options: {
+        modifiers: [],
+        text: data.singleHeadline,
+        size: data.settingsHeadline.size
+      }
     } only %}
 
-  {# Image Cover Modul #}
+  {# -- Image Cover Modul -- #}
   {% case 'imageCover' %}
-    {% include '_modules/_imageCover/_template' with {
-      data: data
+    {% include '_modules/imageCover/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsImageCover.textColor,
+          data.settingsImageCover.textAlignment,
+          data.settingsImageCover.textVerticalPosition
+        ],
+        image: data.singleImage.first(),
+        bgPosition: data.settingsImageCover.backgroundPosition,
+        text: data.singleText
+      }
     } only %}
 
-  {# Image Gallery Modul #}
+  {# -- Image Gallery Modul -- #}
   {% case 'imageGallery' %}
-    {% include '_modules/_imageGallery/_template' with {
-      data: data
+    {% include '_modules/imageGallery/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsImageGallery.columns
+        ],
+        images: data.singleImages,
+        thumbsRatio: data.settingsImageGallery.thumbsRatio
+      }
     } only %}
 
-  {# Image Grid Modul #}
+  {# -- Image Grid Modul -- #}
   {% case 'imageGrid' %}
-    {% include '_modules/_imageGrid/_template' with {
-      data: data
+    {% include '_modules/imageGrid/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsImageGrid.columns
+        ],
+        images: data.singleImages,
+        ratio: data.settingsImageGrid.ratio,
+        caption: data.settingsImageGrid.caption
+      }
     } only %}
 
-  {# Image Single Modul #}
+  {# -- Image Single Modul -- #}
   {% case 'imageSingle' %}
-    {% include '_modules/_imageSingle/_template' with {
-      data: data
+    {% include '_modules/imageSingle/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsImageSingle.alignment,
+          data.settingsImageSingle.width
+        ],
+        image: data.singleImage.first(),
+        ratio: data.settingsImageSingle.ratio,
+        caption: data.settingsImageSingle.caption
+      }
     } only %}
 
-  {# Image Slider Modul #}
+  {# -- Image Slider Modul -- #}
   {% case 'imageSlider' %}
-    {% include '_modules/_imageSlider/_template' with {
-      data: data
+    {% include '_modules/imageSlider/_template.html' with {
+      options: {
+        images: data.singleImages,
+        ratio: data.settingsImageSlider.ratio
+      }
     } only %}
 
-  {# Quote Modul #}
+  {# -- Quote Modul -- #}
   {% case 'quote' %}
-    {% include '_modules/_quote/_template' with {
-      data: data
+    {% include '_modules/quote/_template.html' with {
+      options: {
+        quote: data.singleQuote,
+        source: data.singleSource,
+        sourceUrl: data.singleSourceUrl
+      }
     } only %}
 
-  {# Rich Text Modul #}
+  {# -- Rich Text Modul -- #}
   {% case 'richText' %}
-    {% include '_modules/_richText/_template' with {
-      data: data
+    {% include '_modules/richText/_template.html' with {
+      options: {
+        text: data.singleRichText
+      }
     } only %}
 
-  {# Rich Text Modul #}
+  {# -- Rich Text Modul -- #}
   {% case 'richTextMarginals' %}
-    {% include '_modules/_richTextMarginals/_template' with {
-      data: data
+    {% include '_modules/richTextMarginals/_template.html' with {
+      options: {
+        marginals: data.children,
+        text: data.singleRichText
+      }
     } only %}
 
-  {# Separator Modul #}
+  {# -- Separator Modul -- #}
   {% case 'separator' %}
-    {% include '_modules/_separator/_template' with {
-      data: data
+    {% include '_modules/separator/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsSeparator.style,
+          data.settingsSeparator.marginVertical
+        ]
+      }
     } only %}
 
-  {# Rich Text Modul #}
+  {# -- Rich Text Modul -- #}
   {% case 'twoColumns' %}
-    {% include '_modules/_twoColumns/_template' with {
-      data: data
+    {% include '_modules/twoColumns/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsTwoColumns.ratio
+        ],
+        columns: data.children
+      }
+    } only %}
+
+  {# -- Video Modul -- #}
+  {% case 'video' %}
+    {% include '_modules/video/_template.html' with {
+      options: {
+        modifiers: [
+          data.settingsVideo.position,
+          data.settingsVideo.width
+        ],
+        embedCode: data.singleEmbedCode
+      }
     } only %}
 
 {% endswitch %}

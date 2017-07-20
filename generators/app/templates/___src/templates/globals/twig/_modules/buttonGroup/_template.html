@@ -1,0 +1,32 @@
+{#
+  Button Group
+  ============
+#}
+
+{# Set Vars #}
+{% set defaults = {
+  classname: 'm-buttonGroup',
+  buttons: null,
+  modifiers: [],
+  alignment: ''
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Modul #}
+{% if options.buttons %}
+<div class="o-col  {{ options.classname }}{{ '  ' ~ options.classname ~ '--' ~ options.alignment }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    {% for row in options.buttons %}
+
+      {# -- m-button -- #}
+      {% include '_modules/button/_template.html' with {
+        options: {
+          url: row.button.url,
+          target: row.button.target,
+          modifiers: options.modifiers,
+          text: row.button.text
+        }
+      } only %}
+    {% endfor %}
+</div>
+{% endif %}

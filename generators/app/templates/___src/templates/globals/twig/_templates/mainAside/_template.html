@@ -1,0 +1,55 @@
+{#
+    {% embed '_layouts/_twoCols.html' with {
+      options: {
+        modiefiers: ['projectDetail'],
+        head: true,
+        main: true,
+        aside: true
+      }
+    } %}
+    {% block head %}
+      …
+    {% endblock %}
+
+    {% block main %}
+      …
+    {% endblock %}
+
+    {% block aside %}
+      …
+    {% endblock %}
+  {% endembed %}
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-mainAside',
+  modifiers: [],
+  main: null,
+  aside: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.main %}
+  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
+    <div class="{{ options.classname ~ '__inner' }}">
+      {% if options.main %}
+        <div class="{{ options.classname ~ '__main' }}">
+          {% block main %}
+            Main
+          {% endblock %}
+        </div>
+      {% endif %}
+
+      {% if options.aside %}
+        <aside class="{{ options.lassname ~ '__aside' }}">
+          {% block aside %}
+            Aside…
+          {% endblock %}
+        </aside>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

@@ -15,21 +15,23 @@ import './lib/bling'
 
 // Scripts
 import './scripts/example'
-// import './scripts/pagetransition'
-// import './scripts/preloader'
 import './scripts/bodyclass'
 import './scripts/lazyloading'
 import './scripts/fontfaceobserver'
+// import './scripts/pagetransition'
+// import './scripts/preloader'
 // import './scripts/smoothScroll'
 // import './scripts/waypoints.anime'
 
 <% if (projectType !== 'wordpress' ) { %>
 // Modules
-import '../../templates/_modules/_accordion/_main'
-import '../../templates/_modules/_cookiebar/_main'
-import '../../templates/_modules/_contentToggle/_main'
-import '../../templates/_modules/_imageSlider/_main'
-import '../../templates/_modules/_imageGallery/_main'
+import '../../templates/_modules/accordion/_main'
+import '../../templates/_modules/cookiebar/_main'
+import '../../templates/_modules/imageSlider/_main'
+import '../../templates/_modules/imageGallery/_main'
+
+// Templates
+import '../../templates/_templates/toggleContent/_main'
 <% } %>
 
 // Debugging

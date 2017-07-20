@@ -1,0 +1,50 @@
+/* -------------------------------------------------- */
+/*    Video
+/* -------------------------------------------------- */
+
+.m-video {
+  $root: &;
+  @include make-col(12);
+
+  &__inner {
+    width: 100%;
+  }
+
+  &__video {
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &--width-100 {
+    @include media('>=m') {
+      @include make-col(12);
+    }
+  }
+
+  &--width-75 {
+    @include media('>=m') {
+      @include make-col(9);
+    }
+  }
+
+  &--width-50 {
+    @include media('>=m') {
+      @include make-col(6);
+    }
+  }
+
+  &--align-left {
+    margin-right: auto;
+  }
+
+  &--align-right {
+    margin-left: auto;
+  }
+
+  &--align-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

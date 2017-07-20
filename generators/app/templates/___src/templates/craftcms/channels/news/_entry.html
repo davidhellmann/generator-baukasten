@@ -16,14 +16,25 @@
     section: 'neuigkeiten',
     order: 'postDate'
   } %}
-  {% include '_partials/_header/_siteHeaderLinks--single.html' with vars %}
+  {% include '_partials/header/_siteHeaderLinks--single.html' with vars %}
 {% endblock %}
 
 {% block appContent %}
-  <article>
-    <h1>{{ entry.title }}</h1>
+  <article role="article">
+    <div class="o-section">
+      <div class="o-row">
+
+        {# -- Include Page Title -- #}
+        {% include '_modules/pageTitle/_template.html' with {
+          options: {
+            object: entry,
+            size: 'h1'
+          }
+        } %}
+      </div>
+    </div>
 
     {# Content Builder #}
-    {% include '_contentBuilders/_contentBuilderNeo' %}
+    {% include '_contentBuilders/_contentBuilderNeo.html' %}
   </article>
 {% endblock %}
