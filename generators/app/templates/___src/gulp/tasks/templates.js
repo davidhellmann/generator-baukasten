@@ -38,7 +38,7 @@ const templates = () => {
         .on('error', errorHandler)
         //.pipe($.changed(pkg.dist.markup))
 
-        .pipe(global.checkChanged === true ? $.changed(pkg.dist.markup) : gutil.noop())
+        .pipe(global.checkChanged === true ? $.changed(pkg.dist.markup) : $.util.noop())
         .pipe(gulp.dest(pkg.dist.markup))
 
   <% } else { %>
