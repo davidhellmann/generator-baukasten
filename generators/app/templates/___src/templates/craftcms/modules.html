@@ -9,21 +9,22 @@
 {% set bodyClass = "p-modules" %}
 
 {% block appContent %}
-  <article>
+  <article role="article">
     <div class="o-section">
       <div class="o-row">
-        {# -- Headline -- #}
-        {% include '_modules/_headline/_template.html' with {
+
+        {# -- Include Page Title -- #}
+        {% include '_modules/pageTitle/_template.html' with {
           options: {
-            text: entry.title,
+            object: entry,
             size: 'h1'
           }
-        } only %}
+        } %}
 
       </div>
       <div class="o-row">
         {# -- Headline -- #}
-        {% include '_modules/_headline/_template.html' with {
+        {% include '_modules/headline/_template.html' with {
           options: {
             text: 'Content Builder',
             size: 'h2'
@@ -31,83 +32,24 @@
         } only %}
 
       </div>
+
+      {% embed '_templates/toggleContent/_template.html' with {
+        options: {
+          contentTop: true,
+          triggerText: 'This is a trigger'
+        }
+      } %}
+        {% block contentTop %}
+          <p class="o-col">
+            Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.
+
+            An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.
+          </p>
+        {% endblock %}
+      {% endembed %}
     </div>
 
     {# Content Builder #}
-    {% include '_contentBuilders/_contentBuilderNeo' %}
-
-    <div class="o-section">
-      <div class="o-row">
-        {# -- Headline -- #}
-        {% include '_modules/_headline/_template.html' with {
-          options: {
-            text: 'Include via Template',
-            size: 'h2'
-          }
-        } only %}
-
-      </div>
-      <div class="o-row">
-        {# -- Headline -- #}
-        {% include '_modules/_headline/_template.html' with {
-          options: {
-            text: 'Button',
-            size: 'h3'
-          }
-        } only %}
-
-        {# -- Button -- #}
-        {% include '_modules/_button/_template.html' with {
-          options: {
-            classname: 'm-button',
-            url: 'http://www.google.com',
-            target: '',
-            style: 'm-button--primary',
-            alignment: '',
-            hasIcon: false,
-            iconName: '',
-            text: 'Text'
-          }
-        } only %}
-      </div>
-    </div>
-
-    <div class="o-section  o-section--width-full">
-      <div class="o-row">
-        {# -- Headline -- #}
-        {% include '_modules/_headline/_template.html' with {
-          options: {
-            text: 'Fluide Section',
-            size: 'h1'
-          }
-        } only %}
-
-      </div>
-      <div class="o-row">
-        {# -- Rich Text -- #}
-        {% include '_modules/_richText/_template.html' with {
-          options: {
-            text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>',
-            }
-        } only %}
-
-      </div>
-      <div class="o-row">
-        {# -- Button -- #}
-        {% include '_modules/_button/_template.html' with {
-          options: {
-            classname: 'm-button',
-            url: 'http://www.google.com',
-            target: '',
-            style: 'm-button--primary',
-            alignment: '',
-            hasIcon: false,
-            iconName: '',
-            text: 'Text'
-          }
-        } only %}
-
-      </div>
-    </div>
+    {% include '_contentBuilders/_contentBuilderNeo.html' %}
   </article>
 {% endblock %}

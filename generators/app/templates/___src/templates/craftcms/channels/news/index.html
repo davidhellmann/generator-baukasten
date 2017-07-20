@@ -9,7 +9,7 @@
 {% set bodyClass = "p-news" %}
 
 {# Set Query #}
-{% set data = craft.entries({
+{% set entries = craft.entries({
   section: 'neuigkeiten',
   limit: 12
 }) %}
@@ -20,17 +20,30 @@
   {% set vars = {
     pageInfo: pageInfo
   } %}
-  {% include '_partials/_header/_siteHeaderLinks.html' with vars %}
+  {% include '_partials/header/_siteHeaderLinks.html' with vars %}
 {% endblock %}
 
 
 {% block appContent %}
-  {% for entry in data %}
-    <article>
-      <h1>{{ entry.title }}</h1>
-      <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-      <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-      <p><a href="{{ entry.url }}">Continue reading</a></p>
-    </article>
-  {% endfor %}
+  <div class="o-section">
+    <div class="o-row">
+
+      {# -- Include Page Title -- #}
+      {% include '_modules/pageTitle/_template.html' with {
+        options: {
+          object: entry,
+          size: 'h1'
+        }
+      } %}
+
+      {# -- Articles --#}
+      {% for item in entries %}
+        <article role="article">
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          <p>Posted on {{ item.postDate.format('F d, Y') }}</p>
+          <p><a href="{{ item.url }}">Continue reading</a></p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}

@@ -1,0 +1,22 @@
+{#
+  Rich Text
+  =========
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-richText',
+  text: null,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.text %}
+  <div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <div class="{{ options.classname ~ '__inner' }}">
+      {{ options.text | raw }}
+    </div>
+  </div>
+{% endif %}
+

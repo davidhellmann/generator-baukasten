@@ -26,68 +26,68 @@
 <html class="" lang="de">
 <head>
 
-  
+  {# -- LOADS CSS -- #}
+  <script>
+    {{ source('_inlineJS/loadCSS.min.js') }}
+    {{ source('_inlineJS/cssrelpreload.min.js') }}
+  </script>
+
+  {# -- WEBFONTS HERE -- #}
+
   {# -- CRITICAL CSS -- #}
   {% set cacheVal = getCookie('critical-css') %}
   {% if not cacheVal or craft.config.devMode %}
     {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
     {% block appInlineCSS %}
     {% endblock %}
-    
-    <link rel="preload" href="{{ rootUrl ~ 'assets/css/app.min.css' | cacheBuster }}" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ rootUrl ~ 'assets/css/app.min.css' }}"></noscript>
-    
-    {# -- LOADS CSS -- #}
-    <script>
-      {{ source('_inlineJS/loadCSS.min.js') }}
-      {{ source('_inlineJS/cssrelpreload.min.js') }}
-    </script>
-  
+
+  {% if craft.cacheBuster is defined %}
+  <link rel="preload" href="{{ cacheBuster( '/assets/css/app.min.css') }}" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
+    </noscript>
+  {% else %}
+  <link rel="preload" href="{{ rootUrl }}assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css"></noscript>
+  {% endif %}
+
   {% else %}
     <script>
       document.documentElement.className += " wf-loaded"
     </script>
-    {% if craft.cacheBuster is defined %}
-      <link rel="stylesheet" href="{{ rootUrl ~ 'assets/css/app.min.css' | cacheBuster }}">
-    {% else %}
-      <link rel="stylesheet" href="{{ rootUrl ~ 'assets/css/app.min.css' }}">
-    {% endif %}
+
+  {% if craft.cacheBuster is defined %}
+  <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
+  {% else %}
+  <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
+  {% endif %}
   {% endif %}
 
   {# -- CHECK JS -- #}
-  {% include '_partials/_global/_checkJS.html' %}
+  {% include '_partials/global/_checkJS.html' %}
 
   {# -- META -- #}
-  {% include '_partials/_header/_meta.html' %}
+  {% include '_partials/header/_meta.html' %}
 
   {# -- SCRIPTS -- #}
-  {% include '_partials/_header/_scripts.html' %}
+  {% include '_partials/header/_scripts.html' %}
 
   {# -- SEO & TITLE TAG -- #}
-  {% include '_partials/_header/_seo.html' %}
+  {% include '_partials/header/_seo.html' %}
 
   {# -- FAV ICON -- #}
-  {% include '_partials/_header/_favicons.html' %}
+  {% include '_partials/header/_favicons.html' %}
 
   {% block siteHeader %}{% endblock %}
 </head>
-{% cache %}
 {% minify %}
 <body id="home" class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
 
-{% if currentUser %}
-  {#{% if currentUser.isInGroup('redakteur') or currentUser.admin %}#}
-  {% if currentUser.admin %}
-    <div class="t-editLink">
-      <a href="{{ entry.cpEditUrl }}">Edit this Page</a>
-    </div>
-  {% endif %}
-{% endif %}
-
 <div class="m-appWrapper">
   {# -- App Header -- #}
-  {% include '_modules/_appHeader/_template.html' %}
+  {% include '_modules/appHeader/_template.html' %}
 
+  {% cache %}
   <div class="m-appContent">
   {% block appContent %}
     Content
@@ -95,7 +95,17 @@
   </div>
 
   {# -- App Footer -- #}
-  {% include '_modules/_appFooter/_template.html' %}
+  {% include '_modules/appFooter/_template.html' %}
+  {% endcache %}
+
+  {% if currentUser %}
+    {#{% if currentUser.isInGroup('redakteur') or currentUser.admin %}#}
+    {% if currentUser.admin and entry is defined %}
+      <div class="t-editLink">
+        <a href="{{ entry.cpEditUrl }}">Edit this Page</a>
+      </div>
+    {% endif %}
+  {% endif %}
 </div>
 
 {# -- Grid Overlay -- #}
@@ -110,7 +120,7 @@
 {% endif %}
 
 {# -- SCRIPTS -- #}
-{% include '_partials/_footer/_scripts.html' %}
+{% include '_partials/footer/_scripts.html' %}
 
 {# -- Instant Analytics -- #}
 {% block analytics %}
@@ -118,5 +128,4 @@
 {% endblock %}
 </body>
 {% endminify %}
-{% endcache %}
 </html>

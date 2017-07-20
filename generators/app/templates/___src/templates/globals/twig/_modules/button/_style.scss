@@ -1,0 +1,122 @@
+/* -------------------------------------------------- */
+/*    Button
+/* -------------------------------------------------- */
+
+.m-button {
+  $root: &;
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  &--align-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &--align-right {
+    margin-left: auto;
+  }
+
+  &--align-full {
+    flex: 1 1 100%;
+  }
+
+  &__inner {
+    cursor: pointer;
+    -webkit-appearance: none; // stylelint-disable
+    @include make-vr();
+    align-self: flex-start;
+    font-size: fs('ms0');
+    color: c('white');
+    line-height: 1;
+    background-color: c('black', '50');
+    border: 1px solid c('black', '50');
+    text-decoration: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    padding: s(2) s(4);
+    transition: all 0.25s ease('out-cubic');
+
+    &:hover {
+      color: c('white');
+      background-color: c('black');
+      border: 1px solid c('black');
+    }
+
+    svg {
+      fill: c('white');
+    }
+
+    #{$root}--style-secondary & {
+      color: c('black', '60');
+      background-color: c('black', '20');
+      border: 1px solid c('black', '20');
+
+      &:hover {
+        color: c('black', '70');
+        background-color: c('black', '30');
+        border: 1px solid c('black', '30');
+      }
+    }
+
+    #{$root}--style-outline & {
+      color: c('black', '60');
+      background-color: transparent;
+      border: 1px solid c('black', '60');
+
+      &:hover {
+        color: c('black', '70');
+        background-color: transparent;
+        border: 1px solid c('black', '70');
+      }
+    }
+
+    #{$root}--style-link & {
+      color: c('black', '60');
+      padding: s(0) s(0);
+      border: 1px solid transparent;
+      background-color: transparent;
+
+      &:hover {
+        color: c('black', '70');
+        border: 1px solid transparent;
+        background-color: transparent;
+      }
+    }
+
+    #{$root}--size-small & {
+      padding: s(1) s(2);
+      font-size: fs('ms-2');
+    }
+
+    #{$root}--size-pill & {
+      padding: s(1) s(2);
+      font-size: fs('ms-2');
+      border-radius: 100px;
+    }
+
+    #{$root}--align-full & {
+      width: 100%;
+    }
+
+    #{$root}--align-left & {
+      align-self: flex-start;
+    }
+
+    #{$root}--align-center & {
+      align-self: center;
+    }
+
+    #{$root}--align-right & {
+      align-self: flex-end;
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    margin-top: 1px;
+  }
+}
+

@@ -1,0 +1,13 @@
+{#
+  Checkbox
+  ========
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-checkbox',
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# TODO: Checkbox as Module #}

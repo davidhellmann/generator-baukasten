@@ -1,0 +1,24 @@
+/* -------------------------------------------------- */
+/*    Button Group
+/* -------------------------------------------------- */
+
+.m-buttonGroup {
+  $root: &;
+  @include make-row();
+
+  .m-button {
+    flex: 0 1 auto;
+  }
+
+  &--left {
+    justify-content: flex-start;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+}

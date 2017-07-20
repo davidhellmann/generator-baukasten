@@ -1,0 +1,13 @@
+{#
+  Radio
+  =====
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-radio',
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# TODO: Überarbeiten oder mit Input mergen #}

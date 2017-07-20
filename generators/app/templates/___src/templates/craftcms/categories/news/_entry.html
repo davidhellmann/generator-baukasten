@@ -25,22 +25,28 @@
   {% set vars = {
   pageInfo: pageInfo
   } %}
-  {% include '_partials/_header/_siteHeaderLinks.html' with vars %}
+  {% include '_partials/header/_siteHeaderLinks.html' with vars %}
 {% endblock %}
 
 
 {% block appContent %}
+  <div class="o-section">
+    <div class="o-row">
 
-  {# Include Page Title #}
-  {% set pageTitle = {
-    object: category,
-  } %}
-  {% include '_modules/_pageTitle/_template.html' with { options: pageTitle } %}
+      {# -- Include Page Title -- #}
+      {% include '_modules/pageTitle/_template.html' with {
+        options: {
+          object: category,
+          size: 'h1'
+        }
+      } %}
+    </div>
+  </div>
 
   <div class="m-news">
     {% for entry in pageEntries %}
       {# Include Referenz #}
-      {#{% include '_modules/_newsSingle/_newsSingle.template.html' %}#}
+      {#{% include '_modules/newsSingle/_template.html' %}#}
     {% endfor %}
   </div>
 

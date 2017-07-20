@@ -1,0 +1,38 @@
+{#
+  Page Title
+  ==========
+#}
+
+{# Set Defaults #}
+{% set defaults = {
+  classname: 'm-pageTitle',
+  object: null,
+  text: null,
+  size: null,
+  link: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.object or options.text %}
+  {% if options.object.singleSeoTitle is defined and options.object.singleSeoTitle | length %}
+    {% set headline = options.object.singleSeoTitle %}
+  {% elseif options.text %}
+    {% set headline = options.text %}
+  {% else %}
+    {% set headline = options.object.title %}
+  {% endif %}
+
+  <div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <{{ options.size }} class="{{ options.classname ~ '__inner' }}">
+      {% if options.link %}
+        <a class="{{ options.classname ~ '__link' }}" href="{{ options.link }}">
+      {% endif %}
+        {{ headline|nl2br }}
+      {% if options.link %}
+        </a>
+      {% endif %}
+    </{{ options.size }}>
+  </div>
+{% endif %}

@@ -1,0 +1,111 @@
+{#
+  Image Grid
+  ==========
+#}
+
+{# -- Macros -- #}
+{% import '_macros/_macro-image.html' as macroImage %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-imageGrid',
+  modifiers: [],
+  images: null,
+  ratio: null,
+  caption: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.images %}
+
+  {# -- Settings -- #}
+  {% if options.ratio %}
+    {% switch options.ratio %}
+
+    {% case "landscape" %}
+      {% set ratio = '16:10' %}
+
+    {% case "square" %}
+      {% set ratio = '1:1' %}
+
+    {% case "portrait" %}
+      {% set ratio = '10:16' %}
+
+    {% case "auto" %}
+      {% set ratio = '' %}
+
+    {% endswitch %}
+
+  {% else %}
+    {% set ratio = '1:1' %}
+  {% endif %}
+
+  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <div class="{{ options.classname ~ '__inner' }}">
+
+      {% for image in options.images %}
+        <figure class="m-figure  {{ options.classname ~ '__figure' }}">
+
+          {# -- Image -- #}
+          {{ macroImage.image(image, {
+            ratio: ratio
+          }) }}
+
+          {# -- Caption -- #}
+          {% if options.caption %}
+
+            {# -- Image Caption -- #}
+            {% set caption = image.groupedCaption is defined ? image.groupedCaption : null %}
+            {% if caption %}
+
+              {# -- Image Caption Vars -- #}
+              {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle : null %}
+              {% set captionCaption = caption.caption is defined ? caption.caption : null %}
+              {% set captionSource = caption.source is defined ? caption.source : null %}
+              {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl : null %}
+
+              {# -- Image Caption Output -- #}
+              {% if captionTitle or captionCaption %}
+                <figcaption class="m-caption  {{ options.classname ~ '__caption' }}" itemprop="caption description">
+
+                  {# -- Caption Title -- #}
+                  {% if captionTitle %}
+                    <span class="m-caption__headline  {{ options.classname ~ '__captionHeadline' }}">
+                      {{ captionTitle|raw }}{{ captionCaption and captionTitle ? ': '  }}
+                    </span>
+                  {% endif %}
+
+                  {# -- Caption Caption -- #}
+                  {% if captionCaption %}
+                    <span class="m-caption__body  {{ options.classname ~ '__captionBody' }}">
+                      {{ captionCaption|raw }}
+                    </span>
+                  {% endif %}
+
+                  {# -- Caption Source Url -- #}
+                  {% if captionSourceUrl %}
+                &mdash;   <a class="m-caption__link  {{ options.classname ~ '__captionLink' }}"
+                       href="{{ captionSourceUrl.url }}"
+                       target="_blank">
+                  {% endif %}
+
+                  {# -- Caption Source -- #}
+                  {% if captionSource %}
+                      {{ captionSource }}
+                  {% endif %}
+
+                  {# -- Caption Source Url -- #}
+                  {% if captionSourceUrl %}
+                    </a>
+                  {% endif %}
+                </figcaption>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
