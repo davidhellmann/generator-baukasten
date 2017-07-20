@@ -20,20 +20,23 @@
     prevText: 'Zurück',
     nextText: 'Nächste Seite',
   } %}
-  
-  {# Merge Options with Defaults #}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
-  
+
+  {% if options is defined %}
+      {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+      {% set options = defaults %}
+  {% endif %}
+
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}
     <div class="o-col  {{ options.classname ~ 'Wrapper' }}">
       <nav class="{{ options.classname }}" role="navigation">
-        
+
         {# Display the Previous Link if available #}
         {% if pages.prevUrl %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--prev' }}" href="{{ pages.prevUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.prevText }}">{{ options.prevText }}</a>
         {% endif %}
-        
+
         {# Display next Page Link if available#}
         {% if pages.nextUrl %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--next' }}" href="{{ pages.nextUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.nextText }}">{{ options.nextText }}</a>

@@ -5,9 +5,19 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'm-svgSprite',
+    classname: 'm-svgSprite',
+    icon: null
 } %}
 
-{% set options = options is defined ? defaults|merge(options) : defaults %}
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
 
-{# TODO: Überarbeiten #}
+{# -- Modul -- #}
+{% if options.icon %}
+    <svg class="{{ options.classname }}  {{ options.classname ~ '--' ~ options.icon }}" viewbox="0 0 100 100">
+        <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ options.icon }}"></use>
+    </svg>
+{% endif %}

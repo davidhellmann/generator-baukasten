@@ -8,7 +8,11 @@
   classname: 'm-appFooter'
 } %}
 
-{% set options = options is defined ? defaults|merge(options) : defaults %}
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
 
 {# Modul #}
 <footer class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
