@@ -1,9 +1,0 @@
-{
-  "title": "Button",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-button"
-    }
-  }
-}

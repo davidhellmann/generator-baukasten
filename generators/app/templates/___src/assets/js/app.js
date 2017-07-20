@@ -25,11 +25,11 @@ import './scripts/fontfaceobserver'
 
 <% if (projectType !== 'wordpress' ) { %>
 // Modules
-import '../../templates/_modules/_accordion/_main'
-import '../../templates/_modules/_cookiebar/_main'
-import '../../templates/_modules/_contentToggle/_main'
-import '../../templates/_modules/_imageSlider/_main'
-import '../../templates/_modules/_imageGallery/_main'
+import '../../templates/_modules/accordion/_main'
+import '../../templates/_modules/cookiebar/_main'
+import '../../templates/_modules/contentToggle/_main'
+import '../../templates/_modules/imageSlider/_main'
+import '../../templates/_modules/imageGallery/_main'
 <% } %>
 
 // Debugging
