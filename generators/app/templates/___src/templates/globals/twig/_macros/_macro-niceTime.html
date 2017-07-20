@@ -7,11 +7,15 @@
 
 {% macro niceTime(options) %}
   {% set defaults = {
-  classname: 'm-niceTime',
-  date: false
+    classname: 'm-niceTime',
+    date: false
   } %}
 
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
+    {% if options is defined %}
+        {% set options = options is defined ? defaults|merge(options) : defaults %}
+    {% else %}
+        {% set options = defaults %}
+    {% endif %}
 
   {% set niceTime = date(options.date).diff(now) %}
   {% if niceTime %}

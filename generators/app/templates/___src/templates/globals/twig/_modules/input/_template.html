@@ -5,19 +5,23 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-classname: 'm-input',
-name: null,
-id: null,
-type: null,
-label: null,
-labelText: null,
-value: null,
-placeholder: null,
-checked: null,
-disabled: null
+  classname: 'm-input',
+  name: null,
+  id: null,
+  type: null,
+  label: null,
+  labelText: null,
+  value: null,
+  placeholder: null,
+  checked: null,
+  disabled: null
 } %}
 
-{% set options = options is defined ? defaults|merge(options) : defaults %}
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
 
 {# -- Module -- #}
 {% if options.name %}
@@ -28,20 +32,20 @@ disabled: null
     {% endif %}
   {% endif %}
 
-  <input class="{{ options.classname ~ '__field' }}"
-          {{ options.name ? 'name="' ~ options.name ~ '"' }}
-          {{ options.id ? 'id="' ~ options.id ~ '"' }}
-          {{ options.type ? 'type="' ~ options.type ~ '"' }}
-          {{ options.value ? 'value="' ~ options.value ~ '"' }}
-          {{ options.placeholder ? 'placeholder="' ~ options.placeholder ~ '"' }}
-          {{ options.checked ? 'checked' }}
-          {{ options.disabled ? 'disabled' }}>
+    <input class="{{ options.classname ~ '__field' }}"
+           {{ options.name ? 'name="' ~ options.name ~ '"' }}
+           {{ options.id ? 'id="' ~ options.id ~ '"' }}
+           {{ options.type ? 'type="' ~ options.type ~ '"' }}
+           {{ options.value ? 'value="' ~ options.value ~ '"' }}
+           {{ options.placeholder ? 'placeholder="' ~ options.placeholder ~ '"' }}
+           {{ options.checked ? 'checked' }}
+           {{ options.disabled ? 'disabled' }}>
 
     {% if options.type == 'checkbox' or options.type == 'radio' %}
       <span class="{{ options.classname ~ '__labelText' }}">{{ options.labelText }}</span>
     {% endif %}
 
-    {% if options.label %}
-      </label>
-    {% endif %}
+  {% if options.label %}
+    </label>
+  {% endif %}
 {% endif %}
