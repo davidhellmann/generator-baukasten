@@ -21,16 +21,16 @@
   <title>{% block appTitle %}DEVELOPMENT &mdash; Baukasten{% endblock %}</title>
 
   {# -- Check JS -- #}
-  {% include '../_partials/_global/_checkJS.html' %}
+  {% include '../_partials/global/_checkJS.html' %}
 
   {# -- Meta -- #}
-  {% include '../_partials/_header/_meta.html' %}
+  {% include '../_partials/header/_meta.html' %}
 
   {# -- Scripts -- #}
-  {% include '../_partials/_header/_scripts.html' %}
+  {% include '../_partials/header/_scripts.html' %}
 
   {# -- Favicon -- #}
-  {% include '../_partials/_header/_favicons.html' %}
+  {% include '../_partials/header/_favicons.html' %}
 
 </head>
 <body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}">
@@ -38,7 +38,7 @@
 <div class="m-appWrapper">
 
   {# -- App Header -- #}
-  {% include '../_modules/_appHeader/_template.html' %}
+  {% include '../_modules/appHeader/_template.html' %}
 
   <div class="m-appContent">
     {% block appContent %}
@@ -47,11 +47,11 @@
   </div>
 
   {# -- App Footer -- #}
-  {% include '../_modules/_appFooter/_template.html' %}
+  {% include '../_modules/appFooter/_template.html' %}
 
 </div>
 
 {# -- Scripts -- #}
-{% include '../_partials/_footer/_scripts.html' %}
+{% include '../_partials/footer/_scripts.html' %}
 </body>
 </html>

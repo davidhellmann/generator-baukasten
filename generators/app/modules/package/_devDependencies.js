@@ -3,6 +3,8 @@ const extend = require('deep-extend')
 function addDevDependencies(files = {}) {
     extend(files.pkg, {
         devDependencies: {
+            "@frctl/fractal": "^1.1.4",
+            "@frctl/twig": "^1.0.0-alpha.0",
             'aliasify': '^2.0.0',
             'ansi-html': '^0.0.7',
             'autoprefixer': '^7.0.0',

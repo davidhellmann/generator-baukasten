@@ -1,0 +1,41 @@
+{#
+  Image Cover
+  ===========
+#}
+
+{# -- Macros -- #}
+{% import '_macros/_macro-bgImage' as macroBgImage %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-imageCover',
+  modifiers: [],
+  bgPosition: '50% 50%',
+  image: null,
+  text: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.image %}
+  {% set position = options.bgPosition == 'focalpoint' ? options.image.settingsFocalPoint : options.bgPositio %}
+  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <div class="{{ options.classname ~ '__inner' }}">
+
+      {# -- Image Macro -- #}
+      {{ macroBgImage.bgImage(options.image, {
+        position: position|default('50% 50%')
+      }) }}
+
+      {# -- Image Text Overlay -- #}
+      {% if options.text %}
+        <div class="{{ options.classname ~ '__title' }}">
+          <div class="{{ options.classname ~ '__titleInner' }}">
+            {{ options.text }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,105 @@
+/* -------------------------------------------------- */
+/*    Image Cover
+/* -------------------------------------------------- */
+
+.m-imageCover {
+  $root: &;
+  @include make-col-padding();
+  color: c('white');
+
+  &__inner {
+    @include make-vr();
+    @include make-col(12);
+    height: 100vh;
+
+    .m-contentSection--width-full & {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .m-bgImage__inner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+    margin-top: 0;
+  }
+
+  &__title {
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    background-image: linear-gradient(to top, rgba(c('black'), 0.5) 0, rgba(c('black'), 0) 50%);
+    @include f(fs('ms0'), fs('ms4'));
+  }
+
+  &__titleInner {
+    @include f(s(2), s(8), padding-top padding-bottom);
+    @include make-section();
+    @include make-col-padding();
+    position: absolute;
+    z-index: 30;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+  }
+
+  &--textColor-black {
+    color: c('black', '90');
+  }
+
+  &--textH-left & {
+    text-align: left;
+  }
+
+  &--textH-center & {
+    text-align: center;
+  }
+
+  &--textH-right & {
+    text-align: right;
+  }
+
+  &--textV-top {
+    #{$root}__title {
+      background-image: linear-gradient(to bottom, rgba(c('black'), 0.5) 0, rgba(c('black'), 0) 50%);
+    }
+
+    #{$root}__titleInner {
+      bottom: auto;
+      top: 0;
+    }
+  }
+
+  &--textV-center & {
+    #{$root}__title {
+      background: rgba(c('black'), 0.5);
+    }
+
+    #{$root}__titleInner {
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &--textV-bottom & {
+    #{$root}__title {
+      background-image: linear-gradient(to top, rgba(c('black'), 0.5) 0, rgba(c('black'), 0) 50%);
+    }
+
+    #{$root}__titleInner {
+      bottom: 0;
+    }
+  }
+}

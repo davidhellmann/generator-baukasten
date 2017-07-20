@@ -1,0 +1,20 @@
+{#
+  App Header
+  ==========
+#}
+
+{# Set Vars #}
+{% set defaults = {
+  classname: 'm-appHeader'
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Modul #}
+<header class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  <div class="{{ options.classname ~ '__inner' }}">
+    {% block appHeader %}
+      Header
+    {% endblock %}
+  </div>
+</header>

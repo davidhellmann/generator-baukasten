@@ -8,9 +8,18 @@
 
 {% block appContent %}
 
-  {# Include Page Title #}
-  {% include '_modules/_pageTitle/_template.html' %}
+  <div class="o-section">
+    <div class="o-row">
+      {# -- Include Page Title -- #}
+      {% include '_modules/pageTitle/_template.html' with {
+        options: {
+          object: entry,
+          size: 'h1'
+        }
+      } %}
+    </div>
+  </div>
 
-  {# Content Builder #}
-  {% include '_contentBuilders/_contentBuilderNeo' %}
+  {# -- Content Builder -- #}
+  {% include '_contentBuilders/_contentBuilderNeo.html' %}
 {% endblock %}

@@ -16,5 +16,19 @@
 {% endblock %}
 
 {% block appContent %}
-  <h1>{{ entry.title }}</h1>
+  <div class="o-section">
+    <div class="o-row">
+
+      {# -- Include Page Title -- #}
+      {% include '_modules/pageTitle/_template.html' with {
+        options: {
+          object: entry,
+          size: 'h1'
+        }
+      } %}
+    </div>
+  </div>
+
+
+
 {% endblock %}

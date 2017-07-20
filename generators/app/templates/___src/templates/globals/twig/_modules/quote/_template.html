@@ -1,0 +1,38 @@
+{#
+  Quote
+  =====
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-quote',
+  quote: null,
+  source: null,
+  sourceUrl: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.quote %}
+  <div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <blockquote class="{{ options.classname ~ '__inner' }}">
+      <p>
+        {{ options.quote }}
+      </p>
+      {% if options.source %}
+        <footer>
+          <cite>
+            {% if options.sourceUrl %}
+            <a href="{{ options.sourceUrl.url }}" target="_blank">
+              {% endif %}
+              {{ options.source }}
+              {% if options.sourceUrl %}
+            </a>
+            {% endif %}
+          </cite>
+        </footer>
+      {% endif %}
+    </blockquote>
+  </div>
+{% endif %}

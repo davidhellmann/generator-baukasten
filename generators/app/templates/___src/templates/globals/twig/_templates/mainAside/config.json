@@ -1,0 +1,9 @@
+{
+  "title": "Main Aside",
+  "status": "ready",
+  "context": {
+    "options": {
+      "classname": "m-mainAside"
+    }
+  }
+}

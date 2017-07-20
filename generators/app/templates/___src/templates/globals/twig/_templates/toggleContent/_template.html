@@ -1,0 +1,44 @@
+{#
+  Content Toggle
+  ==============
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'o-toggleContent',
+  contentTop: null,
+  contentBottom: null,
+  triggerText: null
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.triggerText and (options.contentTop or options.contentBottom) %}
+  <div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+
+    {# -- Content Top -- #}
+    {% if options.contentTop %}
+      <div class="o-row  {{ options.classname ~ '__content' }}  {{ options.classname ~ '__content--top' }}">
+        {% block contentTop %}
+            Content Top
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {# -- Trigger -- #}
+    <div class="{{ options.classname ~ '__trigger' }}  {{ options.classname ~ '__trigger' ~ options.contentTop ? '--bottom' :  '--top' }}  {{ options.contentTop ? 'js-toggleContent--top' : 'js-toggleContent' }}">
+      {{ options.triggerText }}
+    </div>
+
+    {# -- Content -- #}
+    {% if options.contentBottom %}
+      <div class="o-row  {{ options.classname ~ '__content' }}  {{ options.classname ~ '__content--bottom' }}">
+        {% block contentBottom %}
+            Content Bottom
+        {% endblock %}
+      </div>
+    {% endif %}
+
+  </div>
+{% endif %}

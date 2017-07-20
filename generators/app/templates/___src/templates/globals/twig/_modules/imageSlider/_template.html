@@ -1,0 +1,69 @@
+{#
+ Image Slider
+ ============
+#}
+
+{# -- Macros -- #}
+{% import '_macros/_macro-image.html' as macroImage %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-imageSlider',
+  images: null,
+  ratio: null,
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.images %}
+
+  {# -- Settings -- #}
+  {% if options.ratio %}
+    {% switch options.ratio %}
+
+    {% case "landscape" %}
+    {% set ratio = '16:10' %}
+
+    {% case "square" %}
+    {% set ratio = '1:1' %}
+
+    {% case "portrait" %}
+    {% set ratio = '10:16' %}
+
+    {% endswitch %}
+
+  {% else %}
+    {% set ratio = '1:1' %}
+  {% endif %}
+
+<!-- Slider main container -->
+<div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  <figure class="{{ options.classname ~ '__inner' }}"
+          data-flickity='{
+            "cellAlign": "left",
+            "contain": true,
+            "draggable": true,
+            "friction": 1,
+            "selectedAttraction": 0.1,
+            "lazyLoad": 2,
+            "groupCells": true,
+            "imagesLoaded": true,
+            "prevNextButtons": true,
+            "pageDots": false,
+            "watchCSS": false,
+            "dragThreshold": 10
+          }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+    <!-- Slides -->
+    {% for image in options.images %}
+      <div class="{{ options.classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
+
+        {# -- Image -- #}
+        {{ macroImage.image(image, {
+          ratio: ratio
+        }) }}
+      </div>
+    {% endfor %}
+  </figure>
+</div>
+{% endif %}

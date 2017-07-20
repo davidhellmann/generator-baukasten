@@ -9,30 +9,36 @@
 }
 
 // Width
-.o-section--width-full {
+.o-section--width-full,
+.m-contentSection--width-full {
   @include make-section('fluid');
 }
 
 // Background Color
-.o-section--bgColor-white {
+.o-section--backgroundColor-white,
+.m-contentSection--backgroundColor-white {
   background-color: c('white');
 }
 
-.o-section--bgColor-black {
+.o-section--backgroundColor-black,
+.m-contentSection--backgroundColor-black {
   background-color: c('black');
 }
 
 // Padding Vertical
-.o-section--paddingVertical-none {
+.o-section--paddingVertical-none,
+.m-contentSection--paddingVertical-none {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.o-section--paddingVertical-medium {
+.o-section--paddingVertical-medium,
+.m-contentSection--paddingVertical-medium {
   @include make-section-padding(2);
 }
 
-.o-section--paddingVertical-large {
+.o-section--paddingVertical-large,
+.m-contentSection--paddingVertical-large {
   @include make-section-padding(3);
 }
 
@@ -42,16 +48,4 @@
   @include f(s(2), s(4), padding-left padding-right);
   @include f(s(2), s(8), margin-top);
   text-align: center;
-}
-
-// Subline
-.o-section__subline {
-  @include make-col(12);
-  @include f(s(2), s(4), padding-left padding-right);
-  @include f(s(2), s(8), margin-top);
-  text-align: center;
-
-  .o-section__headline + & {
-    @include f(s(-1), s(-6), margin-top);
-  }
 }

@@ -1,0 +1,9 @@
+{
+  "title": "Video",
+  "status": "ready",
+  "context": {
+    "options": {
+      "classname": "m-video"
+    }
+  }
+}

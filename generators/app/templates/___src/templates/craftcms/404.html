@@ -23,9 +23,20 @@
 {% endblock %}
 
 {% block appContent %}
-  <h1>404 &mdash; Page not found</h1>
-  <p>
-    Oh no, this page is missing… Sorry!<br>
-    Back to <a href="{{ siteUrl }}">Home</a>
-  </p>
+  <div class="o-section">
+    <div class="o-row">
+      {# -- Include Page Title -- #}
+      {% include '_modules/pageTitle/_template.html' with {
+        options: {
+          text: '404 — Page not found',
+          size: 'h1'
+        }
+      } %}
+
+      <p class="o-col">
+        Oh no, this page is missing… Sorry!<br>
+        Back to <a href="{{ siteUrl }}">Home</a>
+      </p>
+    </div>
+  </div>
 {% endblock %}

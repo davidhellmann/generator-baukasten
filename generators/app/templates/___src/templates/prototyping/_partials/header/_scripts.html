@@ -1,0 +1,11 @@
+{# -- LOADS CSS -- #}
+<script>
+    {{ source('_inlineJS/loadCSS.min.js') }}
+    {{ source('_inlineJS/cssrelpreload.min.js') }}
+</script>
+<link rel="preload" href="assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="assets/css/app.min.css"></noscript>
+
+{# Humans File #}
+<!-- humans.txt — http://humanstxt.org -->
+<link type="text/plain" rel="author" href="humans.txt" />

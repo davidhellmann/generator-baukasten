@@ -1,0 +1,23 @@
+{#
+  Headline
+  ========
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-headline',
+  modifiers: [],
+  text: null,
+  size: 'h2'
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+{% if options.text %}
+  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <{{ options.size }} class="{{ options.classname ~ '__inner' }}">
+      {{ options.text }}
+    </{{ options.size }}>
+  </div>
+{% endif %}

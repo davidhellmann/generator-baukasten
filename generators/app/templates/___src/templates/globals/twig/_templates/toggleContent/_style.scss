@@ -1,0 +1,85 @@
+/* -------------------------------------------------- */
+/*    Toggle Content
+/* -------------------------------------------------- */
+
+
+.o-toggleContent {
+  $root: &;
+  @include make-row();
+
+  &__head {
+    @include make-col(12);
+
+    span {
+      cursor: pointer;
+      transition: all 0.25s ease('out-cubic');
+    }
+
+    &:hover {
+      color: c('black');
+
+      strong {
+        color: c('black');
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    padding-top: s(2);
+    display: none;
+    opacity: 0;
+
+    &--bottom {
+      @include make-vr(-1);
+    }
+
+    &.fadeIn {
+      opacity: 1;
+      transition: opacity 0.5s ease('out-cubic');
+    }
+  }
+
+  &__trigger {
+    @include make-vr();
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: fs('ms-1');
+    padding-left: 30px;
+    font-weight: 700;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 10px;
+      height: 2px;
+      background-color: c('black', '90');
+      transform-origin: center center;
+      position: absolute;
+      left: 0;
+      top: 9px;
+      transition: all 0.25s ease-out;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg) translate(4px, 4px);
+    }
+
+    &.is-open {
+      &::before {
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        transform: rotate(45deg) translate(4px, -4px);
+      }
+    }
+  }
+}
