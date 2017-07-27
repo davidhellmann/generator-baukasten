@@ -85,7 +85,7 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
         name: 'projectProxy',
         message: message({
             headline: 'Project Proxy Domain',
-            description: 'Define a Project Proxy Domain or set it to "false". Default is your Project Name:'
+            description: 'Define a Project Proxy Domain or set it to "false":'
         }),
         default(answers) {
             // If ProjectType = Prototyping
