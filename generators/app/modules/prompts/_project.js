@@ -48,33 +48,6 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
         default: '0.0.1'
     },
     {
-        type: 'input',
-        name: 'projectProxy',
-        message: message({
-            headline: 'Project Proxy Domain',
-            description: 'Define a Project Proxy Domain or set it to "false". Default is your Project Name:'
-        }),
-        default(answers) {
-            // If the Answer includes .dev or .local
-            if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
-                return answers.projectName
-            }
-            return `${answers.projectName}.dev`
-        },
-        validate(input) {
-            if (!input.match(false)) {
-                if (input.match(/(http|https):\/\//g) ||
-                    !input.match(/^([a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
-                    // Pass the return value in the done callback
-                    return `${chalk.styles.red.open}
-Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
-                }
-            }
-            // Pass the return value in the done callback
-            return true
-        }
-    },
-    {
         type: 'list',
         name: 'projectType',
         message: message({
@@ -106,6 +79,37 @@ Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
             }
             */
         ]
+    },
+    {
+        type: 'input',
+        name: 'projectProxy',
+        message: message({
+            headline: 'Project Proxy Domain',
+            description: 'Define a Project Proxy Domain or set it to "false":'
+        }),
+        default(answers) {
+            // If ProjectType = Prototyping
+            if (answers.projectType === 'prototyping') {
+                return false
+            }
+            // If the Answer includes .dev or .local
+            if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
+                return answers.projectName
+            }
+            return `${answers.projectName}.dev`
+        },
+        validate(input) {
+            if (input !== false) {
+                if (input.match(/(http|https):\/\//g) ||
+                    !input.match(/^([a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
+                    // Pass the return value in the done callback
+                    return `${chalk.styles.red.open}
+Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
+                }
+            }
+            // Pass the return value in the done callback
+            return true
+        }
     },
     {
         type: 'confirm',

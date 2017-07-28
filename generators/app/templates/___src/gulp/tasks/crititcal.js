@@ -5,7 +5,7 @@ import log from 'fancy-log'
 import chalk from 'chalk'
 import pkg from '../../package.json'
 
-
+<% if (projectType === 'craftCMS' || projectType === 'craftCMS3' ) { %>
 // Process data in an array synchronously, moving onto the n+1 item only after the nth item callback
 function doSynchronousLoop(data, processData, done) {
     if (data.length > 0) {
@@ -46,13 +46,39 @@ function processCriticalCSS(element, i, callback) {
         callback()
     })
 }
+<% } %>
 
 // critical css task
 const criticalcss = (callback) => {
-    doSynchronousLoop(pkg.criticalCSS, processCriticalCSS, () => {
-        // all done
-        callback()
-    })
+    <% if (projectType === 'craftCMS' || projectType === 'craftCMS3' ) { %>
+        doSynchronousLoop(pkg.criticalCSS, processCriticalCSS, () => {
+            // all done
+            callback()
+        })
+    <% } else { %>
+        const argv = yargs.argv
+        const url = argv.url || pkg.urls.critical
+        const criticalSrc = url
+        const criticalDest = 'critical.min.css'
+        const extension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
+
+        log(`-> Generating critical CSS: ${chalk.cyan(criticalSrc)} -> ${chalk.magenta(criticalDest)}`)
+        critical.generate({
+            base: pkg.dist.base,
+            src: `index${extension}`,
+            dest: criticalDest,
+            inline: false,
+            ignore: ['font-face'],
+            css: [
+                pkg.dist.css + 'app.min.css',
+            ],
+            minify: true,
+            width: 1440,
+            height: 1280
+        }, (err, output) => {
+            callback()
+        })
+    <% } %>
 }
 
 gulp.task('create:criticalcss', criticalcss)
