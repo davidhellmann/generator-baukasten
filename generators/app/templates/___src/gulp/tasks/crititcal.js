@@ -60,11 +60,12 @@ const criticalcss = (callback) => {
         const url = argv.url || pkg.urls.critical
         const criticalSrc = url
         const criticalDest = 'critical.min.css'
+        const extension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
 
         log(`-> Generating critical CSS: ${chalk.cyan(criticalSrc)} -> ${chalk.magenta(criticalDest)}`)
         critical.generate({
-            base: '___dist/',
-            src: 'index.html',
+            base: pkg.dist.base,
+            src: `index${extension}`,
             dest: criticalDest,
             inline: false,
             ignore: ['font-face'],
