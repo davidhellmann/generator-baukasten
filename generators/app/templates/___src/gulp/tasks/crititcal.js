@@ -37,13 +37,17 @@ function processCriticalCSS(element, i, callback) {
         inline: false,
         ignore: ['font-face'],
         css: [
-            pkg.dist.css + 'app.min.css',
+            `${pkg.dist.css}app.min.css`,
         ],
         minify: true,
         width: 1440,
         height: 1280
-    }, (err, output) => {
-        callback()
+    }).then((output) => {
+        console.log(`-> Critical CSS generated!`)
+        console.log(output)
+    }).error((err) => {
+        console.log(`-> Something goes wrong!`)
+        console.log(err)
     })
 }
 <% } %>
@@ -70,13 +74,17 @@ const criticalcss = (callback) => {
             inline: false,
             ignore: ['font-face'],
             css: [
-                pkg.dist.css + 'app.min.css',
+                `${pkg.dist.css}app.min.css`,
             ],
             minify: true,
             width: 1440,
             height: 1280
-        }, (err, output) => {
-            callback()
+        }).then((output) => {
+            console.log(`-> Critical CSS generated!`)
+            console.log(output)
+        }).error((err) => {
+            console.log(`-> Something goes wrong!`)
+            console.log(err)
         })
     <% } %>
 }
