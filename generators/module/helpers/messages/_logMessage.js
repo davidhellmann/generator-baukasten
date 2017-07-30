@@ -17,9 +17,9 @@ const logMessage = ({
     let consoleMessage = ''
 
     if (short) {
-        consoleMessage = `\n${chalk[color].bold(`  [--- ${message} ---]`)}\n`
+        consoleMessage = chalk`\n{ ${color}.bold [--- ${message} ---]}\n`
     } else {
-        consoleMessage = `\n\n${chalk[color].bold(`  ${message}`)}\n${chalk[color].bold(`  ${signs}`)}\n`
+        consoleMessage = chalk`\n\n { ${color}.bold  ${message}}\n${color}.bold ${signs} }\n`
     }
     if (this.log) {
         return this.log(consoleMessage)

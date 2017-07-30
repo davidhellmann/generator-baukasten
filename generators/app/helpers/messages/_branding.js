@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 
 const branding = (version, author, website, repoURL) => {
-    return `${chalk.styles.magenta.open}
+    return chalk`{magenta
 
                             888                        888                        888                                                
                             888                        888                        888                                                
@@ -12,12 +12,10 @@ const branding = (version, author, website, repoURL) => {
                             888 d88P 888  888 Y88b 888 888 "88b 888  888      X88 Y88b. Y8b.     888  888                            
                             88888P"  "Y888888  "Y88888 888  888 "Y888888  88888P'  "Y888 "Y8888  888  888                         
                                                                                                         
-            ${chalk.styles.magenta.close}
-            ${chalk.styles.yellow.open}                                                               
+            }{yellow                                                                
                                              • • • baukasten made with love & help • • •                     
                                                                                                    
-            ${chalk.styles.yellow.close}
-            ${chalk.styles.cyan.open}
+            }{cyan
                             -----------------------------------------------------------------------------          
                                                                                                          
                             Version  :   ${version}
@@ -31,8 +29,7 @@ const branding = (version, author, website, repoURL) => {
                                                                                                          
                                                                                                          
                                                                                                          
-            ${chalk.styles.cyan.close}
-           `
+            }`
 }
 
 module.exports = branding
