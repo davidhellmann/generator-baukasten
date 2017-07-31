@@ -20,7 +20,7 @@
     }
   }
 
-  .m-bgImage__inner {
+  .m-bgImage {
     position: absolute;
     left: 0;
     right: 0;
@@ -28,6 +28,15 @@
     bottom: 0;
     background-size: cover;
     margin-top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .m-bgImage__image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
   &__title {

@@ -9,6 +9,7 @@
 // Polyfills
 import 'babel-polyfill'
 import 'svgxuse'
+import '../../../node_modules/objectFitPolyfill/src/objectFitPolyfill'
 
 // Lib
 import './lib/bling'

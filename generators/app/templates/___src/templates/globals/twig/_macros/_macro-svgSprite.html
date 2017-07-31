@@ -5,8 +5,22 @@
   {{ macroSvgSprite.svgSprite(icon_twitter) }}
 #}
 
-{% macro svgSprite(spriteName) %}
-  <svg class="m-svgSprite  m-svgSprite--{{ spriteName }}">
-    <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ spriteName }}"></use>
-  </svg>
+{% macro svgSprite(options) %}
+    {% set defaults = {
+        classname: 'm-svgSprite',
+        iconName: null,
+        viewbox: '0 0 32 32'
+    } %}
+
+    {% if options is defined %}
+        {% set options = options is defined ? defaults|merge(options) : defaults %}
+    {% else %}
+        {% set options = defaults %}
+    {% endif %}
+
+    {% if options.iconName %}
+        <svg class="{{ options.classname }}  {{ options.classname ~ '--' ~ iconName }}" viewBox="{{ options.viewbox }}">
+            <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ iconName }}"></use>
+        </svg>
+    {% endif %}
 {% endmacro %}
