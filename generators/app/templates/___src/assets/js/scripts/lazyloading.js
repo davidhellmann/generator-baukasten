@@ -4,7 +4,7 @@
 
 // Dependencies
 import 'lazysizes'
-import '../../../../node_modules/lazysizes/plugins/bgset/ls.bgset'
+// import '../../../../node_modules/lazysizes/plugins/bgset/ls.bgset'
 import '../../../../node_modules/lazysizes/plugins/respimg/ls.respimg'
 
 // Settings
