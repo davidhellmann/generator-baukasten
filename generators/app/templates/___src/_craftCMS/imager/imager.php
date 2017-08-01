@@ -19,17 +19,36 @@
  */
 
 return array(
-    'imagerSystemPath' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/imager/',
-    'imagerUrl' => '/uploads/imager/',
-    'interlace' => true, // false, true ('line'), 'none', 'line', 'plane', 'partition'x
-    'instanceReuseEnabled' => false,
-    'allowUpscale' => false,
-    'hashFilename' => false,
-    'cacheDuration' => 31536000,
-    'cacheDurationRemoteFiles' => 31536000,
-    'jpegQuality' => 80,
-    'pngCompressionLevel' => 2,
-    'webpQuality' => 80,
-    'useCwebp' => false,
-    'cwebpPath' => '/usr/bin/cwebp'
+    // All environments
+    '*' => [
+        'imagerSystemPath' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/imager/',
+        'imagerUrl' => '/uploads/imager/',
+        'interlace' => true, // false, true ('line'), 'none', 'line', 'plane', 'partition'x
+        'instanceReuseEnabled' => false,
+        'allowUpscale' => false,
+        'hashFilename' => false,
+        'cacheDuration' => 24192000,
+        'jpegQuality' => 80,
+        'pngCompressionLevel' => 2,
+        'webpQuality' => 80,
+    ],
+
+    // Live (production) environment
+    'live' => array(
+        'cwebpPath' => '/usr/bin/cwebp',
+        'useCwebp' => false
+    ),
+
+    // Staging (pre-production) environment
+    'staging' => array(
+        'cwebpPath' => '/usr/bin/cwebp',
+        'useCwebp' => false
+    ),
+
+    // Local (development) environment
+    'local' => array(
+        'cwebpPath' => '/usr/local/bin/cwebp',
+        'useCwebp' => false
+    ),
+
 );
