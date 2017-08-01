@@ -29,5 +29,7 @@ return array(
     'cacheDurationRemoteFiles' => 31536000,
     'jpegQuality' => 80,
     'pngCompressionLevel' => 2,
-    'webpQuality' => 80
+    'webpQuality' => 80,
+    'useCwebp' => false,
+    'cwebpPath' => '/usr/bin/cwebp'
 );
