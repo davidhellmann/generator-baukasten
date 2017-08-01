@@ -36,19 +36,19 @@ return array(
     // Live (production) environment
     'live' => array(
         'cwebpPath' => '/usr/bin/cwebp',
-        'useCwebp' => true
+        'useCwebp' => false
     ),
 
     // Staging (pre-production) environment
     'staging' => array(
         'cwebpPath' => '/usr/bin/cwebp',
-        'useCwebp' => true
+        'useCwebp' => false
     ),
 
     // Local (development) environment
     'local' => array(
         'cwebpPath' => '/usr/local/bin/cwebp',
-        'useCwebp' => true
+        'useCwebp' => false
     ),
 
 );
