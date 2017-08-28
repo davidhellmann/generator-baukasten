@@ -1,13 +1,6 @@
 /**
  * Bundle Scripts
  */
-<% if (projectVue) { %>
-const vueElement = document.querySelectorAll('#js-vue')
-// Beispiel für Lazy Loading von Chunks
-if (vueElement) {
-    import('./vue/vueExample')
-}
-<% } %>
 
 // Polyfills
 import 'babel-polyfill'
@@ -41,6 +34,14 @@ import '../../templates/_modules/imageGallery/_main'
 import '../../templates/_templates/toggleContent/_main'
 <% } %>
 
+// Vue Stuff
+<% if (projectVue) { %>
+    const vueElement = document.querySelectorAll('#js-vue')
+// Beispiel für Lazy Loading von Chunks
+    if (vueElement) {
+        import('./vue/vueExample')
+    }
+<% } %>
 
 // Debugging
 const _debug = false
