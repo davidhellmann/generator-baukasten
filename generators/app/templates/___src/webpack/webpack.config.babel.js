@@ -7,7 +7,7 @@
 
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import {getIfUtils, removeEmpty} from 'webpack-config-utils'
-import DashboardPlugin from 'webpack-dashboard/plugin';
+// import DashboardPlugin from 'webpack-dashboard/plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -29,30 +29,36 @@ const {ifProduction, ifDevelopment} = getIfUtils(process.env.NODE_ENV)
 // der wird einfach an den entry point gehangen
 const hot_client = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true'
 
-// hier holen wir uns die dateien in die wir unsere Build Files (app.23r23fwef23r.js und app.323r233.css zum beispiel injecten wollen, also eine datei für den header und eine für den footer)
-// dann definieren wir noch wo die hinsollen und bauen eine funktion die das plugin ausspuckt
-
+// hier holen wir uns die dateien in die wir unsere Build Files
+// (app.23r23fwef23r.js und app.323r233.css zum beispiel injecten wollen,
+// also eine datei für den header und eine für den footer)
+// dann definieren wir noch wo die hinsollen und
+// bauen eine funktion die das plugin ausspuckt
 const inject_folder = '_partials/webpack'
 const inject_templates = [
     {
-        // wo soll es hingehen
+        // DIST File
         filename: resolve(`${config.dist.markup + inject_folder}/webpack-header.html`),
-        // src file
+
+        // SRC File
         file: `${config.src.templates + inject_folder}/webpack-header.html`,
         inject: false
     },
     {
-        // wo soll es hingehen
+        // DIST File
         filename: resolve(`${config.dist.markup + inject_folder}/webpack-scripts.html`),
-        // src file
+
+        // SRC File
         file: `${config.src.templates + inject_folder}/webpack-scripts.html`,
         inject: false
     }
 ]
 
-// leeres array welches wir später mittels ...restParameter in die Plugins mit einfügen
+// Leeres Array welches wir später mittels ...restParameter
+// in die Plugins mit einfügen
 const chunks = []
-// befüllen des obigen array mit den chunks die wir definiert haben.
+
+// Befüllen des obigen Arrays mit den chunks die wir definiert haben.
 inject_templates.forEach((chunk) => {
     const plugin = new HtmlWebpackPlugin({
         filename: chunk.filename,
@@ -64,10 +70,11 @@ inject_templates.forEach((chunk) => {
     chunks.push(plugin)
 })
 
-// sass resources loader
-// damit werden die angegebenen dateien automatisch injected
-// das ist besonders praktisch für Vue files wenn du deine tools und settings benutzen willst aber nicht in jn der Komponente die entsprechenden Dateien includen willst.
-// definieren wir hier oben als variable um sie evtl. später auch anderweitig nutzen zu können
+// Sass Resources Loader
+// Damit werden die angegebenen Dateien automatisch injected
+// Das ist besonders praktisch für Vue files. Wenn du deine Tools und Settings
+// benutzen willst aber nicht in jn der Componente die entsprechenden Dateien includen willst.
+// Definieren wir hier oben als variable um sie evtl. später auch anderweitig nutzen zu können.
 const sass_resources_loader = {
     loader: 'sass-resources-loader',
     options: {
@@ -75,8 +82,7 @@ const sass_resources_loader = {
     }
 }
 
-// css loader config
-// kannst du später dann auch benutzen, ist für Vue und "normales" css ähnlich
+// SCSS Loader Config
 const SCSS_LOADERS = [
     {
         loader: 'css-loader',
@@ -100,6 +106,8 @@ const SCSS_LOADERS = [
         }
     }
 ]
+
+// CSS Loader Config
 const CSS_LOADERS = [
     {
         loader: 'css-loader',
@@ -120,12 +128,14 @@ const CSS_LOADERS = [
 
 module.exports = {
     devtool: ifProduction('#source-map', '#eval-cheap-module-source-map'),
-    // javascript file in dem alles importiert wird, erstmal der simpelste zweck
 
-    // hier ein object, jede datei die hier definiert wird kommt als eigener outputh raus, also wenn du eine admin.js im src folder machst kommt eine admin.js in den dist folder raus
+    // javascript file in dem alles importiert wird, erstmal der simpelste zweck
+    // hier ein object, jede datei die hier definiert wird kommt als eigener outputh raus,
+    // also wenn du eine admin.js im src folder machst kommt eine admin.js in den dist folder raus
     entry: {
         app: ifDevelopment([resolve(`${config.src.js}app.js`), hot_client], resolve(`${config.src.js}app.js`))
     },
+
     output: {
         // in das verzeichnis kommt alles rein
         path: resolve(config.dist.base),
@@ -134,6 +144,7 @@ module.exports = {
         filename: ifProduction('assets/js/[name].[hash].min.js', 'assets/js/[name].js'),
         chunkFilename: 'assets/js/[name].[chunkhash].js'
     },
+
     resolve: {
         extensions: ['.js', '.json', '.vue'],
         // hier werden verzeichnisse angegeben in denen gesucht wird wenn du was importierst
@@ -153,6 +164,7 @@ module.exports = {
             JS: resolve(config.src.js),
         }
     },
+
     module: {
         // hier wird definiert mit welcher datei was gemacht wird
         // das passiert über loader, hier kommen auch vue, css etc. rein später
@@ -165,12 +177,14 @@ module.exports = {
                 enforce: 'pre',
                 include: resolve('___src')
             },
+
             // hier dann das eigentliche laden von JS
             {
                 test: /\.js/,
                 loader: 'babel-loader',
                 include: resolve('___src')
             },
+
             // Vue Loader Wohooo
             {
                 test: /\.vue$/,
@@ -187,6 +201,7 @@ module.exports = {
                     }
                 }
             },
+
             // SCSS Loading
             {
                 test: /\.scss$/,
@@ -210,6 +225,7 @@ module.exports = {
                 ),
                 include: resolve('___src')
             },
+
             // CSS Loading
             {
                 test: /\.css$/,
@@ -235,6 +251,7 @@ module.exports = {
             },
         ]
     },
+
     plugins: removeEmpty([
         // Dateiname für das Extracted CSS von Vue
         // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
@@ -311,6 +328,7 @@ module.exports = {
                 chunks: ['vendor']
             })
         ),
+
         ifProduction(
             new webpack.LoaderOptionsPlugin({
                 minimize: true
@@ -327,12 +345,15 @@ module.exports = {
                 }
             })
         ),
+
         // Hier das Array der Chunks mit dem Plugin Array zusammenfügen
         ...chunks,
+
         new WriteFilePlugin({
             log: true,
             test: /^(?!.+(?:hot-update.(js|json))).+$/
         }),
+
         // webpack scope hoisting magic, weiß ich auch nicht so genau was es tut :D
         ifProduction(new webpack.optimize.ModuleConcatenationPlugin())
     ])
