@@ -1,19 +1,11 @@
-/* -------------------------------------------------- */
-/*    Accordion Label
- /* -------------------------------------------------- */
-
 /**
  * Accordion
  */
-
-import Velocity from 'velocity-animate'
 
 // Config
 const cfg = {
     body: document.body,
     triggers: [...document.querySelectorAll('.js-accordionTrigger')],
-    up: 'slideUp',
-    down: 'slideDown',
     status: 'is-open'
 }
 
@@ -24,20 +16,10 @@ const toggleContent = (event) => {
 
     if (!target.classList.contains(cfg.status)) {
         target.classList.add(cfg.status)
-        Velocity(accContent, cfg.down, {
-            duration: 250,
-            complete() {
-                accContent.classList.add('fadeIn')
-            },
-        }, 'easeOutCubic')
+        accContent.style.display = 'block'
     } else {
         target.classList.remove(cfg.status)
-        Velocity(accContent, cfg.up, {
-            duration: 125,
-            complete() {
-                accContent.classList.remove('fadeIn')
-            },
-        }, 'easeOutCubic')
+        accContent.style.display = 'none'
     }
 }
 

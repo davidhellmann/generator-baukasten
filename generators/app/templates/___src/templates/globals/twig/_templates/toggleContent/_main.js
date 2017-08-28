@@ -2,15 +2,11 @@
  * Toogle Content
  */
 
-import Velocity from 'velocity-animate'
-
 // Config
 const cfg = {
     body: document.body,
     triggers: [...document.querySelectorAll('.js-toggleContent')],
     triggersTop: [...document.querySelectorAll('.js-toggleContent--top')],
-    up: 'slideUp',
-    down: 'slideDown',
     status: 'is-open'
 }
 
@@ -33,22 +29,12 @@ const toggleContent = (event) => {
 
     if (!target.classList.contains(cfg.status)) {
         target.classList.add(cfg.status)
-        Velocity(content, cfg.down, {
-            duration: 250,
-            complete() {
-                content.classList.add('fadeIn')
-                textHolder.innerHTML = textOpen
-            },
-        }, 'easeOutCubic')
+        content.style.display = 'block'
+        textHolder.innerHTML = textOpen
     } else {
         target.classList.remove(cfg.status)
-        Velocity(content, cfg.up, {
-            duration: 125,
-            complete() {
-                content.classList.remove('fadeIn')
-                textHolder.innerHTML = textclosed
-            },
-        }, 'easeOutCubic')
+        textHolder.innerHTML = textclosed
+        content.style.display = 'none'
     }
 }
 

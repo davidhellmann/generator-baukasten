@@ -149,7 +149,7 @@ module.exports = {
             vue$: 'vue/dist/vue.common.js',
             Modules: resolve(config.src.modules.base),
             CSS: resolve(config.src.css),
-            '@': resolve(config.src),
+            '@': resolve(config.src.base),
             JS: resolve(config.src.js),
         }
     },
