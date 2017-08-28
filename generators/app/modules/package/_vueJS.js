@@ -2,7 +2,7 @@ const extend = require('deep-extend')
 
 function addVueJS(files = {}) {
     extend(files.pkg, {
-        devDependencies: {
+        dependencies: {
             'axios': '^0.15.3',
             'vue': '^2.4.2',
             "vue-axios": "^1.2.2",
