@@ -29,9 +29,9 @@ function addNPMScripts(files = {}, context) {
             'compile:templates': 'cross-env NODE_ENV=development gulp compile:templates',
             'create:criticalcss': 'cross-env NODE_ENV=development gulp create:criticalcss',
             'create:favicons': 'cross-env NODE_ENV=development gulp create:favicons',
-            'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS'
+            'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS',
             'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --config=webpack/webpack.config.babel.js',
-            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/',
+            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/'
         }
     })
 }

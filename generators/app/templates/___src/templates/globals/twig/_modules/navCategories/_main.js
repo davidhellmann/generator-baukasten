@@ -7,7 +7,7 @@ import Flickity from 'flickity'
 // Load Resize Hack
 window.addEventListener('load', () => {
     setTimeout(() => {
-        const sliders = Array.from(document.querySelectorAll('.js-navCategories'))
+        const sliders = [...document.querySelectorAll('.js-navCategories')]
         if (sliders) {
             sliders.forEach((sliders) => {
                 let slider = sliders.querySelector('.m-navCategories__inner')

@@ -1,0 +1,7 @@
+{# in dem htmlwebpack plugin gedöns, sind alle entry files drin, die loopen wir und fügen ein, die syntax ist wie bei yeoman EJS
+  in dem chunks sind alle drin die in der webpack config bei "entry" drin stehen, du kannst hier dann auch einzelne ausschliessen wie in dem beispiel den eintrag der 'font' beinhaltet
+  #}
+
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { if (!chunk.match(/font/)) { %>
+<script src="{{ rootUrl }}<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% }} %>

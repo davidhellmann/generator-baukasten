@@ -3,8 +3,8 @@
 <div class="m-appContent">
 
     <% if (projectVue) { %>
-    <div id="app" class="vue">
-        <hello></hello>
+    <div>
+        <div id="js-vue"></div>
     </div>
     <% } %>
 
