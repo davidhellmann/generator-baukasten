@@ -49,6 +49,10 @@ module.exports = {
             dest: '.babelrc'
         },
         {
+            src: '___src/babelrc',
+            dest: 'webpack/.babelrc'
+        },
+        {
             src: 'nvmrc',
             dest: '.nvmrc'
         }
