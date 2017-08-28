@@ -12,9 +12,6 @@ const buildTask = (cb) => {
         [
             'compile:templates',
             'copy:systemFiles',
-            'modernizr',
-            'compile:js',
-            'compile:css',
             'copy:fonts',
             'create:inlineJS',
             'copy:images',
@@ -22,8 +19,6 @@ const buildTask = (cb) => {
             'create:svg-sprite',
         ],
         [
-            'minify:js',
-            'minify:sass',
             'minify:images'
         ],
         cb

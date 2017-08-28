@@ -5,6 +5,10 @@ module.exports = {
             dest: 'gulpfile.babel.js'
         },
         {
+            src: '_postcss.config.js',
+            dest: 'postcss.config.js'
+        },
+        {
             src: '_readme.md',
             dest: 'readme.md'
         },

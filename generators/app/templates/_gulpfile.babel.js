@@ -1,6 +1,8 @@
-'use strict'
+require('babel-core/register')({
+    presets: [['es2015']]
+})
 
-import requireDir from 'require-dir'
+const requireDir = require('require-dir')
 
 // Define Global Vars
 global.checkChanged = false

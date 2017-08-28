@@ -9,7 +9,7 @@ import Velocity from 'velocity-animate'
 // Vars
 const body = document.body
 const siteURL = `${window.location.protocol}//${window.location.host}`
-const triggers = Array.from(document.querySelectorAll(`a[href^="${siteURL}"]:not([href*="#"])`))
+const triggers = [...document.querySelectorAll(`a[href^="${siteURL}"]:not([href*="#"])`)]
 
 triggers.forEach((trigger) => {
     // Click Event

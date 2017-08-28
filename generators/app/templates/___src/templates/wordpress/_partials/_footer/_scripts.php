@@ -17,11 +17,6 @@
     })();
 </script>
 
-
-<!-- Modernizr -->
-<!--<script src="<?php /*bloginfo('template_url'); */?>/assets/js/vendor/modernizr-custom.min.js" async></script>-->
-
-
 <!-- JS Scripts & Plugins -->
 <script src="<?php bloginfo('template_url'); ?>/assets/js/app.min.js?ver=<?php echo filemtime(get_stylesheet_directory() . '/assets/js/app.min.js'); ?>" async></script>
 

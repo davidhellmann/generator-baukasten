@@ -70,6 +70,16 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS',
+                'craftCMS3',
+                'prototyping',
+                'wordpress'
+            ],
+            src: '___src/webpack/',
+            dest: 'webpack/'
+        },
+        {
+            projectContext: [
+                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/templates/craftcms/',

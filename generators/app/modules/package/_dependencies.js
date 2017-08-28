@@ -4,7 +4,7 @@ function addDependencies(files = {}) {
     extend(files.pkg, {
         dependencies: {
             'animejs': '^2.0.0',
-            'babel-polyfill': '^6.20.0',
+            'babel-polyfill': '^6.26.0',
             'cookieconsent': '^3.0.4',
             'family.scss': '^1.0.4',
             'flickity': '^2.0.8',

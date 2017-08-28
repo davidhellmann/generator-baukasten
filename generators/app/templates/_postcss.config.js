@@ -1,14 +1,18 @@
-import pkg from '../../package.json'
+const pkg = require('./package')
 
-const postCssConfig = () => {
-    return [
+module.exports = {
+    plugins: [
         // Include Assets
         require('postcss-assets')({
             basePath: pkg.dist.markup,
             loadPaths: [pkg.dist.images.base]
         }),
 
-        require('postcss-normalize')({ /* options */ }),
+        require('postcss-normalize')(
+            {
+                /* options */
+            }
+        ),
 
         // Prefixer
         require('autoprefixer')({
@@ -29,5 +33,3 @@ const postCssConfig = () => {
         require('postcss-responsive-type')
     ]
 }
-
-module.exports = postCssConfig

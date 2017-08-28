@@ -1,36 +1,37 @@
 const extend = require('deep-extend')
 
 function addNPMScripts(files = {}, context) {
-    let initCommands = 'gulp init'
+    let initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack'
     if (context.props.projectType === 'craftCMS3') {
-        initCommands = 'gulp init && cd ___dist && composer install'
+        initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack && cd ___dist && composer install'
     }
 
     extend(files.pkg, {
         scripts: {
             'start': initCommands,
-            'dev': 'gulp build && gulp',
-            'update': 'cd ___dist && composer update',
-            'build': 'gulp build',
+            'dev': 'cross-env NODE_ENV=production gulp build && cross-env NODE_ENV=development gulp',
+            'dev:single': 'cross-env NODE_ENV=development gulp',
+            'dev:dashboard': 'cross-env NODE_ENV=development webpack-dashboard -p 3002 && cross-env NODE_ENV=development gulp',
+            'build': 'cross-env NODE_ENV=production gulp build && yarn webpack',
             'module': 'node scripts/module.js',
             'critical': 'node scripts/critical.js',
-            'clean:dist': 'gulp clean:dist',
-            'clean:templates': 'gulp clean:templates',
-            'clean:images': 'gulp clean:images',
-            'clean:js': 'gulp clean:js',
-            'clean:css': 'gulp clean:css',
-            'copy:fonts': 'gulp copy:fonts',
-            'copy:images': 'gulp copy:images',
-            'copy:svg': 'gulp copy:svg',
-            'copy:svg-single': 'gulp copy:svg-single',
-            'create:svg-sprite': 'gulp create:svg-sprite',
-            'copy:systemFiles': 'gulp copy:systemFiles',
-            'compile:css': 'gulp compile:css',
-            'compile:js': 'gulp compile:js',
-            'compile:templates': 'gulp compile:templates',
-            'create:criticalcss': 'gulp create:criticalcss',
-            'create:favicons': 'gulp create:favicons',
-            'create:inlineJS': 'gulp create:inlineJS'
+            'clean:dist': 'cross-env NODE_ENV=development gulp clean:dist',
+            'clean:templates': 'cross-env NODE_ENV=development gulp clean:templates',
+            'clean:images': 'cross-env NODE_ENV=development gulp clean:images',
+            'clean:js': 'cross-env NODE_ENV=development gulp clean:js',
+            'clean:css': 'cross-env NODE_ENV=development gulp clean:css',
+            'copy:fonts': 'cross-env NODE_ENV=development gulp copy:fonts',
+            'copy:images': 'cross-env NODE_ENV=development gulp copy:images',
+            'copy:svg': 'cross-env NODE_ENV=development gulp copy:svg',
+            'copy:svg-single': 'cross-env NODE_ENV=development gulp copy:svg-single',
+            'create:svg-sprite': 'cross-env NODE_ENV=development gulp create:svg-sprite',
+            'copy:systemFiles': 'cross-env NODE_ENV=development gulp copy:systemFiles',
+            'compile:templates': 'cross-env NODE_ENV=development gulp compile:templates',
+            'create:criticalcss': 'cross-env NODE_ENV=development gulp create:criticalcss',
+            'create:favicons': 'cross-env NODE_ENV=development gulp create:favicons',
+            'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS'
+            'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --config=webpack/webpack.config.babel.js',
+            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/',
         }
     })
 }

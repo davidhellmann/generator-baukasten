@@ -1,20 +1,23 @@
 <template>
-  <div class="vue">
+  <div class="o-section vue">
     <h2>Hello World</h2>
+    <input type="text" v-model="message">
     <p>
       {{ message }}
     </p>
   </div>
 </template>
 
-<style>
-
+<style lang="scss">
+  .vue p {
+    @include f(fs('ms3'), fs('ms7'));
+  }
 </style>
 
 <script>
-  export default{
-    data(){
-      return{
+  export default {
+    data() {
+      return {
         message: 'hello vue'
       }
     }

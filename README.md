@@ -127,9 +127,6 @@ gulp clean:images
 gulp compile:templates
 gulp create:inlineJS,
 gulp copy:systemFiles
-gulp modernizr
-gulp compile:js
-gulp compile:css
 gulp copy:fonts
 gulp copy:images
 gulp copy:svg-single
@@ -139,8 +136,6 @@ gulp create:svg-sprite
 ```
 // Minify Tasks
 // This task are triggered within the "guld build" task.
-gulp minify:js
-gulp minify:sass
 gulp minify:images
 ```
 

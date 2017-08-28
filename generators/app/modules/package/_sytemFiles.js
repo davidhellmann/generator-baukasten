@@ -7,11 +7,7 @@ function addSystemFiles(files = {}) {
                 '___src/_system/.htaccess',
                 '___src/_system/humans.txt',
                 '___src/_system/robots.txt'
-            ],
-            jsApp: {
-                srcName: 'app.js',
-                distName: 'app.min.js'
-            }
+            ]
         }
     })
 }

@@ -3,6 +3,7 @@ const extend = require('deep-extend')
 function addSrcPaths(files = {}) {
     extend(files.pkg, {
         src: {
+            base: '___src/',
             assets: '___src/assets/',
             js: '___src/assets/js/',
             vue: '___src/assets/vue/',
