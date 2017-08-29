@@ -52,7 +52,7 @@ const writePackageJSON = () => {
                 } else if (context.props.projectType === 'prototyping') {
                     addDistPathsPrototyping({pkg})
                 } else if (context.props.projectType === 'wordpress') {
-                    addDistPathsWordpress({pkg})
+                    addDistPathsWordpress({pkg}, context)
                 }
 
                 // Files
@@ -65,7 +65,7 @@ const writePackageJSON = () => {
                 addEngines({pkg})
 
                 // If jQuery True
-                if (context.props.projectJquery === true) {
+                if (context.props.projectjQuery === true) {
                     addJquerySettings({pkg})
                 }
 

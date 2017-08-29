@@ -1,5 +1,5 @@
-<!-- JS Scripts & Plugins -->
-<script src="assets/js/app.min.js" async></script>
+{# -- Webpack Magic -- #}
+{% include '../webpack/_webpack-scripts.html' %}
 
 <!-- Google Analytics -->
 {#<script>
@@ -10,10 +10,3 @@
   ga('create', 'UA-XXXXXXXXX', 'auto');
   ga('send', 'pageview');
 </script>#}
-
-<% if (projectProxy !== 'false') { %>
-<!-- BrowserSync -->
-<script type='text/javascript' id="__bs_script__">//<![CDATA[
-  document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname));
-  //]]></script>
-<% } %>

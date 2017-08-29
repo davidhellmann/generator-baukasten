@@ -34,22 +34,28 @@ const hot_client = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20
 // also eine datei für den header und eine für den footer)
 // dann definieren wir noch wo die hinsollen und
 // bauen eine funktion die das plugin ausspuckt
-const inject_folder = '_partials/webpack'
+const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
+const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
+const headerFilenameSRC = <% if (projectType === 'prototyping' ) { %> '_src-webpack-header' <% } else if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
+const headerFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack-header' <% } else if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
+const scriptsFilenameSRC = <% if (projectType === 'prototyping' ) { %> '_src-webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
+const scriptsFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
+const folderDIST = <% if (projectType === 'prototyping' ) { %> config.src.templates <% } else { %> config.dist.markup <% } %>
 const inject_templates = [
     {
         // DIST File
-        filename: resolve(`${config.dist.markup + inject_folder}/webpack-header.html`),
+        filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
 
         // SRC File
-        file: `${config.src.templates + inject_folder}/webpack-header.html`,
+        file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
         inject: false
     },
     {
         // DIST File
-        filename: resolve(`${config.dist.markup + inject_folder}/webpack-scripts.html`),
+        filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
 
         // SRC File
-        file: `${config.src.templates + inject_folder}/webpack-scripts.html`,
+        file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
         inject: false
     }
 ]
@@ -290,6 +296,14 @@ module.exports = {
             }),
         ),
 
+        // jQuery Stuff
+        <% if (projectjQuery) { %>
+        new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery'
+        }),
+        <% } %>
+
         // Uglify JS
         ifProduction(
             new webpack.optimize.UglifyJsPlugin({
@@ -320,15 +334,17 @@ module.exports = {
                 }
             })
         ),
+
+        // extract webpack runtime and module manifest to its own file in order to
+        // prevent vendor hash from being updated whenever app bundle is updated
         ifProduction(
-            // extract webpack runtime and module manifest to its own file in order to
-            // prevent vendor hash from being updated whenever app bundle is updated
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'manifest',
                 chunks: ['vendor']
             })
         ),
 
+        // Minimize Stuff
         ifProduction(
             new webpack.LoaderOptionsPlugin({
                 minimize: true

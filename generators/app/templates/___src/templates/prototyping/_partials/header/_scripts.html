@@ -1,10 +1,5 @@
-{# -- LOADS CSS -- #}
-<script>
-    {{ source('_inlineJS/loadCSS.min.js') }}
-    {{ source('_inlineJS/cssrelpreload.min.js') }}
-</script>
-<link rel="preload" href="assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="assets/css/app.min.css"></noscript>
+{# -- Webpack Magic -- #}
+{% include '../webpack/_webpack-header.html' %}
 
 {# Humans File #}
 <!-- humans.txt — http://humanstxt.org -->

@@ -49,7 +49,7 @@ module.exports = {
             dest: '.babelrc'
         },
         {
-            src: '___src/babelrc',
+            src: 'babelrc-webpack',
             dest: 'webpack/.babelrc'
         },
         {
