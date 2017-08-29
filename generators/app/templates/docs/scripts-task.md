@@ -18,12 +18,12 @@ npm copy:svg
 npm copy:svg-single
 npm create:svg-sprite
 npm copy:systemFiles
-npm compile:css
-npm compile:js
 npm compile:templates
 npm create:criticalcss
 npm create:favicons
 npm create:inlineJS
+npm webpack
+npm webpack:analyze
 ```
 
 All scripts are also executable with YARN.
