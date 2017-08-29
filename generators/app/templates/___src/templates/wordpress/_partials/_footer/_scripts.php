@@ -17,15 +17,7 @@
     })();
 </script>
 
-
-<!-- Modernizr -->
-<!--<script src="<?php /*bloginfo('template_url'); */?>/assets/js/vendor/modernizr-custom.min.js" async></script>-->
-
-
-<!-- JS Scripts & Plugins -->
-<script src="<?php bloginfo('template_url'); ?>/assets/js/app.min.js?ver=<?php echo filemtime(get_stylesheet_directory() . '/assets/js/app.min.js'); ?>" async></script>
-
-
+<?php require_once('_partials/_webpack/_webpack-scripts.php'); ?>
 
 <!-- Google Analytics -->
 <!--<script>
@@ -36,17 +28,3 @@
     ga('create', 'UA-XXXXXXXXX', 'auto');
     ga('send', 'pageview');
 </script>-->
-
-
-
-<% if (projectProxy !== 'false') { %>
-<?php
-$host = $_SERVER['HTTP_HOST'];
-if($host === "localhost" or $host == "<%= projectProxy %>") :
-    ?>
-    <!-- BrowserSync -->
-    <script type='text/javascript' id="__bs_script__">//<![CDATA[
-        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname));
-        //]]></script>
-<?php endif ?>
-<% } %>

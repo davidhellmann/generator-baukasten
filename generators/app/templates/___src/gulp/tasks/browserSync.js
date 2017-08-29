@@ -1,21 +1,25 @@
 import browserSync from 'browser-sync'
 import gulp from 'gulp'
 import yargs from 'yargs'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackSettings from '../../webpack/webpack.config.babel'
 import pkg from '../../package.json'
 
 const argv = yargs.argv
+
+const bundler = webpack(webpackSettings)
 
 const browserSyncTask = () => {
     const browserSyncWatch = [
         `${pkg.dist.markup}**/*.{html,php,twig,rss}`,
         `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`,
-        `${pkg.dist.css}**/*.css`,
-        `${pkg.dist.js}**/*.js`,
-        `${pkg.dist.vue}**/*.vue`
     ];
 
     // Build a condition when Proxy is active
-    let bsProxy, bsServer;
+    let bsProxy,
+        bsServer
     const url = argv.url || pkg.browsersync.proxy
 
     // Condition for Proxy
@@ -40,13 +44,26 @@ const browserSyncTask = () => {
         open: pkg.browsersync.openbrowser, // false if you don't want to automatically open the browser
         server: bsServer,
         stream: true,
+        middleware: [
+            webpackDevMiddleware(bundler, {
+                quiet: true,
+                path: webpackSettings.output.path,
+                stats: {
+                    colors: true
+                }
+            }),
+            webpackHotMiddleware(bundler, {
+                log: () => {
+                }
+            })
+        ],
         notify: {
             styles: [
-                'padding: 10px 20px;',
+                'padding: 20px 40px;',
                 'font-family: arial;',
                 'line-height: 1',
                 'position: fixed;',
-                'font-size: 10px;',
+                'font-size: 16px;',
                 'font-weight: bold',
                 'z-index: 9999;',
                 'top: inherit',
@@ -54,7 +71,7 @@ const browserSyncTask = () => {
                 'right: 0;',
                 'bottom: 0;',
                 'color: #fff;',
-                'background-color: rgba(0,0,0, .5)',
+                'background-color: rgba(255,0,0, .8)',
                 'text-transform: uppercase'
             ]
         }

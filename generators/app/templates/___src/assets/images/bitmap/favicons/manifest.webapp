@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "name": "modules",
+  "description": "My Awesome Project",
+  "icons": {
+    "60": "{{ rootUrl }}assets/images/bitmap/favicons/firefox_app_60x60.png",
+    "128": "{{ rootUrl }}assets/images/bitmap/favicons/firefox_app_128x128.png",
+    "512": "{{ rootUrl }}assets/images/bitmap/favicons/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "David Hellmann",
+    "url": "https://davidhellmann.com"
+  }
+}

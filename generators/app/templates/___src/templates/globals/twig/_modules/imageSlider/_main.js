@@ -7,13 +7,13 @@ import Flickity from 'flickity'
 // Load Resize Hack
 window.addEventListener('load', () => {
     setTimeout(() => {
-        const sliders = Array.from(document.querySelectorAll('.js-imageSlider'))
+        const sliders = [...document.querySelectorAll('.js-imageSlider')]
         if (sliders) {
-            sliders.forEach((sliders) => {
-                let slider = sliders.querySelector('.m-imageSlider__inner')
-                const flkty = Flickity.data(slider)
+            sliders.forEach((slider) => {
+                const _slider = slider.querySelector('.m-imageSlider__inner')
+                const flkty = Flickity.data(_slider)
                 flkty.resize()
-                slider.classList.add('is-visible')
+                _slider.classList.add('is-visible')
             })
         }
     }, 20)

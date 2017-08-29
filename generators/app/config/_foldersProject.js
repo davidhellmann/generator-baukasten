@@ -91,6 +91,28 @@ module.exports = {
             ],
             src: 'docs/',
             dest: 'docs/'
+        },
+        {
+            projectContext: [
+                'craftCMS',
+                'craftCMS3'
+            ],
+            src: '___src/templates/webpack-craftcms/',
+            dest: '___src/templates/_partials/webpack/'
+        },
+        {
+            projectContext: [
+                'prototyping'
+            ],
+            src: '___src/templates/webpack-prototyping/',
+            dest: '___src/templates/_partials/webpack/'
+        },
+        {
+            projectContext: [
+                'wordpress'
+            ],
+            src: '___src/templates/webpack-wordpress/',
+            dest: '___src/templates/_partials/_webpack/'
         }
     ]
 }

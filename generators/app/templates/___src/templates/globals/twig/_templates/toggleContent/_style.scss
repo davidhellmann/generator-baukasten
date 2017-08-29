@@ -29,15 +29,9 @@
     position: relative;
     padding-top: s(2);
     display: none;
-    opacity: 0;
 
     &--bottom {
       @include make-vr(-1);
-    }
-
-    &.fadeIn {
-      opacity: 1;
-      transition: opacity 0.5s ease('out-cubic');
     }
   }
 

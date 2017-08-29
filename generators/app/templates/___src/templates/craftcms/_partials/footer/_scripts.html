@@ -1,9 +1,5 @@
 <!-- JS Scripts & Plugins -->
-{% if craft.cacheBuster is defined %}
-  <script src="{{ cacheBuster( '/assets/js/app.min.js') }}" async></script>
-{% else %}
-  <script src="{{ rootUrl }}assets/js/app.min.js" async></script>
-{% endif %}
+{% include "_partials/webpack/webpack-scripts.html" %}
 
 
 {% set googleAnalytics = googleAnalytics.globalGoogleAnalytics %}
@@ -22,15 +18,4 @@
     ga('send', 'pageview');
     {% endif %}
   </script>
-{% endif %}
-
-{# Activate Browser Sync only on the local dev server #}
-{% if craft.config.craftEnv == 'local' %}
-
-  {# If Livepreview active deactivate Browsersync #}
-  {% if not craft.request.isLivePreview %}
-    <script id="__bs_script__">//<![CDATA[
-      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname));
-      //]]></script>
-  {% endif %}
 {% endif %}

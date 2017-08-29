@@ -1,23 +1,23 @@
-/*--------------------------------------------------
-    .m-input
-  --------------------------------------------------*/
+//  --------------------------------------------------------
+//  .m-input
+//  --------------------------------------------------------
 
-input.m-input,
-input.m-input:focus {
-  -webkit-appearance: none;
+.m-input,
+.m-input:focus {
+  -webkit-appearance: none; // stylelint-disable-line
   outline: none;
-  border: none;
+  border: 0;
 }
 
-input.m-input:not([type="submit"]),
-input.m-input[type="text"],
-input.m-input[type="email"],
-input.m-input[type="password"],
-input.m-input[type="date"],
-input.m-input[type="search"],
-input.m-input[type="tel"],
-textarea.m-input {
-  -webkit-appearance: none;
+.m-input:not([type='submit']),
+.m-input[type='text'],
+.m-input[type='email'],
+.m-input[type='password'],
+.m-input[type='date'],
+.m-input[type='search'],
+.m-input[type='tel'],
+.m-input {
+  -webkit-appearance: none; // stylelint-disable-line
   @include fs('ms0');
   outline: 0;
   display: inline-block;
@@ -34,26 +34,28 @@ textarea.m-input {
   }
 }
 
-textarea.m-input {
+.m-input {
   resize: vertical;
   min-height: 100px;
 }
 
-
-
 // Placeholder Color
+/* stylelint-disable */
 ::-webkit-input-placeholder {
-   color: c('black-40');
+  color: c('black-40');
 }
 
-:-moz-placeholder { /* Firefox 18- */
-   color: c('black-40');
+:-moz-placeholder {
+  // Firefox 18
+  color: c('black-40');
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   color: c('black-40');
+::-moz-placeholder {
+  // Firefox 19+
+  color: c('black-40');
 }
 
 :-ms-input-placeholder {
-   color: c('black-40');
+  color: c('black-40');
 }
+/* styleline-enable */

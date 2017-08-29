@@ -8,6 +8,7 @@ const inlineJS = () => {
         .src(pgk.inlineJS)
         .pipe($.uglify())
         .pipe($.rename({ suffix: '.min'}))
+        .pipe(gulp.dest(`${pgk.src.templates}_inlineJS/`))
         .pipe(gulp.dest(`${pgk.dist.markup}_inlineJS/`))
 }
 

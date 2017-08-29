@@ -26,45 +26,11 @@
 <html class="" lang="de">
 <head>
 
-  {# -- LOADS CSS -- #}
-  <script>
-    {{ source('_inlineJS/loadCSS.min.js') }}
-    {{ source('_inlineJS/cssrelpreload.min.js') }}
-  </script>
-
-  {# -- WEBFONTS HERE -- #}
-
-  {# -- CRITICAL CSS -- #}
-  {% set cacheVal = getCookie('critical-css') %}
-  {% if not cacheVal or craft.config.devMode %}
-    {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
-    {% block appInlineCSS %}
-    {% endblock %}
-
-  {% if craft.cacheBuster is defined %}
-  <link rel="preload" href="{{ cacheBuster( '/assets/css/app.min.css') }}" as="style" onload="this.rel='stylesheet'">
-    <noscript>
-      <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
-    </noscript>
-  {% else %}
-  <link rel="preload" href="{{ rootUrl }}assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css"></noscript>
-  {% endif %}
-
-  {% else %}
-    <script>
-      document.documentElement.className += " wf-loaded"
-    </script>
-
-  {% if craft.cacheBuster is defined %}
-  <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
-  {% else %}
-  <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
-  {% endif %}
-  {% endif %}
-
   {# -- CHECK JS -- #}
   {% include '_partials/global/_checkJS.html' %}
+
+  {# -- CSS Part -- #}
+  {% include '_partials/header/_css-part.html' %}
 
   {# -- META -- #}
   {% include '_partials/header/_meta.html' %}
@@ -80,7 +46,7 @@
 
   {% block siteHeader %}{% endblock %}
 </head>
-{% minify %}
+{% minify html %}
 <body id="home" class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
 
 <div class="m-appWrapper">

@@ -15,7 +15,6 @@ const addSystemFiles = require('../../package/_sytemFiles')
 const addInlineJSFiles = require('../../package/_inlineJS')
 const addJquerySettings = require('../../package/_jquery')
 const addMinifyImagesSettings = require('../../package/_minify')
-const addModernizrSettings = require('../../package/_modernizr')
 const addNPMScripts = require('../../package/_scripts')
 const addVueJS = require('../../package/_vueJS')
 
@@ -53,7 +52,7 @@ const writePackageJSON = () => {
                 } else if (context.props.projectType === 'prototyping') {
                     addDistPathsPrototyping({pkg})
                 } else if (context.props.projectType === 'wordpress') {
-                    addDistPathsWordpress({pkg})
+                    addDistPathsWordpress({pkg}, context)
                 }
 
                 // Files
@@ -66,7 +65,7 @@ const writePackageJSON = () => {
                 addEngines({pkg})
 
                 // If jQuery True
-                if (context.props.projectJquery === true) {
+                if (context.props.projectjQuery === true) {
                     addJquerySettings({pkg})
                 }
 
@@ -78,7 +77,6 @@ const writePackageJSON = () => {
                 // Project Settings
                 addFaviconsSettings({pkg}, context)
                 addMinifyImagesSettings({pkg})
-                addModernizrSettings({pkg})
                 addCriticalCSSSettings({pkg})
                 addCSSSettings({pkg})
                 addBrowserlistSettings({pkg})

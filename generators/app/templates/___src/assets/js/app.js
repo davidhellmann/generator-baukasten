@@ -1,18 +1,17 @@
 /**
  * Bundle Scripts
  */
-<% if (projectVue) { %>
-// Vue Stuff
-// import './vue/vueExample'
-<% } %>
 
 // Polyfills
 import 'babel-polyfill'
 import 'svgxuse'
-import '../../../node_modules/objectFitPolyfill/src/objectFitPolyfill'
+import 'objectFitPolyfill/src/objectFitPolyfill'
 
 // Lib
 import './lib/bling'
+
+// CSS Import
+import '../css/app.scss'
 
 // Scripts
 import './scripts/example'
@@ -35,13 +34,23 @@ import '../../templates/_modules/imageGallery/_main'
 import '../../templates/_templates/toggleContent/_main'
 <% } %>
 
+// Vue Stuff
+<% if (projectVue) { %>
+    const vueElement = document.querySelectorAll('#js-vue')
+// Beispiel für Lazy Loading von Chunks
+    if (vueElement) {
+        import('./vue/vueExample')
+    }
+<% } %>
+
 // Debugging
 const _debug = false
 window._debug = _debug
 
 if (_debug === true) {
+    /* eslint-disable no-console */
     console.log('Debugging is: true')
+    /* eslint-enable */
     const html = document.getElementsByTagName('html')[0]
     html.classList.add('dev', 'debug')
 }
-

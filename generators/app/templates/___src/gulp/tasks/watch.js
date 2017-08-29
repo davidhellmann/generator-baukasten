@@ -12,10 +12,6 @@ const watchTask = () => {
   gulp.watch(`${pkg.src.dataDir}**/*.json`, ['compile:templates'])
   <% } %>
 
-  // watch sass
-  gulp.watch(`${pkg.src.css}**/*.scss`, ['compile:css'])
-  gulp.watch(`${pkg.src.templates}**/*.scss`, ['compile:css'])
-
   // watch images
   gulp.watch(`${pkg.src.images.bitmap.base}**/*.{png,jpeg,jpg,gif,webp}`, ['copy:images'])
 

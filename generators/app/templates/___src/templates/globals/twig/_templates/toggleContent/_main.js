@@ -2,57 +2,47 @@
  * Toogle Content
  */
 
-import Velocity from 'velocity-animate'
-
 // Config
 const cfg = {
     body: document.body,
-    triggers: Array.from(document.querySelectorAll('.js-toggleContent')),
-    triggersTop: Array.from(document.querySelectorAll('.js-toggleContent--top')),
-    up: 'slideUp',
-    down: 'slideDown',
+    triggers: [...document.querySelectorAll('.js-toggleContent')],
+    triggersTop: [...document.querySelectorAll('.js-toggleContent--top')],
     status: 'is-open'
+}
+
+const toggleContent = (event) => {
+    event.preventDefault()
+
+    const target = event.currentTarget
+    const contentBottom = target.nextElementSibling
+    const contentTop = target.previousElementSibling
+    const textOpen = target.getAttribute('data-text-open')
+    const textclosed = target.getAttribute('data-text-closed')
+    const textHolder = target.querySelector('.js-textHolder')
+
+    let content
+    if (target.classList.contains('js-toggleContent')) {
+        content = contentBottom
+    } else {
+        content = contentTop
+    }
+
+    if (!target.classList.contains(cfg.status)) {
+        target.classList.add(cfg.status)
+        content.style.display = 'block'
+        textHolder.innerHTML = textOpen
+    } else {
+        target.classList.remove(cfg.status)
+        textHolder.innerHTML = textclosed
+        content.style.display = 'none'
+    }
 }
 
 const init = () => {
     const mergedTriggers = cfg.triggers.concat(cfg.triggersTop)
 
     mergedTriggers.forEach((trigger) => {
-        trigger.addEventListener('click', function(event) {
-            event.preventDefault()
-            const contentBottom = this.nextElementSibling
-            const contentTop = this.previousElementSibling
-            const textOpen = this.getAttribute('data-text-open')
-            const textclosed = this.getAttribute('data-text-closed')
-            const textHolder = this.querySelector('.js-textHolder')
-
-            let content
-            if(this.classList.contains('js-toggleContent')) {
-                content = contentBottom
-            } else {
-                content = contentTop
-            }
-
-            if (!this.classList.contains(cfg.status)) {
-                this.classList.add(cfg.status)
-                Velocity(content, cfg.down, {
-                    duration: 250,
-                    complete() {
-                        content.classList.add('fadeIn')
-                        textHolder.innerHTML=textOpen
-                    },
-                }, 'easeOutCubic')
-            } else {
-                this.classList.remove(cfg.status)
-                Velocity(content, cfg.up, {
-                    duration: 125,
-                    complete() {
-                        content.classList.remove('fadeIn')
-                        textHolder.innerHTML=textclosed
-                    },
-                }, 'easeOutCubic')
-            }
-        })
+        trigger.addEventListener('click', toggleContent)
     })
 }
 

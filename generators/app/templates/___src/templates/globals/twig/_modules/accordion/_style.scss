@@ -1,5 +1,5 @@
 /* -------------------------------------------------- */
-/*    Accordion Label
+/*    Accordion
 /* -------------------------------------------------- */
 
 .m-accordion {
@@ -94,16 +94,5 @@
     display: none;
     @include make-section-padding(1);
     @include clearfix();
-
-    .o-row {
-      opacity: 0;
-    }
-
-    &.fadeIn {
-      .o-row {
-        opacity: 1;
-        transition: opacity 0.5s ease('out-cubic');
-      }
-    }
   }
 }

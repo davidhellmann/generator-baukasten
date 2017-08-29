@@ -6,9 +6,6 @@ const initTask = (cb) => {
         [
             'compile:templates',
             'copy:systemFiles',
-            'modernizr',
-            'compile:js',
-            'compile:css',
             'copy:fonts',
             'create:inlineJS',
             'copy:images',

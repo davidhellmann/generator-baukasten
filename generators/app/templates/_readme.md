@@ -65,6 +65,7 @@ We use [Buddy](https://buddy.works/) (or something similar) for Deploying.
 ```shell
 npm start
 npm dev
+npm dev:single
 <% if (projectType === 'craftCMS3' ) { %>npm update<% } %>
 npm build
 npm module
@@ -80,12 +81,12 @@ npm copy:svg
 npm copy:svg-single
 npm create:svg-sprite
 npm copy:systemFiles
-npm compile:css
-npm compile:js
 npm compile:templates
 npm create:criticalcss
 npm create:favicons
 npm create:inlineJS
+npm webpack
+npm webpack:analyze
 ```
 
 All scripts are also executable with YARN.

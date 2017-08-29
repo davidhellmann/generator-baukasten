@@ -1,44 +1,33 @@
-/* -------------------------------------------------- */
-/*    Accordion Label
- /* -------------------------------------------------- */
-
 /**
  * Accordion
  */
 
-import Velocity from 'velocity-animate'
-
 // Config
 const cfg = {
     body: document.body,
-    triggers: Array.from(document.querySelectorAll('.js-accordionTrigger')),
-    up: 'slideUp',
-    down: 'slideDown',
+    triggers: [...document.querySelectorAll('.js-accordionTrigger')],
     status: 'is-open'
 }
+
+const toggleContent = (event) => {
+    event.preventDefault()
+    const target = event.currentTarget
+    const accContent = target.nextElementSibling
+
+    if (!target.classList.contains(cfg.status)) {
+        target.classList.add(cfg.status)
+        accContent.style.display = 'block'
+    } else {
+        target.classList.remove(cfg.status)
+        accContent.style.display = 'none'
+    }
+}
+
 const init = () => {
     cfg.triggers.forEach((trigger) => {
-        trigger.addEventListener('click', function(event) {
-            event.preventDefault()
-            const accContent = this.nextElementSibling
-            if (!this.classList.contains(cfg.status)) {
-                this.classList.add(cfg.status)
-                Velocity(accContent, cfg.down, {
-                    duration: 250,
-                    complete() {
-                        accContent.classList.add('fadeIn')
-                    },
-                }, 'easeOutCubic')
-            } else {
-                this.classList.remove(cfg.status)
-                Velocity(accContent, cfg.up, {
-                    duration: 125,
-                    complete() {
-                        accContent.classList.remove('fadeIn')
-                    },
-                }, 'easeOutCubic')
-            }
-        })
+        trigger.addEventListener('click', toggleContent)
     })
 }
+
 init()
+

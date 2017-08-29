@@ -2,6 +2,9 @@
 /*    Objects
 /* -------------------------------------------------- */
 
+// DEV STUFF
+@import '___objects/objects.gridOverlay';
+
 // @import '___objects/objects.box';
 // @import '___objects/objects.crop';
 // @import '___objects/objects.flag';
@@ -17,7 +20,4 @@
 // @import '___objects/objects.wrapper';
 
 // Templates
-@import '../../templates/_templates/mainAside/style';
-
-// DEV STUFF
-@import '___objects/objects.gridOverlay';
+<% if (projectType !== 'wordpress' ) { %>@import '../../templates/_templates/mainAside/style';<% } %>

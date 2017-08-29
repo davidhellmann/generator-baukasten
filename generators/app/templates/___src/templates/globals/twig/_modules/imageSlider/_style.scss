@@ -2,7 +2,7 @@
 /*    Image Slider
 /* -------------------------------------------------- */
 
-@import '../../../../assets/css/vendors/flickity/flickity';
+@import '~flickity/css/flickity.css';
 
 .m-imageSlider {
   $root: &;
