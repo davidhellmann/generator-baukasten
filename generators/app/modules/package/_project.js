@@ -17,7 +17,7 @@ function addProjectSettings(files = {}, context) {
             critical: proxyURL
         },
         projectType: context.props.projectType,
-        projectVresion: context.props.projectVersion
+        projectVersion: context.props.projectVersion
     })
 }
 
