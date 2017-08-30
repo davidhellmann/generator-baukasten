@@ -6,7 +6,7 @@ function addBrowserSyncSettings(files = {}, context) {
     let openBrowser = true
     let proxyURL = false
 
-    if (proxyURL !== false) {
+    if (context.props.projectProxy !== 'false') {
         openBrowser = true
         proxyURL = `http://${context.props.projectProxy}/`
     }

@@ -5,7 +5,7 @@ function addProjectSettings(files = {}, context) {
     // Set BrowserSync Settings
     let proxyURL = false
 
-    if (proxyURL !== false) {
+    if (context.props.projectProxy !== 'false') {
         proxyURL = `http://${context.props.projectProxy}/`
     }
 
