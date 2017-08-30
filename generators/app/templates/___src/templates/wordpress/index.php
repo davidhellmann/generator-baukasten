@@ -3,9 +3,7 @@
 <div class="m-appContent">
 
     <% if (projectVue) { %>
-    <div>
-        <div id="js-vue"></div>
-    </div>
+    <div id="js-vue"></div>
     <% } %>
 
   <?php if (have_posts()) :
