@@ -4,4 +4,5 @@ User-agent: *
 Disallow: /config/
 Disallow: /craft/
 Disallow: /vendor/
+Disallow: /plugins/
 Disallow: /templates/
