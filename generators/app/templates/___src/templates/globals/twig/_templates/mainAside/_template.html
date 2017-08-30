@@ -1,7 +1,7 @@
 {#
-    {% embed '_layouts/_twoCols.html' with {
+    {% embed '_templates/mainAside/_template.html' with {
       options: {
-        modiefiers: ['projectDetail'],
+        modiefiers: ['YOUR_MODIFIER'],
         head: true,
         main: true,
         aside: true
@@ -25,6 +25,7 @@
 {% set defaults = {
   classname: 'm-mainAside',
   modifiers: [],
+  head: true,
   main: null,
   aside: null
 } %}
@@ -39,10 +40,19 @@
 {% if options.main %}
   <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
     <div class="{{ options.classname ~ '__inner' }}">
+
+      {% if options.head %}
+        <div class="{{ options.classname ~ '__head' }}">
+          {% block head %}
+            Head…
+          {% endblock %}
+        </div>
+      {% endif %}
+
       {% if options.main %}
         <div class="{{ options.classname ~ '__main' }}">
           {% block main %}
-            Main
+            Main…
           {% endblock %}
         </div>
       {% endif %}
