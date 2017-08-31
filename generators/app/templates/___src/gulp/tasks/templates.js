@@ -30,9 +30,7 @@ const templates = () => {
 
       return gulp
         .src(`${pkg.src.templates}**/[^_]*.{html,twig,rss}`)
-        <% if (projectType === 'prototyping' ) { %>
         .pipe(data(getDataSingle()))
-        <% } %>
         .pipe($.plumber())
         .pipe(twig())
         .on('error', errorHandler)
@@ -42,9 +40,9 @@ const templates = () => {
         .pipe(gulp.dest(pkg.dist.markup))
 
   <% } else { %>
-
-      return gulp
-        .src(`${pkg.src.templates}**/*.*`)
+    const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
+    return gulp
+        .src([`!${pkg.src.templates}${inject_folder}/**`, `${pkg.src.templates}**/*.*`])
         .pipe(gulp.dest(pkg.dist.markup))
 
   <% } %>
