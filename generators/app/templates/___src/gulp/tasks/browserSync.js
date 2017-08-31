@@ -12,10 +12,32 @@ const argv = yargs.argv
 const bundler = webpack(webpackSettings)
 
 const browserSyncTask = () => {
-    const browserSyncWatch = [
-        `${pkg.dist.markup}**/*.{html,php,twig,rss}`,
-        `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`,
-    ];
+    const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
+    const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
+    const fileName = <% if (projectType === 'wordpress' ) { %> '_webpack' <% } else { %> 'webpack' <% } %>
+    const browserSyncWatch = {
+        files: [{
+            match: [<% if (projectType !== 'prototyping' ) { %>
+                `!${pkg.dist.markup}${inject_folder}/${fileName}-header${fileExtension}`,
+                `!${pkg.dist.markup}${inject_folder}/${fileName}-scripts${fileExtension}`,<% } %>
+                `${pkg.dist.markup}**/*.{html,php,twig,rss}`,
+                `${pkg.dist.css}**/*.{css}`,
+                `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`
+            ],
+            fn: function(event, file) {
+                console.log(file);
+                if (event === 'change') {
+                    browserSync.reload('*.css')
+                }
+            }<% if (projectType !== 'prototyping' ) { %>,
+            options: {
+                ignore: [
+                    `${pkg.dist.markup}${inject_folder}/${fileName}-header${fileExtension}`,
+                    `${pkg.dist.markup}${inject_folder}/${fileName}-scripts${fileExtension}`
+                ]
+            }<% } %>
+        }]
+    }
 
     // Build a condition when Proxy is active
     let bsProxy,
