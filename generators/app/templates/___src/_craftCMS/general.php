@@ -14,7 +14,7 @@ return array(
     '*' => [
 
         // Whether "index.php" should be visible in URLs (true, false, "auto")
-        'omitScriptNameInUrls' => 'true',
+        'omitScriptNameInUrls' => true,
         'usePathInfo' => true,
         'cacheDuration' => false,
         'generateTransformsBeforePageLoad' => true,
