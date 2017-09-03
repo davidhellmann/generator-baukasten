@@ -114,7 +114,13 @@ class SeomaticService extends BaseApplicationComponent
         if ($templatePath)
             {
                 try {
+                    if ($metaVars) {
+                        $this->sanitizeMetaVars($metaVars);
                         $htmlText = craft()->templates->render($templatePath, $metaVars);
+                    }
+                    else
+                        $htmlText = craft()->templates->render($templatePath);
+
                 } catch (\Exception $e) {
                     $htmlText = 'Error rendering template in render(): ' . $e->getMessage();
                     SeomaticPlugin::log($htmlText, LogLevel::Error);
@@ -816,6 +822,9 @@ class SeomaticService extends BaseApplicationComponent
                 $meta['seoFacebookImageId'] = $meta['seoImageId'];
 
             $meta['canonicalUrl'] =  $this->getFullyQualifiedUrl($entryMetaUrl);
+            if (!empty($entryMeta->canonicalUrlOverride)) {
+                $meta['canonicalUrl'] =  $this->getFullyQualifiedUrl($entryMeta->canonicalUrlOverride);
+            }
 
             $meta['twitterCardType'] = $entryMeta->twitterCardType;
             if (!$meta['twitterCardType'])
@@ -1012,7 +1021,8 @@ class SeomaticService extends BaseApplicationComponent
                 $openGraphArticle = array();
                 $openGraphArticle['author'] = $helper['facebookUrl'];
                 $openGraphArticle['publisher'] = $helper['facebookUrl'];
-                $openGraphArticle['tag'] = array_map('trim', explode(',', $meta['seoKeywords']));
+                if ($meta['seoKeywords'])
+                    $openGraphArticle['tag'] = array_map('trim', explode(',', $meta['seoKeywords']));
 
     /* -- If an element was injected into the current template, scrape it for attribuates */
 
@@ -1104,8 +1114,10 @@ class SeomaticService extends BaseApplicationComponent
 
 /* -- If this is a 404, set the canonicalUrl to nothing */
 
-        if (http_response_code() == 404) {
-            $meta['canonicalUrl'] = "";
+        if (function_exists('http_response_code')) {
+            if (http_response_code() == 404) {
+                $meta['canonicalUrl'] = "";
+            }
         }
 
 /* -- Merge with the global override config settings */
@@ -3235,7 +3247,7 @@ public function getFullyQualifiedUrl($url)
 
 /* -- remove excess whitespace */
 
-        $text = preg_replace('/\s{2,}/', ' ', $text);
+        $text = preg_replace('/\s{2,}/u', ' ', $text);
 
         $text = html_entity_decode($text);
         return $text;

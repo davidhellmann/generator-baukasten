@@ -1,5 +1,26 @@
 # SEOmatic Changelog
 
+## 1.1.50 - 2017.08.10
+### Added
+* Add the ability to override the canonicalUrl from an SEOmatic Meta FieldType
+
+### Changed
+* Updated the documentation
+
+## 1.1.49 - 2017.08.02
+### Changed
+* Don't render "article:tag" if there are no keywords
+* Fix issue when passing a string containing the "à" character to _cleanupText()
+* Changed `referrer` from `always` to `no-referrer-when-downgrade`
+* Fixed an issue where meta vars were not sanitized with a custom template passed via `seomaticTemplatePath`
+* Fixed a cosmetic bug where the SEOmatic FieldType settings didn't display the OpenGraph Image Source Changeable properly
+* Fixed an issue with template metas on Windows
+
+## 1.1.48 - 2017.06.18
+### Changed
+* Fixed an issue on old versions of PHP < PHP 5.4 with `http_response_code()`
+* Added a safer default `robots.txt` template
+
 ## 1.1.47 - 2017.06.08
 ### Changed
 * Fixed an issue with Live Preview and a previous or draft version of an entry
