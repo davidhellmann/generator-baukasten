@@ -23,7 +23,7 @@
 
 {# -- Modul -- #}
 {% if options.image %}
-  {% set position = options.bgPosition == 'focalpoint' ? options.image.settingsFocalPoint : options.bgPositio %}
+  {% set position = options.bgPosition == 'focalpoint' ? options.image.settingsFocalPoint : options.bgPosition %}
   <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
     <div class="{{ options.classname ~ '__inner' }}">
 
