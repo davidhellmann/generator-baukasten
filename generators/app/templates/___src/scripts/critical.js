@@ -6,9 +6,10 @@ const pkg = require('../package.json')
 
 <% if (projectType === 'craftCMS' || projectType === 'craftCMS3' ) { %>
 // Process data in an array synchronously, moving onto the n+1 item only after the nth item callback
-    function doSynchronousLoop(data, processData, done) {
+    const doSynchronousLoop = (data, processData, done) => {
         if (data.length > 0) {
             const loop = (data, i, processData, done) => {
+                console.log(data, i, processData, done)
                 processData(data[i], i, () => {
                     if (++i < data.length) {
                         loop(data, i, processData, done)
@@ -23,7 +24,7 @@ const pkg = require('../package.json')
         }
     }
 
-    function processCriticalCss(element, i, callback) {
+    const createCriticalCSS = (element, i, callback) => {
         const url = argv.url || pkg.urls.critical
         const criticalSrc = `${url}${element.url}`
         const BASE_PATH = path.resolve(__dirname, '..')
@@ -39,8 +40,8 @@ const pkg = require('../package.json')
             width: 1440,
             height: 1280
         }).then((output) => {
-            console.log(`-> Critical CSS generated!`)
-            console.log(output)
+            console.log(`-> Critical CSS generated: ${element.template}_critical.min.css`)
+            callback()
         }).error((err) => {
             console.log(`-> Something goes wrong!`)
             console.log(err)
@@ -48,14 +49,14 @@ const pkg = require('../package.json')
     }
 
 
-    doSynchronousLoop(pkg.criticalCSS, processCriticalCss, () => {
+    doSynchronousLoop(pkg.criticalCSS, createCriticalCSS, () => {
         console.log('Done')
     })
 
 <% } else { %>
 
 // critical css task
-    const criticalcss = () => {
+    const createCriticalCSS = () => {
         const url = argv.url || pkg.urls.critical
         const extension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
         const criticalSrc = `${url}index${extension}`
@@ -80,6 +81,6 @@ const pkg = require('../package.json')
         })
     }
 
-    criticalcss()
+    createCriticalCSS()
 
 <% } %>
