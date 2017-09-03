@@ -29,7 +29,7 @@ const pkg = require('../package.json')
         const criticalSrc = `${url}${element.url}`
         const BASE_PATH = path.resolve(__dirname, '..')
         const criticalDest = `${BASE_PATH}/${pkg.dist.markup}${element.template}_critical.min.css`
-        console.log(`-> Generating critical CSS: ${chalk.cyan(criticalSrc)} -> ${chalk.magenta(criticalDest)}`)
+        console.log(chalk`-> Generating critical CSS: {cyan ${criticalSrc}} -> {magenta ${criticalDest}}`)
 
         critical.generate({
             src: criticalSrc,
@@ -40,17 +40,16 @@ const pkg = require('../package.json')
             width: 1440,
             height: 1280
         }).then((output) => {
-            console.log(`-> Critical CSS generated: ${element.template}_critical.min.css`)
+            console.log(chalk`-> Critical CSS generated: {green ${element.template}_critical.min.css}`)
             callback()
         }).error((err) => {
-            console.log(`-> Something goes wrong!`)
-            console.log(err)
+            console.log(chalk`-> Something goes wrong {red ${err}}`)
         })
     }
 
 
     doSynchronousLoop(pkg.criticalCSS, createCriticalCSS, () => {
-        console.log('Done')
+        console.log(chalk`{green Done!}`)
     })
 
 <% } else { %>
@@ -73,11 +72,11 @@ const pkg = require('../package.json')
             width: 1440,
             height: 1280
         }).then((output) => {
-            console.log(`-> Critical CSS generated!`)
-            console.log(output)
+            console.log(chalk`-> Critical CSS generated: {green ${element.template}_critical.min.css}`)
+            console.log(chalk`{yellow ${output}}`)
+            callback()
         }).error((err) => {
-            console.log(`-> Something goes wrong!`)
-            console.log(err)
+            console.log(chalk`-> Something goes wrong {red ${err}}`)
         })
     }
 

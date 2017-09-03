@@ -1,4 +1,5 @@
 import browserSync from 'browser-sync'
+import chalk from 'chalk'
 import gulp from 'gulp'
 import yargs from 'yargs'
 import webpack from 'webpack'
@@ -83,7 +84,7 @@ const browserSyncTask = () => {
                 `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`
             ],
             fn: function(event, file) {
-                console.log(`Event ${event}: ${file}`)
+                console.log(chalk`-> Event: {cyan ${event}}: {magenta ${file}}`)
                 if (event === 'change' && file.includes('.css')) {
                     browserSync.reload('*.css')
                 }

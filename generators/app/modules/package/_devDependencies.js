@@ -22,7 +22,7 @@ function addDevDependencies(files = {}) {
             'browser-sync': '^2.11.8',
             'browserify': '^14.0.0',
             'browserify-shim': '^3.8.12',
-            'chalk': '^1.1.3',
+            'chalk': '^2.0.0',
             'clean-webpack-plugin': '^0.1.16',
             'critical': '^0.8.4',
             'cross-env': '^5.0.5',
