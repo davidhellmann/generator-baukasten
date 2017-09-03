@@ -78,7 +78,7 @@
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
 
     {# If the server has support for WebP, create transforms #}
-    {% if craft.imager.serverSupportsWebp() and if options.webp %}
+    {% if craft.imager.serverSupportsWebp() and options.webp %}
       {% set format = { format: 'webp' } %}
       {% set imageSettingsWebP = imageSettings|merge(format) %}
 
@@ -109,7 +109,7 @@
             style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%;">
       <picture>
 
-        {% if craft.imager.serverSupportsWebp() and if options.webp %}
+        {% if craft.imager.serverSupportsWebp() and options.webp %}
           <source sizes="auto" srcset="{{ craft.imager.srcset(imagesWebP) }}" type="image/webp">
         {% endif %}
 
