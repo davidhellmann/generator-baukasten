@@ -98,7 +98,7 @@ const browserSyncTask = () => {
                     `${pkg.dist.markup}${inject_folder}/${fileName}-header${fileExtension}`,
                     `${pkg.dist.markup}${inject_folder}/${fileName}-scripts${fileExtension}`
                 ]
-            }
+            }<% } %>
         }]
     })
 }
