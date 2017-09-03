@@ -19,7 +19,6 @@ npm copy:svg-single
 npm create:svg-sprite
 npm copy:systemFiles
 npm compile:templates
-npm create:criticalcss
 npm create:favicons
 npm create:inlineJS
 npm webpack

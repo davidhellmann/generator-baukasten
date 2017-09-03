@@ -89,48 +89,50 @@ There are some other Tasks there…
 
 ```
 // NPM RUN / YARN COMMANDS
-"start": "gulp init",
-"dev": "gulp",
-"build": "gulp build",
-"clean:dist": "gulp clean:dist",
-"clean:templates": "gulp clean:templates",
-"clean:images": "gulp clean:images",
-"clean:js": "gulp clean:js",
-"clean:css": "gulp clean:css",
-"copy:fonts": "gulp copy:fonts",
-"copy:images": "gulp copy:images",
-"copy:svg": "gulp copy:svg",
-"copy:svg-single": "gulp copy:svg-single",
-"create:svg-sprite": "gulp create:svg-sprite",
-"copy:systemFiles": "gulp copy:systemFiles",
-"compile:css": "gulp compile:css",
-"compile:js": "gulp compile:js",
-"compile:templates": "gulp compile:templates",
-"create:criticalcss": "gulp create:criticalcss",
-"create:favicons": "gulp create:favicons",
-"create:inlineJS": "gulp create:inlineJS"
+npm start
+npm dev
+npm dev:single
+npm build
+npm module
+npm critical
+npm clean:dist
+npm clean:templates
+npm clean:images
+npm clean:js
+npm clean:css
+npm copy:fonts
+npm copy:images
+npm copy:svg
+npm copy:svg-single
+npm create:svg-sprite
+npm copy:systemFiles
+npm compile:templates
+npm create:favicons
+npm create:inlineJS
+npm webpack
+npm webpack:analyze
 ```
 
 ```
 // Clean Tasks
 // Clean the specific folder in the "___dist" dir
-gulp clean:templates
-gulp clean:css
-gulp clean:js
-gulp clean:images
+npm clean:templates
+npm clean:css
+npm clean:js
+npm clean:images
 ```
 
 ```
 // Main Tasks
 // All this are triggered within "gulp init" & "gulp build" task.
 // Some of this are triggered within the "gulp" task.
-gulp compile:templates
-gulp create:inlineJS,
-gulp copy:systemFiles
-gulp copy:fonts
-gulp copy:images
-gulp copy:svg-single
-gulp create:svg-sprite
+npm compile:templates
+npm create:inlineJS,
+npm copy:systemFiles
+npm copy:fonts
+npm copy:images
+npm copy:svg-single
+npm create:svg-sprite
 ```
 
 ```
