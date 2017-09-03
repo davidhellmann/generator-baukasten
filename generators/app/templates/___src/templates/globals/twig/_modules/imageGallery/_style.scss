@@ -1,8 +1,9 @@
 /* -------------------------------------------------- */
 /*    Image Gallery
 /* -------------------------------------------------- */
+
 @import '~photoswipe/src/css/main';
-@import '~photoswipe/src/css/default-skin/default-skin';
+@import '../../assets/css/vendors/photoswipe/defaultSkin';
 
 .m-imageGallery {
   $root: &;
@@ -12,10 +13,12 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    @include make-vr(-1/2);
   }
 
   &__item {
     @include make-col(6);
+    @include make-vr(2);
     display: flex;
     align-items: stretch;
 

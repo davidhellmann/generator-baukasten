@@ -95,8 +95,8 @@ const SCSS_LOADERS = [
         options: {
             autoprefixer: false,
             sourceMap: true,
-            importLoaders: 3,
-            url: false
+            importLoaders: 2,
+            url: true
         }
     },
     {
@@ -121,7 +121,7 @@ const CSS_LOADERS = [
             autoprefixer: false,
             sourceMap: true,
             importLoaders: 2,
-            url: false
+            url: true
         }
     },
     {
@@ -224,8 +224,7 @@ module.exports = {
                         {
                             loader: 'style-loader',
                             options: {
-                                sourceMap: true,
-                                convertToAbsoluteUrls: true
+                                sourceMap: true
                             }
                         },
                         ...SCSS_LOADERS
@@ -248,8 +247,7 @@ module.exports = {
                         {
                             loader: 'style-loader',
                             options: {
-                                sourceMap: true,
-                                convertToAbsoluteUrls: true
+                                sourceMap: true
                             }
                         },
                         ...CSS_LOADERS
@@ -263,9 +261,12 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: (path) => {
-                        console.log(path);
-                    }
+                    name: (filePath) => {
+                        const filename = path.basename(filePath)
+                        const folder = path.relative(config.src.images.base, filePath).replace(filename, '')
+                        return `assets/${folder}[name].[hash:4].[ext]`
+                    },
+                    publicPath: '../../'
                 }
             },
             {
@@ -282,7 +283,8 @@ module.exports = {
                     mimetype: 'application/font-woff',
 
                     // Output below fonts directory
-                    name: 'assets/fonts/[name].[ext]'
+                    name: 'assets/fonts/[name].[ext]',
+                    publicPath: '../../'
                 }
             },
         ]
