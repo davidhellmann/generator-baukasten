@@ -5,6 +5,6 @@ require('babel-core/register')({
 const requireDir = require('require-dir')
 
 // Define Global Vars
-global.checkChanged = false
+global.checkChanged = true
 
 requireDir('./gulp/tasks', { recurse: true })
