@@ -9,43 +9,43 @@
   ], true) }}
 #}
 
-{% macro socialLinks(networks, icons, label) %}
-  <ul class="socialLinks__list">
-    {# Loop for each network #}
-    {% set icons = icons|default(false) %}
-    {% set label = label|default(false) %}
-    {% for network in networks %}
-      {# Loop through all networks #}
-      {% for sn in socialNetworks.socialLinks %}
-        {% if sn.linkText|lower == network %}
-          <li class="socialLinks__item  socialLinks__item--{{ sn.linkText|lower }}">
-            <a class="socialLinks__link"
-               href="{{ sn.customLink.url }}" {{ sn.customLink.target ? ' target="_blank"' }}>
+{% macro socialNetworks(options) %}
+  {% set defaults = {
+    classname: 'm-socialNetworks',
+    networks: [],
+    label: null,
+    target: true
+  } %}
 
-              {% if icons == true and label == true %}
+  {% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+    {% set options = defaults %}
+  {% endif %}
 
-                <svg class="m-svgSprite  m-svgSprite--icon_{{ sn.linkText|lower }}" viewbox="0 0 48 48">
-                  <use xlink:href="/assets/images/svg/sprite/sprite.svg#icon_{{ sn.linkText|lower }}"></use>
-                </svg>
-                <span class="socialLinks__label">{{ sn.linkText }}</span>
+  {% if options.networks %}
+    <div class="o-col  {{ options.classname }}">
+      <div class="o-row  {{ options.classname ~ '__inner' }}">
+        {% set socialNetworks = socialNetworks.globalSocialNetworks %}
+        {% set networks = options.networks %}
 
-              {% elseif icons == true %}
+        {% for socialNetwork in socialNetworks %}
+          {% if socialNetwork.networkName|lower in networks %}
 
-                <svg class="m-svgSprite  m-svgSprite--icon_{{ sn.linkText|lower }}" viewbox="0 0 48 48">
-                  <use xlink:href="/assets/images/svg/sprite/sprite.svg#icon_{{ sn.linkText|lower }}"></use>
-                </svg>
-
-              {% else %}
-
-                {{ sn.linkText }}
-
+            <a class="{{ options.classname ~ '__link' }}"
+               href="{{ socialNetwork.profilUrl }}" {{ options.target ? 'target="_blank"' }}>
+              <svg class="m-svgSprite  m-svgSprite--icon_{{ socialNetwork.networkName|lower }}  {{ options.classname ~ '__svg' }}"
+                   viewbox="0 0 48 48">
+                <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ socialNetwork.networkName|lower }}"></use>
+              </svg>
+              {% if options.label %}
+                <div class="{{ options.classname ~ '__label' }}">{{ socialNetwork.networkName|lower }}</div>
               {% endif %}
-
             </a>
-          </li>
-        {% endif %}
-      {% endfor %}
 
-    {% endfor %}
-  </ul>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 {% endmacro %}

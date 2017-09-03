@@ -1,0 +1,30 @@
+/* -------------------------------------------------- */
+/*    Social Networks
+/* -------------------------------------------------- */
+
+.m-socialNetworks {
+  $root: &;
+  @include make-col(12);
+
+  &__inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__link {
+    display: inline-block;
+    @include make-vr(2);
+    @include make-col-padding();
+  }
+
+  &__svg {
+    max-width: 32px;
+    max-height: 32px;
+    fill: c('red');
+  }
+
+  &__label {
+    width: 100%;
+    font-size: fs('ms-2');
+  }
+}
