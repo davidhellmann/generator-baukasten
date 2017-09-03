@@ -155,7 +155,7 @@ module.exports = {
         extensions: ['.js', '.json', '.vue'],
         // hier werden verzeichnisse angegeben in denen gesucht wird wenn du was importierst
         // also import from 'foo/bar' dann schaut er in diesen verzeichnissen wo bar.js sein könnte
-        modules: [resolve('___src'), resolve('node_modules')],
+        modules: [resolve(config.src.base), resolve('node_modules')],
         // aliase sind ne schöne sache du kannst dir hier zum beispiel auch deinen modules pfad einbauen
         // nehmen wir dein Alias hieße Modules, dann kannst du in JS Files
         // einfach import foo from 'Modules/foo/foo'; machen
@@ -163,11 +163,13 @@ module.exports = {
         alias: {
             // alias der auf den Standalone Build geht, falls du Vue ausserhalb von
             // Single File Components nutzen möchtest
-            vue$: 'vue/dist/vue.common.js',
-            Modules: resolve(config.src.modules.base),
+            vue$: 'vue/dist/vue.esm.js',
+            MODULES: resolve(config.src.modules.base),
             CSS: resolve(config.src.css),
             '@': resolve(config.src.base),
             JS: resolve(config.src.js),
+            FONTS: resolve(config.src.fonts),
+            ASSETS: resolve(config.src.images.base)
         }
     },
 
@@ -181,21 +183,21 @@ module.exports = {
                 loader: 'eslint-loader',
                 // damit weiß webpack das dieser loader vor allen anderen kommen soll
                 enforce: 'pre',
-                include: resolve('___src')
+                include: resolve(config.src.base)
             },
 
             // hier dann das eigentliche laden von JS
             {
                 test: /\.js/,
                 loader: 'babel-loader',
-                include: resolve('___src')
+                include: resolve(config.src.base)
             },
 
             // Vue Loader Wohooo
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                include: resolve('___src'),
+                include: resolve(config.src.base),
                 options: {
                     loaders: {
                         scss: ifProduction(
@@ -229,7 +231,7 @@ module.exports = {
                         ...SCSS_LOADERS
                     ]
                 ),
-                include: resolve('___src')
+                include: resolve(config.src.base)
             },
 
             // CSS Loading
@@ -253,7 +255,35 @@ module.exports = {
                         ...CSS_LOADERS
                     ]
                 ),
-                include: resolve('___src')
+                include: resolve(config.src.base)
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                include: resolve(config.src.base),
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: (path) => {
+                        console.log(path);
+                    }
+                }
+            },
+            {
+                // Match woff2 in addition to patterns like .woff?v=1.1.1.
+                test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader',
+                include: resolve(config.src.base),
+                options: {
+                    // Limit at 10k. Above that it emits separate files
+                    limit: 10000,
+
+                    // url-loader sets mimetype if it's passed.
+                    // Without this it derives it from the file extension
+                    mimetype: 'application/font-woff',
+
+                    // Output below fonts directory
+                    name: 'assets/fonts/[name].[ext]'
+                }
             },
         ]
     },
