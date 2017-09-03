@@ -29,6 +29,14 @@
   {# -- CHECK JS -- #}
   {% include '_partials/global/_checkJS.html' %}
 
+  {# -- CRITICAL CSS -- #}
+  {% set cacheVal = getCookie('critical-css') %}
+  {% if not cacheVal or craft.config.devMode %}
+    {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
+    {% block appInlineCSS %}
+    {% endblock %}
+  {% endif %}
+
   {# -- CSS Part -- #}
   {% include '_partials/header/_css-part.html' %}
 
