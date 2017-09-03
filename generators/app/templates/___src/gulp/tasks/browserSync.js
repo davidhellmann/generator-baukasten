@@ -48,6 +48,7 @@ const browserSyncTask = () => {
             webpackDevMiddleware(bundler, {
                 quiet: true,
                 path: webpackSettings.output.path,
+                publicPath: webpackSettings.output.publicPath,
                 stats: {
                     colors: true
                 }
@@ -83,7 +84,7 @@ const browserSyncTask = () => {
                 `${pkg.dist.css}**/*.{css}`,
                 `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`
             ],
-            fn: function(event, file) {
+            fn(event, file) {
                 console.log(chalk`-> Event: {cyan ${event}}: {magenta ${file}}`)
                 if (event === 'change' && file.includes('.css')) {
                     browserSync.reload('*.css')
@@ -97,9 +98,10 @@ const browserSyncTask = () => {
                     `${pkg.dist.markup}${inject_folder}/${fileName}-header${fileExtension}`,
                     `${pkg.dist.markup}${inject_folder}/${fileName}-scripts${fileExtension}`
                 ]
-            }<% } %>
+            }
         }]
     })
+}
 
 gulp.task('browser-sync', browserSyncTask)
 
