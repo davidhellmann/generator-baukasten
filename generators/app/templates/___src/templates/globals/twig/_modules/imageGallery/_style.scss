@@ -12,12 +12,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    @include make-vr(-1/2);
   }
 
   &__item {
     @include make-col(6);
-    @include make-vr(2);
     display: flex;
     align-items: stretch;
 
