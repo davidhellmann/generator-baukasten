@@ -7,10 +7,12 @@
 
   &__inner {
     @include make-row();
+    @include make-vr(-1/2);
   }
 
   &__figure {
-    @include make-col();
+    @include make-col(6);
+    @include make-vr(2);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -21,6 +23,7 @@
   .m-image {
     width: 100%;
     height: auto;
+    margin-top: 0;
   }
 
   &__caption {

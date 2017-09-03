@@ -1,8 +1,8 @@
 /* -------------------------------------------------- */
 /*    Image Gallery
 /* -------------------------------------------------- */
-@import '../../../../node_modules/photoswipe/src/css/main';
-@import '../../../../node_modules/photoswipe/src/css/default-skin/default-skin';
+@import '~photoswipe/src/css/main';
+@import '~photoswipe/src/css/default-skin/default-skin';
 
 .m-imageGallery {
   $root: &;
@@ -12,16 +12,17 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    @include make-vr(-1/2);
   }
 
   &__item {
-    @include make-col();
+    @include make-col(6);
+    @include make-vr(2);
     display: flex;
     align-items: stretch;
-    width: calc(100% / 2);
 
     @include media('>=s') {
-      width: calc(100% / 4);
+      @include make-col(3);
     }
   }
 
@@ -55,7 +56,7 @@
   &--columns-6 {
     @include media('>=s') {
       #{$root}__item {
-        @include make-col(3);
+        @include make-col(4);
       }
     }
 

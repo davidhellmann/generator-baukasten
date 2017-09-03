@@ -8,17 +8,17 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'm-imageGrid',
-  modifiers: [],
-  images: null,
-  ratio: null,
-  caption: null
+classname: 'm-imageGrid',
+modifiers: [],
+images: null,
+ratio: null,
+caption: null
 } %}
 
 {% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-    {% set options = defaults %}
+  {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
@@ -29,16 +29,16 @@
     {% switch options.ratio %}
 
     {% case "landscape" %}
-      {% set ratio = '16:10' %}
+    {% set ratio = '16:10' %}
 
     {% case "square" %}
-      {% set ratio = '1:1' %}
+    {% set ratio = '1:1' %}
 
     {% case "portrait" %}
-      {% set ratio = '10:16' %}
+    {% set ratio = '10:16' %}
 
     {% case "auto" %}
-      {% set ratio = '' %}
+    {% set ratio = '' %}
 
     {% endswitch %}
 
@@ -50,7 +50,7 @@
     <div class="{{ options.classname ~ '__inner' }}">
 
       {% for image in options.images %}
-        <figure class="m-figure  {{ options.classname ~ '__figure' }}">
+        <div class="m-figure  {{ options.classname ~ '__figure' }}">
 
           {# -- Image -- #}
           {{ macroImage.image(image, {
@@ -91,24 +91,24 @@
                   {# -- Caption Source Url -- #}
                   {% if captionSourceUrl %}
                 &mdash;   <a class="m-caption__link  {{ options.classname ~ '__captionLink' }}"
-                       href="{{ captionSourceUrl.url }}"
-                       target="_blank">
-                  {% endif %}
+                             href="{{ captionSourceUrl.url }}"
+                             target="_blank">
+                    {% endif %}
 
-                  {# -- Caption Source -- #}
-                  {% if captionSource %}
+                    {# -- Caption Source -- #}
+                    {% if captionSource %}
                       {{ captionSource }}
-                  {% endif %}
+                    {% endif %}
 
-                  {# -- Caption Source Url -- #}
-                  {% if captionSourceUrl %}
-                    </a>
+                    {# -- Caption Source Url -- #}
+                    {% if captionSourceUrl %}
+                  </a>
                   {% endif %}
                 </figcaption>
               {% endif %}
             {% endif %}
           {% endif %}
-        </figure>
+        </div>
       {% endfor %}
     </div>
   </div>
