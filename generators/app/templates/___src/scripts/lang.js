@@ -57,9 +57,9 @@ inquirer
             try {
                 fs.copy(path.resolve(__dirname, `../scripts/lang/${htaccess}`), `${srcPath}/${answer}/${htaccess}`)
                 fs.copyTpl(path.resolve(__dirname, `../scripts/lang/${humans}`), `${srcPath}/${answer}/${humans}`, {
-                    authorName: pkg.authors.authorName,
-                    authorEmail: pkg.authors.authorEmail,
-                    authorHomepage: pkg.authors.authorName,
+                    authorName: pkg.authors[0].name,
+                    authorEmail: pkg.authors[0].email,
+                    authorHomepage: pkg.authors[0].homepage,
                     language: answer,
                     projectType: pkg.projectType,
                 })
