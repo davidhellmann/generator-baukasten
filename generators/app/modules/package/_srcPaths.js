@@ -1,6 +1,13 @@
 const extend = require('deep-extend')
 
-function addSrcPaths(files = {}) {
+function addSrcPaths(files = {}, context) {
+    let pathLocales = '___dist/craft/app/framework/i18n/data/'
+    let pathPublic = '___dist/public/'
+    if (context.props.projectType === 'craftCMS3') {
+        pathLocales = '___dist/vendor/craftcms/cms/src/config/locales/'
+        pathPublic = '___dist/web/'
+    }
+
     extend(files.pkg, {
         src: {
             base: '___src/',
@@ -28,6 +35,14 @@ function addSrcPaths(files = {}) {
                 cssFile: '_style.scss',
                 templateFile: '_template.html',
                 configFile: 'config.json',
+            },
+            languages: {
+                source: pathLocales,
+                base: pathPublic,
+                htaccess: '.htaccess',
+                humans: 'humans.txt',
+                index: 'index.php',
+                robots: 'robots.txt'
             },
             system: '___src/_system/',
             dataDir: '___src/_data/',

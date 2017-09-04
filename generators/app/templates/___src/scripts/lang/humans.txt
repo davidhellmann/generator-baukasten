@@ -1,0 +1,20 @@
+/* TEAM */
+Author:              <%= authorName %>
+Contact:             <%= authorEmail %>
+Website:             <%= authorHomepage %>
+Twitter:             @davidhellmann
+Location:            Linz, Austria
+Contributions:       Design, HTML, Sass (CSS), JS, Twig
+
+/* SITE */
+Language:            <%= language %>
+Standards:           HTML5, CSS3, ES6
+Components:          Flickity, Photoswipe, AnimeJS, Macy.
+CMS:                 <%= projectType %>
+Tools:               Gulp, NPM, Yeoman, Babel, Browserify
+IDE:                 PHPStorm
+Built on:            macOS
+
+/* THANKS */
+Name:                Sascha Fuchs - kittn.de
+Name:                Martin Herweg

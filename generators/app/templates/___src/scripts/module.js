@@ -2,6 +2,7 @@ const memFs = require('mem-fs')
 const editor = require('mem-fs-editor')
 const inquirer = require('inquirer')
 const path = require('path')
+const chalk = require('chalk')
 const pkg = require('../package.json')
 
 inquirer
@@ -27,26 +28,22 @@ inquirer
             fs.copyTpl(path.resolve(__dirname, `../scripts/module/${jsFile}`), `${srcPath}/${answers.moduleName}/${jsFile}`, {
                 moduleName: answers.moduleName,
             })
-            console.log(`${srcPath}/${answers.moduleName}/${jsFile}`)
 
             fs.copyTpl(path.resolve(__dirname, `../scripts/module/${cssFile}`), `${srcPath}/${answers.moduleName}/${cssFile}`, {
                 moduleName: answers.moduleName,
             })
-            console.log(`${srcPath}/${answers.moduleName}/${cssFile}`)
 
             fs.copyTpl(path.resolve(__dirname, `../scripts/module/${templateFile}`), `${srcPath}/${answers.moduleName}/${templateFile}`, {
                 moduleName: answers.moduleName,
             })
-            console.log(`${srcPath}/${answers.moduleName}/${templateFile}`)
 
             fs.copyTpl(path.resolve(__dirname, `../scripts/module/${configFile}`), `${srcPath}/${answers.moduleName}/${configFile}`, {
                 moduleName: answers.moduleName,
             })
-            console.log(`${srcPath}/${answers.moduleName}/${configFile}`)
 
-            console.log('Everything created')
-            fs.commit(function(done) {
-                console.log('done')
+            /* All Done */
+            fs.commit(function() {
+                console.log(chalk`-> Modul: {cyan ${answer.moduleName}} created!`)
             })
         } catch(e) {
             console.error(e)

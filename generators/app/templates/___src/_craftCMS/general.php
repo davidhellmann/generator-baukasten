@@ -40,6 +40,17 @@ return array(
         'rootUrl' => getenv('CRAFTENV_SITE_URL'),
         'craftEnv' => CRAFT_ENVIRONMENT,
 
+        // Language Stuff
+        'locales' => array(
+            'de', 'en'
+        ),
+        'currentLanguage' => array(
+            'de_de' => 'de',
+            'de' => 'de',
+            'en_us' => 'en',
+            'en' => 'en'
+        ),
+
         // Set the environmental variables
         'environmentVariables' => array(
             'baseUrl'  => getenv('CRAFTENV_BASE_URL'),

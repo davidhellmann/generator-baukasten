@@ -44,7 +44,7 @@ const writePackageJSON = () => {
                 addNPMScripts({pkg}, context)
 
                 // Paths
-                addSrcPaths({pkg})
+                addSrcPaths({pkg}, context)
                 if (context.props.projectType === 'craftCMS') {
                     addDistPathsCraftCMS({pkg})
                 } else if (context.props.projectType === 'craftCMS3') {
