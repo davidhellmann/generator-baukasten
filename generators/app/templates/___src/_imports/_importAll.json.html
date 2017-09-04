@@ -190,24 +190,39 @@
     },
     {
       "group": "Globals",
+      "name": "Global: Google Analytics",
+      "handle": "globalGoogleAnalytics",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Globals",
       "name": "Global: Social Networks",
       "handle": "globalSocialNetworks",
       "instructions": "",
       "required": false,
       "type": "SuperTable",
       "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
+        "fieldLayout": "table",
+        "staticField": null,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
               "new1": {
-                "name": "Behance Username",
-                "handle": "behanceUsername",
+                "name": "Network Name",
+                "handle": "networkName",
                 "instructions": "",
-                "required": 0,
+                "required": 1,
                 "type": "PlainText",
                 "width": "",
                 "typesettings": {
@@ -218,10 +233,10 @@
                 }
               },
               "new2": {
-                "name": "Dribbble Username",
-                "handle": "dribbbleUsername",
+                "name": "Profil Name",
+                "handle": "profilName",
                 "instructions": "",
-                "required": 0,
+                "required": 1,
                 "type": "PlainText",
                 "width": "",
                 "typesettings": {
@@ -232,10 +247,45 @@
                 }
               },
               "new3": {
-                "name": "Facebook Username",
-                "handle": "facebookUsername",
+                "name": "Profil Url",
+                "handle": "profilUrl",
                 "instructions": "",
-                "required": 0,
+                "required": 1,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Globals",
+      "name": "Global: Third Party Snippets",
+      "handle": "globalThirdPartySnippets",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": null,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "minRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Snippet Name",
+                "handle": "snippetName",
+                "instructions": "",
+                "required": 1,
                 "type": "PlainText",
                 "width": "",
                 "typesettings": {
@@ -245,144 +295,29 @@
                   "initialRows": 4
                 }
               },
-              "new4": {
-                "name": "GitHub Username",
-                "handle": "githubUsername",
+              "new2": {
+                "name": "Snippet Status",
+                "handle": "snippetStatus",
                 "instructions": "",
                 "required": 0,
-                "type": "PlainText",
+                "type": "Lightswitch",
                 "width": "",
                 "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
+                  "default": ""
                 }
               },
-              "new5": {
-                "name": "Google+ Username",
-                "handle": "googleUsername",
+              "new3": {
+                "name": "Snippet Code",
+                "handle": "snippetCode",
                 "instructions": "",
-                "required": 0,
+                "required": 1,
                 "type": "PlainText",
                 "width": "",
                 "typesettings": {
                   "placeholder": "",
                   "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new6": {
-                "name": "Instagram Username",
-                "handle": "instagramUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new7": {
-                "name": "LinkedIn Username",
-                "handle": "linkedinUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new8": {
-                "name": "Medium Username",
-                "handle": "mediumUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new9": {
-                "name": "Pinterest Username",
-                "handle": "pinterestUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new10": {
-                "name": "Tumblr Username",
-                "handle": "tumblrUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new11": {
-                "name": "Twitter Username",
-                "handle": "twitterUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new12": {
-                "name": "VSCO Username",
-                "handle": "vscoUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new13": {
-                "name": "Xing Username",
-                "handle": "xingUsername",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
+                  "multiline": 1,
+                  "initialRows": 8
                 }
               }
             }
@@ -476,6 +411,23 @@
     },
     {
       "group": "Plugins",
+      "name": "Plugin: Preparse Dominant Color",
+      "handle": "pluginPreparseDominantColor",
+      "instructions": "",
+      "required": false,
+      "type": "PreparseField_Preparse",
+      "typesettings": {
+        "fieldTwig": "{% spaceless %}\r\n  {% if asset|length %}\r\n    {% set color = craft.imager.getDominantColor(asset) %}\r\n    {{ color }}\r\n  {% endif %}\r\n{% endspaceless %}",
+        "columnType": "text",
+        "decimals": 0,
+        "parseBeforeSave": 1,
+        "parseOnMove": 1,
+        "showField": 1,
+        "allowSelect": 1
+      }
+    },
+    {
+      "group": "Plugins",
       "name": "Plugin: Seomatic",
       "handle": "pluginSeomatic",
       "instructions": "",
@@ -489,30 +441,116 @@
         "seoTitleSourceField": "title",
         "seoTitle": "",
         "seoTitleSourceChangeable": 1,
-        "seoDescriptionSource": "custom",
-        "seoDescriptionSourceField": "title",
+        "seoDescriptionSource": "field",
+        "seoDescriptionSourceField": "singleIntroText",
         "seoDescription": "",
         "seoDescriptionSourceChangeable": 1,
         "seoKeywordsSource": "custom",
         "seoKeywordsSourceField": "title",
         "seoKeywords": "",
         "seoKeywordsSourceChangeable": 1,
-        "seoImageIdSource": "custom",
-        "seoImageIdSourceField": "cbmImage",
+        "seoImageIdSource": "field",
+        "seoImageIdSourceField": "singleImageEntry",
         "seoImageIdSourceChangeable": 1,
-        "seoImageTransform": "",
-        "twitterCardType": "",
+        "seoImageTransform": "socialSharing",
+        "twitterCardType": "summary_large_image",
         "twitterCardTypeChangeable": 1,
-        "seoTwitterImageIdSource": "custom",
-        "seoTwitterImageIdSourceField": "cbmImage",
+        "seoTwitterImageIdSource": "field",
+        "seoTwitterImageIdSourceField": "singleImageEntry",
         "seoTwitterImageIdSourceChangeable": 1,
-        "seoTwitterImageTransform": "",
+        "seoTwitterImageTransform": "socialSharing",
         "openGraphType": "",
         "openGraphTypeChangeable": 1,
-        "seoFacebookImageIdSource": "custom",
-        "seoFacebookImageIdSourceField": "cbmImage",
+        "seoFacebookImageIdSource": "field",
+        "seoFacebookImageIdSourceField": "singleImageEntry",
         "seoFacebookImageIdSourceChangeable": 1,
-        "seoFacebookImageTransform": "",
+        "seoFacebookImageTransform": "socialSharing",
+        "robots": "",
+        "robotsChangeable": 1
+      }
+    },
+    {
+      "group": "Plugins",
+      "name": "Plugin: Seomatic News",
+      "handle": "pluginSeomaticNews",
+      "instructions": "",
+      "required": false,
+      "type": "Seomatic_Meta",
+      "typesettings": {
+        "assetSources": "*",
+        "seoMainEntityCategory": "CreativeWork",
+        "seoMainEntityOfPage": "WebPage",
+        "seoTitleSource": "field",
+        "seoTitleSourceField": "title",
+        "seoTitle": "",
+        "seoTitleSourceChangeable": 1,
+        "seoDescriptionSource": "field",
+        "seoDescriptionSourceField": "singleIntroText",
+        "seoDescription": "",
+        "seoDescriptionSourceChangeable": 1,
+        "seoKeywordsSource": "custom",
+        "seoKeywordsSourceField": "title",
+        "seoKeywords": "",
+        "seoKeywordsSourceChangeable": 1,
+        "seoImageIdSource": "field",
+        "seoImageIdSourceField": "singleImageEntry",
+        "seoImageIdSourceChangeable": 1,
+        "seoImageTransform": "socialSharing",
+        "twitterCardType": "summary_large_image",
+        "twitterCardTypeChangeable": 1,
+        "seoTwitterImageIdSource": "field",
+        "seoTwitterImageIdSourceField": "singleImageEntry",
+        "seoTwitterImageIdSourceChangeable": 1,
+        "seoTwitterImageTransform": "socialSharing",
+        "openGraphType": "",
+        "openGraphTypeChangeable": 1,
+        "seoFacebookImageIdSource": "field",
+        "seoFacebookImageIdSourceField": "singleImageEntry",
+        "seoFacebookImageIdSourceChangeable": 1,
+        "seoFacebookImageTransform": "socialSharing",
+        "robots": "",
+        "robotsChangeable": 1
+      }
+    },
+    {
+      "group": "Plugins",
+      "name": "Plugin: Seomatic Pages",
+      "handle": "pluginSeomaticPages",
+      "instructions": "",
+      "required": false,
+      "type": "Seomatic_Meta",
+      "typesettings": {
+        "assetSources": "*",
+        "seoMainEntityCategory": "CreativeWork",
+        "seoMainEntityOfPage": "WebPage",
+        "seoTitleSource": "field",
+        "seoTitleSourceField": "title",
+        "seoTitle": "",
+        "seoTitleSourceChangeable": 1,
+        "seoDescriptionSource": "field",
+        "seoDescriptionSourceField": "singleIntroText",
+        "seoDescription": "",
+        "seoDescriptionSourceChangeable": 1,
+        "seoKeywordsSource": "custom",
+        "seoKeywordsSourceField": "title",
+        "seoKeywords": "",
+        "seoKeywordsSourceChangeable": 1,
+        "seoImageIdSource": "field",
+        "seoImageIdSourceField": "singleImageEntry",
+        "seoImageIdSourceChangeable": 1,
+        "seoImageTransform": "socialSharing",
+        "twitterCardType": "summary_large_image",
+        "twitterCardTypeChangeable": 1,
+        "seoTwitterImageIdSource": "field",
+        "seoTwitterImageIdSourceField": "singleImageEntry",
+        "seoTwitterImageIdSourceChangeable": 1,
+        "seoTwitterImageTransform": "socialSharing",
+        "openGraphType": "",
+        "openGraphTypeChangeable": 1,
+        "seoFacebookImageIdSource": "field",
+        "seoFacebookImageIdSourceField": "singleImageEntry",
+        "seoFacebookImageIdSourceChangeable": 1,
+        "seoFacebookImageTransform": "socialSharing",
         "robots": "",
         "robotsChangeable": 1
       }
@@ -529,6 +567,7 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -543,12 +582,22 @@
                   "options": [
                     {
                       "label": "Primary",
-                      "value": "primary",
+                      "value": "style-primary",
                       "default": 1
                     },
                     {
                       "label": "Secondary",
-                      "value": "secondary",
+                      "value": "style-secondary",
+                      "default": ""
+                    },
+                    {
+                      "label": "Outline",
+                      "value": "style-outline",
+                      "default": ""
+                    },
+                    {
+                      "label": "Link",
+                      "value": "style-link",
                       "default": ""
                     }
                   ]
@@ -565,22 +614,49 @@
                   "options": [
                     {
                       "label": "Left",
-                      "value": "left",
+                      "value": "align-left",
                       "default": 1
                     },
                     {
                       "label": "Center",
-                      "value": "center",
+                      "value": "align-center",
                       "default": ""
                     },
                     {
                       "label": "Right",
-                      "value": "right",
+                      "value": "align-right",
                       "default": ""
                     },
                     {
                       "label": "Full",
-                      "value": "full",
+                      "value": "align-full",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Size",
+                "handle": "size",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Small",
+                      "value": "size-small",
+                      "default": ""
+                    },
+                    {
+                      "label": "Large",
+                      "value": "size-large",
+                      "default": 1
+                    },
+                    {
+                      "label": "Pill",
+                      "value": "size-pill",
                       "default": ""
                     }
                   ]
@@ -603,6 +679,7 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -617,12 +694,12 @@
                   "options": [
                     {
                       "label": "Primary",
-                      "value": "primary",
+                      "value": "style-primary",
                       "default": 1
                     },
                     {
                       "label": "Secondary",
-                      "value": "secondary",
+                      "value": "style-secondary",
                       "default": ""
                     }
                   ]
@@ -639,22 +716,49 @@
                   "options": [
                     {
                       "label": "Left",
-                      "value": "left",
+                      "value": "align-left",
                       "default": 1
                     },
                     {
                       "label": "Center",
-                      "value": "center",
+                      "value": "align-center",
                       "default": ""
                     },
                     {
                       "label": "Right",
-                      "value": "right",
+                      "value": "align-right",
                       "default": ""
                     },
                     {
                       "label": "Full",
-                      "value": "full",
+                      "value": "align-full",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Size",
+                "handle": "size",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Small",
+                      "value": "size-small",
+                      "default": ""
+                    },
+                    {
+                      "label": "Large",
+                      "value": "size-large",
+                      "default": 1
+                    },
+                    {
+                      "label": "Pill",
+                      "value": "size-pill",
                       "default": ""
                     }
                   ]
@@ -677,12 +781,13 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
               "new1": {
-                "name": "Columns Ratio",
-                "handle": "columnsRatio",
+                "name": "Ratio",
+                "handle": "ratio",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -691,17 +796,17 @@
                   "options": [
                     {
                       "label": "1:1",
-                      "value": "50-50",
+                      "value": "ratio-50-50",
                       "default": 1
                     },
                     {
                       "label": "1:2",
-                      "value": "33-66",
+                      "value": "ratio-33-66",
                       "default": ""
                     },
                     {
                       "label": "1:3",
-                      "value": "25-75",
+                      "value": "ratio-25-75",
                       "default": ""
                     }
                   ]
@@ -717,13 +822,13 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Table Layout",
-                      "value": "table",
+                      "label": "Table",
+                      "value": "layout-table",
                       "default": 1
                     },
                     {
-                      "label": "Row Layout",
-                      "value": "row",
+                      "label": "Row",
+                      "value": "layout-row",
                       "default": ""
                     }
                   ]
@@ -746,23 +851,13 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
               "new1": {
-                "name": "Video",
-                "handle": "video",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new2": {
-                "name": "Embed Position",
-                "handle": "embedPosition",
+                "name": "Position",
+                "handle": "position",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -771,25 +866,25 @@
                   "options": [
                     {
                       "label": "Left",
-                      "value": "left",
+                      "value": "align-left",
                       "default": 1
                     },
                     {
                       "label": "Center",
-                      "value": "center",
+                      "value": "align-center",
                       "default": ""
                     },
                     {
                       "label": "Right",
-                      "value": "right",
+                      "value": "align-right",
                       "default": ""
                     }
                   ]
                 }
               },
-              "new3": {
-                "name": "Embed: Width",
-                "handle": "embedWidth",
+              "new2": {
+                "name": "Width",
+                "handle": "width",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -798,17 +893,17 @@
                   "options": [
                     {
                       "label": "Full",
-                      "value": "full",
+                      "value": "width-100",
                       "default": 1
                     },
                     {
                       "label": "Three Quarter",
-                      "value": "threeQuarter",
+                      "value": "width-75",
                       "default": ""
                     },
                     {
                       "label": "Half",
-                      "value": "half",
+                      "value": "width-50",
                       "default": ""
                     }
                   ]
@@ -899,6 +994,7 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -975,17 +1071,17 @@
                   "options": [
                     {
                       "label": "Top",
-                      "value": "top",
+                      "value": "textV-top",
                       "default": ""
                     },
                     {
                       "label": "Center",
-                      "value": "center",
+                      "value": "textV-center",
                       "default": ""
                     },
                     {
                       "label": "Bottom",
-                      "value": "bottom",
+                      "value": "textV-bottom",
                       "default": 1
                     }
                   ]
@@ -1002,17 +1098,39 @@
                   "options": [
                     {
                       "label": "Left",
-                      "value": "left",
+                      "value": "textH-left",
                       "default": ""
                     },
                     {
                       "label": "Center",
-                      "value": "center",
+                      "value": "textH-center",
                       "default": 1
                     },
                     {
                       "label": "Right",
-                      "value": "right",
+                      "value": "textH-right",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new4": {
+                "name": "Text Color",
+                "handle": "textColor",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "White",
+                      "value": "textColor-white",
+                      "default": 1
+                    },
+                    {
+                      "label": "Black",
+                      "value": "textColor-black",
                       "default": ""
                     }
                   ]
@@ -1035,6 +1153,7 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -1049,35 +1168,35 @@
                   "options": [
                     {
                       "label": 6,
-                      "value": 6,
+                      "value": "columns-6",
                       "default": 1
                     },
                     {
                       "label": 5,
-                      "value": 5,
+                      "value": "columns-5",
                       "default": ""
                     },
                     {
                       "label": 4,
-                      "value": 4,
+                      "value": "columns-4",
                       "default": ""
                     },
                     {
                       "label": 3,
-                      "value": 3,
+                      "value": "columns-3",
                       "default": ""
                     },
                     {
                       "label": 2,
-                      "value": 2,
+                      "value": "columns-2",
                       "default": ""
                     }
                   ]
                 }
               },
               "new2": {
-                "name": "Image Thumbs Ratio",
-                "handle": "imageThumbsRatio",
+                "name": "Thumbs Ratio",
+                "handle": "thumbsRatio",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -1119,6 +1238,7 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -1144,25 +1264,25 @@
                   "options": [
                     {
                       "label": 3,
-                      "value": 3,
+                      "value": "columns-3",
                       "default": ""
                     },
                     {
                       "label": 2,
-                      "value": 2,
+                      "value": "columns-2",
                       "default": 1
                     },
                     {
                       "label": 1,
-                      "value": 1,
+                      "value": "columns-1",
                       "default": ""
                     }
                   ]
                 }
               },
               "new3": {
-                "name": "Image Ratio",
-                "handle": "imageRatio",
+                "name": "Ratio",
+                "handle": "ratio",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -1182,6 +1302,11 @@
                     {
                       "label": "Portrait",
                       "value": "portrait",
+                      "default": ""
+                    },
+                    {
+                      "label": "Auto",
+                      "value": "auto",
                       "default": ""
                     }
                   ]
@@ -1204,13 +1329,14 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
               "new1": {
                 "name": "Caption",
                 "handle": "caption",
-                "instructions": "",
+                "instructions": "Soll eine Caption angezeigt werden?",
                 "required": 0,
                 "type": "Lightswitch",
                 "width": "",
@@ -1219,9 +1345,9 @@
                 }
               },
               "new2": {
-                "name": "Image Position",
-                "handle": "imagePosition",
-                "instructions": "",
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "Wie soll das Bild ausgerichtet sein? Greift nicht wenn es bei dem Modul \"RichText Marginals\" genutzt wird. ",
                 "required": 0,
                 "type": "Dropdown",
                 "width": "",
@@ -1229,26 +1355,26 @@
                   "options": [
                     {
                       "label": "Left",
-                      "value": "left",
+                      "value": "align-left",
                       "default": ""
                     },
                     {
                       "label": "Center",
-                      "value": "center",
+                      "value": "align-center",
                       "default": 1
                     },
                     {
                       "label": "Right",
-                      "value": "right",
+                      "value": "align-right",
                       "default": ""
                     }
                   ]
                 }
               },
               "new3": {
-                "name": "Image Ratio",
-                "handle": "imageRatio",
-                "instructions": "",
+                "name": "Ratio",
+                "handle": "ratio",
+                "instructions": "Welches Seitenverh\u00e4ltnis soll das Bild haben? Auto nimmt das urspr\u00fcngliche Seitenverh\u00e4ltnis vom Bild. ",
                 "required": 0,
                 "type": "Dropdown",
                 "width": "",
@@ -1268,32 +1394,42 @@
                       "label": "Portrait",
                       "value": "portrait",
                       "default": ""
+                    },
+                    {
+                      "label": "Auto",
+                      "value": "auto",
+                      "default": ""
                     }
                   ]
                 }
               },
               "new4": {
-                "name": "Image Width",
-                "handle": "imageWidth",
-                "instructions": "",
+                "name": "Width",
+                "handle": "width",
+                "instructions": "\u00dcber wie viele Spalten soll sich das Bild erstrecken? Greift nicht wenn es bei dem Modul \"RichText Marginals\" genutzt wird. ",
                 "required": 0,
                 "type": "Dropdown",
                 "width": "",
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Full",
-                      "value": "full",
-                      "default": 1
-                    },
-                    {
-                      "label": "Three Quarter",
-                      "value": "threeQuarter",
+                      "label": "Full Width",
+                      "value": "columns-100",
                       "default": ""
                     },
                     {
-                      "label": "Half",
-                      "value": "half",
+                      "label": "12 Columns",
+                      "value": "columns-12",
+                      "default": 1
+                    },
+                    {
+                      "label": "9 Columns",
+                      "value": "columns-9",
+                      "default": ""
+                    },
+                    {
+                      "label": "6 Columns",
+                      "value": "columns-6",
                       "default": ""
                     }
                   ]
@@ -1316,12 +1452,13 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
               "new1": {
-                "name": "Image Ratio",
-                "handle": "imageRatio",
+                "name": "ratio",
+                "handle": "ratio",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -1363,6 +1500,7 @@
         "staticField": 1,
         "selectionLabel": "Section Options",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -1376,32 +1514,43 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Default",
-                      "value": "default",
+                      "label": "None",
+                      "value": "backgroundColor-none",
                       "default": 1
                     },
                     {
                       "label": "Black",
-                      "value": "black",
+                      "value": "backgroundColor-black",
                       "default": ""
                     },
                     {
                       "label": "White",
-                      "value": "white",
+                      "value": "backgroundColor-white",
                       "default": ""
                     }
                   ]
                 }
               },
               "new2": {
-                "name": "Full Width",
-                "handle": "fullWidth",
+                "name": "Width",
+                "handle": "width",
                 "instructions": "",
                 "required": 0,
-                "type": "Lightswitch",
+                "type": "Dropdown",
                 "width": "",
                 "typesettings": {
-                  "default": ""
+                  "options": [
+                    {
+                      "label": "Content Width",
+                      "value": "width-content",
+                      "default": 1
+                    },
+                    {
+                      "label": "Full Width",
+                      "value": "width-full",
+                      "default": ""
+                    }
+                  ]
                 }
               },
               "new3": {
@@ -1414,23 +1563,23 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "None",
-                      "value": "none",
-                      "default": ""
-                    },
-                    {
-                      "label": "Default",
-                      "value": "default",
+                      "label": "Small",
+                      "value": "paddingVertical-small",
                       "default": 1
                     },
                     {
                       "label": "Medium",
-                      "value": "medium",
+                      "value": "paddingVertical-medium",
                       "default": ""
                     },
                     {
                       "label": "Large",
-                      "value": "large",
+                      "value": "paddingVertical-large",
+                      "default": ""
+                    },
+                    {
+                      "label": "None",
+                      "value": "paddingVertical-none",
                       "default": ""
                     }
                   ]
@@ -1453,6 +1602,7 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
@@ -1467,7 +1617,7 @@
                   "options": [
                     {
                       "label": "Default",
-                      "value": "default",
+                      "value": "style-default",
                       "default": 1
                     }
                   ]
@@ -1483,23 +1633,23 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "None",
-                      "value": "none",
-                      "default": ""
-                    },
-                    {
-                      "label": "Default",
-                      "value": "default",
+                      "label": "Small",
+                      "value": "marginVertical-small",
                       "default": 1
                     },
                     {
                       "label": "Medium",
-                      "value": "medium",
+                      "value": "marginVertical-medium",
                       "default": ""
                     },
                     {
                       "label": "Large",
-                      "value": "large",
+                      "value": "marginVertical-large",
+                      "default": ""
+                    },
+                    {
+                      "label": "None",
+                      "value": "marginVertical-none",
                       "default": ""
                     }
                   ]
@@ -1522,13 +1672,14 @@
         "staticField": 1,
         "selectionLabel": "Add a row",
         "maxRows": null,
+        "minRows": null,
         "blockTypes": {
           "new": {
             "fields": {
               "new1": {
-                "name": "Columns Ratio",
-                "handle": "columnsRatio",
-                "instructions": "",
+                "name": "Ratio",
+                "handle": "ratio",
+                "instructions": "Wie soll das Spaltenverh\u00e4ltnis sein?",
                 "required": 0,
                 "type": "Dropdown",
                 "width": "",
@@ -1536,27 +1687,102 @@
                   "options": [
                     {
                       "label": "1:1",
-                      "value": "50-50",
-                      "default": ""
+                      "value": "ratio-50-50",
+                      "default": 1
                     },
                     {
                       "label": "2:1",
-                      "value": "66-33",
+                      "value": "ratio-66-33",
                       "default": ""
                     },
                     {
                       "label": "3:1",
-                      "value": "75-25",
+                      "value": "ratio-75-25",
                       "default": ""
                     },
                     {
                       "label": "1:3",
-                      "value": "25-75",
+                      "value": "ratio-25-75",
                       "default": ""
                     },
                     {
                       "label": "1:2",
-                      "value": "33-66",
+                      "value": "ratio-33-66",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Video",
+      "handle": "settingsVideo",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "minRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Position",
+                "handle": "position",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "align-left",
+                      "default": 1
+                    },
+                    {
+                      "label": "Center",
+                      "value": "align-center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "align-right",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Width",
+                "handle": "width",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Full",
+                      "value": "width-100",
+                      "default": 1
+                    },
+                    {
+                      "label": "Three Quarter",
+                      "value": "width-75",
+                      "default": ""
+                    },
+                    {
+                      "label": "Half",
+                      "value": "width-50",
                       "default": ""
                     }
                   ]
@@ -1752,6 +1978,29 @@
     },
     {
       "group": "Singles",
+      "name": "Single: Image Entry",
+      "handle": "singleImageEntry",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": 1,
+        "sources": "*",
+        "defaultUploadLocationSource": "siteImages",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "siteImages",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": 1,
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": 1,
+        "viewMode": "list",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Singles",
       "name": "Single: Images",
       "handle": "singleImages",
       "instructions": "",
@@ -1771,6 +2020,20 @@
         "limit": "",
         "viewMode": "list",
         "selectionLabel": "Add an Image"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Intro Text",
+      "handle": "singleIntroText",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 8
       }
     },
     {
@@ -1815,6 +2078,20 @@
         "cleanupHtml": 1,
         "purifyHtml": 1,
         "columnType": "text"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Seo Title",
+      "handle": "singleSeoTitle",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 2
       }
     },
     {
@@ -1917,8 +2194,7 @@
             "topLevel": 1,
             "fieldLayout": {
               "Content": [
-                "singleHeadline",
-                "singleSubline"
+                "singleHeadline"
               ],
               "Settings": [
                 "singleAnchor",
@@ -1949,7 +2225,6 @@
               "twoColumns",
               "headline",
               "richText",
-              "richTextMarginals",
               "quote",
               "imageGallery",
               "imageGrid",
@@ -1991,16 +2266,10 @@
             "handle": "column",
             "maxBlocks": null,
             "childBlocks": [
-              "accordion",
               "headline",
               "richText",
-              "quote",
-              "imageGallery",
-              "imageGrid",
               "imageSingle",
               "button",
-              "buttonGroup",
-              "definitionList",
               "embed",
               "separator"
             ],
@@ -2240,6 +2509,23 @@
           },
           "new19": {
             "sortOrder": 25,
+            "name": "Video",
+            "handle": "video",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleEmbedCode"
+              ],
+              "Settings": [
+                "settingsVideo"
+              ]
+            }
+          },
+          "new20": {
+            "sortOrder": 26,
             "name": "Separator",
             "handle": "separator",
             "maxBlocks": null,
@@ -2265,7 +2551,11 @@
       "name": "Homepage",
       "handle": "homepage",
       "fieldLayout": {
-        "Content": []
+        "Content": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "singleImageEntry"
+        ]
       }
     },
     {
@@ -2276,6 +2566,9 @@
       "handle": "modules",
       "fieldLayout": {
         "Content": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "singleImageEntry",
           "contentBuilderNeo"
         ]
       }
@@ -2288,13 +2581,16 @@
       "handle": "news",
       "fieldLayout": {
         "Content Neo": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "singleImageEntry",
           "contentBuilderNeo"
         ],
         "Meta": [
           "categoryDefault"
         ],
         "SEO": [
-          "pluginSeomatic"
+          "pluginSeomaticNews"
         ]
       }
     },
@@ -2304,7 +2600,17 @@
       "titleLabel": "Title",
       "name": "Pages",
       "handle": "pages",
-      "fieldLayout": []
+      "fieldLayout": {
+        "Content": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "singleImageEntry",
+          "contentBuilderNeo"
+        ],
+        "SEO": [
+          "pluginSeomaticPages"
+        ]
+      }
     }
   ],
   "sources": [
@@ -2320,7 +2626,8 @@
       "fieldLayout": {
         "Content": [
           "groupedCaption",
-          "settingsFocalPoint"
+          "settingsFocalPoint",
+          "pluginPreparseDominantColor"
         ]
       }
     },
@@ -2335,7 +2642,9 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption"
+          "groupedCaption",
+          "settingsFocalPoint",
+          "pluginPreparseDominantColor"
         ]
       }
     },
@@ -2350,7 +2659,9 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption"
+          "groupedCaption",
+          "settingsFocalPoint",
+          "pluginPreparseDominantColor"
         ]
       }
     },
@@ -2365,18 +2676,59 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption"
+          "groupedCaption",
+          "settingsFocalPoint",
+          "pluginPreparseDominantColor"
         ]
       }
     }
   ],
+  "transforms": [
+    {
+      "name": "Social Sharing",
+      "handle": "socialSharing",
+      "mode": "crop",
+      "position": "center-center",
+      "width": 1200,
+      "height": 630,
+      "quality": 100,
+      "format": null
+    }
+  ],
   "globals": [
+    {
+      "name": "Contact",
+      "handle": "contact",
+      "fieldLayout": {
+        "Content": [
+          "globalContact"
+        ]
+      }
+    },
+    {
+      "name": "Google Analytics",
+      "handle": "googleAnalytics",
+      "fieldLayout": {
+        "Content": [
+          "globalGoogleAnalytics"
+        ]
+      }
+    },
     {
       "name": "Social Networks",
       "handle": "socialNetworks",
       "fieldLayout": {
         "Content": [
           "globalSocialNetworks"
+        ]
+      }
+    },
+    {
+      "name": "Third Party Snippets",
+      "handle": "thirdPartySnippets",
+      "fieldLayout": {
+        "Content": [
+          "globalThirdPartySnippets"
         ]
       }
     }
@@ -2395,6 +2747,22 @@
         }
       },
       "fieldLayout": []
+    }
+  ],
+  "users": [
+    {
+      "enabled": 1,
+      "archived": 0,
+      "locale": "de",
+      "localeEnabled": true,
+      "username": "superuser",
+      "email": "mail@domain.com",
+      "weekStartDay": 1,
+      "admin": 1,
+      "client": 0,
+      "locked": 0,
+      "suspended": 0,
+      "pending": 0
     }
   ]
 }
