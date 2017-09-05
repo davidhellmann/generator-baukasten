@@ -1,0 +1,63 @@
+{#
+  Language Switcher
+  --------------------------------------------------
+
+  {{ macroLanguageSwitcher.languageSwitcher({
+    locales: ['de', 'en'],
+  }) }}
+#}
+
+{% macro languageSwitcher(options) %}
+  {% set defaults = {
+  classname: 'm-languageSwitcher',
+  locales: null,
+  } %}
+
+  {% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+    {% set options = defaults %}
+  {% endif %}
+
+  {% if options.locales is defined %}
+    <nav class="o-col  {{ options.classname }}">
+      <div class="o-row  {{ options.classname ~ '__inner' }}">
+
+        {% set locales = craft.i18n.getSiteLocaleIds() %}
+        {% if options.locales %}
+          {% set locales = options.locales %}
+        {% endif %}
+
+        <ul class="{{ options.classname ~ '__list' }}">
+          {% for locale in locales %}
+            {% if locale in craft.i18n.getSiteLocaleIds() %}
+              <li class="{{ options.classname ~ '__item' }}">
+                {% set current = false %}
+
+                {# Check if locale equals the requested page locale #}
+                {% if locale == craft.locale %}
+                  {% set current = true %}
+                {% endif %}
+
+                {% if entry is defined %}
+
+                  {% set localeEntry = craft.entries.id(entry.id).locale(locale).first() %}
+                  {% if localeEntry and localeEntry.locale == locale %}
+                    <a href="{{ localeEntry.getUrl() }}"
+                       class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
+                  {% else %}
+                    <a href="{{ craft.config.siteUrl[locale] }}"
+                       class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
+                  {% endif %}
+                {% else %}
+                  <a href="{{ craft.config.siteUrl[locale] ~ craft.request.getPath() }}"
+                     class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  {% endif %}
+{% endmacro %}
