@@ -24,11 +24,20 @@
   '0.0': '0.0',
 } %}
 
+{% set includeIfFieldOptions = {"": ""} %}
+
+{% for field in craft.fields.getAllFields() %}
+  {% if field.type == "Lightswitch" %}
+    {% set includeIfFieldOptions = includeIfFieldOptions|merge({(field.handle) : field.name}) %}
+  {% endif %}
+{% endfor %}
+
 <table class="data fullwidth">
   <thead>
     <th>{{ 'Enabled'|t }}</th>
     <th>{{ 'Section'|t }} </th>
     <th>{{ 'URL Format'|t }}</th>
+    <th>{{ 'Include if...'|t }}</th>
     <th>{{ 'Entries'|t }}</th>
     <th>{{ 'Change Frequency'|t }}</th>
     <th>{{ 'Priority'|t }}</th>
@@ -52,6 +61,13 @@
           {%- else -%}
             {{ section.urlFormat }}
           {%- endif -%}
+        </td>
+        <td>
+          {{- forms.selectField({
+            name: "includeiffield[#{section.id}]",
+            options: includeIfFieldOptions,
+            value: settings.sections[section.id].includeiffield|default("")
+          }) -}}
         </td>
         <td>
           {{- craft.entries.section(section).total() -}}

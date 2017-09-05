@@ -17,7 +17,7 @@ class SitemapPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return 'v1.0.0-alpha.4';
+        return '1.1.0';
     }
 
     /**
@@ -62,17 +62,24 @@ class SitemapPlugin extends BasePlugin
      */
     public function prepSettings($input)
     {
+        // early exit if $input is already a complete settings array
+        // like in a Schematic import
+        if (!array_key_exists('enabled', $input) && isset($input['sections']) && is_array($input['sections'])) {
+            return $input;
+        }
+        
         // We’re rewriting every time
         $settings = $this->defineSettings();
 
         // Loop through valid sections
         foreach (craft()->sitemap->sectionsWithUrls as $section) {
             // Check if the section is enabled
-            if ($input['enabled'][$section->id]) {
+            if (array_key_exists('enabled', $input) && $input['enabled'][$section->id]) {
                 // If it is, save the changefreq and priority values into settings
                 $settings['sections'][$section->id] = array(
                     'changefreq' => $input['changefreq'][$section->id],
                     'priority' => $input['priority'][$section->id],
+                    'includeiffield' => $input['includeiffield'][$section->id],
                 );
             }
         }
@@ -93,5 +100,13 @@ class SitemapPlugin extends BasePlugin
                 'action' => 'sitemap/sitemap/output',
             ),
         );
+    }
+
+    /**
+     * {@inheritdoc} IPlugin::getReleaseFeedUrl()
+     */
+    public function getReleaseFeedUrl()
+    {
+        return 'https://raw.githubusercontent.com/groe/craft-sitemap/master/changelog.json';
     }
 }
