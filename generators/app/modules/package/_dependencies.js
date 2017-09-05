@@ -15,6 +15,7 @@ function addDependencies(files = {}) {
             'lazysizes': '^3.0.0',
             'lodash': '^4.16.6',
             'macy': '^2.0.0',
+            'normalize.css': '^7.0.0',
             'objectFitPolyfill': '^2.0.5',
             'photoswipe': '^4.1.1',
             'smooth-scroll': '^11.1.0',

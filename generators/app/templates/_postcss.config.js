@@ -8,11 +8,11 @@ module.exports = {
             loadPaths: [pkg.dist.images.base]
         }),
 
-        require('postcss-normalize')(
+        /*require('postcss-normalize')(
             {
-                /* options */
+                /!* options *!/
             }
-        ),
+        ),*/
 
         // Prefixer
         require('autoprefixer')({
