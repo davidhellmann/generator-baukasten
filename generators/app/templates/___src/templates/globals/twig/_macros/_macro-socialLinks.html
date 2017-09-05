@@ -1,12 +1,11 @@
 {#
-  Social Links Array
+  Social Networks
   --------------------------------------------------
 
-  {{ macroSocialLinks.socialLinks([
-    'twitter',
-    'facebook',
-    'xing'
-  ], true) }}
+  {{ macroSocialNetworks.socialNetworks({
+    networks: ['facebook', 'instagram', 'spotify', 'twitter'],
+    label: null
+  }) }}
 #}
 
 {% macro socialNetworks(options) %}
