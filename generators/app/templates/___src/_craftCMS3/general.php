@@ -50,6 +50,7 @@ return [
     // Staging (pre-production) environment
     'staging' => [
         'devMode' => false,
+        'omitScriptNameInUrls' => false,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
     ],
@@ -57,6 +58,7 @@ return [
     // Local (development) environment
     'local' => [
         'devMode' => true,
+        'omitScriptNameInUrls' => false,
         'enableTemplateCaching' => false,
         'allowAutoUpdates' => true,
     ]
