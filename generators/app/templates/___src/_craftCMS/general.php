@@ -32,8 +32,8 @@ return array(
         ],
         /*
         'siteUrl' => array(
-            'de' => getenv('CRAFTENV_SITE_URL') . 'de',
-            'en' => getenv('CRAFTENV_SITE_URL') . 'en',
+            'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
+            'en' => getenv('CRAFTENV_SITE_URL') . 'en/',
         ),
         */
         'siteUrl' => getenv('CRAFTENV_SITE_URL'),
