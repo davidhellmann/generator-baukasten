@@ -14,20 +14,20 @@ return [
     // All environments
     '*' => [
         'siteImages' => [
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/images',
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/images',
+            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/images/',
+            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/images/',
         ],
         'siteDownloads' => [
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/downloads',
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/downloads',
+            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/downloads/',
+            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/downloads/',
         ],
         'siteGraphics' => [
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/graphics',
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/graphics',
+            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/graphics/',
+            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/graphics/',
         ],
         'siteUsers' => [
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/users',
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/users',
+            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/users/',
+            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/users/',
         ],
     ],
 

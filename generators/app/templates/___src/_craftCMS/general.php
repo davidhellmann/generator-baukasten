@@ -44,8 +44,8 @@ return array(
         'environmentVariables' => array(
             'baseUrl'  => getenv('CRAFTENV_BASE_URL'),
             'basePath' => getenv('CRAFTENV_BASE_PATH'),
-            'uploadUrl' => getenv('CRAFTENV_BASE_URL') . 'uploads',
-            'uploadPath' => getenv('CRAFTENV_BASE_PATH') . 'uploads',
+            'uploadUrl' => getenv('CRAFTENV_BASE_URL') . 'uploads/',
+            'uploadPath' => getenv('CRAFTENV_BASE_PATH') . 'uploads/',
         ),
     ],
 

@@ -149,10 +149,10 @@ LOCK TABLES `craft_assetsources` WRITE;
 
 INSERT INTO `craft_assetsources` (`id`, `name`, `handle`, `type`, `settings`, `sortOrder`, `fieldLayoutId`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'Site Images','siteImages','Local','{\"path\":\"{uploadPath}\\/images\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}\\/images\\/\"}',1,145,'2017-04-16 22:48:52','2017-06-08 16:52:41','ff0b5648-f1d6-418e-ba27-5075ee7ed5ca'),
-	(2,'Site Downloads','siteDownloads','Local','{\"path\":\"{uploadPath}\\/downloads\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}\\/downloads\\/\"}',2,146,'2017-04-16 22:48:52','2017-06-08 16:52:56','8f7efc74-2340-4272-aeda-5ed035ef86ed'),
-	(3,'Site Graphics','siteGraphics','Local','{\"path\":\"{uploadPath}\\/graphics\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}\\/graphics\\/\"}',3,147,'2017-04-16 22:48:52','2017-06-08 16:53:07','e8bc61b2-50c2-490c-9613-acb241ba431f'),
-	(4,'Site Users','siteUsers','Local','{\"path\":\"{uploadPath}\\/users\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}\\/users\\/\"}',4,148,'2017-04-16 22:48:52','2017-06-08 16:53:23','c2ff7f4c-55dc-4a42-93d4-59505cda75f0');
+	(1,'Site Images','siteImages','Local','{\"path\":\"{uploadPath}images\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}images\\/\"}',1,145,'2017-04-16 22:48:52','2017-06-08 16:52:41','ff0b5648-f1d6-418e-ba27-5075ee7ed5ca'),
+	(2,'Site Downloads','siteDownloads','Local','{\"path\":\"{uploadPath}downloads\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}downloads\\/\"}',2,146,'2017-04-16 22:48:52','2017-06-08 16:52:56','8f7efc74-2340-4272-aeda-5ed035ef86ed'),
+	(3,'Site Graphics','siteGraphics','Local','{\"path\":\"{uploadPath}graphics\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}graphics\\/\"}',3,147,'2017-04-16 22:48:52','2017-06-08 16:53:07','e8bc61b2-50c2-490c-9613-acb241ba431f'),
+	(4,'Site Users','siteUsers','Local','{\"path\":\"{uploadPath}users\\/\",\"publicURLs\":\"1\",\"url\":\"{uploadUrl}users\\/\"}',4,148,'2017-04-16 22:48:52','2017-06-08 16:53:23','c2ff7f4c-55dc-4a42-93d4-59505cda75f0');
 
 /*!40000 ALTER TABLE `craft_assetsources` ENABLE KEYS */;
 UNLOCK TABLES;
