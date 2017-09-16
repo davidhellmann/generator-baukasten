@@ -49,7 +49,7 @@
     {% else %}
       <a itemprop="url"
          role="button"
-         href="{{ options.url }}" {{ options.target ? 'target="_blank"'}}
+         href="{{ options.url }}" {{ options.url starts with '#' ? 'data-scroll' : '' }} {{ options.target ? 'target="_blank"'}}
          class="{{ options.classname ~ '__inner' }}">
 
         {# -- Button Text -- #}
