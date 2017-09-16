@@ -5,7 +5,6 @@
 
 import smoothScroll from 'smooth-scroll'
 
-
 smoothScroll.init({
     // Selector for links (must be a class, ID, data attribute, or element tag)
     selector: '[data-scroll]',
@@ -14,7 +13,7 @@ smoothScroll.init({
     selectorHeader: null,
 
     // Integer. How fast to complete the scroll in milliseconds
-    speed: 500,
+    speed: 250,
 
     // Easing pattern to use
     easing: 'easeInOutCubic',
@@ -23,14 +22,19 @@ smoothScroll.init({
     offset: 0,
 
     // Function to run after scrolling
-    callback: function(anchor, toggle) {}
+    callback(anchor, toggle) {}
 })
 
 if (window.location.hash) {
-    setTimeout(function() {
-        var anchor = document.querySelector(window.location.hash) // Get the anchor
-        var toggle = document.querySelector('a[href*="' + window.location.hash + '"]') // Get the toggle (if one exists)
-        var options = {} // Any custom options you want to use would go here
+    setTimeout(() => {
+        // Get the anchor
+        const anchor = document.querySelector(window.location.hash)
+
+        // Get the toggle (if one exists)
+        const toggle = document.querySelector(`a[href*="${window.location.hash}"]`)
+
+        // Any custom options you want to use would go here
+        const options = {}
         smoothScroll.animateScroll(anchor, toggle, options)
     }, 250)
 }
