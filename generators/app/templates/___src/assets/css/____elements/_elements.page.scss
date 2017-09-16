@@ -4,6 +4,8 @@
 
 html {
   font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
