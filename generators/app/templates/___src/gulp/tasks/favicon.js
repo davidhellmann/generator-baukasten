@@ -33,7 +33,7 @@ const createFavicons = () => {
                 windows: pkg.favicons.icons.windows,
                 yandex: pkg.favicons.icons.yandex
             },
-            html: pkg.src.templates + '_partials/_header/_favicons' + extension
+            html: pkg.src.templates + '_partials/header/_favicons' + extension
         }))
         .pipe(gulp.dest(pkg.src.images.bitmap.favicons))
 }
