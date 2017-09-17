@@ -10,7 +10,7 @@ function addFaviconsSettings(files = {}, context) {
             developerName: context.props.authorName,
             developerURL: context.props.authorHomepage,
             srcImage: '_favicon.png',
-            background: '#000000',
+            background: 'transparent',
             display: 'standalone',
             orientation: 'portrait',
             logging: false,
