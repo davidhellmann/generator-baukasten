@@ -7,15 +7,15 @@
 @import '../______tools/tools.function.pow';
 @import 'settings.grid';
 
-// Settings
-$fontSize-min:          16px;
-$fontSize-max:          21px;
-$lineHeight-base:       1.5;
-
 // Modular Scale Settings
 $msWidth-min:           320px;
 $msWidth-max:           $dh-maxWidth;
 $msFactor:              1.2;
+
+// Settings
+$fontSize-min:          16px;
+$fontSize-max:          $fontSize-min * pow($msFactor, 1);
+$lineHeight-base:       1.5;
 
 // Nothing to change here
 $ms-2:                  11px;
