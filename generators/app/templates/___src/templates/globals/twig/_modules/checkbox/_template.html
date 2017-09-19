@@ -1,0 +1,37 @@
+{#
+  Checkbox
+  ========
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-checkbox',
+  modifiers: [],
+  group: null,
+  id: null,
+  value: null,
+  label: null
+} %}
+
+{% if options is defined %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+  {% set options = defaults %}
+{% endif %}
+
+{# -- Modul -- #}
+{% if options.id and options.group and options.value and options.label %}
+  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+    <div class="{{ options.classname ~ '__inner' }}">
+      <input class="{{ options.classname ~ '__input' }}"
+             id="{{ options.id }}"
+             type="checkbox"
+             name="{{ options.group }}"
+             value="{{ options.classname }}" />
+      <label class="{{ options.classname ~ '__label' }}"
+             for="{{ options.id }}">
+        {{ options.label }}
+      </label>
+    </div>
+  </div>
+{% endif %}
