@@ -7,6 +7,7 @@
   <?php require_once('_partials/_footer/_scripts.php'); ?>
 
 </body>
+<!-- Läuft, weitermachen! -->
 </html>
 
 
