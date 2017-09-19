@@ -5,12 +5,13 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-classname: 'm-radio',
-modifiers: [],
-group: null,
-id: null,
-value: null,
-label: null
+  classname: 'm-radio',
+  modifiers: [],
+  disabled: false,
+  group: null,
+  id: null,
+  value: null,
+  label: null
 } %}
 
 {% if options is defined %}
@@ -23,7 +24,7 @@ label: null
 {% if options.id and options.group and options.value and options.label %}
   <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
     <div class="{{ options.classname ~ '__inner' }}">
-      <input class="{{ options.classname ~ '__input' }}"
+      <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}
              id="{{ options.id }}"
              type="radio"
              name="{{ options.group }}"
