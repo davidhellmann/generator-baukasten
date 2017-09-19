@@ -47,6 +47,113 @@
   {# -- SCRIPTS -- #}
   {% include '_partials/header/_scripts.html' %}
 
+  {# -- Custom Social Image -- #}
+  {% if (
+  (entry.singleImageEntry is defined and entry.singleImageEntry | length) or
+  (seomaticSiteMeta.siteSeoImage is defined and seomaticSiteMeta.siteSeoImage | length )
+  ) and (logo.globalLogo is defined and logo.globalLogo | length) %}
+
+    {# -- Set Logo -- #}
+    {% set logo = logo.globalLogo.first() %}
+
+    {# -- Imager: Watermark Image -- #}
+    {% set watermarkImage = craft.imager.transformImage(logo, [
+    {
+    width: 100,
+    height: 36
+    }], {
+    jpegQuality: 100,
+    mode: 'crop',
+    position: '50% 50%',
+    ratio: ''
+    })
+    %}
+
+    {# -- Watermark Image URL -- #}
+    {% set watermarkImage = watermarkImage[0].url %}
+
+    {# -- Check if Entry Image exists or use the default SEO Image -- #}
+    {% if entry.singleImageEntry | length %}
+      {% set image = entry.singleImageEntry.first() %}
+    {% else %}
+      {% set image = seomaticSiteMeta.siteSeoImage %}
+    {% endif %}
+
+    {# -- Check if Focal Point is set else use center center -- #}
+    {% if image.settingsFocalPoint is defined %}
+      {% set position = image.settingsFocalPoint %}
+    {% else %}
+      {% set position = '50% 50%' %}
+    {% endif %}
+
+    {# -- Imager: Entry / Default Image -- #}
+    {% set imageEntry = craft.imager.transformImage(image, [
+    {
+    width: 1200,
+    height: 630
+    }], {
+    jpegQuality: 100,
+    mode: 'crop',
+    position: position,
+    ratio: ''
+    })
+    %}
+
+    {# -- Entry / Default Image URL -- #}
+    {% set imageEntry = imageEntry[0].url %}
+
+    {# -- Imager: Share Image -- #}
+    {% set shareIamge = craft.imager.transformImage(imageEntry, [
+    {
+    width: 1200,
+    height: 630
+    }], {
+    jpegQuality: 100,
+    mode: 'crop',
+    ratio: '',
+    watermark: {
+    image: watermarkImage,
+    width: 100,
+    height: 36,
+    position: {
+    left: 30,
+    bottom: 30,
+    opacity: 0.8
+    }
+    }
+    })
+    %}
+
+    {# -- Share Image URL -- #}
+    {% set shareIamge = shareIamge[0].url %}
+
+    {# -- If Share Image exists -- #}
+    {% if shareIamge | length %}
+
+      {# -- Set Twitter Share Image -- #}
+      {% if seomaticMeta.twitter is defined and seomaticMeta.twitter is not empty %}
+        {% set twitter = seomaticMeta.twitter %}
+        {% set twitter = twitter | merge({'image': siteUrl|trim('/', 'right') ~ shareIamge}) %}
+        {% set seomaticMeta = seomaticMeta | merge({'twitter': twitter}) %}
+      {% endif %}
+
+      {# -- Set Default Share Image -- #}
+      {% set seomaticMeta = seomaticMeta | merge({'seoImage': siteUrl|trim('/', 'right') ~ shareIamge}) %}
+
+      {# -- Set Facebook Share Image -- #}
+      {% if seomaticMeta.og is defined and seomaticMeta.og is not empty %}
+        {% set og = seomaticMeta.og %}
+        {% set og = og | merge({
+        'image': siteUrl|trim('/', 'right') ~ shareIamge,
+        'image:width': '1200',
+        'image:height': '630',
+        'image:type': 'image/jpeg'
+        }) %}
+        {% set seomaticMeta = seomaticMeta | merge({'og': og}) %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
   {# -- SEO & TITLE TAG -- #}
   {% include '_partials/header/_seo.html' %}
 
