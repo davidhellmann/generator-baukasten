@@ -1,6 +1,21 @@
 <!-- JS Scripts & Plugins -->
 {% include "_partials/webpack/webpack-scripts.html" %}
 
+{# Third Party Snippets #}
+{% set thirdPartySnippets = thirdPartySnippets.globalThirdPartySnippets is defined ? thirdPartySnippets.globalThirdPartySnippets %}
+{% if thirdPartySnippets %}
+  {% for row in thirdPartySnippets %}
+    {% if row.snippetStatus %}
+      {% if row.snippetName %}
+        <!-- {{ row.snippetName }} -->
+      {% endif %}
+
+      {% if row.snippetCode %}
+        {{ row.snippetCode | raw }}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 {% set googleAnalytics = googleAnalytics.globalGoogleAnalytics %}
 {% if googleAnalytics is defined and googleAnalytics | length %}
