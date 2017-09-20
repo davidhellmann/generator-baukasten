@@ -7,6 +7,7 @@
 {% set defaults = {
 classname: 'm-radio',
 modifiers: [],
+data: {},
 disabled: false,
 group: null,
 id: null,
@@ -26,9 +27,12 @@ label: null
     <div class="{{ options.classname ~ '__inner' }}">
       <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}
              id="{{ options.id }}"
+              {% for item in options.data %}
+                  {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+              {% endfor %}
              type="radio"
              name="{{ options.group }}"
-             value="{{ options.classname }}" />
+             value="{{ options.classname }}"/>
       <label class="{{ options.classname ~ '__label' }}"
              for="{{ options.id }}">
           {{ options.label }}

@@ -7,6 +7,7 @@
 {% set defaults = {
 classname: 'm-checkbox',
 modifiers: [],
+data: {},
 disabled: false,
 group: null,
 id: null,
@@ -26,6 +27,9 @@ label: null
     <div class="{{ options.classname ~ '__inner' }}">
       <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}
              id="{{ options.id }}"
+              {% for item in options.data %}
+                  {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+              {% endfor %}
              type="checkbox"
              name="{{ options.group }}"
              value="{{ options.classname }}" />
