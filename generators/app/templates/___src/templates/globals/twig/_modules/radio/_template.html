@@ -5,33 +5,33 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'm-radio',
-  modifiers: [],
-  disabled: false,
-  group: null,
-  id: null,
-  value: null,
-  label: null
+classname: 'm-radio',
+modifiers: [],
+disabled: false,
+group: null,
+id: null,
+value: null,
+label: null
 } %}
 
 {% if options is defined %}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-  {% set options = defaults %}
+    {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
 {% if options.id and options.group and options.value and options.label %}
-  <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %} {{ options.disabled ? options.classname ~ '--disabled' }} {{ options.classname|replace({ 'm-' : 'js-' }) }}">
     <div class="{{ options.classname ~ '__inner' }}">
       <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}
              id="{{ options.id }}"
              type="radio"
              name="{{ options.group }}"
-             value="{{ options.value }}" />
+             value="{{ options.classname }}" />
       <label class="{{ options.classname ~ '__label' }}"
              for="{{ options.id }}">
-        {{ options.label }}
+          {{ options.label }}
       </label>
     </div>
   </div>
