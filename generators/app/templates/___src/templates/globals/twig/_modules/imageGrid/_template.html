@@ -16,57 +16,57 @@ caption: null
 } %}
 
 {% if options is defined %}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-  {% set options = defaults %}
+    {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
 {% if options.images %}
 
-  {# -- Settings -- #}
-  {% if options.ratio %}
-    {% switch options.ratio %}
+    {# -- Settings -- #}
+    {% if options.ratio %}
+        {% switch options.ratio %}
 
-    {% case "landscape" %}
-    {% set ratio = '16:10' %}
+        {% case "landscape" %}
+        {% set ratio = '16:10' %}
 
-    {% case "square" %}
-    {% set ratio = '1:1' %}
+        {% case "square" %}
+        {% set ratio = '1:1' %}
 
-    {% case "portrait" %}
-    {% set ratio = '10:16' %}
+        {% case "portrait" %}
+        {% set ratio = '10:16' %}
 
-    {% case "auto" %}
-    {% set ratio = '' %}
+        {% case "auto" %}
+        {% set ratio = '' %}
 
-    {% endswitch %}
+        {% endswitch %}
 
-  {% else %}
-    {% set ratio = '1:1' %}
-  {% endif %}
+    {% else %}
+        {% set ratio = '1:1' %}
+    {% endif %}
 
   <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
     <div class="{{ options.classname ~ '__inner' }}">
 
-      {% for image in options.images %}
-        <div class="m-figure  {{ options.classname ~ '__figure' }}">
+        {% for image in options.images %}
+          <div class="m-figure  {{ options.classname ~ '__figure' }}">
 
-          {# -- Image -- #}
-          {{ macroImage.image(image, {
-            ratio: ratio
-          }) }}
+              {# -- Image -- #}
+              {{ macroImage.image(image, {
+                  ratio: ratio
+              }) }}
 
-          {# -- Caption -- #}
-          {% if options.caption and options.image %}
-            {% include '_modules/caption/_template.html' with {
-              options: {
-                image: options.image
-              }
-            } %}
-          {% endif %}
-        </div>
-      {% endfor %}
+              {# -- Caption -- #}
+              {% if options.caption and image %}
+                  {% include '_modules/caption/_template.html' with {
+                  options: {
+                    image: image
+                  }
+                  } %}
+              {% endif %}
+          </div>
+        {% endfor %}
     </div>
   </div>
 {% endif %}
