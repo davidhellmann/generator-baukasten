@@ -48,6 +48,17 @@
     }
   }
 
+  &__input:disabled ~ label {
+    cursor: not-allowed;
+    color: c('black', '10');
+    border-color: c('black', '10');
+
+    &::before {
+      background-color: c('white');
+      border: 1px solid c('black', '10');
+    }
+  }
+
   &__input {
     width: 32px;
     height: 32px;
@@ -59,18 +70,5 @@
     transform: translateY(-50%);
     cursor: pointer;
     visibility: hidden;
-  }
-
-  &--disabled {
-    #{$root}__label {
-      cursor: not-allowed;
-      color: c('black', '10');
-      border-color: c('black', '10');
-
-      &::before {
-        background-color: c('white');
-        border: 1px solid c('black', '10');
-      }
-    }
   }
 }
