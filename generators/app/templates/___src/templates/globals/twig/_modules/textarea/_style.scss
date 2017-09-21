@@ -1,8 +1,8 @@
 /* -------------------------------------------------- */
-/*    .m-input
+/*    .m-textarea
 /* -------------------------------------------------- */
 
-.m-input {
+.m-textarea {
   $root: &;
   @include make-vr(1/2);
 
@@ -27,10 +27,9 @@
     outline: 0;
     display: block;
     width: 100%;
-    padding-right: s(1);
-    padding-left: s(1);
-    height: s(6);
-    line-height: s(6);
+    padding: s(1);
+    resize: vertical;
+    min-height: 100px;
     background: c('white');
     color: c('black', '90');
     border: 1px solid c('black', '40');
@@ -43,10 +42,6 @@
       background-color: c('white');
       border-color: c('black', '80');
     }
-
-    &[type='file'] {
-      border-style: dotted;
-    }
   }
 
   // Placeholder Color
@@ -54,3 +49,5 @@
     color: c('black', '20');
   }
 }
+
+

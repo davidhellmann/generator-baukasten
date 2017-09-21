@@ -1,0 +1,50 @@
+{#
+  Textarea
+  ========
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-textarea',
+  modifiers: [],
+  data: {},
+  cols: '30',
+  rows: '10',
+  name: null,
+  id: null,
+  label: false,
+  value: null,
+  placeholder: false
+} %}
+
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
+
+
+{# -- Module -- #}
+{% if options.id and options.name %}
+<div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %} {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  <div class="{{ options.classname ~ '__inner' }}">
+    {% if options.label %}
+      <label class="{{ options.classname ~ '__label' }}"
+             for="{{ options.id }}">
+          {{ options.label }}
+      </label>
+    {% endif %}
+
+    <textarea class="{{ options.classname ~ '__input' }}"
+           cols="{{ options.cols }}"
+           rows="{{ options.rows }}"
+           name="{{ options.name }}"
+           id="{{ options.id }}"
+           value=""
+           placeholder="{{ options.placeholder }}"
+           {% for item in options.data %}
+               {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+           {% endfor %} /></textarea>
+  </div>
+</div>
+{% endif %}
