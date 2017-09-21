@@ -58,15 +58,12 @@
 
     {# -- Imager: Watermark Image -- #}
     {% set watermarkImage = craft.imager.transformImage(logo, [
-    {
-    width: 100,
-    height: 36
-    }], {
-    jpegQuality: 100,
-    mode: 'crop',
-    position: '50% 50%',
-    ratio: ''
-    })
+        {
+            width: 100,
+            height: 100
+        }], {
+            jpegQuality: 100,
+        })
     %}
 
     {# -- Watermark Image URL -- #}
@@ -89,13 +86,12 @@
     {# -- Imager: Entry / Default Image -- #}
     {% set imageEntry = craft.imager.transformImage(image, [
     {
-    width: 1200,
-    height: 630
+        width: 1200,
+        height: 630
     }], {
-    jpegQuality: 100,
-    mode: 'crop',
-    position: position,
-    ratio: ''
+        jpegQuality: 100,
+        mode: 'crop',
+        position: position
     })
     %}
 
@@ -105,21 +101,21 @@
     {# -- Imager: Share Image -- #}
     {% set shareIamge = craft.imager.transformImage(imageEntry, [
     {
-    width: 1200,
-    height: 630
+        width: 1200,
+        height: 630
     }], {
-    jpegQuality: 100,
-    mode: 'crop',
-    ratio: '',
-    watermark: {
-    image: watermarkImage,
-    width: 100,
-    height: 36,
-    position: {
-    left: 30,
-    bottom: 30,
-    opacity: 0.8
-    }
+        jpegQuality: 100,
+        mode: 'crop',
+        ratio: '',
+        watermark: {
+            image: watermarkImage,
+            width: 100,
+            height: 100,
+            position: {
+            left: 30,
+            bottom: 30,
+            opacity: 0.8
+        }
     }
     })
     %}
