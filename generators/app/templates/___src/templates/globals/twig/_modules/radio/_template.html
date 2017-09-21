@@ -28,8 +28,8 @@
         <div class="{{ options.classname ~ '__inner' }}">
             <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}  {{ options.checked ? 'checked' : '' }}
                    id="{{ options.id }}"
-                   {% for item in options.data %}
-                       {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+                   {% for key, value in options.data %}
+                       {{ 'data-' ~ key ~ '=' ~ value }}
                    {% endfor %}
                    type="radio"
                    name="{{ options.name }}"

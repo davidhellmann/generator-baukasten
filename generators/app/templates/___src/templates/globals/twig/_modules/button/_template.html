@@ -30,8 +30,8 @@
     {% if options.button %}
       <button itemprop="url"
               role="button"
-              {% for item in options.data %}
-                  {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+              {% for key, value in options.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}
               class="{{ options.classname ~ '__inner' }}" {{ options.disabled ? 'disabled' }}>
 

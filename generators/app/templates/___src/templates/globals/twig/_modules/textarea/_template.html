@@ -42,9 +42,9 @@
            id="{{ options.id }}"
            value=""
            placeholder="{{ options.placeholder }}"
-           {% for item in options.data %}
-               {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
-           {% endfor %} /></textarea>
+            {% for key, value in options.data %}
+              {{ 'data-' ~ key ~ '=' ~ value }}
+            {% endfor %} /></textarea>
   </div>
 </div>
 {% endif %}

@@ -40,9 +40,9 @@
            type="{{ options.type }}"
            value="{{ options.value }}"
            placeholder="{{ options.placeholder }}"
-           {% for item in options.data %}
-               {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
-           {% endfor %} />
+            {% for key, value in options.data %}
+              {{ 'data-' ~ key ~ '=' ~ value }}
+            {% endfor %} />
   </div>
 </div>
 {% endif %}
