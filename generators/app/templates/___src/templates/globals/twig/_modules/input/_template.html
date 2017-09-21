@@ -6,15 +6,14 @@
 {# -- Set Defaults -- #}
 {% set defaults = {
   classname: 'm-input',
+  modifiers: [],
+  data: {},
   name: null,
   id: null,
   type: null,
-  label: null,
-  labelText: null,
+  label: false,
   value: null,
-  placeholder: null,
-  checked: null,
-  disabled: null
+  placeholder: false
 } %}
 
 {% if options is defined %}
@@ -23,29 +22,27 @@
     {% set options = defaults %}
 {% endif %}
 
+
 {# -- Module -- #}
-{% if options.name %}
-  {% if options.label %}
-    <label class="o-col  {{ options.classname }}  {{ options.class ~ '--' ~ options.type }}" for="{{ options.id }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
-    {% if options.type != 'checkbox' or options.type != 'radio' %}
-      <span class="{{ options.classname ~ '__labelText' }}">{{ options.labelText }}</span>
-    {% endif %}
-  {% endif %}
-
-    <input class="{{ options.classname ~ '__field' }}"
-           {{ options.name ? 'name="' ~ options.name ~ '"' }}
-           {{ options.id ? 'id="' ~ options.id ~ '"' }}
-           {{ options.type ? 'type="' ~ options.type ~ '"' }}
-           {{ options.value ? 'value="' ~ options.value ~ '"' }}
-           {{ options.placeholder ? 'placeholder="' ~ options.placeholder ~ '"' }}
-           {{ options.checked ? 'checked' }}
-           {{ options.disabled ? 'disabled' }}>
-
-    {% if options.type == 'checkbox' or options.type == 'radio' %}
-      <span class="{{ options.classname ~ '__labelText' }}">{{ options.labelText }}</span>
+{% if options.id and options.name and options.type %}
+<div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %} {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  <div class="{{ options.classname ~ '__inner' }}">
+    {% if options.label %}
+      <label class="{{ options.classname ~ '__label' }}"
+             for="{{ options.id }}">
+          {{ options.label }}
+      </label>
     {% endif %}
 
-  {% if options.label %}
-    </label>
-  {% endif %}
+    <input class="{{ options.classname ~ '__input' }}"
+           name="{{ options.name }}"
+           id="{{ options.id }}"
+           type="{{ options.type }}"
+           value="{{ options.value }}"
+           placeholder="{{ options.placeholder }}"
+           {% for item in options.data %}
+               {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+           {% endfor %} />
+  </div>
+</div>
 {% endif %}

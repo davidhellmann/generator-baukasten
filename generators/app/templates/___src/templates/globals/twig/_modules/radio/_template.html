@@ -5,15 +5,15 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-classname: 'm-radio',
-modifiers: [],
-data: {},
-disabled: false,
-checked: false,
-name: null,
-id: null,
-value: null,
-label: false
+    classname: 'm-radio',
+    modifiers: [],
+    data: {},
+    disabled: false,
+    checked: false,
+    name: null,
+    id: null,
+    value: null,
+    label: false
 } %}
 
 {% if options is defined %}
@@ -24,23 +24,23 @@ label: false
 
 {# -- Modul -- #}
 {% if options.id and options.name and options.value %}
-  <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
-    <div class="{{ options.classname ~ '__inner' }}">
-      <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}  {{ options.checked ? 'checked' : '' }}
-             id="{{ options.id }}"
-              {% for item in options.data %}
-                  {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
-              {% endfor %}
-             type="radio"
-             name="{{ options.name }}"
-             value="{{ options.classname }}" />
+    <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+        <div class="{{ options.classname ~ '__inner' }}">
+            <input class="{{ options.classname ~ '__input' }}" {{ options.disabled ? 'disabled' : '' }}  {{ options.checked ? 'checked' : '' }}
+                   id="{{ options.id }}"
+                   {% for item in options.data %}
+                       {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+                   {% endfor %}
+                   type="radio"
+                   name="{{ options.name }}"
+                   value="{{ options.classname }}" />
 
-        {% if options.label %}
-          <label class="{{ options.classname ~ '__label' }}"
-                 for="{{ options.id }}">
-              {{ options.label }}
-          </label>
-        {% endif %}
+            {% if options.label %}
+                <label class="{{ options.classname ~ '__label' }}"
+                       for="{{ options.id }}">
+                    {{ options.label }}
+                </label>
+            {% endif %}
+        </div>
     </div>
-  </div>
 {% endif %}

@@ -2,55 +2,65 @@
 /*    .m-input
 /* -------------------------------------------------- */
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'],
-input[type='search'],
-input[type='tel'],
-input[type='file'],
-textarea,
-select {
-  // stylelint-disable
-  -webkit-appearance: none;
-  // stylelint-enable
-  @include fs('ms0');
-  outline: 0;
-  display: inline-block;
-  width: 100%;
-  padding: s(1.25) s(2) s(1.25) s(2);
-  background: c('white');
-  border: 1px solid c('black-40');
-  color: c('black-90');
-  margin-bottom: s(1);
-  border-radius: 3px;
-  transition: all 0.5s ease('out-cubic');
+.m-input {
+  $root: &;
+  @include make-vr(1/2);
 
-  &:focus {
-    background-color: c('white');
-    border-color: c('black-80');
+  &__inner {
+    // empty
+  }
+
+  &__label {
+    display: block;
+    font-size: fs('ms-2');
+    text-transform: uppercase;
+    margin-bottom: s(1/2);
+    border: 1px solid transparent;
+    padding-right: s(1);
+    padding-left: s(1);
+  }
+
+  &__input {
+    // stylelint-disable
+    -webkit-appearance: none;
+    // stylelint-enable
+    outline: 0;
+    display: block;
+    width: 100%;
+    padding-right: s(1);
+    padding-left: s(1);
+    height: s(6);
+    line-height: s(6);
+    background: c('white');
+    color: c('black', '90');
+    border: 1px solid c('black', '40');
+    border-radius: 3px;
+    margin-bottom: s(1);
+    font-size: fs('ms0');
+    transition: all 0.25s ease('out-cubic');
+
+    &:focus {
+      background-color: c('white');
+      border-color: c('black', '80');
+    }
+
+    &[type='file'] {
+      border-style: dotted;
+    }
+  }
+
+  // Placeholder Color
+  ::placeholder {
+    color: c('black', '20');
   }
 }
 
-input[type='file'] {
-  border-style: dotted;
-}
 
-textarea {
+/* TODO: Create Text Area + Select Module */
+/* textarea {
   resize: vertical;
   width: 100%;
   min-height: 100px;
-}
+} */
 
-select {
-  width: 100%;
-  background: url('../images/svg/single/iconAccordion.svg');
-  background-repeat: no-repeat;
-  background-position: center right s(2);
-  background-size: 16px 16px;
-}
 
-// Placeholder Color
-::placeholder {
-  color: c('black-40');
-}

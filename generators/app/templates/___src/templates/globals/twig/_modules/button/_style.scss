@@ -28,7 +28,8 @@
     align-self: flex-start;
     font-size: fs('ms0');
     color: c('white');
-    line-height: 1;
+    height: s(6);
+    line-height: s(6);
     background-color: c('black', '50');
     border: 1px solid c('black', '50');
     text-decoration: none;
@@ -36,8 +37,13 @@
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
-    padding: s(2) s(4);
+    padding-right: s(2);
+    padding-left: s(2);
     transition: all 0.25s ease('out-cubic');
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       color: c('white');
@@ -116,7 +122,20 @@
 
   &__text {
     display: inline-block;
-    margin-top: 1px;
+    line-height: 1;
+    order: 1;
+  }
+
+  &__icon {
+    display: inline-block;
+    line-height: 1;
+    margin-left: s(1);
+    order: 2;
+
+    svg {
+      width: 24px !important;
+      height: 24px !important;
+    }
   }
 }
 

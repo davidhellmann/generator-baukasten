@@ -11,9 +11,9 @@
   url: null,
   target: null,
   modifiers: [],
+    data: {},
   text: 'Button',
-  hasIcon: null,
-  iconName: '',
+  icon: '',
 } %}
 
 {% if options is defined %}
@@ -30,6 +30,9 @@
     {% if options.button %}
       <button itemprop="url"
               role="button"
+              {% for item in options.data %}
+                  {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+              {% endfor %}
               class="{{ options.classname ~ '__inner' }}" {{ options.disabled ? 'disabled' }}>
 
         {# -- Button Text -- #}
@@ -38,9 +41,9 @@
         </span>
 
         {# -- Button Icon -- #}
-        {% if options.hasIcon %}
+        {% if options.icon != '' %}
           <span class="{{ options.classname ~ '__icon' }}">
-            {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+            {% include '_svg/' ~ options.icon ~ '.svg.html' %}
           </span>
         {% endif %}
       </button>
@@ -49,6 +52,9 @@
     {% else %}
       <a itemprop="url"
          role="button"
+         {% for item in options.data %}
+             {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+         {% endfor %}
          href="{{ options.url }}" {{ options.url starts with '#' ? 'data-scroll' : '' }} {{ options.target ? 'target="_blank"'}}
          class="{{ options.classname ~ '__inner' }}">
 
@@ -58,9 +64,9 @@
         </span>
 
         {# -- Button Icon -- #}
-        {% if options.hasIcon %}
+        {% if options.icon != '' %}
           <span class="{{ options.classname ~ '__icon' }}">
-            {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+            {% include '_svg/' ~ options.icon ~ '.svg.html' %}
           </span>
         {% endif %}
       </a>

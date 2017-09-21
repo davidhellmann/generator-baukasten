@@ -4,12 +4,17 @@
 
 .m-checkbox {
   $root: &;
+  @include make-vr(1/2);
+
+  &__inner {
+    // empty
+  }
 
   &__label {
     padding-right: s(1);
     padding-left: s(3);
-    height: s(4);
-    line-height: s(4);
+    height: s(6);
+    line-height: s(6);
     display: block;
     overflow: hidden;
     cursor: pointer;
@@ -17,9 +22,7 @@
     z-index: 2;
     border: 1px solid c('black', '40');
     border-radius: 3px;
-    margin-right: s(1);
-    margin-bottom: s(1);
-    font-size: fs('ms-1');
+    font-size: fs('ms0');
     transition: all 0.25s ease('out-cubic');
 
     &::before {
@@ -65,7 +68,7 @@
     order: 1;
     z-index: 2;
     position: absolute;
-    right: 30px;
+    left: 30px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
