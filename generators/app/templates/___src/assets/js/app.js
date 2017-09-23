@@ -17,15 +17,15 @@ import '../css/app.scss'
 import scripts from './partials/scripts'
 import templates from './partials/templates'
 import modules from './partials/modules'
-
-
+<% if (projectVue) { %>
 // Vue Exampleimport
 const vueElement = document.querySelector('#js-vue')
+
 // Beispiel für Lazy Loading von Chunks
 if (vueElement) {
     import('./vue/vueExample')
 }
-
+<% } %>
 const app = {
     init() {
         scripts.init()

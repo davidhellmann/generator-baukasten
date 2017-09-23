@@ -16,106 +16,6 @@
     <div class="o-section">
       <div class="o-row">
 
-        {# -- Headline -- #}
-        {% include '_modules/headline/_template.html' with {
-        options: {
-        text: 'Form Stuff',
-        size: 'h2'
-        }
-        } only %}
-
-        <div class="o-col">
-          {% for i in 1..3 %}
-            {% include '_modules/radio/_template.html' with {
-            options: {
-            disabled: i == '2' ? true : false,
-            name: 'radioGroup',
-            id: 'radio-' ~ i,
-            data: {
-            'size': 'sizie-' ~ i,
-            'gender': 'gender-' ~ i
-            },
-            value: 'value-' ~ i,
-            label: 'Radio ' ~ i
-            }
-            } only %}
-          {% endfor %}
-        </div>
-
-        <div class="o-col">
-          {% for i in 1..3 %}
-            {% include '_modules/checkbox/_template.html' with {
-            options: {
-            disabled: i == '2' ? true : false,
-            name: 'radioGroup',
-            id: 'checkbox-' ~ i,
-            data: {
-            'size': 'sizie-' ~ i,
-            'gender': 'gender-' ~ i
-            },
-            value: 'value-' ~ i,
-            label: 'Checkbox ' ~ i
-            }
-            } only %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="o-row">
-        <div class="o-col">
-          {% for i in 1..3 %}
-            {% include '_modules/input/_template.html' with {
-            options: {
-            data: {
-            'size': 'sizie-' ~ i,
-            'gender': 'gender-' ~ i
-            },
-            name: 'input-' ~ i,
-            id: 'id-' ~ i,
-            type: 'input',
-            label: 'Input ' ~ i,
-            value: '',
-            placeholder: 'Placeholder ' ~ i,
-            }
-            } only %}
-          {% endfor %}
-        </div>
-
-        <div class="o-col">
-          {% include '_modules/button/_template.html' with {
-          options: {
-          url: '#test',
-          modifiers: [],
-          text: 'Button',
-          icon: 'social/twitter'
-          }
-          } %}
-        </div>
-      </div>
-
-
-      <div class="o-row">
-        <div class="o-col">
-          {% include '_modules/textarea/_template.html' with {
-          options: {
-          data: {
-          'size': 'sizie-',
-          'gender': 'gender-'
-          },
-          name: 'textarea',
-          id: 'id',
-          label: 'Textarea ',
-          value: '',
-          placeholder: 'Placeholder ',
-          }
-          } only %}
-        </div>
-      </div>
-    </div>
-
-    <div class="o-section">
-      <div class="o-row">
-
         {# -- Include Page Title -- #}
         {% include '_modules/pageTitle/_template.html' %}
 
@@ -163,9 +63,7 @@
       {% endembed %}
     </div>
 
-    <div>
-      <div id="js-vue"></div>
-    </div>
+
 
     {# Content Builder #}
     {% include '_contentBuilders/_contentBuilderNeo.html' %}
