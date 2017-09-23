@@ -6,7 +6,12 @@
 #}
 
 {% extends "_layouts/_master.html" %}
-{% set bodyClass = "p-modules" %}
+{% set bodyClass = "p-forms" %}
+{% if craft.seomatic is defined %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'Forms' }) %}
+{% else %}
+  {% set appTitle = 'Forms' %}
+{% endif %}
 
 {% block appContent %}
   {# -- Cache -- #}

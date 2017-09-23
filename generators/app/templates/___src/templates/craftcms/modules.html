@@ -7,6 +7,11 @@
 
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-modules" %}
+{% if craft.seomatic is defined %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'Content Builder' }) %}
+{% else %}
+  {% set appTitle = 'Content Builder' %}
+{% endif %}
 
 {% block appContent %}
   {# -- Cache -- #}
