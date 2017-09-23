@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.34)
 # Datenbank: db12345678_baukasten
-# Erstellt am: 2017-09-22 23:30:36 +0000
+# Erstellt am: 2017-09-23 15:35:35 +0000
 # ************************************************************
 
 
@@ -411,7 +411,8 @@ VALUES
 	(73,114,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-03 17:01:51','2017-09-03 17:01:51','6f1695ea-94f2-41e3-bde3-94afe6da500a'),
 	(74,115,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-03 17:04:46','2017-09-03 17:04:46','a6b5f670-97c7-4dde-ac9d-95c6fdc1607a'),
 	(75,116,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-04 13:52:53','2017-09-04 13:52:53','14275065-6515-4fdc-8cdc-a9007ec7fcdd'),
-	(76,117,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-19 22:48:00','2017-09-19 22:48:00','b254503d-07ae-45f3-8a97-d0effb020fa0');
+	(76,117,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-19 22:48:00','2017-09-19 22:48:00','b254503d-07ae-45f3-8a97-d0effb020fa0'),
+	(77,118,'de','Forms',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-23 15:30:03','2017-09-23 15:30:03','972ed7bb-da0d-4421-8919-74a39af8bf2c');
 
 /*!40000 ALTER TABLE `craft_content` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -570,7 +571,8 @@ VALUES
 	(114,'GlobalSet',1,0,'2017-09-03 17:01:51','2017-09-03 17:01:51','243864ae-aeb1-4653-97ac-bce25fd90247'),
 	(115,'GlobalSet',1,0,'2017-09-03 17:04:46','2017-09-03 17:04:46','22da85df-2311-4d6e-9b72-22025b60f561'),
 	(116,'GlobalSet',1,0,'2017-09-04 13:52:53','2017-09-04 13:52:53','dff7bcd7-9a27-4046-9e49-893ed4627760'),
-	(117,'GlobalSet',1,0,'2017-09-19 22:48:00','2017-09-19 22:48:00','a11d1247-1379-4a3c-8386-64b46d6136ea');
+	(117,'GlobalSet',1,0,'2017-09-19 22:48:00','2017-09-19 22:48:00','a11d1247-1379-4a3c-8386-64b46d6136ea'),
+	(118,'Entry',1,0,'2017-09-23 15:30:03','2017-09-23 15:30:03','595d4d89-f2c6-4fa6-a3c4-ad4d0d725676');
 
 /*!40000 ALTER TABLE `craft_elements` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -690,7 +692,8 @@ VALUES
 	(114,114,'de','',NULL,1,'2017-09-03 17:01:51','2017-09-03 17:01:51','6ccea37f-9888-4742-96f8-3b0838afcadf'),
 	(115,115,'de','',NULL,1,'2017-09-03 17:04:46','2017-09-03 17:04:46','424b2f70-bb00-41d7-8adb-c9e978f1d3b4'),
 	(116,116,'de','',NULL,1,'2017-09-04 13:52:53','2017-09-04 13:52:53','21d055fc-31c0-4f33-b0fa-8f79436b43a5'),
-	(117,117,'de','',NULL,1,'2017-09-19 22:48:00','2017-09-19 22:48:00','e542527c-41e5-481b-9867-0b43df77847f');
+	(117,117,'de','',NULL,1,'2017-09-19 22:48:00','2017-09-19 22:48:00','e542527c-41e5-481b-9867-0b43df77847f'),
+	(118,118,'de','forms','forms',1,'2017-09-23 15:30:04','2017-09-23 15:30:04','71633f0a-2c81-4b80-b96f-c3e75f50553c');
 
 /*!40000 ALTER TABLE `craft_elements_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -751,7 +754,8 @@ LOCK TABLES `craft_entries` WRITE;
 INSERT INTO `craft_entries` (`id`, `sectionId`, `typeId`, `authorId`, `postDate`, `expiryDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
 	(4,3,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','77150553-bb5a-4f6d-9185-2f663ef161f1'),
-	(5,4,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-07-19 09:58:52','34d64afe-d272-4d07-b2d5-3fbb69a34f30');
+	(5,4,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-07-19 09:58:52','34d64afe-d272-4d07-b2d5-3fbb69a34f30'),
+	(118,7,NULL,NULL,'2017-09-23 15:30:03',NULL,'2017-09-23 15:30:04','2017-09-23 15:30:04','bec97289-bc82-4a3d-bcc2-1c8060e34adc');
 
 /*!40000 ALTER TABLE `craft_entries` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -822,7 +826,8 @@ VALUES
 	(3,3,150,'Homepage','homepage',1,'Title',NULL,1,'2017-04-16 22:48:52','2017-06-08 16:56:29','5523e1a6-09ec-41da-8346-f234fc79a17a'),
 	(4,4,151,'Modules','modules',1,'',NULL,1,'2017-04-16 22:48:52','2017-06-08 16:56:59','e4f17c23-e055-4d0e-b4b4-5d10bd234de1'),
 	(5,5,154,'News','news',1,'Title',NULL,1,'2017-04-16 22:48:52','2017-06-08 17:01:54','a7735d3a-d13b-4fc1-8f2e-24edba816813'),
-	(6,6,155,'Pages','pages',1,'Title',NULL,1,'2017-04-16 22:56:24','2017-06-08 17:02:16','9d1a8865-03bb-4839-aa69-17e31ede8053');
+	(6,6,155,'Pages','pages',1,'Title',NULL,1,'2017-04-16 22:56:24','2017-06-08 17:02:16','9d1a8865-03bb-4839-aa69-17e31ede8053'),
+	(7,7,354,'Forms','forms',0,NULL,'{section.name|raw}',1,'2017-09-23 15:30:03','2017-09-23 15:30:30','6c500d48-7b60-4ba1-acea-2d1d9f904042');
 
 /*!40000 ALTER TABLE `craft_entrytypes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1118,7 +1123,8 @@ VALUES
 	(349,'GlobalSet','2017-09-03 22:18:26','2017-09-03 22:18:26','978c49c1-323f-4289-aa67-2924328be7b1'),
 	(350,'SuperTable_Block','2017-09-03 23:13:41','2017-09-03 23:13:41','b2d47e2f-81d8-4edc-9793-48a85a895818'),
 	(351,'GlobalSet','2017-09-04 13:52:53','2017-09-04 13:52:53','d8d6c3b7-2395-4779-86fb-49b5a61cf3a3'),
-	(352,'GlobalSet','2017-09-19 22:48:00','2017-09-19 22:48:00','258e09de-7a5c-43c6-b01d-ac524a37a1d2');
+	(352,'GlobalSet','2017-09-19 22:48:00','2017-09-19 22:48:00','258e09de-7a5c-43c6-b01d-ac524a37a1d2'),
+	(354,'Entry','2017-09-23 15:30:30','2017-09-23 15:30:30','1592ced6-8cd8-43d4-b59a-a72f8bb0c8c1');
 
 /*!40000 ALTER TABLE `craft_fieldlayouts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2264,7 +2270,9 @@ VALUES
 	(116,'field',4,'de',''),
 	(116,'slug',0,'de',''),
 	(117,'field',122,'de',''),
-	(117,'slug',0,'de','');
+	(117,'slug',0,'de',''),
+	(118,'slug',0,'de',' forms '),
+	(118,'title',0,'de',' forms ');
 
 /*!40000 ALTER TABLE `craft_searchindex` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2302,7 +2310,8 @@ VALUES
 	(3,NULL,'Homepage','homepage','single',1,'index',0,'2017-04-16 22:48:52','2017-04-16 22:48:52','18ce4035-f866-4843-8748-e27173a3a8f8'),
 	(4,NULL,'Modules','modules','single',1,'modules',0,'2017-04-16 22:48:52','2017-04-16 22:48:52','0fe1fe7e-9e1d-432b-9401-fa46118d05f4'),
 	(5,NULL,'News','news','channel',1,'channels/news/_entry',1,'2017-04-16 22:48:52','2017-04-16 22:56:28','222d6ea4-e3a8-4270-8dae-597e1c1f38d4'),
-	(6,2,'Pages','pages','structure',1,'structures/pages/_entry',1,'2017-04-16 22:56:24','2017-04-16 22:56:24','ad6b7331-f1d3-44a9-b70f-24214262a47b');
+	(6,2,'Pages','pages','structure',1,'structures/pages/_entry',1,'2017-04-16 22:56:24','2017-04-16 22:56:24','ad6b7331-f1d3-44a9-b70f-24214262a47b'),
+	(7,NULL,'Forms','forms','single',1,'forms',0,'2017-09-23 15:30:03','2017-09-23 15:30:03','77a4987b-612e-4bed-aadc-30ab961fb43f');
 
 /*!40000 ALTER TABLE `craft_sections` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2338,7 +2347,8 @@ VALUES
 	(3,3,'de',1,'__home__',NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','8ac9640e-87a2-45f7-b83b-049ba0bf403d'),
 	(4,4,'de',1,'modules',NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','0405acd3-102d-46ef-b580-bd0a9d068f4d'),
 	(5,5,'de',0,'n/{slug}',NULL,'2017-04-16 22:48:52','2017-04-16 22:53:42','746a5783-5275-4025-9255-047aeab14ceb'),
-	(6,6,'de',0,'p/{slug}','{parent.uri}/{slug}','2017-04-16 22:56:24','2017-04-16 22:56:24','9ac9729b-5fda-42ca-9777-90aa49b58024');
+	(6,6,'de',0,'p/{slug}','{parent.uri}/{slug}','2017-04-16 22:56:24','2017-04-16 22:56:24','9ac9729b-5fda-42ca-9777-90aa49b58024'),
+	(7,7,'de',1,'forms',NULL,'2017-09-23 15:30:03','2017-09-23 15:30:03','e58d92b7-aad0-495f-9046-98a78f410a2f');
 
 /*!40000 ALTER TABLE `craft_sections_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2571,7 +2581,9 @@ VALUES
 	(24,1,'c0fd86a033a481dda57298beb6afd4e9c84ed86eczozMjoieG5qcG5jc3JJZnlQX3FGWH5WT2l1TF9Rb2VvdTRGclkiOw==','2017-09-03 17:01:12','2017-09-03 17:01:12','bf526696-ca3f-4f10-b5d8-2043f8f7029e'),
 	(25,1,'b97f97c7a4e07f793ed9161303929703d12b6c35czozMjoiQUZOcGhFRk1JYm5xWGJiamY4NFF4Sjk0clAwS2xHb2EiOw==','2017-09-03 22:17:49','2017-09-03 22:17:49','ffdbea25-d3c9-48a1-b2f7-8fa177a17d39'),
 	(26,1,'27f87fa5092f53d00938bfc2521f567c5826dc37czozMjoiNFM2bmY3Zl9YaUpqV284eXR1UlZsaVpQY1NzQUtkdW0iOw==','2017-09-04 13:49:04','2017-09-04 13:49:04','19d79f07-18c7-4f7d-813a-d4be3043ce72'),
-	(27,1,'403671758ee7f5ddbdbc416cdf7eda69d86095fbczozMjoiNWV6anU2U2M3TG1qV2pheGFrYjFKeU9CODFzV2RtdzgiOw==','2017-09-19 22:44:30','2017-09-19 22:44:30','a39690cf-ec0a-4b4e-b209-354db5749a88');
+	(27,1,'403671758ee7f5ddbdbc416cdf7eda69d86095fbczozMjoiNWV6anU2U2M3TG1qV2pheGFrYjFKeU9CODFzV2RtdzgiOw==','2017-09-19 22:44:30','2017-09-19 22:44:30','a39690cf-ec0a-4b4e-b209-354db5749a88'),
+	(29,1,'3ab415c671b95d032a0976f0a3cf3453f3104cf8czozMjoieEFPRjFQcUVwVH5mVWxmRmZ4am1aUTJBYmRZaWlqZWIiOw==','2017-09-22 23:30:57','2017-09-22 23:30:57','f0be0644-2cf2-44bb-ab1c-563060f18ee6'),
+	(30,1,'a848df7aaede1c9b61e50eb2236a69e45c2dfaf5czozMjoiejl2U1FJN3ZnZ21Wc3h4MUV4Zm9rNX4xRGY0YjJ5RkgiOw==','2017-09-23 15:27:41','2017-09-23 15:27:41','c84ff28a-4041-41f1-9e41-3da8d2469c9f');
 
 /*!40000 ALTER TABLE `craft_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3752,7 +3764,7 @@ LOCK TABLES `craft_users` WRITE;
 
 INSERT INTO `craft_users` (`id`, `username`, `photo`, `firstName`, `lastName`, `email`, `password`, `preferredLocale`, `weekStartDay`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIPAddress`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','mail@domain.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,1,1,0,0,0,0,0,'2017-09-22 21:44:05','::1',NULL,NULL,'2017-07-08 19:57:50',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-09-22 21:44:05','df730679-fa87-4b60-991e-9e821fddf5f8');
+	(1,'superuser',NULL,'','','mail@domain.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,1,1,0,0,0,0,0,'2017-09-23 15:27:41','::1',NULL,NULL,'2017-07-08 19:57:50',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-09-23 15:27:41','df730679-fa87-4b60-991e-9e821fddf5f8');
 
 /*!40000 ALTER TABLE `craft_users` ENABLE KEYS */;
 UNLOCK TABLES;
