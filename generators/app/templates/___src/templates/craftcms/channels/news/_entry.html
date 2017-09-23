@@ -20,6 +20,8 @@
 {% endblock %}
 
 {% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key craft.request.path %}
   <article role="article">
     <div class="o-section">
       <div class="o-row">
@@ -37,4 +39,7 @@
     {# Content Builder #}
     {% include '_contentBuilders/_contentBuilderNeo.html' %}
   </article>
+
+  {# -- Cache End -- #}
+  {% endcache %}
 {% endblock %}

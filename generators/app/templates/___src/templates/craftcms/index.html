@@ -16,6 +16,9 @@
 {% endblock %}
 
 {% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key 'home' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %}
+
   <div class="o-section">
     <div class="o-row">
 
@@ -33,6 +36,6 @@
     </div>
   </div>
 
-
-
+  {# -- Cache End -- #}
+  {% endcache %}
 {% endblock %}

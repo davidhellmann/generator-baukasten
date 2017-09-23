@@ -1,7 +1,19 @@
-/* -------------------------------------------------- */
-/*    contentSection
- /* -------------------------------------------------- */
+/**
+ * contentSection
+ */
 
-export default () => {
-    console.log('Initialize: contentSecton')
+const contentSection = {
+    cfg:  {
+        name: `contentSection`
+    },
+
+    log(msg) {
+        console.log(msg)
+    },
+
+    init() {
+        this.log(`Init: ${this.cfg.name}`)
+    }
 }
+
+export default contentSection

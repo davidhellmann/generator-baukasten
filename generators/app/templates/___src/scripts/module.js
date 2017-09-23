@@ -43,7 +43,7 @@ inquirer
 
             /* All Done */
             fs.commit(function() {
-                console.log(chalk`-> Modul: {cyan ${answer.moduleName}} created!`)
+                console.log(chalk`-> Modul: {cyan ${answers.moduleName}} created!`)
             })
         } catch(e) {
             console.error(e)

@@ -1,9 +1,9 @@
 {
-  "title": "Button",
+  "title": "twoColumns",
   "status": "ready",
   "context": {
     "options": {
-      "classname": "m-button"
+      "classname": "m-twoColumns"
     }
   }
 }

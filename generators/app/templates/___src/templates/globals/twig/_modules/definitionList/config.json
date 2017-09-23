@@ -1,9 +1,9 @@
 {
-  "title": "Button",
+  "title": "definitionList",
   "status": "ready",
   "context": {
     "options": {
-      "classname": "m-button"
+      "classname": "m-definitionList"
     }
   }
 }

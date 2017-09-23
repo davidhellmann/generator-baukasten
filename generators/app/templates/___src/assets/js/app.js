@@ -7,50 +7,32 @@ import 'babel-polyfill'
 import 'svgxuse'
 import 'objectFitPolyfill/src/objectFitPolyfill'
 
-// Lib
+// Import Libs
 import './lib/bling'
 
 // CSS Import
 import '../css/app.scss'
 
-// Scripts
-import './scripts/example'
-import './scripts/bodyclass'
-import './scripts/lazyloading'
-import './scripts/fontfaceobserver'
-// import './scripts/pagetransition'
-// import './scripts/preloader'
-// import './scripts/smoothScroll'
-// import './scripts/waypoints.anime'
+// Import Partials
+import scripts from './partials/scripts'
+import templates from './partials/templates'
+import modules from './partials/modules'
 
-<% if (projectType !== 'wordpress' ) { %>
-// Modules
-import '../../templates/_modules/accordion/_main'
-import '../../templates/_modules/cookiebar/_main'
-import '../../templates/_modules/imageSlider/_main'
-import '../../templates/_modules/imageGallery/_main'
 
-// Templates
-import '../../templates/_templates/toggleContent/_main'
-<% } %>
-
-// Vue Stuff
-<% if (projectVue) { %>
-    const vueElement = document.querySelectorAll('#js-vue')
+// Vue Exampleimport
+const vueElement = document.querySelector('#js-vue')
 // Beispiel für Lazy Loading von Chunks
-    if (vueElement) {
-        import('./vue/vueExample')
-    }
-<% } %>
-
-// Debugging
-const _debug = false
-window._debug = _debug
-
-if (_debug === true) {
-    /* eslint-disable no-console */
-    console.log('Debugging is: true')
-    /* eslint-enable */
-    const html = document.getElementsByTagName('html')[0]
-    html.classList.add('dev', 'debug')
+if (vueElement) {
+    import('./vue/vueExample')
 }
+
+const app = {
+    init() {
+        scripts.init()
+        templates.init()
+        modules.init()
+    }
+}
+
+// Init App!
+app.init()

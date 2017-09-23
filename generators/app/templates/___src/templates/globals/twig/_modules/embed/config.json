@@ -1,9 +1,9 @@
 {
-  "title": "Button",
+  "title": "embed",
   "status": "ready",
   "context": {
     "options": {
-      "classname": "m-button"
+      "classname": "m-embed"
     }
   }
 }

@@ -13,9 +13,9 @@
 } %}
 
 {% if options is defined %}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-  {% set options = defaults %}
+    {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
@@ -26,7 +26,7 @@
     {% if options.contentTop %}
       <div class="o-row  {{ options.classname ~ '__content' }}  {{ options.classname ~ '__content--top' }}">
         {% block contentTop %}
-          Content Top
+            Content Top
         {% endblock %}
       </div>
     {% endif %}
@@ -35,8 +35,8 @@
     <div class="{{ options.classname ~ '__trigger' }}
                 {{ options.contentTop ? options.classname ~ '__trigger--top' : options.classname ~ '__trigger--bottom' }}
                 {{ options.contentTop ? 'js-toggleContent--top' : 'js-toggleContent' }}"
-         data-text-closed="{{ options.textClosed }}"
-         data-text-open="{{ options.textOpen }}">
+          data-text-closed="{{ options.textClosed }}"
+          data-text-open="{{ options.textOpen }}">
       <span class="js-textHolder">{{ options.textClosed }}</span>
     </div>
 
@@ -44,7 +44,7 @@
     {% if options.contentBottom %}
       <div class="o-row  {{ options.classname ~ '__content' }}  {{ options.classname ~ '__content--bottom' }}">
         {% block contentBottom %}
-          Content Bottom
+            Content Bottom
         {% endblock %}
       </div>
     {% endif %}

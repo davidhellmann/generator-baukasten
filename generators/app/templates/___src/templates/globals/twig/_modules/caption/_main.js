@@ -1,9 +1,19 @@
-/*
- |--------------------------------------------------------------------------
- |  Caption
- |--------------------------------------------------------------------------
+/**
+ * caption
  */
 
-export default () => {
-    console.log('Initialize: caption')
+const caption = {
+    cfg:  {
+        name: `caption`
+    },
+
+    log(msg) {
+        console.log(msg)
+    },
+
+    init() {
+        this.log(`Init: ${this.cfg.name}`)
+    }
 }
+
+export default caption

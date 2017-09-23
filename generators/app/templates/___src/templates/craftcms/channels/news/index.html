@@ -25,6 +25,8 @@
 
 
 {% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key 'news-archive-' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %}
   <div class="o-section">
     <div class="o-row">
 
@@ -46,4 +48,7 @@
       {% endfor %}
     </div>
   </div>
+
+  {# -- Cache End -- #}
+  {% endcache %}
 {% endblock %}

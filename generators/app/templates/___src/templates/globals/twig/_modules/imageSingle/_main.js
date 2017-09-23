@@ -1,7 +1,19 @@
-/* -------------------------------------------------- */
-/*    Image Cover
-/* -------------------------------------------------- */
+/**
+ * imageSingle
+ */
 
-export default () => {
-    console.log('Initialize: imageSingle')
+const imageSingle = {
+    cfg:  {
+        name: `imageSingle`
+    },
+
+    log(msg) {
+        console.log(msg)
+    },
+
+    init() {
+        this.log(`Init: ${this.cfg.name}`)
+    }
 }
+
+export default imageSingle

@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.34)
 # Datenbank: db12345678_baukasten
-# Erstellt am: 2017-09-19 22:49:12 +0000
+# Erstellt am: 2017-09-22 23:30:36 +0000
 # ************************************************************
 
 
@@ -488,7 +488,7 @@ INSERT INTO `craft_elements` (`id`, `type`, `enabled`, `archived`, `dateCreated`
 VALUES
 	(1,'User',1,0,'2017-04-16 21:53:42','2017-09-03 17:05:28','b9c2bd4b-c068-45fc-9760-bc6107691d2b'),
 	(4,'Entry',1,0,'2017-04-16 22:48:52','2017-04-16 22:48:52','a216f836-8252-4f04-aaad-40b19b0fd94a'),
-	(5,'Entry',1,0,'2017-04-16 22:48:52','2017-07-19 09:58:51','1528fa5d-880c-4c02-990a-f8c773f5eb9e'),
+	(5,'Entry',1,0,'2017-04-16 22:48:52','2017-09-22 21:47:08','1528fa5d-880c-4c02-990a-f8c773f5eb9e'),
 	(6,'GlobalSet',1,0,'2017-04-16 22:49:03','2017-09-03 22:18:26','05e2ebe3-b333-4020-8e73-24d7e5c9c0de'),
 	(7,'Neo_Block',1,0,'2017-04-17 02:19:23','2017-07-19 09:58:51','95c22ec9-eb46-40af-b616-35d483ba7735'),
 	(8,'SuperTable_Block',1,0,'2017-04-17 02:19:23','2017-07-19 09:58:51','9ab033e0-2785-4ba9-95f4-9d4f36417e6c'),
@@ -608,7 +608,7 @@ INSERT INTO `craft_elements_i18n` (`id`, `elementId`, `locale`, `slug`, `uri`, `
 VALUES
 	(1,1,'de','',NULL,1,'2017-04-16 21:53:42','2017-09-03 17:05:28','f62f4336-026f-47a1-ad80-3c23aa756d4f'),
 	(4,4,'de','homepage','__home__',1,'2017-04-16 22:48:52','2017-04-16 22:48:52','73ad8ab1-228c-4fb3-b707-3cb697ae55d3'),
-	(5,5,'de','modules','modules',1,'2017-04-16 22:48:52','2017-07-19 09:58:51','4c07ed46-b518-48cf-90cb-44c91579600c'),
+	(5,5,'de','modules','modules',1,'2017-04-16 22:48:52','2017-09-22 21:47:08','4c07ed46-b518-48cf-90cb-44c91579600c'),
 	(6,6,'de','',NULL,1,'2017-04-16 22:49:03','2017-09-03 22:18:26','fd02fd31-754a-410a-8ff2-4b579d1cd428'),
 	(7,7,'de','',NULL,1,'2017-04-17 02:19:23','2017-07-19 09:58:51','f32474d8-9ac8-4609-a237-e4b641377110'),
 	(8,8,'de','',NULL,1,'2017-04-17 02:19:23','2017-07-19 09:58:51','db6cd980-aaa9-4a56-928f-92e8539a56c2'),
@@ -3752,7 +3752,7 @@ LOCK TABLES `craft_users` WRITE;
 
 INSERT INTO `craft_users` (`id`, `username`, `photo`, `firstName`, `lastName`, `email`, `password`, `preferredLocale`, `weekStartDay`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIPAddress`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','mail@domain.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,1,1,0,0,0,0,0,'2017-09-19 22:44:30','::1',NULL,NULL,'2017-07-08 19:57:50',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-09-19 22:44:30','df730679-fa87-4b60-991e-9e821fddf5f8');
+	(1,'superuser',NULL,'','','mail@domain.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,1,1,0,0,0,0,0,'2017-09-22 21:44:05','::1',NULL,NULL,'2017-07-08 19:57:50',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-09-22 21:44:05','df730679-fa87-4b60-991e-9e821fddf5f8');
 
 /*!40000 ALTER TABLE `craft_users` ENABLE KEYS */;
 UNLOCK TABLES;

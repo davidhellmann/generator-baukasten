@@ -15,6 +15,7 @@
 </style>
 
 <script>
+  /* eslint-disable */
   export default {
     data() {
       return {
@@ -22,4 +23,5 @@
       }
     }
   }
+  /* eslint-enable */
 </script>

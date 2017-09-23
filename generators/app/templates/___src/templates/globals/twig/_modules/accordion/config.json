@@ -1,9 +1,9 @@
 {
-  "title": "Button",
+  "title": "accordion",
   "status": "ready",
   "context": {
     "options": {
-      "classname": "m-button"
+      "classname": "m-accordion"
     }
   }
 }

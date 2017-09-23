@@ -1,41 +1,50 @@
-const cfg = {
-    body: document.getElementsByTagName("body")[0],
-    states: {
-        loading: 'app_loading',
-        interact: 'app_interactive',
-        complete: 'app_complete'
-    },
-}
+/**
+ * preloader
+ */
 
-const stateLoading = () => {
-    cfg.body.classList.add(cfg.states.loading)
-    // console.log('Loading')
-}
-
-const stateInteractive = () => {
-    cfg.body.classList.remove(cfg.states.loading)
-    cfg.body.classList.add(cfg.states.interact)
-    // console.log('Interact')
-}
-
-const stateComplete = () => {
-    setTimeout(() => {
-        cfg.body.classList.remove(cfg.states.interact)
-        cfg.body.classList.add(cfg.states.complete)
-        // console.log('Complete')
-    }, 500)
-}
-
-const progressLoader = () => {
-    stateLoading()
-    stateInteractive()
-
-    document.onreadystatechange = function() {
-        if(document.readyState == 'complete') {
-            stateComplete()
+const preloader = {
+    cfg:  {
+        body: document.getElementsByTagName('body')[0],
+        states: {
+            loading: 'is-loading',
+            interact: 'is-interactive',
+            complete: 'is-complete'
         }
-        //"complete" === document.readyState && stateComplete()
+    },
+
+    stateLoading() {
+        this.cfg.body.classList.add(this.cfg.states.loading)
+    },
+
+    stateInteractive() {
+        this.cfg.body.classList.remove(this.cfg.states.loading)
+        this.cfg.body.classList.add(this.cfg.states.interact)
+    },
+
+    stateComplete() {
+        setTimeout(() => {
+            this.cfg.body.classList.remove(this.cfg.states.interact)
+            this.cfg.body.classList.add(this.cfg.states.complete)
+        }, 1000)
+    },
+
+    progressLoader() {
+        this.stateLoading()
+        this.stateInteractive()
+
+        document.onreadystatechange = () => {
+            if (document.readyState === 'complete') {
+                this.stateComplete()
+            }
+        }
+    },
+
+    init() {
+        if (!this.cfg.body.classList.contains('is-livePreview') &&
+            document.getElementsByTagName('html')[0].classList.contains('js')) {
+            this.progressLoader()
+        }
     }
 }
 
-progressLoader()
+export default preloader

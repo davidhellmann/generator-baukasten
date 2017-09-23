@@ -30,6 +30,8 @@
 
 
 {% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key category.group().handle ~ category ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %}
   <div class="o-section">
     <div class="o-row">
 
@@ -52,4 +54,7 @@
 
   {# Pagination #}
   {{ macroPagination.pagination(pageInfo,craft) }}
+
+  {# -- Cache End -- #}
+  {% endcache %}
 {% endblock %}

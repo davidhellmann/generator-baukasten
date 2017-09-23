@@ -1,24 +1,37 @@
 /**
- * Set Body Classes
+ * bodyClass
  */
 
-const   body      = document.body
-const   steps     = 500
-const   duration  = 3000
-let     timer     = 0
-let     i         = 1
+const bodyClass = {
+    cfg:  {
+        body: document.body,
+        steps: 500,
+        duration: 3000,
+        timer: 0,
+        i: 1
+    },
 
-const bodyclass = () => {
-    body.classList.add(`is_now_${i * steps}`)
-    i += i
-}
+    setClass() {
+        this.cfg.body.classList.add(`is_${this.cfg.i * this.cfg.steps}ms`)
+        this.cfg.i += 1
+    },
 
+    timer() {
+        while (this.cfg.timer <= this.cfg.duration) {
+            if (this.cfg.timer === 0) {
+                this.cfg.body.classList.add('is_ready')
+            } else {
+                setTimeout(() => {
+                    this.setClass()
+                }, this.cfg.timer)
+            }
+            this.cfg.timer += this.cfg.steps
+        }
+    },
 
-while (timer <= duration) {
-    if (timer === 0) {
-        body.classList.add('is_ready')
-    } else {
-        setTimeout(bodyclass, timer)
+    init() {
+        this.timer()
     }
-    timer += steps
 }
+
+export default bodyClass

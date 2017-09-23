@@ -16,9 +16,11 @@
 
 {# Modul #}
 <header class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
+  {% cache %}
   <div class="{{ options.classname ~ '__inner' }}">
     {% block appHeader %}
       Header
     {% endblock %}
   </div>
+  {% endcache %}
 </header>

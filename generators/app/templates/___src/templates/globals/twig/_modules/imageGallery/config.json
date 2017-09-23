@@ -1,9 +1,9 @@
 {
-  "title": "Button",
+  "title": "imagerGallery",
   "status": "ready",
   "context": {
     "options": {
-      "classname": "m-button"
+      "classname": "m-imageGallery"
     }
   }
 }

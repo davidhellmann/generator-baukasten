@@ -1,0 +1,21 @@
+{#
+  preloader
+  ======================================================================================================================
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-preloader'
+} %}
+
+{% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+    {% set options = defaults %}
+{% endif %}
+
+{# -- Modul -- #}
+<div class="{{ options.classname }}">
+  <div class="{{ options.classname ~ '__inner' }}"></div>
+</div>
+

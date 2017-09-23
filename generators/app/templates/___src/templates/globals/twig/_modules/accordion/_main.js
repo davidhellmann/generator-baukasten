@@ -1,33 +1,38 @@
 /**
- * Accordion
+ * accordion
  */
 
-// Config
-const cfg = {
-    body: document.body,
-    triggers: [...document.querySelectorAll('.js-accordionTrigger')],
-    status: 'is-open'
-}
+const accordion = {
+    // Config
+    cfg: {
+        body: document.body,
+        triggers: [...document.querySelectorAll('.js-accordionTrigger')],
+        status: 'is-open'
+    },
 
-const toggleContent = (event) => {
-    event.preventDefault()
-    const target = event.currentTarget
-    const accContent = target.nextElementSibling
+    // Toggle Content
+    toggleContent(event) {
+        event.preventDefault()
+        const target = event.currentTarget
+        const accContent = target.nextElementSibling
 
-    if (!target.classList.contains(cfg.status)) {
-        target.classList.add(cfg.status)
-        accContent.style.display = 'block'
-    } else {
-        target.classList.remove(cfg.status)
-        accContent.style.display = 'none'
+        if (!target.classList.contains(this.cfg.status)) {
+            target.classList.add(this.cfg.status)
+            accContent.style.display = 'block'
+        } else {
+            target.classList.remove(this.cfg.status)
+            accContent.style.display = 'none'
+        }
+    },
+
+    // Init
+    init() {
+        this.cfg.triggers.forEach((trigger) => {
+            trigger.addEventListener('click', (event) => {
+                this.toggleContent(event)
+            })
+        })
     }
 }
 
-const init = () => {
-    cfg.triggers.forEach((trigger) => {
-        trigger.addEventListener('click', toggleContent)
-    })
-}
-
-init()
-
+export default accordion

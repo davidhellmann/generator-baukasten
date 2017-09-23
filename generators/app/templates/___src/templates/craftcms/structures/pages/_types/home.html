@@ -7,6 +7,10 @@
 {% set bodyClass = "p-home" %}
 
 {% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key templateHandle ~ "-pages-" ~ craft.request.path %}
+  {# If you have a Template with Pagination use this: #}
+  {# {% cache globally using key templateHandle ~ '-archive-' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %} #}
 
   <div class="o-section">
     <div class="o-row">
@@ -22,4 +26,7 @@
 
   {# -- Content Builder -- #}
   {% include '_contentBuilders/_contentBuilderNeo.html' %}
+
+  {# -- Cache End -- #}
+  {% endcache %}
 {% endblock %}

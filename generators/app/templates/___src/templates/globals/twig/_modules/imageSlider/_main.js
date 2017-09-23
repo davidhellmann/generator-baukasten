@@ -1,23 +1,28 @@
-/* -------------------------------------------------- */
-/*    Image Slider
-/* -------------------------------------------------- */
+/**
+ * Image Slider
+ */
 
 import Flickity from 'flickity'
 
-// Load Resize Hack
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const sliders = [...document.querySelectorAll('.js-imageSlider')]
-        if (sliders) {
-            sliders.forEach((slider) => {
-                const _slider = slider.querySelector('.m-imageSlider__inner')
-                const flkty = Flickity.data(_slider)
-                flkty.resize()
-                _slider.classList.add('is-visible')
-            })
-        }
-    }, 20)
-})
+const imageSlider = {
+    init() {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const sliders = [...document.querySelectorAll('.js-imageSlider')]
+                if (sliders) {
+                    sliders.forEach((slider) => {
+                        const _slider = slider.querySelector('.m-imageSlider__inner')
+                        const flkty = Flickity.data(_slider)
+                        flkty.resize()
+                        _slider.classList.add('is-visible')
+                    })
+                }
+            }, 20)
+        })
+    }
+}
+
+export default imageSlider
 
 /*
 const flktySettings = {

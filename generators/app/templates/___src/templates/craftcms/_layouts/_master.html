@@ -159,31 +159,24 @@
   {% block siteHeader %}{% endblock %}
 </head>
 {% minify html %}
-<body id="home" class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
+<body id="home"
+      class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
+
+{# -- Preloader#}
+{% include '_modules/preloader/_template.html' %}
 
 <div class="m-appWrapper">
   {# -- App Header -- #}
   {% include '_modules/appHeader/_template.html' %}
 
-  {% cache %}
   <div class="m-appContent">
-  {% block appContent %}
-    Content
-  {% endblock %}
+    {% block appContent %}
+      Content
+    {% endblock %}
   </div>
 
   {# -- App Footer -- #}
   {% include '_modules/appFooter/_template.html' %}
-  {% endcache %}
-
-  {% if currentUser %}
-    {#{% if currentUser.isInGroup('redakteur') or currentUser.admin %}#}
-    {% if currentUser.admin and entry is defined %}
-      <div class="t-editLink">
-        <a href="{{ entry.cpEditUrl }}">Edit this Page</a>
-      </div>
-    {% endif %}
-  {% endif %}
 </div>
 
 {# -- Grid Overlay -- #}
@@ -200,10 +193,6 @@
 {# -- SCRIPTS -- #}
 {% include '_partials/footer/_scripts.html' %}
 
-{# -- Instant Analytics -- #}
-{% block analytics %}
-  {#{% hook 'iaSendPageView' %}#}
-{% endblock %}
 </body>
 {% endminify %}
 <!-- Läuft, weitermachen! -->

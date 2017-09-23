@@ -6,9 +6,9 @@
 {# Set Defaults #}
 {% set defaults = {
   classname: 'm-pageTitle',
-  object: null,
+  object: entry,
   text: null,
-  size: null,
+  size: 'h1',
   link: null
 } %}
 
@@ -20,10 +20,10 @@
 
 {# -- Modul -- #}
 {% if options.object or options.text %}
-  {% if options.object.singleSeoTitle is defined and options.object.singleSeoTitle | length %}
-    {% set headline = options.object.singleSeoTitle %}
-  {% elseif options.text %}
+  {% if options.text %}
     {% set headline = options.text %}
+  {% elseif options.object.singleSeoTitle is defined and options.object.singleSeoTitle | length %}
+    {% set headline = options.object.singleSeoTitle %}
   {% else %}
     {% set headline = options.object.title %}
   {% endif %}

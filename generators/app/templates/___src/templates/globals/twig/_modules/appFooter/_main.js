@@ -1,9 +1,19 @@
-/*
- |--------------------------------------------------------------------------
- |  appFooter
- |--------------------------------------------------------------------------
+/**
+ * appFooter
  */
 
-export default () => {
-    console.log('Initialize: appFooter')
+const appFooter = {
+    cfg:  {
+        name: `appFooter`
+    },
+
+    log(msg) {
+        console.log(msg)
+    },
+
+    init() {
+        this.log(`Init: ${this.cfg.name}`)
+    }
 }
+
+export default appFooter

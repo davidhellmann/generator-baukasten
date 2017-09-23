@@ -9,7 +9,6 @@ const pkg = require('../package.json')
     const doSynchronousLoop = (data, processData, done) => {
         if (data.length > 0) {
             const loop = (data, i, processData, done) => {
-                console.log(data, i, processData, done)
                 processData(data[i], i, () => {
                     if (++i < data.length) {
                         loop(data, i, processData, done)
