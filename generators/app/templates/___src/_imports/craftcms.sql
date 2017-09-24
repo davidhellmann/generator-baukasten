@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.34)
 # Datenbank: db12345678_baukasten
-# Erstellt am: 2017-09-23 16:37:16 +0000
+# Erstellt am: 2017-09-24 16:10:36 +0000
 # ************************************************************
 
 
@@ -185,7 +185,11 @@ LOCK TABLES `craft_assettransformindex` WRITE;
 
 INSERT INTO `craft_assettransformindex` (`id`, `fileId`, `filename`, `format`, `location`, `sourceId`, `fileExists`, `inProgress`, `dateIndexed`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,11,'image_01.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-07-13 22:10:13','2017-07-13 22:10:13','2017-07-13 22:10:13','d37ad164-23a7-4b44-9692-f8ab438af2d5');
+	(1,11,'image_01.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-07-13 22:10:13','2017-07-13 22:10:13','2017-07-13 22:10:13','d37ad164-23a7-4b44-9692-f8ab438af2d5'),
+	(2,11,'image_01.jpg',NULL,'_socialSharing',1,1,1,'2017-09-24 14:03:05','2017-09-24 14:03:05','2017-09-24 14:03:07','0913c273-4ae0-42de-82e2-871d748f6d3e'),
+	(3,12,'image_02.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-09-24 14:09:25','2017-09-24 14:09:25','2017-09-24 14:09:25','3b7e8f8a-dbf4-43bc-9880-5d478de40aa8'),
+	(4,13,'image_03.jpg',NULL,'_socialSharing',1,1,1,'2017-09-24 14:09:33','2017-09-24 14:09:33','2017-09-24 14:09:33','9fd1dcf4-80ad-4ec5-a0af-c139b67d6b22'),
+	(5,12,'image_02.jpg',NULL,'_socialSharing',1,1,1,'2017-09-24 14:09:51','2017-09-24 14:09:51','2017-09-24 14:09:52','68022aaf-4f17-49b0-a5cb-ce1a0d796edc');
 
 /*!40000 ALTER TABLE `craft_assettransformindex` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -243,6 +247,15 @@ CREATE TABLE `craft_categories` (
   CONSTRAINT `craft_categories_id_fk` FOREIGN KEY (`id`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_categories` WRITE;
+/*!40000 ALTER TABLE `craft_categories` DISABLE KEYS */;
+
+INSERT INTO `craft_categories` (`id`, `groupId`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(122,1,'2017-09-24 14:07:04','2017-09-24 14:07:04','f6ac7a6a-679c-42a8-ac24-f35fdbb59823');
+
+/*!40000 ALTER TABLE `craft_categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_categorygroups
@@ -275,7 +288,7 @@ LOCK TABLES `craft_categorygroups` WRITE;
 
 INSERT INTO `craft_categorygroups` (`id`, `structureId`, `fieldLayoutId`, `name`, `handle`, `hasUrls`, `template`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,1,58,'Default','default',1,'','2017-04-16 22:50:30','2017-04-16 22:50:30','188f3c4d-2d6c-46be-9c65-903ac3db6c76');
+	(1,1,360,'News','news',1,'categories/news/_entry','2017-04-16 22:50:30','2017-09-24 14:06:30','188f3c4d-2d6c-46be-9c65-903ac3db6c76');
 
 /*!40000 ALTER TABLE `craft_categorygroups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -307,7 +320,7 @@ LOCK TABLES `craft_categorygroups_i18n` WRITE;
 
 INSERT INTO `craft_categorygroups_i18n` (`id`, `groupId`, `locale`, `urlFormat`, `nestedUrlFormat`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,1,'de','default/{slug}','{parent.uri}/{slug}','2017-04-16 22:50:30','2017-04-16 22:50:30','099a53d9-25b6-48e6-8d42-cc29c06ffa2a');
+	(1,1,'de','ca/{slug}',NULL,'2017-04-16 22:50:30','2017-09-24 14:06:30','099a53d9-25b6-48e6-8d42-cc29c06ffa2a');
 
 /*!40000 ALTER TABLE `craft_categorygroups_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -412,7 +425,12 @@ VALUES
 	(74,115,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-03 17:04:46','2017-09-03 17:04:46','a6b5f670-97c7-4dde-ac9d-95c6fdc1607a'),
 	(75,116,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-04 13:52:53','2017-09-04 13:52:53','14275065-6515-4fdc-8cdc-a9007ec7fcdd'),
 	(76,117,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-19 22:48:00','2017-09-19 22:48:00','b254503d-07ae-45f3-8a97-d0effb020fa0'),
-	(77,118,'de','Forms',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-23 15:30:03','2017-09-23 15:30:03','972ed7bb-da0d-4421-8919-74a39af8bf2c');
+	(77,118,'de','Forms',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-23 15:30:03','2017-09-23 15:30:03','972ed7bb-da0d-4421-8919-74a39af8bf2c'),
+	(78,119,'de','News',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','',NULL,'{\"id\":null,\"enabled\":1,\"archived\":0,\"locale\":\"de\",\"localeEnabled\":1,\"slug\":null,\"uri\":null,\"dateCreated\":null,\"dateUpdated\":null,\"root\":null,\"lft\":null,\"rgt\":null,\"level\":null,\"searchScore\":null,\"elementId\":0,\"metaType\":\"template\",\"metaPath\":\"\",\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitle\":\"News\",\"seoDescription\":\"\",\"seoKeywords\":\"\",\"seoImageTransform\":\"socialSharing\",\"seoFacebookImageTransform\":\"socialSharing\",\"seoTwitterImageTransform\":\"socialSharing\",\"twitterCardType\":\"summary_large_image\",\"openGraphType\":\"\",\"robots\":\"\",\"seoImageId\":\"\",\"seoTwitterImageId\":\"\",\"seoFacebookImageId\":\"\",\"canonicalUrlOverride\":\"\",\"seoTitleUnparsed\":\"News\",\"seoDescriptionUnparsed\":\"\",\"seoKeywordsUnparsed\":\"\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoCommerceVariants\":null,\"__model__\":\"Craft\\\\Seomatic_MetaFieldModel\"}',NULL,'2017-09-24 13:57:35','2017-09-24 14:18:14','f8a7cec8-1605-4c15-b8be-3438a2f6286d'),
+	(79,120,'de','Welcome to Baukasten',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.','{\"id\":null,\"enabled\":1,\"archived\":0,\"locale\":\"de\",\"localeEnabled\":1,\"slug\":null,\"uri\":null,\"dateCreated\":null,\"dateUpdated\":null,\"root\":null,\"lft\":null,\"rgt\":null,\"level\":null,\"searchScore\":null,\"elementId\":0,\"metaType\":\"template\",\"metaPath\":\"\",\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitle\":\"Welcome to Baukasten\",\"seoDescription\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset\\u2026\",\"seoKeywords\":\"\",\"seoImageTransform\":\"socialSharing\",\"seoFacebookImageTransform\":\"socialSharing\",\"seoTwitterImageTransform\":\"socialSharing\",\"twitterCardType\":\"summary_large_image\",\"openGraphType\":\"\",\"robots\":\"\",\"seoImageId\":\"11\",\"seoTwitterImageId\":\"11\",\"seoFacebookImageId\":\"11\",\"canonicalUrlOverride\":\"\",\"seoTitleUnparsed\":\"Welcome\",\"seoDescriptionUnparsed\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset\\u2026\",\"seoKeywordsUnparsed\":\"\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoCommerceVariants\":null,\"__model__\":\"Craft\\\\Seomatic_MetaFieldModel\"}',NULL,NULL,'2017-09-24 14:03:04','2017-09-24 14:08:40','4346a6d7-dd8d-4a20-b18d-bd231e3daaae'),
+	(80,121,'de','Example News Entry',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?','{\"id\":null,\"enabled\":1,\"archived\":0,\"locale\":\"de\",\"localeEnabled\":1,\"slug\":null,\"uri\":null,\"dateCreated\":null,\"dateUpdated\":null,\"root\":null,\"lft\":null,\"rgt\":null,\"level\":null,\"searchScore\":null,\"elementId\":0,\"metaType\":\"template\",\"metaPath\":\"\",\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitle\":\"Example News Entry\",\"seoDescription\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no\\u2026\",\"seoKeywords\":\"\",\"seoImageTransform\":\"socialSharing\",\"seoFacebookImageTransform\":\"socialSharing\",\"seoTwitterImageTransform\":\"socialSharing\",\"twitterCardType\":\"summary_large_image\",\"openGraphType\":\"\",\"robots\":\"\",\"seoImageId\":\"12\",\"seoTwitterImageId\":\"12\",\"seoFacebookImageId\":\"12\",\"canonicalUrlOverride\":\"\",\"seoTitleUnparsed\":\"Example News Entry\",\"seoDescriptionUnparsed\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no\\u2026\",\"seoKeywordsUnparsed\":\"\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoCommerceVariants\":null,\"__model__\":\"Craft\\\\Seomatic_MetaFieldModel\"}',NULL,NULL,'2017-09-24 14:04:22','2017-09-24 14:09:50','ae693cfd-b3eb-47a2-8ce4-9a1b6e6bcf29'),
+	(81,122,'de','Example',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-09-24 14:07:04','2017-09-24 14:07:04','b4eca969-2149-4aa0-840b-b7d98eece5d0'),
+	(82,123,'de','Another News Example',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.','{\"id\":null,\"enabled\":1,\"archived\":0,\"locale\":\"de\",\"localeEnabled\":1,\"slug\":null,\"uri\":null,\"dateCreated\":null,\"dateUpdated\":null,\"root\":null,\"lft\":null,\"rgt\":null,\"level\":null,\"searchScore\":null,\"elementId\":0,\"metaType\":\"template\",\"metaPath\":\"\",\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitle\":\"Another News Example\",\"seoDescription\":\"Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet\\u2026\",\"seoKeywords\":\"\",\"seoImageTransform\":\"socialSharing\",\"seoFacebookImageTransform\":\"socialSharing\",\"seoTwitterImageTransform\":\"socialSharing\",\"twitterCardType\":\"summary_large_image\",\"openGraphType\":\"\",\"robots\":\"\",\"seoImageId\":\"13\",\"seoTwitterImageId\":\"13\",\"seoFacebookImageId\":\"13\",\"canonicalUrlOverride\":\"\",\"seoTitleUnparsed\":\"Another News Example\",\"seoDescriptionUnparsed\":\"Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet\\u2026\",\"seoKeywordsUnparsed\":\"\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoCommerceVariants\":null,\"__model__\":\"Craft\\\\Seomatic_MetaFieldModel\"}',NULL,NULL,'2017-09-24 14:09:32','2017-09-24 14:09:37','73d57c0f-8691-4673-b40f-3e1fda4aea9b');
 
 /*!40000 ALTER TABLE `craft_content` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -572,7 +590,12 @@ VALUES
 	(115,'GlobalSet',1,0,'2017-09-03 17:04:46','2017-09-03 17:04:46','22da85df-2311-4d6e-9b72-22025b60f561'),
 	(116,'GlobalSet',1,0,'2017-09-04 13:52:53','2017-09-04 13:52:53','dff7bcd7-9a27-4046-9e49-893ed4627760'),
 	(117,'GlobalSet',1,0,'2017-09-19 22:48:00','2017-09-19 22:48:00','a11d1247-1379-4a3c-8386-64b46d6136ea'),
-	(118,'Entry',1,0,'2017-09-23 15:30:03','2017-09-23 15:30:03','595d4d89-f2c6-4fa6-a3c4-ad4d0d725676');
+	(118,'Entry',1,0,'2017-09-23 15:30:03','2017-09-23 15:30:03','595d4d89-f2c6-4fa6-a3c4-ad4d0d725676'),
+	(119,'Entry',1,0,'2017-09-24 13:57:35','2017-09-24 14:18:14','c778d2cb-caec-4054-930a-5eece2cdb2ce'),
+	(120,'Entry',1,0,'2017-09-24 14:03:04','2017-09-24 14:08:40','fc788d63-e556-425b-a3c8-9eff2dd74836'),
+	(121,'Entry',1,0,'2017-09-24 14:04:22','2017-09-24 14:09:50','c129643a-7cfe-45d9-a3c4-b2f8b95622d4'),
+	(122,'Category',1,0,'2017-09-24 14:07:04','2017-09-24 14:07:04','a52f1e9b-d2ad-431f-b65f-82671abe6f6c'),
+	(123,'Entry',1,0,'2017-09-24 14:09:32','2017-09-24 14:09:37','b4a77fb7-285b-4552-9d98-8292ba6b49a3');
 
 /*!40000 ALTER TABLE `craft_elements` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -693,7 +716,12 @@ VALUES
 	(115,115,'de','',NULL,1,'2017-09-03 17:04:46','2017-09-03 17:04:46','424b2f70-bb00-41d7-8adb-c9e978f1d3b4'),
 	(116,116,'de','',NULL,1,'2017-09-04 13:52:53','2017-09-04 13:52:53','21d055fc-31c0-4f33-b0fa-8f79436b43a5'),
 	(117,117,'de','',NULL,1,'2017-09-19 22:48:00','2017-09-19 22:48:00','e542527c-41e5-481b-9867-0b43df77847f'),
-	(118,118,'de','forms','forms',1,'2017-09-23 15:30:04','2017-09-23 15:30:04','71633f0a-2c81-4b80-b96f-c3e75f50553c');
+	(118,118,'de','forms','forms',1,'2017-09-23 15:30:04','2017-09-23 15:30:04','71633f0a-2c81-4b80-b96f-c3e75f50553c'),
+	(119,119,'de','news','p/news',1,'2017-09-24 13:57:35','2017-09-24 14:18:14','18eff1f4-9113-44f5-8e5b-411b50f2ca87'),
+	(120,120,'de','welcome','n/welcome',1,'2017-09-24 14:03:04','2017-09-24 14:08:40','072c2261-0732-4667-b32e-fd5da9240cdb'),
+	(121,121,'de','example-news-entry','n/example-news-entry',1,'2017-09-24 14:04:22','2017-09-24 14:09:50','189e646d-5aa9-40d9-9696-42039d8e41f8'),
+	(122,122,'de','example','ca/example',1,'2017-09-24 14:07:04','2017-09-24 14:07:05','ffbf0167-9133-49f4-bea7-b079be78b15f'),
+	(123,123,'de','another-news-example','n/another-news-example',1,'2017-09-24 14:09:32','2017-09-24 14:09:37','eeaf19b8-bdce-4e8a-8064-18d8afa8fca2');
 
 /*!40000 ALTER TABLE `craft_elements_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -755,7 +783,11 @@ INSERT INTO `craft_entries` (`id`, `sectionId`, `typeId`, `authorId`, `postDate`
 VALUES
 	(4,3,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','77150553-bb5a-4f6d-9185-2f663ef161f1'),
 	(5,4,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-07-19 09:58:52','34d64afe-d272-4d07-b2d5-3fbb69a34f30'),
-	(118,7,NULL,NULL,'2017-09-23 15:30:03',NULL,'2017-09-23 15:30:04','2017-09-23 15:30:04','bec97289-bc82-4a3d-bcc2-1c8060e34adc');
+	(118,7,NULL,NULL,'2017-09-23 15:30:03',NULL,'2017-09-23 15:30:04','2017-09-23 15:30:04','bec97289-bc82-4a3d-bcc2-1c8060e34adc'),
+	(119,6,8,1,'2017-09-24 13:57:00',NULL,'2017-09-24 13:57:35','2017-09-24 14:18:14','90fe2fea-fe0c-4e1b-94c5-a4cd025dd3fa'),
+	(120,5,5,1,'2017-09-24 14:03:00',NULL,'2017-09-24 14:03:04','2017-09-24 14:08:40','feda2cfa-7d70-4003-a184-781e64cadc5c'),
+	(121,5,5,1,'2017-09-24 14:04:00',NULL,'2017-09-24 14:04:22','2017-09-24 14:09:50','ce0d5440-9eb2-4089-9f6c-04fd08247ce2'),
+	(123,5,5,1,'2017-09-24 14:09:37',NULL,'2017-09-24 14:09:32','2017-09-24 14:09:37','529e2f6b-5f9c-42a8-8d53-d852545493b2');
 
 /*!40000 ALTER TABLE `craft_entries` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -823,11 +855,12 @@ LOCK TABLES `craft_entrytypes` WRITE;
 
 INSERT INTO `craft_entrytypes` (`id`, `sectionId`, `fieldLayoutId`, `name`, `handle`, `hasTitleField`, `titleLabel`, `titleFormat`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(3,3,150,'Homepage','homepage',1,'Title',NULL,1,'2017-04-16 22:48:52','2017-06-08 16:56:29','5523e1a6-09ec-41da-8346-f234fc79a17a'),
-	(4,4,151,'Modules','modules',1,'',NULL,1,'2017-04-16 22:48:52','2017-06-08 16:56:59','e4f17c23-e055-4d0e-b4b4-5d10bd234de1'),
-	(5,5,154,'News','news',1,'Title',NULL,1,'2017-04-16 22:48:52','2017-06-08 17:01:54','a7735d3a-d13b-4fc1-8f2e-24edba816813'),
-	(6,6,155,'Pages','pages',1,'Title',NULL,1,'2017-04-16 22:56:24','2017-06-08 17:02:16','9d1a8865-03bb-4839-aa69-17e31ede8053'),
-	(7,7,354,'Forms','forms',0,NULL,'{section.name|raw}',1,'2017-09-23 15:30:03','2017-09-23 15:30:30','6c500d48-7b60-4ba1-acea-2d1d9f904042');
+	(3,3,357,'Homepage','homepage',1,'Title',NULL,1,'2017-04-16 22:48:52','2017-09-24 14:03:23','5523e1a6-09ec-41da-8346-f234fc79a17a'),
+	(4,4,358,'Modules','modules',1,'',NULL,1,'2017-04-16 22:48:52','2017-09-24 14:03:34','e4f17c23-e055-4d0e-b4b4-5d10bd234de1'),
+	(5,5,359,'News','news',1,'Title',NULL,1,'2017-04-16 22:48:52','2017-09-24 14:03:45','a7735d3a-d13b-4fc1-8f2e-24edba816813'),
+	(6,6,356,'Pages','pages',1,'Title',NULL,1,'2017-04-16 22:56:24','2017-09-24 13:57:13','9d1a8865-03bb-4839-aa69-17e31ede8053'),
+	(7,7,354,'Forms','forms',0,NULL,'{section.name|raw}',1,'2017-09-23 15:30:03','2017-09-23 15:30:30','6c500d48-7b60-4ba1-acea-2d1d9f904042'),
+	(8,6,355,'News Index','newsIndex',1,'Title',NULL,2,'2017-09-24 13:56:56','2017-09-24 13:56:56','1c8b733c-b769-40b0-8256-fbb6e152b0fe');
 
 /*!40000 ALTER TABLE `craft_entrytypes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -861,6 +894,26 @@ CREATE TABLE `craft_entryversions` (
   CONSTRAINT `craft_entryversions_sectionId_fk` FOREIGN KEY (`sectionId`) REFERENCES `craft_sections` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_entryversions` WRITE;
+/*!40000 ALTER TABLE `craft_entryversions` DISABLE KEYS */;
+
+INSERT INTO `craft_entryversions` (`id`, `entryId`, `sectionId`, `creatorId`, `locale`, `num`, `notes`, `data`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,119,6,1,'de',1,'','{\"typeId\":\"8\",\"authorId\":\"1\",\"title\":\"News\",\"slug\":\"news\",\"postDate\":1506261455,\"expiryDate\":null,\"enabled\":1,\"parentId\":\"\",\"fields\":{\"100\":\"\",\"106\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":\"\",\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":\"\",\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":\"\",\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":\"\",\"104\":\"\",\"102\":\"\"}}','2017-09-24 13:57:35','2017-09-24 13:57:35','3639855f-c9f1-43f8-a92a-963021372339'),
+	(2,120,5,1,'de',1,'','{\"typeId\":null,\"authorId\":\"1\",\"title\":\"Welcome\",\"slug\":\"welcome\",\"postDate\":1506261784,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":\"\",\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":\"\",\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":\"\",\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.\",\"102\":\"\"}}','2017-09-24 14:03:04','2017-09-24 14:03:04','66c6764c-3109-4a06-88ca-006573f9cdbc'),
+	(3,121,5,1,'de',1,'','{\"typeId\":null,\"authorId\":\"1\",\"title\":\"Example News Entry\",\"slug\":\"example-news-entry\",\"postDate\":null,\"expiryDate\":null,\"enabled\":0,\"parentId\":null,\"fields\":{\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":\"\",\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":\"\",\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":\"\",\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?\",\"102\":\"\"}}','2017-09-24 14:04:22','2017-09-24 14:04:22','54c4a6fd-5065-4530-9936-eba73b637194'),
+	(4,121,5,1,'de',2,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Example News Entry\",\"slug\":\"example-news-entry\",\"postDate\":1506261866,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Example News Entry\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"11\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"11\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"11\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?\",\"102\":\"\"}}','2017-09-24 14:04:27','2017-09-24 14:04:27','42fb8558-ae79-44ae-9110-b016a75ed7ef'),
+	(5,121,5,1,'de',3,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Example News Entry\",\"slug\":\"example-news-entry\",\"postDate\":1506261840,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Example News Entry\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"11\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"11\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"11\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?\",\"102\":\"\"}}','2017-09-24 14:07:15','2017-09-24 14:07:15','9a1d5167-957e-4239-af77-e72d1f8f48b4'),
+	(6,121,5,1,'de',4,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Example News Entry\",\"slug\":\"example-news-entry\",\"postDate\":1506261840,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Example News Entry\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"11\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"11\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"11\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?\",\"102\":\"\"}}','2017-09-24 14:08:09','2017-09-24 14:08:09','8e6b37db-aa5e-4e10-8b68-75ee4dca50f5'),
+	(7,120,5,1,'de',2,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Welcome to Baukasten\",\"slug\":\"welcome\",\"postDate\":1506261780,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Welcome\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"11\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"11\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"11\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.\",\"102\":\"\"}}','2017-09-24 14:08:30','2017-09-24 14:08:30','32585afe-840f-480b-9329-8ca11441714b'),
+	(8,120,5,1,'de',3,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Welcome to Baukasten\",\"slug\":\"welcome\",\"postDate\":1506261780,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Welcome\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"11\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"11\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"11\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"11\"],\"104\":\"An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.\",\"102\":\"\"}}','2017-09-24 14:08:40','2017-09-24 14:08:40','3ed21f94-829f-410c-92c3-54e20207a33d'),
+	(9,123,5,1,'de',1,'','{\"typeId\":null,\"authorId\":\"1\",\"title\":\"Another News Example\",\"slug\":\"another-news-example\",\"postDate\":null,\"expiryDate\":null,\"enabled\":0,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":\"\",\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":\"\",\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":\"\",\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"13\"],\"104\":\"Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.\",\"102\":\"\"}}','2017-09-24 14:09:32','2017-09-24 14:09:32','5b98b5d5-0891-483e-9dd4-d6e340f7889c'),
+	(10,123,5,1,'de',2,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Another News Example\",\"slug\":\"another-news-example\",\"postDate\":1506262177,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Another News Example\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"13\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"13\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"13\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"13\"],\"104\":\"Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.\",\"102\":\"\"}}','2017-09-24 14:09:37','2017-09-24 14:09:37','cf3cfd8e-fd95-42c4-9d71-17c41f9200ef'),
+	(11,121,5,1,'de',5,'','{\"typeId\":\"5\",\"authorId\":\"1\",\"title\":\"Example News Entry\",\"slug\":\"example-news-entry\",\"postDate\":1506261840,\"expiryDate\":null,\"enabled\":1,\"parentId\":null,\"fields\":{\"3\":[\"122\"],\"100\":\"\",\"105\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"Example News Entry\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no\\u2026\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":[\"11\"],\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":[\"11\"],\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":[\"11\"],\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":[\"12\"],\"104\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?\",\"102\":\"\"}}','2017-09-24 14:09:50','2017-09-24 14:09:50','5c94bdc0-f3cc-46fd-9f6e-69a2c048ebd2'),
+	(12,119,6,1,'de',2,'','{\"typeId\":\"8\",\"authorId\":\"1\",\"title\":\"News\",\"slug\":\"news\",\"postDate\":1506261420,\"expiryDate\":null,\"enabled\":1,\"parentId\":\"\",\"fields\":{\"100\":\"\",\"106\":{\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitleUnparsed\":\"News\",\"seoDescriptionSource\":\"field\",\"seoDescriptionSourceField\":\"singleIntroText\",\"seoDescriptionUnparsed\":\"\",\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywordsUnparsed\":\"\",\"seoImageIdSource\":\"field\",\"seoImageIdSourceField\":\"singleImageEntry\",\"seoImageId\":\"\",\"seoImageTransform\":\"socialSharing\",\"canonicalUrlOverride\":\"\",\"twitterCardType\":\"summary_large_image\",\"seoTwitterImageIdSource\":\"field\",\"seoTwitterImageIdSourceField\":\"singleImageEntry\",\"seoTwitterImageId\":\"\",\"seoTwitterImageTransform\":\"socialSharing\",\"openGraphType\":\"\",\"seoFacebookImageIdSource\":\"field\",\"seoFacebookImageIdSourceField\":\"singleImageEntry\",\"seoFacebookImageId\":\"\",\"seoFacebookImageTransform\":\"socialSharing\",\"robots\":\"\"},\"103\":\"\",\"104\":\"\",\"102\":\"\"}}','2017-09-24 14:18:14','2017-09-24 14:18:14','7b43844c-c933-4e89-9080-8f7002e55878');
+
+/*!40000 ALTER TABLE `craft_entryversions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_fieldgroups
@@ -950,24 +1003,6 @@ VALUES
 	(277,148,184,26,0,1,'2017-06-08 16:53:23','2017-06-08 16:53:23','83cf0d29-91f7-41cb-8461-68b0899cbe86'),
 	(278,148,184,47,0,2,'2017-06-08 16:53:23','2017-06-08 16:53:23','e5ec4010-d139-43bb-b61c-6c01ee113fe4'),
 	(279,148,184,101,0,3,'2017-06-08 16:53:23','2017-06-08 16:53:23','8e00ee54-8649-4902-af44-6c5a6505fd34'),
-	(282,150,186,102,0,1,'2017-06-08 16:56:29','2017-06-08 16:56:29','f9252ed4-2ba3-4c22-9b98-417b18c71f6b'),
-	(283,150,186,104,0,2,'2017-06-08 16:56:29','2017-06-08 16:56:29','75eacc82-d6af-4057-bb4a-8f0a0933f7ab'),
-	(284,150,186,103,0,3,'2017-06-08 16:56:29','2017-06-08 16:56:29','1666c7d7-7cd4-48cf-951e-404aac90c188'),
-	(285,151,187,102,0,1,'2017-06-08 16:56:59','2017-06-08 16:56:59','69f480b9-6d5b-4230-8093-c80c8e5e187a'),
-	(286,151,187,104,0,2,'2017-06-08 16:56:59','2017-06-08 16:56:59','dc444ff4-e272-42fa-937f-72260fc36294'),
-	(287,151,187,103,0,3,'2017-06-08 16:56:59','2017-06-08 16:56:59','7a97fb6c-febc-4961-ad08-992f3fd9b22d'),
-	(288,151,187,100,0,4,'2017-06-08 16:56:59','2017-06-08 16:56:59','72a3397d-b0a5-4044-8823-0fe5abde6467'),
-	(299,154,192,102,0,1,'2017-06-08 17:01:54','2017-06-08 17:01:54','8635494e-2d7f-4502-b178-234cfb496041'),
-	(300,154,192,104,0,2,'2017-06-08 17:01:54','2017-06-08 17:01:54','0b80f296-6884-462a-82a5-4f65534d2408'),
-	(301,154,192,103,0,3,'2017-06-08 17:01:54','2017-06-08 17:01:54','a05d2b3c-8f16-420f-acd7-3afaefec6539'),
-	(302,154,192,100,0,4,'2017-06-08 17:01:54','2017-06-08 17:01:54','c694da42-9c32-4042-a667-729154d4435f'),
-	(303,154,193,3,0,1,'2017-06-08 17:01:54','2017-06-08 17:01:54','fbb9780b-3189-4f61-9b30-352ad538396f'),
-	(304,154,194,105,0,1,'2017-06-08 17:01:54','2017-06-08 17:01:54','aa9d599f-011e-4caf-ba1f-b50a93772e34'),
-	(305,155,195,102,0,1,'2017-06-08 17:02:16','2017-06-08 17:02:16','f7c24be0-8672-46af-bd61-9320d336a3a9'),
-	(306,155,195,104,0,2,'2017-06-08 17:02:16','2017-06-08 17:02:16','c0975034-2442-4e5f-aae8-e54fa264225b'),
-	(307,155,195,103,0,3,'2017-06-08 17:02:16','2017-06-08 17:02:16','6f7b6778-a0e7-4ba5-9ea1-16e7bb7b89b7'),
-	(308,155,195,100,0,4,'2017-06-08 17:02:16','2017-06-08 17:02:16','898932b8-03fc-4e7f-adb2-247d7b20fb56'),
-	(309,155,196,106,0,1,'2017-06-08 17:02:16','2017-06-08 17:02:16','80a151b3-7077-496f-8d80-022c67e7991e'),
 	(364,174,215,38,0,1,'2017-07-09 20:59:19','2017-07-09 20:59:19','e8348636-9967-4a59-a742-6d2118f1f793'),
 	(365,174,215,39,0,2,'2017-07-09 20:59:19','2017-07-09 20:59:19','434ed0be-3fe4-430b-a39a-3e1d7a7df0b6'),
 	(366,174,215,108,0,3,'2017-07-09 20:59:19','2017-07-09 20:59:19','4cf902e5-13b3-48c7-9a2c-c2719fdf903c'),
@@ -1044,7 +1079,30 @@ VALUES
 	(680,350,471,119,1,2,'2017-09-03 23:13:41','2017-09-03 23:13:41','367aeb79-30d4-4aec-a4e9-e80c1acb9e5d'),
 	(681,350,471,120,1,3,'2017-09-03 23:13:41','2017-09-03 23:13:41','04ac44fa-214b-48bd-9e8e-7c9e1be65661'),
 	(682,351,472,4,0,1,'2017-09-04 13:52:53','2017-09-04 13:52:53','777a27e7-f349-49c1-9662-ddd6fd887f98'),
-	(683,352,473,122,0,1,'2017-09-19 22:48:00','2017-09-19 22:48:00','1802d630-7003-48c4-a92f-7d31202e00f3');
+	(683,352,473,122,0,1,'2017-09-19 22:48:00','2017-09-19 22:48:00','1802d630-7003-48c4-a92f-7d31202e00f3'),
+	(684,355,474,102,0,1,'2017-09-24 13:56:56','2017-09-24 13:56:56','2ce124b4-5e42-40e3-93e5-2352aa846758'),
+	(685,355,474,104,0,2,'2017-09-24 13:56:56','2017-09-24 13:56:56','8d567a62-bb32-44eb-b76b-073ade4a146b'),
+	(686,355,474,100,0,3,'2017-09-24 13:56:56','2017-09-24 13:56:56','2a4d9953-8544-420b-bb6e-5d42a18579ed'),
+	(687,355,475,103,0,1,'2017-09-24 13:56:56','2017-09-24 13:56:56','4edcdec3-3e16-407f-9c01-bf30a2c17185'),
+	(688,355,476,106,0,1,'2017-09-24 13:56:56','2017-09-24 13:56:56','e1fdba58-c945-4235-926b-2273124613f0'),
+	(689,356,477,102,0,1,'2017-09-24 13:57:13','2017-09-24 13:57:13','4028adb8-44e6-4687-9c00-23a238cb013c'),
+	(690,356,477,104,0,2,'2017-09-24 13:57:13','2017-09-24 13:57:13','ff2882f7-4c76-4f9e-ae4f-b72967ed97e2'),
+	(691,356,477,100,0,3,'2017-09-24 13:57:13','2017-09-24 13:57:13','1e4fa0f6-8cf8-4962-b840-1802e2b0b7c8'),
+	(692,356,478,103,0,1,'2017-09-24 13:57:13','2017-09-24 13:57:13','fd0ca6d6-1530-45ba-a686-05f159ed6f52'),
+	(693,356,479,106,0,1,'2017-09-24 13:57:13','2017-09-24 13:57:13','9714bee4-b091-4263-9d24-029128640c68'),
+	(694,357,480,102,0,1,'2017-09-24 14:03:23','2017-09-24 14:03:23','4a116ee4-c973-492d-9044-eae46b858fd3'),
+	(695,357,480,104,0,2,'2017-09-24 14:03:23','2017-09-24 14:03:23','f8536e4f-860f-476c-a63f-73196275e4c5'),
+	(696,357,481,103,0,1,'2017-09-24 14:03:23','2017-09-24 14:03:23','6942f1c1-d04b-4d5d-b957-771ebad4fe98'),
+	(697,358,482,102,0,1,'2017-09-24 14:03:34','2017-09-24 14:03:34','a86f10f8-3405-42ee-8d3e-97edff07471c'),
+	(698,358,482,104,0,2,'2017-09-24 14:03:34','2017-09-24 14:03:34','320e3470-f30e-49d5-bad0-b63cc9dedcff'),
+	(699,358,482,100,0,3,'2017-09-24 14:03:34','2017-09-24 14:03:34','774a8074-8d9c-43db-a7cd-09508eb2e2fb'),
+	(700,358,483,103,0,1,'2017-09-24 14:03:34','2017-09-24 14:03:34','d54db0a5-6c18-47e6-9c0c-4c94e5db8d18'),
+	(701,359,484,102,0,1,'2017-09-24 14:03:45','2017-09-24 14:03:45','776e088b-ff4d-44b5-b41f-ad388aaf431b'),
+	(702,359,484,104,0,2,'2017-09-24 14:03:45','2017-09-24 14:03:45','871b036d-5945-4f10-bf8a-dd9e2d58dacb'),
+	(703,359,484,100,0,3,'2017-09-24 14:03:45','2017-09-24 14:03:45','5448e562-4ce7-4cc8-b09a-255ca1252e17'),
+	(704,359,485,103,0,1,'2017-09-24 14:03:45','2017-09-24 14:03:45','79d8dff2-6464-4152-bf8d-cb476413386c'),
+	(705,359,485,3,0,2,'2017-09-24 14:03:45','2017-09-24 14:03:45','72b6f77d-877b-41ee-98f6-4b33550ff789'),
+	(706,359,486,105,0,1,'2017-09-24 14:03:45','2017-09-24 14:03:45','030b4fd1-9963-4c9c-8479-05c7c8472caa');
 
 /*!40000 ALTER TABLE `craft_fieldlayoutfields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1073,16 +1131,11 @@ VALUES
 	(13,'SuperTable_Block','2017-04-16 22:48:52','2017-04-16 22:48:52','84ec66fe-438c-41c9-9ad6-d8551e9359c6'),
 	(15,'SuperTable_Block','2017-04-16 22:48:54','2017-04-16 22:48:54','40d3ba27-29c7-4ddb-837f-2ab4f76c308e'),
 	(29,'SuperTable_Block','2017-04-16 22:49:01','2017-04-16 22:49:01','8c830c2b-9863-4f78-a837-c6e34d7a3de6'),
-	(58,'Category','2017-04-16 22:50:30','2017-04-16 22:50:30','f837bfa0-44b1-4e1f-9e0f-6d8477ec1af5'),
 	(142,'SuperTable_Block','2017-04-19 22:01:54','2017-04-19 22:01:54','a61eef88-4be8-4159-bd7d-d8e39d8ae1d1'),
 	(145,'Asset','2017-06-08 16:52:41','2017-06-08 16:52:41','bf2a7409-9446-42e0-9aa0-7279ec5873fc'),
 	(146,'Asset','2017-06-08 16:52:56','2017-06-08 16:52:56','6a689320-d8b8-40f2-ac55-4b4236cc4665'),
 	(147,'Asset','2017-06-08 16:53:07','2017-06-08 16:53:07','5c66a46e-0a45-4648-821f-8abe49ea963f'),
 	(148,'Asset','2017-06-08 16:53:23','2017-06-08 16:53:23','a580c48e-806b-4790-b174-c8b718ab8cd2'),
-	(150,'Entry','2017-06-08 16:56:29','2017-06-08 16:56:29','2a644b38-377d-40e3-b365-9d431421b87b'),
-	(151,'Entry','2017-06-08 16:56:59','2017-06-08 16:56:59','8137bea5-712f-4bce-b8e9-381ff6fd1998'),
-	(154,'Entry','2017-06-08 17:01:54','2017-06-08 17:01:54','7363fe0d-90ce-4115-978d-7fc126e561f6'),
-	(155,'Entry','2017-06-08 17:02:16','2017-06-08 17:02:16','f2cb9f99-ce29-4588-a26c-479b51a6b23b'),
 	(174,'SuperTable_Block','2017-07-09 20:59:19','2017-07-09 20:59:19','32bd2802-8600-46c3-ae61-4dec824b8761'),
 	(176,'SuperTable_Block','2017-07-09 21:01:02','2017-07-09 21:01:02','8781bcfb-947e-4dd4-baca-33eb1d8f32bd'),
 	(177,'SuperTable_Block','2017-07-09 21:01:25','2017-07-09 21:01:25','275ddf0a-5a60-45c6-a7dd-a94cf9168132'),
@@ -1124,7 +1177,13 @@ VALUES
 	(350,'SuperTable_Block','2017-09-03 23:13:41','2017-09-03 23:13:41','b2d47e2f-81d8-4edc-9793-48a85a895818'),
 	(351,'GlobalSet','2017-09-04 13:52:53','2017-09-04 13:52:53','d8d6c3b7-2395-4779-86fb-49b5a61cf3a3'),
 	(352,'GlobalSet','2017-09-19 22:48:00','2017-09-19 22:48:00','258e09de-7a5c-43c6-b01d-ac524a37a1d2'),
-	(354,'Entry','2017-09-23 15:30:30','2017-09-23 15:30:30','1592ced6-8cd8-43d4-b59a-a72f8bb0c8c1');
+	(354,'Entry','2017-09-23 15:30:30','2017-09-23 15:30:30','1592ced6-8cd8-43d4-b59a-a72f8bb0c8c1'),
+	(355,'Entry','2017-09-24 13:56:56','2017-09-24 13:56:56','9e198867-c600-41c7-87c3-a39c33e115c0'),
+	(356,'Entry','2017-09-24 13:57:13','2017-09-24 13:57:13','06df6a94-14ef-4bab-8820-26aa617dd0dd'),
+	(357,'Entry','2017-09-24 14:03:23','2017-09-24 14:03:23','7614e0d6-d8a5-4c2c-89c7-64106b86c388'),
+	(358,'Entry','2017-09-24 14:03:34','2017-09-24 14:03:34','1f5cca2c-4178-47fb-8c20-fead4e4397ae'),
+	(359,'Entry','2017-09-24 14:03:45','2017-09-24 14:03:45','1b5f7a75-2b1a-4615-bb90-d5ed1914b59b'),
+	(360,'Category','2017-09-24 14:06:30','2017-09-24 14:06:30','b1bcd844-a3eb-4306-87a5-0d370236b7f2');
 
 /*!40000 ALTER TABLE `craft_fieldlayouts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1162,13 +1221,6 @@ VALUES
 	(182,146,'Content',1,'2017-06-08 16:52:56','2017-06-08 16:52:56','9f596612-4a2e-451f-880b-cad331c15c88'),
 	(183,147,'Content',1,'2017-06-08 16:53:07','2017-06-08 16:53:07','55370456-e480-4454-8a19-1c1efa48e976'),
 	(184,148,'Content',1,'2017-06-08 16:53:23','2017-06-08 16:53:23','845336c8-4ef5-4ef6-bef4-69a13451dc9b'),
-	(186,150,'Content',1,'2017-06-08 16:56:29','2017-06-08 16:56:29','c4cfe3b7-9db7-49a6-bbd7-abdbae0544b8'),
-	(187,151,'Content',1,'2017-06-08 16:56:59','2017-06-08 16:56:59','e4869d57-10b7-4588-bdfe-13c80fef84b5'),
-	(192,154,'Content Neo',1,'2017-06-08 17:01:54','2017-06-08 17:01:54','ce20630c-1ef9-4533-97b9-4ddf7963988c'),
-	(193,154,'Meta',2,'2017-06-08 17:01:54','2017-06-08 17:01:54','f7a789b1-c42a-41e7-a0f3-717e531f8b77'),
-	(194,154,'SEO',3,'2017-06-08 17:01:54','2017-06-08 17:01:54','af44511f-a0fc-43d2-8ecc-8a030b2058f8'),
-	(195,155,'Content',1,'2017-06-08 17:02:16','2017-06-08 17:02:16','81c0d4e4-db17-4658-83b2-7b04a2eac1f7'),
-	(196,155,'SEO',2,'2017-06-08 17:02:16','2017-06-08 17:02:16','1e1087ed-1fe1-4c7a-8ee1-49f0ca233037'),
 	(215,174,'Content',1,'2017-07-09 20:59:19','2017-07-09 20:59:19','31d34522-2d85-410d-b1cc-edf2b2818a78'),
 	(217,176,'Content',1,'2017-07-09 21:01:02','2017-07-09 21:01:02','1828b52b-77d7-4e66-873e-12e2795bc64d'),
 	(218,177,'Content',1,'2017-07-09 21:01:25','2017-07-09 21:01:25','29a8fcd7-6d49-4690-886d-5122549847a8'),
@@ -1221,7 +1273,20 @@ VALUES
 	(470,349,'Content',1,'2017-09-03 22:18:26','2017-09-03 22:18:26','e8455e7d-5502-4f52-bc2d-98538e3573da'),
 	(471,350,'Content',1,'2017-09-03 23:13:41','2017-09-03 23:13:41','2105440f-61e1-44b6-92a5-c914e0449d78'),
 	(472,351,'Content',1,'2017-09-04 13:52:53','2017-09-04 13:52:53','49df5d86-3752-4e36-8564-df3035cecaed'),
-	(473,352,'Content',1,'2017-09-19 22:48:00','2017-09-19 22:48:00','90e0cfa4-456a-40e4-97bb-0924c72f8ee8');
+	(473,352,'Content',1,'2017-09-19 22:48:00','2017-09-19 22:48:00','90e0cfa4-456a-40e4-97bb-0924c72f8ee8'),
+	(474,355,'Content',1,'2017-09-24 13:56:56','2017-09-24 13:56:56','64de2b1f-1302-449e-9f32-657009c9ae64'),
+	(475,355,'Meta',2,'2017-09-24 13:56:56','2017-09-24 13:56:56','95f907da-cdd4-4e8d-a3f5-e813dc94b277'),
+	(476,355,'SEO',3,'2017-09-24 13:56:56','2017-09-24 13:56:56','327e9ad2-56c6-4ac2-9a2d-3023f77a81c4'),
+	(477,356,'Content',1,'2017-09-24 13:57:13','2017-09-24 13:57:13','5c75f416-b819-4417-8c28-6c7dc75f3c2f'),
+	(478,356,'Meta',2,'2017-09-24 13:57:13','2017-09-24 13:57:13','79f9bdc2-cc55-4c0b-99d5-e861145dffe0'),
+	(479,356,'SEO',3,'2017-09-24 13:57:13','2017-09-24 13:57:13','83c96e48-3b7b-43ab-88bf-4facb4237899'),
+	(480,357,'Content',1,'2017-09-24 14:03:23','2017-09-24 14:03:23','91de39d0-feda-45a6-ae35-0f511d9bb419'),
+	(481,357,'Meta',2,'2017-09-24 14:03:23','2017-09-24 14:03:23','9ebbfe1d-f507-4a9d-a6d3-9311c00e1a5f'),
+	(482,358,'Content',1,'2017-09-24 14:03:34','2017-09-24 14:03:34','20c0be25-0c6a-49b4-adda-56d36d4cd7eb'),
+	(483,358,'Meta',2,'2017-09-24 14:03:34','2017-09-24 14:03:34','cc50b015-cc52-434b-bfdc-f09c6a92f6d0'),
+	(484,359,'Content Neo',1,'2017-09-24 14:03:45','2017-09-24 14:03:45','35570742-8d5d-4459-956a-0be18fa9fc8c'),
+	(485,359,'Meta',2,'2017-09-24 14:03:45','2017-09-24 14:03:45','869fa72a-8360-499d-9a65-5c4f8cd62fee'),
+	(486,359,'SEO',3,'2017-09-24 14:03:45','2017-09-24 14:03:45','92c63ecd-ffe7-494f-a351-409cfc4c4098');
 
 /*!40000 ALTER TABLE `craft_fieldlayouttabs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1257,7 +1322,7 @@ LOCK TABLES `craft_fields` WRITE;
 
 INSERT INTO `craft_fields` (`id`, `groupId`, `name`, `handle`, `context`, `instructions`, `translatable`, `type`, `settings`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(3,2,'Category: Default','categoryDefault','global','',0,'Categories','{\"source\":\"default\",\"limit\":\"\",\"selectionLabel\":\"\"}','2017-04-16 22:48:52','2017-04-16 22:48:52','f99eb1e1-cf4f-4c6a-a6a9-c0b670f178eb'),
+	(3,2,'Category: News','categoryNews','global','',0,'Categories','{\"source\":\"group:1\",\"limit\":\"\",\"selectionLabel\":\"\"}','2017-04-16 22:48:52','2017-09-24 14:06:48','f99eb1e1-cf4f-4c6a-a6a9-c0b670f178eb'),
 	(4,4,'Global: Contact','globalContact','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"},\"new4\":{\"width\":\"\"},\"new5\":{\"width\":\"\"},\"new6\":{\"width\":\"\"},\"new7\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:52','2017-04-16 22:48:52','775a80e1-a6c7-45e3-9b73-28c6c4af82bd'),
 	(5,NULL,'Company','company','superTableBlockType:1','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-04-16 22:48:52','2017-04-16 22:48:52','2057f1f5-4c1a-47b6-93a6-cba4928e37f4'),
 	(6,NULL,'Street','street','superTableBlockType:1','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-04-16 22:48:52','2017-04-16 22:48:52','ae9276a2-45c6-416e-912a-40b6138d5295'),
@@ -1716,7 +1781,11 @@ LOCK TABLES `craft_neoblockstructures` WRITE;
 
 INSERT INTO `craft_neoblockstructures` (`id`, `structureId`, `ownerId`, `fieldId`, `ownerLocale`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(203,205,5,100,NULL,'2017-07-19 09:58:51','2017-07-19 09:58:51','f0b860da-2180-47c7-83c4-c33b6638bcf3');
+	(203,205,5,100,NULL,'2017-07-19 09:58:51','2017-07-19 09:58:51','f0b860da-2180-47c7-83c4-c33b6638bcf3'),
+	(211,213,120,100,NULL,'2017-09-24 14:08:40','2017-09-24 14:08:40','7927e579-aa00-4782-8d46-0c073df1e622'),
+	(213,215,123,100,NULL,'2017-09-24 14:09:37','2017-09-24 14:09:37','c181a697-de8d-4e83-9ab1-7afe21b8faf2'),
+	(214,216,121,100,NULL,'2017-09-24 14:09:50','2017-09-24 14:09:50','cc518087-4248-432f-abb5-db701ad89cc5'),
+	(215,217,119,100,NULL,'2017-09-24 14:18:14','2017-09-24 14:18:14','49162be2-a1d7-4547-8d3b-10985575a3cf');
 
 /*!40000 ALTER TABLE `craft_neoblockstructures` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1931,7 +2000,13 @@ VALUES
 	(3383,92,80,NULL,13,3,'2017-07-19 09:58:51','2017-07-19 09:58:51','1bab5466-b8a6-457a-8a9d-f4a1440cbdf1'),
 	(3384,92,80,NULL,14,4,'2017-07-19 09:58:51','2017-07-19 09:58:51','782b4126-639e-44ce-8447-bbf6332b9cbe'),
 	(3385,91,78,NULL,13,1,'2017-07-19 09:58:52','2017-07-19 09:58:52','af0ab5ed-cf7b-4132-9659-05aa785d7864'),
-	(3386,91,88,NULL,11,1,'2017-07-19 09:58:52','2017-07-19 09:58:52','09781f55-d352-4695-a27f-a9b3f7539eb6');
+	(3386,91,88,NULL,11,1,'2017-07-19 09:58:52','2017-07-19 09:58:52','09781f55-d352-4695-a27f-a9b3f7539eb6'),
+	(3396,103,120,NULL,11,1,'2017-09-24 14:08:40','2017-09-24 14:08:40','7adb2c6e-e439-421b-9fcc-42fb5a370160'),
+	(3397,3,120,NULL,122,1,'2017-09-24 14:08:40','2017-09-24 14:08:40','35055ed2-5aca-485b-baa5-15e9497de0a2'),
+	(3400,103,123,NULL,13,1,'2017-09-24 14:09:37','2017-09-24 14:09:37','00dbd3b6-f42b-41cf-9158-ccc8dd68e51d'),
+	(3401,3,123,NULL,122,1,'2017-09-24 14:09:37','2017-09-24 14:09:37','616864a1-a8f4-40af-8318-54846307a506'),
+	(3402,103,121,NULL,12,1,'2017-09-24 14:09:50','2017-09-24 14:09:50','6f8acae9-7bfc-400a-8e2e-a989bc6294c0'),
+	(3403,3,121,NULL,122,1,'2017-09-24 14:09:50','2017-09-24 14:09:50','e4ba5e0e-2a15-4f43-bdeb-e20f50d62fb1');
 
 /*!40000 ALTER TABLE `craft_relations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2272,7 +2347,40 @@ VALUES
 	(117,'field',122,'de',''),
 	(117,'slug',0,'de',''),
 	(118,'slug',0,'de',' forms '),
-	(118,'title',0,'de',' forms ');
+	(118,'title',0,'de',' forms '),
+	(119,'field',102,'de',''),
+	(119,'field',104,'de',''),
+	(119,'field',100,'de',''),
+	(119,'field',103,'de',''),
+	(119,'field',106,'de',' 1 de 1 0 template creativework webpage news socialsharing socialsharing socialsharing summary_large_image news field title field singleintrotext custom title field singleimageentry field singleimageentry field singleimageentry '),
+	(119,'slug',0,'de',' news '),
+	(119,'title',0,'de',' news '),
+	(120,'field',102,'de',''),
+	(120,'field',104,'de',' an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(120,'field',103,'de',' image 01 '),
+	(120,'field',100,'de',''),
+	(120,'field',3,'de',' example '),
+	(120,'field',105,'de',' 1 de 1 0 template creativework webpage welcome to baukasten an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset socialsharing socialsharing socialsharing summary_large_image 11 11 11 welcome an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset field title field singleintrotext custom title field singleimageentry field singleimageentry field singleimageentry '),
+	(120,'slug',0,'de',' welcome '),
+	(120,'title',0,'de',' welcome to baukasten '),
+	(121,'field',102,'de',''),
+	(121,'field',104,'de',' lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri mollis deseruisse te mei cu euismod singulis suavitate eam ex eos purto similique an eum fabellas adolescens dolor signiferumque cum id dicunt cetero detracto mea ei '),
+	(121,'field',100,'de',''),
+	(121,'field',103,'de',' image 02 '),
+	(121,'field',3,'de',' example '),
+	(121,'field',105,'de',' 1 de 1 0 template creativework webpage example news entry lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no socialsharing socialsharing socialsharing summary_large_image 12 12 12 example news entry lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no field title field singleintrotext custom title field singleimageentry field singleimageentry field singleimageentry '),
+	(121,'slug',0,'de',' example news entry '),
+	(121,'title',0,'de',' example news entry '),
+	(122,'slug',0,'de',' example '),
+	(122,'title',0,'de',' example '),
+	(123,'field',102,'de',''),
+	(123,'field',104,'de',' ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet repudiandae eu decore integre principes per ei id vim stet mentitum repudiandae pri mentitum qualisque ea ex usu augue viderer suscipit ea vel mucius graecis mentitum perfecto eu duo duo eu ipsum urbanitas eruditi recteque abhorreant ius et omnes dolore debitis vel ei an inani copiosae nec audiam sanctus nostrum est ea assum iuvaret mea id '),
+	(123,'field',100,'de',''),
+	(123,'field',103,'de',' image 03 '),
+	(123,'field',3,'de',' example '),
+	(123,'field',105,'de',' 1 de 1 0 template creativework webpage another news example ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet socialsharing socialsharing socialsharing summary_large_image 13 13 13 another news example ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet field title field singleintrotext custom title field singleimageentry field singleimageentry field singleimageentry '),
+	(123,'slug',0,'de',' another news example '),
+	(123,'title',0,'de',' another news example ');
 
 /*!40000 ALTER TABLE `craft_searchindex` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2583,7 +2691,8 @@ VALUES
 	(26,1,'27f87fa5092f53d00938bfc2521f567c5826dc37czozMjoiNFM2bmY3Zl9YaUpqV284eXR1UlZsaVpQY1NzQUtkdW0iOw==','2017-09-04 13:49:04','2017-09-04 13:49:04','19d79f07-18c7-4f7d-813a-d4be3043ce72'),
 	(27,1,'403671758ee7f5ddbdbc416cdf7eda69d86095fbczozMjoiNWV6anU2U2M3TG1qV2pheGFrYjFKeU9CODFzV2RtdzgiOw==','2017-09-19 22:44:30','2017-09-19 22:44:30','a39690cf-ec0a-4b4e-b209-354db5749a88'),
 	(29,1,'3ab415c671b95d032a0976f0a3cf3453f3104cf8czozMjoieEFPRjFQcUVwVH5mVWxmRmZ4am1aUTJBYmRZaWlqZWIiOw==','2017-09-22 23:30:57','2017-09-22 23:30:57','f0be0644-2cf2-44bb-ab1c-563060f18ee6'),
-	(30,1,'a848df7aaede1c9b61e50eb2236a69e45c2dfaf5czozMjoiejl2U1FJN3ZnZ21Wc3h4MUV4Zm9rNX4xRGY0YjJ5RkgiOw==','2017-09-23 15:27:41','2017-09-23 15:27:41','c84ff28a-4041-41f1-9e41-3da8d2469c9f');
+	(30,1,'a848df7aaede1c9b61e50eb2236a69e45c2dfaf5czozMjoiejl2U1FJN3ZnZ21Wc3h4MUV4Zm9rNX4xRGY0YjJ5RkgiOw==','2017-09-23 15:27:41','2017-09-23 15:27:41','c84ff28a-4041-41f1-9e41-3da8d2469c9f'),
+	(31,1,'84cdcb20580c92f247805acd8bdd32fa8e673e39czozMjoiZnR5aGN2RzVwSENuN2l1N29nR0VBWVEyWmFQOE1SdksiOw==','2017-09-24 13:53:15','2017-09-24 13:53:15','b7317641-4a6c-4ff4-9635-0936c81c5f3e');
 
 /*!40000 ALTER TABLE `craft_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2681,7 +2790,11 @@ VALUES
 	(6236,205,85,6199,72,73,3,'2017-07-19 09:58:52','2017-07-19 09:58:52','33de5f51-dceb-4496-a041-732fd0f75bef'),
 	(6237,205,86,6199,75,80,2,'2017-07-19 09:58:52','2017-07-19 09:58:52','1d6a7ea6-f1d5-4f81-ba6a-b1d34339f01c'),
 	(6238,205,87,6199,76,77,3,'2017-07-19 09:58:52','2017-07-19 09:58:52','420ced62-e1b9-4a62-b3a0-74f4ec4b556c'),
-	(6239,205,88,6199,78,79,3,'2017-07-19 09:58:52','2017-07-19 09:58:52','f4ddfb5c-2b25-4cd3-8293-0965defa4341');
+	(6239,205,88,6199,78,79,3,'2017-07-19 09:58:52','2017-07-19 09:58:52','f4ddfb5c-2b25-4cd3-8293-0965defa4341'),
+	(6240,2,NULL,6240,1,4,0,'2017-09-24 13:57:35','2017-09-24 13:57:35','0ae6ac9a-54ea-4711-a20e-16541e3fc593'),
+	(6241,2,119,6240,2,3,1,'2017-09-24 13:57:35','2017-09-24 13:57:35','ac64c14d-f28c-4f90-a15a-1a5206a0659a'),
+	(6242,1,NULL,6242,1,4,0,'2017-09-24 14:07:04','2017-09-24 14:07:04','1420a7d3-0649-41fd-a554-02dbb827dfaf'),
+	(6243,1,122,6242,2,3,1,'2017-09-24 14:07:04','2017-09-24 14:07:04','4a3f03d8-06f2-4a90-b7ed-d4a891255fc6');
 
 /*!40000 ALTER TABLE `craft_structureelements` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2706,9 +2819,13 @@ LOCK TABLES `craft_structures` WRITE;
 
 INSERT INTO `craft_structures` (`id`, `maxLevels`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,NULL,'2017-04-16 22:50:30','2017-04-16 22:50:30','1a4b9299-b069-4a7b-8c00-29504646e00f'),
+	(1,1,'2017-04-16 22:50:30','2017-09-24 14:06:30','1a4b9299-b069-4a7b-8c00-29504646e00f'),
 	(2,NULL,'2017-04-16 22:56:24','2017-04-16 22:56:24','b851dd62-a4ec-48ae-af65-c381d767cd41'),
-	(205,NULL,'2017-07-19 09:58:51','2017-07-19 09:58:51','bb1765d1-e882-42c9-8511-23b011d2720c');
+	(205,NULL,'2017-07-19 09:58:51','2017-07-19 09:58:51','bb1765d1-e882-42c9-8511-23b011d2720c'),
+	(213,NULL,'2017-09-24 14:08:40','2017-09-24 14:08:40','c08cc02a-24df-467e-9e0f-44eb4aa4101a'),
+	(215,NULL,'2017-09-24 14:09:37','2017-09-24 14:09:37','17f23f47-b2dd-4d36-a53e-aa8948a48ec7'),
+	(216,NULL,'2017-09-24 14:09:50','2017-09-24 14:09:50','fc783493-d257-4973-8eef-5ab034a7166f'),
+	(217,NULL,'2017-09-24 14:18:14','2017-09-24 14:18:14','cd69de33-bb1e-452c-b509-4d6d8a51abe4');
 
 /*!40000 ALTER TABLE `craft_structures` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3764,7 +3881,7 @@ LOCK TABLES `craft_users` WRITE;
 
 INSERT INTO `craft_users` (`id`, `username`, `photo`, `firstName`, `lastName`, `email`, `password`, `preferredLocale`, `weekStartDay`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIPAddress`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','mail@domain.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,1,1,0,0,0,0,0,'2017-09-23 15:27:41','::1',NULL,NULL,'2017-07-08 19:57:50',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-09-23 15:27:41','df730679-fa87-4b60-991e-9e821fddf5f8');
+	(1,'superuser',NULL,'','','mail@domain.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,1,1,0,0,0,0,0,'2017-09-24 13:53:15','::1',NULL,NULL,'2017-07-08 19:57:50',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-09-24 13:53:15','df730679-fa87-4b60-991e-9e821fddf5f8');
 
 /*!40000 ALTER TABLE `craft_users` ENABLE KEYS */;
 UNLOCK TABLES;
