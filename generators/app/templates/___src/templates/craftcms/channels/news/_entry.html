@@ -10,13 +10,19 @@
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-newsSingle" %}
 
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
 {# start: Rel Nav #}
 {% block siteHeader %}
-  {% set vars = {
-    section: 'news',
-    order: 'postDate'
+  {% include '_partials/header/_siteHeaderLinks--single.html' with {
+  section: 'news',
+  order: 'postDate'
   } %}
-  {% include '_partials/header/_siteHeaderLinks--single.html' with vars %}
 {% endblock %}
 
 {% block appContent %}
@@ -36,9 +42,45 @@
       </div>
     </div>
 
+    <div class="o-section">
+      {# -- Entry Intro -- #}
+      {% if entry.singleIntroText is defined and entry.singleIntroText %}
+        <div class="o-row">
+          {% include '_modules/richText/_template.html' with {
+            options: {
+              text: entry.singleIntroText
+            }
+          } %}
+        </div>
+      {% endif %}
+
+      {# -- Entry Image -- #}
+      <div class="o-row">
+        {% include '_modules/imageSingle/_template.html' with {
+          options: {
+            image: entry.singleImageEntry.first()
+          }
+        } %}
+      </div>
+    </div>
+
     {# Content Builder #}
     {% include '_contentBuilders/_contentBuilderNeo.html' %}
   </article>
+
+  <div class="o-section">
+    <div class="o-row">
+      {# -- Post Nav -- #}
+      {% import '_macros/_macro-postNav.html' as macroPostNav %}
+      {{ macroPostNav.postNav(entry, {
+        section: 'news',
+        prevLabel: 'Prev Article',
+        nextLabel: 'Next Article',
+        prevIcon: 'iconArrowLeft',
+        nextIcon: 'iconArrowRight'
+      }) }}
+    </div>
+  </div>
 
   {# -- Cache End -- #}
   {% endcache %}

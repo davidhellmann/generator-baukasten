@@ -11,16 +11,16 @@
     date: false
   } %}
 
-    {% if options is defined %}
-        {% set options = options is defined ? defaults|merge(options) : defaults %}
-    {% else %}
-        {% set options = defaults %}
-    {% endif %}
+  {% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+    {% set options = defaults %}
+  {% endif %}
 
   {% set niceTime = date(options.date).diff(now) %}
   {% if niceTime %}
-    <span class="">
-      <span class="">
+    <span class="{{ options.classname }}">
+      <span class="{{ options.classname ~ '__inner' }}">
         {% if niceTime.y >= 2 %}
           {{ 'am' | t }} {{ date|date('F Y') }}
         {% elseif niceTime.y >= 1 %}

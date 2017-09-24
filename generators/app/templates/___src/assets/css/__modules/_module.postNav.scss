@@ -1,0 +1,98 @@
+/*
+ |--------------------------------------------------------------------------
+ |  postNav
+ |--------------------------------------------------------------------------
+ */
+
+.m-postNav {
+  @include make-col(12);
+  $root: &;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__inner {
+    @include make-row();
+  }
+
+  &__item {
+    @include make-col(6);
+
+    &--next {
+      margin-left: auto;
+    }
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+    color: c('black', '90');
+    border: 1px solid c('black', '10');
+    padding-top: s(4);
+    padding-bottom: s(2);
+
+    &:hover {
+      border-color: c('black', '90');
+      color: c('black', '90');
+
+      .m-svgSprite {
+        fill: c('white');
+      }
+
+      #{$root}__label {
+        color: c('black', '90');
+      }
+    }
+
+    &--prev {
+      padding-left: s(9);
+      text-align: left;
+    }
+
+    &--next {
+      padding-right: s(9);
+      text-align: right;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg path {
+      fill: c('black', '90');
+    }
+
+    &--prev {
+      left: s(3);
+    }
+
+    &--next {
+      right: s(3);
+    }
+  }
+
+  &__label {
+    @include fs('ms-2');
+    display: none;
+    color: c('black', '40');
+    margin-top: s(-2);
+    transition: all 0.25s ease('out-cubic');
+
+    @include media('>=s') {
+      display: block;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    display: none;
+
+    @include media('>=s') {
+      display: block;
+    }
+  }
+}

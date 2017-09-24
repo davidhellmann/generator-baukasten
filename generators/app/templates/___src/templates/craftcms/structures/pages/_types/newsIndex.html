@@ -8,19 +8,28 @@
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-news" %}
 
-{# Set Query #}
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{# -- Query Entries -- #}
+{# To Skip the Current id add: id: 'and, not ' ~ entry.id #}
 {% set entries = craft.entries({
   section: 'news',
-  limit: 12
+  relatedTo: null,
+  limit: 12,
+  offset: null
 }) %}
-{% paginate data as pageInfo, pageEntries %}
+{% paginate entries as pageInfo, pageEntries %}
 
-{# start: Rel Nav #}
+{# -- start: Rel Nav -- #}
 {% block appHeader %}
-  {% set vars = {
+  {% include '_partials/header/_siteHeaderLinks.html' with {
     pageInfo: pageInfo
   } %}
-  {% include '_partials/header/_siteHeaderLinks.html' with vars %}
 {% endblock %}
 
 
@@ -39,6 +48,14 @@
       } %}
 
       {# -- Articles --#}
+      {% include '_modules/newsList/_template.html' with {
+        options: {
+          data: entries
+        }
+      } %}
+
+
+
       {% for item in entries %}
         <article role="article">
           <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>

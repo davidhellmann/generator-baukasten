@@ -6,11 +6,18 @@
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-default" %}
 
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
 {% block appContent %}
   {# -- Cache -- #}
-  {% cache globally using key templateHandle ~ "-pages-" ~ craft.request.path %}
+  {% cache globally using key _self.getTemplateName() ~ "-pages-" ~ craft.request.path %}
   {# If you have a Template with Pagination use this: #}
-  {# {% cache globally using key templateHandle ~ '-archive-' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %} #}
+  {# {% cache globally using key _self.getTemplateName() ~ '-archive-' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %} #}
 
   <div class="o-section">
     <div class="o-row">
