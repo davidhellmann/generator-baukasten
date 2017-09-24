@@ -11,8 +11,8 @@ $dh-columnWidth:          120px; // Column Width
 $dh-gutterWidth:          8px; // Gutter width on each side
 $dh-gutterWidthMin:       $dh-gutterWidth;
 $dh-gutterWidthMax:       $dh-gutterWidth * 2;
-$dh-vrGutterHeightMin:    $dh-gutterWidthMin;
-$dh-vrGutterHeightMax:    $dh-gutterWidthMax * 2;
+$dh-vrGutterHeightMin:    $dh-gutterWidth;
+$dh-vrGutterHeightMax:    $dh-gutterWidth * 2;
 
 /*--------------------------------------------------
     #DON'T EDIT BELOW HERE
