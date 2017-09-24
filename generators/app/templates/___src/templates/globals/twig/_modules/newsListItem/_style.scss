@@ -1,0 +1,34 @@
+/*
+ |--------------------------------------------------------------------------
+ |  newsListItem
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-newsListItem {
+  $root: &;
+  @include make-col(12);
+  @include make-vr();
+  color: c('black', '90');
+
+  &__inner {
+    @include make-col(12);
+    color: c('black', '90');
+    border: 1px solid c('black', '10');
+    padding-bottom: s(4);
+  }
+
+  .m-headline__inner {
+    margin-top: s(2);
+  }
+
+  .m-richText {
+    margin-top: s(2);
+    font-size: fs('ms0');
+  }
+
+  .m-image {
+    margin-top: s(2);
+  }
+}
+

@@ -10,11 +10,11 @@ const navCategories = {
             setTimeout(() => {
                 const sliders = [...document.querySelectorAll('.js-navCategories')]
                 if (sliders) {
-                    sliders.forEach((sliders) => {
-                        let slider = sliders.querySelector('.m-navCategories__inner')
-                        const flkty = Flickity.data(slider)
+                    sliders.forEach((slider) => {
+                        const _slider = slider.querySelector('.m-navCategories__inner')
+                        const flkty = Flickity.data(_slider)
                         flkty.resize()
-                        slider.classList.add('is-visible')
+                        _slider.classList.add('is-visible')
                     })
                 }
             }, 20)

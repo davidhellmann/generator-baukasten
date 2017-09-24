@@ -59,7 +59,6 @@ return array(
     // Staging (pre-production) environment
     'staging'  => array(
         'devMode' => false,
-        'omitScriptNameInUrls' => false,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
     ),
@@ -67,7 +66,6 @@ return array(
     // Local (development) environment
     'local'  => array(
         'devMode' => true,
-        'omitScriptNameInUrls' => false,
         'enableTemplateCaching' => false,
         'allowAutoUpdates' => true,
     ),

@@ -29,7 +29,7 @@
 {% block appHeader %}
   {% include '_partials/header/_siteHeaderLinks.html' with {
     pageInfo: pageInfo
-  } %}
+  } only %}
 {% endblock %}
 
 
@@ -38,31 +38,26 @@
   {% cache globally using key 'news-archive-' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %}
   <div class="o-section">
     <div class="o-row">
-
       {# -- Include Page Title -- #}
       {% include '_modules/pageTitle/_template.html' with {
         options: {
           object: entry,
           size: 'h1'
         }
-      } %}
+      } only %}
+    </div>
+  </div>
 
+  <div class="o-section">
+    <div class="o-row">
       {# -- Articles --#}
       {% include '_modules/newsList/_template.html' with {
         options: {
-          data: entries
+          entries: entries,
+          pagination: true,
+          catNav: true
         }
-      } %}
-
-
-
-      {% for item in entries %}
-        <article role="article">
-          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-          <p>Posted on {{ item.postDate.format('F d, Y') }}</p>
-          <p><a href="{{ item.url }}">Continue reading</a></p>
-        </article>
-      {% endfor %}
+      } only %}
     </div>
   </div>
 

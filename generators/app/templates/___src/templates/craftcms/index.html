@@ -21,20 +21,20 @@
 
   <div class="o-section">
     <div class="o-row">
-
       {# -- Include Page Title -- #}
       {% include '_modules/pageTitle/_template.html' with {
         options: {
           object: entry,
           size: 'h1'
         }
-      } %}
-
-      <% if (projectVue) { %>
-      <div id="js-vue"></div>
-      <% } %>
+      } only %}
     </div>
   </div>
+
+  <% if (projectVue) { %>
+  {# -- Vue Stuff -- #}
+  <div id="js-vue"></div>
+  <% } %>
 
   {# -- Cache End -- #}
   {% endcache %}

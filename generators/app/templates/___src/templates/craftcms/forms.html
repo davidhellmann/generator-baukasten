@@ -28,7 +28,11 @@
     <div class="o-row">
 
       {# -- Include Page Title -- #}
-      {% include '_modules/pageTitle/_template.html' %}
+      {% include '_modules/pageTitle/_template.html' with {
+        options: {
+          object: entry
+        }
+      } only %}
 
     </div>
     <div class="o-row">
@@ -91,13 +95,13 @@
 
       <div class="o-col">
         {% include '_modules/button/_template.html' with {
-        options: {
-        url: '#test',
-        modifiers: [],
-        text: 'Button',
-        icon: 'social/twitter'
-        }
-        } %}
+          options: {
+            url: '#test',
+            modifiers: [],
+            text: 'Button',
+            icon: 'social/twitter'
+          }
+        } only %}
       </div>
     </div>
 

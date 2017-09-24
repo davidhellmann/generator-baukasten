@@ -20,9 +20,10 @@
 {# start: Rel Nav #}
 {% block siteHeader %}
   {% include '_partials/header/_siteHeaderLinks--single.html' with {
-  section: 'news',
-  order: 'postDate'
-  } %}
+    section: 'news',
+    order: 'postDate',
+    entry: entry
+  } only %}
 {% endblock %}
 
 {% block appContent %}
@@ -38,7 +39,7 @@
             object: entry,
             size: 'h1'
           }
-        } %}
+        } only %}
       </div>
     </div>
 
@@ -50,7 +51,7 @@
             options: {
               text: entry.singleIntroText
             }
-          } %}
+          } only %}
         </div>
       {% endif %}
 
@@ -60,12 +61,16 @@
           options: {
             image: entry.singleImageEntry.first()
           }
-        } %}
+        } only %}
       </div>
     </div>
 
-    {# Content Builder #}
-    {% include '_contentBuilders/_contentBuilderNeo.html' %}
+    {# -- Content Builder -- #}
+    {% include '_contentBuilders/_contentBuilderNeo.html' with {
+      options: {
+        object: entry
+      }
+    } only %}
   </article>
 
   <div class="o-section">

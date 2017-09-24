@@ -1,7 +1,7 @@
 <!-- JS Scripts & Plugins -->
 {% include "_partials/webpack/webpack-scripts.html" %}
 
-{# Third Party Snippets #}
+{# -- Third Party Snippets -- #}
 {% set thirdPartySnippets = thirdPartySnippets.globalThirdPartySnippets is defined ? thirdPartySnippets.globalThirdPartySnippets %}
 {% if thirdPartySnippets %}
   {% for row in thirdPartySnippets %}
@@ -17,8 +17,8 @@
   {% endfor %}
 {% endif %}
 
-{% set googleAnalytics = googleAnalytics.globalGoogleAnalytics %}
-{% if googleAnalytics is defined and googleAnalytics | length %}
+{# -- Google Analytics -- #}
+{% if googleAnalytics.globalGoogleAnalytics is defined and googleAnalytics.globalGoogleAnalytics %}
   <!-- Google Analytics -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -26,7 +26,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '{{ googleAnalytics }}', 'auto');
+    ga('create', '{{ googleAnalytics.globalGoogleAnalytics }}', 'auto');
     {% if fourohfour is defined %}
     {{ fourohfour }}
     {% else %}

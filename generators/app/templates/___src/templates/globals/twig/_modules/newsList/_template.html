@@ -1,0 +1,66 @@
+{#
+  newsList
+  ======================================================================================================================
+#}
+
+{# -- Macros -- #}
+{% import '_macros/_macro-pagination.html' as macroPagination %}
+{% import '_macros/_macro-paginationSimple.html' as macroPaginationSimple %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+classname: 'm-newsList',
+entries: null,
+pagination: false,
+catNav: false
+} %}
+
+{% if options is defined %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+  {% set options = defaults %}
+{% endif %}
+
+{# -- Modul -- #}
+{% if options.entries %}
+  {% paginate options.entries as pageInfo, pageEntries %}
+
+  <div class="o-col  {{ options.classname }}">
+    <div class="{{ options.classname ~ '__inner' }}">
+      <div class="o-row">
+        {% if options.catNav %}
+          {# -- Include Cat List Title -- #}
+          {% include '_modules/navCategories/_template.html' with {
+            options: {
+              contextSection: 'news',
+              contextSlug: 'news',
+              categoryGroup: 'news',
+              showAllText: 'Alle Anzeigen',
+            }
+          } only %}
+        {% endif %}
+      </div>
+
+      <div class="{{ options.classname ~ '__items' }}">
+        {% for item in pageEntries %}
+          <div class="{{ options.classname ~ '__item' }}">
+            <div class="o-row">
+              {# -- News List Item -- #}
+              {% include '_modules/newsListItem/_template.html' with {
+                options: {
+                  item: item
+                }
+              } only %}
+            </div>
+          </div>
+        {% endfor %}
+
+        {% if options.pagination %}
+          {# -- Pagination  -- #}
+          {{ macroPagination.pagination(pageInfo,craft, {}) }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+

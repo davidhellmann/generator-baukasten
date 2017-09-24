@@ -29,27 +29,27 @@
       <div class="o-row">
 
         {# -- Include Page Title -- #}
-        {% include '_modules/pageTitle/_template.html' %}
+        {% include '_modules/pageTitle/_template.html' only %}
 
       </div>
       <div class="o-row">
         {# -- Headline -- #}
         {% include '_modules/headline/_template.html' with {
-        options: {
-        text: 'Content Builder',
-        size: 'h2'
-        }
+          options: {
+            text: 'Content Builder',
+            size: 'h2'
+          }
         } only %}
 
       </div>
 
       {% embed '_templates/toggleContent/_template.html' with {
-      options: {
-      contentTop: true,
-      textClosed: 'Show me the Content',
-      textOpen: 'Go away Content'
-      }
-      } %}
+        options: {
+          contentTop: true,
+          textClosed: 'Show me the Content',
+          textOpen: 'Go away Content'
+        }
+      } only %}
         {% block contentTop %}
           <p class="o-col">
             Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et
@@ -78,7 +78,11 @@
 
 
     {# Content Builder #}
-    {% include '_contentBuilders/_contentBuilderNeo.html' %}
+    {% include '_contentBuilders/_contentBuilderNeo.html' with {
+      options: {
+        object: entry
+      }
+    } only %}
   </article>
 
   {# -- Cache End -- #}

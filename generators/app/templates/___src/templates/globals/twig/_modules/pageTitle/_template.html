@@ -6,7 +6,7 @@
 {# Set Defaults #}
 {% set defaults = {
   classname: 'm-pageTitle',
-  object: entry,
+  object: entry is defined ? entry : null,
   text: null,
   size: 'h1',
   link: null

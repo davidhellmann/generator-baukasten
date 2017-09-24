@@ -163,11 +163,11 @@
       class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
 
 {# -- Preloader#}
-{% include '_modules/preloader/_template.html' %}
+{% include '_modules/preloader/_template.html' only %}
 
 <div class="m-appWrapper">
   {# -- App Header -- #}
-  {% include '_modules/appHeader/_template.html' %}
+  {% include '_modules/appHeader/_template.html' only %}
 
   <div class="m-appContent">
     {% block appContent %}
@@ -176,7 +176,7 @@
   </div>
 
   {# -- App Footer -- #}
-  {% include '_modules/appFooter/_template.html' %}
+  {% include '_modules/appFooter/_template.html' only %}
 </div>
 
 {# -- Grid Overlay -- #}
@@ -191,7 +191,7 @@
 {% endif %}
 
 {# -- SCRIPTS -- #}
-{% include '_partials/footer/_scripts.html' %}
+{% include '_partials/footer/_scripts.html' with { rootUrl: rootUrl } only %}
 
 </body>
 {% endminify %}

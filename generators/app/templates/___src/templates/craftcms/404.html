@@ -5,8 +5,6 @@
   Page not found? This template gets loaded.
 #}
 
-
-
 {% extends '_layouts/_master.html' %}
 {% set bodyClass = "p-404" %}
 {% if craft.seomatic is defined %}
@@ -23,8 +21,7 @@
 {% endblock %}
 
 
-{% set googleAnalytics = googleAnalytics.globalGoogleAnalytics %}
-{% if googleAnalytics is defined and googleAnalytics | length %}
+{% if googleAnalytics.globalGoogleAnalytics is defined and googleAnalytics.globalGoogleAnalytics %}
   {% set fourohfour %}
     ga('send', 'pageview', '/404/?url=' + document.location.pathname + document.location.search + '&ref=' + document.referrer);
   {% endset %}
@@ -39,7 +36,7 @@
           text: '404 — Page not found',
           size: 'h1'
         }
-      } %}
+      } only %}
 
       <p class="o-col">
         Oh no, this page is missing… Sorry!<br>

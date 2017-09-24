@@ -30,11 +30,11 @@
     lastPageSign: '&raquo;',
     prevSign: '&lsaquo;',
     nextSign: '&rsaquo;',
-    firstPageText: 'Zur ersten Seite',
-    lastPageText: 'Zur letzten Seite',
-    prevText: 'Zurück zur vorhergehenden Seite',
-    nextText: 'Weiter zur nächsten Seite',
-    jumpText: 'Sprung zur Seite'
+    firstPageText: 'First Page',
+    lastPageText: 'Last Page',
+    prevText: 'Prev Page',
+    nextText: 'Next Page',
+    jumpText: 'Jump to Page:'
   } %}
 
   {# Merge Options with Defaults #}
@@ -47,8 +47,8 @@
 
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}
-    <div class="o-col  {{ options.classname ~ 'Wrapper' }}">
-      <nav class="{{ options.classname }}" role="navigation">
+    <nav class="o-col  {{ options.classname }}" role="navigation">
+      <div class="{{ options.classname ~ '__inner' }}">
         {# Dont display last page when on the first Page #}
         {% if pages.currentPage > 2 and pages.prevUrl %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--first' }}" href="{{ pages.firstUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.firstPageText }}">{{ options.fistPageSign|raw }}</a>
@@ -84,7 +84,7 @@
         {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
           <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--last' }}" href="{{ pages.lastUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.lastPageText }}">{{ options.lastPageSign|raw }}</a>
         {% endif %}
-      </nav>
-    </div>
+      </div>
+    </nav>
   {% endif %}
 {% endmacro %}

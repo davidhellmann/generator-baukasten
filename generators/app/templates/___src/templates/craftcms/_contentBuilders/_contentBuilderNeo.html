@@ -4,39 +4,51 @@
 
   Neo Content Builder use the Neo Plugin
 #}
-<div class="m-contentBuilder">
-  {% if entry.contentBuilderNeo.level(1)|length %}
-  {% set neoField = entry.contentBuilderNeo.level(1) %}
 
-  {% for content in neoField %}
-  {# Check if first Type is not a Section #}
-  {% if loop.first and content.type != 'contentSection' %}
-    <!-- start: o-section / opened by Content Builder -->
-    {% include '_modules/contentSection/_template' with {
-    data: content,
-    name: ''
-    } %}
-  {% endif %}
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-contentBuilder',
+  object: entry is defined ? entry : null
+} %}
 
-  {# Check if an other Section is opened and close the Section before #}
-  {% if content.type == 'contentSection' %}
-  {% if not loop.first %}
-    </div>
-<!-- end: o-section -->
-  {% endif %}
-<!-- start: o-section -->
-  {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+{% if options is defined %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
+{% else %}
+  {% set options = defaults %}
+{% endif %}
 
-      {# All other Content Modules #}
+{% if options.object %}
+<div class="{{ options.classname }}">
+  {% if options.object.contentBuilderNeo.level(1)|length %}
+    {% set neoField = options.object.contentBuilderNeo.level(1) %}
+
+    {% for content in neoField %}
+      {# Check if first Type is not a Section #}
+      {% if loop.first and content.type != 'contentSection' %}
+        <!-- start: o-section / opened by Content Builder -->
+        {% include '_modules/contentSection/_template.html' only %}
+      {% endif %}
+
+      {# Check if an other Section is opened and close the Section before #}
+      {% if content.type == 'contentSection' %}
+        {% if not loop.first %}
+          </div>
+          <!-- end: o-section -->
+        {% endif %}
+        <!-- start: o-section -->
+        {% include '_contentBuilders/_contentBuilderModules' with { data: content } only %}
+
+        {# All other Content Modules #}
       {% elseif content.type != 'contentSection' %}
         <!-- start: o-row -->
-        <div class="o-row  o-row--{{ content.type }}  m-contentBuilder__row  m-contentBuilder__row--{{ content.type }}">
-          {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+        <div class="o-row  o-row--{{ content.type }}  {{ options.classname ~ '__row' }}  {{ options.classname ~ '__row--' ~ content.type }}">
+          {% include '_contentBuilders/_contentBuilderModules' with { data: content } only %}
         </div>
         <!-- end: o-row -->
       {% endif %}
     {% endfor %}
     </div>
-<!-- end: o-section -->
+    <!-- end: o-section -->
+  {% endif %}
+  </div>
 {% endif %}
-</div>

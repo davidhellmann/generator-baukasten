@@ -6,8 +6,11 @@
   $root: &;
   @include make-col(12);
 
-  @include media('>=m') {
-    @include make-col(6);
-    @include offset(3);
+  .p-newsSingle &,
+  .p-modules & {
+    @include media('>=m') {
+      @include make-col(6);
+      @include offset(3);
+    }
   }
 }

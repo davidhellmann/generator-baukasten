@@ -1,16 +1,20 @@
 <template>
   <div class="o-section vue">
-    <h2>Hello World</h2>
-    <input type="text" v-model="message">
-    <p>
-      {{ message }}
-    </p>
+    <div class="o-row">
+      <div class="o-col">
+        <h2>Hello World</h2>
+        <input type="text" v-model="message">
+        <p>
+          {{ message }}
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
   .vue p {
-    @include f(fs('ms3'), fs('ms7'));
+  @include f(fs('ms3'), fs('ms7'));
   }
 </style>
 

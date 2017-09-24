@@ -27,12 +27,16 @@
           object: entry,
           size: 'h1'
         }
-      } %}
+      } only %}
     </div>
   </div>
 
-  {# Content Builder #}
-  {% include '_contentBuilders/_contentBuilderNeo.html' %}
+  {# -- Content Builder -- #}
+  {% include '_contentBuilders/_contentBuilderNeo.html' with {
+    options: {
+      object: entry
+    }
+  } only %}
 
   {# -- Cache End -- #}
   {% endcache %}

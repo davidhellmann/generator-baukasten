@@ -2,26 +2,22 @@
 /*    Category Nav
 /* -------------------------------------------------- */
 
-.m-navCategoriesWrapper {
-  .p-home & {
-    @include media('>=m') {
-      @include make-col(8);
-      @include offset(2);
-    }
-  }
-}
-
 .m-navCategories {
   $root: &;
-  opacity: 0;
-  transition: opacity 0.25s ease('out-cubic');
 
-  &.is-visible {
-    opacity: 1;
+  &__inner {
+    @include make-row();
+    opacity: 0;
+    transition: opacity 0.25s ease('out-cubic');
+
+    &.is-visible {
+      opacity: 1;
+    }
   }
 
   /* stylelint-disable */
   .flickity-viewport {
+    width: 100%;
     @extend .t-overflowTouch;
     touch-action: pan-y !important;
 
@@ -33,9 +29,8 @@
 
   &__slide {
     @include make-vr();
+    @include make-col-padding();
     display: inline-block;
-    margin-right: s(4);
-    margin-bottom: s(2);
     white-space: nowrap;
     font-size: fs('ms-2');
     text-transform: uppercase;
@@ -45,7 +40,8 @@
     }
 
     &.is-active #{$root}__link {
-      color: c('red');
+      color: c('black', '90');
+      font-weight: 700;
     }
   }
 
