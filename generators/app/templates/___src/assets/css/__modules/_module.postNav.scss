@@ -60,18 +60,29 @@
     height: 24px;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
 
     svg path {
       fill: c('black', '90');
     }
 
     &--prev {
-      left: s(3);
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include media('>=s') {
+        left: s(3);
+        transform: translateY(-50%);
+      }
     }
 
     &--next {
-      right: s(3);
+      right: 50%;
+      transform: translate(50%, -50%);
+
+      @include media('>=s') {
+        right: s(3);
+        transform: translateY(-50%);
+      }
     }
   }
 
