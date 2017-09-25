@@ -215,27 +215,6 @@ module.exports = class extends Generator {
                 this.props
             )
         })
-
-        // Git
-        this.logMessage({
-            message: '> Initializing git and make first commit',
-            short: true,
-            color: 'green'
-        })
-
-        if (this.commands.git) {
-            try {
-                await this.spawnCommandSync('git', ['init'])
-                if (process.env.NODE_ENV === 'test') {
-                    return
-                }
-                await this.spawnCommandSync('git', ['add', '-A'])
-                await this.spawnCommandSync('git', ['commit', '-m "initial commit"'])
-
-            } catch (e) {
-                console.error(e)
-            }
-        }
     }
 
     // Install
@@ -248,6 +227,27 @@ module.exports = class extends Generator {
             this.yarnInstall()
         } else {
             this.npmInstall()
+        }
+
+        // Git
+        this.logMessage({
+            message: '> Initializing git and make first commit',
+            short: true,
+            color: 'green'
+        })
+
+        if (this.commands.git) {
+            try {
+                this.spawnCommandSync('git', ['init'])
+                if (process.env.NODE_ENV === 'test') {
+                    return
+                }
+                this.spawnCommandSync('git', ['add', '-A'])
+                this.spawnCommandSync('git', ['commit', '-m "initial commit"'])
+
+            } catch (e) {
+                console.error(e)
+            }
         }
     }
 
