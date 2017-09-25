@@ -26,6 +26,7 @@
 @import '../../templates/_modules/input/style';
 @import '../../templates/_modules/newsList/style';
 @import '../../templates/_modules/newsListItem/style';
+@import '../../templates/_modules/navCategories/style';
 @import '../../templates/_modules/pageTitle/style';
 @import '../../templates/_modules/preloader/style';
 @import '../../templates/_modules/quote/style';
@@ -41,7 +42,4 @@
 @import '__modules/module.postNav';
 @import '__modules/module.socialNetworks';
 // @import '__modules/module.languageSwitcher';
-
-// Templates
-@import '../../templates/_templates/toggleContent/style';
 <% } %>

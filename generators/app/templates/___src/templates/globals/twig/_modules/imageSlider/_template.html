@@ -42,32 +42,34 @@
   {% endif %}
 
 <!-- Slider main container -->
-<div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
-  <figure class="{{ options.classname ~ '__inner' }}"
-          data-flickity='{
-            "cellAlign": "left",
-            "contain": true,
-            "draggable": true,
-            "friction": 1,
-            "selectedAttraction": 0.1,
-            "lazyLoad": 2,
-            "groupCells": true,
-            "imagesLoaded": true,
-            "prevNextButtons": true,
-            "pageDots": false,
-            "watchCSS": false,
-            "dragThreshold": 10
-          }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+<div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}  swiper-container">
+  <div class="{{ options.classname ~ '__inner' }} swiper-wrapper"
+          itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
     <!-- Slides -->
     {% for image in options.images %}
-      <div class="{{ options.classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
-
-        {# -- Image -- #}
-        {{ macroImage.image(image, {
-          ratio: ratio
-        }) }}
+      <div class="{{ options.classname ~ '__slide' }}  swiper-slide" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="{{ options.classname ~ '__slideInner' }}">
+          {# -- Image -- #}
+          {{ macroImage.image(image, {
+            ratio: ratio
+          }) }}
+        </div>
       </div>
     {% endfor %}
-  </figure>
+  </div>
+
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev">
+    {% include '_svg/iconArrowLeft.svg.html' %}
+  </div>
+  <div class="swiper-button-next">
+    {% include '_svg/iconArrowRight.svg.html' %}
+  </div>
+
+  <!-- If we need scrollbar -->
+  {#<div class="swiper-scrollbar"></div>#}
 </div>
 {% endif %}

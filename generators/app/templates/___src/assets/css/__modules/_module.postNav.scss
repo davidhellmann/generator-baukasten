@@ -6,6 +6,7 @@
 
 .m-postNav {
   @include make-col(12);
+  @include make-vr();
   $root: &;
   margin: 0;
   padding: 0;

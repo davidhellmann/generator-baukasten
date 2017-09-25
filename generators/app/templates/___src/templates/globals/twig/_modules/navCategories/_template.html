@@ -32,31 +32,15 @@
 
 {# Modul #}
 {% if options.categoryGroup %}
-  <div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}">
-    <nav class="{{ options.classname ~ '__inner' }}" data-flickity='{
-            "cellAlign": "left",
-            "contain": true,
-            "freeScroll": true,
-            "draggable": true,
-            "friction": 1,
-            "selectedAttraction": 0.1,
-            "lazyLoad": false,
-            "groupCells": true,
-            "imagesLoaded": false,
-            "prevNextButtons": false,
-            "pageDots": false,
-            "rightToLeft": false,
-            "watchCSS": false,
-            "dragThreshold": 10
-          }'>
-
-        <div class="{{ options.classname ~ '__slide' }}  {{ macroIsActive.isActive(options.contextSlug, options.urlSegment) }}">
+  <div class="o-col  {{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}  swiper-container">
+    <nav class="{{ options.classname ~ '__inner' }}  swiper-wrapper">
+        <div class="{{ options.classname ~ '__slide' }}  swiper-slider  {{ macroIsActive.isActive(options.contextSlug, options.urlSegment) }}">
           <a class="{{ options.classname ~ '__link' }}"
              href="{{ siteUrl }}{{ options.entryTypeSelector }}/{{ options.contextSlug }}">{{ options.showAllText }}</a>
         </div>
 
         {% nav category in craft.categories.group(options.categoryGroup).relatedTo({ sourceElement: entryIds }) %}
-        <div class="{{ options.classname ~ '__slide' }}  {{ macroIsActive.isActive(category.slug, options.urlSegment) }}">
+        <div class="{{ options.classname ~ '__slide' }}  swiper-slider  {{ macroIsActive.isActive(category.slug, options.urlSegment) }}">
           <a class="{{ options.classname ~ '__link' }}"
              href="{{ category.url }}">{{ category.title }}</a>
         </div>

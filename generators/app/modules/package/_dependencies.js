@@ -7,7 +7,6 @@ function addDependencies(files = {}) {
             'babel-polyfill': '^6.26.0',
             'cookieconsent': '^3.0.4',
             'family.scss': '^1.0.4',
-            'flickity': '^2.0.8',
             'fontfaceobserver': '^2.0.9',
             'in-view': '^0.6.1',
             'include-media': '^1.4.4',
@@ -21,6 +20,7 @@ function addDependencies(files = {}) {
             'smooth-scroll': '^11.1.0',
             'svg-injector-2': '^2.0.0',
             'svgxuse': '^1.1.23',
+            'swiper': '^3.0.0',
             'velocity-animate': '^1.3.1',
             'waypoints': '^4.0.0'
         }

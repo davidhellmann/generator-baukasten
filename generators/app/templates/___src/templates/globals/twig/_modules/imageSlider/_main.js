@@ -2,88 +2,82 @@
  * Image Slider
  */
 
-import Flickity from 'flickity'
+import Swiper from 'swiper'
 
 const imageSlider = {
-    init() {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const sliders = [...document.querySelectorAll('.js-imageSlider')]
-                if (sliders) {
-                    sliders.forEach((slider) => {
-                        const _slider = slider.querySelector('.m-imageSlider__inner')
-                        const flkty = Flickity.data(_slider)
-                        flkty.resize()
-                        _slider.classList.add('is-visible')
-                    })
+    cfg: {
+        slider: '.js-imageSlider',
+        sliderOptions: {
+            speed: 500,
+            loop: false,
+            grabCursor: true,
+
+            // If we need pagination
+            pagination: '.swiper-pagination',
+            paginationType: 'bullets', //  "bullets", "fraction", "progress" or "custom"
+            paginationClickable: true,
+
+            // Arrows
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+
+            // Scrollbar Navi
+            // scrollbar: '.swiper-scrollbar',
+
+            // Fraction Navi
+            /* paginationFractionRender(swiper, currentClassName, totalClassName) {
+                return `<span class="${currentClassName}"></span>
+                        of <span class="${totalClassName}"></span>`
+            }, */
+
+            // Slides Grid
+            slidesPerView: 2, // 2.1
+            slidesPerGroup: 2,
+
+            // Responive
+            breakpoints: {
+                // when window width is <= 480px
+                480: {
+                    slidesPerView: 1, // 1.1
+                    slidesPerGroup: 1,
+                },
+                // when window width is <= 667px
+                667: {
+                    slidesPerView: 1, // 1.1
+                    slidesPerGroup: 1,
+                },
+                // when window width is <= 1024px
+                1024: {
+                    slidesPerView: 2, // 2.1
+                    slidesPerGroup: 2,
+                },
+                // when window width is <= 1280px
+                1280: {
+                    slidesPerView: 2, // 2.1
+                    slidesPerGroup: 2,
+                },
+                // when window width is <= 1680px
+                1680: {
+                    slidesPerView: 2, // 2.1
+                    slidesPerGroup: 2,
                 }
-            }, 20)
-        })
+            }
+        }
+    },
+
+    init() {
+        const sliders = [...document.querySelectorAll(this.cfg.slider)]
+        if (sliders) {
+            sliders.forEach((slider) => {
+                const mySwiper = Swiper(slider, this.cfg.sliderOptions)
+                mySwiper.onResize()
+
+                setTimeout(() => {
+                    mySwiper.onResize()
+                }, 500)
+            })
+        }
     }
 }
 
 export default imageSlider
-
-/*
-const flktySettings = {
-    cellAlign: 'left',
-    contain: true,
-    draggable: true,
-    friction: 1,
-    lazyLoad: 2,
-    selectedAttraction: 0.1,
-    groupCells: true,
-    setGallerySize: false,
-    imagesLoaded: true,
-    prevNextButtons: true,
-    pageDots: true,
-    wrapAround: true,
-    //watchCSS: true
-}
-
-const stageImageSliders = Array.from(document.querySelectorAll('.js-imageSlider'))
-
-if (stageImageSliders) {
-
-    stageImageSliders.forEach((slider) => {
-        const flkty = new Flickity(slider, flktySettings)
-        const buttonHolder = slider.parentNode
-
-        // Previous Button
-        const prevButton = buttonHolder.querySelector('.m-imageSlider__button--prev')
-        if (prevButton) {
-            prevButton.addEventListener('click', function() {
-                flkty.previous()
-            })
-        }
-
-        // Next Button
-        const nextButton = buttonHolder.querySelector('.m-imageSlider__button--next')
-        if (nextButton) {
-            nextButton.addEventListener('click', function() {
-                flkty.next()
-            })
-        }
-
-        flkty.on( 'select', function() {
-            const slideCount = flkty.slides.length
-            // enable/disable previous/next buttons
-            if ( flkty.selectedIndex === 0 ) {
-                // on first cell
-                prevButton.classList.add('is-inActive')
-            } else if ( slideCount - flkty.selectedIndex === 1 ) {
-                // on last cell
-                nextButton.classList.add('is-inActive')
-            } else {
-                prevButton.classList.remove('is-inActive')
-                nextButton.classList.remove('is-inActive')
-            }
-        })
-
-        window.addEventListener( 'load', function() {
-            setTimeout(() => {
-                flkty.resize()
-            }, 100)
-        })
-    })
-}*/

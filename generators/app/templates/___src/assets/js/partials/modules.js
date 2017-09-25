@@ -7,6 +7,7 @@ import cookiebar    from '../../../templates/_modules/cookiebar/_main'
 import imageSlider  from '../../../templates/_modules/imageSlider/_main'
 import imageGallery from '../../../templates/_modules/imageGallery/_main'
 import preloader from '../../../templates/_modules/preloader/_main'
+import navCategories from '../../../templates/_modules/navCategories/_main'
 
 // Modules Array
 const modulesArray = [
@@ -14,7 +15,8 @@ const modulesArray = [
     accordion,
     cookiebar,
     imageSlider,
-    imageGallery
+    imageGallery,
+    navCategories
 ]
 
 const modules = {

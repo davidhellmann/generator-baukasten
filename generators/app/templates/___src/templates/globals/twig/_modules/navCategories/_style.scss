@@ -4,36 +4,26 @@
 
 .m-navCategories {
   $root: &;
+  width: 100%;
+  overflow: visible;
+  @include make-vr();
 
   &__inner {
+    // empty
+  }
+
+  &__slider {
     @include make-row();
-    opacity: 0;
-    transition: opacity 0.25s ease('out-cubic');
-
-    &.is-visible {
-      opacity: 1;
-    }
   }
-
-  /* stylelint-disable */
-  .flickity-viewport {
-    width: 100%;
-    @extend .t-overflowTouch;
-    touch-action: pan-y !important;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  /* stylelint-enable */
 
   &__slide {
     @include make-vr();
-    @include make-col-padding();
     display: inline-block;
     white-space: nowrap;
     font-size: fs('ms-2');
     text-transform: uppercase;
+    @include make-col-padding();
+    padding-left: 0 !important;
 
     &::before {
       display: none;

@@ -1,39 +1,94 @@
-/* -------------------------------------------------- */
-/*    Pagination
-/* -------------------------------------------------- */
-
-.m-paginationSimpleWrapper {
-  /* empty */
-}
+/*
+ |--------------------------------------------------------------------------
+ |  paginationSimple
+ |--------------------------------------------------------------------------
+ */
 
 .m-paginationSimple {
+  @include make-col(12);
   @include make-vr();
-  width: 100%;
+  $root: &;
+  margin: 0;
+  padding: 0;
   list-style: none;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+
+  &__inner {
+    @include make-row();
+  }
+
+  &__item {
+    @include make-col(6);
+
+    &--next {
+      margin-left: auto;
+    }
+  }
 
   &__link {
-    background-color: transparent;
-    color: color('black', '80');
-    line-height: 38px;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    text-align: center;
-    border-radius: 300px;
-    flex: 0 0 40px;
+    display: block;
+    position: relative;
+    color: c('black', '90');
+    border: 1px solid c('black', '10');
+    padding-top: s(2);
+    padding-bottom: s(2);
 
     &:hover {
-      background: c('black', '80');
-      color: c('white');
+      border-color: c('black', '90');
+      color: c('black', '90');
+
+      .m-svgSprite {
+        fill: c('white');
+      }
     }
 
-    &--current {
-      background: c('black', '80');
-      color: c('white');
+    &--prev {
+      padding-left: s(9);
+      text-align: left;
+    }
+
+    &--next {
+      padding-right: s(9);
+      text-align: right;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+
+    svg path {
+      fill: c('black', '90');
+    }
+
+    &--prev {
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include media('>=s') {
+        left: s(3);
+        transform: translateY(-50%);
+      }
+    }
+
+    &--next {
+      right: 50%;
+      transform: translate(50%, -50%);
+
+      @include media('>=s') {
+        right: s(3);
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    display: none;
+
+    @include media('>=s') {
+      display: block;
     }
   }
 }

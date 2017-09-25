@@ -2,23 +2,31 @@
  * navCategories
  */
 
-import Flickity from 'flickity'
+import Swiper from 'swiper'
 
 const navCategories = {
+    cfg: {
+        slider: '.js-navCategories',
+        sliderOptions: {
+            speed: 500,
+            loop: false,
+            grabCursor: true,
+            freeMode: true,
+        }
+    },
+
     init() {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const sliders = [...document.querySelectorAll('.js-navCategories')]
-                if (sliders) {
-                    sliders.forEach((slider) => {
-                        const _slider = slider.querySelector('.m-navCategories__inner')
-                        const flkty = Flickity.data(_slider)
-                        flkty.resize()
-                        _slider.classList.add('is-visible')
-                    })
-                }
-            }, 20)
-        })
+        const sliders = [...document.querySelectorAll(this.cfg.slider)]
+        if (sliders) {
+            sliders.forEach((slider) => {
+                const mySwiper = Swiper(slider, this.cfg.sliderOptions)
+                mySwiper.onResize()
+
+                setTimeout(() => {
+                    mySwiper.onResize()
+                }, 500)
+            })
+        }
     }
 }
 

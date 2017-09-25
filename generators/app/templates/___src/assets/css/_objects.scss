@@ -20,4 +20,7 @@
 // @import '___objects/objects.wrapper';
 
 // Templates
-<% if (projectType !== 'wordpress' ) { %>@import '../../templates/_templates/mainAside/style';<% } %>
+<% if (projectType !== 'wordpress' ) { %>
+@import '../../templates/_templates/mainAside/style';
+@import '../../templates/_templates/toggleContent/style';
+<% } %>

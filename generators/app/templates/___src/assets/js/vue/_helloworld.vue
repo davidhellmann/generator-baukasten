@@ -14,7 +14,7 @@
 
 <style lang="scss">
   .vue p {
-  @include f(fs('ms3'), fs('ms7'));
+    @include f(fs('ms3'), fs('ms7'));
   }
 </style>
 
