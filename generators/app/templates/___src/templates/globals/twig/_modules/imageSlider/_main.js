@@ -11,6 +11,7 @@ const imageSlider = {
             speed: 500,
             loop: false,
             grabCursor: true,
+            noSwipingClass: 'no-swiping',
 
             // If we need pagination
             pagination: '.swiper-pagination',

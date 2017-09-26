@@ -90,4 +90,15 @@
     pointer-events: none;
   }
   /* stylelint-enable */
+
+  /* stylelint-disable */
+  &.no-swiping {
+    .swiper-pagination,
+    .swiper-button-prev,
+    .swiper-button-next,
+    .swiper-scrollbar {
+      display: none;
+    }
+  }
+  /* stylelint-enable */
 }

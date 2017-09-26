@@ -12,6 +12,7 @@ const navCategories = {
             loop: false,
             grabCursor: true,
             freeMode: true,
+            noSwipingClass: 'no-swiping',
         }
     },
 
