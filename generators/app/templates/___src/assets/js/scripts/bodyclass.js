@@ -12,14 +12,14 @@ const bodyClass = {
     },
 
     setClass() {
-        this.cfg.body.classList.add(`is_${this.cfg.i * this.cfg.steps}ms`)
+        this.cfg.body.classList.add(`is-${this.cfg.i * this.cfg.steps}ms`)
         this.cfg.i += 1
     },
 
     timer() {
         while (this.cfg.timer <= this.cfg.duration) {
             if (this.cfg.timer === 0) {
-                this.cfg.body.classList.add('is_ready')
+                this.cfg.body.classList.add('is-ready')
             } else {
                 setTimeout(() => {
                     this.setClass()
