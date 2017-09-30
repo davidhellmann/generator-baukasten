@@ -28,7 +28,7 @@ function addNPMScripts(files = {}, context) {
             'create:svg-sprite': 'cross-env NODE_ENV=development gulp create:svg-sprite',
             'copy:systemFiles': 'cross-env NODE_ENV=development gulp copy:systemFiles',
             'compile:templates': 'cross-env NODE_ENV=development gulp compile:templates',
-            'create:favicons': 'cross-env NODE_ENV=development gulp create:favicons',
+            'create:favicons': 'cross-env NODE_ENV=development gulp favicons',
             'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS',
             'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --config=webpack/webpack.config.babel.js',
             'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/'

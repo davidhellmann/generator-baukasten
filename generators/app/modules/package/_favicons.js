@@ -22,10 +22,10 @@ function addFaviconsSettings(files = {}, context) {
                 coast: true,
                 favicons: true,
                 firefox: true,
-                opengraph: false,
-                twitter: false,
+                opengraph: true,
+                twitter: true,
                 windows: true,
-                yandex: false
+                yandex: true
             }
         }
     })
