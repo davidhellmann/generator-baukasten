@@ -5,8 +5,7 @@
   "main": "generators/app/index.js",
   "scripts": {
     "test": "jest",
-    "eslint": "eslint ./generators/app/index.js, ./generators/app/**/*.js",
-    "prepare": "nsp check"
+    "eslint": "eslint ./generators/app/index.js, ./generators/app/**/*.js"
   },
   "repository": {
     "type": "git",
