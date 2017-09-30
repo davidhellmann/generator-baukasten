@@ -14,7 +14,7 @@ const createFavicons = () => {
             developerName: pkg.favicons.developerName,
             developerURL: pkg.favicons.developerURL,
             background: pkg.favicons.background,
-            path: pkg.dist.images.bitmap.faviconPath,
+            path: pkg.urls.favicons + pkg.dist.images.bitmap.faviconPath,
             url: pkg.favicons.url,
             display: pkg.favicons.display,
             orientation: pkg.favicons.orientation,

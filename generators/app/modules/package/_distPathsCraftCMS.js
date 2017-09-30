@@ -16,7 +16,7 @@ function addDistPathsCraftCMS(files = {}) {
                 bitmap: {
                     base: '___dist/public/assets/images/bitmap/',
                     favicons: '___dist/public/assets/images/bitmap/favicons/',
-                    faviconPath: '___REPLACE_ME___/assets/images/bitmap/favicons/'
+                    faviconPath: 'assets/images/bitmap/favicons/'
                 },
                 svg: {
                     base: '___dist/public/assets/images/svg/',

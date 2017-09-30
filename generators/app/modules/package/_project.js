@@ -14,7 +14,8 @@ function addProjectSettings(files = {}, context) {
         projectDescription: context.props.projectDescription,
         urls: {
             local: proxyURL,
-            critical: proxyURL
+            critical: proxyURL,
+            favicons: proxyURL
         },
         projectType: context.props.projectType,
         projectVersion: context.props.projectVersion
