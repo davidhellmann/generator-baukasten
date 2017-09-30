@@ -16,7 +16,7 @@ function addDistPathsWordpress(files = {}, context) {
                 bitmap: {
                     base: `___dist/wp-content/themes/${context.props.projectName}/assets/images/bitmap/`,
                     favicons: `___dist/wp-content/themes/${context.props.projectName}/assets/images/bitmap/favicons/`,
-                    faviconPath: `<?php bloginfo(\'template_directory\' ); ?>/assets/images/bitmap/favicons/`
+                    faviconPath: `<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicons/`
                 },
                 svg: {
                     base: `___dist/wp-content/themes/${context.props.projectName}/assets/images/svg/`,
