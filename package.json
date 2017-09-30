@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "eslint": "eslint ./generators/app/index.js, ./generators/app/**/*.js",
-    "prepublish": "nsp check"
+    "prepare": "nsp check"
   },
   "repository": {
     "type": "git",
