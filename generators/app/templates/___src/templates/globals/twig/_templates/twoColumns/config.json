@@ -1,0 +1,9 @@
+{
+  "title": "twoColumns",
+  "status": "ready",
+  "context": {
+    "options": {
+      "classname": "m-twoColumns"
+    }
+  }
+}

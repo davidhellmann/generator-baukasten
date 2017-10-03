@@ -21,6 +21,7 @@
 
 // Templates
 <% if (projectType !== 'wordpress' ) { %>
-@import '../../templates/_templates/mainAside/style';
+@import '../../templates/_templates/oneColumn/style';
+@import '../../templates/_templates/twoColumns/style';
 @import '../../templates/_templates/toggleContent/style';
 <% } %>

@@ -1,21 +1,21 @@
 {#
-    {% embed '_templates/mainAside/_template.html' with {
+    {% embed '_templates/twoColumns/_template.html' with {
       options: {
         modiefiers: ['YOUR_MODIFIER'],
         head: true,
         main: true,
         aside: true
       }
-    } %}
+    } only %}
     {% block head %}
       …
     {% endblock %}
 
-    {% block main %}
+    {% block first %}
       …
     {% endblock %}
 
-    {% block aside %}
+    {% block second %}
       …
     {% endblock %}
   {% endembed %}
@@ -23,11 +23,11 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'o-mainAside',
+  classname: 'o-twoColumns',
   modifiers: [],
   head: true,
-  main: null,
-  aside: null
+  first: null,
+  second: null
 } %}
 
 {% if options is defined %}
@@ -37,7 +37,7 @@
 {% endif %}
 
 {# -- Modul -- #}
-{% if options.main %}
+{% if options.first %}
   <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
     <div class="{{ options.classname ~ '__inner' }}">
 
@@ -49,18 +49,18 @@
         </div>
       {% endif %}
 
-      {% if options.main %}
-        <div class="{{ options.classname ~ '__main' }}">
-          {% block main %}
-            Main…
+      {% if options.first %}
+        <div class="{{ options.classname ~ '__first' }}">
+          {% block first %}
+            First…
           {% endblock %}
         </div>
       {% endif %}
 
-      {% if options.aside %}
-        <aside class="{{ options.classname ~ '__aside' }}">
-          {% block aside %}
-            Aside…
+      {% if options.second %}
+        <aside class="{{ options.classname ~ '__second' }}">
+          {% block second %}
+            Second…
           {% endblock %}
         </aside>
       {% endif %}

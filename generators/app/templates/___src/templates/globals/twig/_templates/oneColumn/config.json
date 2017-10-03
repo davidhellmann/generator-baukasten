@@ -1,9 +1,9 @@
 {
-  "title": "mainAside",
+  "title": "oneColumn",
   "status": "ready",
   "context": {
     "options": {
-      "classname": "m-mainAside"
+      "classname": "m-oneColumn"
     }
   }
 }

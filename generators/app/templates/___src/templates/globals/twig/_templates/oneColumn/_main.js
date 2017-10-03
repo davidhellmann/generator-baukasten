@@ -1,10 +1,10 @@
 /**
- * mainAside
+ * oneColumn
  */
 
-const mainAside = {
+const oneColumn = {
     cfg:  {
-        name: `mainAside`
+        name: `oneColumn`
     },
 
     log(msg) {
@@ -16,4 +16,4 @@ const mainAside = {
     }
 }
 
-export default mainAside
+export default oneColumn
