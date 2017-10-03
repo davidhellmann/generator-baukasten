@@ -10,6 +10,17 @@
   ],
   "sections": [
     {
+      "name": "Forms",
+      "handle": "forms",
+      "type": "single",
+      "enableVersioning": 0,
+      "typesettings": {
+        "template": "forms",
+        "urlFormat": "forms",
+        "nestedUrlFormat": null
+      }
+    },
+    {
       "name": "Homepage",
       "handle": "homepage",
       "type": "single",
@@ -59,13 +70,13 @@
   "fields": [
     {
       "group": "Categories",
-      "name": "Category: Default",
-      "handle": "categoryDefault",
+      "name": "Category: News",
+      "handle": "categoryNews",
       "instructions": "",
       "required": false,
       "type": "Categories",
       "typesettings": {
-        "source": "default",
+        "source": "news",
         "limit": "",
         "selectionLabel": ""
       }
@@ -200,6 +211,29 @@
         "maxLength": "",
         "multiline": "",
         "initialRows": 4
+      }
+    },
+    {
+      "group": "Globals",
+      "name": "Global: Logo",
+      "handle": "globalLogo",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": 1,
+        "sources": "*",
+        "defaultUploadLocationSource": "siteImages",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "siteGraphics",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": 1,
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": 1,
+        "viewMode": "large",
+        "selectionLabel": ""
       }
     },
     {
@@ -2545,6 +2579,15 @@
   ],
   "entryTypes": [
     {
+      "sectionHandle": "forms",
+      "hasTitleField": 0,
+      "titleLabel": null,
+      "titleFormat": "{section.name|raw}",
+      "name": "Forms",
+      "handle": "forms",
+      "fieldLayout": []
+    },
+    {
       "sectionHandle": "homepage",
       "hasTitleField": 1,
       "titleLabel": "Title",
@@ -2553,7 +2596,9 @@
       "fieldLayout": {
         "Content": [
           "singleSeoTitle",
-          "singleIntroText",
+          "singleIntroText"
+        ],
+        "Meta": [
           "singleImageEntry"
         ]
       }
@@ -2568,8 +2613,10 @@
         "Content": [
           "singleSeoTitle",
           "singleIntroText",
-          "singleImageEntry",
           "contentBuilderNeo"
+        ],
+        "Meta": [
+          "singleImageEntry"
         ]
       }
     },
@@ -2583,11 +2630,11 @@
         "Content Neo": [
           "singleSeoTitle",
           "singleIntroText",
-          "singleImageEntry",
           "contentBuilderNeo"
         ],
         "Meta": [
-          "categoryDefault"
+          "singleImageEntry",
+          "categoryNews"
         ],
         "SEO": [
           "pluginSeomaticNews"
@@ -2604,8 +2651,30 @@
         "Content": [
           "singleSeoTitle",
           "singleIntroText",
-          "singleImageEntry",
           "contentBuilderNeo"
+        ],
+        "Meta": [
+          "singleImageEntry"
+        ],
+        "SEO": [
+          "pluginSeomaticPages"
+        ]
+      }
+    },
+    {
+      "sectionHandle": "pages",
+      "hasTitleField": 1,
+      "titleLabel": "Title",
+      "name": "News Index",
+      "handle": "newsIndex",
+      "fieldLayout": {
+        "Content": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "contentBuilderNeo"
+        ],
+        "Meta": [
+          "singleImageEntry"
         ],
         "SEO": [
           "pluginSeomaticPages"
@@ -2619,9 +2688,9 @@
       "handle": "siteImages",
       "type": "Local",
       "settings": {
-        "path": "{uploadPath}\/images\/",
+        "path": "{uploadPath}images\/",
         "publicURLs": 1,
-        "url": "{uploadUrl}\/images\/"
+        "url": "{uploadUrl}images\/"
       },
       "fieldLayout": {
         "Content": [
@@ -2636,9 +2705,9 @@
       "handle": "siteDownloads",
       "type": "Local",
       "settings": {
-        "path": "{uploadPath}\/downloads\/",
+        "path": "{uploadPath}downloads\/",
         "publicURLs": 1,
-        "url": "{uploadUrl}\/downloads\/"
+        "url": "{uploadUrl}downloads\/"
       },
       "fieldLayout": {
         "Content": [
@@ -2653,9 +2722,9 @@
       "handle": "siteGraphics",
       "type": "Local",
       "settings": {
-        "path": "{uploadPath}\/graphics\/",
+        "path": "{uploadPath}graphics\/",
         "publicURLs": 1,
-        "url": "{uploadUrl}\/graphics\/"
+        "url": "{uploadUrl}graphics\/"
       },
       "fieldLayout": {
         "Content": [
@@ -2670,9 +2739,9 @@
       "handle": "siteUsers",
       "type": "Local",
       "settings": {
-        "path": "{uploadPath}\/users\/",
+        "path": "{uploadPath}users\/",
         "publicURLs": 1,
-        "url": "{uploadUrl}\/users\/"
+        "url": "{uploadUrl}users\/"
       },
       "fieldLayout": {
         "Content": [
@@ -2715,6 +2784,15 @@
       }
     },
     {
+      "name": "Logo",
+      "handle": "logo",
+      "fieldLayout": {
+        "Content": [
+          "globalLogo"
+        ]
+      }
+    },
+    {
       "name": "Social Networks",
       "handle": "socialNetworks",
       "fieldLayout": {
@@ -2735,15 +2813,15 @@
   ],
   "categories": [
     {
-      "name": "Default",
-      "handle": "default",
+      "name": "News",
+      "handle": "news",
       "hasUrls": 1,
-      "template": "",
-      "maxLevels": null,
+      "template": "categories\/news\/_entry",
+      "maxLevels": 1,
       "locales": {
         "de": {
-          "urlFormat": "default\/{slug}",
-          "nestedUrlFormat": "{parent.uri}\/{slug}"
+          "urlFormat": "ca\/{slug}",
+          "nestedUrlFormat": null
         }
       },
       "fieldLayout": []
