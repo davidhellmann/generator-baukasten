@@ -3,27 +3,28 @@
 //  https://github.com/cferdinandi/smooth-scroll
 //  --------------------------------------------------------
 
-import smoothScroll from 'smooth-scroll'
+import SmoothScroll from 'smooth-scroll'
 
-smoothScroll.init({
-    // Selector for links (must be a class, ID, data attribute, or element tag)
-    selector: '[data-scroll]',
+const scroll = new SmoothScroll('[data-scroll]', {
+    // Selectors
+    ignore: '[data-scroll-ignore]', // Selector for links to ignore (must be a valid CSS selector)
+    header: null, // Selector for fixed headers (must be a valid CSS selector)
 
-    // Selector for fixed headers (must be a valid CSS selector) [optional]
-    selectorHeader: null,
-
+    // Speed & Easing
     // Integer. How fast to complete the scroll in milliseconds
     speed: 250,
+
+    // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
+    offset: 0,
 
     // Easing pattern to use
     easing: 'easeInOutCubic',
 
-    // Integer. How far to offset the scrolling anchor location in pixels
-    offset: 0,
-
-    // Function to run after scrolling
-    callback(anchor, toggle) {}
+    // Callback API
+    before() {}, // Callback to run before scroll
+    after() {} // Callback to run after scroll
 })
+
 
 if (window.location.hash) {
     setTimeout(() => {
@@ -35,7 +36,6 @@ if (window.location.hash) {
 
         // Any custom options you want to use would go here
         const options = {}
-        smoothScroll.animateScroll(anchor, toggle, options)
+        SmoothScroll.animateScroll(anchor, toggle, options)
     }, 250)
 }
-
