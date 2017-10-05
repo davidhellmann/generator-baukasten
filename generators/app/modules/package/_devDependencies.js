@@ -98,7 +98,7 @@ function addDevDependencies(files = {}) {
             'sass-loader': '^6.0.6',
             'sass-resources-loader': '^1.3.0',
             'style-loader': '^0.18.2',
-            'stylelint': '^7.8.0',
+            'stylelint': '^8.2.0',
             'stylelint-config-sass-guidelines': '^2.0.0',
             'stylelint-order': '^0.4.4',
             'stylelint-scss': '^1.4.1',
