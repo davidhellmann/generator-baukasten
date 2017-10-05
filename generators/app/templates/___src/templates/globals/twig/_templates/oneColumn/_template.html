@@ -19,38 +19,45 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'o-oneColumn',
-  modifiers: [],
-  head: true,
-  first: null
+classname: 'o-oneColumn',
+modifiers: [],
+head: true,
+first: null
 } %}
 
 {% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-    {% set options = defaults %}
+  {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
 {% if options.first %}
   <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
-    <div class="{{ options.classname ~ '__inner' }}">
 
-      {% if options.head %}
-        <div class="{{ options.classname ~ '__head' }}">
-          {% block head %}
-            Head…
-          {% endblock %}
-        </div>
-      {% endif %}
-
-      {% if options.first %}
-        <div class="{{ options.classname ~ '__first' }}">
-          {% block first %}
-            First…
-          {% endblock %}
-        </div>
-      {% endif %}
+    <div class="o-section">
+      <div class="o-row">
+        {% if options.head %}
+          <div class="{{ options.classname ~ '__head' }}">
+            <div class="o-row">
+              {% block head %}
+                Head…
+              {% endblock %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
     </div>
-  </div>
+
+    <div class="o-section">
+      <div class="o-row">
+        <div class="{{ options.classname ~ '__first' }}">
+          <div class="o-row">
+            {% block first %}
+              First…
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
 {% endif %}

@@ -7,10 +7,6 @@
   @include make-col(12);
   @include center();
 
-  &__inner {
-    @include make-row();
-  }
-
   &__head {
     @include make-col(12);
 
