@@ -16,8 +16,7 @@
 
 .o-section--paddingHorizontal-none,
 .m-section--paddingHorizontal-none {
-  padding-left: 0;
-  padding-right: 0;
+  @include f(s(1), s(2), padding-left padding-right);
 }
 
 // Background Color
