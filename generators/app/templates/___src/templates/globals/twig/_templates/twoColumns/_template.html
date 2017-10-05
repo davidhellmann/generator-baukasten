@@ -38,7 +38,7 @@
 
 {# -- Modul -- #}
 {% if options.first %}
-  <div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
+  <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
     <div class="{{ options.classname ~ '__inner' }}">
 
       {% if options.head %}
