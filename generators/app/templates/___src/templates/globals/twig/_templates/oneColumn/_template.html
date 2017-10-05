@@ -33,31 +33,28 @@ first: null
 
 {# -- Modul -- #}
 {% if options.first %}
-  <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
+<div
+  class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
 
-    <div class="o-section">
-      <div class="o-row">
-        {% if options.head %}
-          <div class="{{ options.classname ~ '__head' }}">
-            <div class="o-row">
-              {% block head %}
-                Head…
-              {% endblock %}
-            </div>
-          </div>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="o-section">
-      <div class="o-row">
-        <div class="{{ options.classname ~ '__first' }}">
-          <div class="o-row">
-            {% block first %}
-              First…
-            {% endblock %}
-          </div>
+  <div class="o-section">
+    <div class="o-row">
+      {% if options.head %}
+        <div class="{{ options.classname ~ '__head' }}">
+          {% block head %}
+            Head…
+          {% endblock %}
         </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="o-section">
+    <div class="o-row">
+      <div class="{{ options.classname ~ '__first' }}">
+        {% block first %}
+          First…
+        {% endblock %}
       </div>
     </div>
-{% endif %}
+  </div>
+  {% endif %}

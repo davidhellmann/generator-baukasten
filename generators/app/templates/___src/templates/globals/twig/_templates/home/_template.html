@@ -31,7 +31,8 @@ modifiers: []
 {% endif %}
 
 {# -- Modul -- #}
-<div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
+<div
+  class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
 
   <div class="o-section  o-section--width-full  o-section--paddingHorizontal-none">
     <div class="o-row">
@@ -48,21 +49,15 @@ modifiers: []
   <div class="o-section">
     <div class="o-row">
       <div class="{{ options.classname ~ '__first' }}">
-        <div class="o-row">
-          {% block first %}
-            Stage…
-          {% endblock %}
-        </div>
+        {% block first %}
+          Stage…
+        {% endblock %}
       </div>
-    </div>
 
-    <div class="o-row">
       <div class="{{ options.classname ~ '__second' }}">
-        <div class="o-row">
-          {% block second %}
-            First…
-          {% endblock %}
-        </div>
+        {% block second %}
+          First…
+        {% endblock %}
       </div>
     </div>
   </div>
@@ -70,21 +65,17 @@ modifiers: []
   <div class="o-section  o-section--width-full">
     <div class="o-row">
       <div class="{{ options.classname ~ '__third' }}">
-        <div class="o-row">
-          {% block third %}
-            Second…
-          {% endblock %}
-        </div>
+        {% block third %}
+          Second…
+        {% endblock %}
       </div>
     </div>
 
     <div class="o-row">
       <div class="{{ options.classname ~ '__fourth' }}">
-        <div class="o-row">
-          {% block fourth %}
-            Second…
-          {% endblock %}
-        </div>
+        {% block fourth %}
+          Second…
+        {% endblock %}
       </div>
     </div>
   </div>
@@ -92,33 +83,25 @@ modifiers: []
   <div class="o-section">
     <div class="o-row">
       <div class="{{ options.classname ~ '__fifth' }}">
-        <div class="o-row">
-          {% block fifth %}
-            Second…
-          {% endblock %}
-        </div>
+        {% block fifth %}
+          Second…
+        {% endblock %}
       </div>
-    </div>
 
-    <div class="o-row">
       <div class="{{ options.classname ~ '__sixth' }}">
-        <div class="o-row">
-          {% block sixth %}
-            Second…
-          {% endblock %}
-        </div>
+        {% block sixth %}
+          Second…
+        {% endblock %}
       </div>
     </div>
   </div>
 
   <div class="o-section">
-    <div class="o-row">
-      <div class="{{ options.classname ~ '__seventh' }}">
-        <div class="o-row">
-          {% block seventh %}
-            Second…
-          {% endblock %}
-        </div>
+    <div class="{{ options.classname ~ '__seventh' }}">
+      <div class="o-row">
+        {% block seventh %}
+          Second…
+        {% endblock %}
       </div>
     </div>
   </div>

@@ -23,31 +23,30 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'o-twoColumns',
-  modifiers: [],
-  head: true,
-  first: null,
-  second: null
+classname: 'o-twoColumns',
+modifiers: [],
+head: true,
+first: null,
+second: null
 } %}
 
 {% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-    {% set options = defaults %}
+  {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
 {% if options.first %}
-  <div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
+  <div
+    class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
     <div class="o-section">
       <div class="o-row">
         {% if options.head %}
           <div class="{{ options.classname ~ '__head' }}">
-            <div class="o-row">
-              {% block head %}
-                Head…
-              {% endblock %}
-            </div>
+            {% block head %}
+              Head…
+            {% endblock %}
           </div>
         {% endif %}
       </div>
@@ -56,21 +55,17 @@
     <div class="o-section">
       <div class="o-row">
         <div class="{{ options.classname ~ '__first' }}">
-          <div class="o-row">
-            {% block first %}
-              First…
-            {% endblock %}
-          </div>
+          {% block first %}
+            First…
+          {% endblock %}
         </div>
       </div>
 
       <div class="o-row">
         <div class="{{ options.classname ~ '__second' }}">
-          <div class="o-row">
-            {% block second %}
-              Second…
-            {% endblock %}
-          </div>
+          {% block second %}
+            Second…
+          {% endblock %}
         </div>
       </div>
     </div>
