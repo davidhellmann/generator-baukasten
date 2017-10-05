@@ -5,8 +5,6 @@
   This i the basic layout. Feel free to modify
 #}
 
-{% set rootUrl = craft.config.rootUrl %}
-
 {# Include Macros #}
 {# -- All Macros --
 {% import '_macros/_macro-amNav.html' as macroAmNav %}
@@ -191,7 +189,7 @@
 {% endif %}
 
 {# -- SCRIPTS -- #}
-{% include '_partials/footer/_scripts.html' with { rootUrl: rootUrl } only %}
+{% include '_partials/footer/_scripts.html' only %}
 
 </body>
 {% endminify %}
