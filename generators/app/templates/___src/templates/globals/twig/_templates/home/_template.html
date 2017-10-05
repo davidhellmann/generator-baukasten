@@ -56,11 +56,13 @@ modifiers: []
       </div>
     </div>
 
-    <div class="{{ options.classname ~ '__second' }}">
-      <div class="o-row">
-        {% block second %}
-          First…
-        {% endblock %}
+    <div class="o-row">
+      <div class="{{ options.classname ~ '__second' }}">
+        <div class="o-row">
+          {% block second %}
+            First…
+          {% endblock %}
+        </div>
       </div>
     </div>
   </div>
@@ -110,11 +112,13 @@ modifiers: []
   </div>
 
   <div class="o-section">
-    <div class="{{ options.classname ~ '__seventh' }}">
-      <div class="o-row">
-        {% block seventh %}
-          Second…
-        {% endblock %}
+    <div class="o-row">
+      <div class="{{ options.classname ~ '__seventh' }}">
+        <div class="o-row">
+          {% block seventh %}
+            Second…
+          {% endblock %}
+        </div>
       </div>
     </div>
   </div>
