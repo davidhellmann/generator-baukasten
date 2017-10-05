@@ -121,7 +121,7 @@
             <img class="{{ options.classname ~ '__image' }}  lazyload"
                  style="object-fit: {{ options.objectFit }}; object-position: {{ options.position }}"
                  data-object-fit="{{ options.objectFit }}"
-                 data-object-position="{{ options.position }}"
+                 data-object-position="{{ position }}"
                  src="{{ images|last.url }}"
                     {#src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"#}
                  data-srcset="{{ craft.imager.srcset(images) }}"
