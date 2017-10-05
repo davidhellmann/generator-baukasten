@@ -119,7 +119,7 @@
             {% endif %}
 
             <img class="{{ options.classname ~ '__image' }}  lazyload"
-                 style="object-fit: {{ options.objectFit }}; object-position: {{ options.position }}"
+                 style="object-fit: {{ options.objectFit }}; object-position: {{ position }}"
                  data-object-fit="{{ options.objectFit }}"
                  data-object-position="{{ position }}"
                  src="{{ images|last.url }}"
