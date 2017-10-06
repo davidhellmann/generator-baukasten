@@ -52,12 +52,7 @@
         {# -- Ratio -- #}
         {% if options.ratio %}
             {% set ratio = options.ratio|split(':') %}
-            {% set base64Ratio = options.ratio|split(':') %}
             {% set ratio = ratio|first/ratio|last %}
-        {% elseif options.ratio and options.externalSource %}
-            {% set imageSize = image.width ~ ':' ~ image.height %}
-            {% set base64Ratio = imageSize|split(':') %}
-            {% set ratio = '' %}
         {% else %}
             {% set ratio = '' %}
         {% endif %}
@@ -91,10 +86,8 @@
 
         {# -- External Source --#}
         {# Reset the Base64 Size to the First Image Dimensions  #}
-        {% if options.externalSource %}
-            {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
-            {% set base64Ratio = base64Ratio|split(':') %}
-        {% endif %}
+        {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
+        {% set base64Ratio = base64Ratio|split(':') %}
 
         {# -- Dominatn Color -- #}
         {% if options.dominantColor %}
@@ -118,8 +111,8 @@
                 {% endif %}
 
                 <img class="{{ options.classname ~ '__image' }}  lazyload"
-                     src="{{ images|last.url }}"
-                        {#src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"#}
+                    {# src="{{ images|last.url }}"#}
+                     src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
                      data-srcset="{{ craft.imager.srcset(images) }}"
                      data-sizes="auto"
                      alt="{{ image.title is defined ? image.title }}"/>
