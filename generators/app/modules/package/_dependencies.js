@@ -17,7 +17,7 @@ function addDependencies(files = {}) {
             'normalize.css': '^7.0.0',
             'objectFitPolyfill': '^2.0.5',
             'photoswipe': '^4.1.1',
-            'smooth-scroll': '^11.1.0',
+            'smooth-scroll': '^12.1.0',
             'svg-injector-2': '^2.0.0',
             'svgxuse': '^1.1.23',
             'swiper': '^3.0.0',
