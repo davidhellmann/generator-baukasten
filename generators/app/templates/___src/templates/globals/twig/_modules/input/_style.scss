@@ -21,9 +21,7 @@
   }
 
   &__input {
-    // stylelint-disable
-    -webkit-appearance: none;
-    // stylelint-enable
+    appearance: none;
     outline: 0;
     display: block;
     width: 100%;

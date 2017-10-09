@@ -23,7 +23,7 @@
 
   &__inner {
     cursor: pointer;
-    -webkit-appearance: none; // stylelint-disable
+    appearance: none;
     @include make-vr();
     align-self: flex-start;
     font-size: fs('ms0');
