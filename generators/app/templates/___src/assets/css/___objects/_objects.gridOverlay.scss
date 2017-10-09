@@ -3,6 +3,27 @@
 /* -------------------------------------------------- */
 
 .t-devMode {
+  /* stylelint-disable */
+  .js-toggleGrid {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 111111111111;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+    color: white;
+    font-family: sans-serif;
+    font-size: 10px;
+    text-align: center;
+    line-height: 18px;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(black, 0.5);
+  }
+  /* stylelint-enable */
+
   .o-gridOverlay {
     position: fixed;
     left: 50%;
@@ -12,8 +33,13 @@
     height: 100vh;
     border-left: 1px solid c('red');
     border-right: 1px solid c('red');
-    opacity: 0.25;
+    opacity: 0.5;
     pointer-events: none;
+    display: none;
+
+    &.is-visible {
+      display: block;
+    }
 
     &::before,
     &::after {

@@ -27,10 +27,21 @@ if (vueElement) {
 }
 <% } %>
 const app = {
+    toggleGrid() {
+        console.log('test')
+        const gridOverlay = document.querySelector('.o-gridOverlay')
+        gridOverlay.classList.toggle('is-visible')
+    },
+
     init() {
         scripts.init()
         templates.init()
         modules.init()
+
+        const gridToggle = document.querySelector('.js-toggleGrid')
+        if (gridToggle) {
+            gridToggle.addEventListener('click', this.toggleGrid, false)
+        }
     }
 }
 
