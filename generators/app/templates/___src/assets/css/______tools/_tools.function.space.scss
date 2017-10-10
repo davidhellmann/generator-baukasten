@@ -12,3 +12,22 @@
 @function s($key) {
   @return space($key);
 }
+
+// Spacing Column Width
+@function spaceColumn($columns: 0, $context: $dh-columns) {
+  @if $columns > $dh-columns {
+    $columns: $dh-columns;
+  }
+
+  // Col Width
+  @if $columns == 0 {
+    @return 0;
+  } @else {
+    @return calc(#{$columns} / #{$context} * 100%);
+  }
+}
+
+// Shorthand Version
+@function sc($columns: 0, $context: $dh-columns) {
+  @return spaceColumn($columns, $context);
+}

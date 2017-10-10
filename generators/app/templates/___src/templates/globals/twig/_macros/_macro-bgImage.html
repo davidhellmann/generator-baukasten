@@ -104,7 +104,7 @@
         {% endif %}
 
         <picture class="{{ options.classname }}"
-                 style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%; height: 100%;">
+                 style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%; height: 100%; display: block;">
 
             {% if craft.imager.serverSupportsWebp() and options.webp %}
                 <source sizes="auto" srcset="{{ craft.imager.srcset(imagesWebP) }}" type="image/webp">
