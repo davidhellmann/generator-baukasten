@@ -5,64 +5,59 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'm-caption',
-  image: null
+classname: 'm-caption',
+image: null
 } %}
 
 {% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% else %}
-    {% set options = defaults %}
+  {% set options = defaults %}
 {% endif %}
 
 {# -- Modul -- #}
 {% if options.image %}
 
-  {# -- Image Caption -- #}
-  {% set caption = options.image.groupedCaption is defined ? options.image.groupedCaption : null %}
-  {% if caption %}
+  {# -- Image Caption Vars -- #}
+  {% set captionHeadline = options.image.imageCaptionHeadline is defined ? options.image.imageCaptionHeadline : null %}
+  {% set captionCaption = options.image.imageCaption is defined ? options.image.imageCaption : null %}
+  {% set captionSource = options.image.singleSource is defined ? options.image.singleSource : null %}
+  {% set captionSourceUrl = options.image.singleSourceUrl is defined ? options.image.singleSourceUrl : null %}
 
-    {# -- Image Caption Vars -- #}
-    {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle : null %}
-    {% set captionCaption = caption.caption is defined ? caption.caption : null %}
-    {% set captionSource = caption.source is defined ? caption.source : null %}
-    {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl : null %}
+  {# -- Image Caption Output -- #}
+  {% if captionHeadline or captionCaption %}
+    <figcaption class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}" itemprop="caption description">
 
-    {# -- Image Caption Output -- #}
-    {% if captionTitle or captionCaption %}
-      <figcaption class="{{ options.classname }}  {{ options.classname|replace({ 'm-' : 'js-' }) }}" itemprop="caption description">
+      {# -- Caption Title -- #}
+      {% if captionHeadline %}
+        <span class="{{ options.classname ~ '__headline' }}">
+          {{ captionHeadline|raw }}{{ captionCaption and captionHeadline ? ': '  }}
+        </span>
+      {% endif %}
 
-        {# -- Caption Title -- #}
-        {% if captionTitle %}
-          <span class="{{ options.classname ~ '__headline' }}">
-            {{ captionTitle|raw }}{{ captionCaption and captionTitle ? ': '  }}
-          </span>
+      {# -- Caption Caption -- #}
+      {% if captionCaption %}
+        <span class="{{ options.classname ~ '__body' }}">
+          {{ captionCaption|raw }}
+        </span>
+      {% endif %}
+
+      {# -- Caption Source Url -- #}
+      {% if captionSourceUrl %}
+    &mdash;   <a class="{{ options.classname ~ '__link' }}"
+                 href="{{ captionSourceUrl.url }}"
+                 target="_blank">
         {% endif %}
 
-        {# -- Caption Caption -- #}
-        {% if captionCaption %}
-          <span class="{{ options.classname ~ '__body' }}">
-            {{ captionCaption|raw }}
-          </span>
+        {# -- Caption Source -- #}
+        {% if captionSource %}
+          {{ captionSource }}
         {% endif %}
 
         {# -- Caption Source Url -- #}
         {% if captionSourceUrl %}
-      &mdash;   <a class="{{ options.classname ~ '__link' }}"
-             href="{{ captionSourceUrl.url }}"
-             target="_blank">
-          {% endif %}
-
-          {# -- Caption Source -- #}
-          {% if captionSource %}
-            {{ captionSource }}
-          {% endif %}
-
-          {# -- Caption Source Url -- #}
-          {% if captionSourceUrl %}
-        </a>
-        {% endif %}
-      </figcaption>
-    {% endif %}
+      </a>
+      {% endif %}
+    </figcaption>
   {% endif %}
 {% endif %}
