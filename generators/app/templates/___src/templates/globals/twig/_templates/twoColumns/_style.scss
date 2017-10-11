@@ -19,7 +19,7 @@
     }
   }
 
-  &__first {
+  &__main {
     @include make-col(12);
 
     @include media('>=m') {
@@ -27,7 +27,7 @@
     }
   }
 
-  &__second {
+  &__aside {
     @include make-col(12);
 
     @include media('>=m') {

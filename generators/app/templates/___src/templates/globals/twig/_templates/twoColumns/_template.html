@@ -11,11 +11,11 @@
       …
     {% endblock %}
 
-    {% block first %}
+    {% block main %}
       …
     {% endblock %}
 
-    {% block second %}
+    {% block aside %}
       …
     {% endblock %}
   {% endembed %}
@@ -23,11 +23,11 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-classname: 'o-twoColumns',
-modifiers: [],
-head: true,
-first: null,
-second: null
+  classname: 'o-twoColumns',
+  modifiers: [],
+  head: true,
+  main: null,
+  aside: null
 } %}
 
 {% if options is defined %}
@@ -37,7 +37,7 @@ second: null
 {% endif %}
 
 {# -- Modul -- #}
-{% if options.first %}
+{% if options.main %}
   <div
     class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
     <div class="o-section">
@@ -52,22 +52,27 @@ second: null
       </div>
     </div>
 
+    {% if options.main %}
     <div class="o-section">
       <div class="o-row">
-        <div class="{{ options.classname ~ '__first' }}">
-          {% block first %}
-            First…
+        <div class="{{ options.classname ~ '__main' }}">
+          {% block main %}
+            Main…
           {% endblock %}
         </div>
       </div>
 
-      <div class="o-row">
-        <div class="{{ options.classname ~ '__second' }}">
-          {% block second %}
-            Second…
-          {% endblock %}
+      {% if options.aside %}
+        <div class="o-row">
+          <div class="{{ options.classname ~ '__aside' }}">
+            {% block aside %}
+              Aside…
+            {% endblock %}
+          </div>
         </div>
-      </div>
+      {% endif %}
     </div>
+
+    {% endif %}
   </div>
 {% endif %}

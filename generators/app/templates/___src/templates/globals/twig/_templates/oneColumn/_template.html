@@ -22,7 +22,7 @@
 classname: 'o-oneColumn',
 modifiers: [],
 head: true,
-first: null
+main: null
 } %}
 
 {% if options is defined %}
@@ -32,27 +32,26 @@ first: null
 {% endif %}
 
 {# -- Modul -- #}
-{% if options.first %}
-<div
-  class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
+{% if options.main %}
+<div class="{{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
 
+  {% if options.head %}
   <div class="o-section">
     <div class="o-row">
-      {% if options.head %}
-        <div class="{{ options.classname ~ '__head' }}">
-          {% block head %}
-            Head…
-          {% endblock %}
-        </div>
-      {% endif %}
+      <div class="{{ options.classname ~ '__head' }}">
+        {% block head %}
+          Head…
+        {% endblock %}
+      </div>
     </div>
   </div>
+  {% endif %}
 
   <div class="o-section">
     <div class="o-row">
-      <div class="{{ options.classname ~ '__first' }}">
-        {% block first %}
-          First…
+      <div class="{{ options.classname ~ '__main' }}">
+        {% block main %}
+          Main…
         {% endblock %}
       </div>
     </div>

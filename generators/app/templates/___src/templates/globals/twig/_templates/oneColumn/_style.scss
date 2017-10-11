@@ -15,7 +15,7 @@
     }
   }
 
-  &__first {
+  &__main {
     @include make-col(12);
 
     @include media('>=m') {
