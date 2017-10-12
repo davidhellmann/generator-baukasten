@@ -36,7 +36,7 @@
     "computed-property-spacing": [2, "never"],
     "consistent-return": 0,
     "eqeqeq": 2,
-    "func-names": 2,
+    "func-names": 1,
     "guard-for-in": 2,
     "indent": [1, 4, { "SwitchCase": 1 }],
     "import/no-unresolved": 0,
