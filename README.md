@@ -66,13 +66,13 @@ npm install // yarn install
 
 ## Initialize Project
 ```
-gulp init  // npm run start OR yarn start
+npm run start OR yarn start
 ```
 
 
 ### Default Task with BrowserSync
 ```
-gulp // npm run dev OR yarn dev
+npm run dev OR yarn dev
 ```
 
 
@@ -80,7 +80,7 @@ gulp // npm run dev OR yarn dev
 This Task clean the folder, build the stuff from ground up and optimize the images and minifiy JS / CSS files. Ready for live!
 
 ```
-gulp build // npm run build OR yarn build
+npm run build OR yarn build
 ```
 
 
