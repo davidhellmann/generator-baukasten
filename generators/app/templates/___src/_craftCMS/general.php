@@ -12,14 +12,17 @@ return array(
 
     // All environments
     '*' => [
-
         // Whether "index.php" should be visible in URLs (true, false, "auto")
         'omitScriptNameInUrls' => true,
         'usePathInfo' => true,
         'cacheDuration' => false,
         'generateTransformsBeforePageLoad' => true,
+        'requireMatchingUserAgentForSession' => false,
+        'userSessionDuration' => 'P1W',
+        'rememberedUserSessionDuration' => 'P4W',
         'defaultWeekStartDay' => 1,
         'enableCsrfProtection' => true,
+        'backupDbOnUpdate' => false,
         'cpTrigger' => 'admin',
         'defaultCpLanguage' => 'en',
         'maxUploadFileSize' => 67108864,
@@ -30,6 +33,9 @@ return array(
             'subLeft' => true,
             'subRight' => true,
         ],
+
+        'defaultTemplateExtensions' => array('html', 'twig', 'rss'),
+        
         /*
         'siteUrl' => array(
             'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
@@ -51,6 +57,7 @@ return array(
 
     // Live (production) environment
     'live'  => array(
+        'isSystemOn' => true,
         'devMode' => false,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
@@ -58,6 +65,7 @@ return array(
 
     // Staging (pre-production) environment
     'staging'  => array(
+        'isSystemOn' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
@@ -65,8 +73,10 @@ return array(
 
     // Local (development) environment
     'local'  => array(
+        'isSystemOn' => true,
         'devMode' => true,
         'enableTemplateCaching' => false,
         'allowAutoUpdates' => true,
+        'disableDevmodeMinifying' => true,
     ),
 );
