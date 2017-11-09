@@ -3,8 +3,10 @@ import twig from 'gulp-twig'
 import gulpLoadPlugins from 'gulp-load-plugins'
 <% if (projectType === 'prototyping' ) { %>
 import data from 'gulp-data'
+import yargs from 'yargs'
 import fs from 'fs'
 import path from 'path'
+const argv = yargs.argv
 <% } %>
 import pkg from '../../package.json'
 import errorHandler from '../lib/errorHandler'
@@ -12,16 +14,12 @@ import errorHandler from '../lib/errorHandler'
 const $ = gulpLoadPlugins()
 
 <% if (projectType === 'prototyping' ) { %>
-// Work with multiple Files
-var getDataMultiple = function(file) {
-    const _dataFile = pkg.src.dataDir + path.basename(file.path, '.html') + '.json'
-    return (fs.existsSync(_dataFile)) ? JSON.parse(fs.readFileSync(_dataFile)) : {}
-}
-
 // Work with a Single File (global.json
-var getDataSingle = function(file) {
+const getDataSingle = function(file) {
     const dataPath = pkg.src.dataFile
-    return (fs.existsSync(dataPath)) ? JSON.parse(fs.readFileSync(dataPath, 'utf8')) : {};
+    const _fileData = (fs.existsSync(dataPath)) ? JSON.parse(fs.readFileSync(dataPath, 'utf8')) : {}
+    const productionData = argv.env === 'production' ? { build: true } : { build: false }
+    return  { ..._fileData, ...productionData }
 }
 <% } %>
 

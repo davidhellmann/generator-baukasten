@@ -1,5 +1,7 @@
 {# -- Webpack Magic -- #}
-{% include '../webpack/_webpack-header.html' %}
+{% if not build %}
+  {% include "../webpack/_webpack-header.html" %}
+{% endif %}
 
 {# Humans File #}
 <!-- humans.txt — http://humanstxt.org -->

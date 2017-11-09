@@ -41,24 +41,54 @@ const headerFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack
 const scriptsFilenameSRC = <% if (projectType === 'prototyping' ) { %> '_src-webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
 const scriptsFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
 const folderDIST = <% if (projectType === 'prototyping' ) { %> config.src.templates <% } else { %> config.dist.markup <% } %>
-const inject_templates = [
-    {
-        // DIST File
-        filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
 
-        // SRC File
-        file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
-        inject: false
-    },
-    {
-        // DIST File
-        filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+<% if (projectType === 'prototyping' ) { %> config.src.templates
+    const inject_templates = removeEmpty([
+            ifProduction({
+                // DIST File
+                filename: 'index.html',
 
-        // SRC File
-        file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
-        inject: false
-    }
-]
+                // SRC File
+                file: `${config.dist.base}index.html`,
+                inject: true
+            }),
+            ifDevelopment({
+                // DIST File
+                filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
+
+                // SRC File
+                file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
+                inject: false
+            }),
+            ifDevelopment({
+                // DIST File
+                filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+
+                // SRC File
+                file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
+                inject: false
+            })
+        ])
+<% } else { %>
+    const inject_templates = [
+        {
+            // DIST File
+            filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
+
+            // SRC File
+            file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
+            inject: false
+        },
+        {
+            // DIST File
+            filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+
+            // SRC File
+            file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
+            inject: false
+        }
+    ]
+<% } %>
 
 // Leeres Array welches wir später mittels ...restParameter
 // in die Plugins mit einfügen
