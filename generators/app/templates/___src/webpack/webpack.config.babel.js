@@ -296,9 +296,8 @@ module.exports = {
                     name: (filePath) => {
                         const filename = path.basename(filePath)
                         const folder = path.relative(config.src.images.base, filePath).replace(filename, '')
-                        return `assets/${folder}[name].[hash:4].[ext]`
+                        return `${folder}[name].[hash:4].[ext]`
                     },
-                    publicPath: '../../'
                 }
             },
             {
@@ -315,8 +314,7 @@ module.exports = {
                     mimetype: 'application/font-woff',
 
                     // Output below fonts directory
-                    name: 'assets/fonts/[name].[ext]',
-                    publicPath: '../../'
+                    name: 'fonts/[name].[ext]',
                 }
             },
         ]
