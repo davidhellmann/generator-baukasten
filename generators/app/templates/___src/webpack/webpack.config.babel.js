@@ -172,14 +172,16 @@ module.exports = {
         app: ifDevelopment([resolve(`${config.src.js}app.js`), hot_client], resolve(`${config.src.js}app.js`))
     },
 
-    output: {
-        // in das verzeichnis kommt alles rein
-        path: resolve(config.dist.base),
-        publicPath: '',
-        // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
-        filename: ifProduction('assets/js/[name].[hash].min.js', 'assets/js/[name].js'),
-        chunkFilename: 'assets/js/[name].[chunkhash].js'
-    },
+        output: {
+            // in das verzeichnis kommt alles rein
+            path: resolve(`${config.dist.base}assets/`),
+            publicPath: '/assets/',
+            // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
+            filename: ifProduction('js/[name].[hash].min.js', '4js/[name].js'),
+            chunkFilename: 'js/[name].[chunkhash].js',
+            hotUpdateChunkFilename: '[id].[hash].hot-update.js',
+            hotUpdateMainFilename: '[hash].hot-update.json',
+        },
 
     resolve: {
         extensions: ['.js', '.json', '.vue'],
