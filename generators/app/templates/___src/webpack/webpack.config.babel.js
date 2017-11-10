@@ -177,7 +177,7 @@ module.exports = {
             path: resolve(`${config.dist.base}assets/`),
             publicPath: '/assets/',
             // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
-            filename: ifProduction('js/[name].[hash].min.js', '4js/[name].js'),
+            filename: ifProduction('js/[name].[hash].min.js', 'js/[name].js'),
             chunkFilename: 'js/[name].[chunkhash].js',
             hotUpdateChunkFilename: '[id].[hash].hot-update.js',
             hotUpdateMainFilename: '[hash].hot-update.json',
