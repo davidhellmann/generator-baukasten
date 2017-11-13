@@ -1,0 +1,14 @@
+{
+	"name": "witti/fmcontentking",
+	"description": "Generating dummy content for modules from json-files",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Daniel Wittberger",
+			"homepage": "https://wittistribune.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

@@ -1,9 +1,0 @@
-{
-	"name": "groe/craft-sitemap",
-	"description": "Craft plugin to generate a sitemap.",
-	"license": "MPL 2.0",
-	"type": "craft-plugin",	
-	"require": {
-		"composer/installers": "~1.2"		
-	}
-}
