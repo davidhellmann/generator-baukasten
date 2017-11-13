@@ -62,7 +62,8 @@
 
   // Col Width
   @if $columns == 0 {
-    flex: 1 1 0;
+    flex: 1 1 auto;
+    max-width: 100%;
   } @else {
     width: 100%;
     max-width: calc(#{$columns} / #{$context} * 100%);
