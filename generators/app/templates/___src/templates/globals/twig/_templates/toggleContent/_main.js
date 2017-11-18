@@ -41,11 +41,13 @@ const ToggleContent = {
 
     init() {
         const mergedTriggers = this.cfg.triggers.concat(this.cfg.triggersTop)
-        mergedTriggers.forEach((trigger) => {
-            trigger.addEventListener('click', (event) => {
-                this.toggleContent(event)
+        if (mergedTriggers) {
+            mergedTriggers.forEach((trigger) => {
+                trigger.addEventListener('click', (event) => {
+                    this.toggleContent(event)
+                })
             })
-        })
+        }
     }
 }
 
