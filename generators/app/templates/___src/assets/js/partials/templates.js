@@ -3,11 +3,10 @@
  */
 
 // Import Templats
-import toggleContent from '../../../templates/_templates/toggleContent/_main'
 
 // Modules Array
 const templatesArray = [
-    toggleContent
+
 ]
 
 const templates = {

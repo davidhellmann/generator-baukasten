@@ -1,9 +1,0 @@
-{
-  "title": "toggleContent",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "o-toggleContent"
-    }
-  }
-}
