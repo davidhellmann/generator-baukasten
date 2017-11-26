@@ -14,7 +14,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping'
             ],
             src: '___src/templates/globals/twig/_macros/',
             dest: '___src/templates/_macros/'
@@ -23,7 +22,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping'
             ],
             src: '___src/templates/globals/twig/_modules/',
             dest: '___src/templates/_modules/'
@@ -32,7 +30,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping'
             ],
             src: '___src/templates/globals/twig/_templates/',
             dest: '___src/templates/_templates/'

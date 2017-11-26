@@ -41,24 +41,54 @@ const headerFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack
 const scriptsFilenameSRC = <% if (projectType === 'prototyping' ) { %> '_src-webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
 const scriptsFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
 const folderDIST = <% if (projectType === 'prototyping' ) { %> config.src.templates <% } else { %> config.dist.markup <% } %>
-const inject_templates = [
-    {
-        // DIST File
-        filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
 
-        // SRC File
-        file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
-        inject: false
-    },
-    {
-        // DIST File
-        filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+<% if (projectType === 'prototyping' ) { %> config.src.templates
+    const inject_templates = removeEmpty([
+            ifProduction({
+                // DIST File
+                filename: 'index.html',
 
-        // SRC File
-        file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
-        inject: false
-    }
-]
+                // SRC File
+                file: `${config.dist.base}index.html`,
+                inject: true
+            }),
+            ifDevelopment({
+                // DIST File
+                filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
+
+                // SRC File
+                file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
+                inject: false
+            }),
+            ifDevelopment({
+                // DIST File
+                filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+
+                // SRC File
+                file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
+                inject: false
+            })
+        ])
+<% } else { %>
+    const inject_templates = [
+        {
+            // DIST File
+            filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
+
+            // SRC File
+            file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
+            inject: false
+        },
+        {
+            // DIST File
+            filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+
+            // SRC File
+            file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
+            inject: false
+        }
+    ]
+<% } %>
 
 // Leeres Array welches wir später mittels ...restParameter
 // in die Plugins mit einfügen
@@ -142,14 +172,16 @@ module.exports = {
         app: ifDevelopment([resolve(`${config.src.js}app.js`), hot_client], resolve(`${config.src.js}app.js`))
     },
 
-    output: {
-        // in das verzeichnis kommt alles rein
-        path: resolve(config.dist.base),
-        publicPath: '',
-        // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
-        filename: ifProduction('assets/js/[name].[hash].min.js', 'assets/js/[name].js'),
-        chunkFilename: 'assets/js/[name].[chunkhash].js'
-    },
+        output: {
+            // in das verzeichnis kommt alles rein
+            path: resolve(`${config.dist.base}assets/`),
+            publicPath: '/assets/',
+            // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
+            filename: ifProduction('js/[name].[hash].min.js', 'js/[name].js'),
+            chunkFilename: 'js/[name].[chunkhash].js',
+            hotUpdateChunkFilename: '[id].[hash].hot-update.js',
+            hotUpdateMainFilename: '[hash].hot-update.json',
+        },
 
     resolve: {
         extensions: ['.js', '.json', '.vue'],
@@ -264,9 +296,8 @@ module.exports = {
                     name: (filePath) => {
                         const filename = path.basename(filePath)
                         const folder = path.relative(config.src.images.base, filePath).replace(filename, '')
-                        return `assets/${folder}[name].[hash:4].[ext]`
+                        return `${folder}[name].[hash:4].[ext]`
                     },
-                    publicPath: '../../'
                 }
             },
             {
@@ -283,8 +314,7 @@ module.exports = {
                     mimetype: 'application/font-woff',
 
                     // Output below fonts directory
-                    name: 'assets/fonts/[name].[ext]',
-                    publicPath: '../../'
+                    name: 'fonts/[name].[ext]',
                 }
             },
         ]

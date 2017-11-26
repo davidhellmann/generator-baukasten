@@ -1,14 +1,11 @@
 import browserSync from 'browser-sync'
 import chalk from 'chalk'
 import gulp from 'gulp'
-import yargs from 'yargs'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackSettings from '../../webpack/webpack.config.babel'
 import pkg from '../../package.json'
-
-const argv = yargs.argv
 
 const bundler = webpack(webpackSettings)
 
@@ -17,22 +14,12 @@ const browserSyncTask = () => {
     const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
     const fileName = <% if (projectType === 'wordpress' ) { %> '_webpack' <% } else { %> 'webpack' <% } %>
 
-    // Build a condition when Proxy is active
-    let bsProxy,  bsServer
-    const url = argv.url || pkg.browsersync.proxy
-
-    // Condition for Proxy
-    if (pkg.browsersync.proxy !== false) {
-        bsProxy = url
-        bsServer = false
-    } else {
-        bsProxy = false
-        bsServer = {baseDir: pkg.dist.browserSyncDir}
-    }
-
     // Browser Sync Init
     browserSync.init({
-        proxy: bsProxy,
+        proxy: {
+            target: pkg.browsersync.proxy,
+            ws: true
+        },
         ghostMode: {
             clicks: true,
             forms: true,
@@ -42,7 +29,6 @@ const browserSyncTask = () => {
         logLevel: 'info', // info, debug, warn, silent
         watchTask: true,
         open: pkg.browsersync.openbrowser, // false if you don't want to automatically open the browser
-        server: bsServer,
         stream: true,
         middleware: [
             webpackDevMiddleware(bundler, {

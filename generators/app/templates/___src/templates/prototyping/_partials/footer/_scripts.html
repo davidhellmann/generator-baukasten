@@ -1,5 +1,7 @@
 {# -- Webpack Magic -- #}
-{% include '../webpack/_webpack-scripts.html' %}
+{% if not build %}
+  {% include "../webpack/_webpack-scripts.html" %}
+{% endif %}
 
 <!-- Google Analytics -->
 {#<script>
