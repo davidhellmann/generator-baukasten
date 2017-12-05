@@ -2,21 +2,35 @@
 echo
 echo
 echo
-echo   /$$$$$$                      /$$$$$$   /$$           /$$$$$$$  /$$                     /$$
-echo  /$$__  $$                    /$$__  $$ | $$          | $$__  $$| $$                    |__/
-echo | $$  \__/  /$$$$$$  /$$$$$$ | $$  \__//$$$$$$        | $$  \ $$| $$ /$$   /$$  /$$$$$$  /$$ /$$$$$$$   /$$$$$$$
-echo | $$       /$$__  $$|____  $$| $$$$   |_  $$_/        | $$$$$$$/| $$| $$  | $$ /$$__  $$| $$| $$__  $$ /$$_____/
-echo | $$      | $$  \__/ /$$$$$$$| $$_/     | $$          | $$____/ | $$| $$  | $$| $$  \ $$| $$| $$  \ $$|  $$$$$$
-echo | $$    $$| $$      /$$__  $$| $$       | $$ /$$      | $$      | $$| $$  | $$| $$  | $$| $$| $$  | $$ \____  $$
-echo |  $$$$$$/| $$     |  $$$$$$$| $$       |  $$$$/      | $$      | $$|  $$$$$$/|  $$$$$$$| $$| $$  | $$ /$$$$$$$/
-echo  \______/ |__/      \_______/|__/        \___/        |__/      |__/ \______/  \____  $$|__/|__/  |__/|_______/
-echo                                                                                /$$  \ $$
-echo                                                                               |  $$$$$$/
-echo                                                                                \______/
+echo     /$$$$$$                      /$$$$$$   /$$           /$$$$$$$  /$$                     /$$
+echo    /$$__  $$                    /$$__  $$ | $$          | $$__  $$| $$                    |__/
+echo   | $$  \__/  /$$$$$$  /$$$$$$ | $$  \__//$$$$$$        | $$  \ $$| $$ /$$   /$$  /$$$$$$  /$$ /$$$$$$$   /$$$$$$$
+echo   | $$       /$$__  $$|____  $$| $$$$   |_  $$_/        | $$$$$$$/| $$| $$  | $$ /$$__  $$| $$| $$__  $$ /$$_____/
+echo   | $$      | $$  \__/ /$$$$$$$| $$_/     | $$          | $$____/ | $$| $$  | $$| $$  \ $$| $$| $$  \ $$|  $$$$$$
+echo   | $$    $$| $$      /$$__  $$| $$       | $$ /$$      | $$      | $$| $$  | $$| $$  | $$| $$| $$  | $$ \____  $$
+echo   |  $$$$$$/| $$     |  $$$$$$$| $$       |  $$$$/      | $$      | $$|  $$$$$$/|  $$$$$$$| $$| $$  | $$ /$$$$$$$/
+echo    \______/ |__/      \_______/|__/        \___/        |__/      |__/ \______/  \____  $$|__/|__/  |__/|_______/
+echo                                                                                  /$$  \ $$
+echo                                                                                 |  $$$$$$/
+echo                                                                                  \______/
 echo
 echo
 echo
 
+# https://github.com/nystudio107/craft3-disqus
+composer require nystudio107/craft3-disqus
+
+# https://github.com/markhuot/craftql
+composer require markhuot/craftql
+
+# https://github.com/am-impact/amcommand
+composer require am-impact/amcommand
+
+# https://github.com/verbb/cp-nav
+composer require verbb/cp-nav
+
+# https://github.com/marionnewlevant/craft-agnostic_fetch
+composer require marionnewlevant/craft-agnostic_fetch
 
 # https://github.com/nystudio107/craft3-cookies
 composer require nystudio107/craft3-cookies
