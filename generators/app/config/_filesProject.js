@@ -53,8 +53,8 @@ module.exports = {
             projectContext: [
                 'craftCMS'
             ],
-            src: '___src/_craftCMS/redactor/custom.json',
-            dest: '___dist/craft/config/redactor/custom.json'
+            src: '___src/_craftCMS/redactor/Baukasten.json',
+            dest: '___dist/craft/config/redactor/Baukasten.json'
         },
         {
             projectContext: [
@@ -123,8 +123,8 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
-            src: '___src/_craftCMS3/redactor/custom.json',
-            dest: '___dist/config/redactor/custom.json'
+            src: '___src/_craftCMS3/redactor/Baukasten.json',
+            dest: '___dist/config/redactor/Baukasten.json'
         }
     ]
 }
