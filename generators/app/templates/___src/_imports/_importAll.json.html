@@ -3,20 +3,34 @@
     "Categories",
     "Content Builder",
     "Globals",
-    "Grouped",
+    "Images",
     "Plugins",
     "Settings",
     "Singles"
   ],
   "sections": [
     {
-      "name": "Forms",
-      "handle": "forms",
-      "type": "single",
+      "name": "Articles",
+      "handle": "articles",
+      "type": "channel",
+      "enableVersioning": 1,
+      "typesettings": {
+        "hasUrls": 1,
+        "template": "_entry",
+        "urlFormat": "article\/{slug}",
+        "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "Development",
+      "handle": "development",
+      "type": "structure",
       "enableVersioning": 0,
       "typesettings": {
-        "template": "forms",
-        "urlFormat": "forms",
+        "hasUrls": 1,
+        "template": "_dev",
+        "maxLevels": 1,
+        "urlFormat": "dev\/{slug}",
         "nestedUrlFormat": null
       }
     },
@@ -32,37 +46,14 @@
       }
     },
     {
-      "name": "Modules",
-      "handle": "modules",
-      "type": "single",
-      "enableVersioning": 0,
-      "typesettings": {
-        "template": "modules",
-        "urlFormat": "modules",
-        "nestedUrlFormat": null
-      }
-    },
-    {
-      "name": "News",
-      "handle": "news",
-      "type": "channel",
-      "enableVersioning": 1,
-      "typesettings": {
-        "hasUrls": 1,
-        "template": "channels\/news\/_entry",
-        "urlFormat": "n\/{slug}",
-        "nestedUrlFormat": null
-      }
-    },
-    {
       "name": "Pages",
       "handle": "pages",
       "type": "structure",
       "enableVersioning": 1,
       "typesettings": {
         "hasUrls": 1,
-        "template": "structures\/pages\/_entry",
-        "urlFormat": "p\/{slug}",
+        "template": "_entry",
+        "urlFormat": "{slug}",
         "nestedUrlFormat": "{parent.uri}\/{slug}"
       }
     }
@@ -70,13 +61,13 @@
   "fields": [
     {
       "group": "Categories",
-      "name": "Category: News",
-      "handle": "categoryNews",
+      "name": "Category: Topics",
+      "handle": "categoryTopics",
       "instructions": "",
       "required": false,
       "type": "Categories",
       "typesettings": {
-        "source": "news",
+        "source": "topics",
         "limit": "",
         "selectionLabel": ""
       }
@@ -360,87 +351,67 @@
       }
     },
     {
-      "group": "Grouped",
-      "name": "Grouped: Caption",
-      "handle": "groupedCaption",
+      "group": "Images",
+      "name": "Image: Caption",
+      "handle": "imageCaption",
       "instructions": "",
       "required": false,
-      "type": "SuperTable",
+      "type": "PlainText",
       "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Caption Title",
-                "handle": "captionTitle",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new2": {
-                "name": "Caption",
-                "handle": "caption",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": 1,
-                  "initialRows": 4
-                }
-              },
-              "new3": {
-                "name": "Source",
-                "handle": "source",
-                "instructions": "",
-                "required": 0,
-                "type": "PlainText",
-                "width": "",
-                "typesettings": {
-                  "placeholder": "",
-                  "maxLength": "",
-                  "multiline": "",
-                  "initialRows": 4
-                }
-              },
-              "new4": {
-                "name": "Source URL",
-                "handle": "sourceUrl",
-                "instructions": "",
-                "required": 0,
-                "type": "FruitLinkIt",
-                "width": "",
-                "typesettings": {
-                  "types": [
-                    "custom"
-                  ],
-                  "defaultText": "",
-                  "allowCustomText": "",
-                  "allowTarget": "",
-                  "entrySources": [],
-                  "entrySelectionLabel": "Select an entry",
-                  "assetSources": "*",
-                  "assetSelectionLabel": "Select an asset",
-                  "categorySources": "*",
-                  "categorySelectionLabel": "Select a category"
-                }
-              }
-            }
-          }
-        }
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Images",
+      "name": "Image: Caption Headline",
+      "handle": "imageCaptionHeadline",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Images",
+      "name": "Image: Source",
+      "handle": "imageSource",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Images",
+      "name": "Image: Source URL",
+      "handle": "imageSourceUrl",
+      "instructions": "",
+      "required": false,
+      "type": "FruitLinkIt",
+      "typesettings": {
+        "types": [
+          "custom"
+        ],
+        "defaultText": "",
+        "allowCustomText": "",
+        "allowTarget": "",
+        "entrySources": [],
+        "entrySelectionLabel": "Select an entry",
+        "assetSources": "*",
+        "assetSelectionLabel": "Select an asset",
+        "categorySources": "*",
+        "categorySelectionLabel": "Select a category"
       }
     },
     {
@@ -462,8 +433,8 @@
     },
     {
       "group": "Plugins",
-      "name": "Plugin: Seomatic",
-      "handle": "pluginSeomatic",
+      "name": "Plugin: Seomatic Articles",
+      "handle": "pluginSeomaticArticles",
       "instructions": "",
       "required": false,
       "type": "Seomatic_Meta",
@@ -492,7 +463,7 @@
         "seoTwitterImageIdSource": "field",
         "seoTwitterImageIdSourceField": "singleImageEntry",
         "seoTwitterImageIdSourceChangeable": 1,
-        "seoTwitterImageTransform": "socialSharing",
+        "seoTwitterImageTransform": "socialSharingTwitter",
         "openGraphType": "",
         "openGraphTypeChangeable": 1,
         "seoFacebookImageIdSource": "field",
@@ -505,8 +476,8 @@
     },
     {
       "group": "Plugins",
-      "name": "Plugin: Seomatic News",
-      "handle": "pluginSeomaticNews",
+      "name": "Plugin: Seomatic Home",
+      "handle": "pluginSeomaticHome",
       "instructions": "",
       "required": false,
       "type": "Seomatic_Meta",
@@ -535,7 +506,7 @@
         "seoTwitterImageIdSource": "field",
         "seoTwitterImageIdSourceField": "singleImageEntry",
         "seoTwitterImageIdSourceChangeable": 1,
-        "seoTwitterImageTransform": "socialSharing",
+        "seoTwitterImageTransform": "socialSharingTwitter",
         "openGraphType": "",
         "openGraphTypeChangeable": 1,
         "seoFacebookImageIdSource": "field",
@@ -578,7 +549,7 @@
         "seoTwitterImageIdSource": "field",
         "seoTwitterImageIdSourceField": "singleImageEntry",
         "seoTwitterImageIdSourceChangeable": 1,
-        "seoTwitterImageTransform": "socialSharing",
+        "seoTwitterImageTransform": "socialSharingTwitter",
         "openGraphType": "",
         "openGraphTypeChangeable": 1,
         "seoFacebookImageIdSource": "field",
@@ -587,220 +558,6 @@
         "seoFacebookImageTransform": "socialSharing",
         "robots": "",
         "robotsChangeable": 1
-      }
-    },
-    {
-      "group": "Settings",
-      "name": "Settings: Button",
-      "handle": "settingsButton",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "minRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Style",
-                "handle": "style",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Primary",
-                      "value": "style-primary",
-                      "default": 1
-                    },
-                    {
-                      "label": "Secondary",
-                      "value": "style-secondary",
-                      "default": ""
-                    },
-                    {
-                      "label": "Outline",
-                      "value": "style-outline",
-                      "default": ""
-                    },
-                    {
-                      "label": "Link",
-                      "value": "style-link",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new2": {
-                "name": "Alignment",
-                "handle": "alignment",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Left",
-                      "value": "align-left",
-                      "default": 1
-                    },
-                    {
-                      "label": "Center",
-                      "value": "align-center",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right",
-                      "value": "align-right",
-                      "default": ""
-                    },
-                    {
-                      "label": "Full",
-                      "value": "align-full",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new3": {
-                "name": "Size",
-                "handle": "size",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Small",
-                      "value": "size-small",
-                      "default": ""
-                    },
-                    {
-                      "label": "Large",
-                      "value": "size-large",
-                      "default": 1
-                    },
-                    {
-                      "label": "Pill",
-                      "value": "size-pill",
-                      "default": ""
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "group": "Settings",
-      "name": "Settings: ButtonGroup",
-      "handle": "settingsButtonGroup",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "minRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Style",
-                "handle": "style",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Primary",
-                      "value": "style-primary",
-                      "default": 1
-                    },
-                    {
-                      "label": "Secondary",
-                      "value": "style-secondary",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new2": {
-                "name": "Alignment",
-                "handle": "alignment",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Left",
-                      "value": "align-left",
-                      "default": 1
-                    },
-                    {
-                      "label": "Center",
-                      "value": "align-center",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right",
-                      "value": "align-right",
-                      "default": ""
-                    },
-                    {
-                      "label": "Full",
-                      "value": "align-full",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new3": {
-                "name": "Size",
-                "handle": "size",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Small",
-                      "value": "size-small",
-                      "default": ""
-                    },
-                    {
-                      "label": "Large",
-                      "value": "size-large",
-                      "default": 1
-                    },
-                    {
-                      "label": "Pill",
-                      "value": "size-pill",
-                      "default": ""
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
       }
     },
     {
@@ -830,17 +587,17 @@
                   "options": [
                     {
                       "label": "1:1",
-                      "value": "ratio-50-50",
+                      "value": "50-50",
                       "default": 1
                     },
                     {
                       "label": "1:2",
-                      "value": "ratio-33-66",
+                      "value": "33-66",
                       "default": ""
                     },
                     {
                       "label": "1:3",
-                      "value": "ratio-25-75",
+                      "value": "25-75",
                       "default": ""
                     }
                   ]
@@ -857,12 +614,12 @@
                   "options": [
                     {
                       "label": "Table",
-                      "value": "layout-table",
+                      "value": "table",
                       "default": 1
                     },
                     {
                       "label": "Row",
-                      "value": "layout-row",
+                      "value": "row",
                       "default": ""
                     }
                   ]
@@ -871,6 +628,90 @@
             }
           }
         }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Divider",
+      "handle": "settingsDivider",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "minRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "style-default",
+                      "default": 1
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Margin Vertical",
+                "handle": "marginVertical",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Small",
+                      "value": "mv-small",
+                      "default": 1
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "mv-medium",
+                      "default": ""
+                    },
+                    {
+                      "label": "Large",
+                      "value": "mv-large",
+                      "default": ""
+                    },
+                    {
+                      "label": "None",
+                      "value": "mv-none",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Dominant Color Overwrite",
+      "handle": "settingsDominantColorOverwrite",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
       }
     },
     {
@@ -1192,43 +1033,6 @@
           "new": {
             "fields": {
               "new1": {
-                "name": "Colums",
-                "handle": "columns",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": 6,
-                      "value": "columns-6",
-                      "default": 1
-                    },
-                    {
-                      "label": 5,
-                      "value": "columns-5",
-                      "default": ""
-                    },
-                    {
-                      "label": 4,
-                      "value": "columns-4",
-                      "default": ""
-                    },
-                    {
-                      "label": 3,
-                      "value": "columns-3",
-                      "default": ""
-                    },
-                    {
-                      "label": 2,
-                      "value": "columns-2",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new2": {
                 "name": "Thumbs Ratio",
                 "handle": "thumbsRatio",
                 "instructions": "",
@@ -1239,17 +1043,17 @@
                   "options": [
                     {
                       "label": "Landscape",
-                      "value": "landscape",
+                      "value": "16:10",
                       "default": ""
                     },
                     {
                       "label": "Square",
-                      "value": "square",
+                      "value": "1:1",
                       "default": 1
                     },
                     {
                       "label": "Portrait",
-                      "value": "portrait",
+                      "value": "10:16",
                       "default": ""
                     }
                   ]
@@ -1325,17 +1129,17 @@
                   "options": [
                     {
                       "label": "Landscape",
-                      "value": "landscape",
+                      "value": "16:10",
                       "default": ""
                     },
                     {
                       "label": "Square",
-                      "value": "square",
+                      "value": "1:1",
                       "default": 1
                     },
                     {
                       "label": "Portrait",
-                      "value": "portrait",
+                      "value": "10:16",
                       "default": ""
                     },
                     {
@@ -1416,17 +1220,17 @@
                   "options": [
                     {
                       "label": "Landscape",
-                      "value": "landscape",
+                      "value": "16:10",
                       "default": 1
                     },
                     {
                       "label": "Square",
-                      "value": "square",
+                      "value": "1:1",
                       "default": ""
                     },
                     {
                       "label": "Portrait",
-                      "value": "portrait",
+                      "value": "10:16",
                       "default": ""
                     },
                     {
@@ -1447,23 +1251,23 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Full Width",
-                      "value": "columns-100",
+                      "label": "Cover",
+                      "value": "width-cover",
                       "default": ""
                     },
                     {
-                      "label": "12 Columns",
-                      "value": "columns-12",
+                      "label": "Full",
+                      "value": "width-full",
                       "default": 1
                     },
                     {
-                      "label": "9 Columns",
-                      "value": "columns-9",
+                      "label": "Three Quarter",
+                      "value": "width-threeQuarter",
                       "default": ""
                     },
                     {
-                      "label": "6 Columns",
-                      "value": "columns-6",
+                      "label": "Half",
+                      "value": "width-half",
                       "default": ""
                     }
                   ]
@@ -1524,6 +1328,92 @@
     },
     {
       "group": "Settings",
+      "name": "Settings: Link",
+      "handle": "settingsLink",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "minRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Underlined",
+                      "value": "underlined",
+                      "default": 1
+                    },
+                    {
+                      "label": "Outlined",
+                      "value": "outlined",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Link Group",
+      "handle": "settingsLinksGroup",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "minRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Underlined",
+                      "value": "underlined",
+                      "default": 1
+                    },
+                    {
+                      "label": "Outlined",
+                      "value": "outlined",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
       "name": "Settings: Section",
       "handle": "settingsSection",
       "instructions": "",
@@ -1539,33 +1429,6 @@
           "new": {
             "fields": {
               "new1": {
-                "name": "Background Color",
-                "handle": "backgroundColor",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "None",
-                      "value": "backgroundColor-none",
-                      "default": 1
-                    },
-                    {
-                      "label": "Black",
-                      "value": "backgroundColor-black",
-                      "default": ""
-                    },
-                    {
-                      "label": "White",
-                      "value": "backgroundColor-white",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new2": {
                 "name": "Width",
                 "handle": "width",
                 "instructions": "",
@@ -1576,18 +1439,18 @@
                   "options": [
                     {
                       "label": "Content Width",
-                      "value": "width-content",
+                      "value": "",
                       "default": 1
                     },
                     {
                       "label": "Full Width",
-                      "value": "width-full",
+                      "value": "fluid",
                       "default": ""
                     }
                   ]
                 }
               },
-              "new3": {
+              "new2": {
                 "name": "Padding Vertical",
                 "handle": "paddingVertical",
                 "instructions": "",
@@ -1618,48 +1481,10 @@
                     }
                   ]
                 }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "group": "Settings",
-      "name": "Settings: Separator",
-      "handle": "settingsSeparator",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "minRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Style",
-                "handle": "style",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Default",
-                      "value": "style-default",
-                      "default": 1
-                    }
-                  ]
-                }
               },
-              "new2": {
-                "name": "Margin Vertical",
-                "handle": "marginVertical",
+              "new3": {
+                "name": "Offset",
+                "handle": "offset",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
@@ -1667,156 +1492,13 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Small",
-                      "value": "marginVertical-small",
+                      "label": "No",
+                      "value": "no",
                       "default": 1
                     },
                     {
-                      "label": "Medium",
-                      "value": "marginVertical-medium",
-                      "default": ""
-                    },
-                    {
-                      "label": "Large",
-                      "value": "marginVertical-large",
-                      "default": ""
-                    },
-                    {
-                      "label": "None",
-                      "value": "marginVertical-none",
-                      "default": ""
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "group": "Settings",
-      "name": "Settings: Two Columns",
-      "handle": "settingsTwoColumns",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "minRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Ratio",
-                "handle": "ratio",
-                "instructions": "Wie soll das Spaltenverh\u00e4ltnis sein?",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "1:1",
-                      "value": "ratio-50-50",
-                      "default": 1
-                    },
-                    {
-                      "label": "2:1",
-                      "value": "ratio-66-33",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:1",
-                      "value": "ratio-75-25",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:3",
-                      "value": "ratio-25-75",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:2",
-                      "value": "ratio-33-66",
-                      "default": ""
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "group": "Settings",
-      "name": "Settings: Video",
-      "handle": "settingsVideo",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "minRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Position",
-                "handle": "position",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Left",
-                      "value": "align-left",
-                      "default": 1
-                    },
-                    {
-                      "label": "Center",
-                      "value": "align-center",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right",
-                      "value": "align-right",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new2": {
-                "name": "Width",
-                "handle": "width",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Full",
-                      "value": "width-100",
-                      "default": 1
-                    },
-                    {
-                      "label": "Three Quarter",
-                      "value": "width-75",
-                      "default": ""
-                    },
-                    {
-                      "label": "Half",
-                      "value": "width-50",
+                      "label": "Yes",
+                      "value": "yes",
                       "default": ""
                     }
                   ]
@@ -1866,53 +1548,6 @@
         "assetSelectionLabel": "Select an asset",
         "categorySources": "*",
         "categorySelectionLabel": "Select a category"
-      }
-    },
-    {
-      "group": "Singles",
-      "name": "Single: Button Group",
-      "handle": "singleButtonGroup",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": null,
-        "selectionLabel": "Add a Button",
-        "maxRows": 5,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Button",
-                "handle": "button",
-                "instructions": "",
-                "required": 0,
-                "type": "FruitLinkIt",
-                "width": "",
-                "typesettings": {
-                  "types": [
-                    "email",
-                    "tel",
-                    "custom",
-                    "entry",
-                    "category",
-                    "asset"
-                  ],
-                  "defaultText": "",
-                  "allowCustomText": 1,
-                  "allowTarget": 1,
-                  "entrySources": [],
-                  "entrySelectionLabel": "Select an entry",
-                  "assetSources": "*",
-                  "assetSelectionLabel": "Select an asset",
-                  "categorySources": "*",
-                  "categorySelectionLabel": "Select a category"
-                }
-              }
-            }
-          }
-        }
       }
     },
     {
@@ -2086,6 +1721,95 @@
     },
     {
       "group": "Singles",
+      "name": "Single: Link",
+      "handle": "singleLink",
+      "instructions": "",
+      "required": false,
+      "type": "FruitLinkIt",
+      "typesettings": {
+        "types": [
+          "email",
+          "tel",
+          "custom",
+          "entry",
+          "category",
+          "asset"
+        ],
+        "defaultText": "Click here",
+        "allowCustomText": 1,
+        "allowTarget": 1,
+        "entrySources": [],
+        "entrySelectionLabel": "Select an entry",
+        "assetSources": "*",
+        "assetSelectionLabel": "Select an asset",
+        "categorySources": "*",
+        "categorySelectionLabel": "Select a category"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Link Group",
+      "handle": "singleLinkGroup",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": null,
+        "selectionLabel": "Add a Link",
+        "maxRows": 3,
+        "minRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Single Link",
+                "handle": "singleLink",
+                "instructions": "",
+                "required": 0,
+                "type": "FruitLinkIt",
+                "width": "",
+                "typesettings": {
+                  "types": [
+                    "email",
+                    "tel",
+                    "custom",
+                    "entry",
+                    "category",
+                    "asset"
+                  ],
+                  "defaultText": "",
+                  "allowCustomText": 1,
+                  "allowTarget": 1,
+                  "entrySources": [],
+                  "entrySelectionLabel": "Select an entry",
+                  "assetSources": "*",
+                  "assetSelectionLabel": "Select an asset",
+                  "categorySources": "*",
+                  "categorySelectionLabel": "Select a category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Plain Text",
+      "handle": "singlePlainText",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 2
+      }
+    },
+    {
+      "group": "Singles",
       "name": "Single: Quote",
       "handle": "singleQuote",
       "instructions": "",
@@ -2106,11 +1830,12 @@
       "required": false,
       "type": "RichText",
       "typesettings": {
-        "configFile": "Custom.json",
+        "configFile": "Baukasten.json",
         "availableAssetSources": "*",
         "availableTransforms": "*",
         "cleanupHtml": 1,
         "purifyHtml": 1,
+        "purifierConfig": "",
         "columnType": "text"
       }
     },
@@ -2194,8 +1919,8 @@
     },
     {
       "group": "Content Builder",
-      "name": "Content Builder: Neo",
-      "handle": "contentBuilderNeo",
+      "name": "Content Builder",
+      "handle": "contentBuilder",
       "instructions": "",
       "required": false,
       "type": "Neo",
@@ -2203,35 +1928,32 @@
         "maxBlocks": null,
         "groups": {
           "name": [
-            "Content Wrapper",
-            "Text Modules",
-            "Image Modules",
-            "Button Modules",
-            "More Modules\u2026"
+            "\u25a0 Wrapper",
+            "\u25a0 Text",
+            "\u25a0 Images",
+            "\u25a0 Leftover",
+            "\u25a0 External"
           ],
           "sortOrder": [
             1,
-            7,
-            13,
-            19,
-            22
+            5,
+            14,
+            20,
+            23
           ]
         },
         "blockTypes": {
           "new0": {
             "sortOrder": 2,
-            "name": "Content Section",
-            "handle": "contentSection",
+            "name": "Section",
+            "handle": "bkSection",
             "maxBlocks": null,
             "childBlocks": "",
             "maxChildBlocks": null,
             "topLevel": 1,
             "fieldLayout": {
-              "Content": [
-                "singleHeadline"
-              ],
+              "Content": [],
               "Settings": [
-                "singleAnchor",
                 "settingsSection"
               ]
             }
@@ -2256,18 +1978,15 @@
             "handle": "accordionContent",
             "maxBlocks": null,
             "childBlocks": [
-              "twoColumns",
               "headline",
               "richText",
               "quote",
+              "definitionList",
               "imageGallery",
               "imageGrid",
               "imageSingle",
-              "button",
-              "buttonGroup",
-              "definitionList",
               "embed",
-              "separator"
+              "divider"
             ],
             "maxChildBlocks": null,
             "topLevel": 0,
@@ -2278,41 +1997,7 @@
             }
           },
           "new3": {
-            "sortOrder": 5,
-            "name": "Two Columns",
-            "handle": "twoColumns",
-            "maxBlocks": null,
-            "childBlocks": [
-              "column"
-            ],
-            "maxChildBlocks": 2,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": [],
-              "Settings": [
-                "settingsTwoColumns"
-              ]
-            }
-          },
-          "new4": {
             "sortOrder": 6,
-            "name": "Column",
-            "handle": "column",
-            "maxBlocks": null,
-            "childBlocks": [
-              "headline",
-              "richText",
-              "imageSingle",
-              "button",
-              "embed",
-              "separator"
-            ],
-            "maxChildBlocks": null,
-            "topLevel": 0,
-            "fieldLayout": []
-          },
-          "new5": {
-            "sortOrder": 8,
             "name": "Headline",
             "handle": "headline",
             "maxBlocks": null,
@@ -2328,8 +2013,8 @@
               ]
             }
           },
-          "new6": {
-            "sortOrder": 9,
+          "new4": {
+            "sortOrder": 7,
             "name": "Rich Text",
             "handle": "richText",
             "maxBlocks": null,
@@ -2342,8 +2027,22 @@
               ]
             }
           },
-          "new7": {
-            "sortOrder": 10,
+          "new5": {
+            "sortOrder": 8,
+            "name": "Plain Text",
+            "handle": "plainText",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Tab 1": [
+                "singlePlainText"
+              ]
+            }
+          },
+          "new6": {
+            "sortOrder": 9,
             "name": "Rich Text Marginals",
             "handle": "richTextMarginals",
             "maxBlocks": null,
@@ -2358,18 +2057,36 @@
               ]
             }
           },
-          "new8": {
-            "sortOrder": 11,
+          "new7": {
+            "sortOrder": 10,
             "name": "Marginal Column",
             "handle": "marginalColumn",
             "maxBlocks": null,
             "childBlocks": [
-              "quote",
-              "imageSingle"
+              "plainText",
+              "image",
+              "quote"
             ],
             "maxChildBlocks": 1,
             "topLevel": 0,
             "fieldLayout": []
+          },
+          "new8": {
+            "sortOrder": 11,
+            "name": "Image",
+            "handle": "image",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 0,
+            "fieldLayout": {
+              "Content": [
+                "singleImage"
+              ],
+              "Settings": [
+                "settingsImageSingle"
+              ]
+            }
           },
           "new9": {
             "sortOrder": 12,
@@ -2388,7 +2105,24 @@
             }
           },
           "new10": {
-            "sortOrder": 14,
+            "sortOrder": 13,
+            "name": "Definition List",
+            "handle": "definitionList",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleDefinitionList"
+              ],
+              "Settings": [
+                "settingsDefinitionList"
+              ]
+            }
+          },
+          "new11": {
+            "sortOrder": 15,
             "name": "Image Cover",
             "handle": "imageCover",
             "maxBlocks": null,
@@ -2405,8 +2139,8 @@
               ]
             }
           },
-          "new11": {
-            "sortOrder": 15,
+          "new12": {
+            "sortOrder": 16,
             "name": "Image Gallery",
             "handle": "imageGallery",
             "maxBlocks": null,
@@ -2422,8 +2156,8 @@
               ]
             }
           },
-          "new12": {
-            "sortOrder": 16,
+          "new13": {
+            "sortOrder": 17,
             "name": "Image Grid",
             "handle": "imageGrid",
             "maxBlocks": null,
@@ -2439,8 +2173,8 @@
               ]
             }
           },
-          "new13": {
-            "sortOrder": 17,
+          "new14": {
+            "sortOrder": 18,
             "name": "Image Single",
             "handle": "imageSingle",
             "maxBlocks": null,
@@ -2456,8 +2190,8 @@
               ]
             }
           },
-          "new14": {
-            "sortOrder": 18,
+          "new15": {
+            "sortOrder": 19,
             "name": "Image Slider",
             "handle": "imageSlider",
             "maxBlocks": null,
@@ -2473,59 +2207,8 @@
               ]
             }
           },
-          "new15": {
-            "sortOrder": 20,
-            "name": "Button",
-            "handle": "button",
-            "maxBlocks": null,
-            "childBlocks": "",
-            "maxChildBlocks": null,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": [
-                "singleButton"
-              ],
-              "Settings": [
-                "settingsButton"
-              ]
-            }
-          },
           "new16": {
             "sortOrder": 21,
-            "name": "Button Group",
-            "handle": "buttonGroup",
-            "maxBlocks": null,
-            "childBlocks": "",
-            "maxChildBlocks": 5,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": [
-                "singleButtonGroup"
-              ],
-              "Settings": [
-                "settingsButtonGroup"
-              ]
-            }
-          },
-          "new17": {
-            "sortOrder": 23,
-            "name": "Definition List",
-            "handle": "definitionList",
-            "maxBlocks": null,
-            "childBlocks": "",
-            "maxChildBlocks": null,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": [
-                "singleDefinitionList"
-              ],
-              "Settings": [
-                "settingsDefinitionList"
-              ]
-            }
-          },
-          "new18": {
-            "sortOrder": 24,
             "name": "Embed",
             "handle": "embed",
             "maxBlocks": null,
@@ -2541,27 +2224,10 @@
               ]
             }
           },
-          "new19": {
-            "sortOrder": 25,
-            "name": "Video",
-            "handle": "video",
-            "maxBlocks": null,
-            "childBlocks": "",
-            "maxChildBlocks": null,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": [
-                "singleEmbedCode"
-              ],
-              "Settings": [
-                "settingsVideo"
-              ]
-            }
-          },
-          "new20": {
-            "sortOrder": 26,
-            "name": "Separator",
-            "handle": "separator",
+          "new17": {
+            "sortOrder": 22,
+            "name": "Divider",
+            "handle": "divider",
             "maxBlocks": null,
             "childBlocks": "",
             "maxChildBlocks": null,
@@ -2569,7 +2235,7 @@
             "fieldLayout": {
               "Content": [],
               "Settings": [
-                "settingsSeparator"
+                "settingsDivider"
               ]
             }
           }
@@ -2579,13 +2245,59 @@
   ],
   "entryTypes": [
     {
-      "sectionHandle": "forms",
-      "hasTitleField": 0,
-      "titleLabel": null,
-      "titleFormat": "{section.name|raw}",
-      "name": "Forms",
-      "handle": "forms",
-      "fieldLayout": []
+      "sectionHandle": "articles",
+      "hasTitleField": 1,
+      "titleLabel": "Title",
+      "name": "Default",
+      "handle": "default",
+      "fieldLayout": {
+        "Content Neo": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "contentBuilder"
+        ],
+        "Meta": [
+          "singleImageEntry",
+          "categoryTopics"
+        ],
+        "SEO": [
+          "pluginSeomaticArticles"
+        ]
+      }
+    },
+    {
+      "sectionHandle": "development",
+      "hasTitleField": 1,
+      "titleLabel": "",
+      "name": "Modules CB",
+      "handle": "modulesCB",
+      "fieldLayout": {
+        "Content": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "contentBuilder"
+        ],
+        "Meta": [
+          "singleImageEntry"
+        ]
+      }
+    },
+    {
+      "sectionHandle": "development",
+      "hasTitleField": 1,
+      "titleLabel": "",
+      "name": "Modules CB Nested",
+      "handle": "modulesCBNested",
+      "fieldLayout": {
+        "Content": [
+          "singleSeoTitle",
+          "singleIntroText",
+          "contentBuilder"
+        ],
+        "Meta": [
+          "singleImageEntry"
+        ]
+      }
     },
     {
       "sectionHandle": "homepage",
@@ -2600,44 +2312,9 @@
         ],
         "Meta": [
           "singleImageEntry"
-        ]
-      }
-    },
-    {
-      "sectionHandle": "modules",
-      "hasTitleField": 1,
-      "titleLabel": "",
-      "name": "Modules",
-      "handle": "modules",
-      "fieldLayout": {
-        "Content": [
-          "singleSeoTitle",
-          "singleIntroText",
-          "contentBuilderNeo"
-        ],
-        "Meta": [
-          "singleImageEntry"
-        ]
-      }
-    },
-    {
-      "sectionHandle": "news",
-      "hasTitleField": 1,
-      "titleLabel": "Title",
-      "name": "News",
-      "handle": "news",
-      "fieldLayout": {
-        "Content Neo": [
-          "singleSeoTitle",
-          "singleIntroText",
-          "contentBuilderNeo"
-        ],
-        "Meta": [
-          "singleImageEntry",
-          "categoryNews"
         ],
         "SEO": [
-          "pluginSeomaticNews"
+          "pluginSeomaticHome"
         ]
       }
     },
@@ -2645,13 +2322,13 @@
       "sectionHandle": "pages",
       "hasTitleField": 1,
       "titleLabel": "Title",
-      "name": "Pages",
-      "handle": "pages",
+      "name": "Default",
+      "handle": "default",
       "fieldLayout": {
         "Content": [
           "singleSeoTitle",
           "singleIntroText",
-          "contentBuilderNeo"
+          "contentBuilder"
         ],
         "Meta": [
           "singleImageEntry"
@@ -2665,13 +2342,13 @@
       "sectionHandle": "pages",
       "hasTitleField": 1,
       "titleLabel": "Title",
-      "name": "News Index",
-      "handle": "newsIndex",
+      "name": "Articles",
+      "handle": "articles",
       "fieldLayout": {
         "Content": [
           "singleSeoTitle",
           "singleIntroText",
-          "contentBuilderNeo"
+          "contentBuilder"
         ],
         "Meta": [
           "singleImageEntry"
@@ -2694,9 +2371,13 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption",
+          "imageCaptionHeadline",
+          "imageCaption",
+          "imageSource",
+          "imageSourceUrl",
           "settingsFocalPoint",
-          "pluginPreparseDominantColor"
+          "pluginPreparseDominantColor",
+          "settingsDominantColorOverwrite"
         ]
       }
     },
@@ -2711,9 +2392,13 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption",
+          "imageCaptionHeadline",
+          "imageCaption",
+          "imageSource",
+          "imageSourceUrl",
           "settingsFocalPoint",
-          "pluginPreparseDominantColor"
+          "pluginPreparseDominantColor",
+          "settingsDominantColorOverwrite"
         ]
       }
     },
@@ -2728,9 +2413,13 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption",
+          "imageCaptionHeadline",
+          "imageCaption",
+          "imageSource",
+          "imageSourceUrl",
           "settingsFocalPoint",
-          "pluginPreparseDominantColor"
+          "pluginPreparseDominantColor",
+          "settingsDominantColorOverwrite"
         ]
       }
     },
@@ -2745,9 +2434,13 @@
       },
       "fieldLayout": {
         "Content": [
-          "groupedCaption",
+          "imageCaptionHeadline",
+          "imageCaption",
+          "imageSource",
+          "imageSourceUrl",
           "settingsFocalPoint",
-          "pluginPreparseDominantColor"
+          "pluginPreparseDominantColor",
+          "settingsDominantColorOverwrite"
         ]
       }
     }
@@ -2761,6 +2454,16 @@
       "width": 1200,
       "height": 630,
       "quality": 100,
+      "format": null
+    },
+    {
+      "name": "Social Sharing Twitter",
+      "handle": "socialSharingTwitter",
+      "mode": "crop",
+      "position": "center-center",
+      "width": 1120,
+      "height": 600,
+      "quality": null,
       "format": null
     }
   ],
@@ -2813,14 +2516,14 @@
   ],
   "categories": [
     {
-      "name": "News",
-      "handle": "news",
+      "name": "Topics",
+      "handle": "topics",
       "hasUrls": 1,
-      "template": "categories\/news\/_entry",
+      "template": "_taxonomy",
       "maxLevels": 1,
       "locales": {
         "de": {
-          "urlFormat": "ca\/{slug}",
+          "urlFormat": "topic\/{slug}",
           "nestedUrlFormat": null
         }
       },
