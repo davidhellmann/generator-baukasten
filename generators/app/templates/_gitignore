@@ -91,12 +91,6 @@ $RECYCLE.BIN/
 ._*
 *~
 
-
-<% if (projectType === 'prototyping' ) { %>
-___dist/
-styleguide/
-<% } %>
-
 <% if (projectType === 'wordpress' ) { %>
 ___dist/*
 !___dist/wp-content/

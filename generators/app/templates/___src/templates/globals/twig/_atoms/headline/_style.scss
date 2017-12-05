@@ -1,0 +1,22 @@
+/*
+ |--------------------------------------------------------------------------
+ |  a-headline
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-headline {
+  $root: &;
+  width: 100%;
+
+  + .a-subline {
+    margin-top: s(2);
+  }
+}
+
+// Modul Modifiers Example
+.a-headline--modifier {
+  .a-headline__block {
+    // Styles here
+  }
+}

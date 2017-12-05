@@ -1,0 +1,8 @@
+{# -- Entry Router -- #}
+{# ---------------------------------------------------------------------- #}
+
+{% include [
+  'entry/' ~ entry.section.handle ~ '/' ~ entry.type,
+  'entry/' ~ entry.section.handle ~ '/default',
+  '404'
+] %}

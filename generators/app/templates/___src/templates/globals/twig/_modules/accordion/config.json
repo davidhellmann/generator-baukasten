@@ -1,9 +1,0 @@
-{
-  "title": "accordion",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-accordion"
-    }
-  }
-}

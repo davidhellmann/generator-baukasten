@@ -1,9 +1,0 @@
-{
-  "title": "contentSection",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-contentSection"
-    }
-  }
-}

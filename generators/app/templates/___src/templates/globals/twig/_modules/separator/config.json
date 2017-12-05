@@ -1,9 +1,0 @@
-{
-  "title": "seperator",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-seperator"
-    }
-  }
-}

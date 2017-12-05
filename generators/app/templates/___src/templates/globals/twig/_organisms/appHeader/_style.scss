@@ -1,0 +1,18 @@
+/*
+ |--------------------------------------------------------------------------
+ |  o-appHeader
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-appHeader {
+  $root: &;
+  background-color: c('black', '10');
+}
+
+// Modul Modifiers Example
+.o-appHeader--modifier {
+  .o-appHeader__block {
+    // Styles here
+  }
+}

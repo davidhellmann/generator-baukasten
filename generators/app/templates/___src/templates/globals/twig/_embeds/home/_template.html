@@ -1,0 +1,61 @@
+{#
+    {% embed '_templates/home/_template.html' with {
+      options: {
+        modiefiers: ['YOUR_MODIFIER'],
+      }
+    } only %}
+    {% block area1 %}
+      …
+    {% endblock %}
+
+    {% block area2 %}
+      …
+    {% endblock %}
+  {% endembed %}
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'e-home',
+  modifiers: [],
+  data: {},
+  js: null,
+  waypoint: null,
+  waypointAni: null
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+<div class="{{ opt.cn }}
+            {% for modifier in opt.modifiers %}
+              {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}
+            {{ opt.waypointAni ? opt.waypointAni : '' }}"
+    {{ opt.waypoint ? ' data-waypoint' : '' }}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+
+  <div class="o-section">
+    <div class="o-row">
+      <div class="{{ opt.cn ~ '__area1' }}">
+        {% block area1 %}
+          area1…
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <div class="o-section">
+    <div class="o-row">
+      <div class="{{ opt.cn ~ '__area2' }}">
+        {% block area2 %}
+          area2…
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+</div>

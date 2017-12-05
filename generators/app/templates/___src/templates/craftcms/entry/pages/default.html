@@ -1,0 +1,43 @@
+{# -- Pages Default -- #}
+{# ---------------------------------------------------------------------- #}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-page" %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{# -- App Content -- #}
+{% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key _self.getTemplateName() ~ "-page-" ~ craft.request.path %}
+  {# If you have a Template with Pagination use this: #}
+  {# {% cache globally using key _self.getTemplateName() ~ '-archive-' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %} #}
+
+  <div class="o-section">
+    <div class="o-row">
+      {# -- Include Page Title -- #}
+      {% include '_molecules/pageTitle/_template.html' with {
+        options: {
+          object: entry,
+          size: 'h1'
+        }
+      } only %}
+    </div>
+  </div>
+
+  {# -- Content Builder -- #}
+  {% include '_contentBuilders/_contentBuilder.html' with {
+    options: {
+      object: entry
+    }
+  } only %}
+
+  {# -- Cache End -- #}
+  {% endcache %}
+{% endblock %}
+

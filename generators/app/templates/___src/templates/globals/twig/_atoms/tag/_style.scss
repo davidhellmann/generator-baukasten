@@ -1,0 +1,33 @@
+/*
+ |--------------------------------------------------------------------------
+ |  a-tag
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-tag {
+  $root: &;
+  @include make-vr();
+  margin-right: s(1);
+  display: inline-block;
+  font-size: ms(-2);
+  border: 1px solid c('black', '15');
+  color: c('black', '50');
+  border-radius: 5px;
+  padding: s(1/2) s(1);
+  transition: all 0.25s ease('out-cubic');
+
+  @include wf('base');
+
+  &:hover:not(.a-tag--noLink) {
+    border: 1px solid c('black', '30');
+    color: c('black', '90');
+  }
+}
+
+// Modul Modifiers Example
+.a-tag--modifier {
+  .a-tag__block {
+    // Styles here
+  }
+}

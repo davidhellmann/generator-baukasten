@@ -10,16 +10,26 @@ function addFaviconsSettings(files = {}, context) {
             developerName: context.props.authorName,
             developerURL: context.props.authorHomepage,
             srcImage: '_favicon.png',
-            background: 'transparent',
+            background: '#fff',
+            themeColor: '#fff',
             display: 'standalone',
             orientation: 'portrait',
             logging: false,
             online: false,
+            preferOnline: false,
             icons: {
-                android: true,
-                appleIcon: true,
+                android: {
+                    offset: 4,
+                    background: '#fff'
+                },
+                appleIcon: {
+                    offset: 4,
+                    background: '#fff'
+                },
                 appleStartup: true,
-                coast: true,
+                coast: {
+                    offset: 25
+                },
                 favicons: true,
                 firefox: true,
                 opengraph: true,

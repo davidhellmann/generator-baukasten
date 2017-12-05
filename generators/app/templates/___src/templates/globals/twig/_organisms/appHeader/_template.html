@@ -1,0 +1,30 @@
+{#
+  o-appHeader
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'o-appHeader',
+  modifiers: [],
+  data: {},
+  foo: null
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+{% if opt.foo %}
+  <header class="{{ opt.cn }}
+              {% for modifier in opt.modifiers %}
+                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+              {% endfor %}  {{ options.classname|replace({ 'o-' : 'js-' }) }}">
+    {% cache %}
+      {% block appHeader %}
+        Header
+      {% endblock %}
+    {% endcache %}
+  </header>
+{% endif %}
+

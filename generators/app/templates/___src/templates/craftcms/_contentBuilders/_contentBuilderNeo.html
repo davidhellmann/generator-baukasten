@@ -7,46 +7,64 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'm-contentBuilder',
-  object: entry is defined ? entry : null
+  cn: 'o-contentBuilder',
+  modifiers: [],
+  object: entry ?? null,
+  context: '12:24'
 } %}
 
-{% if options is defined %}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
-{% else %}
-  {% set options = defaults %}
-{% endif %}
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
-{% if options.object %}
-<div class="{{ options.classname }}">
-  {% if options.object.contentBuilderNeo.level(1)|length %}
-    {% set neoField = options.object.contentBuilderNeo.level(1) %}
+{% if opt.object %}
+{# -- Colums Context -- #}
+{% set context = opt.context | split(':') %}
+{% set contextFirst = context[0] %}
+{% set contextLast = context[1] %}
+
+<div class="{{ opt.cn }}
+            {% for modifier in opt.modifiers %}
+              {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
+            {% endfor %}">
+  {% if opt.object.contentBuilder.level(1)|length %}
+    {% set neoField = opt.object.contentBuilder.level(1) %}
 
     {% for content in neoField %}
       {# Check if first Type is not a Section #}
-      {% if loop.first and content.type != 'contentSection' %}
+      {% if loop.first and content.type != 'bkSection' %}
         <!-- start: o-section / opened by Content Builder -->
-        {% include '_modules/contentSection/_template.html' only %}
+        {% include '_organisms/section/_template.html' with {
+          opt: {
+            modifiers: ['cb'],
+            context: 'o-col-' ~ contextFirst ~  '  o-col-s-' ~ contextLast
+          }
+        } only %}
       {% endif %}
 
       {# Check if an other Section is opened and close the Section before #}
-      {% if content.type == 'contentSection' %}
+      {% if content.type == 'bkSection' %}
         {% if not loop.first %}
+              </div>
+            </div>
           </div>
           <!-- end: o-section -->
         {% endif %}
         <!-- start: o-section -->
-        {% include '_contentBuilders/_contentBuilderModules' with { data: content } only %}
+        {% include '_contentBuilders/_contentBuilderModules.html' with {
+          data: content,
+          context: opt.context
+        } only %}
 
-        {# All other Content Modules #}
-      {% elseif content.type != 'contentSection' %}
-        <!-- start: o-row -->
-        <div class="o-row  o-row--{{ content.type }}  {{ options.classname ~ '__row' }}  {{ options.classname ~ '__row--' ~ content.type }}">
-          {% include '_contentBuilders/_contentBuilderModules' with { data: content } only %}
-        </div>
-        <!-- end: o-row -->
+      {# All other Content Modules #}
+      {% elseif content.type != 'bkSection' %}
+        {% include '_contentBuilders/_contentBuilderModules.html' with {
+          data: content,
+          context: opt.context
+        } only %}
       {% endif %}
     {% endfor %}
+        </div>
+      </div>
     </div>
     <!-- end: o-section -->
   {% endif %}

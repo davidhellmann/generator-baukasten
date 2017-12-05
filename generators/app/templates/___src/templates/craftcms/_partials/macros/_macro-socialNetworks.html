@@ -1,0 +1,50 @@
+{#
+  Social Networks
+  ------------------------------------------------------------
+
+  {{ macroSocialNetworks.socialNetworks({
+    networks: ['facebook', 'instagram', 'spotify', 'twitter'],
+    label: null
+  }) }}
+#}
+
+{% macro socialNetworks(options) %}
+  {% set defaults = {
+    classname: 'm-socialNetworks',
+    networks: [],
+    label: null,
+    target: true
+  } %}
+
+  {% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+    {% set options = defaults %}
+  {% endif %}
+
+  {% if options.networks %}
+    <div class="o-col  {{ options.classname }}">
+      <div class="o-row  {{ options.classname ~ '__inner' }}">
+        {% set socialNetworks = socialNetworks.globalSocialNetworks %}
+        {% set networks = options.networks %}
+
+        {% for socialNetwork in socialNetworks %}
+          {% if socialNetwork.networkName|lower in networks %}
+
+            <a class="{{ options.classname ~ '__link' }}"
+               href="{{ socialNetwork.profilUrl }}" {{ options.target ? 'target="_blank"' }}>
+              <svg class="m-svgSprite  m-svgSprite--icon_{{ socialNetwork.networkName|lower }}  {{ options.classname ~ '__svg' }}"
+                   viewbox="0 0 48 48">
+                <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ socialNetwork.networkName|lower }}"></use>
+              </svg>
+              {% if options.label %}
+                <div class="{{ options.classname ~ '__label' }}">{{ socialNetwork.networkName|lower }}</div>
+              {% endif %}
+            </a>
+
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}

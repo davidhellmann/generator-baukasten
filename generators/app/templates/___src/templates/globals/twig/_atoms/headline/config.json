@@ -1,0 +1,27 @@
+{
+  "title": "headline",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/headline/",
+  "description": "headline Description goes here…",
+  "notes": "headline Notes goes here…",
+  "opt": {
+    "cn": "a-headline",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "text": "The quick brown fox jumps over the lazy dog",
+    "sizes": [
+      { "size": "h1" },
+      { "size": "h2" },
+      { "size": "h3" },
+      { "size": "h4" },
+      { "size": "h5" },
+      { "size": "h6" }
+    ]
+  }
+}

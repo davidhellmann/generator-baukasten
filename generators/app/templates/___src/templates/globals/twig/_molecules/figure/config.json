@@ -1,0 +1,19 @@
+{
+  "title": "figure",
+  "status": "WIP",
+  "type": "molecule",
+  "path": "_molecules/figure/",
+  "description": "figure Description goes here…",
+  "notes": "figure Notes goes here…",
+  "opt": {
+    "cn": "m-figure",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

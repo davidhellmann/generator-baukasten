@@ -1,9 +1,0 @@
-{
-  "title": "newsList",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-newsList"
-    }
-  }
-}

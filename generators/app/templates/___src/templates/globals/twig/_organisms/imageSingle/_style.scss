@@ -1,0 +1,113 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  baukasten
+ | @author David Hellmann [davidhellmann.com@gmail.com]
+ | .o-imageSingle
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-imageSingle {
+  $root: &;
+
+  &__item {
+    @include make-col(12);
+
+    .t-oldies & {
+      @include make-col-flex(12);
+    }
+
+    @include media('>=s') {
+      @include make-col(24);
+
+      .t-oldies & {
+        @include make-col-flex(24);
+      }
+    }
+  }
+}
+
+// Modul Modifiers Example
+.o-imageSingle--width-cover {
+  @include media('>=m') {
+    .o-imageSingle__item {
+      position: relative;
+      left: 50%;
+      width: 100vw;
+      transform: translateX(-50%);
+      @include f(s(2), s(4), padding-left padding-right);
+    }
+  }
+}
+
+// Modul Modifiers Example
+.o-imageSingle--width-full {
+  @include media('>=m') {
+    .o-imageSingle__item {
+      @include make-col(24);
+
+      .t-oldies & {
+        @include make-col-flex(24);
+      }
+    }
+  }
+}
+
+.o-imageSingle--width-threeQuarter {
+  @include media('>=m') {
+    .o-imageSingle__item {
+      @include make-col(18);
+
+      .t-oldies & {
+        @include make-col-flex(18);
+      }
+    }
+
+    &.o-imageSingle--center .o-imageSingle__item {
+      @include col-pos(4);
+
+      .t-oldies & {
+        @include offset(3);
+      }
+    }
+
+    &.o-imageSingle--right .o-imageSingle__item {
+      @include col-pos(7);
+
+      .t-oldies & {
+        @include offset(6);
+      }
+    }
+  }
+}
+
+.o-imageSingle--width-half {
+  @include media('>=m') {
+    .o-imageSingle__item {
+      @include make-col(12);
+
+      .t-oldies & {
+        @include make-col-flex(12);
+      }
+    }
+
+    &.o-imageSingle--center .o-imageSingle__item {
+      @include col-pos(7);
+
+      .t-oldies & {
+        @include offset(6);
+      }
+    }
+
+    &.o-imageSingle--right .o-imageSingle__item {
+      @include col-pos(13);
+
+      .t-oldies & {
+        @include offset(12);
+      }
+    }
+  }
+}

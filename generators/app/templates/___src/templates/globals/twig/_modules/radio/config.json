@@ -1,9 +1,0 @@
-{
-  "title": "radio",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-radio"
-    }
-  }
-}

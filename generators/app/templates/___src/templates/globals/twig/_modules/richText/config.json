@@ -1,9 +1,0 @@
-{
-  "title": "richText",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-richText"
-    }
-  }
-}

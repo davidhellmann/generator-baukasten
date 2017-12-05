@@ -1,0 +1,18 @@
+/*
+ |--------------------------------------------------------------------------
+ |  o-appFooter
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-appFooter {
+  $root: &;
+  background-color: c('black', '10');
+}
+
+// Modul Modifiers Example
+.o-appFooter--modifier {
+  .o-appFooter__block {
+    // Styles here
+  }
+}

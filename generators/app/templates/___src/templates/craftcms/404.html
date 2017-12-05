@@ -1,16 +1,12 @@
-{#
-  404 Template
-  --------------------------------------------------
-
-  Page not found? This template gets loaded.
-#}
+{# -- 404 Template -- #}
+{# ---------------------------------------------------------------------- #}
 
 {% extends '_layouts/_master.html' %}
 {% set bodyClass = "p-404" %}
 {% if craft.seomatic is defined %}
-  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': '404 — Sorry' }) %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': '404 — Page not Found' }) %}
 {% else %}
-  {% set appTitle = '404 — Sorry' %}
+  {% set appTitle = '404 — Page not Found' %}
 {% endif %}
 
 {# -- CRITICAL CSS -- #}
@@ -20,18 +16,19 @@
   </style>
 {% endblock %}
 
-
+{# -- Google Analytics Stuff -- #}
 {% if googleAnalytics.globalGoogleAnalytics is defined and googleAnalytics.globalGoogleAnalytics %}
   {% set fourohfour %}
     ga('send', 'pageview', '/404/?url=' + document.location.pathname + document.location.search + '&ref=' + document.referrer);
   {% endset %}
 {% endif %}
 
+{# -- App Content -- #}
 {% block appContent %}
   <div class="o-section">
     <div class="o-row">
       {# -- Include Page Title -- #}
-      {% include '_modules/pageTitle/_template.html' with {
+      {% include '_molecules/pageTitle/_template.html' with {
         options: {
           text: '404 — Page not found',
           size: 'h1'

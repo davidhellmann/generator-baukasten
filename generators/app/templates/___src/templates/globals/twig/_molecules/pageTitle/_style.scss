@@ -1,0 +1,28 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  baukasten
+ | @author David Hellmann [davidhellmann.com@gmail.com]
+ | .m-pageTitle
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-pageTitle {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+}
+
+// Modul Modifiers Example
+.m-pageTitle--modifier {
+  .m-pageTitle__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

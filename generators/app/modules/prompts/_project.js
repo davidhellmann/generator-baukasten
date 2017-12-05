@@ -65,10 +65,6 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
                 value: 'craftCMS3'
             },
             {
-                name: 'Prototyping',
-                value: 'prototyping'
-            },
-            {
                 name: 'WordPress',
                 value: 'wordpress'
             }
@@ -88,10 +84,6 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
             description: 'Define a Project Proxy.'
         }),
         default(answers) {
-            // If ProjectType = Prototyping
-            if (answers.projectType === 'prototyping') {
-                return false
-            }
             // If the Answer includes .dev or .local
             if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
                 return answers.projectName

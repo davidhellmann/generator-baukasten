@@ -1,0 +1,87 @@
+{# -- News Entry Template -- #}
+{# ---------------------------------------------------------------------- #}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-articleSingle" %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{# -- Rel Nav -- #}
+{% block siteHeader %}
+  {% include '_partials/header/_siteHeaderLinks--single.html' with {
+    section: 'articles',
+    order: 'postDate',
+    entry: entry
+  } only %}
+{% endblock %}
+
+{# -- App Content -- #}
+{% block appContent %}
+  {# -- Cache -- #}
+  {% cache globally using key craft.request.path %}
+  <article role="article">
+    <div class="o-section">
+      <div class="o-row">
+
+        {# -- Include Page Title -- #}
+        {% include '_molecules/pageTitle/_template.html' with {
+          options: {
+            object: entry,
+            size: 'h1'
+          }
+        } only %}
+      </div>
+    </div>
+
+    <div class="o-section">
+      {# -- Entry Intro -- #}
+      {% if entry.singleIntroText ?? null %}
+        <div class="o-row">
+          {% include '_modules/richText/_template.html' with {
+            options: {
+              text: entry.singleIntroText
+            }
+          } only %}
+        </div>
+      {% endif %}
+
+      {# -- Entry Image -- #}
+      <div class="o-row">
+        {% include '_modules/imageSingle/_template.html' with {
+          options: {
+            image: entry.singleImageEntry.first()
+          }
+        } only %}
+      </div>
+    </div>
+
+    {# -- Content Builder -- #}
+    {% include '_contentBuilders/_contentBuilder.html' with {
+      options: {
+        object: entry
+      }
+    } only %}
+  </article>
+
+  <div class="o-section">
+    <div class="o-row">
+      {# -- Post Nav -- #}
+      {% import '_partials/macros/_macro-postNav.html' as macroPostNav %}
+      {{ macroPostNav.postNav(entry, {
+        section: 'articles',
+        prevLabel: 'Prev Article',
+        nextLabel: 'Next Article',
+        prevIcon: 'iconArrowLeft',
+        nextIcon: 'iconArrowRight'
+      }) }}
+    </div>
+  </div>
+
+  {# -- Cache End -- #}
+  {% endcache %}
+{% endblock %}

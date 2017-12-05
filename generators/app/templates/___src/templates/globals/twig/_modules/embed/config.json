@@ -1,9 +1,0 @@
-{
-  "title": "embed",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-embed"
-    }
-  }
-}

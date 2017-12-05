@@ -4,7 +4,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/assets/fonts/',
@@ -14,7 +13,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/assets/images/',
@@ -58,16 +56,8 @@ module.exports = {
         },
         {
             projectContext: [
-                'prototyping'
-            ],
-            src: '___src/_data/',
-            dest: '___src/_data/'
-        },
-        {
-            projectContext: [
                 'craftCMS',
-                'craftCMS3',
-                'prototyping',
+                'craftCMS3'
             ],
             src: '___src/scripts/lang/',
             dest: 'scripts/lang/'
@@ -75,8 +65,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS',
-                'craftCMS3',
-                'prototyping',
+                'craftCMS3'
             ],
             src: '___src/scripts/module/',
             dest: 'scripts/module/'
@@ -85,7 +74,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: 'images/',
@@ -95,7 +83,6 @@ module.exports = {
             projectContext: [
                 'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: 'docs/',
@@ -107,13 +94,6 @@ module.exports = {
                 'craftCMS3'
             ],
             src: '___src/templates/webpack-craftcms/',
-            dest: '___src/templates/_partials/webpack/'
-        },
-        {
-            projectContext: [
-                'prototyping'
-            ],
-            src: '___src/templates/webpack-prototyping/',
             dest: '___src/templates/_partials/webpack/'
         },
         {

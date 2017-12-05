@@ -1,7 +1,7 @@
 {
   "name": "generator-baukasten",
-  "version": "2.4.56",
-  "description": "A little 'Baukasten' for your next project to gettings shit done. It's focused on Craft CMS & Prototyping but there is also a bit WordPress stuff on board.",
+  "version": "3.0.0",
+  "description": "A little 'Baukasten' for your next project to gettings shit done. It's focused on Craft CMS but there is also a bit WordPress stuff on board.",
   "main": "generators/app/index.js",
   "scripts": {
     "test": "jest",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidhellmann/generator-baukasten.git"
+    "url": "https://github.com/davidhellmann/generator-baukasten.git"
   },
   "keywords": [
     "yeoman-generator",
@@ -20,7 +20,7 @@
     "scss",
     "craft-cms",
     "wordpress",
-    "prototyping"
+    "laravel"
   ],
   "author": {
     "name": "David Hellmann",

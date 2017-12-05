@@ -1,0 +1,8 @@
+{# -- Taxonomy Router -- #}
+{# ---------------------------------------------------------------------- #}
+
+{% include [
+  'categories/' ~ category.group().handle ~ '/' ~ category.slug,
+  'categories/' ~ category.group().handle ~ '/default',
+  '404'
+] %}

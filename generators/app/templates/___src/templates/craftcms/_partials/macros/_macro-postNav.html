@@ -1,0 +1,80 @@
+{#
+  Prev / Next Link
+  ------------------------------------------------------------
+
+  {{ macroPostNav.postNav(entry, 'work', 'postDate', 'prev work', 'next work' ) }}
+#}
+
+{% macro postNav(entry, options) %}
+
+  {# -- Defaults -- #}
+  {% set defaults = {
+    classname: 'm-postNav',
+    section: null,
+    order: 'postDate',
+    prevLabel: false,
+    nextLabel: false,
+    prevIcon: false,
+    nextIcon: false
+  } %}
+
+  {% if options is defined %}
+    {% set options = options is defined ? defaults|merge(options) : defaults %}
+  {% else %}
+    {% set options = defaults %}
+  {% endif %}
+
+  {% if options.section %}
+    {# Set parameters for prev/next elements list #}
+    {% set entries = craft.entries.section(options.section).order(options.order).limit(null) %}
+
+    {# Get the prev/next elements #}
+    {% set prevEntry = entry.getPrev(entries) %}
+    {% set nextEntry = entry.getNext(entries) %}
+  {% else %}
+    {% set prevEntry = false %}
+    {% set nextEntry = false %}
+  {% endif %}
+
+  {# And make sure to only output the links if the element exists #}
+  {% if prevEntry or nextEntry %}
+    <nav class="o-col  {{ options.classname }}">
+      <div class="{{ options.classname ~ '__inner' }}">
+      {% if prevEntry %}
+        <div class="{{ options.classname ~ '__item' }}  {{ options.classname ~ '__item--prev' }}">
+          <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--prev' }}" href="{{ prevEntry.url }}">
+            {% if options.prevIcon %}
+              <span class="{{ options.classname ~ '__icon' }}  {{ options.classname ~ '__icon--prev' }}">
+                {% include '_partials/svg/' ~ options.prevIcon ~ '.svg.html' %}
+              </span>
+            {% endif %}
+
+            {% if options.prevLabel %}
+              <span class="{{ options.classname ~ '__label' }}">{{ options.prevLabel }}</span>
+            {% endif %}
+
+            <span class="{{ options.classname ~ '__title' }}">{{ prevEntry.title }}</span>
+          </a>
+        </div>
+      {% endif %}
+      {% if nextEntry %}
+        <div class="{{ options.classname ~ '__item' }}  {{ options.classname ~ '__item--next' }}">
+          <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--next' }}" href="{{ nextEntry.url }}">
+            {% if options.nextLabel %}
+              <span class="{{ options.classname ~ '__label' }}">{{ options.nextLabel }}</span>
+            {% endif %}
+
+            <span class="{{ options.classname ~ '__title' }}">{{ nextEntry.title }}</span>
+
+            {% if options.nextIcon %}
+              <span class="{{ options.classname ~ '__icon' }}  {{ options.classname ~ '__icon--next' }}">
+                {% include '_partials/svg/' ~ options.nextIcon ~ '.svg.html' %}
+              </span>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+{% endmacro %}

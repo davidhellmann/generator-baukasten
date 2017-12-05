@@ -25,7 +25,6 @@ Installed NPM Global
 <% if (projectType === 'craftCMS' ) { %>- [Craft CMS](https://craftcms.com/)<% } %>
 <% if (projectType === 'craftCMS3' ) { %>- [Craft CMS](https://craftcms.com/)<% } %>
 <% if (projectType === 'wordpress' ) { %>- [WordPress](https://wordpress.org/)<% } %>
-<% if (projectType === 'prototyping' ) { %>- [Twig](https://twig.symfony.com/)<% } %>
 
 ### Requirements
 - [NodeJS](https://nodejs.org/en/)

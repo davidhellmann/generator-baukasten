@@ -1,0 +1,19 @@
+{
+  "title": "appFooter",
+  "status": "Prototype",
+  "type": "organism",
+  "path": "_organisms/appFooter/",
+  "description": "appFooter Description goes here…",
+  "notes": "appFooter Notes goes here…",
+  "opt": {
+    "cn": "o-appFooter",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

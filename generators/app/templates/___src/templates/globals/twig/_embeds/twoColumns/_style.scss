@@ -1,0 +1,32 @@
+/* -------------------------------------------------- */
+/*    .e-twoColumns
+/* -------------------------------------------------- */
+
+.e-twoColumns {
+  $root: &;
+  width: 100%;
+
+  &__area1 {
+    @include make-col-flex(12);
+
+    @include media('>=m') {
+      @include make-col-flex(8);
+    }
+  }
+
+  &__area2 {
+    @include make-col-flex(12);
+
+    @include media('>=m') {
+      @include make-col-flex(8);
+    }
+  }
+
+  &__area3 {
+    @include make-col-flex(12);
+
+    @include media('>=m') {
+      @include make-col-flex(4);
+    }
+  }
+}

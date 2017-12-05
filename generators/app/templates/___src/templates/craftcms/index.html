@@ -1,9 +1,5 @@
-{#
-  Home Page
-  --------------------------------------------------
-
-  This is your Homepage!
-#}
+{# -- Homepage -- #}
+{# ---------------------------------------------------------------------- #}
 
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-home" %}
@@ -15,26 +11,28 @@
   </style>
 {% endblock %}
 
+{# -- App Content -- #}
 {% block appContent %}
+
   {# -- Cache -- #}
   {% cache globally using key 'home' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %}
 
   <div class="o-section">
     <div class="o-row">
-      {# -- Include Page Title -- #}
-      {% include '_modules/pageTitle/_template.html' with {
-        options: {
-          object: entry,
-          size: 'h1'
-        }
-      } only %}
+      <div class="o-col-12  o-col-s-24">
+        {# -- Include Page Title -- #}
+        {% include '_molecules/pageTitle/_template.html' with {
+          opt: {
+            object: entry,
+            size: 'h1'
+          }
+        } only %}
+      </div>
     </div>
   </div>
 
-  <% if (projectVue) { %>
   {# -- Vue Stuff -- #}
   <div id="js-vue"></div>
-  <% } %>
 
   {# -- Cache End -- #}
   {% endcache %}

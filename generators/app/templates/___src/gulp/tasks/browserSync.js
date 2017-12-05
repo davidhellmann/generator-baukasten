@@ -63,9 +63,7 @@ const browserSyncTask = () => {
             ]
         },
         files: [{
-            match: [<% if (projectType !== 'prototyping' ) { %>
-                `!${pkg.dist.markup}${inject_folder}/${fileName}-header${fileExtension}`,
-                `!${pkg.dist.markup}${inject_folder}/${fileName}-scripts${fileExtension}`,<% } %>
+            match: [
                 `${pkg.dist.markup}**/*.{html,php,twig,rss}`,
                 `${pkg.dist.css}**/*.{css}`,
                 `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`
@@ -83,13 +81,7 @@ const browserSyncTask = () => {
                 ) {
                     browserSync.reload()
                 }
-            }<% if (projectType !== 'prototyping' ) { %>,
-            options: {
-                ignore: [
-                    `${pkg.dist.markup}${inject_folder}/${fileName}-header${fileExtension}`,
-                    `${pkg.dist.markup}${inject_folder}/${fileName}-scripts${fileExtension}`
-                ]
-            }<% } %>
+            }
         }]
     })
 }

@@ -7,208 +7,220 @@
   {# -- Accordion Modul -- #}
   {% case 'accordion' %}
     {% include '_modules/accordion/_template.html' with {
-      options: {
-        rows: data.children
+      opt: {
+        rows: data.children ?? null
       }
     } only %}
 
-  {# -- Button Modul -- #}
-  {% case 'button' %}
-    {% include '_modules/button/_template.html' with {
-      options: {
-        url: data.singleButton.url,
+  {# -- Link Modul -- #}
+  {% case 'link' %}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        url: data.singleLink.url ?? null,
         modifiers: [
-          data.settingsButton.style,
-          data.settingsButton.size,
-          data.settingsButton.alignment
+          'cb',
+          data.settingsLink.style ?? null,
+          data.settingsLink.alignment ?? null
         ],
-        target: data.singleButton.target,
-        text: data.singleButton.text
-      }
-    } only %}
-
-  {# -- Button Group Modul -- #}
-  {% case 'buttonGroup' %}
-    {% include '_modules/buttonGroup/_template.html' with {
-      options: {
-        buttons: data.singleButtonGroup,
-        modifiers: [
-          data.settingsButtonGroup.style,
-          data.settingsButtonGroup.size
-        ],
-        alignment: data.settingsButtonGroup.alignment
+        target: data.singleLink.target ?? null,
+        text: data.singleLink.text ?? null
       }
     } only %}
 
   {# -- Content Section Modul -- #}
-  {% case 'contentSection' %}
-    {% include '_modules/contentSection/_template.html' with {
-      options: {
+  {% case 'bkSection' %}
+    {% include '_organisms/section/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsSection.backgroundColor,
-          data.settingsSection.paddingVertical,
-          data.settingsSection.width
+          'cb',
+          data.settingsSection.paddingVertical ?? null,
+          data.settingsSection.width ?? null
         ],
-        headline: data.singleHeadline,
-        anchor: data.singleAnchor
+        offset: data.settingsSection.offset,
+        context: context
       }
     } only %}
 
   {# -- Definiton List Modul -- #}
   {% case 'definitionList' %}
     {% include '_modules/definitionList/_template.html' with {
-      options: {
+      opt: {
         modifiers: [
-          data.settingsDefinitionList.layout,
-          data.settingsDefinitionList.ratio
+          'cb',
+          data.settingsDefinitionList.layout ?? null,
+          data.settingsDefinitionList.ratio ?? null
         ],
-        items: data.singleDefinitionList
+        items: data.singleDefinitionList ?? null
       }
     } only %}
 
   {# -- Embed Modul -- #}
   {% case 'embed' %}
-    {% include '_modules/embed/_template.html' with {
-      options: {
+    {% include '_atoms/embed/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsEmbed.position,
-          data.settingsEmbed.width
+          'cb',
+          data.settingsEmbed.position ?? null,
+          data.settingsEmbed.width ?? null
         ],
-        embedCode: data.singleEmbedCode
+        embedCode: data.singleEmbedCode ?? null
       }
     } only %}
 
   {# -- Headline Modul -- #}
   {% case 'headline' %}
-    {% include '_modules/headline/_template.html' with {
-      options: {
-        modifiers: [],
-        text: data.singleHeadline,
-        size: data.settingsHeadline.size
+    {% include '_atoms/headline/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+        ],
+        text: data.singleHeadline ?? null,
+        size: data.settingsHeadline.size ?? null
       }
     } only %}
 
   {# -- Image Cover Modul -- #}
   {% case 'imageCover' %}
-    {% include '_modules/imageCover/_template.html' with {
-      options: {
+    {% include '_organisms/imageCover/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsImageCover.textColor,
-          data.settingsImageCover.textAlignment,
-          data.settingsImageCover.textVerticalPosition
+          'cb',
+          data.settingsImageCover.textColor ?? null,
+          data.settingsImageCover.textAlignment ?? null,
+          data.settingsImageCover.textVerticalPosition ?? null
         ],
-        image: data.singleImage.first(),
-        bgPosition: data.settingsImageCover.backgroundPosition,
-        text: data.singleText
+        image: data.singleImage.first() ?? null,
+        bgPosition: data.settingsImageCover.backgroundPosition ?? null,
+        text: data.singleText ?? null
       }
     } only %}
 
   {# -- Image Gallery Modul -- #}
   {% case 'imageGallery' %}
-    {% include '_modules/imageGallery/_template.html' with {
-      options: {
+    {% include '_organisms/imageGallery/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsImageGallery.columns
+          'cb',
+          data.settingsImageGallery.columns ?? null
         ],
-        images: data.singleImages,
-        thumbsRatio: data.settingsImageGallery.thumbsRatio
+        images: data.singleImages ?? null,
+        thumbsRatio: data.settingsImageGallery.thumbsRatio ?? null
       }
     } only %}
 
   {# -- Image Grid Modul -- #}
   {% case 'imageGrid' %}
-    {% include '_modules/imageGrid/_template.html' with {
-      options: {
+    {% include '_organisms/imageGrid/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsImageGrid.columns
+          'cb',
+          data.settingsImageGrid.columns ?? null
         ],
-        images: data.singleImages,
-        ratio: data.settingsImageGrid.ratio,
-        caption: data.settingsImageGrid.caption
+        images: data.singleImages ?? null,
+        ratio: data.settingsImageGrid.ratio ?? null,
+        caption: data.settingsImageGrid.caption ?? null
       }
     } only %}
 
   {# -- Image Single Modul -- #}
   {% case 'imageSingle' %}
-    {% include '_modules/imageSingle/_template.html' with {
-      options: {
+    {% include '_organisms/imageSingle/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsImageSingle.alignment,
-          data.settingsImageSingle.width
+          'cb',
+          data.settingsImageSingle.alignment ?? null,
+          data.settingsImageSingle.width ?? null
         ],
-        image: data.singleImage.first(),
-        ratio: data.settingsImageSingle.ratio,
-        caption: data.settingsImageSingle.caption
+        image: data.singleImage.first() ?? null,
+        ratio: data.settingsImageSingle.ratio ?? null,
+        caption: data.settingsImageSingle.caption ?? null
+      }
+    } only %}
+
+
+  {# -- Image Single Modul -- #}
+  {% case 'image' %}
+    {% include '_atoms/image/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+          data.settingsImageSingle.alignment ?? null,
+          data.settingsImageSingle.width ?? null
+        ],
+        image: data.singleImage.first() ?? null,
+        ratio: data.settingsImageSingle.ratio ?? null,
+        caption: data.settingsImageSingle.caption ?? null
       }
     } only %}
 
   {# -- Image Slider Modul -- #}
   {% case 'imageSlider' %}
-    {% include '_modules/imageSlider/_template.html' with {
-      options: {
-        images: data.singleImages,
-        ratio: data.settingsImageSlider.ratio
+    {% include '_organisms/imageSlider/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+        ],
+        images: data.singleImages ?? null,
+        ratio: data.settingsImageSlider.ratio ?? null
+      }
+    } only %}
+
+  {# -- Plaintext Modul -- #}
+  {% case 'plainText' %}
+    {% include '_atoms/plainText/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+        ],
+        text: data.singlePlainText ?? null
       }
     } only %}
 
   {# -- Quote Modul -- #}
   {% case 'quote' %}
-    {% include '_modules/quote/_template.html' with {
-      options: {
-        quote: data.singleQuote,
-        source: data.singleSource,
-        sourceUrl: data.singleSourceUrl
+    {% include '_molecules/quote/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+        ],
+        quote: data.singleQuote ?? null,
+        source: data.singleSource ?? null,
+        sourceUrl: data.singleSourceUrl ?? null
       }
     } only %}
 
   {# -- Rich Text Modul -- #}
   {% case 'richText' %}
-    {% include '_modules/richText/_template.html' with {
-      options: {
-        text: data.singleRichText
+    {% include '_atoms/richText/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+        ],
+        text: data.singleRichText ?? null
       }
     } only %}
 
   {# -- Rich Text Modul -- #}
   {% case 'richTextMarginals' %}
-    {% include '_modules/richTextMarginals/_template.html' with {
-      options: {
-        marginals: data.children,
-        text: data.singleRichText
+    {% include '_organisms/richTextMarginals/_template.html' with {
+      opt: {
+        modifiers: [
+          'cb',
+        ],
+        marginals: data.children ?? null,
+        text: data.singleRichText ?? null
       }
     } only %}
 
   {# -- Separator Modul -- #}
-  {% case 'separator' %}
-    {% include '_modules/separator/_template.html' with {
-      options: {
+  {% case 'divider' %}
+    {% include '_atoms/divider/_template.html' with {
+      opt: {
         modifiers: [
-          data.settingsSeparator.style,
-          data.settingsSeparator.marginVertical
+          'cb',
+          data.settingsDivider.style ?? null,
+          data.settingsDivider.marginVertical ?? null
         ]
-      }
-    } only %}
-
-  {# -- Rich Text Modul -- #}
-  {% case 'twoColumns' %}
-    {% include '_modules/twoColumns/_template.html' with {
-      options: {
-        modifiers: [
-          data.settingsTwoColumns.ratio
-        ],
-        columns: data.children
-      }
-    } only %}
-
-  {# -- Video Modul -- #}
-  {% case 'video' %}
-    {% include '_modules/video/_template.html' with {
-      options: {
-        modifiers: [
-          data.settingsVideo.position,
-          data.settingsVideo.width
-        ],
-        embedCode: data.singleEmbedCode
       }
     } only %}
 

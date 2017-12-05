@@ -1,0 +1,29 @@
+{#
+  o-appFooter
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'o-appFooter',
+  modifiers: [],
+  data: {},
+  foo: null
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+{% if opt.foo %}
+  <footer class="{{ opt.cn }}
+              {% for modifier in opt.modifiers %}
+                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+              {% endfor %}  {{ opt.cn|replace({ 'o-' : 'js-' }) }}">
+    {% cache %}
+      {% block appFooter %}
+        Footer
+      {% endblock %}
+    {% endcache %}
+  </footer>
+{% endif %}

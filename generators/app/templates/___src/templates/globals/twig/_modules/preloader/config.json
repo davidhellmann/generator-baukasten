@@ -1,9 +1,0 @@
-{
-  "title": "preloader",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-preloader"
-    }
-  }
-}
