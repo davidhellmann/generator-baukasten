@@ -1,4 +1,9 @@
 <?php
+/**
+ * de Translation File
+ * Force an englisch Backend
+ */
+
 namespace Craft;
 
 if (craft()->request->isCpRequest())
@@ -11,11 +16,13 @@ if (craft()->request->isCpRequest())
     {
         $de = (include '../craft/app/translations/de.php');
         $custom = array(
-            //'Globals' => 'I freak out!',
+            "News" => "Neuigkeiten",
         );
 
         return array_merge($de, $custom);
     }
 }
 
-return [];
+return array(
+    "News" => "Neuigkeiten",
+);
