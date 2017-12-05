@@ -1,17 +1,19 @@
 {
   "title": "<%= moduleName.replace('-', '_') %>",
   "status": "WIP",
+  "type": "<%= pathOptions.key.slice(0, -1) %>",
+  "path": "_<%= pathOptions.key %>/<%= moduleName.replace('-', '_') %>/",
   "description": "<%= moduleName.replace('-', '_') %> Description goes here…",
   "notes": "<%= moduleName.replace('-', '_') %> Notes goes here…",
   "opt": {
-    "cn": "<%= moduleType %>-<%= moduleName.replace('-', '_') %>",
+    "cn": "<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>",
     "modifiers": [],
     "data": {},
     "js": null,
     "waypoint": null,
     "waypointAni": null
   },
-  "context": {
+  "content": {
     "foo": "bar"
   }
 }

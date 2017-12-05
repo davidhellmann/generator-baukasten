@@ -53,6 +53,7 @@ inquirer
             const humans = pkg.src.languages.humans
             const index = pkg.src.languages.index
             const robots = pkg.src.languages.robots
+            const langFilePath = path.resolve(pkg.src.languages.langFilePath)
 
             try {
                 fs.copy(path.resolve(__dirname, `../scripts/lang/${htaccess}`), `${srcPath}/${answer}/${htaccess}`)
@@ -61,14 +62,19 @@ inquirer
                     authorEmail: pkg.authors[0].email,
                     authorHomepage: pkg.authors[0].homepage,
                     language: answer,
-                    projectType: pkg.projectType,
+                    projectType: pkg.projectType
                 })
 
                 fs.copyTpl(path.resolve(__dirname, `../scripts/lang/${index}`), `${srcPath}/${answer}/${index}`, {
-                    language: answer,
+                    language: answer
+                })
+
+                fs.copyTpl(path.resolve(__dirname, `../scripts/lang/translation.php`), `${langFilePath}/${answer}.php`, {
+                    language: answer
                 })
 
                 fs.copy(path.resolve(__dirname, `../scripts/lang/${robots}`), `${srcPath}/${answer}/${robots}`)
+
 
                 /* All Done */
                 fs.commit(function() {

@@ -1,11 +1,18 @@
 {#
-  <%= moduleType %>-<%= moduleName %>
-  --------------------------------------------------
+  Description of what this file is for
+
+  @package  <%= projectName %>
+<% for (var i=0; i < authors.length; i++) { -%>
+  @author <%= authors[i].name %> [<%= authors[i].email %>]
+<% } -%>
+
+  <%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>
+  ------------------------------------------------------------
 #}
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  cn: '<%= moduleType %>-<%= moduleName %>',
+  cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
   modifiers: [],
   data: {},
   js: null,
@@ -21,12 +28,12 @@
   <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= moduleType %>-' : 'js-' }) : '' }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= pathOptions.key.charAt(0) %>-' : 'js-' }) : '' }}
               {{ opt.waypointAni ? opt.waypointAni : '' }}"
               {{ opt.waypoint ? ' data-waypoint' : '' }}
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>
-    <%= moduleName %>
+    <%= moduleName.replace('-', '_') %>
   </div>
 {% endif %}
