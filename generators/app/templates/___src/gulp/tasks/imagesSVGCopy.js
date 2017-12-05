@@ -20,11 +20,11 @@ const copyVectors = () => {
     .pipe(gulp.dest(vectorDist))
     .pipe($.size())
     .pipe($.rename({
-      <% if (projectType === 'wordpress' ) { %>
-      extname: ".svg.php"
-      <% } else { %>
-      extname: ".svg.html"
-      <% } %>
+        <% if (projectType === 'wordpress' ) { %>
+        extname: ".svg.php"
+        <% } else { %>
+        extname: ".svg.html"
+        <% } %>
     }))
     .pipe(gulp.dest(pkg.src.images.svg.single + 'inline/'))
     .pipe(gulp.dest(vectorDist + 'inline/'))

@@ -75,7 +75,12 @@ const browserSyncTask = () => {
                 if (event === 'change' && file.includes('.css')) {
                     browserSync.reload('*.css')
                 }
-                if (event === 'change' && (file.includes('.php') || file.includes('.html') || file.includes('.twig'))) {
+                if (event === 'change' && (
+                        file.includes('.php') ||
+                        file.includes('.html') ||
+                        file.includes('.twig')) ||
+                        file.includes('.json')
+                ) {
                     browserSync.reload()
                 }
             }<% if (projectType !== 'prototyping' ) { %>,
