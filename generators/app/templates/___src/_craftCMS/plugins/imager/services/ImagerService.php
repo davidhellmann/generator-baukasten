@@ -41,6 +41,7 @@ class ImagerService extends BaseApplicationComponent
       'instanceReuseEnabled' => 'REUSE',
       'watermark' => 'WM',
       'letterbox' => 'LB',
+      'frames' => 'FR',
     );
 
     // translate dictionary for resize method 
@@ -477,12 +478,41 @@ class ImagerService extends BaseApplicationComponent
                 // we need to create a new image instance with the target size, or letterboxing will be wrong.
                 $originalSize = $this->imageInstance->getSize();
                 $resizeSize = $this->getResizeSize($originalSize, $transform);
+                $layers = $this->imageInstance->layers();
                 $gif = $this->imagineInstance->create($resizeSize);
                 $gif->layers()->remove(0);
                 
-                // 
-                foreach ($this->imageInstance->layers() as $layer)
+                $startFrame = 0;
+                $endFrame = count($layers)-1; 
+                $interval = 1; 
+
+                if (isset($transform['frames'])) {
+                    $framesIntArr = explode('@', $transform['frames']);
+                    
+                    if (count($framesIntArr)>1) {
+                        $interval = $framesIntArr[1];
+                    }
+                    
+                    $framesArr = explode('-', $framesIntArr[0]);
+                    
+                    if (count($framesArr)>1) {
+                        $startFrame = $framesArr[0];
+                        if ($framesArr[1]!=='*') {
+                            $endFrame = $framesArr[1];
+                        }
+                    } else {
+                        $startFrame = $framesArr[0];
+                        $endFrame = $framesArr[0];
+                    }
+                    
+                    if ($endFrame>count($layers)-1) {
+                        $endFrame = count($layers)-1;
+                    }
+                } 
+                
+                for ($i=$startFrame; $i<=$endFrame; $i+=$interval)
                 {
+                    $layer = $layers[$i];
                     $this->_transformLayer($layer, $transform, $sourceExtension, $targetExtension);
     				$gif->layers()->add($layer);
                 }
@@ -760,7 +790,18 @@ class ImagerService extends BaseApplicationComponent
             if ($k == 'effects' || $k == 'preEffects') {
                 $effectString = '';
                 foreach ($v as $eff => $param) {
-                    $effectString .= '_' . $eff . '-' . (is_array($param) ? implode("-", $param) : $param);
+                    if (is_array($param)) {
+                        if (is_array($param[0])) {
+                            $effectString .= '_' . $eff;
+                            foreach ($param as $paramArr) {
+                                $effectString .= '-' . implode('-', $paramArr);
+                            }
+                        } else {
+                            $effectString .= '_' . $eff . '-' . implode('-', $param);
+                        }
+                    } else {
+                        $effectString .= '_' . $eff . '-' . $param;
+                    }
                 }
 
                 $r .= '_' . (isset(ImagerService::$transformKeyTranslate[$k]) ? ImagerService::$transformKeyTranslate[$k] : $k) . $effectString;
@@ -823,7 +864,11 @@ class ImagerService extends BaseApplicationComponent
         if (!$this->getSetting('allowUpscale', $transform)) {
             list($width, $height) = $this->_enforceMaxSize($width, $height, $originalSize, true);
         }
-
+        
+        // ensure that size is larger than 0
+        if ($width<=0) { $width = 1; }
+        if ($height<=0) { $height = 1; }
+        
         return new \Imagine\Image\Box($width, $height);
     }
 
@@ -861,8 +906,11 @@ class ImagerService extends BaseApplicationComponent
                     }
 
                 } else {
-
-                    if ($transformAspect > $aspect) { // use height as guide
+                    
+                    if ($transformAspect === $aspect) {
+                        $height = (int)$transform['height'];
+                        $width = (int)$transform['width'];
+                    } elseif ($transformAspect > $aspect) { // use height as guide
                         $height = (int)$transform['height'];
                         $width = ceil($originalSize->getWidth() * ($height / $originalSize->getHeight()));
                     } else { // use width
@@ -1429,6 +1477,22 @@ class ImagerService extends BaseApplicationComponent
                     $imagickInstance->clutImage($clut);
                 }
 
+                // levels
+                if ($effect == 'levels' && is_array($value)) {
+                    if (is_array($value[0])) {
+                        foreach ($value as $val) {
+                            if (count($val)>=3) {
+                                $this->_applyLevels($imagickInstance, $val);
+                            }
+                        }
+                    } else {
+                        if (count($value)>=3) {
+                            $this->_applyLevels($imagickInstance, $value);
+                        }
+                    }
+                    
+                }
+
                 // quantize
                 if ($effect == 'quantize' && (is_array($value) || is_int($value))) {
                     if (is_array($value) && count($value) === 3) {
@@ -1487,6 +1551,28 @@ class ImagerService extends BaseApplicationComponent
 
     }
 
+    private function _applyLevels($imagickInstance, $value) {
+        $quantum = $imagickInstance->getQuantum();
+        $blackLevel = ($value[0]/255)*$quantum;
+        $whiteLevel = ($value[2]/255)*$quantum;
+        $channel = \Imagick::CHANNEL_ALL;
+        
+        if (count($value)>3) {
+            switch ($value[3]) {
+                case 'red':
+                    $channel = \Imagick::CHANNEL_RED;
+                    break;
+                case 'blue':
+                    $channel = \Imagick::CHANNEL_BLUE;
+                    break;
+                case 'green':
+                    $channel = \Imagick::CHANNEL_GREEN;
+                    break;
+            }
+        }
+        
+        $imagickInstance->levelImage($blackLevel, $value[1], $whiteLevel, $channel);
+    }
 
     /**
      * Color blend filter, more advanced version of colorize.

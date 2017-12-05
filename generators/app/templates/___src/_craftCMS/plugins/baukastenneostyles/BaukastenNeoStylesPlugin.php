@@ -41,7 +41,7 @@ class BaukastenNeoStylesPlugin extends BasePlugin
     public function init()
     {
         parent::init();
-        if (craft()->request->isCpRequest() && craft()->userSession->isAdmin()) {
+        if (craft()->request->isCpRequest()) {
             $this->_renderCSS();
         }
     }
@@ -53,7 +53,7 @@ class BaukastenNeoStylesPlugin extends BasePlugin
      */
     public function getName()
     {
-        return Craft::t('Baukasten Neo Styles');
+         return Craft::t('Baukasten Neo Styles');
     }
 
     /**
@@ -178,6 +178,6 @@ class BaukastenNeoStylesPlugin extends BasePlugin
 
     public function _renderCSS()
     {
-        craft()->templates->includeCssFile(UrlHelper::getResourceUrl('baukastenNeoStyles/baukasten-neo-styles.css'));
+        craft()->templates->includeCssFile(UrlHelper::getResourceUrl('baukastenneostyles/baukasten-neo-styles.css'));
     }
 }
