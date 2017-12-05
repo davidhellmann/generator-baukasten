@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.35)
 # Datenbank: db12345678_baukasten
-# Erstellt am: 2017-12-05 14:32:24 +0000
+# Erstellt am: 2017-12-05 14:34:42 +0000
 # ************************************************************
 
 
@@ -1423,7 +1423,7 @@ LOCK TABLES `craft_info` WRITE;
 
 INSERT INTO `craft_info` (`id`, `version`, `schemaVersion`, `edition`, `siteName`, `siteUrl`, `timezone`, `on`, `maintenance`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'2.6.2997','2.6.11',2,'Baukasten','http://baukasten.dev','UTC',1,0,'2017-04-16 21:53:40','2017-11-17 15:10:23','66d3ce2a-d695-463f-af51-9364c16014bf');
+	(1,'2.6.2999','2.6.12',2,'Baukasten','http://baukasten.dev','UTC',1,0,'2017-04-16 21:53:40','2017-12-05 14:34:25','66d3ce2a-d695-463f-af51-9364c16014bf');
 
 /*!40000 ALTER TABLE `craft_info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1610,7 +1610,9 @@ VALUES
 	(79,29,'m160427_000000_retour_addHandledStats','2017-12-03 23:43:04','2017-12-03 23:43:04','2017-12-03 23:43:04','2f01a801-7b86-4ac3-908b-ab656ef28cdf'),
 	(80,29,'m160514_000000_retour_convertToElementId','2017-12-03 23:43:04','2017-12-03 23:43:04','2017-12-03 23:43:04','e570a770-c4c1-4611-93e3-47d5d7e88b16'),
 	(81,29,'m160704_000000_retour_addReferrerStats','2017-12-03 23:43:04','2017-12-03 23:43:04','2017-12-03 23:43:04','8d03a6e1-466b-446a-9c49-b670081d12a4'),
-	(82,30,'m170614_141800_amCommand_defaultElementTypeSettings','2017-12-05 14:25:57','2017-12-05 14:25:57','2017-12-05 14:25:57','c3f94d33-0b07-40e9-adc5-3cf42e0a22da');
+	(82,30,'m170614_141800_amCommand_defaultElementTypeSettings','2017-12-05 14:25:57','2017-12-05 14:25:57','2017-12-05 14:25:57','c3f94d33-0b07-40e9-adc5-3cf42e0a22da'),
+	(83,NULL,'m171117_000001_templatecache_index_tune','2017-12-05 14:33:26','2017-12-05 14:33:26','2017-12-05 14:33:26','09a2ec8a-997b-436e-81eb-9a92fd064076'),
+	(84,29,'m170710_000000_retour_increaseReferrerUrlColumnMaxLength','2017-12-05 14:34:25','2017-12-05 14:34:25','2017-12-05 14:34:25','8d4ca3fd-a98c-4f3f-9c75-1923cb39fb6d');
 
 /*!40000 ALTER TABLE `craft_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1840,27 +1842,27 @@ LOCK TABLES `craft_plugins` WRITE;
 
 INSERT INTO `craft_plugins` (`id`, `class`, `version`, `schemaVersion`, `licenseKey`, `licenseKeyStatus`, `enabled`, `settings`, `installDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(2,'Cookies','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:44','2017-04-16 22:11:44','2017-11-17 15:10:31','ef47ceba-51a6-4565-90bd-bfc199022e6c'),
-	(3,'FocalPointField','1.0.2',NULL,NULL,'unknown',1,NULL,'2017-04-16 22:11:48','2017-04-16 22:11:48','2017-11-17 15:10:31','4e64b877-25c4-4f86-91ff-a5e3109b4e2f'),
-	(4,'Imager','1.6.4','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:50','2017-04-16 22:11:50','2017-11-17 15:10:31','0cff012d-6717-4a58-aa39-51268d2dbe80'),
-	(5,'Kint','1.1.0','1.0.0',NULL,'unknown',1,'{\"kintDisplayTheme\":\"solarized-dark\"}','2017-04-16 22:11:55','2017-04-16 22:11:55','2017-12-03 04:17:47','f101513d-d2bd-4990-a866-6ad089964b4a'),
-	(6,'FruitLinkIt','2.3.4','2.3.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:59','2017-04-16 22:11:59','2017-11-17 15:10:31','47ace0df-f9d6-49c2-9647-788d50e2e275'),
-	(7,'Minify','1.2.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:23','2017-04-16 22:42:23','2017-11-17 15:10:31','16bd2799-b641-4981-a41c-0e3392a48d5a'),
-	(8,'Neo','1.4.1','1.5.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:26','2017-04-16 22:42:26','2017-12-01 23:09:09','70d7e5dd-2268-40a4-85f3-a7ab5dcf34cc'),
-	(9,'SidebarEnhancer','1.0.9','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:33','2017-04-16 22:42:33','2017-11-17 15:10:31','217a761d-a45d-4d67-8ee2-7cbd11ac91c4'),
-	(10,'SuperTable','1.0.5','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:40','2017-04-16 22:42:40','2017-11-17 15:10:31','196c672e-f9cb-444f-b32c-f399bca73a78'),
-	(11,'TheArchitect','1.6.0','1.6.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:43','2017-04-16 22:42:43','2017-11-17 15:10:31','fb4f3140-f2f7-4c99-9257-087a3f99f655'),
-	(12,'Seomatic','1.1.56','1.1.25',NULL,'unknown',1,NULL,'2017-04-16 22:43:59','2017-04-16 22:43:59','2017-11-17 15:10:31','7dcd03d0-54c8-47ed-b618-e93935503345'),
-	(14,'PreparseField','0.3.6','1.0.0',NULL,'unknown',1,NULL,'2017-06-08 16:47:59','2017-06-08 16:47:59','2017-11-17 15:10:31','76418ae9-5d26-4856-ae7d-4ea1d49288b1'),
-	(16,'CpFieldLinks','1.2.2','1.0',NULL,'unknown',1,NULL,'2017-07-17 21:20:11','2017-07-17 21:20:11','2017-11-17 15:10:31','4766608d-4053-4413-a74e-1bc3ca584459'),
-	(19,'FmContentKing','0.0.1','0.0.1',NULL,'unknown',1,NULL,'2017-11-10 21:59:53','2017-11-10 21:59:53','2017-11-17 15:10:31','b5584013-e4fd-45a7-af71-a5b70e45dfd1'),
-	(20,'Hacksaw','1.1.2',NULL,NULL,'unknown',1,NULL,'2017-11-10 22:23:51','2017-11-10 22:23:51','2017-11-17 15:10:31','ddec166f-4dfd-4483-9e4a-ff031308cfb6'),
-	(22,'FmSitemap','0.0.1',NULL,NULL,'unknown',1,NULL,'2017-12-03 03:58:18','2017-12-03 03:58:18','2017-12-03 03:58:18','ef9ef91a-0372-4479-ad7e-81420e4cd51f'),
-	(24,'TaskManager','0.4.3',NULL,NULL,'unknown',1,NULL,'2017-12-03 04:01:19','2017-12-03 04:01:19','2017-12-03 04:01:19','20a36cef-d31e-41e8-8d0e-64a286093f8e'),
-	(27,'Helpers','2.1.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-03 04:17:21','2017-12-03 04:17:21','2017-12-03 04:17:21','14634425-8b22-4e99-8b4d-4e6259259f6a'),
-	(28,'BaukastenNeoStyles','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-03 23:42:27','2017-12-03 23:42:27','2017-12-03 23:42:27','edf9f0c3-198b-47d9-8ba7-ad77665e0106'),
-	(29,'Retour','1.0.19','1.0.4',NULL,'unknown',1,NULL,'2017-12-03 23:43:04','2017-12-03 23:43:04','2017-12-03 23:43:04','3533dc77-1517-40c3-80f9-056b74c559a9'),
-	(30,'AmCommand','2.2.0','2.0.1',NULL,'unknown',1,NULL,'2017-12-05 14:25:57','2017-12-05 14:25:57','2017-12-05 14:25:57','ec66d6cd-40da-46f2-91b9-736ee1584451');
+	(2,'Cookies','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:44','2017-04-16 22:11:44','2017-12-05 14:34:30','ef47ceba-51a6-4565-90bd-bfc199022e6c'),
+	(3,'FocalPointField','1.0.2',NULL,NULL,'unknown',1,NULL,'2017-04-16 22:11:48','2017-04-16 22:11:48','2017-12-05 14:34:30','4e64b877-25c4-4f86-91ff-a5e3109b4e2f'),
+	(4,'Imager','1.6.4','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:50','2017-04-16 22:11:50','2017-12-05 14:34:30','0cff012d-6717-4a58-aa39-51268d2dbe80'),
+	(5,'Kint','1.1.0','1.0.0',NULL,'unknown',1,'{\"kintDisplayTheme\":\"solarized-dark\"}','2017-04-16 22:11:55','2017-04-16 22:11:55','2017-12-05 14:34:30','f101513d-d2bd-4990-a866-6ad089964b4a'),
+	(6,'FruitLinkIt','2.3.4','2.3.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:59','2017-04-16 22:11:59','2017-12-05 14:34:30','47ace0df-f9d6-49c2-9647-788d50e2e275'),
+	(7,'Minify','1.2.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:23','2017-04-16 22:42:23','2017-12-05 14:34:30','16bd2799-b641-4981-a41c-0e3392a48d5a'),
+	(8,'Neo','1.4.1','1.5.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:26','2017-04-16 22:42:26','2017-12-05 14:34:30','70d7e5dd-2268-40a4-85f3-a7ab5dcf34cc'),
+	(9,'SidebarEnhancer','1.0.9','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:33','2017-04-16 22:42:33','2017-12-05 14:34:30','217a761d-a45d-4d67-8ee2-7cbd11ac91c4'),
+	(10,'SuperTable','1.0.5','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:40','2017-04-16 22:42:40','2017-12-05 14:34:30','196c672e-f9cb-444f-b32c-f399bca73a78'),
+	(11,'TheArchitect','1.6.0','1.6.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:43','2017-04-16 22:42:43','2017-12-05 14:34:30','fb4f3140-f2f7-4c99-9257-087a3f99f655'),
+	(12,'Seomatic','1.1.56','1.1.25',NULL,'unknown',1,NULL,'2017-04-16 22:43:59','2017-04-16 22:43:59','2017-12-05 14:34:30','7dcd03d0-54c8-47ed-b618-e93935503345'),
+	(14,'PreparseField','0.3.6','1.0.0',NULL,'unknown',1,NULL,'2017-06-08 16:47:59','2017-06-08 16:47:59','2017-12-05 14:34:30','76418ae9-5d26-4856-ae7d-4ea1d49288b1'),
+	(16,'CpFieldLinks','1.2.2','1.0',NULL,'unknown',1,NULL,'2017-07-17 21:20:11','2017-07-17 21:20:11','2017-12-05 14:34:30','4766608d-4053-4413-a74e-1bc3ca584459'),
+	(19,'FmContentKing','0.0.1','0.0.1',NULL,'unknown',1,NULL,'2017-11-10 21:59:53','2017-11-10 21:59:53','2017-12-05 14:34:30','b5584013-e4fd-45a7-af71-a5b70e45dfd1'),
+	(20,'Hacksaw','1.1.2',NULL,NULL,'unknown',1,NULL,'2017-11-10 22:23:51','2017-11-10 22:23:51','2017-12-05 14:34:30','ddec166f-4dfd-4483-9e4a-ff031308cfb6'),
+	(22,'FmSitemap','0.0.1',NULL,NULL,'unknown',1,NULL,'2017-12-03 03:58:18','2017-12-03 03:58:18','2017-12-05 14:34:30','ef9ef91a-0372-4479-ad7e-81420e4cd51f'),
+	(24,'TaskManager','0.4.3',NULL,NULL,'unknown',1,NULL,'2017-12-03 04:01:19','2017-12-03 04:01:19','2017-12-05 14:34:30','20a36cef-d31e-41e8-8d0e-64a286093f8e'),
+	(27,'Helpers','2.1.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-03 04:17:21','2017-12-03 04:17:21','2017-12-05 14:34:30','14634425-8b22-4e99-8b4d-4e6259259f6a'),
+	(28,'BaukastenNeoStyles','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-03 23:42:27','2017-12-03 23:42:27','2017-12-05 14:34:30','edf9f0c3-198b-47d9-8ba7-ad77665e0106'),
+	(29,'Retour','1.0.22','1.0.5',NULL,'unknown',1,NULL,'2017-12-03 23:43:04','2017-12-03 23:43:04','2017-12-05 14:34:30','3533dc77-1517-40c3-80f9-056b74c559a9'),
+	(30,'AmCommand','2.2.0','2.0.1',NULL,'unknown',1,NULL,'2017-12-05 14:25:57','2017-12-05 14:25:57','2017-12-05 14:34:30','ec66d6cd-40da-46f2-91b9-736ee1584451');
 
 /*!40000 ALTER TABLE `craft_plugins` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1993,7 +1995,7 @@ DROP TABLE IF EXISTS `craft_retour_stats`;
 CREATE TABLE `craft_retour_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `redirectSrcUrl` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `referrerUrl` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `referrerUrl` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hitCount` int(10) DEFAULT '0',
   `hitLastTime` datetime DEFAULT '2017-12-03 23:43:04',
   `handledByRetour` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -2014,7 +2016,7 @@ VALUES
 	(2,'/assets/images/bitmap/favicons/favicon-128.png','http://baukasten.dev/',2,'2017-12-05 12:59:28',0,'2017-12-05 12:46:32','2017-12-05 12:59:28','3509530f-e911-4b87-ba97-51032aa3aad7'),
 	(3,'/assets/images/bitmap/favicons/favicon-196x196.png','http://baukasten.dev/',2,'2017-12-05 12:59:29',0,'2017-12-05 12:46:33','2017-12-05 12:59:29','9258c503-846e-49f0-8c10-8c57bc06b6dc'),
 	(4,'/favicon.ico','http://baukasten.dev/admin/login',1,'2017-12-05 12:58:26',0,'2017-12-05 12:58:26','2017-12-05 12:58:26','f46e0b65-0b92-4b30-8702-4adb894deaad'),
-	(5,'/__webpack_hmr','http://baukasten.dev/dev/modules-content-builder-nested',268,'2017-12-05 14:32:13',0,'2017-12-05 12:59:28','2017-12-05 14:32:13','41685dde-2e82-4e50-afae-c2499a05ac03');
+	(5,'/__webpack_hmr','http://baukasten.dev/dev/modules-content-builder-nested',272,'2017-12-05 14:33:38',0,'2017-12-05 12:59:28','2017-12-05 14:33:38','41685dde-2e82-4e50-afae-c2499a05ac03');
 
 /*!40000 ALTER TABLE `craft_retour_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3639,6 +3641,7 @@ CREATE TABLE `craft_templatecaches` (
   PRIMARY KEY (`id`),
   KEY `craft_templatecaches_expiryDate_cacheKey_locale_path_idx` (`expiryDate`,`cacheKey`,`locale`,`path`),
   KEY `craft_templatecaches_locale_fk` (`locale`),
+  KEY `craft_templatecaches_expiryDate_cacheKey_locale_idx` (`expiryDate`,`cacheKey`,`locale`),
   CONSTRAINT `craft_templatecaches_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
