@@ -5,7 +5,7 @@
  */
 
 .m-postNav {
-  @include make-col(12);
+  @include make-col-flex(12);
   @include make-vr();
   $root: &;
   margin: 0;
@@ -13,11 +13,11 @@
   list-style: none;
 
   &__inner {
-    @include make-row();
+    @include make-row-flex();
   }
 
   &__item {
-    @include make-col(6);
+    @include make-col-flex(6);
 
     &--next {
       margin-left: auto;
@@ -63,7 +63,7 @@
     top: 50%;
 
     svg path {
-      fill: c('black', '90');
+      fill: c('black', 90);
     }
 
     &--prev {
@@ -88,7 +88,7 @@
   }
 
   &__label {
-    @include fs('ms-2');
+    @include ms-respond(font-size, -2);
     display: none;
     color: c('black', '40');
     margin-top: s(-2);
@@ -100,7 +100,6 @@
   }
 
   &__title {
-    font-weight: 500;
     display: none;
 
     @include media('>=s') {

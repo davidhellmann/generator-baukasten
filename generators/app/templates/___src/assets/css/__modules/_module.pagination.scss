@@ -1,7 +1,8 @@
-/* -------------------------------------------------- */
-/*    Pagination
-/* -------------------------------------------------- */
-
+/*
+ |--------------------------------------------------------------------------
+ |  Pagination
+ |--------------------------------------------------------------------------
+ */
 
 .m-pagination {
   @include make-vr();
@@ -17,7 +18,7 @@
 
   &__link {
     background-color: transparent;
-    color: color('black', '80');
+    color: c('black', '80');
     line-height: 38px;
     width: 40px;
     height: 40px;
@@ -26,9 +27,7 @@
     border-radius: 300px;
     flex: 0 0 40px;
 
-    .wf-loaded & {
-      font-family: ff('sans-serif');
-    }
+    @include wf('sans-serif');
 
     &:hover {
       background: c('black', '80');
@@ -41,4 +40,3 @@
     }
   }
 }
-

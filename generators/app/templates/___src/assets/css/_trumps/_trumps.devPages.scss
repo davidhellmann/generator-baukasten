@@ -1,0 +1,187 @@
+/* -------------------------------------------------- */
+/*    .t-devPages
+/* -------------------------------------------------- */
+
+// Modul
+.t-devPages {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+
+  // Status List
+  &__statusList {
+    position: relative;
+    @include make-vr();
+  }
+
+  &__statusListItem {
+    border: 1px dotted c('black', '10');
+    font-size: ms(-1);
+    position: relative;
+    @include f(s(1), s(2), margin-bottom);
+    transition: all 0.25s ease('out-cubic');
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &--disabled {
+      @include f(s(1), s(2), margin-bottom);
+    }
+  }
+
+  &__statusListCheckbox {
+    position: absolute;
+    left: -100px;
+    opacity: 0;
+
+    &:checked ~ #{$root}__statusListContent {
+      display: block;
+      box-shadow: 0 5px 50px rgba(c('black'), 0.1);
+    }
+
+    &:checked ~ #{$root}__statusListLabel {
+      background: linear-gradient(to bottom, c('black', '05'), transparent);
+
+      &::before,
+      &::after {
+        background-color: c('black');
+      }
+
+      &::after {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__statusListLabel {
+    display: block;
+    cursor: pointer;
+    padding: s(2) s(7) s(2) s(3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    &--disabled {
+      cursor: default;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      width: 10px;
+      height: 2px;
+      position: absolute;
+      right: s(4);
+      top: s(3.5);
+      background-color: c('black', '25');
+      transition: all 0.25s ease('out-cubic');
+    }
+
+    &::after {
+      transform: rotate(-90deg);
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        background-color: c('black');
+      }
+    }
+  }
+
+  &__statusListNumber {
+    display: inline-block;
+    color: c('black', '25');
+    font-weight: 700;
+    width: s(5);
+  }
+
+  &__statusListName {
+    font-size: ms(1);
+    text-transform: capitalize;
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  &__statusListType {
+    display: inline-block;
+    font-size: ms(-2);
+    text-transform: capitalize;
+
+    &::before {
+      content: '—';
+      color: c('black', '25');
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: ms(-2);
+      margin: 0 s(1);
+    }
+  }
+
+  &__statusListStatus {
+    display: inline-block;
+    font-size: ms(-2);
+    font-weight: 700;
+    text-transform: capitalize;
+
+    &::before {
+      content: '—';
+      color: c('black', '25');
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: ms(-2);
+      margin: 0 s(1);
+    }
+  }
+
+  &__statusListContent {
+    display: none;
+    padding: s(2) s(8);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    .tab {
+      font-weight: 700;
+      font-size: ms(-1) !important;
+      text-transform: capitalize;
+      @include make-vr();
+
+      &.lower {
+        text-transform: lowercase;
+      }
+
+      &:first-child {
+        @include make-vr(1/2);
+      }
+    }
+
+    .content {
+      border-bottom: 1px dotted c('black', '10');
+      padding-bottom: s(2);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &.notes,
+      &.description {
+        font-style: italic;
+      }
+    }
+  }
+}
+
+// Modul Modifiers Example
+.t-devPages--modifier {
+  .t-devPages__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

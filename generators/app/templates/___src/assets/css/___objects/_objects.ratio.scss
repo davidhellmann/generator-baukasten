@@ -1,8 +1,10 @@
-/* -------------------------------------------------- */
-/*    .o-ratio
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Ratio
+ |--------------------------------------------------------------------------
+ */
 
-$dh-ratios: (
+$bk-ratios: (
   (2:1),
   (3:1),
   (3:2),
@@ -46,7 +48,7 @@ $dh-ratios: (
 
 
 // Ratio variants
-@each $ratio in $dh-ratios {
+@each $ratio in $bk-ratios {
   @each $antecedent, $consequent in $ratio {
     @if (type-of($antecedent) != number) {
       @error '`#{$antecedent}` needs to be a number.';

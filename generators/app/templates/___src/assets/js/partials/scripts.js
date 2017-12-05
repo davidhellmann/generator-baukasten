@@ -4,6 +4,8 @@
 
 import example from '../scripts/example'
 import bodyClass from '../scripts/bodyclass'
+import disableHover from '../scripts/disableHover'
+import browserDetect from '../scripts/bowser'
 import '../scripts/lazyloading'
 import '../scripts/fontfaceobserver'
 // import '../scripts/pagetransition'
@@ -14,7 +16,9 @@ import '../scripts/fontfaceobserver'
 // Modules Array
 const scriptsArray = [
     example,
-    bodyClass
+    bodyClass,
+    disableHover,
+    browserDetect
 ]
 
 const scripts = {

@@ -13,11 +13,13 @@ import './lib/bling'
 // CSS Import
 import '../css/app.scss'
 
+import './scripts/prism'
+
 // Import Partials
 import scripts from './partials/scripts'
 import templates from './partials/templates'
 import modules from './partials/modules'
-<% if (projectVue) { %>
+
 // Vue Exampleimport
 const vueElement = document.querySelector('#js-vue')
 
@@ -25,7 +27,7 @@ const vueElement = document.querySelector('#js-vue')
 if (vueElement) {
     import('./vue/vueExample')
 }
-<% } %>
+
 const app = {
     toggleGrid() {
         const gridOverlay = document.querySelector('.o-gridOverlay')

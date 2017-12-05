@@ -1,7 +1,7 @@
 <template>
   <div class="o-section vue">
     <div class="o-row">
-      <div class="o-col">
+      <div class="o-col-12  o-col-s-24">
         <h2>Hello World</h2>
         <input type="text" v-model="message">
         <p>
@@ -13,8 +13,14 @@
 </template>
 
 <style lang="scss">
-  .vue p {
-    @include f(fs('ms3'), fs('ms7'));
+  .vue {
+    p {
+      @include f(fs('ms3'), fs('ms7'));
+    }
+
+    input {
+      @include make-vr();
+    }
   }
 </style>
 
@@ -23,7 +29,7 @@
   export default {
     data() {
       return {
-        message: 'hello vue'
+        message: 'Type something…'
       }
     }
   }

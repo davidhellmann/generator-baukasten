@@ -5,7 +5,7 @@
  */
 
 .m-paginationSimple {
-  @include make-col(12);
+  @include make-col-flex(12);
   @include make-vr();
   $root: &;
   margin: 0;
@@ -13,11 +13,11 @@
   list-style: none;
 
   &__inner {
-    @include make-row();
+    @include make-row-flex();
   }
 
   &__item {
-    @include make-col(6);
+    @include make-col-flex(6);
 
     &--next {
       margin-left: auto;

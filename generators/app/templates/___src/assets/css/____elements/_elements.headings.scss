@@ -1,6 +1,8 @@
-/* -------------------------------------------------- */
-/*    Headings
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Headings
+ |--------------------------------------------------------------------------
+ */
 
 h1,
 h2,
@@ -8,38 +10,50 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
   word-wrap: break-word;
-  font-family: ff('headline');
   line-height: 1.2;
+  font-weight: 700;
+  @include make-vr(2);
+  @include f(s(-1), s(-2), margin-bottom);
+
+  @include wf('headline');
+}
+
+
+.m-headline--mega {
+  @include ms-respond(font-size, 6);
+}
+
+.m-headline--super {
+  @include ms-respond(font-size, 5);
 }
 
 h1,
 .m-headline--h1 {
-  @include f(fs('ms3'), fs('ms5'));
+  @include ms-respond(font-size, 4);
 }
 
 h2,
 .m-headline--h2 {
-  @include f(fs('ms2'), fs('ms4'));
+  @include ms-respond(font-size, 3);
 }
 
 h3,
 .m-headline--h3 {
-  @include f(fs('ms1'), fs('ms3'));
+  @include ms-respond(font-size, 2);
 }
 
 h4,
 .m-headline--h4 {
-  @include f(fs('ms0'), fs('ms2'));
+  @include ms-respond(font-size, 1);
 }
 
 h5,
 .m-headline--h5 {
-  @include f(fs('ms0'), fs('ms2'));
+  @include ms-respond(font-size, 0);
 }
 
 h6,
 .m-headline--h6 {
-  @include f(fs('ms0'), fs('ms2'));
+  @include ms-respond(font-size, 0);
 }

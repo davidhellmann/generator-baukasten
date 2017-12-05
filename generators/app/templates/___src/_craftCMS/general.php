@@ -24,7 +24,10 @@ return array(
         'enableCsrfProtection' => true,
         'backupDbOnUpdate' => false,
         'cpTrigger' => 'admin',
+        'preventUserEnumeration' => 'true',
+        'sendPoweredByHeader' => 'false',
         'defaultCpLanguage' => 'en',
+        'postCpLoginRedirect' => 'entries',
         'maxUploadFileSize' => 67108864,
         'defaultSearchTermOptions' => [
             'attribute' => null,
@@ -35,7 +38,7 @@ return array(
         ],
 
         'defaultTemplateExtensions' => array('html', 'twig', 'rss'),
-        
+
         /*
         'siteUrl' => array(
             'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
@@ -66,7 +69,7 @@ return array(
     // Staging (pre-production) environment
     'staging'  => array(
         'isSystemOn' => false,
-        'devMode' => false,
+        'devMode' => true,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
     ),

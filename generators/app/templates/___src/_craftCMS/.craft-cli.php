@@ -28,7 +28,7 @@ return array(
      * If you leave this blank, it will assume your
      * folder is <current directory>/craft/config
      */
-    'craft_config_path' => __DIR__.'/___dist/config/',
+    'craft_config_path' => __DIR__.'/___dist/craft/config/',
 
     /**
      * Craft plugins path
@@ -37,7 +37,7 @@ return array(
      * If you leave this blank, it will assume your
      * folder is <current directory>/craft/plugins
      */
-    'craft_plugins_path' => __DIR__.'/___dist/plugins/',
+    'craft_plugins_path' => __DIR__.'/___dist/craft/plugins/',
 
     /**
      * Craft storage path
@@ -55,7 +55,7 @@ return array(
      * If you leave this blank, it will assume your
      * folder is <current directory>/craft/templates
      */
-    'craft_templates_path' => __DIR__.'/___dist/templates/',
+    'craft_templates_path' => __DIR__.'/___dist/craft/templates/',
 
     /**
      * Craft translations path

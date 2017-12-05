@@ -3,11 +3,25 @@
 /* -------------------------------------------------- */
 
 a {
-  color: c('red');
+  color: c('blue');
   text-decoration: none;
   transition: all 0.25s ease('out-cubic');
 
+  @include wf('bold');
+
   &:hover {
-    color: darken(c('red'), 10%);
+    color: darken(c('blue'), 10%);
+  }
+}
+
+.a-richText a,
+.m-richTextMarginals a {
+  border-bottom: 1px solid c('blue');
+  text-decoration: none;
+  padding-bottom: 1px;
+
+  &:hover {
+    padding-bottom: 1px;
+    border-bottom: 1px solid darken(c('blue'), 10%);
   }
 }

@@ -1,6 +1,8 @@
-/* -------------------------------------------------- */
-/*    Page
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Page
+ |--------------------------------------------------------------------------
+ */
 
 html {
   font-size: 100%;
@@ -9,11 +11,15 @@ html {
 }
 
 body {
-  @include f($msFont-min, $msFont-max);
-  line-height: $lineHeight-base;
+  @include ms-respond(font-size, 0);
+  line-height: $bk-baseLineHeight;
 
   /* stylelint-disable */
-  .js &.is-navOpen {
+  .js &.no-hover > * {
+    pointer-events: none;
+  }
+
+  .js &.is-open--navigation {
     height: 100vh;
     overflow: hidden;
   }

@@ -1,23 +1,23 @@
-/* -------------------------------------------------- */
-/*    Quotes
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Quotes
+ |--------------------------------------------------------------------------
+ */
 
 blockquote {
+  margin: 0;
+
   p {
-    @include f(fs('ms0'), fs('ms3'));
+    @include ms-respond(font-size, 1);
     font-style: italic;
 
-    .wf-loaded & {
-      font-family: ff('serif');
-    }
+    @include wf('serif');
   }
 
   footer {
-    /* empty */
-    margin-top: s(1);
+    @include make-vr();
 
     cite {
-      /* empty */
       font-style: normal;
     }
   }

@@ -1,10 +1,12 @@
-/* -------------------------------------------------- */
-/*    Calc REM
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Calc REM
+ |--------------------------------------------------------------------------
+ */
 
-$dh-browserContext: 16;
+$bk-browserContext: 16;
 
-@function calc-rem($pixels, $context: $dh-browserContext) {
+@function calc-rem($pixels, $context: $bk-browserContext) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }

@@ -2,21 +2,26 @@
  * modules
  */
 
-import accordion    from '../../../templates/_modules/accordion/_main'
-import cookiebar    from '../../../templates/_modules/cookiebar/_main'
-import imageSlider  from '../../../templates/_modules/imageSlider/_main'
-import imageGallery from '../../../templates/_modules/imageGallery/_main'
-import preloader from '../../../templates/_modules/preloader/_main'
-import navCategories from '../../../templates/_modules/navCategories/_main'
+import preloader from '../../../templates/_atoms/preloader/_script'
+import code from '../../../templates/_atoms/code/_script'
+import imageSlider  from '../../../templates/_organisms/imageSlider/_script'
+import imageGallery  from '../../../templates/_organisms/imageGallery/_script'
+// import accordion    from '../../../templates/_templates/accordion/_main'
+// import cookiebar    from '../../../templates/_modules/cookiebar/_main'
+// import imageSlider  from '../../../templates/_modules/imageSlider/_main'
+// import imageGallery from '../../../templates/_modules/imageGallery/_main'
+// import navCategories from '../../../templates/_modules/navCategories/_main'
 
 // Modules Array
 const modulesArray = [
     preloader,
-    accordion,
-    cookiebar,
+    code,
     imageSlider,
     imageGallery,
-    navCategories
+    // accordion,
+    // cookiebar,
+    // imageGallery,
+    // navCategories
 ]
 
 const modules = {

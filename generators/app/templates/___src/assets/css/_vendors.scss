@@ -1,6 +1,13 @@
-/* -------------------------------------------------- */
-/*    Vendors
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Vendors
+ |--------------------------------------------------------------------------
+ */
 
 // @import 'vendors/flickity/flickity';
-@import 'vendors/swiper/swiperOverwrites';
+@import '~flickity/dist/flickity';
+@import 'vendors/flickity/flickity';
+@import 'vendors/photoswipe/photoswipeOverwrites';
+@import 'vendors/prism/prism';
+// @import '~swiper/dist/css/swiper';
+// @import 'vendors/swiper/swiperOverwrites';

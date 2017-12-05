@@ -1,0 +1,15 @@
+/* -------------------------------------------------- */
+/*    Web Font Loaded
+/* -------------------------------------------------- */
+
+@mixin webfontloaded($font) {
+  .wf-loaded & {
+    font-family: ff($font);
+  }
+}
+
+// Shorthand Version
+@mixin wf($args...) {
+  @include webfontloaded($args...);
+}
+
