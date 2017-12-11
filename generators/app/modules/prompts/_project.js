@@ -85,10 +85,10 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
         }),
         default(answers) {
             // If the Answer includes .dev or .local
-            if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
+            if (answers.projectName.includes('.dev') || answers.projectName.includes('.local') || answers.projectName.includes('.test')) {
                 return answers.projectName
             }
-            return `${answers.projectName}.dev`
+            return `${answers.projectName}.test`
         },
         validate(input) {
             if (input !== false) {

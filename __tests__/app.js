@@ -10,7 +10,7 @@ const project = {
     name: 'awesome',
     description: 'A small Test Driven Generator',
     version: '0.0.1',
-    proxy: 'awesome.dev',
+    proxy: 'awesome.test',
     type: 'craftCMS'
 }
 const author = {
