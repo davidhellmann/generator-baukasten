@@ -46,7 +46,6 @@ return array(
         ),
         */
         'siteUrl' => getenv('CRAFTENV_SITE_URL'),
-        'rootUrl' => getenv('CRAFTENV_SITE_URL'),
         'craftEnv' => CRAFT_ENVIRONMENT,
 
         // Set the environmental variables
@@ -55,6 +54,7 @@ return array(
             'basePath' => getenv('CRAFTENV_BASE_PATH'),
             'uploadUrl' => getenv('CRAFTENV_BASE_URL') . 'uploads/',
             'uploadPath' => getenv('CRAFTENV_BASE_PATH') . 'uploads/',
+            'rootUrl' => getenv('CRAFTENV_SITE_URL'),
         ),
     ],
 
