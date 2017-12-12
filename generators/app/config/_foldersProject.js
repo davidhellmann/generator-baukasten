@@ -73,6 +73,14 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS',
+                'craftCMS3'
+            ],
+            src: '___src/scripts/ferdi/',
+            dest: 'scripts/ferdi/'
+        },
+        {
+            projectContext: [
+                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],

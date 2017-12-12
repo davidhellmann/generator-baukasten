@@ -25,6 +25,10 @@ module.exports = {
             dest: '.editorconfig'
         },
         {
+            src: '_ferdirc.js',
+            dest: 'ferdirc.js'
+        },
+        {
             src: 'jshintrc',
             dest: '.jshintrc'
         },
