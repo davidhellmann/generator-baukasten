@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.35)
 # Datenbank: db12345678_baukasten
-# Erstellt am: 2017-12-05 14:34:42 +0000
+# Erstellt am: 2017-12-12 15:40:55 +0000
 # ************************************************************
 
 
@@ -1423,7 +1423,7 @@ LOCK TABLES `craft_info` WRITE;
 
 INSERT INTO `craft_info` (`id`, `version`, `schemaVersion`, `edition`, `siteName`, `siteUrl`, `timezone`, `on`, `maintenance`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'2.6.2999','2.6.12',2,'Baukasten','http://baukasten.dev','UTC',1,0,'2017-04-16 21:53:40','2017-12-05 14:34:25','66d3ce2a-d695-463f-af51-9364c16014bf');
+	(1,'2.6.2999','2.6.12',2,'Baukasten','http://baukasten.test','UTC',1,0,'2017-04-16 21:53:40','2017-12-12 15:17:00','66d3ce2a-d695-463f-af51-9364c16014bf');
 
 /*!40000 ALTER TABLE `craft_info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2012,11 +2012,12 @@ LOCK TABLES `craft_retour_stats` WRITE;
 
 INSERT INTO `craft_retour_stats` (`id`, `redirectSrcUrl`, `referrerUrl`, `hitCount`, `hitLastTime`, `handledByRetour`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'/assets/images/bitmap/favicons/favicon-96x96.png','http://baukasten.dev/',2,'2017-12-05 12:59:28',0,'2017-12-05 12:46:31','2017-12-05 12:59:28','abd7b175-ea7c-414e-86e4-102ac6f5d852'),
-	(2,'/assets/images/bitmap/favicons/favicon-128.png','http://baukasten.dev/',2,'2017-12-05 12:59:28',0,'2017-12-05 12:46:32','2017-12-05 12:59:28','3509530f-e911-4b87-ba97-51032aa3aad7'),
-	(3,'/assets/images/bitmap/favicons/favicon-196x196.png','http://baukasten.dev/',2,'2017-12-05 12:59:29',0,'2017-12-05 12:46:33','2017-12-05 12:59:29','9258c503-846e-49f0-8c10-8c57bc06b6dc'),
-	(4,'/favicon.ico','http://baukasten.dev/admin/login',1,'2017-12-05 12:58:26',0,'2017-12-05 12:58:26','2017-12-05 12:58:26','f46e0b65-0b92-4b30-8702-4adb894deaad'),
-	(5,'/__webpack_hmr','http://baukasten.dev/dev/modules-content-builder-nested',272,'2017-12-05 14:33:38',0,'2017-12-05 12:59:28','2017-12-05 14:33:38','41685dde-2e82-4e50-afae-c2499a05ac03');
+	(1,'/assets/images/bitmap/favicons/favicon-96x96.png','http://baukasten.test/',3,'2017-12-12 15:12:27',0,'2017-12-05 12:46:31','2017-12-12 15:12:27','abd7b175-ea7c-414e-86e4-102ac6f5d852'),
+	(2,'/assets/images/bitmap/favicons/favicon-128.png','http://baukasten.test/',3,'2017-12-12 15:12:28',0,'2017-12-05 12:46:32','2017-12-12 15:12:28','3509530f-e911-4b87-ba97-51032aa3aad7'),
+	(3,'/assets/images/bitmap/favicons/favicon-196x196.png','http://baukasten.test/',3,'2017-12-12 15:12:28',0,'2017-12-05 12:46:33','2017-12-12 15:12:28','9258c503-846e-49f0-8c10-8c57bc06b6dc'),
+	(4,'/favicon.ico','http://baukasten.test/',5,'2017-12-12 15:11:35',0,'2017-12-05 12:58:26','2017-12-12 15:11:35','f46e0b65-0b92-4b30-8702-4adb894deaad'),
+	(5,'/__webpack_hmr','http://baukasten.test/',298,'2017-12-12 15:24:19',0,'2017-12-05 12:59:28','2017-12-12 15:24:19','41685dde-2e82-4e50-afae-c2499a05ac03'),
+	(6,'/','http://baukasten.test/admin/entries',6,'2017-12-12 15:11:39',0,'2017-12-12 15:07:58','2017-12-12 15:11:39','f9b67ce7-fe02-4c03-9ae9-6fb5845167f0');
 
 /*!40000 ALTER TABLE `craft_retour_stats` ENABLE KEYS */;
 UNLOCK TABLES;
