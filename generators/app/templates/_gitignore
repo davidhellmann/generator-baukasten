@@ -106,18 +106,6 @@ ___dist/wp-content/themes/<%= projectName %>/*
 !___dist/wp-content/themes/<%= projectName %>/acf-json/
 <% } %>
 
-<% if (projectType === 'craftCMS' ) { %>
-# Craft CMS
-___dist/craft/*
-!___dist/craft/plugins
-!___dist/craft/translations
-!___dist/craft/config
-___dist/public/uploads
-___dist/public/assets
-___dist/.env.php
-styleguide/
-<% } %>
-
 <% if (projectType === 'craftCMS3' ) { %>
 # Craft CMS Beta
 ___dist/config/license.key

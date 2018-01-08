@@ -1,3 +1,5 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Master Layout
   ------------------------------------------------------------
@@ -5,24 +7,8 @@
   This i the basic layout. Feel free to modify
 #}
 
-{# Include Macros #}
-{# -- All Macros --
-{% import '_partials/macros/_macro-amNav.html' as macroAmNav %}
-{% import '_partials/macros/_macro-bgImage.html' as macroBgImage %}
-{% import '_partials/macros/_macro-image.html' as macroImage %}
-{% import '_partials/macros/_macro-isActive.html' as macroIsActive %}
-{% import '_partials/macros/_macro-niceTime.html' as macroNiceTime %}
-{% import '_partials/macros/_macro-pagination.html' as macroPagination %}
-{% import '_partials/macros/_macro-languageSwitcher.html' as macroLanguageSwitcher %}
-{% import '_partials/macros/_macro-paginationSimple.html' as macroPaginationSimple %}
-{% import '_partials/macros/_macro-postNav.html' as macroPostNav %}
-{% import '_partials/macros/_macro-socialNetworks.html' as macroSocialNetworks %}
-{% import '_partials/macros/_macro-srcset.html' as macroSrcset %}
-{% import '_partials/macros/_macro-svgSprite.html' as macroSvgSprite %}
-#}
-
 <!DOCTYPE html>
-<html class="" lang="{{ craft.i18n.getCurrentLocale() }}">
+<html class="" lang="{{ craft.app.locale }}">
 <head>
 
   {# -- CHECK JS -- #}
@@ -30,7 +16,7 @@
 
   {# -- CRITICAL CSS -- #}
   {% set cacheVal = getCookie('critical-css') %}
-  {% if not cacheVal or craft.config.devMode %}
+  {% if not cacheVal or craft.app.config.general.devMode %}
     {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
     {% block appInlineCSS %}
     {% endblock %}
@@ -47,7 +33,7 @@
 
   {# -- Custom Social Image -- #}
   {% if (
-  (entry.singleImageEntry is defined and entry.singleImageEntry | length) or
+  (entry.singleImageEntry ?? null) or
   (seomaticSiteMeta.siteSeoImage is defined and seomaticSiteMeta.siteSeoImage | length )
   ) and (logo.globalLogo is defined and logo.globalLogo | length) %}
 
@@ -158,7 +144,7 @@
 </head>
 {% minify html %}
 <body id="home"
-      class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
+      class="{{ bodyClass is defined ? bodyClass }}  {{ craft.app.request.isLivePreview ? 'is-livePreview' }}  {{ craft.app.config.general.devMode ? 't-devMode' }}">
 
 {# -- Preloader#}
 {% include '_atoms/preloader/_template.html' only %}
@@ -178,7 +164,7 @@
 </div>
 
 {# -- Grid Overlay -- #}
-{% if craft.config.devMode %}
+{% if craft.app.config.general.devMode %}
   <div class="js-toggleGrid">G</div>
   <div class="o-section  o-gridOverlay  ">
     <div class="o-row">
@@ -196,3 +182,4 @@
 {% endminify %}
 <!-- Läuft, weitermachen! -->
 </html>
+

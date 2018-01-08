@@ -2,66 +2,17 @@ module.exports = {
     files: [
         {
             projectContext: [
-                'craftCMS'
+                'craftCMS3'
             ],
-            src: '___src/_craftCMS/imager/imager.php',
-            dest: '___dist/craft/config/imager.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/db.php',
-            dest: '___dist/craft/config/db.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/general.php',
-            dest: '___dist/craft/config/general.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/public/index.php',
-            dest: '___dist/public/index.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/.env.php',
-            dest: '___dist/.env.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/example.env.php',
-            dest: '___dist/example.env.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/.craft-cli.php',
-            dest: '.craft-cli.php'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/redactor/Baukasten.json',
-            dest: '___dist/craft/config/redactor/Baukasten.json'
+            src: '___src/_craftCMS3/imager/imager.php',
+            dest: '___dist/config/imager.php'
         },
         {
             projectContext: [
                 'craftCMS3'
             ],
-            src: '___src/_craftCMS3/imager/imager.php',
-            dest: '___dist/config/imager.php'
+            src: '___src/_craftCMS3/image-optimize/image-optimize.php',
+            dest: '___dist/config/image-optimize.php'
         },
         {
             projectContext: [
@@ -111,13 +62,6 @@ module.exports = {
             ],
             src: '___src/_craftCMS3/example.env.php',
             dest: '___dist/example.env.php'
-        },
-        {
-            projectContext: [
-                'craftCMS3'
-            ],
-            src: '___src/_craftCMS3/plugins/craft3-plugins.sh',
-            dest: '___dist/craft3-plugins.sh'
         },
         {
             projectContext: [

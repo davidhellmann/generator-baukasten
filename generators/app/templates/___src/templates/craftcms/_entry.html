@@ -1,6 +1,7 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {# -- Entry Router -- #}
 {# ---------------------------------------------------------------------- #}
-
 {% include [
   'entry/' ~ entry.section.handle ~ '/' ~ entry.type,
   'entry/' ~ entry.section.handle ~ '/default',

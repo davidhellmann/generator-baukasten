@@ -9,7 +9,7 @@ const promptsCraftCMS3 = [
         name: 'craftCMS3Install',
         message: message({
             headline: 'Craft CMS 3 Installation',
-            description: 'Do you want to install the Craft 3 Beta version via Composer?'
+            description: 'Do you want to install the Craft 3 version via Composer?'
         }),
         default: true
     }

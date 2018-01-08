@@ -16,9 +16,14 @@ blockquote {
 
   footer {
     @include make-vr();
+    text-align: right;
 
     cite {
       font-style: normal;
+
+      &::before {
+        content: '— ';
+      }
     }
   }
 }

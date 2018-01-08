@@ -21,7 +21,7 @@
   // }
 
   // forgot the 'alt' attribute
-  img:not([alt]) {
+  img:not([alt]):not(.pswp__img) {
     @include debug-error();
   }
 

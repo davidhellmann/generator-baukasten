@@ -22,7 +22,6 @@ const addVueJS = require('../../package/_vueJS')
 const addSrcPaths = require('../../package/_srcPaths')
 
 // Dist Paths
-const addDistPathsCraftCMS = require('../../package/_distPathsCraftCMS')
 const addDistPathsCraftCMS3 = require('../../package/_distPathsCraftCMS3')
 const addDistPathsWordpress = require('../../package/_distPathsWordpress')
 
@@ -44,9 +43,7 @@ const writePackageJSON = () => {
 
                 // Paths
                 addSrcPaths({pkg}, context)
-                if (context.props.projectType === 'craftCMS') {
-                    addDistPathsCraftCMS({pkg})
-                } else if (context.props.projectType === 'craftCMS3') {
+                if (context.props.projectType === 'craftCMS3') {
                     addDistPathsCraftCMS3({pkg})
                 } else if (context.props.projectType === 'wordpress') {
                     addDistPathsWordpress({pkg}, context)

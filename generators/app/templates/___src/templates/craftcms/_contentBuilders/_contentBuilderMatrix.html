@@ -1,32 +1,73 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Content Builder Matrix
   ======================
 
   Matrix Content Builder use the Core Matrix Field from Craft CMS
 #}
-<div class="o-contentBuilder">
-  {% if entry.contentBuilderMatrix|length %}
-    {% set matrixfield = entry.contentBuilderMatrix %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'o-contentBuilder',
+  modifiers: [],
+  object: entry ?? null,
+  context: '12:24'
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{% if opt.object %}
+{# -- Colums Context -- #}
+{% set context = opt.context | split(':') %}
+{% set contextFirst = context[0] %}
+{% set contextLast = context[1] %}
+
+  <div class="{{ opt.cn }}
+            {% for modifier in opt.modifiers %}
+              {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
+            {% endfor %}">
+
+  {% if opt.object.contentBuilderMatrix|length %}
+    {% set matrixfield = opt.object.contentBuilderMatrix.all() %}
 
     {% for content in matrixfield %}
       {% if loop.first and content.type != 'bkSection' %}
-        FIRST CONTENT BUILDER BLOCK IS NOT A SECTION!!!
+        {% include '_organisms/section/_template.html' with {
+          opt: {
+            modifiers: ['cb'],
+            context: 'o-col-' ~ contextFirst ~  '  o-col-s-' ~ contextLast
+          }
+        } only %}
+      {% endif %}
 
-      {% elseif content.type == 'bkSection' and loop.first %}
-        <div class="o-section">
-
-      {% elseif content.type == 'bkSection' and not loop.first %}
-        </div>
-        <div class="o-section">
-
-      {% elseif content.type != 'bkSection' %}
-        <div class="o-row  o-row--left  o-contentBuilder__block  o-contentBuilder__block--{{ content.type }}">
-          <div class="o-row__inner  o-contentBuilder__blockInner  o-contentBuilder__blockInner--{{ content.type }}">
-            {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+      {# Check if an other Section is opened and close the Section before #}
+      {% if content.type == 'bkSection' %}
+        {% if not loop.first %}
+              </div>
+            </div>
           </div>
-        </div>
+        <!-- end: o-section -->
+        {% endif %}
+        <!-- start: o-section -->
+        {% include '_contentBuilders/_contentBuilderModulesMatrix.html' with {
+          data: content,
+          context: opt.context
+        } only %}
+
+      {# All other Content Modules #}
+      {% elseif content.type != 'bkSection' %}
+        {% include '_contentBuilders/_contentBuilderModulesMatrix.html' with {
+          data: content,
+          context: opt.context
+        } only %}
       {% endif %}
     {% endfor %}
+        </div>
+      </div>
     </div>
-  {% endif %}
-</div>
+    <!-- end: o-section -->
+    {% endif %}
+  </div>
+{% endif %}

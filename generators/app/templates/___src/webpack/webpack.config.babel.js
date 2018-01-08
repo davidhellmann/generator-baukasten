@@ -296,7 +296,7 @@ module.exports = {
         // Dateiname für das Extracted CSS von Vue
         // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
         new ExtractTextPlugin({
-            filename: 'assets/css/[name].[chunkhash].min.css',
+            filename: 'css/[name].[chunkhash].min.css',
             allChunks: true
         }),
 
@@ -330,8 +330,8 @@ module.exports = {
             }),
         ),
 
-        // jQuery Stuff
         <% if (projectjQuery) { %>
+        // jQuery Stuff
         new webpack.ProvidePlugin({
            $: 'jquery',
            jQuery: 'jquery'

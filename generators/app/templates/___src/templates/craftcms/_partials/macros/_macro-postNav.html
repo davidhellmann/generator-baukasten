@@ -1,3 +1,5 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Prev / Next Link
   ------------------------------------------------------------
@@ -26,7 +28,7 @@
 
   {% if options.section %}
     {# Set parameters for prev/next elements list #}
-    {% set entries = craft.entries.section(options.section).order(options.order).limit(null) %}
+    {% set entries = craft.entries.section(options.section).orderBy(options.order).limit(null) %}
 
     {# Get the prev/next elements #}
     {% set prevEntry = entry.getPrev(entries) %}

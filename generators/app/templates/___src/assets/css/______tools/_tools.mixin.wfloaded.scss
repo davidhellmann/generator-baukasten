@@ -4,6 +4,7 @@
 
 @mixin webfontloaded($font) {
   .wf-loaded & {
+    font-weight: normal;
     font-family: ff($font);
   }
 }

@@ -23,10 +23,10 @@
 }
 
 // Make Col Mixin
-@mixin make-col-flex($columns: 0, $context: $bk-columns, $padding: true) {
+@mixin make-col-flex($columns: 0, $context: $bk-columnsMax, $padding: true) {
   // Force Columns to 12 if it > as 12
-  @if $columns > $bk-columns {
-    $columns: $bk-columns;
+  @if $columns > $bk-columnsMax {
+    $columns: $bk-columnsMax;
   }
 
   // Make it colish

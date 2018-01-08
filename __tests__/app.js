@@ -11,7 +11,7 @@ const project = {
     description: 'A small Test Driven Generator',
     version: '0.0.1',
     proxy: 'awesome.test',
-    type: 'craftCMS'
+    type: 'craftCMS3'
 }
 const author = {
     name: 'David Hellmann',

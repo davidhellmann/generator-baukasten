@@ -22,7 +22,6 @@ return array(
         'rememberedUserSessionDuration' => 'P4W',
         'defaultWeekStartDay' => 1,
         'enableCsrfProtection' => true,
-        'backupDbOnUpdate' => false,
         'cpTrigger' => 'admin',
         'preventUserEnumeration' => 'true',
         'sendPoweredByHeader' => 'false',
@@ -36,6 +35,9 @@ return array(
             'subLeft' => true,
             'subRight' => true,
         ],
+        'craftEnv' => CRAFT_ENVIRONMENT,
+        'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
+        'usePathInfo' => true,
 
         'defaultTemplateExtensions' => array('html', 'twig', 'rss'),
 
@@ -46,14 +48,11 @@ return array(
         ),
         */
         'siteUrl' => getenv('CRAFTENV_SITE_URL'),
-        'craftEnv' => CRAFT_ENVIRONMENT,
 
         // Set the environmental variables
-        'environmentVariables' => array(
-            'baseUrl'  => getenv('CRAFTENV_BASE_URL'),
+        'custom' => array(
             'basePath' => getenv('CRAFTENV_BASE_PATH'),
-            'uploadUrl' => getenv('CRAFTENV_BASE_URL') . 'uploads/',
-            'uploadPath' => getenv('CRAFTENV_BASE_PATH') . 'uploads/',
+            'baseUrl' => getenv('CRAFTENV_BASE_URL'),
             'rootUrl' => getenv('CRAFTENV_SITE_URL'),
         ),
     ],
@@ -64,14 +63,22 @@ return array(
         'devMode' => false,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
+        'backupOnUpdate' => false,
+        // Custom site-specific config settings
+        'custom' => [
+        ]
     ),
 
     // Staging (pre-production) environment
     'staging'  => array(
-        'isSystemOn' => false,
+        'isSystemOn' => true,
         'devMode' => true,
         'enableTemplateCaching' => true,
         'allowAutoUpdates' => false,
+        'backupOnUpdate' => false,
+        // Custom site-specific config settings
+        'custom' => [
+        ]
     ),
 
     // Local (development) environment
@@ -80,6 +87,10 @@ return array(
         'devMode' => true,
         'enableTemplateCaching' => false,
         'allowAutoUpdates' => true,
+        'backupOnUpdate' => true,
         'disableDevmodeMinifying' => true,
+        // Custom site-specific config settings
+        'custom' => [
+        ]
     ),
 );

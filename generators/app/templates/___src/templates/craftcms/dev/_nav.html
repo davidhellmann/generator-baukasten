@@ -1,4 +1,6 @@
-{% if not craft.config.devMode %}
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{% if not craft.app.config.general.devMode %}
   {% if not currentUser and not currentUser.admin %}
     {% redirect "/" %}
   {% endif %}

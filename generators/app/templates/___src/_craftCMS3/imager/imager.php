@@ -28,9 +28,9 @@ return array(
         'allowUpscale' => false,
         'hashFilename' => false,
         'cacheDuration' => 48384000,
-        'jpegQuality' => 80,
+        'jpegQuality' => 82,
         'pngCompressionLevel' => 2,
-        'webpQuality' => 80,
+        'webpQuality' => 82,
     ],
 
     // Live (production) environment

@@ -42,9 +42,7 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 ## What's inside? A lot! :-)
 ### This three scenarios are covered by the generator:
 - Craft CMS — Up to Date
-- Craft CMS Beta 3 — Not for production
 - WordPress — No up to date but a good startpoint
-- Prototyping (with Twig) — No up to date but a good startpoint
 
 ### Settings
 You can find this stuff here: `___src/assets/css/_______settings`

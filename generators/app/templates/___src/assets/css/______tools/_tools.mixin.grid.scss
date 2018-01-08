@@ -34,7 +34,7 @@
 }
 
 // Row Mixin
-@mixin make-row($colsMin: $bk-columns / 2, $colsMax: $bk-columns, $gap: true) {
+@mixin make-row($colsMin: $bk-columnsMin, $colsMax: $bk-columnsMax, $gap: true) {
   grid-template-columns: repeat($colsMin, 1fr);
 
   @include media('>=s') {
@@ -65,21 +65,21 @@
   @if $key == 'min' {
 
     // Col Base Classes
-    @for $i from 1 through $bk-columns {
+    @for $i from 1 through $bk-columnsMax {
       .o-col-#{$i} {
         @include make-col($i);
       }
     }
 
     // Offset Classes
-    @for $i from 1 through $bk-columns {
+    @for $i from 1 through $bk-columnsMax {
       .o-col-sa-#{$i} {
         @include col-pos($i);
       }
     }
 
     // Row Classes
-    @for $i from 1 through $bk-columns {
+    @for $i from 1 through $bk-columnsMax {
       .o-row-#{$i} {
         grid-template-columns: repeat(#{$i}, 1fr);
       }
@@ -91,21 +91,21 @@
     @include media('>=#{$key}') {;
 
       // Col Classes
-      @for $i from 1 through $bk-columns {
+      @for $i from 1 through $bk-columnsMax {
         .o-col-#{$key}-#{$i} {
           @include make-col($i);
         }
       }
 
       // Offset Classes
-      @for $i from 1 through $bk-columns {
+      @for $i from 1 through $bk-columnsMax {
         .o-col-sa-#{$key}-#{$i} {
           @include col-pos($i);
         }
       }
 
       // Row Classes
-      @for $i from 1 through $bk-columns {
+      @for $i from 1 through $bk-columnsMax {
         .o-row-#{$key}-#{$i} {
           grid-template-columns: repeat(#{$i}, 1fr);
         }

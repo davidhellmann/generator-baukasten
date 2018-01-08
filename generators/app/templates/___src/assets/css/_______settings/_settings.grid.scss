@@ -4,7 +4,8 @@
  |--------------------------------------------------------------------------
  */
 
-$bk-columns:              24;                     // Number of Columns
+$bk-columnsMin:           12;                     // Number of Columns Min
+$bk-columnsMax:           24;                     // Number of Columns Max
 $bk-minWidth:             320px;                  // Min Viewport Size
 $bk-maxWidth:             1440px;                 // Max Viewport Size
 $bk-gutterWidth:          8px;                    // On each side

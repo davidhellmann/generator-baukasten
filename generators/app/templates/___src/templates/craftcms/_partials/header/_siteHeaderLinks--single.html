@@ -1,6 +1,8 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {% set order       = order|default('postDate') %}
 {% set section     = section|default('news') %}
-{% set data        = craft.entries.section(section).order(order) %}
+{% set data        = craft.entries.section(section).orderBy(order) %}
 
 {# Get the prev/next elements #}
 {% set prevEntry   = entry.getPrev(data) %}

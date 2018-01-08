@@ -1,3 +1,5 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {# -- Homepage -- #}
 {# ---------------------------------------------------------------------- #}
 
@@ -7,7 +9,7 @@
 {# -- CRITICAL CSS -- #}
 {% block appInlineCSS %}
   <style>
-    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
   </style>
 {% endblock %}
 
@@ -15,7 +17,7 @@
 {% block appContent %}
 
   {# -- Cache -- #}
-  {% cache globally using key 'home' ~ craft.request.path ~ (craft.request.getPageNum ? '/p' ~ craft.request.getPageNum : '') %}
+  {% cache globally using key 'home' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
 
   <div class="o-section">
     <div class="o-row">

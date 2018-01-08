@@ -4,7 +4,7 @@
  |--------------------------------------------------------------------------
  */
 
-@mixin push($columns, $context: $bk-columns) {
+@mixin push($columns, $context: $bk-columnsMax) {
   position: relative;
   left: if($columns > 0, percentage($columns / $context), auto);
 }

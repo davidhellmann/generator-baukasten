@@ -56,6 +56,7 @@
 @import '../../templates/_atoms/input/style';
 @import '../../templates/_atoms/label/style';
 @import '../../templates/_atoms/link/style';
+@import '../../templates/_atoms/logo/style';
 @import '../../templates/_atoms/plainText/style';
 @import '../../templates/_atoms/preloader/style';
 @import '../../templates/_atoms/richText/style';
@@ -66,7 +67,9 @@
 
 // Molecules
 @import '../../templates/_molecules/caption/style';
+@import '../../templates/_molecules/definitionList/style';
 @import '../../templates/_molecules/figure/style';
+@import '../../templates/_molecules/quote/style';
 @import '../../templates/_molecules/pageTitle/style';
 
 // Organisms
@@ -76,6 +79,7 @@
 @import '../../templates/_organisms/appWrapper/style';
 @import '../../templates/_organisms/contactForm/style';
 @import '../../templates/_organisms/section/style';
+@import '../../templates/_organisms/imageCover/style';
 @import '../../templates/_organisms/imageGallery/style';
 @import '../../templates/_organisms/imageGrid/style';
 @import '../../templates/_organisms/imageSingle/style';

@@ -2,7 +2,6 @@ module.exports = {
     files: [
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -11,39 +10,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
-                'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_atoms/',
-            dest: '___src/templates/_atoms/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
-                'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_embeds/',
-            dest: '___src/templates/_embeds/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
-                'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_molecules/',
-            dest: '___src/templates/_molecules/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
-                'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_organisms/',
-            dest: '___src/templates/_organisms/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -52,7 +18,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -61,7 +26,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -70,7 +34,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -79,7 +42,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/templates/craftcms/',

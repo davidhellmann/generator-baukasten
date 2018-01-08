@@ -1,3 +1,5 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Description of what this file is for
 
@@ -12,12 +14,13 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
-  modifiers: [],
-  data: {},
-  js: null,
-  waypoint: null,
-  waypointAni: null,
+    cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
+    modifiers: [],
+    data: {},
+    js: null,
+    waypoint: null,
+    waypointAni: null,
+    foo: null
 } %}
 
 {# -- Merge Default with Options -- #}

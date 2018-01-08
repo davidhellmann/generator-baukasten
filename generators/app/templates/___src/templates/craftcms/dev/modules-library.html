@@ -1,3 +1,5 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Module Library
   ------------------------------------------------------------
@@ -5,7 +7,7 @@
 
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-development" %}
-{% if craft.seomatic is defined %}
+{% if seomaticSiteMeta ?? null %}
   {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: Modules Library' }) %}
 {% else %}
   {% set appTitle = 'DEV: Modules Library' %}
@@ -14,7 +16,7 @@
 {# -- CRITICAL CSS -- #}
 {% block appInlineCSS %}
   <style>
-    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
   </style>
 {% endblock %}
 
@@ -163,7 +165,7 @@
           {# -- image -- #}
           {% include '_atoms/image/_template.html' with {
             opt: {
-              image: craft.config.rootUrl ~ cK.image.content.image
+              image: craft.app.config.general.custom.rootUrl ~ cK.image.content.image
             }
           } only %}
 
@@ -559,7 +561,7 @@
 
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -568,7 +570,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-cover'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -577,7 +579,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-full'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -586,7 +588,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-threeQuarter'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -595,7 +597,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-threeQuarter', 'center'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -604,7 +606,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-threeQuarter', 'right'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -613,7 +615,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-half'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -622,7 +624,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-half', 'center'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }
@@ -631,7 +633,7 @@
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
               modifiers: ['width-half', 'right'],
-              image: craft.config.rootUrl ~ cK.imageSingle.content.image,
+              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
               caption: cK.imageSingle.content.caption,
               ratio: cK.imageSingle.content.ratio,
             }

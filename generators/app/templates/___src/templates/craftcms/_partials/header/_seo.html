@@ -1,10 +1,12 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Seomatic
   ------------------------------------------------------------
   Seomatic Plugin for Craft. Just awesome!
 #}
 
-{% if craft.seomatic is defined %}
+{% if seomaticSiteMeta ?? null %}
   {% hook 'seomaticRender' %}
 {% else %}
   <title>{% if appTitle is defined %}{{ appTitle }} &mdash; {% endif %}{{ siteName }}</title>

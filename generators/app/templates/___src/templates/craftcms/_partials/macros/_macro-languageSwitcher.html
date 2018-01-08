@@ -1,3 +1,5 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
 {#
   Language Switcher
   ------------------------------------------------------------
@@ -23,14 +25,14 @@
     <nav class="o-col  {{ options.classname }}">
       <div class="o-row  {{ options.classname ~ '__inner' }}">
 
-        {% set locales = craft.i18n.getSiteLocaleIds() %}
+        {% set locales = craft.app.i18n.siteLocaleIds %}
         {% if options.locales %}
           {% set locales = options.locales %}
         {% endif %}
 
         <ul class="{{ options.classname ~ '__list' }}">
           {% for locale in locales %}
-            {% if locale in craft.i18n.getSiteLocaleIds() %}
+            {% if locale in craft.app.i18n.siteLocaleIds %}
               <li class="{{ options.classname ~ '__item' }}">
                 {% set current = false %}
 
@@ -50,7 +52,7 @@
                        class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
                   {% endif %}
                 {% else %}
-                  <a href="{{ craft.config.siteUrl[locale] ~ craft.request.getPath() }}"
+                  <a href="{{ craft.config.siteUrl[locale] ~ craft.app.request.pathInfo }}"
                      class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
                 {% endif %}
               </li>

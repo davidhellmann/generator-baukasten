@@ -2,7 +2,6 @@ module.exports = {
     files: [
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -11,7 +10,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -20,32 +18,10 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/_imports/',
             dest: '___src/_imports/'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/public/uploads/',
-            dest: '___dist/public/uploads'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/plugins/',
-            dest: '___dist/craft/plugins'
-        },
-        {
-            projectContext: [
-                'craftCMS'
-            ],
-            src: '___src/_craftCMS/translations/',
-            dest: '___dist/craft/translations'
         },
         {
             projectContext: [
@@ -56,7 +32,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/scripts/lang/',
@@ -64,7 +39,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/scripts/module/',
@@ -72,7 +46,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/scripts/ferdi/',
@@ -80,7 +53,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -89,7 +61,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
                 'wordpress'
             ],
@@ -98,7 +69,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/templates/webpack-craftcms/',
