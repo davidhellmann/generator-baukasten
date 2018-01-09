@@ -4,8 +4,8 @@
 {% if not cacheVal or craft.config.devMode %}
   <% if (htmlWebpackPlugin.files.css.length) { %>
   <% for (var css in htmlWebpackPlugin.files.css) { %>
-  <link rel="preload" href="{{ craft.config.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ craft.config.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>"></noscript>
+  <link rel="preload" href="{{ craft.app.config.general.custom.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ craft.app.config.general.custom.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>"></noscript>
   <% } %>
   <% } %>
 {% else %}
@@ -14,7 +14,7 @@
   </script>
   <% if (htmlWebpackPlugin.files.css.length) { %>
   <% for (var css in htmlWebpackPlugin.files.css) { %>
-  <link rel="stylesheet" href="{{ craft.config.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>">
+  <link rel="stylesheet" href="{{ craft.app.config.general.custom.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>">
   <% } %>
   <% } %>
 {% endif %}
