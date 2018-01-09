@@ -80,6 +80,7 @@ npm create:favicons
 npm create:inlineJS
 npm webpack
 npm webpack:analyze
+npm install:plugins
 ```
 
 All scripts are also executable with YARN.

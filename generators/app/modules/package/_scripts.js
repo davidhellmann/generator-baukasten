@@ -30,7 +30,8 @@ function addNPMScripts(files = {}, context) {
             'create:favicons': 'cross-env NODE_ENV=development gulp favicons',
             'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS',
             'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --config=webpack/webpack.config.babel.js',
-            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/'
+            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/',
+            'install:plugins': 'cd ___dist && sh ./plugins.sh'
         }
     })
 }
