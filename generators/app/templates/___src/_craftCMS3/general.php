@@ -62,7 +62,7 @@ return array(
         'isSystemOn' => true,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'allowAutoUpdates' => false,
+        'allowUpdates' => false,
         'backupOnUpdate' => false,
         // Custom site-specific config settings
         'custom' => [
@@ -74,7 +74,7 @@ return array(
         'isSystemOn' => true,
         'devMode' => true,
         'enableTemplateCaching' => true,
-        'allowAutoUpdates' => false,
+        'allowUpdates' => false,
         'backupOnUpdate' => false,
         // Custom site-specific config settings
         'custom' => [
@@ -86,7 +86,7 @@ return array(
         'isSystemOn' => true,
         'devMode' => true,
         'enableTemplateCaching' => false,
-        'allowAutoUpdates' => true,
+        'allowUpdates' => true,
         'backupOnUpdate' => true,
         'disableDevmodeMinifying' => true,
         // Custom site-specific config settings

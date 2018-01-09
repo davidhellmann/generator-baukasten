@@ -20,7 +20,7 @@ module.exports = {
             ],
             src: '___src/_craftCMS3/db.php',
             dest: '___dist/config/db.php'
-        },
+        },<
         {
             projectContext: [
                 'craftCMS3'
@@ -41,6 +41,13 @@ module.exports = {
             ],
             src: '___src/_craftCMS3/volumes.php',
             dest: '___dist/config/volumes.php'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
+            src: '___src/_craftCMS3/plugins.sh',
+            dest: '___dist/plugins.sh'
         },
         {
             projectContext: [
