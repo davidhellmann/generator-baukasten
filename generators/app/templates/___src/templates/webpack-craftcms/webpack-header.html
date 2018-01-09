@@ -1,7 +1,7 @@
 {# in dem htmlwebpack plugin gedöns, sind alle entry files drin, die loopen wir und fügen ein, die syntax ist wie bei yeoman EJS #}
 
 {# -- CRITICAL CSS -- #}
-{% if not cacheVal or craft.config.devMode %}
+{% if not cacheVal or craft.app.config.general.devMode %}
   <% if (htmlWebpackPlugin.files.css.length) { %>
   <% for (var css in htmlWebpackPlugin.files.css) { %>
   <link rel="preload" href="{{ craft.app.config.general.custom.rootUrl }}<%= htmlWebpackPlugin.files.css[css] %>" as="style" onload="this.rel='stylesheet'">
