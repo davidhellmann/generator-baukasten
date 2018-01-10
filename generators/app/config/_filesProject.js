@@ -20,7 +20,7 @@ module.exports = {
             ],
             src: '___src/_craftCMS3/db.php',
             dest: '___dist/config/db.php'
-        },<
+        },
         {
             projectContext: [
                 'craftCMS3'
