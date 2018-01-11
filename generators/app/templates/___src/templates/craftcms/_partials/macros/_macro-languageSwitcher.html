@@ -4,62 +4,70 @@
   Language Switcher
   ------------------------------------------------------------
 
+  {% import '_partials/macros/_macro-languageSwitcher.html' as macroLanguageSwitcher  %}
+
   {{ macroLanguageSwitcher.languageSwitcher({
-    locales: ['de', 'en'],
-  }) }}
+    sites: ['noobs', 'pros']
+  }, entry) }}
 #}
 
-{% macro languageSwitcher(options) %}
+{% macro languageSwitcher(opt, entry) %}
   {% set defaults = {
-  classname: 'm-languageSwitcher',
-  locales: null,
+    cn: 'm-languageSwitcher',
+    sites: null | default('all')
   } %}
 
-  {% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
-  {% else %}
-    {% set options = defaults %}
-  {% endif %}
+  {# -- Merge Default with Options -- #}
+  {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+  {% if opt.sites is defined and entry is defined %}
+    {# -- Get all Handles -- #}
+    {% set allSiteHandles = [] %}
+    {% for site in craft.app.sites.getAllSites() %}
+      {% set allSiteHandles = allSiteHandles|merge([site.handle]) %}
+    {% endfor %}
 
-  {% if options.locales is defined %}
-    <nav class="o-col  {{ options.classname }}">
-      <div class="o-row  {{ options.classname ~ '__inner' }}">
+    {% set sites = opt.sites %}
+    {% if sites == 'all' %}
+      {% set sites = allSiteHandles %}
+    {% endif %}
 
-        {% set locales = craft.app.i18n.siteLocaleIds %}
-        {% if options.locales %}
-          {% set locales = options.locales %}
-        {% endif %}
+    <nav class="{{ opt.cn }}">
+      <ul class="{{ opt.cn ~ '__list' }}">
+        {% for site in sites %}
+          {% if site in allSiteHandles %}
 
-        <ul class="{{ options.classname ~ '__list' }}">
-          {% for locale in locales %}
-            {% if locale in craft.app.i18n.siteLocaleIds %}
-              <li class="{{ options.classname ~ '__item' }}">
-                {% set current = false %}
+            <li class="{{ opt.cn ~ '__item' }}">
+              {% set current = false %}
 
-                {# Check if locale equals the requested page locale #}
-                {% if locale == craft.locale %}
-                  {% set current = true %}
-                {% endif %}
+              {# Check if site equals the requested page site #}
+              {% if site == craft.app.sites.currentSite.handle %}
+                {% set current = true %}
+              {% endif %}
 
-                {% if entry is defined %}
+              {% if entry is defined %}
+                {% set siteEntry = craft.entries.id(entry.id).site(site).one() %}
 
-                  {% set localeEntry = craft.entries.id(entry.id).locale(locale).first() %}
-                  {% if localeEntry and localeEntry.locale == locale %}
-                    <a href="{{ localeEntry.getUrl() }}"
-                       class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
-                  {% else %}
-                    <a href="{{ craft.config.siteUrl[locale] }}"
-                       class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
-                  {% endif %}
+                {% if siteEntry and (siteEntry.site.handle is defined and siteEntry.site.handle == site) %}
+                  <a href="{{ siteEntry.getUrl() }}"
+                     class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
+                    {{ site }}
+                  </a>
                 {% else %}
-                  <a href="{{ craft.config.siteUrl[locale] ~ craft.app.request.pathInfo }}"
-                     class="{{ options.classname ~ '__link' }}{{ current ? ' ' ~ options.classname ~ '__link--current' }}">{{ locale }}</a>
+                  <a href="{{ craft.config.siteUrl[site] }}"
+                     class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
+                    {{ site }}
+                  </a>
                 {% endif %}
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
+              {% else %}
+                <a href="{{ craft.config.siteUrl[site] ~ craft.app.request.pathInfo }}"
+                   class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
+                  {{ site }}
+                </a>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
     </nav>
   {% endif %}
 {% endmacro %}
