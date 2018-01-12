@@ -10,16 +10,16 @@
 
 const <%= moduleName.replace('-', '_') %> = {
     cfg:  {
-        name: `<%= moduleName.replace('-', '_') %>`
+        name: '<%= moduleName.replace('-', '_') %>'
     },
 
     log(msg) {
-        console.log(msg)
+        console.log(msg);
     },
 
     init() {
-        this.log(`Init: ${this.cfg.name}`)
+        this.log(`Init: ${this.cfg.name}`);
     }
-}
+};
 
-export default <%= moduleName.replace('-', '_') %>
+export default <%= moduleName.replace('-', '_') %>;

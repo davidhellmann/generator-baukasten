@@ -8,7 +8,7 @@ function addDependencies(files = {}) {
             'bowser': '^1.8.1',
             'cookieconsent': '^3.0.4',
             'family.scss': '^1.0.4',
-            'ferdi': '^0.0.6',
+            'ferdi': '^0.0.9',
             'flickity': '^2.0.10',
             'fontfaceobserver': '^2.0.9',
             'gsap': '^1.20.3',

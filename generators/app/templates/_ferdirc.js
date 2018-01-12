@@ -1,53 +1,47 @@
-const pkg =  require('./package')
-
-const defaults = {
-    template: true,
-    style: true,
-    javascript: true,
-    vue: false,
-    config: true,
-};
+const pkg =  require('./package');
 
 module.exports = {
+    defaults: {
+        template: true,
+        style: true,
+        javascript: true,
+        vue: false,
+        config: true
+    },
     fileHeader: {
         authors: pkg.authors,
-        projectName: pkg.projectName,
+        projectName: pkg.projectName
     },
     files: {
         template: {
             name: '_template',
             postfix: '',
             extension: 'html',
-            description: 'ferdi should create a Template File',
-            default: defaults.template,
+            description: 'ferdi should create a Template File'
         },
         style: {
             name: '_style',
             postfix: '',
             extension: 'scss',
-            description: 'ferdi should create Stylesheet File',
-            default: defaults.style,
+            description: 'ferdi should create Stylesheet File'
         },
         javascript: {
             name: '_script',
             postfix: '',
             extension: 'js',
-            description: 'ferdi should create JavaScript File',
-            default: defaults.javascript,
+            description: 'ferdi should create JavaScript File'
         },
         vue: {
             name: 'vue',
             postfix: '',
             extension: 'vue',
-            description: 'ferdi should create Vue File',
-            default: defaults.vue,
+            description: 'ferdi should create Vue File'
         },
         config: {
             name: 'config',
             postfix: '',
             extension: 'json',
-            description: 'ferdi should create Config File',
-            default: defaults.config,
+            description: 'ferdi should create Config File'
         },
     },
     paths: {
@@ -58,9 +52,7 @@ module.exports = {
             atoms: '_atoms/',
             molecules: '_molecules/',
             organisms: '_organisms/',
-            embeds: '_embeds/',
-        },
-    },
+            embeds: '_embeds/'
+        }
+    }
 };
-
-exports.defaults = defaults;

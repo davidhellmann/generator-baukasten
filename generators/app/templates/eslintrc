@@ -99,6 +99,7 @@
     "valid-typeof": 2,
     "vars-on-top": 1,
     "wrap-iife": [2, "outside"],
-    "yoda": 2
+    "yoda": 2,
+    "semi": [2, "always"]
   }
 }
