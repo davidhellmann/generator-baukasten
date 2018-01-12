@@ -3,48 +3,48 @@
  */
 
 // Polyfills
-import 'babel-polyfill'
-import 'svgxuse'
-import 'objectFitPolyfill/src/objectFitPolyfill'
+import 'babel-polyfill';
+import 'svgxuse';
+import 'objectFitPolyfill/src/objectFitPolyfill';
 
 // Import Libs
-import './lib/bling'
+import './lib/bling';
 
 // CSS Import
-import '../css/app.scss'
+import '../css/app.scss';
 
-import './scripts/prism'
+import './scripts/prism';
 
 // Import Partials
-import scripts from './partials/scripts'
-import templates from './partials/templates'
-import modules from './partials/modules'
+import scripts from './partials/scripts';
+import templates from './partials/templates';
+import modules from './partials/modules';
 
 // Vue Exampleimport
-const vueElement = document.querySelector('#js-vue')
+const vueElement = document.querySelector('#js-vue');
 
 // Beispiel für Lazy Loading von Chunks
 if (vueElement) {
-    import('./vue/vueExample')
+    import('./vue/vueExample');
 }
 
 const app = {
     toggleGrid() {
-        const gridOverlay = document.querySelector('.o-gridOverlay')
-        gridOverlay.classList.toggle('is-visible')
+        const gridOverlay = document.querySelector('.o-gridOverlay');
+        gridOverlay.classList.toggle('is-visible');
     },
 
     init() {
-        scripts.init()
-        templates.init()
-        modules.init()
+        scripts.init();
+        templates.init();
+        modules.init();
 
-        const gridToggle = document.querySelector('.js-toggleGrid')
+        const gridToggle = document.querySelector('.js-toggleGrid');
         if (gridToggle) {
-            gridToggle.addEventListener('click', this.toggleGrid, false)
+            gridToggle.addEventListener('click', this.toggleGrid, false);
         }
     }
-}
+};
 
 // Init App!
-app.init()
+app.init();

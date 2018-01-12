@@ -15,7 +15,7 @@ const resizer = {
     }, */
 
     doDrag(el, width, x) {
-        el.style.width = `${(width + x)}px`
+        el.style.width = `${(width + x)}px`;
     },
 
     /* nstopDrag(e) {
@@ -26,20 +26,20 @@ const resizer = {
     init() {
         if (this.cfg.resizer) {
             this.cfg.resizer.forEach((item) => {
-                const resizerX = item.querySelector('.js-resizeX')
+                const resizerX = item.querySelector('.js-resizeX');
                 // resizerX.addEventListener('mousedown', this.initDrag(item), false)
 
                 resizerX.addEventListener('mousedown', (e) => {
-                    const startX = e.clientX
-                    const startWidth = parseInt(document.defaultView.getComputedStyle(item).width, 10)
+                    const startX = e.clientX;
+                    const startWidth = parseInt(document.defaultView.getComputedStyle(item).width, 10);
 
-                    e.target.addEventListener('mousemove', this.doDrag(item, startWidth, startX), false)
+                    e.target.addEventListener('mousemove', this.doDrag(item, startWidth, startX), false);
                     // document.documentElement.addEventListener('mouseup', stopDrag, false);
-                }, false)
-            })
+                }, false);
+            });
         }
     }
-}
+};
 
-export default resizer
+export default resizer;
 

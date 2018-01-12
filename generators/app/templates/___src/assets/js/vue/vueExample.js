@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import hello from '../vue/_helloworld.vue'
+import Vue from 'vue';
+import hello from '../vue/_helloworld.vue';
 
 /* eslint-disable */
 

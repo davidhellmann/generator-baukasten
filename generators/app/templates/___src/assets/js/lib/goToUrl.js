@@ -3,7 +3,7 @@
 //  --------------------------------------------------------
 
 const goToUrl = (newLocation) => {
-    window.location = newLocation
-}
+    window.location = newLocation;
+};
 
-module.exports = goToUrl
+module.exports = goToUrl;

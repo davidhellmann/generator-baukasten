@@ -3,9 +3,9 @@
  */
 
 // Dependencies
-import '../vendor/waypoints'
-import anime        from 'animejs'
-import _throttle    from 'lodash/throttle'
+import anime from 'animejs';
+import _throttle from 'lodash/throttle';
+import '../vendor/waypoints';
 
 
 //  --------------------------------------------------------
@@ -14,19 +14,18 @@ import _throttle    from 'lodash/throttle'
 
 
 // Find Blocks with .sm Element
-const triggers = document.querySelectorAll('.js-waypointTrigger')
+const triggers = document.querySelectorAll('.js-waypointTrigger');
 
-export function initWaypoints(els) {
-
+function initWaypoints(els) {
     els.forEach((el) => {
         // New Waypoint
         new Waypoint({
             element: el,
-            handler: function (direction) {
+            handler(direction) {
                 // console.log('Triggered')
-                //console.log(this.element);
+                // console.log(this.element);
 
-                const waypointID = this.element.id
+                const waypointID = this.element.id;
 
                 // Check if direction down
                 if (direction === 'down') {
@@ -39,20 +38,19 @@ export function initWaypoints(els) {
                             delay: delay,
                             easing: 'easeOutBack',
                             complete() {
-                                els.classList.add('is-animated')
+                                els.classList.add('is-animated');
                             }
-                        })
-                    }
+                        });
+                    };
 
                     // Get all Child Elements with wayPointID
-                    var elements = this.element.querySelectorAll(`[data-waypoint-id="${waypointID}"]`)
+                    const elements = this.element.querySelectorAll(`[data-waypoint-id="${waypointID}"]`);
 
-                    for (var i = 0; i < elements.length; i++) {
-                        var obj = elements[i];
-                        var delay = 80 * i;
+                    for (let i = 0; i < elements.length; i += i) {
+                        const obj = elements[i];
+                        const delay = 80 * i;
 
                         if (!obj.classList.contains('is-animeted')) {
-
                             if (obj.classList.contains('m-fadeInUp')) {
                                 fadeInUp(obj, delay);
                                 obj.classList.add('is-animeted');
@@ -62,14 +60,14 @@ export function initWaypoints(els) {
                 }
             },
             offset: '70%'
-        })
-    })
+        });
+    });
 }
 
-initWaypoints(triggers)
+initWaypoints(triggers);
 
 const refreshWaypoints = _throttle(() => {
-    Waypoint.refreshAll()
-}, 250)
+    Waypoint.refreshAll();
+}, 250);
 
-window.addEventListener('resize', refreshWaypoints)
+window.addEventListener('resize', refreshWaypoints);
