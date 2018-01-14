@@ -47,10 +47,16 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS3',
-                'laravel'
+                'craftCMS3'
             ],
             src: '___src/templates/craftcms/',
+            dest: '___src/templates/'
+        },
+        {
+            projectContext: [
+                'laravel'
+            ],
+            src: '___src/templates/laravel/',
             dest: '___src/templates/'
         },
         {
