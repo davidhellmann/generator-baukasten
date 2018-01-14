@@ -1,13 +1,5 @@
-matrix:
-  include:
-    - language: node_js
-      notifications:
-          slack: davidhellmann:E1itXEUIsJQebYf8rRl2XhK1
-      node_js:
-        - 8
-
-    - language: php
-      notifications:
-          slack: davidhellmann:E1itXEUIsJQebYf8rRl2XhK1
-      php:
-        - 7
+language: node_js
+notifications:
+    slack: davidhellmann:E1itXEUIsJQebYf8rRl2XhK1
+node_js:
+  - 8
