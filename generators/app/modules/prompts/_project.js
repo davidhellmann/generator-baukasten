@@ -61,6 +61,10 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
                 value: 'craftCMS3'
             },
             {
+                name: 'Laravel',
+                value: 'laravel'
+            },
+            {
                 name: 'WordPress',
                 value: 'wordpress'
             }

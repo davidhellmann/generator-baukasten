@@ -3,6 +3,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/assets/fonts/',
@@ -11,6 +12,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/assets/images/',

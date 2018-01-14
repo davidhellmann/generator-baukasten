@@ -83,6 +83,13 @@ module.exports = {
             ],
             src: '___src/assets/images/bitmap/_dummy',
             dest: '___dist/web/uploads/images'
+        },
+        {
+            projectContext: [
+                'laravel'
+            ],
+            src: '___src/_laravel/.env',
+            dest: '___dist/.env'
         }
     ]
 }

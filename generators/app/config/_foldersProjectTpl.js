@@ -3,6 +3,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/assets/css/',
@@ -11,6 +12,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/assets/js/',
@@ -19,6 +21,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/_system/',
@@ -27,6 +30,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/gulp/',
@@ -35,6 +39,7 @@ module.exports = {
         {
             projectContext: [
                 'craftCMS3',
+                'laravel',
                 'wordpress'
             ],
             src: '___src/webpack/',
@@ -42,7 +47,8 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS3'
+                'craftCMS3',
+                'laravel'
             ],
             src: '___src/templates/craftcms/',
             dest: '___src/templates/'

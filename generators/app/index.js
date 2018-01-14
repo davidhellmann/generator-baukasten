@@ -14,6 +14,7 @@ const logMessage = require('./helpers/messages/_logMessage')
 // Install CMS Stuff
 const installCraftCMS3 = require('./modules/writings/craftCMS3')
 const installWordpress = require('./modules/writings/wordpress')
+const installLaravel = require('./modules/writings/laravel')
 
 // Package JSON
 const writePackageJSON = require('./modules/writings/package')
@@ -52,6 +53,7 @@ module.exports = class extends Generator {
         // CMS Stuff
         this.installCraftCMS3 = installCraftCMS3.bind(this)
         this.installWordpress = installWordpress.bind(this)
+        this.installLaravel = installLaravel.bind(this)
 
         // Package JSON
         this.writePackageJSON = writePackageJSON.bind(this)
@@ -113,6 +115,15 @@ module.exports = class extends Generator {
             }
         }
 
+        // Install Laravel
+        if (this.props.projectType === 'laravel' && this.props.laravelInstall && this.commands.composer) {
+            try {
+                await this.installLaravel().download(this)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
         // WordPress
         if (this.props.projectType === 'wordpress' && this.props.wordpressInstall && this.commands.wp) {
             try {
@@ -135,6 +146,22 @@ module.exports = class extends Generator {
             this.logMessage({message: 'Moving Craft Folders'});
             try {
                 await this.installCraftCMS3().writing(this)
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        // Laravel
+        if (this.props.projectType === 'laravel') {
+            this.logMessage({message: 'Moving Laravel Folders'});
+            try {
+                await this.installLaravel().deleting(this)
+            } catch (e) {
+                console.error(e)
+            }
+
+            try {
+                await this.installLaravel().writing(this)
             } catch (e) {
                 console.error(e)
             }
