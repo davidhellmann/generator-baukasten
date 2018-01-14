@@ -2,7 +2,7 @@
  * Image Slider
  */
 
-import Flickity from 'flickity'
+import Flickity from 'flickity';
 
 const imageSlider = {
     cfg: {
@@ -26,24 +26,24 @@ const imageSlider = {
     },
 
     init() {
-        const sliders = [...document.querySelectorAll(this.cfg.slider)]
+        const sliders = [...document.querySelectorAll(this.cfg.slider)];
         if (sliders) {
             sliders.forEach((slider) => {
-                const flkty = new Flickity(slider, this.cfg.sliderOptions)
-                flkty.resize()
+                const flkty = new Flickity(slider, this.cfg.sliderOptions);
+                flkty.resize();
 
                 setTimeout(() => {
-                    flkty.resize()
-                }, 2000)
+                    flkty.resize();
+                }, 2000);
                 /* const mySwiper = new Swiper(slider, this.cfg.sliderOptions)
                 mySwiper.update()
 
                 setTimeout(() => {
                     mySwiper.update()
                 }, 2000) */
-            })
+            });
         }
     }
-}
+};
 
-export default imageSlider
+export default imageSlider;

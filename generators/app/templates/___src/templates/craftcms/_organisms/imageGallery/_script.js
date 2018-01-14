@@ -3,8 +3,8 @@
  */
 
 // Dependencies
-import PhotoSwipe              from 'photoswipe'
-import PhotoSwipeUI_Default    from '../../../../node_modules/photoswipe/dist/photoswipe-ui-default'
+import PhotoSwipe              from 'photoswipe';
+import PhotoSwipeUI_Default    from '../../../../node_modules/photoswipe/dist/photoswipe-ui-default';
 
 /* eslint-disable */
 const imageGallery = {
@@ -271,12 +271,12 @@ const imageGallery = {
     },
 
     init() {
-        const gallery = document.querySelector('.js-imageGallery')
+        const gallery = document.querySelector('.js-imageGallery');
         if (gallery) {
-            this.addCode()
-            this.creatGallery('.js-imageGallery')
+            this.addCode();
+            this.creatGallery('.js-imageGallery');
         }
     }
-}
+};
 /* eslint-enable */
-export default imageGallery
+export default imageGallery;

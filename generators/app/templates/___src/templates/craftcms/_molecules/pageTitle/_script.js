@@ -8,16 +8,16 @@
 
 const pageTitle = {
     cfg:  {
-        name: `pageTitle`
+        name: 'pageTitle'
     },
 
     log(msg) {
-        console.log(msg)
+        console.log(msg);
     },
 
     init() {
-        this.log(`Init: ${this.cfg.name}`)
+        this.log(`Init: ${this.cfg.name}`);
     }
-}
+};
 
-export default pageTitle
+export default pageTitle;
