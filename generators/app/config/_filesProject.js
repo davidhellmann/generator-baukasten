@@ -88,7 +88,7 @@ module.exports = {
             projectContext: [
                 'laravel'
             ],
-            src: '___src/_laravel/.env',
+            src: '___src/laravel/.env',
             dest: '___dist/.env'
         }
     ]
