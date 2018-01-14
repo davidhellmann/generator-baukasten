@@ -76,6 +76,13 @@ module.exports = {
             ],
             src: '___src/_craftCMS3/redactor/Baukasten.json',
             dest: '___dist/config/redactor/Baukasten.json'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
+            src: '___src/assets/images/bitmap/_dummy',
+            dest: '___dist/web/uploads/images'
         }
     ]
 }

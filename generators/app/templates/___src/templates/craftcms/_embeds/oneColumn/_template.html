@@ -1,9 +1,9 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
 {# @var entry \craft\elements\Entry #}
 {#
-  {% embed '_embeds/home/_template.html' with { entry: entry } o
+  {% embed '_embeds/oneColumn/_template.html' with { entry: entry } o
     opt: {
-      cn: 'e-home',
+      cn: 'e-oneColumn',
       modifiers: [],
       data: {},
       js: null,
@@ -26,7 +26,7 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  cn: 'e-home',
+  cn: 'e-oneColumn',
   modifiers: [],
   data: {},
   js: null,

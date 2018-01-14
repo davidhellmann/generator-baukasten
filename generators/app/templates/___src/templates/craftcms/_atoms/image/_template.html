@@ -25,11 +25,11 @@
 {# -- Modul -- #}
 {% if opt.image %}
   {# -- Image Vars -- #}
-  {% set imageSrc = null %}
-  {% set imageSrcset = null %}
-  {% set imageSrcsetWebP = null %}
-  {% set imagePlaceholderBox = null %}
-  {% set imageMaxWidth = null %}
+  {% set imageSrc = opt.image.pluginOptimizedImagesAuto.srcset() %}
+  {% set imageSrcset = opt.image.pluginOptimizedImagesAuto.srcset() %}
+  {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesAuto.srcsetWebP() %}
+  {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesAuto.placeholderBox() %}
+  {% set imageMaxWidth = opt.image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
   {% set focalPoint = '50% 50%' %}
 
   {# -- Focal Point -- #}
@@ -41,7 +41,8 @@
   {% endif %}
 
   {# -- Ratio Switch -- #}
-  {% switch opt.ratio.value %}
+  {% if opt.ratio ?? null %}
+    {% switch opt.ratio.value %}
     {% case "landscape" %}
       {% set imageSrc = opt.image.pluginOptimizedImagesLandscape.srcset() %}
       {% set imageSrcset = opt.image.pluginOptimizedImagesLandscape.srcset() %}
@@ -69,7 +70,8 @@
       {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesAuto.srcsetWebP() %}
       {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesAuto.placeholderBox() %}
       {% set imageMaxWidth = opt.image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
-  {% endswitch %}
+    {% endswitch %}
+  {% endif %}
 
   {# -- Image -- #}
   <picture class="{{ opt.cn }}" {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>

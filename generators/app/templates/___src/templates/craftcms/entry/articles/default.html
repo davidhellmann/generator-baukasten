@@ -56,13 +56,28 @@
     {% endif %}
 
     {# -- Entry Image -- #}
-    {#<div class="o-row">
-      {% include '_organisms/imageSingle/_template.html' with {
-        opt: {
-          image: entry.singleImageEntry.one()
-        }
-      } only %}
-    </div>#}
+    {% if entry.singleImageEntry.one() ?? null %}
+      <div class="o-row">
+        <div class="o-col-12 o-col-s-24">
+          {% include '_atoms/headline/_template.html' with {
+            opt: {
+              text: 'Image Entry',
+              size: 'h3'
+            }
+          } only %}
+        </div>
+      </div>
+
+      <div class="o-row">
+        <div class="o-col-12  o-col-s-24">
+          {% include '_organisms/imageSingle/_template.html' with {
+            opt: {
+              image: entry.singleImageEntry.one() ?? null
+            }
+          } only %}
+        </div>
+      </div>
+    {% endif %}
   </div>
 
   {# -- Content Builder -- #}

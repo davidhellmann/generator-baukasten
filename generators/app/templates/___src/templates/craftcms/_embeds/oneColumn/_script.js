@@ -1,10 +1,10 @@
 /**
- * home
+ * oneColumn
  */
 
-const home = {
+const oneColumn = {
     cfg:  {
-        name: 'home'
+        name: 'oneColumn'
     },
 
     log(msg) {
@@ -16,4 +16,4 @@ const home = {
     }
 };
 
-export default home;
+export default oneColumn;

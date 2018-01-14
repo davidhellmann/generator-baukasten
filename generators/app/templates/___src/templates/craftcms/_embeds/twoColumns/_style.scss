@@ -6,27 +6,27 @@
   $root: &;
   width: 100%;
 
-  &__area1 {
-    @include make-col-flex(12);
+  &__intro {
+    @include make-col(12);
 
-    @include media('>=m') {
-      @include make-col-flex(8);
+    @include media('>=s') {
+      @include make-col(24);
     }
   }
 
-  &__area2 {
-    @include make-col-flex(12);
+  &__content {
+    @include make-col(12);
 
-    @include media('>=m') {
-      @include make-col-flex(8);
+    @include media('>=s') {
+      @include make-col(16);
     }
   }
 
-  &__area3 {
-    @include make-col-flex(12);
+  &__sidebar {
+    @include make-col(12);
 
-    @include media('>=m') {
-      @include make-col-flex(4);
+    @include media('>=s') {
+      @include make-col(8);
     }
   }
 }

@@ -2,8 +2,9 @@
 {# @var entry \craft\elements\Entry #}
 {# -- Entry Router -- #}
 {# ---------------------------------------------------------------------- #}
+
 {% include [
-  'entry/' ~ entry.section.handle ~ '/' ~ entry.type,
+  'entry/' ~ entry.section.handle ~ '/' ~ entry.type.handle,
   'entry/' ~ entry.section.handle ~ '/default',
   '404'
 ] %}

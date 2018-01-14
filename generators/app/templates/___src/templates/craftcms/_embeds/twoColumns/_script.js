@@ -4,16 +4,16 @@
 
 const twoColumns = {
     cfg:  {
-        name: `twoColumns`
+        name: 'twoColumns'
     },
 
     log(msg) {
-        console.log(msg)
+        console.log(msg);
     },
 
     init() {
-        this.log(`Init: ${this.cfg.name}`)
+        this.log(`Init: ${this.cfg.name}`);
     }
-}
+};
 
-export default twoColumns
+export default twoColumns;

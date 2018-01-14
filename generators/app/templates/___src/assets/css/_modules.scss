@@ -46,6 +46,11 @@
 @import '__modules/module.postNav';
 @import '__modules/module.socialNetworks'; */
 
+// Embeds
+@import '../../templates/_embeds/home/style';
+@import '../../templates/_embeds/oneColumn/style';
+@import '../../templates/_embeds/twoColumns/style';
+
 // Atoms
 @import '../../templates/_atoms/code/style';
 @import '../../templates/_atoms/divider/style';

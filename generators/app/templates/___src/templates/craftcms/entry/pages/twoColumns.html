@@ -4,7 +4,7 @@
 {# ---------------------------------------------------------------------- #}
 
 {% extends "_layouts/_master.html" %}
-{% set bodyClass = "p-pageDefault" %}
+{% set bodyClass = "p-twoColumns" %}
 
 {# -- CRITICAL CSS -- #}
 {% block appInlineCSS %}
@@ -20,10 +20,11 @@
   {# If you have a Template with Pagination use this: #}
   {# {% cache globally using key _self.getTemplateName() ~ '-archive-' ~ craft.request.path ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %} #}
 
-    {% embed '_embeds/oneColumn/_template.html' with {
+    {% embed '_embeds/twoColumns/_template.html' with {
       opt: {
         intro: true,
-        content: true
+        content: true,
+        sidebar: true
       },
       entry: entry
     } only %}
@@ -69,7 +70,17 @@
         {# -- Content Builder -- #}
         {% include '_contentBuilders/_contentBuilderMatrix.html' with {
           opt: {
-            object: entry
+            object: entry,
+            context: '12:16'
+          }
+        } only %}
+      {% endblock %}
+
+      {# -- Block: Sidebar -- #}
+      {% block sidebar %}
+        {% include '_atoms/headline/_template.html' with {
+          opt: {
+            text: 'Sidebar'
           }
         } only %}
       {% endblock %}
