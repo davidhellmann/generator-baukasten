@@ -74,6 +74,20 @@ module.exports = {
             ],
             src: '___src/templates/webpack-wordpress/',
             dest: '___src/templates/_partials/_webpack/'
+        },
+        {
+            projectContext: [
+                'laravel'
+            ],
+            src: '___src/templates/webpack-laravel/',
+            dest: '___src/templates/_partials/webpack/'
+        },
+        {
+            projectContext: [
+                'laravel'
+            ],
+            src: '___src/laravel/data/',
+            dest: '___dist/storage/app/data/'
         }
     ]
 }

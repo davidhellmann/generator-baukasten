@@ -5,6 +5,7 @@ const laravelFolders = {
         '___dist/public/css',
         '___dist/public/js',
         '___dist/.env',
+        '___dist/routes/web.php',
     ]
 }
 
@@ -32,7 +33,7 @@ const installLaravel = () => {
             })
         },
 
-        writing: (context) => {
+        /* writing: (context) => {
             return context.spawnCommandSync('composer',
                 [
                     'require',
@@ -40,7 +41,7 @@ const installLaravel = () => {
                     './___dist',
                     'rcrowe/twigbridge'
                 ])
-        }
+        } */
     }
 }
 

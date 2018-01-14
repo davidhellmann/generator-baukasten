@@ -90,6 +90,13 @@ module.exports = {
             ],
             src: '___src/laravel/.env',
             dest: '___dist/.env'
+        },
+        {
+            projectContext: [
+                'laravel'
+            ],
+            src: '___src/laravel/web.php',
+            dest: '___dist/routes/web.php'
         }
     ]
 }

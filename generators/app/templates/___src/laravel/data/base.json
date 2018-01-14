@@ -1,0 +1,17 @@
+{
+  "fileName": "base.json",
+  "navigation": [
+    {
+      "title": "Home",
+      "url": "/"
+    },
+    {
+      "title": "About",
+      "url": "/about"
+    },
+    {
+      "title": "Work",
+      "url": "/work"
+    }
+  ]
+}
