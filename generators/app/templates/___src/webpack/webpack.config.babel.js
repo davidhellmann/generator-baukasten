@@ -16,7 +16,7 @@ import StyleLintPlugin from 'stylelint-webpack-plugin'
 import webpack from 'webpack'
 import WriteFilePlugin from 'write-file-webpack-plugin'
 import path from 'path'
-import config from '../package.json'
+import pkg from '../package.json'
 
 // get absolute path of files based on root
 function resolve(dir) {
@@ -36,59 +36,31 @@ const hot_client = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20
 // bauen eine funktion die das plugin ausspuckt
 const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
 const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
-const headerFilenameSRC = <% if (projectType === 'prototyping' ) { %> '_src-webpack-header' <% } else if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
-const headerFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack-header' <% } else if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
-const scriptsFilenameSRC = <% if (projectType === 'prototyping' ) { %> '_src-webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
-const scriptsFilenameDIST = <% if (projectType === 'prototyping' ) { %> '_webpack-scripts' <% } else if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
-const folderDIST = <% if (projectType === 'prototyping' ) { %> config.src.templates <% } else { %> config.dist.markup <% } %>
+const headerFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
+const headerFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
+const scriptsFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
+const scriptsFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
+const folderDIST = pkg.dist.markup
 
-<% if (projectType === 'prototyping' ) { %> config.src.templates
-    const inject_templates = removeEmpty([
-            ifProduction({
-                // DIST File
-                filename: 'index.html',
 
-                // SRC File
-                file: `${config.dist.base}index.html`,
-                inject: true
-            }),
-            ifDevelopment({
-                // DIST File
-                filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
+const inject_templates = [
+    {
+        // DIST File
+        filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
 
-                // SRC File
-                file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
-                inject: false
-            }),
-            ifDevelopment({
-                // DIST File
-                filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
+        // SRC File
+        file: `${pkg.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
+        inject: false
+    },
+    {
+        // DIST File
+        filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
 
-                // SRC File
-                file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
-                inject: false
-            })
-        ])
-<% } else { %>
-    const inject_templates = [
-        {
-            // DIST File
-            filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
-
-            // SRC File
-            file: `${config.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
-            inject: false
-        },
-        {
-            // DIST File
-            filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
-
-            // SRC File
-            file: `${config.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
-            inject: false
-        }
-    ]
-<% } %>
+        // SRC File
+        file: `${pkg.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
+        inject: false
+    }
+]
 
 // Leeres Array welches wir später mittels ...restParameter
 // in die Plugins mit einfügen
@@ -114,7 +86,7 @@ inject_templates.forEach((chunk) => {
 const sass_resources_loader = {
     loader: 'sass-resources-loader',
     options: {
-        resources: [resolve(`${config.src.css}_settings.scss`), resolve(`${config.src.css}_tools.scss`)]
+        resources: [resolve(`${pkg.src.css}_settings.scss`), resolve(`${pkg.src.css}_tools.scss`)]
     }
 }
 
@@ -169,12 +141,12 @@ module.exports = {
     // hier ein object, jede datei die hier definiert wird kommt als eigener outputh raus,
     // also wenn du eine admin.js im src folder machst kommt eine admin.js in den dist folder raus
     entry: {
-        app: ifDevelopment([resolve(`${config.src.js}app.js`), hot_client], resolve(`${config.src.js}app.js`))
+        app: ifDevelopment([resolve(`${pkg.src.js}app.js`), hot_client], resolve(`${pkg.src.js}app.js`))
     },
 
         output: {
             // in das verzeichnis kommt alles rein
-            path: resolve(`${config.dist.base}assets/`),
+            path: resolve(`${pkg.dist.base}assets/`),
             publicPath: '/assets/',
             // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
             filename: ifProduction('js/[name].[hash].min.js', 'js/[name].js'),
@@ -187,7 +159,7 @@ module.exports = {
         extensions: ['.js', '.json', '.vue'],
         // hier werden verzeichnisse angegeben in denen gesucht wird wenn du was importierst
         // also import from 'foo/bar' dann schaut er in diesen verzeichnissen wo bar.js sein könnte
-        modules: [resolve(config.src.base), resolve('node_modules')],
+        modules: [resolve(pkg.src.base), resolve('node_modules')],
         // aliase sind ne schöne sache du kannst dir hier zum beispiel auch deinen modules pfad einbauen
         // nehmen wir dein Alias hieße Modules, dann kannst du in JS Files
         // einfach import foo from 'Modules/foo/foo'; machen
@@ -196,12 +168,12 @@ module.exports = {
             // alias der auf den Standalone Build geht, falls du Vue ausserhalb von
             // Single File Components nutzen möchtest
             vue$: 'vue/dist/vue.esm.js',
-            MODULES: resolve(config.src.modules.base),
-            CSS: resolve(config.src.css),
-            '@': resolve(config.src.base),
-            JS: resolve(config.src.js),
-            FONTS: resolve(config.src.fonts),
-            ASSETS: resolve(config.src.images.base)
+            MODULES: resolve(pkg.src.modules.base),
+            CSS: resolve(pkg.src.css),
+            '@': resolve(pkg.src.base),
+            JS: resolve(pkg.src.js),
+            FONTS: resolve(pkg.src.fonts),
+            ASSETS: resolve(pkg.src.images.base)
         }
     },
 
@@ -215,21 +187,21 @@ module.exports = {
                 loader: 'eslint-loader',
                 // damit weiß webpack das dieser loader vor allen anderen kommen soll
                 enforce: 'pre',
-                include: resolve(config.src.base)
+                include: resolve(pkg.src.base)
             },
 
             // hier dann das eigentliche laden von JS
             {
                 test: /\.js/,
                 loader: 'babel-loader',
-                include: resolve(config.src.base)
+                include: resolve(pkg.src.base)
             },
 
             // Vue Loader Wohooo
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                include: resolve(config.src.base),
+                include: resolve(pkg.src.base),
                 options: {
                     loaders: {
                         scss: ifProduction(
@@ -262,7 +234,7 @@ module.exports = {
                         ...SCSS_LOADERS
                     ]
                 ),
-                include: resolve(config.src.base)
+                include: resolve(pkg.src.base)
             },
 
             // CSS Loading
@@ -285,17 +257,17 @@ module.exports = {
                         ...CSS_LOADERS
                     ]
                 ),
-                include: resolve(config.src.base)
+                include: resolve(pkg.src.base)
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                include: resolve(config.src.base),
+                include: resolve(pkg.src.base),
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
                     name: (filePath) => {
                         const filename = path.basename(filePath)
-                        const folder = path.relative(config.src.images.base, filePath).replace(filename, '')
+                        const folder = path.relative(pkg.src.images.base, filePath).replace(filename, '')
                         return `${folder}[name].[hash:4].[ext]`
                     },
                 }
@@ -304,7 +276,7 @@ module.exports = {
                 // Match woff2 in addition to patterns like .woff?v=1.1.1.
                 test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url-loader',
-                include: resolve(config.src.base),
+                include: resolve(pkg.src.base),
                 options: {
                     // Limit at 10k. Above that it emits separate files
                     limit: 10000,
@@ -324,7 +296,7 @@ module.exports = {
         // Dateiname für das Extracted CSS von Vue
         // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
         new ExtractTextPlugin({
-            filename: 'assets/css/[name].[chunkhash].min.css',
+            filename: 'css/[name].[chunkhash].min.css',
             allChunks: true
         }),
 
@@ -358,8 +330,8 @@ module.exports = {
             }),
         ),
 
-        // jQuery Stuff
         <% if (projectjQuery) { %>
+        // jQuery Stuff
         new webpack.ProvidePlugin({
            $: 'jquery',
            jQuery: 'jquery'
@@ -378,7 +350,7 @@ module.exports = {
 
         // Stylelint Stuff
         new StyleLintPlugin({
-            context: resolve(config.src.base),
+            context: resolve(pkg.src.base),
             syntax: 'scss',
             quiet: false
         }),

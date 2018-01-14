@@ -1,9 +1,11 @@
-/* -------------------------------------------------- */
-/*    [data-waypoint]
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  [data-waypoint]
+ |--------------------------------------------------------------------------
+ */
 
 [data-waypoint] {
-  &.fadeInUp {
+  &.is-fadeInUp {
     opacity: 0;
     transform: translate3d(0, 50px, 0);
 
@@ -13,7 +15,7 @@
     }
   }
 
-  &.fadeInDown {
+  &.is-fadeInDown {
     opacity: 0;
     transform: translate3d(0, -50px, 0);
 
@@ -23,7 +25,7 @@
     }
   }
 
-  &.fadeInLeft {
+  &.is-fadeInLeft {
     opacity: 0;
     transform: translate3d(50px, 0, 0);
 
@@ -33,7 +35,7 @@
     }
   }
 
-  &.fadeInRight {
+  &.is-fadeInRight {
     opacity: 0;
     transform: translate3d(-50px, 0, 0);
 

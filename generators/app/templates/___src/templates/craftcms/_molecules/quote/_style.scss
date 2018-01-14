@@ -1,0 +1,36 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .m-quote
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-quote {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+  @include f(s(8), s(16), padding-left);
+
+  &__blockquote {
+    p {
+      font-weight: 700;
+      font-style: normal;
+    }
+  }
+}
+
+// Modul Modifiers Example
+.m-quote--modifier {
+  .m-quote__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

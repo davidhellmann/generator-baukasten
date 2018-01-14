@@ -10,8 +10,8 @@ const project = {
     name: 'awesome',
     description: 'A small Test Driven Generator',
     version: '0.0.1',
-    proxy: 'awesome.dev',
-    type: 'craftCMS'
+    proxy: 'awesome.test',
+    type: 'craftCMS3'
 }
 const author = {
     name: 'David Hellmann',

@@ -1,15 +1,23 @@
 /*
  |--------------------------------------------------------------------------
- |  <%= moduleName %>
+ |  <%= moduleType %>-<%= moduleName %>
  |--------------------------------------------------------------------------
  */
 
 // Modul
-.m-<%= moduleName %> {
+.<%= moduleType %>-<%= moduleName %> {
   $root: &;
-
-  &__inner {
-    // empty
-  }
+  @include make-vr();
+  width: 100%;
 }
 
+// Modul Modifiers Example
+.<%= moduleType %>-<%= moduleName %>--modifier {
+  .<%= moduleType %>-<%= moduleName %>__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

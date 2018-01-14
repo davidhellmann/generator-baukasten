@@ -1,10 +1,14 @@
-/* -------------------------------------------------- */
-/*    Overflow Touch
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Overflow Touch
+ |--------------------------------------------------------------------------
+ */
 
-.t-overflowTouch {
+// stylelint-disable
+%t-overflowTouch {
   white-space: nowrap;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+// stylelint-enable

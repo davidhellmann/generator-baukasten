@@ -1,46 +1,59 @@
-/* -------------------------------------------------- */
-/*    Modules
-/* -------------------------------------------------- */
-<% if (projectType !== 'wordpress' ) { %>
-// Modules
-@import '../../templates/_modules/accordion/style';
-@import '../../templates/_modules/appContent/style';
-@import '../../templates/_modules/appFooter/style';
-@import '../../templates/_modules/appHeader/style';
-@import '../../templates/_modules/appWrapper/style';
-@import '../../templates/_modules/button/style';
-@import '../../templates/_modules/buttonGroup/style';
-@import '../../templates/_modules/caption/style';
-@import '../../templates/_modules/checkbox/style';
-@import '../../templates/_modules/cookiebar/style';
-@import '../../templates/_modules/contentSection/style';
-@import '../../templates/_modules/definitionList/style';
-@import '../../templates/_modules/embed/style';
-@import '../../templates/_modules/figure/style';
-@import '../../templates/_modules/headline/style';
-@import '../../templates/_modules/imageCover/style';
-@import '../../templates/_modules/imageGallery/style';
-@import '../../templates/_modules/imageGrid/style';
-@import '../../templates/_modules/imageSingle/style';
-@import '../../templates/_modules/imageSlider/style';
-@import '../../templates/_modules/input/style';
-@import '../../templates/_modules/newsList/style';
-@import '../../templates/_modules/newsListItem/style';
-@import '../../templates/_modules/navCategories/style';
-@import '../../templates/_modules/pageTitle/style';
-@import '../../templates/_modules/preloader/style';
-@import '../../templates/_modules/quote/style';
-@import '../../templates/_modules/radio/style';
-@import '../../templates/_modules/richText/style';
-@import '../../templates/_modules/richTextMarginals/style';
-@import '../../templates/_modules/svgSprite/style';
-@import '../../templates/_modules/separator/style';
-@import '../../templates/_modules/twoColumns/style';
-@import '../../templates/_modules/textarea/style';
+/*
+ |--------------------------------------------------------------------------
+ |  Modules
+ |--------------------------------------------------------------------------
+ */
+
+// Embeds
+@import '../../templates/_embeds/home/style';
+@import '../../templates/_embeds/oneColumn/style';
+@import '../../templates/_embeds/twoColumns/style';
+
+// Atoms
+@import '../../templates/_atoms/code/style';
+@import '../../templates/_atoms/divider/style';
+@import '../../templates/_atoms/embed/style';
+@import '../../templates/_atoms/headline/style';
+@import '../../templates/_atoms/image/style';
+@import '../../templates/_atoms/infoText/style';
+@import '../../templates/_atoms/input/style';
+@import '../../templates/_atoms/label/style';
+@import '../../templates/_atoms/link/style';
+@import '../../templates/_atoms/logo/style';
+@import '../../templates/_atoms/plainText/style';
+@import '../../templates/_atoms/preloader/style';
+@import '../../templates/_atoms/richText/style';
+@import '../../templates/_atoms/subline/style';
+@import '../../templates/_atoms/svgIcon/style';
+@import '../../templates/_atoms/svgSprite/style';
+@import '../../templates/_atoms/tag/style';
+
+// Molecules
+@import '../../templates/_molecules/caption/style';
+@import '../../templates/_molecules/card/style';
+@import '../../templates/_molecules/definitionList/style';
+@import '../../templates/_molecules/figure/style';
+@import '../../templates/_molecules/quote/style';
+@import '../../templates/_molecules/pageTitle/style';
+
+// Organisms
+@import '../../templates/_organisms/appHeader/style';
+@import '../../templates/_organisms/appFooter/style';
+@import '../../templates/_organisms/appContent/style';
+@import '../../templates/_organisms/appWrapper/style';
+@import '../../templates/_organisms/cards/style';
+@import '../../templates/_organisms/contactForm/style';
+@import '../../templates/_organisms/section/style';
+@import '../../templates/_organisms/imageCover/style';
+@import '../../templates/_organisms/imageGallery/style';
+@import '../../templates/_organisms/imageGrid/style';
+@import '../../templates/_organisms/imageSingle/style';
+@import '../../templates/_organisms/imageSlider/style';
+@import '../../templates/_organisms/richTextMarginals/style';
+
+// Global Modules
+@import '__modules/module.languageSwitcher';
 @import '__modules/module.pagination';
 @import '__modules/module.paginationSimple';
 @import '__modules/module.postNav';
 @import '__modules/module.socialNetworks';
-// @import '__modules/module.languageSwitcher';
-<% } %>
-

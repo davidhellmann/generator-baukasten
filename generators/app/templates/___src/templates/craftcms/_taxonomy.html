@@ -1,0 +1,10 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{# -- Taxonomy Router -- #}
+{# ---------------------------------------------------------------------- #}
+
+{% include [
+  'taxonomy/' ~ category.group().handle ~ '/' ~ category.slug,
+  'taxonomy/' ~ category.group().handle ~ '/default',
+  '404'
+] %}

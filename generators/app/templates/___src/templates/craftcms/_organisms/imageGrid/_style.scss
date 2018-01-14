@@ -1,0 +1,39 @@
+/*
+ |--------------------------------------------------------------------------
+ |  o-imageGrid
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-imageGrid {
+  $root: &;
+
+  &__item {
+    @include make-col(24);
+  }
+}
+
+// Modul Modifiers Example
+.o-imageGrid--c-2 {
+  .o-imageGrid__item {
+    @include media('>=s') {
+      @include make-col(12);
+    }
+  }
+}
+
+.o-imageGrid--c-3 {
+  .o-imageGrid__item {
+    @include media('>=s') {
+      @include make-col(8);
+    }
+  }
+}
+
+.o-imageGrid--c-4 {
+  .o-imageGrid__item {
+    @include media('>=s') {
+      @include make-col(6);
+    }
+  }
+}

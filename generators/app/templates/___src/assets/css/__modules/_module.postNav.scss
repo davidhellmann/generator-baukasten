@@ -5,39 +5,40 @@
  */
 
 .m-postNav {
-  @include make-col(12);
-  @include make-vr();
   $root: &;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  &__inner {
-    @include make-row();
-  }
+  width: 100%;
+  @include make-vr();
 
   &__item {
     @include make-col(6);
 
+    @include media('>=s') {
+      @include make-col(12);
+    }
+
     &--next {
-      margin-left: auto;
+      @include col-pos(7);
+
+      @include media('>=s') {
+        @include col-pos(13);
+      }
     }
   }
 
   &__link {
     display: block;
     position: relative;
-    color: c('black', '90');
+    color: c('black', '50');
     border: 1px solid c('black', '10');
     padding-top: s(4);
     padding-bottom: s(2);
 
     &:hover {
-      border-color: c('black', '90');
+      border-color: c('black', '25');
       color: c('black', '90');
 
-      .m-svgSprite {
-        fill: c('white');
+      #{$root}__icon svg path {
+        fill: c('black', '50');
       }
 
       #{$root}__label {
@@ -62,8 +63,14 @@
     position: absolute;
     top: 50%;
 
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
     svg path {
-      fill: c('black', '90');
+      fill: c('black', '25');
+      transition: all 0.25s ease('out-cubic');
     }
 
     &--prev {
@@ -88,7 +95,7 @@
   }
 
   &__label {
-    @include fs('ms-2');
+    @include ms-respond(font-size, -2);
     display: none;
     color: c('black', '40');
     margin-top: s(-2);
@@ -100,7 +107,6 @@
   }
 
   &__title {
-    font-weight: 500;
     display: none;
 
     @include media('>=s') {

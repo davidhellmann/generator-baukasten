@@ -3,5 +3,5 @@
   #}
 
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { if (!chunk.match(/font/)) { %>
-<script src="{{ craft.config.rootUrl }}<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<script src="{{ craft.app.config.general.custom.rootUrl }}<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
 <% }} %>

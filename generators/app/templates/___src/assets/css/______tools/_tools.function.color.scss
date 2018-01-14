@@ -1,20 +1,22 @@
-/* -------------------------------------------------- */
-/*    Color
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Colors
+ |--------------------------------------------------------------------------
+ */
 
 @function color($key, $tone: base) {
-  @if map-has-key($dh-colors, $key) {
-    $getTone: map-get(map-get($dh-colors, $key), $tone);
+  @if map-has-key($bk-colors, $key) {
+    $getTone: map-get(map-get($bk-colors, $key), $tone);
 
     @if ($getTone != null) {
-      @return map-get(map-get($dh-colors, $key), $tone);
+      @return map-get(map-get($bk-colors, $key), $tone);
     } @else {
       @warn "'#{$tone}' is not a valid tone in: '#{$key}'";
       @return null;
     }
   }
 
-  @warn "'#{$key}' is not a valid color in: '$dh-colors'";
+  @warn "'#{$key}' is not a valid color in: '$bk-colors'";
   @return null;
 }
 

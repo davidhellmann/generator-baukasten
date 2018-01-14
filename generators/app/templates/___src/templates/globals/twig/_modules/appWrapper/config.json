@@ -1,9 +1,0 @@
-{
-  "title": "appWrapper",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-appWrapper"
-    }
-  }
-}

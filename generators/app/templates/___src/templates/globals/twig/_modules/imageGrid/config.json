@@ -1,9 +1,0 @@
-{
-  "title": "imageGrid",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-imageGrid"
-    }
-  }
-}

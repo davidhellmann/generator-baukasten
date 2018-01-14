@@ -57,16 +57,8 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
         }),
         choices: [
             {
-                name: 'Craft CMS',
-                value: 'craftCMS'
-            },
-            {
                 name: 'Craft CMS 3',
                 value: 'craftCMS3'
-            },
-            {
-                name: 'Prototyping',
-                value: 'prototyping'
             },
             {
                 name: 'WordPress',
@@ -88,15 +80,11 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
             description: 'Define a Project Proxy.'
         }),
         default(answers) {
-            // If ProjectType = Prototyping
-            if (answers.projectType === 'prototyping') {
-                return false
-            }
             // If the Answer includes .dev or .local
-            if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
+            if (answers.projectName.includes('.localhost') || answers.projectName.includes('.local') || answers.projectName.includes('.test')) {
                 return answers.projectName
             }
-            return `${answers.projectName}.dev`
+            return `${answers.projectName}.test`
         },
         validate(input) {
             if (input !== false) {
@@ -104,7 +92,7 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
                     !input.match(/^([a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
                     // Pass the return value in the done callback
                     return `${chalk.styles.red.open}
-Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
+Not a valid URL! Example: foobar.test (or .local / .localhost) — (HOSTNAME.TLD)${chalk.styles.red.close}`
                 }
             }
             // Pass the return value in the done callback

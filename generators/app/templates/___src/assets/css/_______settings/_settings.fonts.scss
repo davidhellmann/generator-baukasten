@@ -1,14 +1,16 @@
-/* -------------------------------------------------- */
-/*    Fonts
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Fonts
+ |--------------------------------------------------------------------------
+ */
 
 /*
 @font-face {
   font-family: "FONT_NAME";
-  src: url("../fonts/FONT_FILE_NAME.eot?") format("eot"),
-  url("../fonts/FONT_FILE_NAME.woff2") format("woff2"),
-  url("../fonts/FONT_FILE_NAME.woff") format("woff"),
-  url("../fonts/FONT_FILE_NAME.ttf") format("truetype"),
-  url("../fonts/FONT_FILE_NAME.svg#Samplino") format("svg");
+  src: url("~FONTS/FONT_FILE_NAME.eot?") format("eot"),
+  url("~FONTS/FONT_FILE_NAME.woff2") format("woff2"),
+  url("~FONTS/FONT_FILE_NAME.woff") format("woff"),
+  url("~FONTS/FONT_FILE_NAME.ttf") format("truetype"),
+  url("~FONTS/FONT_FILE_NAME.svg#Samplino") format("svg");
 }
 */

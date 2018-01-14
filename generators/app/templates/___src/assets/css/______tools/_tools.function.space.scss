@@ -1,11 +1,13 @@
-/*--------------------------------------------------
-    #SPACE
-  --------------------------------------------------*/
-
+/*
+ |--------------------------------------------------------------------------
+ |  Space
+ |--------------------------------------------------------------------------
+ */
+// Dependencies
 @import 'tools.function.calc-rem';
 
 @function space($key) {
-  @return (calc-rem($dh-gutterWidth) * $key);
+  @return ($bk-gutterWidth * $key);
 }
 
 // Shorthand Version
@@ -14,9 +16,9 @@
 }
 
 // Spacing Column Width
-@function spaceColumn($columns: 0, $context: $dh-columns) {
-  @if $columns > $dh-columns {
-    $columns: $dh-columns;
+@function spaceColumn($columns: 0, $context: $bk-columnsMax) {
+  @if $columns > $bk-columnsMax {
+    $columns: $bk-columnsMax;
   }
 
   // Col Width
@@ -28,6 +30,6 @@
 }
 
 // Shorthand Version
-@function sc($columns: 0, $context: $dh-columns) {
+@function sc($columns: 0, $context: $bk-columnsMax) {
   @return spaceColumn($columns, $context);
 }

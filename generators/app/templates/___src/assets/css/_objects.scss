@@ -1,6 +1,8 @@
-/* -------------------------------------------------- */
-/*    Objects
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Objects
+ |--------------------------------------------------------------------------
+ */
 
 // DEV STUFF
 @import '___objects/objects.gridOverlay';
@@ -8,20 +10,18 @@
 // @import '___objects/objects.box';
 // @import '___objects/objects.crop';
 // @import '___objects/objects.flag';
-// @import '___objects/objects.list-bare';
+@import '___objects/objects.list-bare';
 // @import '___objects/objects.list-inline';
 // @import '___objects/objects.media';
 // @import '___objects/objects.pack';
 @import '___objects/objects.ratio';
-@import '___objects/objects.section';
 @import '___objects/objects.row';
 @import '___objects/objects.col';
 // @import '___objects/objects.table';
 // @import '___objects/objects.wrapper';
 
 // Templates
-<% if (projectType !== 'wordpress' ) { %>
-@import '../../templates/_templates/oneColumn/style';
-@import '../../templates/_templates/twoColumns/style';
-@import '../../templates/_templates/home/style';
-<% } %>
+// @import '../../templates/_templates/oneColumn/style';
+// @import '../../templates/_templates/twoColumns/style';
+// @import '../../templates/_templates/home/style';
+// @import '../../templates/_templates/toggleContent/style';

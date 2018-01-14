@@ -1,0 +1,50 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Debugging
+ |--------------------------------------------------------------------------
+ */
+
+// Warn
+@mixin debug-warn() {
+  outline: 5px solid #ff0;
+}
+
+// Error
+@mixin debug-error() {
+  outline: 5px solid #f00;
+}
+
+.t-devMode {
+  // Section in Section
+  // .o-section .o-section {
+  //   @include debug-error();
+  // }
+
+  // forgot the 'alt' attribute
+  img:not([alt]):not(.pswp__img) {
+    @include debug-error();
+  }
+
+  // Warn about links pointing to just `#`; it’s usually better to point them to
+  // `#0` if we have to point to `#` at all.
+  [href='#'] {
+    @include debug-warn();
+  }
+
+  // Elements other than `LI` directly inside lists are not allowed.
+  ul,
+  ol {
+    > :not(li) {
+      @include debug-error();
+    }
+
+    > li {
+      outline: none;
+    }
+  }
+
+  // `LI`s outside of lists aren’t allowed either.
+  li {
+    @include debug-error();
+  }
+}

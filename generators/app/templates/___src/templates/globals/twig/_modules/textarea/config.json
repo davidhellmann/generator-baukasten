@@ -1,9 +1,0 @@
-{
-  "title": "textarea",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-textarea"
-    }
-  }
-}

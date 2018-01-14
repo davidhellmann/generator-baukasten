@@ -12,8 +12,6 @@ const branding = require('./helpers/messages/_branding')
 const logMessage = require('./helpers/messages/_logMessage')
 
 // Install CMS Stuff
-// const installCraftCMS = require('./modules/installs/_instsallCraftCMS')
-const installCraftCMS = require('./modules/writings/craftCMS')
 const installCraftCMS3 = require('./modules/writings/craftCMS3')
 const installWordpress = require('./modules/writings/wordpress')
 
@@ -52,7 +50,6 @@ module.exports = class extends Generator {
         this.foldersProjectTpl = foldersProjectTpl
 
         // CMS Stuff
-        this.installCraftCMS = installCraftCMS.bind(this)
         this.installCraftCMS3 = installCraftCMS3.bind(this)
         this.installWordpress = installWordpress.bind(this)
 
@@ -107,15 +104,6 @@ module.exports = class extends Generator {
     async configuration() {
         this.logMessage({message: 'Configure Project', short: false})
 
-        // Install Craft CMS
-        if (this.props.projectType === 'craftCMS' && this.props.craftCMSInstall) {
-            try {
-                await this.installCraftCMS().download(this)
-            } catch (e) {
-                console.error(e)
-            }
-        }
-
         // Install Craft CMS 3
         if (this.props.projectType === 'craftCMS3' && this.props.craftCMS3Install && this.commands.composer) {
             try {
@@ -141,16 +129,6 @@ module.exports = class extends Generator {
 
         // Package JSON
         this.writePackageJSON().writing(this)
-
-        // Craft CMS
-        if (this.props.projectType === 'craftCMS') {
-            this.logMessage({message: 'Moving Craft Folders'});
-            try {
-                await this.installCraftCMS().writing(this)
-            } catch (e) {
-                console.error(e)
-            }
-        }
 
         // Craft CMS 3
         if (this.props.projectType === 'craftCMS3') {

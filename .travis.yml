@@ -2,4 +2,4 @@ language: node_js
 notifications:
     slack: davidhellmann:E1itXEUIsJQebYf8rRl2XhK1
 node_js:
-  - 7
+  - 8

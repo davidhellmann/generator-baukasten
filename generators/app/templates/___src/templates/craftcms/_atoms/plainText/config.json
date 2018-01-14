@@ -1,0 +1,19 @@
+{
+  "title": "plainText",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/plainText/",
+  "description": "plainText Description goes here…",
+  "notes": "plainText Notes goes here…",
+  "opt": {
+    "cn": "a-plainText",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "title": "link",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/link/",
+  "description": "link Description goes here…",
+  "notes": "link Notes goes here…",
+  "opt": {
+    "cn": "a-link",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

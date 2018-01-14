@@ -27,10 +27,10 @@ return array(
         'instanceReuseEnabled' => false,
         'allowUpscale' => false,
         'hashFilename' => false,
-        'cacheDuration' => 24192000,
-        'jpegQuality' => 80,
+        'cacheDuration' => 48384000,
+        'jpegQuality' => 82,
         'pngCompressionLevel' => 2,
-        'webpQuality' => 80,
+        'webpQuality' => 82,
     ],
 
     // Live (production) environment

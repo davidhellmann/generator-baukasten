@@ -1,0 +1,19 @@
+{
+  "title": "input",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/input/",
+  "description": "input Description goes here…",
+  "notes": "input Notes goes here…",
+  "opt": {
+    "cn": "a-input",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

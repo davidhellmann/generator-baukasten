@@ -1,0 +1,25 @@
+/*
+ |--------------------------------------------------------------------------
+ |  a-image
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-image {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+  display: block;
+
+  &__image {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// Modul Modifiers Example
+.a-image--modifier {
+  .a-image__block {
+    // Styles here
+  }
+}

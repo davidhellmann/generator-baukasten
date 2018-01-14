@@ -1,0 +1,18 @@
+/*
+ |--------------------------------------------------------------------------
+ |  a-plainText
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-plainText {
+  $root: &;
+  width: 100%;
+}
+
+// Modul Modifiers Example
+.a-plainText--modifier {
+  .a-plainText__block {
+    // Styles here
+  }
+}

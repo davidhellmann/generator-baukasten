@@ -1,6 +1,8 @@
-/* -------------------------------------------------- */
-/*    .o-listInline
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  List inline
+ |--------------------------------------------------------------------------
+ */
 
 .o-listInline {
   margin-left: 0;
@@ -11,18 +13,18 @@
   display: inline-block;
 }
 
-$dh-list-inline-delimiter: ',\00A0' !default;
+$bk-list-inline-delimiter: ',\00A0' !default;
 
 .o-listInline--delimited {
   font-size: 0;
 
   > .o-listInline__item {
-    font-size: fs('ms0');
+    font-size: ms(0);
   }
 
   > .o-listInline__item + .o-listInline__item {
     &::before {
-      content: ''#{$dh-list-inline-delimiter}'';
+      content: ''#{$bk-list-inline-delimiter}'';
     }
   }
 }

@@ -1,9 +1,17 @@
 {
-  "title": "<%= moduleName %>",
-  "status": "ready",
+  "title": "<%= moduleName.replace('-', '_') %>",
+  "status": "WIP",
+  "description": "<%= moduleName.replace('-', '_') %> Description goes here…",
+  "notes": "<%= moduleName.replace('-', '_') %> Notes goes here…",
+  "opt": {
+    "cn": "<%= moduleType %>-<%= moduleName.replace('-', '_') %>",
+    "modifiers": [],
+    "data": {},
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
   "context": {
-    "options": {
-      "classname": "m-<%= moduleName %>"
-    }
+    "foo": "bar"
   }
 }

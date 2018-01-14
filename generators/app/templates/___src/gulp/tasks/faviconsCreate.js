@@ -14,7 +14,7 @@ const createFavicons = () => {
             developerName: pkg.favicons.developerName,
             developerURL: pkg.favicons.developerURL,
             background: pkg.favicons.background,
-            path: pkg.urls.favicons + pkg.dist.images.bitmap.faviconPath,
+            path: '/' + pkg.dist.images.bitmap.faviconPath,
             url: pkg.favicons.url,
             display: pkg.favicons.display,
             orientation: pkg.favicons.orientation,
@@ -33,7 +33,9 @@ const createFavicons = () => {
                 windows: pkg.favicons.icons.windows,
                 yandex: pkg.favicons.icons.yandex
             },
-            html: pkg.src.templates + '_partials/header/_favicons' + extension
+            html: '../../../../../' + pkg.src.templates + '_partials/header/_favicons' + extension,
+            pipeHTML: true,
+            replace: true
         }))
         .pipe(gulp.dest(pkg.src.images.bitmap.favicons))
 }

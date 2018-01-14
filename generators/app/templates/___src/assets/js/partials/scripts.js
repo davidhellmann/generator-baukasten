@@ -2,10 +2,12 @@
  * Scripts
  */
 
-import example from '../scripts/example'
-import bodyClass from '../scripts/bodyclass'
-import '../scripts/lazyloading'
-import '../scripts/fontfaceobserver'
+import example from '../scripts/example';
+import bodyClass from '../scripts/bodyclass';
+import disableHover from '../scripts/disableHover';
+import browserDetect from '../scripts/bowser';
+import '../scripts/lazyloading';
+import '../scripts/fontfaceobserver';
 // import '../scripts/pagetransition'
 // import '../scripts/smoothScroll'
 // import '../scripts/waypoints.anime'
@@ -14,22 +16,24 @@ import '../scripts/fontfaceobserver'
 // Modules Array
 const scriptsArray = [
     example,
-    bodyClass
-]
+    bodyClass,
+    disableHover,
+    browserDetect
+];
 
 const scripts = {
     // Scripts
     Scripts() {
         if (scriptsArray.length > 0 && scriptsArray !== undefined) {
             scriptsArray.forEach((script) => {
-                script.init()
-            })
+                script.init();
+            });
         }
     },
 
     init() {
-        this.Scripts()
+        this.Scripts();
     }
-}
+};
 
-export default scripts
+export default scripts;

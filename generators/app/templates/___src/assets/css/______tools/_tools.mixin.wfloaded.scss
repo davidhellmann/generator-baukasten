@@ -1,0 +1,16 @@
+/* -------------------------------------------------- */
+/*    Web Font Loaded
+/* -------------------------------------------------- */
+
+@mixin webfontloaded($font) {
+  .wf-loaded & {
+    font-weight: normal;
+    font-family: ff($font);
+  }
+}
+
+// Shorthand Version
+@mixin wf($args...) {
+  @include webfontloaded($args...);
+}
+

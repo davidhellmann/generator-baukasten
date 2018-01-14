@@ -1,24 +1,32 @@
 {#
-  <%= moduleName %>
-  ======================================================================================================================
+  <%= moduleType %>-<%= moduleName %>
+  --------------------------------------------------
 #}
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: 'm-<%= moduleName %>',
-  foo: 'bar'
+  cn: '<%= moduleType %>-<%= moduleName %>',
+  modifiers: [],
+  data: {},
+  js: null,
+  waypoint: null,
+  waypointAni: null,
 } %}
 
-{% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
-{% else %}
-    {% set options = defaults %}
-{% endif %}
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
 {# -- Modul -- #}
-<div class="o-col  {{ options.classname }}">
-  <div class="{{ options.classname ~ '__inner' }}">
-    <%= moduleName %>  {{ options.foo == 'bar' ? 'foo' : 'bar' }}
+{% if opt.foo %}
+  <div class="{{ opt.cn }}
+              {% for modifier in opt.modifiers %}
+                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= moduleType %>-' : 'js-' }) : '' }}
+              {{ opt.waypointAni ? opt.waypointAni : '' }}"
+              {{ opt.waypoint ? ' data-waypoint' : '' }}
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %}>
+    <%= moduleName %>
   </div>
-</div>
-
+{% endif %}

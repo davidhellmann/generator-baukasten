@@ -22,16 +22,12 @@ Installed NPM Global
 
 ## Developing
 ### Built With
-<% if (projectType === 'craftCMS' ) { %>- [Craft CMS](https://craftcms.com/)<% } %>
 <% if (projectType === 'craftCMS3' ) { %>- [Craft CMS](https://craftcms.com/)<% } %>
 <% if (projectType === 'wordpress' ) { %>- [WordPress](https://wordpress.org/)<% } %>
-<% if (projectType === 'prototyping' ) { %>- [Twig](https://twig.symfony.com/)<% } %>
 
 ### Requirements
 - [NodeJS](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/) or [YARN](https://yarnpkg.com/lang/en/)
-<% if (projectType === 'craftCMS' ) { %>- [PHP](http://php.net/)
-- [MySQL](https://www.mysql.com)<% } %>
 <% if (projectType === 'craftCMS3' ) { %>- [PHP](http://php.net/)
 - [MySQL](https://www.mysql.com)
 - [Composer](https://getcomposer.org/)<% } %>
@@ -66,9 +62,7 @@ We use [Buddy](https://buddy.works/) (or something similar) for Deploying.
 npm start
 npm dev
 npm dev:single
-<% if (projectType === 'craftCMS3' ) { %>npm update<% } %>
 npm build
-npm module
 npm critical
 npm clean:dist
 npm clean:templates
@@ -86,20 +80,10 @@ npm create:favicons
 npm create:inlineJS
 npm webpack
 npm webpack:analyze
+npm install:plugins
 ```
 
 All scripts are also executable with YARN.
-More detailed Infos about this Tasks & Scripts: [scripts.md](./docs/scripts-tasks.md)
-
-## Sass Functions & Mixins
-```scss
-later
-```
-
-More detailed Infos about this Sass Functions & Mixins: [scripts.md](./docs/functions-mixins.md)
-
-## Style guide
-[Fractal](http://fractal.build/) is out tool of choice but it's not implemented for now. Update here when its done.
 
 ## Runs with Baukasten
 ```txt

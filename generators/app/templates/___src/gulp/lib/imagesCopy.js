@@ -5,11 +5,11 @@ import errorHandler from '../lib/errorHandler'
 const $ = gulpLoadPlugins()
 
 const copyImagesLib = (srcFiles, distFiles) => {
-  return gulp
-    .src(srcFiles)
-    .on('error', errorHandler)
-    .pipe(global.checkChanged === true ? $.changed(distFiles) : $.util.noop())
-    .pipe(gulp.dest(distFiles))
+    return gulp
+        .src(srcFiles)
+        .on('error', errorHandler)
+        .pipe(global.checkChanged === true ? $.changed(distFiles) : $.util.noop())
+        .pipe(gulp.dest(distFiles))
 }
 
 module.exports = copyImagesLib

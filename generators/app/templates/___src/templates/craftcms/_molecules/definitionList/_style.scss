@@ -1,0 +1,57 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .m-definitionList
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-definitionList {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+  display: grid;
+  @include make-col-gap();
+  grid-template-columns: 1fr;
+
+  @include media('>=m') {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  &__term {
+    @include f(s(1), s(2), padding-bottom);
+    @include f(s(1), s(2), margin-top);
+    border-bottom: 1px dotted c('black', '25');
+    font-weight: 700;
+  }
+
+  &__description {
+    @include f(s(1), s(2), padding-bottom);
+    @include f(s(1), s(2), margin-top);
+    @include f(s(2), s(4), margin-bottom);
+
+    &:last-of-type {
+      @include f(s(0), s(0), margin-bottom);
+    }
+
+    @include media('>=m') {
+      border-bottom: 1px dotted c('black', '25');
+      @include f(s(0), s(0), margin-bottom);
+    }
+  }
+}
+
+// Modul Modifiers Example
+.m-definitionList--modifier {
+  .m-definitionList__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

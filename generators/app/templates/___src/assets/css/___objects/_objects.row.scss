@@ -1,36 +1,23 @@
-/* -------------------------------------------------- */
-/*    .o-row
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Row
+ |--------------------------------------------------------------------------
+ */
 
 .o-row {
+  display: grid;
   @include make-row();
-  // background-color: rgba(c(blue), 0.1);
 
-  &--imageCover {
-    @include make-row(3, 3);
+  .t-oldies & {
+    display: flex;
+    @include make-row-flex();
   }
+}
 
-  &.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
+.o-row--noGap {
+  @include f(0, 0, grid-column-gap);
 
-    > .o-col,
-    > [class*='o-col'] {
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
-
-  // Different Alignments
-  &--left {
-    text-align: left;
-  }
-
-  &--center {
-    text-align: center;
-  }
-
-  &--right {
-    text-align: right;
+  .t-oldies & {
+    @include f(0, 0, padding-left padding-right);
   }
 }

@@ -7,8 +7,8 @@ function addMinifyImagesSettings(files = {}) {
                 optimizationLevel: 3,
                 jpegCompress: {
                     loops: 6,
-                    min: 75,
-                    max: 95
+                    min: 80,
+                    max: 90
                 },
                 pngquant: {
                     quality: '90',

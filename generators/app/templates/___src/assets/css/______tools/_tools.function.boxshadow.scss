@@ -1,13 +1,15 @@
-/* -------------------------------------------------- */
-/*    Box Shadow
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Box Shadow
+ |--------------------------------------------------------------------------
+ */
 
 @function boxshadow($key) {
-  @if map-has-key($dh-boxshadows, $key) {
-    @return map-get($dh-boxshadows, $key);
+  @if map-has-key($bk-boxshadows, $key) {
+    @return map-get($bk-boxshadows, $key);
   }
 
-  @warn "Unknown '#{$key}' in #{map-keys($dh-boxshadows)}";
+  @warn "Unknown '#{$key}' in #{map-keys($bk-boxshadows)}";
   @return null;
 }
 

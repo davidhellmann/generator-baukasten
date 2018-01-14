@@ -1,9 +1,0 @@
-{
-  "title": "imageSlider",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-imageSlider"
-    }
-  }
-}

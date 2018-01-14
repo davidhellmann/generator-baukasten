@@ -1,13 +1,15 @@
-/*--------------------------------------------------
-    #FONT FAMILY
-  --------------------------------------------------*/
+/*
+ |--------------------------------------------------------------------------
+ |  Font Families
+ |--------------------------------------------------------------------------
+ */
 
 @function fontfamily($key) {
-  @if map-has-key($dh-fontfamilies, $key) {
-    @return map-get($dh-fontfamilies, $key);
+  @if map-has-key($bk-fontfamilies, $key) {
+    @return map-get($bk-fontfamilies, $key);
   }
 
-  @warn "Unknown '#{$key}' in #{map-keys($dh-fontfamilies)}";
+  @warn "Unknown '#{$key}' in #{map-keys($bk-fontfamilies)}";
   @return null;
 }
 

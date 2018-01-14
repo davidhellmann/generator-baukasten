@@ -1,0 +1,19 @@
+{
+  "title": "label",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/label/",
+  "description": "label Description goes here…",
+  "notes": "label Notes goes here…",
+  "opt": {
+    "cn": "a-label",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

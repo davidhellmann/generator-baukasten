@@ -1,0 +1,127 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Home Page
+  ------------------------------------------------------------
+
+  This is your Homepage!
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-development p-home" %}
+{% if seomaticSiteMeta ?? null %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: Typo' }) %}
+{% else %}
+  {% set appTitle = 'DEV: Typo' %}
+{% endif %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{% block appContent %}
+  {# -- Typo Stuff -- #}
+
+<div class="o-section  o-section--pv-xlarge">
+  <div class="o-row">
+    <div class="o-col-12  o-col-s-24">
+      {# -- headline -- #}
+      {%- include '_atoms/headline/_template.html' with {
+        opt: {
+          text: 'DEV: Typo',
+          size: 'h1'
+        }
+      } only %}
+
+      {# -- Nav -- #}
+      {% include 'dev/_nav.html' %}
+
+    </div>
+  </div>
+  <div class="o-col-12  o-col-s-24">Headlines</h6>
+
+  <div class="o-row">
+    <h1 class="o-col-12  o-col-s-24 a-headline--mega">Mega: The quick brown fox jumps over the lazy dog</h1>
+  </div>
+  <div class="o-row">
+    <h1 class="o-col-12  o-col-s-24 a-headline--super">Super: The quick brown fox jumps over the lazy dog</h1>
+  </div>
+  <div class="o-row">
+    <h1 class="o-col-12  o-col-s-24">H1: The quick brown fox jumps over the lazy dog<br>The quick brown fox jumps over the lazy dog
+    </h1>
+  </div>
+  <div class="o-row">
+    <h2 class="o-col-12  o-col-s-24">H2: The quick brown fox jumps over the lazy dog<br>The quick brown fox jumps over the lazy dog
+    </h2>
+  </div>
+  <div class="o-row">
+    <h3 class="o-col-12  o-col-s-24">H3: The quick brown fox jumps over the lazy dog<br>The quick brown fox jumps over the lazy dog
+    </h3>
+  </div>
+  <div class="o-row">
+    <h4 class="o-col-12  o-col-s-24">H4: The quick brown fox jumps over the lazy dog<br>The quick brown fox jumps over the lazy dog
+    </h4>
+  </div>
+  <div class="o-row">
+    <h5 class="o-col-12  o-col-s-24">H5: The quick brown fox jumps over the lazy dog<br>The quick brown fox jumps over the lazy dog
+    </h5>
+  </div>
+  <div class="o-row">
+    <h6 class="o-col-12  o-col-s-24">H6: The quick brown fox jumps over the lazy dog<br>The quick brown fox jumps over the lazy dog
+    </h6>
+  </div>
+  <div class="o-row">
+    <h6 class="o-col-12  o-col-s-24">Copy</h6>
+  </div>
+  <div class="o-row">
+    <div class="o-col-12  o-col-s-24" style="max-width: 800px">
+      <p>
+        Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat
+        ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum
+        sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu,
+        te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto
+        similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor
+        vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum
+        appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum
+        repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto
+        eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani
+        copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.
+      </p>
+      <p>
+        An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae
+        petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix
+        dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu
+        diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.
+      </p>
+    </div>
+  </div>
+  <div class="o-row">
+    <h6 class="o-col-12  o-col-s-24">Quote</h6>
+  </div>
+  <div class="o-row">
+    <blockquote class="o-col-12  o-col-s-24" style="max-width: 800px">
+      <p>
+        Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat
+        ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum
+        sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu,
+        te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto
+        similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor
+        vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum
+        appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum
+        repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto
+        eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani
+        copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.
+      </p>
+      <p>
+        An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae
+        petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix
+        dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu
+        diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.ss
+      </p>
+    </blockquote>
+  </div>
+</div>
+{% endblock %}

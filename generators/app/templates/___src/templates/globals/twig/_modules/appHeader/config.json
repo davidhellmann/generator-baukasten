@@ -1,9 +1,0 @@
-{
-  "title": "appHeader",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-appHeader"
-    }
-  }
-}

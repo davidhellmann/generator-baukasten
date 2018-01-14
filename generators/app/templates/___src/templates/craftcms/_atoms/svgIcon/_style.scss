@@ -1,0 +1,26 @@
+/*
+ |--------------------------------------------------------------------------
+ |  a-svgIcon
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-svgIcon {
+  $root: &;
+  @include make-vr();
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Modul Modifiers Example
+.a-svgIcon--modifier {
+  .a-svgIcon__block {
+    // Styles here
+  }
+}

@@ -1,0 +1,42 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Module Library
+  ------------------------------------------------------------
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-development" %}
+{% if seomaticSiteMeta ?? null %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: Index' }) %}
+{% else %}
+  {% set appTitle = 'DEV: Index' %}
+{% endif %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{% block appContent %}
+
+<div class="o-section  o-section--pv-xlarge">
+  <div class="o-row">
+    <div class="o-col-12  o-col-s-24">
+      {# -- headline -- #}
+      {%- include '_atoms/headline/_template.html' with {
+        opt: {
+          text: 'DEV: Index',
+          size: 'h1'
+        }
+      } only %}
+
+      {# -- Nav -- #}
+      {% include 'dev/_nav.html' %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

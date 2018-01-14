@@ -1,37 +1,33 @@
-/* -------------------------------------------------- */
-/*    Breakpoints
-/* -------------------------------------------------- */
-
+/*
+ |--------------------------------------------------------------------------
+ |  Breakpoints
+ |--------------------------------------------------------------------------
+ */
 // Vendors
 // Include Media Breakpoint Mixin
 // URL: http://include-media.com/
 @import '~include-media/dist/include-media';
+@import 'settings.grid';
 
-@function im-to-em($breakpoints, $base-value: 16px) {
-  $new-breakpoints: ();
+// Breakpoints
+$bk-breakpoint-minWidth: $bk-minWidth;
+$bk-breakpoint-xs: 500px;
+$bk-breakpoint-s: 800px;
+$bk-breakpoint-m: 1000px;
+$bk-breakpoint-l: 1200px;
+$bk-breakpoint-maxWidth: $bk-maxWidth;
+$bk-breakpoint-xl: 1800px;
 
-  @each $name, $value in $breakpoints {
-    $em-value: ($value / $base-value) * 1em;
-    $new-breakpoints: map-merge($new-breakpoints, ($name: $em-value));
-  }
-
-  @return $new-breakpoints;
-}
-
-$breakpoint-0:      0px;
-$breakpoint-xs:     480px;
-$breakpoint-s:      667px;
-$breakpoint-m:      1024px;
-$breakpoint-l:      1280px;
-$breakpoint-xl:     1680px;
-
-$dh-breakpoints: (
-        '0':      $breakpoint-0,
-        'xs':     $breakpoint-xs,
-        's':      $breakpoint-s,
-        'm':      $breakpoint-m,
-        'l':      $breakpoint-l,
-        'xl':     $breakpoint-xl,
+// Breakpoints Map
+$bk-breakpoints: (
+        'min': $bk-breakpoint-minWidth,
+        'xs': $bk-breakpoint-xs,
+        's': $bk-breakpoint-s,
+        'm': $bk-breakpoint-m,
+        'l': $bk-breakpoint-l,
+        'max': $bk-breakpoint-maxWidth,
+        'xl': $bk-breakpoint-xl
 );
 
-$breakpoints: im-to-em($dh-breakpoints);
+// Include Media Breakpoints Map
+$breakpoints: $bk-breakpoints;

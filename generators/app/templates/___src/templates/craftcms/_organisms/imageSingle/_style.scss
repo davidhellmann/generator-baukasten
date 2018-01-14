@@ -1,0 +1,69 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  baukasten
+ | @author David Hellmann [davidhellmann.com@gmail.com]
+ | .o-imageSingle
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-imageSingle {
+  $root: &;
+  width: 100%;
+}
+
+// Full Image
+.o-imageSingle--w-full {
+  @include media('>=m') {
+    .m-figure {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      @include make-col-gap();
+    }
+
+    .m-caption {
+      margin-top: 0;
+    }
+  }
+}
+
+// Half Image
+.o-imageSingle--w-half {
+  @include media('>=m') {
+    .m-figure {
+      width: 50%;
+    }
+
+    &.o-imageSingle--a-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.o-imageSingle--a-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+// Three Quarter Image
+.o-imageSingle--w-threeQuarter {
+  @include media('>=m') {
+    .m-figure {
+      width: 75%;
+    }
+
+    &.o-imageSingle--a-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.o-imageSingle--a-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

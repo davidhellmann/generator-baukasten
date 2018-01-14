@@ -2,9 +2,7 @@ module.exports = {
     files: [
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/assets/css/',
@@ -12,33 +10,7 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_macros/',
-            dest: '___src/templates/_macros/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
-                'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_modules/',
-            dest: '___src/templates/_modules/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
-                'craftCMS3',
-            ],
-            src: '___src/templates/globals/twig/_templates/',
-            dest: '___src/templates/_templates/'
-        },
-        {
-            projectContext: [
-                'craftCMS',
-                'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/assets/js/',
@@ -46,9 +18,7 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/_system/',
@@ -56,9 +26,7 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/gulp/',
@@ -66,9 +34,7 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3',
-                'prototyping',
                 'wordpress'
             ],
             src: '___src/webpack/',
@@ -76,17 +42,9 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS',
                 'craftCMS3'
             ],
             src: '___src/templates/craftcms/',
-            dest: '___src/templates/'
-        },
-        {
-            projectContext: [
-                'prototyping'
-            ],
-            src: '___src/templates/prototyping/',
             dest: '___src/templates/'
         },
         {

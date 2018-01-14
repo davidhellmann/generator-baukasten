@@ -1,9 +1,0 @@
-{
-  "title": "oneColumn",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-oneColumn"
-    }
-  }
-}

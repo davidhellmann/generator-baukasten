@@ -1,0 +1,20 @@
+{
+  "title": "image",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/image/",
+  "description": "image Description goes here…",
+  "notes": "image Notes goes here…",
+  "opt": {
+    "cn": "a-image",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "image": "/assets/images/bitmap/_dummy/image_01.jpg"
+  }
+}
+

@@ -1,30 +1,48 @@
-/* -------------------------------------------------- */
-/*    Social Networks
-/* -------------------------------------------------- */
+/*
+ |--------------------------------------------------------------------------
+ |  Social Networks
+ |--------------------------------------------------------------------------
+ */
 
 .m-socialNetworks {
   $root: &;
-  @include make-col(12);
-
-  &__inner {
-    justify-content: center;
-    text-align: center;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @include make-vr();
 
   &__link {
+    flex: 1 1 auto;
     display: inline-block;
-    @include make-vr(2);
-    @include make-col-padding();
+    text-align: center;
+    color: c('black', '50');
+
+    &:hover {
+      color: c('black', '50');
+
+      #{$root}__icon {
+        fill: darken(c('red'), 10%);
+      }
+    }
   }
 
-  &__svg {
-    max-width: 32px;
-    max-height: 32px;
-    fill: c('red');
+  &__icon {
+    max-width: 24px;
+    max-height: 24px;
+    display: inline-block;
+    fill: c('blue');
+    transition: fill 0.25s ease('out-cubic');
+
+    svg {
+      max-width: 24px;
+      max-height: 24px;
+    }
   }
 
   &__label {
     width: 100%;
-    font-size: fs('ms-2');
+    color: inherit;
+    @include ms-respond(font-size, -2);
   }
 }

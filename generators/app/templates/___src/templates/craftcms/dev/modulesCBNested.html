@@ -1,0 +1,67 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  News Entry Template
+  ------------------------------------------------------------
+
+  When you view a single news on the website, this template gets loaded.
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-development p-cb p-modules" %}
+{% if seomaticSiteMeta ?? null %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: CB' }) %}
+{% else %}
+  {% set appTitle = 'DEV: CB' %}
+{% endif %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{% block appContent %}
+
+<article role="article">
+  <div class="o-section  o-section--pv-xlarge">
+    <div class="o-row">
+      <div class="o-col-12  o-col-s-24">
+        {# -- Include Page Title -- #}
+        {% include '_molecules/pageTitle/_template.html' with {
+          opt: {
+            object: entry
+          }
+        } only %}
+
+        {# -- Nav -- #}
+        {% include 'dev/_nav.html' %}
+      </div>
+    </div>
+  </div>
+
+  <div class="o-section  o-section--pv-xlarge">
+    <div class="o-row">
+      <div class="o-col-12  o-col-s-24  o-col-l-16">
+        {# Content Builder #}
+        {% include '_contentBuilders/_contentBuilderMatrix.html' with {
+          opt: {
+            modifiers: ['nested'],
+            object: entry,
+            context: '12:16'
+          }
+        } only %}
+      </div>
+
+
+      <aside class="o-col-12  o-col-s-24  o-col-l-6  o-col-sa-l-19">
+        <h2>Sidebar</h2>
+        <p>
+          Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.
+        </p>
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock %}

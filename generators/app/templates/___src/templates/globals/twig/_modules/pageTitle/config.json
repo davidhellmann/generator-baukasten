@@ -1,9 +1,0 @@
-{
-  "title": "pageTitle",
-  "status": "ready",
-  "context": {
-    "options": {
-      "classname": "m-pageTitle"
-    }
-  }
-}

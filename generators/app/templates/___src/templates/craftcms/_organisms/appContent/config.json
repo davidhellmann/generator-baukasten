@@ -1,0 +1,19 @@
+{
+  "title": "appContent",
+  "status": "Prototype",
+  "type": "organism",
+  "path": "_organisms/appContent/",
+  "description": "appContent Description goes here…",
+  "notes": "appContent Notes goes here…",
+  "opt": {
+    "cn": "o-appContent",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

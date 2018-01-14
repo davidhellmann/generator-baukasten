@@ -2,10 +2,6 @@
 /*    Offset
 /* -------------------------------------------------- */
 
-@mixin offset($columns, $context: $dh-columns) {
-  @if $columns > 0 {
-    margin-left: calc(#{$columns} / #{$context} * 100%);
-  } @else {
-    margin-left: 0;
-  }
+@mixin offset($columns, $context: $bk-columnsMax) {
+  margin-left: if($columns > 0, percentage($columns / $context), 0)
 }

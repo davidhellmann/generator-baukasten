@@ -1,0 +1,21 @@
+{
+  "title": "pageTitle",
+  "status": "WIP",
+  "type": "molecule",
+  "path": "_molecules/pageTitle/",
+  "description": "pageTitle Description goes here…",
+  "notes": "pageTitle Notes goes here…",
+  "opt": {
+    "cn": "m-pageTitle",
+    "modifiers": [],
+    "data": {},
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "text": "Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in",
+    "size": "h1",
+    "link": "http://baukasten.io"
+  }
+}
