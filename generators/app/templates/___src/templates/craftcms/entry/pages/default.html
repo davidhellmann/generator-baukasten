@@ -16,9 +16,9 @@
 {# -- App Content -- #}
 {% block appContent %}
   {# -- Cache -- #}
-  {% cache globally using key _self ~ "-page-" ~ craft.request.path %}
+  {% cache globally using key _self ~ "-page-" ~ craft.app.request.pathInfo %}
   {# If you have a Template with Pagination use this: #}
-  {# {% cache globally using key _self.getTemplateName() ~ '-archive-' ~ craft.request.path ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %} #}
+  {# {% cache globally using key _self.getTemplateName() ~ '-archive-' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %} #}
 
     {% embed '_embeds/oneColumn/_template.html' with {
       opt: {
@@ -58,7 +58,8 @@
 
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
-              image: entry.singleImageEntry.one() ?? null
+              image: entry.singleImageEntry.one() ?? null,
+              ratio: 'landscape'
             }
           } only %}
         {% endif %}

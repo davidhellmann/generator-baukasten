@@ -10,47 +10,42 @@
   @param {object}  pages                 - Pagination Object
   @param {object}  craft                 - Craft Request Object
   @param {object}  options               - Array of options
-  @param {string}  options.classnamename         - Classname (default: 'o-pagination')
-  @param {string}  options.searchquery   - To pass search words from Searchfields (default: false)
-  @param {string}  options.prevText      - Titletext for Prev
-  @param {string}  options.nextText      - Titletext for Next
+  @param {string}  opt.cnname         - Classname (default: 'o-pagination')
+  @param {string}  opt.searchquery   - To pass search words from Searchfields (default: false)
+  @param {string}  opt.prevText      - Titletext for Prev
+  @param {string}  opt.nextText      - Titletext for Next
 #}
-{% macro paginationSimple(pages,craft,options) %}
+{% macro paginationSimple(pages,craft,opt) %}
   {% set defaults = {
-    classname: 'm-paginationSimple',
+    cn: 'm-paginationSimple',
     searchquery: false,
     prevText: 'Prev Page',
     nextText: 'Next Page',
-    prevIcon: false,
-    nextIcon: false
+    prevIcon: 'iconArrowLeft',
+    nextIcon: 'iconArrowRight'
   } %}
 
-  {% if options is defined %}
-      {% set options = options is defined ? defaults|merge(options) : defaults %}
-  {% else %}
-      {% set options = defaults %}
-  {% endif %}
+  {# -- Merge Default with Options -- #}
+  {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}
-    <div class="o-col  {{ options.classname }}">
-      <nav class="{{ options.classname ~ '__inner' }}" role="navigation">
-
+    <nav class="o-row  {{ opt.cn }}" role="navigation">
         {# Display the Previous Link if available #}
         {% if pages.prevUrl %}
-          <div class="{{ options.classname ~ '__item' }}  {{ options.classname ~ '__item--prev' }}">
-            <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--prev' }}"
-               href="{{ pages.prevUrl }}{{ options.searchquery ? '?q='~options.searchquery }}"
-               title="{{ options.prevText }}">
+          <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--prev' }}">
+            <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--prev' }}"
+               href="{{ pages.prevUrl }}{{ opt.searchquery ? '?q='~opt.searchquery }}"
+               title="{{ opt.prevText }}">
 
-              {% if options.prevIcon %}
-                <span class="{{ options.classname ~ '__icon' }}  {{ options.classname ~ '__icon--prev' }}">
-                {% include '_partials/svg/' ~ options.prevIcon ~ '.svg.html' %}
+              {% if opt.prevIcon %}
+                <span class="{{ opt.cn ~ '__icon' }}  {{ opt.cn ~ '__icon--prev' }}">
+                {% include '_partials/svg/' ~ opt.prevIcon ~ '.svg.html' %}
               </span>
               {% endif %}
 
-              <span class="{{ options.classname ~ '__title' }}">
-                {{ options.prevText }}
+              <span class="{{ opt.cn ~ '__title' }}">
+                {{ opt.prevText }}
               </span>
             </a>
           </div>
@@ -58,24 +53,23 @@
 
         {# Display next Page Link if available#}
         {% if pages.nextUrl %}
-        <div class="{{ options.classname ~ '__item' }}  {{ options.classname ~ '__item--next' }}">
-          <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--next' }}"
-             href="{{ pages.nextUrl }}{{ options.searchquery ? '?q='~options.searchquery }}"
-             title="{{ options.nextText }}">
+        <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--next' }}">
+          <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--next' }}"
+             href="{{ pages.nextUrl }}{{ opt.searchquery ? '?q='~opt.searchquery }}"
+             title="{{ opt.nextText }}">
 
-            {% if options.nextIcon %}
-              <span class="{{ options.classname ~ '__icon' }}  {{ options.classname ~ '__icon--next' }}">
-                {% include '_partials/svg/' ~ options.nextIcon ~ '.svg.html' %}
+            {% if opt.nextIcon %}
+              <span class="{{ opt.cn ~ '__icon' }}  {{ opt.cn ~ '__icon--next' }}">
+                {% include '_partials/svg/' ~ opt.nextIcon ~ '.svg.html' %}
               </span>
             {% endif %}
 
-            <span class="{{ options.classname ~ '__title' }}">
-              {{ options.nextText }}
+            <span class="{{ opt.cn ~ '__title' }}">
+              {{ opt.nextText }}
             </span>
           </a>
         </div>
         {% endif %}
-      </nav>
-    </div>
+    </nav>
   {% endif %}
 {% endmacro %}

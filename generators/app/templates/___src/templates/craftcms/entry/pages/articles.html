@@ -16,7 +16,7 @@
 {# -- Query Entries -- #}
 {# To Skip the Current id add: id: 'and, not ' ~ entry.id #}
 {% set entries = craft.entries({
-  section: 'news',
+  section: 'articles',
   relatedTo: null,
   limit: 12,
   offset: null
@@ -33,31 +33,68 @@
 {# -- App Content -- #}
 {% block appContent %}
   {# -- Cache -- #}
-  {% cache globally using key 'article-archive-' ~ craft.request.path ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
-  <div class="o-section">
-    <div class="o-row">
-      {# -- Include Page Title -- #}
-      {% include '_molecules/pageTitle/_template.html' with {
-        options: {
-          object: entry,
-          size: 'h1'
-        }
-      } only %}
-    </div>
-  </div>
+  {% cache globally using key 'article-archive-' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
 
-  <div class="o-section">
-    <div class="o-row">
-      {# -- Articles --#}
-      {% include '_modules/articleList/_template.html' with {
-        options: {
-          entries: entries,
-          pagination: true,
-          catNav: true
-        }
-      } only %}
-    </div>
-  </div>
+    {% embed '_embeds/oneColumn/_template.html' with {
+      opt: {
+        intro: true,
+        content: true
+      },
+      entry: entry,
+      pageEntries: pageEntries,
+      pageInfo: pageInfo
+    } only %}
+
+      {# -- Block: Intro -- #}
+      {% block intro %}
+        {# -- Include Page Title -- #}
+        {% include '_molecules/pageTitle/_template.html' with {
+          opt: {
+            object: entry,
+            size: 'h1'
+          }
+        } only %}
+
+        {# -- Entry Intro -- #}
+        {% if entry.singleIntroText ?? null %}
+          {% include '_atoms/richText/_template.html' with {
+            opt: {
+              text: entry.singleIntroText
+            }
+          } only %}
+        {% endif %}
+
+        {# -- Image Entry -- #}
+        {% if entry.singleImageEntry.one() ?? null %}
+          {% include '_atoms/headline/_template.html' with {
+            opt: {
+              text: 'Image Entry',
+              size: 'h3'
+            }
+          } only %}
+
+          {% include '_organisms/imageSingle/_template.html' with {
+            opt: {
+              image: entry.singleImageEntry.one() ?? null,
+              ratio: 'landscape'
+            }
+          } only %}
+        {% endif %}
+      {% endblock %}
+
+      {# -- Block: Content -- #}
+      {% block content %}
+        {# -- Cards --#}
+        {% include '_organisms/cards/_template.html' with {
+          opt: {
+            items: pageEntries,
+            pageInfo: pageInfo,
+            pagination: true,
+            paginationSimple: true
+          }
+        } only %}
+      {% endblock %}
+    {% endembed %}
 
   {# -- Cache End -- #}
   {% endcache %}

@@ -7,11 +7,11 @@
   {{ macroPostNav.postNav(entry, 'work', 'postDate', 'prev work', 'next work' ) }}
 #}
 
-{% macro postNav(entry, options) %}
+{% macro postNav(entry, opt) %}
 
   {# -- Defaults -- #}
   {% set defaults = {
-    classname: 'm-postNav',
+    cn: 'm-postNav',
     section: null,
     order: 'postDate',
     prevLabel: false,
@@ -20,15 +20,12 @@
     nextIcon: false
   } %}
 
-  {% if options is defined %}
-    {% set options = options is defined ? defaults|merge(options) : defaults %}
-  {% else %}
-    {% set options = defaults %}
-  {% endif %}
+  {# -- Merge Default with Options -- #}
+  {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
-  {% if options.section %}
+  {% if opt.section %}
     {# Set parameters for prev/next elements list #}
-    {% set entries = craft.entries.section(options.section).orderBy(options.order).limit(null) %}
+    {% set entries = craft.entries.section(opt.section).orderBy(opt.order).limit(null) %}
 
     {# Get the prev/next elements #}
     {% set prevEntry = entry.getPrev(entries) %}
@@ -40,43 +37,41 @@
 
   {# And make sure to only output the links if the element exists #}
   {% if prevEntry or nextEntry %}
-    <nav class="o-col  {{ options.classname }}">
-      <div class="{{ options.classname ~ '__inner' }}">
+    <nav class="o-row  {{ opt.cn }}">
       {% if prevEntry %}
-        <div class="{{ options.classname ~ '__item' }}  {{ options.classname ~ '__item--prev' }}">
-          <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--prev' }}" href="{{ prevEntry.url }}">
-            {% if options.prevIcon %}
-              <span class="{{ options.classname ~ '__icon' }}  {{ options.classname ~ '__icon--prev' }}">
-                {% include '_partials/svg/' ~ options.prevIcon ~ '.svg.html' %}
+        <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--prev' }}">
+          <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--prev' }}" href="{{ prevEntry.url }}">
+            {% if opt.prevIcon %}
+              <span class="{{ opt.cn ~ '__icon' }}  {{ opt.cn ~ '__icon--prev' }}">
+                {% include '_partials/svg/' ~ opt.prevIcon ~ '.svg.html' %}
               </span>
             {% endif %}
 
-            {% if options.prevLabel %}
-              <span class="{{ options.classname ~ '__label' }}">{{ options.prevLabel }}</span>
+            {% if opt.prevLabel %}
+              <span class="{{ opt.cn ~ '__label' }}">{{ opt.prevLabel }}</span>
             {% endif %}
 
-            <span class="{{ options.classname ~ '__title' }}">{{ prevEntry.title }}</span>
+            <span class="{{ opt.cn ~ '__title' }}">{{ prevEntry.title }}</span>
           </a>
         </div>
       {% endif %}
       {% if nextEntry %}
-        <div class="{{ options.classname ~ '__item' }}  {{ options.classname ~ '__item--next' }}">
-          <a class="{{ options.classname ~ '__link' }}  {{ options.classname ~ '__link--next' }}" href="{{ nextEntry.url }}">
-            {% if options.nextLabel %}
-              <span class="{{ options.classname ~ '__label' }}">{{ options.nextLabel }}</span>
+        <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--next' }}">
+          <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--next' }}" href="{{ nextEntry.url }}">
+            {% if opt.nextLabel %}
+              <span class="{{ opt.cn ~ '__label' }}">{{ opt.nextLabel }}</span>
             {% endif %}
 
-            <span class="{{ options.classname ~ '__title' }}">{{ nextEntry.title }}</span>
+            <span class="{{ opt.cn ~ '__title' }}">{{ nextEntry.title }}</span>
 
-            {% if options.nextIcon %}
-              <span class="{{ options.classname ~ '__icon' }}  {{ options.classname ~ '__icon--next' }}">
-                {% include '_partials/svg/' ~ options.nextIcon ~ '.svg.html' %}
+            {% if opt.nextIcon %}
+              <span class="{{ opt.cn ~ '__icon' }}  {{ opt.cn ~ '__icon--next' }}">
+                {% include '_partials/svg/' ~ opt.nextIcon ~ '.svg.html' %}
               </span>
             {% endif %}
           </a>
         </div>
       {% endif %}
-      </div>
     </nav>
   {% endif %}
 {% endmacro %}

@@ -4,8 +4,8 @@
 {# ---------------------------------------------------------------------- #}
 
 {% extends '_layouts/_master.html' %}
-{% set bodyClass = 'p-taxonomyTopic' %}
-{% set seomaticMeta = seomaticMeta | merge({'seoTitle': category.group().name ~ ': ' ~ category }) %}
+{% set bodyClass = 'p-taxonomy' %}
+{#{% set seomaticMeta = seomaticMeta | merge({'seoTitle': category.group().name ~ ': ' ~ category }) %}#}
 
 {# -- CRITICAL CSS -- #}
 {% block appInlineCSS %}
@@ -19,7 +19,7 @@
   section: 'articles',
   relatedTo: craft.categories.slug(category.slug),
   limit: 12
-  }) %}
+}) %}
 
 {% paginate entries as pageInfo, pageEntries %}
 
@@ -33,31 +33,69 @@
 {# -- App Content -- #}
 {% block appContent %}
   {# -- Cache -- #}
-  {% cache globally using key category.group().handle ~ category ~ craft.request.path ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
-<div class="o-section">
-  <div class="o-row">
-    {# -- Include Page Title -- #}
-    {% include '_molecules/pageTitle/_template.html' with {
-      options: {
-        object: category
-      }
-    } only %}
-  </div>
-</div>
+  {% cache globally using key category.group().handle ~ category ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
 
-<div class="o-section">
-  <div class="o-row">
-    {# -- Articles --#}
-    {% include '_organisms/articlesList/_template.html' with {
-      options: {
-        entries: pageEntries,
-        pagination: true,
-        catNav: true
-      }
+    {% embed '_embeds/oneColumn/_template.html' with {
+      opt: {
+        intro: true,
+        content: true
+      },
+      category: category,
+      pageEntries: pageEntries,
+      pageInfo: pageInfo
     } only %}
-  </div>
-</div>
 
-{# -- Cache End -- #}
+      {# -- Block: Intro -- #}
+      {% block intro %}
+        {# -- Include Page Title -- #}
+        {% include '_molecules/pageTitle/_template.html' with {
+          opt: {
+            object: category,
+            size: 'h1'
+          }
+        } only %}
+
+        {# -- Entry Intro -- #}
+        {% if category.singleIntroText ?? null %}
+          {% include '_atoms/richText/_template.html' with {
+            opt: {
+              text: category.singleIntroText
+            }
+          } only %}
+        {% endif %}
+
+        {# -- Image Entry -- #}
+        {% if category.singleImageEntry.one() ?? null %}
+          {% include '_atoms/headline/_template.html' with {
+            opt: {
+              text: 'Image Entry',
+              size: 'h3'
+            }
+          } only %}
+
+          {% include '_organisms/imageSingle/_template.html' with {
+            opt: {
+              image: category.singleImageEntry.one() ?? null,
+              ratio: 'landscape'
+            }
+          } only %}
+        {% endif %}
+      {% endblock %}
+
+      {# -- Block: Content -- #}
+      {% block content %}
+        {# -- Cards --#}
+        {% include '_organisms/cards/_template.html' with {
+          opt: {
+            items: pageEntries,
+            pageInfo: pageInfo,
+            pagination: true,
+            paginationSimple: true
+          }
+        } only %}
+      {% endblock %}
+    {% endembed %}
+
+  {# -- Cache End -- #}
   {% endcache %}
 {% endblock %}

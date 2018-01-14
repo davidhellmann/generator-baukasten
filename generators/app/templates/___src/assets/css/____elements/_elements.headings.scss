@@ -20,40 +20,40 @@ h6 {
 }
 
 
-.m-headline--mega {
+.a-headline--mega {
   @include ms-respond(font-size, 6);
 }
 
-.m-headline--super {
+.a-headline--super {
   @include ms-respond(font-size, 5);
 }
 
 h1,
-.m-headline--h1 {
+.a-headline--h1 {
   @include ms-respond(font-size, 4);
 }
 
 h2,
-.m-headline--h2 {
+.a-headline--h2 {
   @include ms-respond(font-size, 3);
 }
 
 h3,
-.m-headline--h3 {
+.a-headline--h3 {
   @include ms-respond(font-size, 2);
 }
 
 h4,
-.m-headline--h4 {
+.a-headline--h4 {
   @include ms-respond(font-size, 1);
 }
 
 h5,
-.m-headline--h5 {
+.a-headline--h5 {
   @include ms-respond(font-size, 0);
 }
 
 h6,
-.m-headline--h6 {
+.a-headline--h6 {
   @include ms-respond(font-size, 0);
 }

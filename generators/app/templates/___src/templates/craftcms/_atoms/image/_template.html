@@ -42,7 +42,12 @@
 
   {# -- Ratio Switch -- #}
   {% if opt.ratio ?? null %}
-    {% switch opt.ratio.value %}
+    {% set ratio = opt.ratio %}
+    {% if opt.ratio.value ?? null %}
+      {% set ratio = opt.ratio.value %}
+    {% endif %}
+
+    {% switch ratio %}
     {% case "landscape" %}
       {% set imageSrc = opt.image.pluginOptimizedImagesLandscape.srcset() %}
       {% set imageSrcset = opt.image.pluginOptimizedImagesLandscape.srcset() %}
