@@ -10,4 +10,4 @@ matrix:
       notifications:
           slack: davidhellmann:E1itXEUIsJQebYf8rRl2XhK1
       php:
-        - 7.1
+        - 7
