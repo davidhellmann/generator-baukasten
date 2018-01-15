@@ -28,7 +28,7 @@ return array(
         'defaultCpLanguage' => 'en',
         'postCpLoginRedirect' => 'entries',
         'maxUploadFileSize' => 67108864,
-        'addTrailingSlashesToUrls' => false,
+        'addTrailingSlashesToUrls' => true,
         'defaultSearchTermOptions' => [
             'attribute' => null,
             'exact' => false,
