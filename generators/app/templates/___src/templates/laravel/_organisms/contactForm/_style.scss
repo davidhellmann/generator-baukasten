@@ -1,0 +1,28 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  baukasten
+ | @author David Hellmann [davidhellmann.com@gmail.com]
+ | .o-contactForm
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-contactForm {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+}
+
+// Modul Modifiers Example
+.o-contactForm--modifier {
+  .o-contactForm__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

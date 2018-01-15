@@ -55,6 +55,13 @@ module.exports = {
         },
         {
             projectContext: [
+                'laravel'
+            ],
+            src: '___src/scripts/ferdiLaravel/',
+            dest: 'scripts/ferdi/'
+        },
+        {
+            projectContext: [
                 'craftCMS3',
                 'wordpress'
             ],

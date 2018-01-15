@@ -1,0 +1,21 @@
+{
+  "title": "code",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/code/",
+  "description": "Module Description goes here…",
+  "notes": "Module Notes goes here…",
+  "opt": {
+    "cn": "a-code",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "code": "_atoms/code/_template.html",
+    "lang": "twig",
+    "open": false
+  }
+}

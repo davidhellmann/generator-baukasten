@@ -1,0 +1,19 @@
+{
+  "title": "svgIcon",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/svgIcon/",
+  "description": "svgIcon Description goes here…",
+  "notes": "svgIcon Notes goes here…",
+  "opt": {
+    "cn": "a-svgIcon",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

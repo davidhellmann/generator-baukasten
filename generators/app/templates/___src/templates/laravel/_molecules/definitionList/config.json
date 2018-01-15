@@ -1,0 +1,19 @@
+{
+  "title": "definitionList",
+  "status": "WIP",
+  "type": "molecule",
+  "path": "_molecules/definitionList/",
+  "description": "definitionList Description goes here…",
+  "notes": "definitionList Notes goes here…",
+  "opt": {
+    "cn": "m-definitionList",
+    "modifiers": [],
+    "data": {},
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

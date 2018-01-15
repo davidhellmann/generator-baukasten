@@ -1,0 +1,19 @@
+{
+  "title": "richText",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/richText/",
+  "description": "richText Description goes here…",
+  "notes": "richText Notes goes here…",
+  "opt": {
+    "cn": "a-richText",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

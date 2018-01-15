@@ -1,0 +1,69 @@
+/*
+ |--------------------------------------------------------------------------
+ |  a-embed
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-embed {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+  display: grid;
+  @include make-row();
+
+  &__holder {
+    @include make-col(24);
+  }
+}
+
+// Modul Modifiers Example
+.a-embed--w-full {
+  &__holder {
+    @include make-col(24);
+  }
+}
+
+.a-embed--w-threeQuarter {
+  .a-embed__holder {
+    @include make-col(18);
+  }
+
+  &.a-embed--a-center {
+    .a-embed__holder {
+      @include media('>=s') {
+        @include col-pos(4);
+      }
+    }
+  }
+
+  &.a-embed--a-right {
+    .a-embed__holder {
+      @include media('>=s') {
+        @include col-pos(7);
+      }
+    }
+  }
+}
+
+.a-embed--w-half {
+  .a-embed__holder {
+    @include make-col(12);
+  }
+
+  &.a-embed--a-center {
+    .a-embed__holder {
+      @include media('>=s') {
+        @include col-pos(7);
+      }
+    }
+  }
+
+  &.a-embed--a-right {
+    .a-embed__holder {
+      @include media('>=s') {
+        @include col-pos(13);
+      }
+    }
+  }
+}

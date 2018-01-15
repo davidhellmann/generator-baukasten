@@ -1,0 +1,23 @@
+/*
+ |--------------------------------------------------------------------------
+ |  m-figure
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-figure {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+
+  .a-image {
+    margin-top: 0;
+  }
+}
+
+// Modul Modifiers Example
+.m-figure--modifier {
+  .m-figure__block {
+    // Styles here
+  }
+}

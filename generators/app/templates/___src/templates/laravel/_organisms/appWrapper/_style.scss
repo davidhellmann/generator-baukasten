@@ -1,0 +1,26 @@
+/* -------------------------------------------------- */
+/*    .m-appWrapper
+/* -------------------------------------------------- */
+
+.m-appWrapper {
+  $root: &;
+  font-weight: 400;
+  color: c('black', '90');
+  background: c('white');
+  font-family: sans-serif;
+
+  @include wf('base');
+}
+
+.js .m-appWrapper  {
+  opacity: 0;
+  transition: 0;
+  transform: translateY(50px);
+}
+
+.js .is-complete .m-appWrapper,
+.js .is-livePreview .m-appWrapper  {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1.5s 0.5s ease('out-cubic');
+}

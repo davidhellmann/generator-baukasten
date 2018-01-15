@@ -1,0 +1,19 @@
+{
+  "title": "tag",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/tag/",
+  "description": "tag Description goes here…",
+  "notes": "tag Notes goes here…",
+  "opt": {
+    "cn": "a-tag",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

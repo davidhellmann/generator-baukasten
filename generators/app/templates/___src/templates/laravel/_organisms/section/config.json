@@ -1,0 +1,19 @@
+{
+  "title": "section",
+  "status": "WIP",
+  "type": "organism",
+  "path": "_organisms/section/",
+  "description": "section Description goes here…",
+  "notes": "section Notes goes here…",
+  "opt": {
+    "cn": "o-section",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

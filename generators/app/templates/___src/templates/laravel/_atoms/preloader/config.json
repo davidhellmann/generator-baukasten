@@ -1,0 +1,19 @@
+{
+  "title": "preloader",
+  "status": "WIP",
+  "type": "atom",
+  "path": "_atoms/preloader/",
+  "description": "preloader Description goes here…",
+  "notes": "preloader Notes goes here…",
+  "opt": {
+    "cn": "a-preloader",
+    "modifiers": [],
+    "data": "{}",
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "foo": "bar"
+  }
+}

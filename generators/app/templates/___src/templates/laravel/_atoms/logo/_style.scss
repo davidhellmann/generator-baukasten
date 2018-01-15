@@ -1,0 +1,39 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .a-logo
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-logo {
+  $root: &;
+  width: calc(80px - 32px);
+  height: calc(80px - 32px);
+  margin-top: s(2);
+  background-color: c('white');
+
+  &__link {
+    display: inline-block;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Modul Modifiers Example
+.a-logo--modifier {
+  .a-logo__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

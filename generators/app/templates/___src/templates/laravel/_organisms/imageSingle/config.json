@@ -1,0 +1,25 @@
+{
+  "title": "imageSingle",
+  "status": "WIP",
+  "type": "organism",
+  "path": "_organisms/imageSingle/",
+  "description": "imageSingle Description goes here…",
+  "notes": "imageSingle Notes goes here…",
+  "opt": {
+    "cn": "o-imageSingle",
+    "modifiers": [],
+    "data": {},
+    "js": null,
+    "waypoint": null,
+    "waypointAni": null
+  },
+  "content": {
+    "image": "/assets/images/bitmap/_dummy/image_01.jpg",
+    "ratio": "16:10",
+    "caption": false,
+    "captionHeadline": "Caption Headline",
+    "captionText": "Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in?",
+    "captionSource": "Baukasten",
+    "captionSourceUrl": "http://baukasten.io"
+  }
+}

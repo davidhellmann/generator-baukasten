@@ -20,7 +20,7 @@ Route::get('/', function () {
 
     $jsonMerged = array_merge($jsonBase, $jsonWelcome);
 
-    return view('welcome', $jsonMerged);
+    return view('index', $jsonMerged);
 });
 
 Route::get('/{id}', function ($id) {

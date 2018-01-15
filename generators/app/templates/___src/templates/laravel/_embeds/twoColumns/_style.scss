@@ -1,0 +1,32 @@
+/* -------------------------------------------------- */
+/*    .e-twoColumns
+/* -------------------------------------------------- */
+
+.e-twoColumns {
+  $root: &;
+  width: 100%;
+
+  &__intro {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(24);
+    }
+  }
+
+  &__content {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(16);
+    }
+  }
+
+  &__sidebar {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(8);
+    }
+  }
+}

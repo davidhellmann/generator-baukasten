@@ -1,0 +1,44 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .o-cards
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-cards {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+
+  &__item {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(8);
+    }
+  }
+
+  &__pagination {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(24);
+    }
+  }
+}
+
+// Modul Modifiers Example
+.o-cards--modifier {
+  .o-cards__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

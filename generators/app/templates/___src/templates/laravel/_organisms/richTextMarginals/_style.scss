@@ -1,0 +1,95 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  baukasten
+ | @author David Hellmann [davidhellmann.com@gmail.com]
+ | .o-richTextMarginals
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.o-richTextMarginals {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  @include make-row();
+
+  .o-contentBuilder--nested & {
+    @include make-row(12, 16);
+  }
+
+  &__text {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(24);
+    }
+
+    @include media('>=l') {
+      @include make-col(12);
+      @include col-pos(5);
+
+      .o-contentBuilder--nested & {
+        @include make-col(10);
+        @include col-pos(7);
+      }
+
+      > * {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__aside {
+    @include make-col(12);
+
+    @include media('>=s') {
+      @include make-col(24);
+    }
+
+    @include media('>=l') {
+      @include make-col(4);
+
+      .o-contentBuilder--nested & {
+        @include make-col(6);
+      }
+
+      > * {
+        margin-top: 0;
+      }
+    }
+
+    &--first {
+      > * {
+        margin-top: 0;
+      }
+    }
+
+    &--last {
+      @include media('>=l') {
+        @include make-col(8);
+
+        .o-contentBuilder--nested & {
+          @include make-col(10);
+          @include col-pos(7);
+          @include make-vr();
+        }
+      }
+    }
+  }
+}
+
+// Modul Modifiers Example
+.o-richTextMarginals--modifier {
+  .o-richTextMarginals__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

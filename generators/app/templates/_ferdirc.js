@@ -16,7 +16,7 @@ module.exports = {
         template: {
             name: '_template',
             postfix: '',
-            extension: 'html',
+            extension: <% if (projectType === 'laravel' ) { 'blade.php' } else { 'html' } %>,
             description: 'ferdi should create a Template File'
         },
         style: {
