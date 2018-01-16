@@ -26,7 +26,7 @@ module.exports = {
         },
         {
             src: '_ferdirc.js',
-            dest: 'ferdirc.js'
+            dest: '.ferdirc.js'
         },
         {
             src: 'jshintrc',
