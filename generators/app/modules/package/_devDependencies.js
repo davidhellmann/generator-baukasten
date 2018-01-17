@@ -118,6 +118,7 @@ function addDevDependencies(files = {}) {
             'webpack-dashboard': '^1.0.1',
             'webpack-dev-middleware': '^1.12.0',
             'webpack-hot-middleware': '^2.20.0',
+            'webpack-jarvis': '^0.2.2',
             'write-file-webpack-plugin': '^4.1.0',
             'yargs': '^10.0.3'
         }

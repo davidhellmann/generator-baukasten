@@ -14,6 +14,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 import webpack from 'webpack';
+import Jarvis from 'webpack-jarvis';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import path from 'path';
 import pkg from '../package.json';
@@ -293,6 +294,10 @@ module.exports = {
     },
 
     plugins: removeEmpty([
+        new Jarvis({
+            port: 1337 // optional: set a port
+        }),
+
         // Dateiname für das Extracted CSS von Vue
         // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
         new ExtractTextPlugin({
