@@ -2,8 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true<% if (projectjQuery) { %>,
-    "jquery": true<% } %>
+    "node": true
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -84,6 +83,7 @@
     "keyword-spacing": 1,
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, "never"],
+    "function-paren-newline": [2, "consistent"],
     "space-in-parens": [2, "never"],
     "spaced-comment": [2, "always"],
     "use-isnan": 2,

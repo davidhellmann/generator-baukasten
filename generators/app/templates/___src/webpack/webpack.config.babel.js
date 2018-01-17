@@ -5,42 +5,42 @@
  * @author David Hellmann <david@hellmann.io>
  */
 
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
-import {getIfUtils, removeEmpty} from 'webpack-config-utils'
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import {getIfUtils, removeEmpty} from 'webpack-config-utils';
 // import DashboardPlugin from 'webpack-dashboard/plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin';
-import StyleLintPlugin from 'stylelint-webpack-plugin'
-import webpack from 'webpack'
-import WriteFilePlugin from 'write-file-webpack-plugin'
-import path from 'path'
-import pkg from '../package.json'
+import StyleLintPlugin from 'stylelint-webpack-plugin';
+import webpack from 'webpack';
+import WriteFilePlugin from 'write-file-webpack-plugin';
+import path from 'path';
+import pkg from '../package.json';
 
 // get absolute path of files based on root
 function resolve(dir) {
-    return path.resolve(__dirname, `../${dir}`)
+    return path.resolve(__dirname, `../${dir}`);
 }
 
-const {ifProduction, ifDevelopment} = getIfUtils(process.env.NODE_ENV)
+const {ifProduction, ifDevelopment} = getIfUtils(process.env.NODE_ENV);
 
 // der string wird benötigt um hot reloading nutzen zu können
 // der wird einfach an den entry point gehangen
-const hot_client = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true'
+const hot_client = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true';
 
 // hier holen wir uns die dateien in die wir unsere Build Files
 // (app.23r23fwef23r.js und app.323r233.css zum beispiel injecten wollen,
 // also eine datei für den header und eine für den footer)
 // dann definieren wir noch wo die hinsollen und
 // bauen eine funktion die das plugin ausspuckt
-const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
-const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
-const headerFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
-const headerFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>
-const scriptsFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
-const scriptsFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>
-const folderDIST = pkg.dist.markup
+const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>;
+const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>;
+const headerFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
+const headerFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
+const scriptsFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
+const scriptsFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
+const folderDIST = pkg.dist.markup;
 
 
 const inject_templates = [
@@ -60,7 +60,7 @@ const inject_templates = [
         file: `${pkg.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
         inject: false
     }
-]
+];
 
 // Leeres Array welches wir später mittels ...restParameter
 // in die Plugins mit einfügen
@@ -74,9 +74,9 @@ inject_templates.forEach((chunk) => {
         inject: chunk.inject,
         minify: false,
         chunksSortMode: 'dependency'
-    })
+    });
     chunks.push(plugin)
-})
+});
 
 // Sass Resources Loader
 // Damit werden die angegebenen Dateien automatisch injected
@@ -88,7 +88,7 @@ const sass_resources_loader = {
     options: {
         resources: [resolve(`${pkg.src.css}_settings.scss`), resolve(`${pkg.src.css}_tools.scss`)]
     }
-}
+};
 
 // SCSS Loader Config
 const SCSS_LOADERS = [
@@ -113,7 +113,7 @@ const SCSS_LOADERS = [
             sourceMap: true
         }
     }
-]
+];
 
 // CSS Loader Config
 const CSS_LOADERS = [
@@ -132,7 +132,7 @@ const CSS_LOADERS = [
             sourceMap: true
         }
     }
-]
+];
 
 module.exports = {
     devtool: ifProduction('#source-map', '#eval-cheap-module-source-map'),
@@ -407,4 +407,4 @@ module.exports = {
         // webpack scope hoisting magic, weiß ich auch nicht so genau was es tut :D
         ifProduction(new webpack.optimize.ModuleConcatenationPlugin())
     ])
-}
+};
