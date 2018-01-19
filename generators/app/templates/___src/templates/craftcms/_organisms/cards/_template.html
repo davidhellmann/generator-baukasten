@@ -12,15 +12,17 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-    cn: 'o-cards',
-    modifiers: [],
-    data: {},
-    js: null,
-    waypoint: null,
-    waypointAni: null,
-    items: null,
-    pagination: null,
+  cn: 'o-cards',
+  modifiers: [],
+  data: {},
+  js: null,
+  waypoint: null,
+  waypointAni: null,
+  items: null,
+  pagination: {
+    visible: null,
     paginationSimple: null
+  }
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -33,10 +35,10 @@
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}
               {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
+    {{ opt.waypoint ? ' data-waypoint' : '' }}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
     {% for item in opt.items %}
       <div class="{{ opt.cn ~ '__item' }}">
         {% include '_molecules/card/_template.html' with {
@@ -50,9 +52,9 @@
       </div>
     {% endfor %}
 
-    {% if opt.pagination %}
+    {% if opt.pagination.visible %}
       <div class="{{ opt.cn ~ '__pagination' }}">
-        {% if opt.paginationSimple %}
+        {% if opt.pagination.paginationSimple %}
           {# -- Pagination Simple -- #}
           {% import '_partials/macros/_macro-paginationSimple.html' as macroPaginationSimple %}
           {{ macroPaginationSimple.paginationSimple(opt.pageInfo, craft, {}) }}

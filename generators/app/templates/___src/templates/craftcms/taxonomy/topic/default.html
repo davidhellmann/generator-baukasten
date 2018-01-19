@@ -89,8 +89,10 @@
           opt: {
             items: pageEntries,
             pageInfo: pageInfo,
-            pagination: true,
-            paginationSimple: true
+            pagination: {
+              visible: true,
+              paginationSimple: true
+            }
           }
         } only %}
       {% endblock %}

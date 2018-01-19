@@ -3,7 +3,7 @@ const extend = require('deep-extend')
 function addNPMScripts(files = {}, context) {
     let initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack'
     if (context.props.projectType === 'craftCMS3') {
-        initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack && cd ___dist && composer install'
+        initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack && cd ___dist && mkdir -p storage && composer install --no-interaction --prefer-dist --optimize-autoloader'
     }
 
     extend(files.pkg, {
