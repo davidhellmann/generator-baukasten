@@ -24,7 +24,7 @@
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
 {# -- Modul -- #}
-{% if opt.headline ?? opt.text ?? null %}
+{% if opt.headline ?? null or opt.text ?? null %}
   <{{ opt.element }} class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
