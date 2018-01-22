@@ -20,6 +20,7 @@ import scripts from './partials/scripts';
 import templates from './partials/templates';
 import modules from './partials/modules';
 
+<% if (projectVue) { %>
 // Vue Exampleimport
 const vueElement = document.querySelector('#js-vue');
 
@@ -27,6 +28,8 @@ const vueElement = document.querySelector('#js-vue');
 if (vueElement) {
     import('./vue/vueExample');
 }
+<% } %>
+
 
 const app = {
     toggleGrid() {
