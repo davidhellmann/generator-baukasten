@@ -63,7 +63,6 @@
 // Generate all Grid Classes
 @each $key, $value in $breakpoints {
   @if $key == 'min' {
-
     // Col Base Classes
     @for $i from 1 through $bk-columnsMax {
       .o-col-#{$i} {
@@ -77,16 +76,7 @@
         @include col-pos($i);
       }
     }
-
-    // Row Classes
-    @for $i from 1 through $bk-columnsMax {
-      .o-row-#{$i} {
-        grid-template-columns: repeat(#{$i}, 1fr);
-      }
-    }
-
   } @else if $key != 'min' {
-
     // Col Breakpoint Classes
     @include media('>=#{$key}') {;
 
@@ -101,13 +91,6 @@
       @for $i from 1 through $bk-columnsMax {
         .o-col-sa-#{$key}-#{$i} {
           @include col-pos($i);
-        }
-      }
-
-      // Row Classes
-      @for $i from 1 through $bk-columnsMax {
-        .o-row-#{$key}-#{$i} {
-          grid-template-columns: repeat(#{$i}, 1fr);
         }
       }
     }

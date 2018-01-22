@@ -7,11 +7,6 @@
 .o-row {
   display: grid;
   @include make-row();
-
-  .t-oldies & {
-    display: flex;
-    @include make-row-flex();
-  }
 }
 
 .o-row--noGap {
@@ -19,5 +14,33 @@
 
   .t-oldies & {
     @include f(0, 0, padding-left padding-right);
+  }
+}
+
+// Generate Row Classes
+@each $key, $value in $breakpoints {
+  @if $key == 'min' {
+    @for $i from 1 through 12 {
+      .o-row-gap-#{$i} {
+        @include make-col-gap($i);
+      }
+    }
+    // Row Classes
+    @for $i from 1 through $bk-columnsMax {
+      .o-row-#{$i} {
+        grid-template-columns: repeat(#{$i}, 1fr);
+      }
+    }
+  } @else if $key != 'min' {
+
+    // Col Breakpoint Classes
+    @include media('>=#{$key}') {
+      // Row Classes
+      @for $i from 1 through $bk-columnsMax {
+        .o-row-#{$key}-#{$i} {
+          grid-template-columns: repeat(#{$i}, 1fr);
+        }
+      }
+    }
   }
 }
