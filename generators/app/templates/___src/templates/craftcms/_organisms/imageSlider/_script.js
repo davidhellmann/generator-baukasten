@@ -34,13 +34,8 @@ const imageSlider = {
 
                 setTimeout(() => {
                     flkty.resize();
-                }, 2000);
-                /* const mySwiper = new Swiper(slider, this.cfg.sliderOptions)
-                mySwiper.update()
-
-                setTimeout(() => {
-                    mySwiper.update()
-                }, 2000) */
+                    slider.classList.add('is-ready');
+                }, 1000);
             });
         }
     }
