@@ -13,6 +13,7 @@
  * @since     1.0.5
  * @license   MIT
  */
+
 /**
  * Database Configuration
  *

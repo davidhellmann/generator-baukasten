@@ -1,4 +1,18 @@
 <?php
+/**
+ * Craft 3 Multi-Environment
+ * Efficient and flexible multi-environment config for Craft 3 CMS
+ *
+ * $_ENV constants are loaded by craft3-multi-environment from .env.php via
+ * ./web/index.php for web requests, and ./craft for console requests
+ *
+ * @author    nystudio107
+ * @copyright Copyright (c) 2017 nystudio107
+ * @link      https://nystudio107.com/
+ * @package   craft3-multi-environment
+ * @since     1.0.5
+ * @license   MIT
+ */
 
 /**
  * General Configuration
@@ -12,23 +26,8 @@ return array(
 
     // All environments
     '*' => [
-        // Whether "index.php" should be visible in URLs (true, false, "auto")
-        'omitScriptNameInUrls' => true,
-        'usePathInfo' => true,
+        // Craft defined config settings
         'cacheDuration' => false,
-        'generateTransformsBeforePageLoad' => true,
-        'requireMatchingUserAgentForSession' => false,
-        'userSessionDuration' => 'P1W',
-        'rememberedUserSessionDuration' => 'P4W',
-        'defaultWeekStartDay' => 1,
-        'enableCsrfProtection' => true,
-        'cpTrigger' => 'admin',
-        'preventUserEnumeration' => 'true',
-        'sendPoweredByHeader' => 'false',
-        'defaultCpLanguage' => 'en',
-        'postCpLoginRedirect' => 'entries',
-        'maxUploadFileSize' => 67108864,
-        'addTrailingSlashesToUrls' => true,
         'defaultSearchTermOptions' => [
             'attribute' => null,
             'exact' => false,
@@ -36,62 +35,89 @@ return array(
             'subLeft' => true,
             'subRight' => true,
         ],
-        'craftEnv' => CRAFT_ENVIRONMENT,
-        'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
+        'enableCsrfProtection' => true,
+        'generateTransformsBeforePageLoad' => true,
+        'omitScriptNameInUrls' => true,
         'usePathInfo' => true,
-
-        'defaultTemplateExtensions' => array('html', 'twig', 'rss'),
-
-        /*
-        'siteUrl' => array(
-            'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
-            'en' => getenv('CRAFTENV_SITE_URL') . 'en/',
-        ),
-        */
+        'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
         'siteUrl' => getenv('CRAFTENV_SITE_URL'),
 
+        // Multisite Settings
+        // 'siteUrl' => [
+        //    'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
+        //    'en' => getenv('CRAFTENV_SITE_URL') . 'en/',
+        // ],
+        // 'useEmailAsUsername' => true,
+
+
+        // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
+        'aliases' => [
+            '@basePath' => getenv('CRAFTENV_BASE_PATH'),
+            '@baseUrl' => getenv('CRAFTENV_BASE_URL'),
+        ],
         // Set the environmental variables
-        'custom' => array(
+        'custom' => [
             'basePath' => getenv('CRAFTENV_BASE_PATH'),
             'baseUrl' => getenv('CRAFTENV_BASE_URL'),
             'rootUrl' => getenv('CRAFTENV_SITE_URL'),
-        ),
+            'craftEnv' => CRAFT_ENVIRONMENT,
+        ],
+
+        // Custom Settings
+        'userSessionDuration' => 'P1W',
+        'rememberedUserSessionDuration' => 'P4W',
+        'defaultCpLanguage' => 'en',
+        'postCpLoginRedirect' => 'entries',
+        'maxUploadFileSize' => 67108864,
+        'defaultTemplateExtensions' => [
+            'html',
+            'twig',
+            'rss'
+        ]
     ],
 
     // Live (production) environment
-    'live'  => array(
-        'isSystemOn' => true,
+    'live' => [
+        'allowUpdates' => false,
+        'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'allowUpdates' => false,
-        'backupOnUpdate' => false,
+        'isSystemOn' => true,
+        // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
+        'aliases' => [
+        ],
         // Custom site-specific config settings
         'custom' => [
         ]
-    ),
+    ],
 
     // Staging (pre-production) environment
-    'staging'  => array(
-        'isSystemOn' => true,
-        'devMode' => true,
-        'enableTemplateCaching' => true,
+    'staging' => [
         'allowUpdates' => false,
         'backupOnUpdate' => false,
+        'devMode' => false,
+        'enableTemplateCaching' => true,
+        'isSystemOn' => false,
+        // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
+        'aliases' => [
+        ],
         // Custom site-specific config settings
         'custom' => [
         ]
-    ),
+    ],
 
     // Local (development) environment
-    'local'  => array(
-        'isSystemOn' => true,
-        'devMode' => true,
-        'enableTemplateCaching' => false,
+    'local' => [
         'allowUpdates' => true,
         'backupOnUpdate' => true,
-        'disableDevmodeMinifying' => true,
+        'devMode' => true,
+        'enableTemplateCaching' => false,
+        'isSystemOn' => true,
+        // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
+        'aliases' => [
+        ],
         // Custom site-specific config settings
         'custom' => [
         ]
-    ),
+    ],
 );
