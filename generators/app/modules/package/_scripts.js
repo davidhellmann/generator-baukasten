@@ -1,9 +1,9 @@
 const extend = require('deep-extend')
 
 function addNPMScripts(files = {}, context) {
-    let initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack'
+    let initCommands = 'cross-env NODE_ENV=production gulp init && npm run webpack'
     if (context.props.projectType === 'craftCMS3') {
-        initCommands = 'cross-env NODE_ENV=production gulp init && yarn webpack && cd ___dist && mkdir -p storage && composer install --no-interaction --prefer-dist --optimize-autoloader'
+        initCommands = 'cross-env NODE_ENV=production gulp init && npm run webpack && cd ___dist && mkdir -p storage && composer install --no-interaction --prefer-dist --optimize-autoloader'
     }
 
     extend(files.pkg, {
@@ -12,7 +12,7 @@ function addNPMScripts(files = {}, context) {
             'dev': 'cross-env NODE_ENV=production gulp build && cross-env NODE_ENV=development gulp',
             'dev:single': 'cross-env NODE_ENV=development gulp',
             'dev:dashboard': 'cross-env NODE_ENV=development webpack-dashboard -p 3002 && cross-env NODE_ENV=development gulp',
-            'build': 'cross-env NODE_ENV=production gulp build && yarn webpack',
+            'build': 'cross-env NODE_ENV=production gulp build && npm run webpack',
             'lang': 'node scripts/lang.js',
             'critical': 'node scripts/critical.js',
             'clean:dist': 'cross-env NODE_ENV=development gulp clean:dist',
@@ -33,9 +33,13 @@ function addNPMScripts(files = {}, context) {
             'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/',
             'install:plugins': 'cd ___dist && sh ./plugins.sh',
             'pull:db': './___dist/craft-scripts/pull_db.sh',
-            'pull:migrations': './___dist/craft-scripts/pull_migrations.sh',
             'pull:assets': './___dist/craft-scripts/pull_assets.sh',
-            'refresh:dev': 'npm run pull:db && npm run pull:assets && npm run pull:migrations'
+            'pull:backups': './___dist/craft-scripts/pull_backups.sh',
+            'pull:all': 'npm run pull:db && npm run pull:assets && npm run pull:backups',
+            'backup:db': './___dist/craft-scripts/backup_db.sh',
+            'backup:assets': './___dist/craft-scripts/backup_assets.sh',
+            'backup:all': 'npm run backup:db && npm run backup:assets',
+            'clear:caches': './___dist/craft-scripts/clear_caches.sh'
         }
     })
 }

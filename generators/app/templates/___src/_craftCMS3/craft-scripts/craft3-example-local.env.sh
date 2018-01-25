@@ -29,23 +29,27 @@ GLOBAL_DB_DRIVER="mysql"
 # -- LOCAL settings --
 
 # Local path constants; paths should always have a trailing /
-LOCAL_ROOT_PATH="REPLACE_ME"
-LOCAL_ASSETS_PATH=${LOCAL_ROOT_PATH}"REPLACE_ME"
+LOCAL_ROOT_PATH="___dist/"
+LOCAL_ASSETS_PATH=${LOCAL_ROOT_PATH}"web/uploads/"
 
 # Local user & group that should own the Craft CMS install
-LOCAL_CHOWN_USER="admin"
-LOCAL_CHOWN_GROUP="apache"
+LOCAL_CHOWN_USER="dh"
+LOCAL_CHOWN_GROUP="staff"
 
 # Local directories relative to LOCAL_ROOT_PATH that should be writeable by the $CHOWN_GROUP
 LOCAL_WRITEABLE_DIRS=(
                 "${GLOBAL_CRAFT_PATH}storage"
                 "web/cpresources"
                 "web/assets"
+                "web/uploads"
                 )
 
 # Local asset directories relative to LOCAL_ASSETS_PATH that should be synched with remote assets
 LOCAL_ASSETS_DIRS=(
-                ""
+                "images"
+                "graphics"
+                "downloads"
+                "users"
                 )
 
 # Craft-specific file directories relative to LOCAL_CRAFT_FILES_PATH that should be synched with remote files
@@ -99,8 +103,8 @@ REMOTE_SSH_PORT="22"
 REMOTE_DB_USING_SSH="yes"
 
 # Remote path constants; paths should always have a trailing /
-REMOTE_ROOT_PATH="REPLACE_ME"
-REMOTE_ASSETS_PATH=${REMOTE_ROOT_PATH}"REPLACE_ME"
+REMOTE_ROOT_PATH="/home/forge/REPLACE_ME/"
+REMOTE_ASSETS_PATH=${REMOTE_ROOT_PATH}"web/uploads/"
 
 # Remote database constants; default port for mysql is 3306, default port for postgres is 5432
 REMOTE_DB_NAME="REPLACE_ME"
@@ -124,7 +128,7 @@ REMOTE_PSQL_CMD="psql"
 REMOTE_PG_DUMP_CMD="pg_dump"
 
 # Remote backups path; paths should always have a trailing /
-REMOTE_BACKUPS_PATH="REPLACE_ME"
+REMOTE_BACKUPS_PATH="/home/forge/___backups/REPLACE_ME/"
 
 # Remote Amazon S3 bucket name
 REMOTE_S3_BUCKET="REPLACE_ME"

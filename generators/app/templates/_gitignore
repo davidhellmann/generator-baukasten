@@ -107,7 +107,7 @@ ___dist/wp-content/themes/<%= projectName %>/*
 <% } %>
 
 <% if (projectType === 'craftCMS3' ) { %>
-# Craft CMS Beta
+# Craft CMS
 ___dist/config/license.key
 ___dist/storage
 ___dist/templates
@@ -116,5 +116,5 @@ ___dist/web/assets
 ___dist/web/cpresources
 ___dist/web/uploads
 ___dist/.env.php
-styleguide/
+___backups/
 <% } %>
