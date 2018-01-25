@@ -31,7 +31,11 @@ function addNPMScripts(files = {}, context) {
             'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS',
             'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --config=webpack/webpack.config.babel.js',
             'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/',
-            'install:plugins': 'cd ___dist && sh ./plugins.sh'
+            'install:plugins': 'cd ___dist && sh ./plugins.sh',
+            'pull:db': './___dist/craft-scripts/pull_db.sh',
+            'pull:migrations': './___dist/craft-scripts/pull_migrations.sh',
+            'pull:assets': './___dist/craft-scripts/pull_assets.sh',
+            'refresh:dev': 'npm run pull:db && npm run pull:assets && npm run pull:migrations'
         }
     })
 }

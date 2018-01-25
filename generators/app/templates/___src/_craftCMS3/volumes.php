@@ -30,20 +30,20 @@ return [
     // All environments
     '*' => [
         'siteImages' => [
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/images/',
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/images/',
+            'path' => '@basePath/uploads/images/',
+            'url' => '@baseUrl/uploads/images/',
         ],
         'siteDownloads' => [
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/downloads/',
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/downloads/',
+            'path' => '@basePath/uploads/downloads/',
+            'url' =>'@baseUrl/uploads/downloads/',
         ],
         'siteGraphics' => [
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/graphics/',
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/graphics/',
+            'path' => '@basePath/uploads/graphics/',
+            'url' => '@baseUrl/uploads/graphics/',
         ],
         'siteUsers' => [
-            'path' => getenv('CRAFTENV_BASE_PATH') . 'uploads/users/',
-            'url' => getenv('CRAFTENV_BASE_URL') . 'uploads/users/',
+            'path' => '@basePath/uploads/users/',
+            'url' =>'@baseUrl/uploads/users/',
         ],
     ],
 
