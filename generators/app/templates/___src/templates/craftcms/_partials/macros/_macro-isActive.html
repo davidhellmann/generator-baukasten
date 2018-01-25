@@ -5,14 +5,20 @@
   ------------------------------------------------------------
 
   {% import '_partials/macros/_macro-isActive.html' as macroIsActive  %}
-  {{ macroIsActive.isActive('news', -1, 'classname') }}
+  {{ macroIsActive.isActive('news', -1, 'cn') }}
 #}
 
-{% macro isActive(segment, position, classname) %}
+{% macro isActive(segment, position, prefix, cn) %}
   {% spaceless %}
-    {% set segment = segment|default('aktuelles') %}
-    {% set position = position|default(-1) %}
-    {% set classname = classname|default('is-active') %}
-    {% if craft.app.request.getSegment(position) == segment %}{{ classname }}{% endif %}
+    {% set segment = segment | default(null) %}
+    {% set position = position | default(-1) %}
+    {% set prefix = prefix | default(null) %}
+    {% set cn = cn | default('is-active') %}
+
+    {% if craft.app.request.getSegment(position) == segment %}
+      {{ prefix ? prefix ~ cn : cn }}
+    {% elseif craft.app.request.getSegment(position) == null and segment == 'homepage' %}
+      {{ prefix ? prefix ~ cn : cn }}
+    {% endif %}
   {% endspaceless %}
 {% endmacro %}
