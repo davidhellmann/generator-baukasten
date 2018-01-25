@@ -4,11 +4,12 @@
   Set Active Class
   ------------------------------------------------------------
 
+  {% import '_partials/macros/_macro-isActive.html' as macroIsActive  %}
   {{ macroIsActive.isActive('news', -1, 'classname') }}
 #}
 
 {% macro isActive(segment, position, classname) %}
-  {% set segment = segment|default('news') %}
+  {% set segment = segment|default('aktuelles') %}
   {% set position = position|default(-1) %}
   {% set classname = classname|default('is-active') %}
 
