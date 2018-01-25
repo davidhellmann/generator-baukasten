@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.20)
+# Host: localhost (MySQL 5.7.20)
 # Datenbank: db_12345678_craft3
-# Erstellt am: 2018-01-14 06:20:39 +0000
+# Erstellt am: 2018-01-25 02:31:24 +0000
 # ************************************************************
 
 
@@ -490,15 +490,6 @@ CREATE TABLE `deprecationerrors` (
   UNIQUE KEY `deprecationerrors_key_fingerprint_unq_idx` (`key`,`fingerprint`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `deprecationerrors` WRITE;
-/*!40000 ALTER TABLE `deprecationerrors` DISABLE KEYS */;
-
-INSERT INTO `deprecationerrors` (`id`, `key`, `fingerprint`, `lastOccurrence`, `file`, `line`, `message`, `traces`, `dateCreated`, `dateUpdated`, `uid`)
-VALUES
-	(2418,'allowAutoUpdates','/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/services/Config.php:102','2018-01-14 04:50:27','/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/services/Config.php',102,'The allowAutoUpdates config setting has been renamed to allowUpdates.','[{\"objectClass\":\"craft\\\\services\\\\Deprecator\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/config/GeneralConfig.php\",\"line\":759,\"class\":\"craft\\\\services\\\\Deprecator\",\"method\":\"log\",\"args\":\"\\\"allowAutoUpdates\\\", \\\"The allowAutoUpdates config setting has been renamed to allowUpd...\\\"\"},{\"objectClass\":\"craft\\\\config\\\\GeneralConfig\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/services/Config.php\",\"line\":102,\"class\":\"craft\\\\config\\\\GeneralConfig\",\"method\":\"__construct\",\"args\":\"[\\\"omitScriptNameInUrls\\\" => true, \\\"usePathInfo\\\" => true, \\\"cacheDuration\\\" => false, \\\"generateTransformsBeforePageLoad\\\" => true, ...]\"},{\"objectClass\":\"craft\\\\services\\\\Config\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/services/Config.php\",\"line\":148,\"class\":\"craft\\\\services\\\\Config\",\"method\":\"getConfigSettings\",\"args\":\"\\\"general\\\"\"},{\"objectClass\":\"craft\\\\services\\\\Config\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/config/app/web.php\",\"line\":19,\"class\":\"craft\\\\services\\\\Config\",\"method\":\"getGeneral\",\"args\":null},{\"objectClass\":null,\"file\":null,\"line\":null,\"class\":null,\"method\":\"{closure}\",\"args\":null},{\"objectClass\":null,\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/di/Container.php\",\"line\":501,\"class\":null,\"method\":\"call_user_func_array\",\"args\":\"Closure, []\"},{\"objectClass\":\"yii\\\\di\\\\Container\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/BaseYii.php\",\"line\":351,\"class\":\"yii\\\\di\\\\Container\",\"method\":\"invoke\",\"args\":\"Closure, []\"},{\"objectClass\":null,\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/di/ServiceLocator.php\",\"line\":137,\"class\":\"yii\\\\BaseYii\",\"method\":\"createObject\",\"args\":\"Closure\"},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/base/Module.php\",\"line\":724,\"class\":\"yii\\\\di\\\\ServiceLocator\",\"method\":\"get\",\"args\":\"\\\"request\\\", true\"},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/web/Application.php\",\"line\":160,\"class\":\"yii\\\\base\\\\Module\",\"method\":\"get\",\"args\":\"\\\"request\\\"\"},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/web/Application.php\",\"line\":65,\"class\":\"yii\\\\web\\\\Application\",\"method\":\"getRequest\",\"args\":null},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/base/Application.php\",\"line\":273,\"class\":\"yii\\\\web\\\\Application\",\"method\":\"bootstrap\",\"args\":null},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/web/Application.php\",\"line\":85,\"class\":\"yii\\\\base\\\\Application\",\"method\":\"init\",\"args\":null},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/base/BaseObject.php\",\"line\":108,\"class\":\"craft\\\\web\\\\Application\",\"method\":\"init\",\"args\":null},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/base/Application.php\",\"line\":206,\"class\":\"yii\\\\base\\\\BaseObject\",\"method\":\"__construct\",\"args\":\"[\\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", \\\"name\\\" => \\\"Craft CMS\\\", ...]\"},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/src/web/Application.php\",\"line\":75,\"class\":\"yii\\\\base\\\\Application\",\"method\":\"__construct\",\"args\":\"[\\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", \\\"name\\\" => \\\"Craft CMS\\\", ...]\"},{\"objectClass\":\"craft\\\\web\\\\Application\",\"file\":null,\"line\":null,\"class\":\"craft\\\\web\\\\Application\",\"method\":\"__construct\",\"args\":\"[\\\"vendorPath\\\" => \\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor\\\", \\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", ...]\"},{\"objectClass\":\"ReflectionClass\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/di/Container.php\",\"line\":381,\"class\":\"ReflectionClass\",\"method\":\"newInstanceArgs\",\"args\":\"[[\\\"vendorPath\\\" => \\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor\\\", \\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", ...]]\"},{\"objectClass\":\"yii\\\\di\\\\Container\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/di/Container.php\",\"line\":156,\"class\":\"yii\\\\di\\\\Container\",\"method\":\"build\",\"args\":\"\\\"craft\\\\web\\\\Application\\\", [], [\\\"vendorPath\\\" => \\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor\\\", \\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", ...]\"},{\"objectClass\":\"yii\\\\di\\\\Container\",\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/yiisoft/yii2/BaseYii.php\",\"line\":349,\"class\":\"yii\\\\di\\\\Container\",\"method\":\"get\",\"args\":\"\\\"craft\\\\web\\\\Application\\\", [], [\\\"vendorPath\\\" => \\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor\\\", \\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", ...]\"},{\"objectClass\":null,\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/bootstrap/bootstrap.php\",\"line\":243,\"class\":\"yii\\\\BaseYii\",\"method\":\"createObject\",\"args\":\"[\\\"vendorPath\\\" => \\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor\\\", \\\"env\\\" => \\\"local\\\", \\\"components\\\" => [\\\"config\\\" => craft\\\\services\\\\Config, \\\"api\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Api\\\"], \\\"assets\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\Assets\\\"], \\\"assetIndexer\\\" => [\\\"class\\\" => \\\"craft\\\\services\\\\AssetIndexer\\\"], ...], \\\"id\\\" => \\\"CraftCMS\\\", ...]\"},{\"objectClass\":null,\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/bootstrap/web.php\",\"line\":42,\"class\":null,\"method\":\"require\",\"args\":\"\\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/b...\\\"\"},{\"objectClass\":null,\"file\":\"/Users/dh/___DEV/___Private/craft3/___dist/web/index.php\",\"line\":34,\"class\":null,\"method\":\"require\",\"args\":\"\\\"/Users/dh/___DEV/___Private/craft3/___dist/vendor/craftcms/cms/b...\\\"\"},{\"objectClass\":null,\"file\":\"/Users/dh/.composer/vendor/laravel/valet/server.php\",\"line\":133,\"class\":null,\"method\":\"require\",\"args\":\"\\\"/Users/dh/___DEV/___Private/craft3/___dist/web/index.php\\\"\"}]','2018-01-14 04:50:27','2018-01-14 04:50:27','79fb9652-3a05-436c-bc6f-7393355014cf');
-
-/*!40000 ALTER TABLE `deprecationerrors` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Export von Tabelle elementindexsettings
@@ -1530,7 +1521,7 @@ LOCK TABLES `info` WRITE;
 
 INSERT INTO `info` (`id`, `version`, `schemaVersion`, `edition`, `timezone`, `name`, `on`, `maintenance`, `fieldVersion`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'3.0.0-RC5','3.0.77',2,'Europe/Berlin','Baukasten',1,0,'3JDfFwFxumdA','2017-12-06 09:19:32','2018-01-14 06:01:04','3daa3f7a-752b-4da4-9bab-0be7e86f8718');
+	(1,'3.0.0-RC7.1','3.0.80',2,'Europe/Berlin','Baukasten',1,0,'3JDfFwFxumdA','2017-12-06 09:19:32','2018-01-25 02:29:11','3daa3f7a-752b-4da4-9bab-0be7e86f8718');
 
 /*!40000 ALTER TABLE `info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1988,7 +1979,10 @@ VALUES
 	(87,20,'plugin','Install','2017-12-06 13:22:28','2017-12-06 13:22:28','2017-12-06 13:22:28','55e86a27-e203-42ad-93f4-ed4fa8fb7f3b'),
 	(89,NULL,'app','m171210_142046_fix_db_routes','2017-12-13 01:23:04','2017-12-13 01:23:04','2017-12-13 01:23:04','21627bc5-93eb-473b-9c79-2cf9748a77de'),
 	(90,NULL,'app','m171218_143135_longtext_query_column','2017-12-22 00:31:28','2017-12-22 00:31:28','2017-12-22 00:31:28','b9c8f461-8f21-4235-813a-3d0fb2cb57eb'),
-	(91,NULL,'app','m171231_055546_environment_variables_to_aliases','2018-01-03 09:49:29','2018-01-03 09:49:29','2018-01-03 09:49:29','b6277030-8402-46ac-bfb5-2991e5ff432b');
+	(91,NULL,'app','m171231_055546_environment_variables_to_aliases','2018-01-03 09:49:29','2018-01-03 09:49:29','2018-01-03 09:49:29','b6277030-8402-46ac-bfb5-2991e5ff432b'),
+	(92,NULL,'app','m180113_153740_drop_users_archived_column','2018-01-25 02:29:10','2018-01-25 02:29:10','2018-01-25 02:29:10','1c340ca1-ef0c-4b99-9ca8-c49418dadac3'),
+	(93,NULL,'app','m180122_213433_propagate_entries_setting','2018-01-25 02:29:11','2018-01-25 02:29:11','2018-01-25 02:29:11','f9674c7e-7ea9-4467-863e-314409bddc4c'),
+	(94,NULL,'app','m180124_230459_fix_propagate_entries_values','2018-01-25 02:29:11','2018-01-25 02:29:11','2018-01-25 02:29:11','b0bfb0dd-9971-4fb0-8cff-95f978d1c088');
 
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2023,25 +2017,25 @@ LOCK TABLES `plugins` WRITE;
 INSERT INTO `plugins` (`id`, `handle`, `version`, `schemaVersion`, `licenseKey`, `licenseKeyStatus`, `enabled`, `settings`, `installDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
 	(2,'craftql','1.0.0-beta.23','1.1.0',NULL,'unknown',1,NULL,'2017-12-06 11:04:43','2017-12-06 11:04:43','2017-12-13 01:52:21','e984d2fe-7afd-4d49-b2e2-63063c6a88f7'),
-	(4,'redactor','1.0.0.1','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:07:59','2017-12-06 11:07:59','2018-01-14 04:21:50','1118534b-04da-4520-80db-75421f46f720'),
-	(6,'cookies','1.1.7','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:15:08','2017-12-06 11:15:08','2018-01-14 04:21:50','3f6005f7-7c9c-46b4-9300-cb0550d29802'),
-	(8,'minify','1.2.6','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:22:51','2017-12-06 11:22:51','2018-01-14 04:21:50','34fcbd22-0064-4e51-aa32-48e3be0a79ba'),
-	(11,'typogrify','1.1.5','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:00:58','2017-12-06 13:00:58','2018-01-14 04:21:50','63536b19-23b8-42f6-b75b-51a9cdc7d8d6'),
-	(14,'command-palette','3.1.0','3.0.0',NULL,'unknown',1,'{\"pluginName\":\"\",\"theme\":\"Palette Dark.css\",\"elementSearchElementTypes\":{\"asset\":{\"elementType\":\"Asset\",\"enabled\":\"1\"},\"category\":{\"elementType\":\"Category\",\"enabled\":\"1\"},\"entry\":{\"elementType\":\"Entry\",\"enabled\":\"1\"},\"globalset\":{\"elementType\":\"Global Set\",\"enabled\":\"1\"},\"matrixblock\":{\"elementType\":\"Matrix Block\",\"enabled\":\"1\"},\"tag\":{\"elementType\":\"Tag\",\"enabled\":\"\"},\"user\":{\"elementType\":\"User\",\"enabled\":\"1\"}}}','2017-12-06 13:15:27','2017-12-06 13:15:27','2018-01-14 04:21:50','9a1bc271-396e-43ef-ba37-80555d0fd10a'),
+	(4,'redactor','1.0.1','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:07:59','2017-12-06 11:07:59','2018-01-25 02:29:15','1118534b-04da-4520-80db-75421f46f720'),
+	(6,'cookies','1.1.8','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:15:08','2017-12-06 11:15:08','2018-01-25 02:29:16','3f6005f7-7c9c-46b4-9300-cb0550d29802'),
+	(8,'minify','1.2.6','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:22:51','2017-12-06 11:22:51','2018-01-25 02:29:16','34fcbd22-0064-4e51-aa32-48e3be0a79ba'),
+	(11,'typogrify','1.1.6','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:00:58','2017-12-06 13:00:58','2018-01-25 02:29:16','63536b19-23b8-42f6-b75b-51a9cdc7d8d6'),
+	(14,'command-palette','3.1.0','3.0.0',NULL,'unknown',1,'{\"pluginName\":\"\",\"theme\":\"Palette Dark.css\",\"elementSearchElementTypes\":{\"asset\":{\"elementType\":\"Asset\",\"enabled\":\"1\"},\"category\":{\"elementType\":\"Category\",\"enabled\":\"1\"},\"entry\":{\"elementType\":\"Entry\",\"enabled\":\"1\"},\"globalset\":{\"elementType\":\"Global Set\",\"enabled\":\"1\"},\"matrixblock\":{\"elementType\":\"Matrix Block\",\"enabled\":\"1\"},\"tag\":{\"elementType\":\"Tag\",\"enabled\":\"\"},\"user\":{\"elementType\":\"User\",\"enabled\":\"1\"}}}','2017-12-06 13:15:27','2017-12-06 13:15:27','2018-01-25 02:29:16','9a1bc271-396e-43ef-ba37-80555d0fd10a'),
 	(15,'cp-body-classes','v2.0.0','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:17:21','2017-12-06 13:17:21','2017-12-14 13:47:11','bc093d0c-5cff-476d-9c0e-d30b5c2c8ed6'),
-	(16,'cp-css','2.1.0','2.0.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#content {\\r\\n  padding-bottom: 50vh !important;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .matrixblock[data-type=\\\"bkSection\\\"] {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-left: 0%;\\r\\n  margin-top: 40px;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection {\\r\\n  border-bottom: 2px solid #da5a47;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-12-06 13:17:35','2017-12-06 13:17:35','2018-01-14 04:21:50','f2244f9e-d8ec-46e5-bf39-232c8b80e304'),
-	(19,'expanded-singles','1.0.1','1.0.0',NULL,'unknown',1,'{\"expandSingles\":\"1\",\"redirectToEntry\":\"1\"}','2017-12-06 13:21:45','2017-12-06 13:21:45','2018-01-14 04:21:50','15bd775c-1dc1-4a64-b10f-e3131eb89ee1'),
-	(20,'snitch','2.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:22:28','2017-12-06 13:22:28','2018-01-14 04:21:50','0f73b801-5534-4c1f-81b8-478419904556'),
-	(21,'code-mirror','v1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:36:58','2017-12-06 13:36:58','2018-01-14 04:21:50','9c83a2af-f6a8-4ab0-b333-f6654351df95'),
-	(23,'simple-text','2.0.2','1.0.2',NULL,'unknown',1,NULL,'2017-12-06 13:41:50','2017-12-06 13:41:50','2018-01-14 04:21:50','e14c3100-55e0-4317-96bd-c3b9cda9c146'),
+	(16,'cp-css','2.1.0','2.0.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#content {\\r\\n  padding-bottom: 50vh !important;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .matrixblock[data-type=\\\"bkSection\\\"] {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-left: 0%;\\r\\n  margin-top: 40px;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection {\\r\\n  border-bottom: 2px solid #da5a47;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-12-06 13:17:35','2017-12-06 13:17:35','2018-01-25 02:29:16','f2244f9e-d8ec-46e5-bf39-232c8b80e304'),
+	(19,'expanded-singles','1.0.1','1.0.0',NULL,'unknown',1,'{\"expandSingles\":\"1\",\"redirectToEntry\":\"1\"}','2017-12-06 13:21:45','2017-12-06 13:21:45','2018-01-25 02:29:16','15bd775c-1dc1-4a64-b10f-e3131eb89ee1'),
+	(20,'snitch','2.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:22:28','2017-12-06 13:22:28','2018-01-25 02:29:16','0f73b801-5534-4c1f-81b8-478419904556'),
+	(21,'code-mirror','v1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:36:58','2017-12-06 13:36:58','2018-01-25 02:29:16','9c83a2af-f6a8-4ab0-b333-f6654351df95'),
+	(23,'simple-text','2.0.2','1.0.2',NULL,'unknown',1,NULL,'2017-12-06 13:41:50','2017-12-06 13:41:50','2018-01-25 02:29:16','e14c3100-55e0-4317-96bd-c3b9cda9c146'),
 	(27,'matrix-colors','v2.0.0','2.0.0',NULL,'unknown',1,'{\"matrixBlockColors\":[{\"blockType\":\"bkSection\",\"backgroundColor\":\"#EBF0E5\"},{\"blockType\":\"imageGallery\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageGrid\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageSingle\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageSlider\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"richText\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"headline\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"plainText\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"quote\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"definitionList\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"embed\",\"backgroundColor\":\"#F0ECE5\"},{\"blockType\":\"divider\",\"backgroundColor\":\"#F0ECE5\"}]}','2017-12-13 01:50:23','2017-12-13 01:50:23','2017-12-13 02:10:49','81519fcf-850a-42e5-a770-e98d0079392f'),
-	(28,'child-me','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-13 01:52:14','2017-12-13 01:52:14','2018-01-14 04:21:50','0caa94c0-fdce-4836-8008-d0e3433ce35c'),
-	(31,'cp-field-inspect','1.0.2','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:51','2017-12-15 01:37:51','2018-01-14 04:21:50','21aef169-efa2-4c3c-be1a-562ad38c3ba9'),
-	(32,'logs','v3.0.0','3.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:58','2017-12-15 01:37:58','2018-01-14 04:21:50','fb6cb193-4ab5-4d0a-92d8-fc9becec28ad'),
-	(33,'advanced-url-field','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:38:24','2017-12-15 01:38:24','2018-01-14 04:21:50','19ed52eb-e7ae-44f2-9699-95627155b822'),
-	(34,'dumper','1.1.2','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:42:34','2017-12-15 01:42:34','2018-01-14 04:21:50','7e23f542-ff7c-4bf2-8ecd-5f8de4af01f4'),
-	(36,'supersort','3.0.1','0.0.0.0',NULL,'unknown',1,NULL,'2017-12-25 23:06:33','2017-12-25 23:06:33','2018-01-14 04:21:50','df522b45-89f9-49f6-9cf8-942a646e4b98'),
-	(38,'image-optimize','1.4.8','1.0.0',NULL,'unknown',1,NULL,'2018-01-07 20:45:25','2018-01-07 20:45:25','2018-01-14 04:21:50','a8636095-e8db-4a94-b04a-d224d1657382');
+	(28,'child-me','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-13 01:52:14','2017-12-13 01:52:14','2018-01-25 02:29:16','0caa94c0-fdce-4836-8008-d0e3433ce35c'),
+	(31,'cp-field-inspect','1.0.2','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:51','2017-12-15 01:37:51','2018-01-25 02:29:16','21aef169-efa2-4c3c-be1a-562ad38c3ba9'),
+	(32,'logs','v3.0.0','3.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:58','2017-12-15 01:37:58','2018-01-25 02:29:16','fb6cb193-4ab5-4d0a-92d8-fc9becec28ad'),
+	(33,'advanced-url-field','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:38:24','2017-12-15 01:38:24','2018-01-25 02:29:16','19ed52eb-e7ae-44f2-9699-95627155b822'),
+	(34,'dumper','1.1.2','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:42:34','2017-12-15 01:42:34','2018-01-25 02:29:16','7e23f542-ff7c-4bf2-8ecd-5f8de4af01f4'),
+	(36,'supersort','3.0.1','0.0.0.0',NULL,'unknown',1,NULL,'2017-12-25 23:06:33','2017-12-25 23:06:33','2018-01-25 02:29:16','df522b45-89f9-49f6-9cf8-942a646e4b98'),
+	(38,'image-optimize','1.4.9','1.0.0',NULL,'unknown',1,NULL,'2018-01-07 20:45:25','2018-01-07 20:45:25','2018-01-25 02:29:16','a8636095-e8db-4a94-b04a-d224d1657382');
 
 /*!40000 ALTER TABLE `plugins` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2659,6 +2653,7 @@ CREATE TABLE `sections` (
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) NOT NULL DEFAULT '0',
+  `propagateEntries` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sections_handle_unq_idx` (`handle`),
   UNIQUE KEY `sections_name_unq_idx` (`name`),
@@ -2669,12 +2664,12 @@ CREATE TABLE `sections` (
 LOCK TABLES `sections` WRITE;
 /*!40000 ALTER TABLE `sections` DISABLE KEYS */;
 
-INSERT INTO `sections` (`id`, `structureId`, `name`, `handle`, `type`, `enableVersioning`, `dateCreated`, `dateUpdated`, `uid`)
+INSERT INTO `sections` (`id`, `structureId`, `name`, `handle`, `type`, `enableVersioning`, `dateCreated`, `dateUpdated`, `uid`, `propagateEntries`)
 VALUES
-	(1,NULL,'Home','home','single',1,'2017-12-06 12:35:07','2018-01-14 01:22:39','4ab0af47-c208-4f07-b4f4-dc594d031572'),
-	(2,NULL,'Articles','articles','channel',1,'2017-12-06 23:57:15','2018-01-14 00:09:33','78bec50f-ab8b-44e8-a144-168c2b565a56'),
-	(3,1,'Pages','pages','structure',1,'2017-12-06 23:58:24','2017-12-06 23:58:24','3b038437-1f1f-4071-974d-0da0ae6d9227'),
-	(4,2,'Development','development','structure',1,'2017-12-06 23:58:59','2017-12-06 23:58:59','bca4d49f-6418-477b-b8bd-f22cfb57d07b');
+	(1,NULL,'Home','home','single',1,'2017-12-06 12:35:07','2018-01-14 01:22:39','4ab0af47-c208-4f07-b4f4-dc594d031572',1),
+	(2,NULL,'Articles','articles','channel',1,'2017-12-06 23:57:15','2018-01-14 00:09:33','78bec50f-ab8b-44e8-a144-168c2b565a56',1),
+	(3,1,'Pages','pages','structure',1,'2017-12-06 23:58:24','2017-12-06 23:58:24','3b038437-1f1f-4071-974d-0da0ae6d9227',1),
+	(4,2,'Development','development','structure',1,'2017-12-06 23:58:59','2017-12-06 23:58:59','bca4d49f-6418-477b-b8bd-f22cfb57d07b',1);
 
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2752,7 +2747,7 @@ VALUES
 	(10,1,'JIYH0u3sbGC3bfW2ka459ZjJ3O0_YBqDU9qHOXts7SyNUdn7xOqtaGtqNku8wYac0JRh5hLZdrjEoH8yBVyK__D7uTPkrWQQKsB4','2018-01-07 21:21:45','2018-01-07 21:37:46','136bd6d4-3e60-4477-b798-37a26efc7e39'),
 	(11,1,'bHEt8kgdQ1zy6f-ANhk-okbVUk90Kc-_QA7LmGzNwnC9Z4gYnECPMfAkw5ieay_vxX7PVK-d4mTwZxpKtBxdSQFHO1L5ncXUNZ0L','2018-01-11 12:53:01','2018-01-11 12:59:23','cb31e603-fc71-43e7-b35b-97e431c2f318'),
 	(12,1,'brJ4070Ec6g4Ac1uicRlj_TzgMAyvseY-PMbAiJ1P3vG8Yy6PtZa6abhygaZOKXArFCWbQGIw_oNbeBQQmV9w_m2t28dKLCYD402','2018-01-11 17:05:28','2018-01-11 17:06:06','cc4c7d15-de8b-499f-aab4-c87e70f1698f'),
-	(13,1,'_eaelWXsvNX0TKljZCE0JGfgpmwGcNtk-M0AuqWByGLX6zHEVXNaZphqyMTtMZFEkEP8MTaoH-NduqN3w78lGVst2z4EBzhgE0cC','2018-01-14 00:00:09','2018-01-14 06:20:38','8570d4aa-5f5a-4e4f-8b6e-7881b7ac8b0c');
+	(13,1,'_eaelWXsvNX0TKljZCE0JGfgpmwGcNtk-M0AuqWByGLX6zHEVXNaZphqyMTtMZFEkEP8MTaoH-NduqN3w78lGVst2z4EBzhgE0cC','2018-01-14 00:00:09','2018-01-14 06:20:20','8570d4aa-5f5a-4e4f-8b6e-7881b7ac8b0c');
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2865,7 +2860,7 @@ LOCK TABLES `snitch_collisions` WRITE;
 
 INSERT INTO `snitch_collisions` (`id`, `elementId`, `userId`, `whenEntered`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(427,6,1,'2018-01-14 06:20:38','2018-01-14 06:00:50','2018-01-14 06:20:38','814b71a0-b8e5-4bb7-91f5-25723fa96647');
+	(427,6,1,'2018-01-14 06:20:20','2018-01-14 06:00:50','2018-01-14 06:20:20','814b71a0-b8e5-4bb7-91f5-25723fa96647');
 
 /*!40000 ALTER TABLE `snitch_collisions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3473,7 +3468,6 @@ CREATE TABLE `users` (
   `locked` tinyint(1) NOT NULL DEFAULT '0',
   `suspended` tinyint(1) NOT NULL DEFAULT '0',
   `pending` tinyint(1) NOT NULL DEFAULT '0',
-  `archived` tinyint(1) NOT NULL DEFAULT '0',
   `lastLoginDate` datetime DEFAULT NULL,
   `lastLoginAttemptIp` varchar(45) DEFAULT NULL,
   `invalidLoginWindowStart` datetime DEFAULT NULL,
@@ -3501,9 +3495,9 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `username`, `photoId`, `firstName`, `lastName`, `email`, `password`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIp`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
+INSERT INTO `users` (`id`, `username`, `photoId`, `firstName`, `lastName`, `email`, `password`, `admin`, `client`, `locked`, `suspended`, `pending`, `lastLoginDate`, `lastLoginAttemptIp`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,0,0,'2018-01-14 00:00:09','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-01-14 00:00:09','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
+	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,0,'2018-01-14 00:00:09','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-01-14 00:00:09','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
