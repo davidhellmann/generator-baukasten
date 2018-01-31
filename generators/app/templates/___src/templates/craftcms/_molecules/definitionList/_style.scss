@@ -15,7 +15,6 @@
   @include make-vr();
   width: 100%;
   display: grid;
-  @include make-col-gap();
   grid-template-columns: 1fr;
 
   @include media('>=m') {
@@ -33,6 +32,10 @@
     @include f(s(1), s(2), padding-bottom);
     @include f(s(1), s(2), margin-top);
     @include f(s(2), s(4), margin-bottom);
+
+    p {
+      max-width: 80ch;
+    }
 
     &:last-of-type {
       @include f(s(0), s(0), margin-bottom);

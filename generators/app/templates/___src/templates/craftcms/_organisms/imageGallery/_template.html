@@ -38,7 +38,7 @@
               {% endfor %} itemscope itemtype="http://schema.org/ImageGallery">
     {% for image in opt.images.all() %}
 
-      <figure class="{{ opt.cn ~ '__figure' }}">
+      <figure class="o-col-6  o-col-s-8  o-col-l-4  {{ opt.cn ~ '__figure' }}">
         <a class="{{ opt.cn ~ '__link' }}"
            href="{{ image.url }}"
            itemprop="contentUrl"

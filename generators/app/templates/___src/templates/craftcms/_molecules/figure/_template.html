@@ -29,38 +29,42 @@
 
 {# -- Modul -- #}
 {% if opt.image %}
-  <figure class="{{- opt.cn -}}
+  <div class="{{- opt.cn -}}
               {% for modifier in opt.modifiers %}
                 {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
               {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'm-' : 'js-' }) : '' -}}
               {{- opt.waypointAni ? '  ' ~ opt.waypointAni : '' -}}"
-              {{- opt.waypoint ? '  data-waypoint' : '' -}}
-              {% for key, value in opt.data %}
-                {{- '  data-' ~ key ~ '=' ~ value -}}
-              {% endfor %}
-          itemprop="associatedMedia"
-          itemscope itemtype="http://schema.org/ImageObject">
+    {{- opt.waypoint ? '  data-waypoint' : '' -}}
+    {% for key, value in opt.data %}
+      {{- '  data-' ~ key ~ '=' ~ value -}}
+    {% endfor %}
+       itemprop="associatedMedia"
+       itemscope itemtype="http://schema.org/ImageObject">
 
-    {# -- image -- #}
-    {% include '_atoms/image/_template.html' with {
-      opt: {
-        image: opt.image,
-        ratio: opt.ratio,
-        dominantColor: opt.dominantColor,
-        objectFit: opt.objectFit
-      }
-    } only %}
-
-    {# -- caption -- #}
-    {% if opt.caption %}
-      {% include '_molecules/caption/_template.html' with {
+    <div class="{{- opt.cn ~ '__image' -}}">
+      {# -- image -- #}
+      {% include '_atoms/image/_template.html' with {
         opt: {
-          headline: opt.captionHeadline ?? null,
-          text: opt.captionText ?? null,
-          source: opt.captionSource ?? null,
-          sourceUrl: opt.captionSourceUrl ?? null
+          image: opt.image,
+          ratio: opt.ratio,
+          dominantColor: opt.dominantColor,
+          objectFit: opt.objectFit
         }
       } only %}
-    {% endif %}
-  </figure>
+    </div>
+
+    <div class="{{- opt.cn ~ '__caption' -}}">
+      {# -- caption -- #}
+      {% if opt.caption %}
+        {% include '_molecules/caption/_template.html' with {
+          opt: {
+            headline: opt.captionHeadline ?? null,
+            text: opt.captionText ?? null,
+            source: opt.captionSource ?? null,
+            sourceUrl: opt.captionSourceUrl ?? null
+          }
+        } only %}
+      {% endif %}
+    </div>
+  </div>
 {% endif %}

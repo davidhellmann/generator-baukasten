@@ -14,6 +14,7 @@
   $root: &;
   @include make-vr();
   width: 100%;
+  max-width: 80ch;
   @include f(s(8), s(16), padding-left);
 
   &__blockquote {

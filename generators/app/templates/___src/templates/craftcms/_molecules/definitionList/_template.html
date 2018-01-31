@@ -40,7 +40,7 @@
         {{ item.term | raw }}
       </dt>
       <dd class="{{ opt.cn ~ '__description' }}">
-        {{ item.description }}
+        <p>{{ item.description | nl2br }}</p>
       </dd>
     {% endfor %}
   </dl>

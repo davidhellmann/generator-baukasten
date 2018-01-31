@@ -32,7 +32,7 @@
 
 {# -- Modul -- #}
 {% if opt.image %}
-  <div class="{{- opt.cn -}}
+  <div class="{{ opt.cn -}}
               {% for modifier in opt.modifiers %}
                 {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
               {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}

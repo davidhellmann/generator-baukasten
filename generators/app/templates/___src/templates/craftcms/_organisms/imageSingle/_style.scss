@@ -13,57 +13,106 @@
 .o-imageSingle {
   $root: &;
   width: 100%;
+
+  .m-figure {
+    width: auto;
+    @include make-row(12);
+
+    @include media('>=s') {
+      @include make-col(24);
+    }
+  }
+
+  .m-figure__image {
+    @include make-col-padding();
+  }
+
+  .m-figure__caption {
+    @include make-col-padding();
+  }
 }
 
 // Full Image
 .o-imageSingle--w-full {
-  @include media('>=m') {
-    .m-figure {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      @include make-col-gap();
-    }
+  .m-figure__image {
+    @include make-col(12, 12);
 
-    .m-caption {
-      margin-top: 0;
+    @include media('>=m') {
+      @include make-col(24, 24);
+    }
+  }
+
+  .m-figure__caption {
+    @include make-col(12, 12);
+
+    @include media('>=m') {
+      @include make-col(24, 24);
     }
   }
 }
 
 // Half Image
 .o-imageSingle--w-half {
-  @include media('>=m') {
-    .m-figure {
-      width: 50%;
+  .m-figure__image {
+    @include make-col(12, 12);
+
+    @include media('>=m') {
+      @include make-col(12, 24);
+    }
+  }
+
+  .m-figure__caption {
+    @include make-col(12, 12);
+
+    @include media('>=m') {
+      @include make-col(12, 24);
+    }
+  }
+
+  &.o-imageSingle--a-right {
+    .m-figure__image {
+      @include media('>=m') {
+        order: 2;
+      }
     }
 
-    &.o-imageSingle--a-center {
-      display: flex;
-      justify-content: center;
-    }
-
-    &.o-imageSingle--a-right {
-      display: flex;
-      justify-content: flex-end;
+    .m-figure__caption {
+      @include media('>=m') {
+        order: 1;
+      }
     }
   }
 }
 
 // Three Quarter Image
 .o-imageSingle--w-threeQuarter {
-  @include media('>=m') {
-    .m-figure {
-      width: 75%;
+  .m-figure__image {
+    @include make-col(12, 12);
+
+    @include media('>=m') {
+      @include make-col(16, 24);
+    }
+  }
+
+  .m-figure__caption {
+    @include make-col(12, 12);
+
+    @include media('>=m') {
+      @include make-col(8, 24);
+    }
+  }
+
+  &.o-imageSingle--a-right {
+    .m-figure__image {
+      @include media('>=m') {
+        order: 2;
+      }
     }
 
-    &.o-imageSingle--a-center {
-      display: flex;
-      justify-content: center;
-    }
-
-    &.o-imageSingle--a-right {
-      display: flex;
-      justify-content: flex-end;
+    .m-figure__caption {
+      @include media('>=m') {
+        order: 1;
+      }
     }
   }
 }

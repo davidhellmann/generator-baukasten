@@ -33,7 +33,7 @@
     <nav class="o-row  {{ opt.cn }}" role="navigation">
         {# Display the Previous Link if available #}
         {% if pages.prevUrl %}
-          <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--prev' }}">
+          <div class="o-col-6  o-col-s-12  {{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--prev' }}">
             <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--prev' }}"
                href="{{ pages.prevUrl }}{{ opt.searchquery ? '?q='~opt.searchquery }}"
                title="{{ opt.prevText }}">
@@ -53,7 +53,7 @@
 
         {# Display next Page Link if available#}
         {% if pages.nextUrl %}
-        <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--next' }}">
+        <div class="o-col-6  o-col-s-12  {{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--next' }}">
           <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--next' }}"
              href="{{ pages.nextUrl }}{{ opt.searchquery ? '?q='~opt.searchquery }}"
              title="{{ opt.nextText }}">

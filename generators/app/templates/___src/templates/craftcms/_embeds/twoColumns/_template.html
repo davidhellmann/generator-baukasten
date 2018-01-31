@@ -54,8 +54,8 @@
     {# -- Block: Intro -- #}
     {% if opt.intro %}
       <div class="o-section">
-        <div class="o-row  o-row-12  o-row-s-24">
-          <div class="{{ opt.cn ~ '__intro' }}">
+        <div class="o-row">
+          <div class="o-col-12  o-col-s-24  {{ opt.cn ~ '__intro' }}">
             {% block intro %}
               Block: Intro!
             {% endblock %}
@@ -67,8 +67,8 @@
     {# -- Block: Content -- #}
     {% if opt.content %}
       <div class="o-section">
-        <div class="o-row  o-row-12  o-row-s-24">
-          <div class="{{ opt.cn ~ '__content' }}">
+        <div class="o-row">
+          <div class="o-col-12  o-col-s-16  {{ opt.cn ~ '__content' }}">
             {% block content %}
               Block: Content!
             {% endblock %}
@@ -76,7 +76,7 @@
 
           {# -- Block: Sidebar -- #}
           {% if opt.sidebar %}
-            <div class="{{ opt.cn ~ '__sidebar' }}">
+            <div class="o-col-12  o-col-s-8  {{ opt.cn ~ '__sidebar' }}">
               {% block sidebar %}
                 Block: Sidebar!
               {% endblock %}

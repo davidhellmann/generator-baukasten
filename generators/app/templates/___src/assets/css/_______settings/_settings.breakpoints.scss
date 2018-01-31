@@ -1,33 +1,39 @@
 /*
  |--------------------------------------------------------------------------
- |  Breakpoints
+ |  Breakpoint Settings
  |--------------------------------------------------------------------------
  */
-// Vendors
-// Include Media Breakpoint Mixin
-// URL: http://include-media.com/
+
+// Imports
+// Important to include "Include Media" at this point
+// Cause we set the map our Breakpoints to their map $breakpoints
 @import '~include-media/dist/include-media';
-@import 'settings.grid';
 
-// Breakpoints
-$bk-breakpoint-minWidth: $bk-minWidth;
-$bk-breakpoint-xs: 500px;
-$bk-breakpoint-s: 800px;
-$bk-breakpoint-m: 1000px;
-$bk-breakpoint-l: 1200px;
-$bk-breakpoint-maxWidth: $bk-maxWidth;
-$bk-breakpoint-xl: 1800px;
-
-// Breakpoints Map
-$bk-breakpoints: (
-        'min': $bk-breakpoint-minWidth,
-        'xs': $bk-breakpoint-xs,
-        's': $bk-breakpoint-s,
-        'm': $bk-breakpoint-m,
-        'l': $bk-breakpoint-l,
-        'max': $bk-breakpoint-maxWidth,
-        'xl': $bk-breakpoint-xl
+// Settings
+$bk-grid-settings-custom: (
+  cssgrid: false,
+  cssgrid-fallback: true,
+  flexboxgrid: true,
+  testing: true,
+  prefix: 'o-',
+  units: (
+    gutter: 8px,
+    gutter-min-factor: 1,
+    gutter-max-factor: 2,
+    gutter-min-vertical-factor: 1,
+    gutter-max-vertical-factor: 2
+  ),
+  offset-classes: false,
+  push-classes: false,
+  pull-classes: false,
+  breakpoints: (
+    min: (from: 320px, to: 399px, cols: 12, create-classes: true),
+    xs:  (from: 400px, to: 599px, cols: 12, create-classes: false),
+    s:   (from: 600px, to: 799px, cols: 24, create-classes: true),
+    m:   (from: 800px, to: 999px, cols: 24, create-classes: false),
+    l:   (from: 1000px, to: 1439px, cols: 24, create-classes: true),
+    max: (from: 1440px, to: 0, cols: 24, create-classes: false)
+  )
 );
 
-// Include Media Breakpoints Map
-$breakpoints: $bk-breakpoints;
+@import '~baukasten-grid/scss/baukasten-grid';

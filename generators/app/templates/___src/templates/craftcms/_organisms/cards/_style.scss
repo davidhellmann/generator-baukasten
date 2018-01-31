@@ -15,14 +15,6 @@
   @include make-vr();
   width: 100%;
 
-  &__item {
-    @include make-col(12);
-
-    @include media('>=s') {
-      @include make-col(8);
-    }
-  }
-
   &__pagination {
     @include make-col(12);
 

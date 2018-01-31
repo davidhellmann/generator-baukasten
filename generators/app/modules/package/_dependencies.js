@@ -5,6 +5,7 @@ function addDependencies(files = {}) {
         dependencies: {
             'animejs': '^2.0.0',
             'babel-polyfill': '^6.26.0',
+            'baukasten-grid': '^1.0.0',
             'bowser': '^1.8.1',
             'cookieconsent': '^3.0.4',
             'family.scss': '^1.0.4',

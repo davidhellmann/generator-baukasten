@@ -8,6 +8,7 @@
 .a-richText {
   $root: &;
   width: 100%;
+  max-width: 80ch;
 }
 
 // Modul Modifiers Example

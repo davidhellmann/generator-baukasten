@@ -10,22 +10,6 @@
 .o-imageGallery {
   $root: &;
 
-  &__figure {
-    @include make-col(6);
-
-    @include media('>=xs') {
-      @include make-col(4);
-    }
-
-    @include media('>=s') {
-      @include make-col(6);
-    }
-
-    @include media('>=m') {
-      @include make-col(4);
-    }
-  }
-
   &__link {
     display: block;
   }

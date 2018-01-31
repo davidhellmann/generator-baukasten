@@ -9,12 +9,8 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  @include make-section();
-  @include make-section-padding(1);
-
-  .t-oldies & {
-    @include make-section-flex();
-  }
+  // @include make-section();
+  // @include make-section-padding(1);
 
   .o-section {
     @include f(0, 0, padding-left padding-right);

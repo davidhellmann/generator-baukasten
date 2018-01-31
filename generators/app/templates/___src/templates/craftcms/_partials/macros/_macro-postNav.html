@@ -39,7 +39,7 @@
   {% if prevEntry or nextEntry %}
     <nav class="o-row  {{ opt.cn }}">
       {% if prevEntry %}
-        <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--prev' }}">
+        <div class="o-col-6  o-col-s-12  {{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--prev' }}">
           <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--prev' }}" href="{{ prevEntry.url }}">
             {% if opt.prevIcon %}
               <span class="{{ opt.cn ~ '__icon' }}  {{ opt.cn ~ '__icon--prev' }}">
@@ -56,7 +56,7 @@
         </div>
       {% endif %}
       {% if nextEntry %}
-        <div class="{{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--next' }}">
+        <div class="o-col-6  o-col-s-12  {{ opt.cn ~ '__item' }}  {{ opt.cn ~ '__item--next' }}">
           <a class="{{ opt.cn ~ '__link' }}  {{ opt.cn ~ '__link--next' }}" href="{{ nextEntry.url }}">
             {% if opt.nextLabel %}
               <span class="{{ opt.cn ~ '__label' }}">{{ opt.nextLabel }}</span>

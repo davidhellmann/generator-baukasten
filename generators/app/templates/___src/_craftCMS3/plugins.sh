@@ -164,6 +164,6 @@ echo '--------------------------------------------------'
 
 echo ''
 echo '>>> Installing: Craft3 Image Optimize'
-composer require nystudio107/craft3-imageoptimize
+composer require nystudio107/craft-imageoptimize
 echo '--------------------------------------------------'
 

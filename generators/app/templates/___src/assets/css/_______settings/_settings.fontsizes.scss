@@ -5,7 +5,7 @@
  */
 // Dependencies
 @import '~modularscale-sass/stylesheets/modularscale';
-@import 'settings.breakpoints';
+@import '~baukasten-grid/scss/baukasten-grid';
 
 // Settings
 $bk-baseFontSizePx: 16px;
@@ -16,11 +16,11 @@ $bk-baseLineHeight: 1.5;
 $modularscale: (
         base: $bk-baseFontSizePx,
         ratio: $major-second,
-        map-get($breakpoints, 'min'): (
+        map-get($bk-breakpoints, 'min'): (
                 base: $bk-baseFontSizePx,
                 ratio: $major-second,
         ),
-        map-get($breakpoints, 'm'): (
+        map-get($bk-breakpoints, 'm'): (
                 base: $bk-baseFontSizeMaxPx,
                 ratio: $fourth,
         )

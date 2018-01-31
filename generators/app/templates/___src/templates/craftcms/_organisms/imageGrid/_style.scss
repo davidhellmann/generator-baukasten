@@ -9,7 +9,12 @@
   $root: &;
 
   &__item {
-    @include make-col(24);
+    @include make-col(12, 12);
+    @include make-col-padding();
+
+    @include media('>=s') {
+      @include make-col(24, 24);
+    }
   }
 }
 
@@ -17,7 +22,7 @@
 .o-imageGrid--c-2 {
   .o-imageGrid__item {
     @include media('>=s') {
-      @include make-col(12);
+      @include make-col(12, 24);
     }
   }
 }
@@ -25,7 +30,7 @@
 .o-imageGrid--c-3 {
   .o-imageGrid__item {
     @include media('>=s') {
-      @include make-col(8);
+      @include make-col(8, 24);
     }
   }
 }
@@ -33,7 +38,7 @@
 .o-imageGrid--c-4 {
   .o-imageGrid__item {
     @include media('>=s') {
-      @include make-col(6);
+      @include make-col(6, 24);
     }
   }
 }

@@ -6,23 +6,10 @@
 
 .m-paginationSimple {
   $root: &;
-  width: 100%;
   @include make-vr();
 
-  &__item {
-    @include make-col(6);
-
-    @include media('>=s') {
-      @include make-col(12);
-    }
-
-    &--next {
-      @include col-pos(7);
-
-      @include media('>=s') {
-        @include col-pos(13);
-      }
-    }
+  &__item--next {
+    margin-left: auto;
   }
 
   &__link {
