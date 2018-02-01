@@ -58,6 +58,7 @@ $craftEnvVars = [
 
     // The secure key Craft will use for hashing and encrypting data, see:
     // https://craftcms.com/docs/config-settings#validationKey
+    // Create a key here: https://www.grc.com/passwords.htm
     'SECURITY_KEY' => 'REPLACE_ME_SECURITY_KEY',
 
     // The site url to use; it can be hard-coded as well
