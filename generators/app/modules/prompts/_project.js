@@ -101,6 +101,15 @@ Not a valid URL! Example: foobar.test (or .local / .localhost) — (HOSTNAME.TLD
     },
     {
         type: 'confirm',
+        name: 'projectPrivateRepo',
+        message: message({
+            headline: 'Project Private',
+            description: 'Is this a private Project (no public repo)?'
+        }),
+        default: true
+    },
+    {
+        type: 'confirm',
         name: 'projectjQuery',
         message: message({
             headline: 'Project jQuery',

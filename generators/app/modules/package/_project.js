@@ -18,7 +18,8 @@ function addProjectSettings(files = {}, context) {
             favicons: proxyURL
         },
         projectType: context.props.projectType,
-        projectVersion: context.props.projectVersion
+        projectVersion: context.props.projectVersion,
+        private: context.props.projectPrivateRepo
     })
 }
 
