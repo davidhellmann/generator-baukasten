@@ -19,7 +19,7 @@ echo
 
 echo ''
 echo '>>> Installing: Craft 3 Pathtools'
-composer require nystudio107/craft3-pathtools
+composer require nystudio107/craft-pathtools
 echo '--------------------------------------------------'
 
 echo ''
@@ -44,7 +44,7 @@ echo '--------------------------------------------------'
 
 echo ''
 echo '>>> Installing: Craft3 Minify'
-composer require nystudio107/craft3-minify
+composer require nystudio107/craft-minify
 echo '--------------------------------------------------'
 
 echo ''
@@ -59,7 +59,7 @@ echo '--------------------------------------------------'
 
 echo ''
 echo '>>> Installing: Craft3 Typogrify'
-composer require nystudio107/craft3-typogrify
+composer require nystudio107/craft-typogrify
 echo '--------------------------------------------------'
 
 echo ''
@@ -159,7 +159,7 @@ echo '--------------------------------------------------'
 
 echo ''
 echo '>>> Installing: Craft3 Routemap'
-composer require nystudio107/craft3-routemap
+composer require nystudio107/craft-routemap
 echo '--------------------------------------------------'
 
 echo ''
