@@ -34,7 +34,7 @@ echo '--------------------------------------------------'
 
 echo ''
 echo '>>> Installing: Craft3 Cookies'
-composer require nystudio107/craft3-cookies
+composer require nystudio107/craft-cookies
 echo '--------------------------------------------------'
 
 echo ''
