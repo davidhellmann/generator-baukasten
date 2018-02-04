@@ -116,4 +116,5 @@ ___dist/web/assets
 ___dist/web/cpresources
 ___dist/web/uploads
 ___dist/.env.php
+___backups
 <% } %>
