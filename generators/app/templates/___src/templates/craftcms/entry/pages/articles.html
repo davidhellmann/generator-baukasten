@@ -18,7 +18,7 @@
 {% set entries = craft.entries({
   section: 'articles',
   relatedTo: null,
-  limit: 12,
+  limit: 3,
   offset: null
 }) %}
 {% paginate entries as pageInfo, pageEntries %}
@@ -55,28 +55,12 @@
           }
         } only %}
 
+
         {# -- Entry Intro -- #}
         {% if entry.singleIntroText ?? null %}
           {% include '_atoms/richText/_template.html' with {
             opt: {
               text: entry.singleIntroText
-            }
-          } only %}
-        {% endif %}
-
-        {# -- Image Entry -- #}
-        {% if entry.singleImageEntry.one() ?? null %}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Image Entry',
-              size: 'h3'
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              image: entry.singleImageEntry.one() ?? null,
-              ratio: 'landscape'
             }
           } only %}
         {% endif %}
@@ -89,10 +73,8 @@
           opt: {
             items: pageEntries,
             pageInfo: pageInfo,
-            pagination: {
-              visible: true,
-              paginationSimple: true
-            }
+            pagination: true,
+            paginationSimple: false
           }
         } only %}
       {% endblock %}
@@ -101,3 +83,4 @@
   {# -- Cache End -- #}
   {% endcache %}
 {% endblock %}
+

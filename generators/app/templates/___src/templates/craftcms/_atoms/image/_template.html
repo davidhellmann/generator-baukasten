@@ -16,7 +16,8 @@
   image: null,
   ratio: null,
   dominantColor: true,
-  objectFit: null
+  objectFit: null,
+  maxWidth: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -25,15 +26,17 @@
 {# -- Modul -- #}
 {% if opt.image %}
   {# -- Image Vars -- #}
-  {% set imageSrc = opt.image.pluginOptimizedImagesAuto.srcset() %}
+  {% set imageSrc = opt.image.pluginOptimizedImagesAuto.src() %}
   {% set imageSrcset = opt.image.pluginOptimizedImagesAuto.srcset() %}
   {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesAuto.srcsetWebP() %}
+  {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidth(opt.maxWidth | default(2560)) %}
+  {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesLandscape.srcsetMaxWidthWebP(opt.maxWidth | default(2560)) %}
   {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesAuto.placeholderBox() %}
   {% set imageMaxWidth = opt.image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
   {% set focalPoint = '50% 50%' %}
 
   {# -- Focal Point -- #}
-  {% if opt.objectFit and opt.image.focalPoint  %}
+  {% if opt.objectFit and opt.image.focalPoint %}
     {% set focalpoint = opt.image.getFocalpoint('asCss') %}
   {% endif %}
 
@@ -46,53 +49,69 @@
 
     {% switch ratio %}
     {% case "landscape" %}
-      {% set imageSrc = opt.image.pluginOptimizedImagesLandscape.srcset() %}
+      {% set imageSrc = opt.image.pluginOptimizedImagesLandscape.src() %}
       {% set imageSrcset = opt.image.pluginOptimizedImagesLandscape.srcset() %}
       {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesLandscape.srcsetWebP() %}
+      {% if opt.maxWidth %}
+        {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesLandscape.srcsetMaxWidth(opt.maxWidth) %}
+        {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesLandscape.srcsetMaxWidthWebP(opt.maxWidth) %}
+      {% endif %}
       {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesLandscape.placeholderBox() %}
       {% set imageMaxWidth = opt.image.pluginOptimizedImagesLandscape.maxSrcsetWidth() %}
 
     {% case "portrait" %}
-      {% set imageSrc = opt.image.pluginOptimizedImagesPortrait.srcset() %}
+      {% set imageSrc = opt.image.pluginOptimizedImagesPortrait.src() %}
       {% set imageSrcset = opt.image.pluginOptimizedImagesPortrait.srcset() %}
       {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesPortrait.srcsetWebP() %}
+      {% if opt.maxWidth %}
+        {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesPortrait.srcsetMaxWidth(opt.maxWidth) %}
+        {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesPortrait.srcsetMaxWidthWebP(opt.maxWidth) %}
+      {% endif %}
       {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesPortrait.placeholderBox() %}
       {% set imageMaxWidth = opt.image.pluginOptimizedImagesPortrait.maxSrcsetWidth() %}
 
     {% case "square" %}
-      {% set imageSrc = opt.image.pluginOptimizedImagesSquare.srcset() %}
+      {% set imageSrc = opt.image.pluginOptimizedImagesSquare.src() %}
       {% set imageSrcset = opt.image.pluginOptimizedImagesSquare.srcset() %}
       {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesSquare.srcsetWebP() %}
+      {% if opt.maxWidth %}
+        {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesSquare.srcsetMaxWidth(opt.maxWidth) %}
+        {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesSquare.srcsetMaxWidthWebP(opt.maxWidth) %}
+      {% endif %}
       {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesSquare.placeholderBox() %}
       {% set imageMaxWidth = opt.image.pluginOptimizedImagesSquare.maxSrcsetWidth() %}
 
     {% default %}
-      {% set imageSrc = opt.image.pluginOptimizedImagesAuto.srcset() %}
+      {% set imageSrc = opt.image.pluginOptimizedImagesAuto.src() %}
       {% set imageSrcset = opt.image.pluginOptimizedImagesAuto.srcset() %}
       {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesAuto.srcsetWebP() %}
+      {% if opt.maxWidth %}
+        {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidth(opt.maxWidth) %}
+        {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidthWebP(opt.maxWidth) %}
+      {% endif %}
       {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesAuto.placeholderBox() %}
       {% set imageMaxWidth = opt.image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
     {% endswitch %}
   {% endif %}
 
   {# -- Image -- #}
-  <picture class="{{ opt.cn }}" {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
+  <picture class="{{ opt.cn }}"
+           {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
     <source srcset="{{ imageSrcsetWebP }}"
             sizes="100vw"
-            type="image/webp" />
+            type="image/webp"/>
     <img class="{{ opt.cn ~ '__image' }}  lazyload"
-         {% if opt.objectFit %}
-           style="object-fit: {{ opt.objectFit }}; object-position: {{ focalPoint }}"
-           data-object-fit="{{ opt.objectFit }}"
-           data-object-position="{{ focalPoint }}"
-         {% endif %}
+      {% if opt.objectFit %}
+        style="object-fit: {{ opt.objectFit }}; object-position: {{ focalPoint }}"
+        data-object-fit="{{ opt.objectFit }}"
+        data-object-position="{{ focalPoint }}"
+      {% endif %}
          src="{{ imagePlaceholderBox }}"
          srcset="{{ imageSrcset }}"
          sizes="100vw"
          width="{{ imageMaxWidth }}"
          height="auto"
          alt="{{ opt.image.title }}"/>
-    <noscript><img src="{{ opt.image.url }}"
-                   alt="{{ opt.image.title }}"></noscript>
+    <noscript><img src="{{ imageSrc }}" alt="{{ opt.image.title }}"></noscript>
   </picture>
 {% endif %}

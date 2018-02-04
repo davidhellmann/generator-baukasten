@@ -32,17 +32,20 @@
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}
               {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %} itemscope itemtype="http://schema.org/ImageGallery">
+    {{ opt.waypoint ? ' data-waypoint' : '' }}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %} itemscope itemtype="http://schema.org/ImageGallery">
     {% for image in opt.images.all() %}
+      {% set imageSrc = image.pluginOptimizedImagesAuto.src() %}
+      {% set imageMaxWidth = image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
+      {% set imageMaxHeight = (imageMaxWidth / image.width) * image.height %}
 
       <figure class="o-col-6  o-col-s-8  o-col-l-4  {{ opt.cn ~ '__figure' }}">
         <a class="{{ opt.cn ~ '__link' }}"
-           href="{{ image.url }}"
+           href="{{ imageSrc }}"
            itemprop="contentUrl"
-           data-size="{{ image.width }}x{{ image.height }}">
+           data-size="{{ imageMaxWidth }}x{{ imageMaxHeight }}">
 
           {% include '_atoms/image/_template.html' with {
             opt: {

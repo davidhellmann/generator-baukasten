@@ -30,6 +30,8 @@
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>
-    {{ opt.text | nl2br | raw }}
+    {% filter typogrify %}
+      {{ opt.text | nl2br | raw }}
+    {% endfilter %}
   </div>
 {% endif %}
