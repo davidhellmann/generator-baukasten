@@ -15,7 +15,6 @@ h6 {
   font-weight: 700;
   @include make-vr(2);
   @include f(s(-1), s(-2), margin-bottom);
-
   @include wf('headline');
 }
 
@@ -57,3 +56,54 @@ h6,
 .a-headline--h6 {
   @include ms-respond(font-size, 0);
 }
+
+// Respond
+/* stylelint-disable */
+.ms-res-9 {
+  @include ms-respond(font-size, 9);
+}
+
+.ms-res-8 {
+  @include ms-respond(font-size, 8);
+}
+
+.ms-res-7 {
+  @include ms-respond(font-size, 7);
+}
+
+.ms-res-6 {
+  @include ms-respond(font-size, 6);
+}
+
+.ms-res-5 {
+  @include ms-respond(font-size, 5);
+}
+
+.ms-res-4 {
+  @include ms-respond(font-size, 4);
+}
+
+.ms-res-3 {
+  @include ms-respond(font-size, 3);
+}
+
+.ms-res-2 {
+  @include ms-respond(font-size, 2);
+}
+
+.ms-res-1 {
+  @include ms-respond(font-size, 1);
+}
+
+.ms-res-0 {
+  @include ms-respond(font-size, 0);
+}
+
+.ms-res--1 {
+  @include ms-respond(font-size, -1);
+}
+
+.ms-res--2 {
+  @include ms-respond(font-size, -2);
+}
+/* stylelint-enable */

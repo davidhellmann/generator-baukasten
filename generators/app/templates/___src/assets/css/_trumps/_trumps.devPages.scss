@@ -5,7 +5,6 @@
 // Modul
 .t-devPages {
   $root: &;
-  @include make-vr();
   width: 100%;
 
   // Status List
