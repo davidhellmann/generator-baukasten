@@ -12,7 +12,11 @@
 const fontA = new FontFaceObserver('fontA');
 const fontB = new FontFaceObserver('fontB');
 
-if (!sessionStorage.fontsLoaded) {
+if (sessionStorage.fontsLoaded === true) {
+    console.log('Fonts loaded via cache');
+    alert('Fonts loaded via cache');
+    document.documentElement.classList.add('wf-loaded');
+} else {
     console.log('FontLoaded not in session storage');
     // Add all Variables defined above in the array of Promise.all
     Promise.all([fontA.load(), fontB.load()])
@@ -26,9 +30,6 @@ if (!sessionStorage.fontsLoaded) {
             document.documentElement.classList.add('wf-failed');
             sessionStorage.fontsLoaded = false;
         });
-} else {
-    console.log('Fonts loaded via cache');
-    document.documentElement.classList.add('wf-loaded');
 }
 */
 
