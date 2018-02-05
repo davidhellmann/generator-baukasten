@@ -17,8 +17,8 @@
   {# -- link -- #}
   {%- include '_atoms/link/_template.html' with {
     opt: {
-      text: 'DEV Index',
-      url: '/dev/index.html'
+      text: 'Typo',
+      url:  siteUrl ~ 'dev/typo'
     }
   } only %}
 
@@ -26,7 +26,7 @@
   {%- include '_atoms/link/_template.html' with {
     opt: {
       text: 'Modules Library',
-      url: '/dev/modules-library.html'
+      url:  siteUrl ~ 'dev/modules-library'
     }
   } only %}
 
@@ -57,16 +57,8 @@
   {# -- link -- #}
   {%- include '_atoms/link/_template.html' with {
     opt: {
-      text: 'Typo',
-      url: '/dev/typo.html'
-    }
-  } only %}
-
-  {# -- link -- #}
-  {%- include '_atoms/link/_template.html' with {
-    opt: {
       text: 'Forms',
-      url: '/dev/forms.html'
+      url:  siteUrl ~ 'dev/forms'
     }
   } only %}
 
