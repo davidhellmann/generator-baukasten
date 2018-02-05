@@ -1,0 +1,196 @@
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'a-headline',
+  modifiers: [],
+  data: {},
+  js: null,
+  waypoint: null,
+  waypointAni: null,
+  text: null,
+  size: 'h2'
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+<style>
+  {% set logicCSS %}
+  .section {
+    width: calc(100% - 32px);
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #eee;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    position: relative;
+    padding: 16px;
+    padding-bottom: 64px;
+  }
+
+  .darkMode .section {
+    border: 1px solid #1d1d1d;
+  }
+
+  .label {
+    position: absolute;
+    left: 32px;
+    top: 0;
+    line-height: 1;
+    font-weight: 700;
+    color: #333;
+    font-size: 10px;
+    padding: 6px 10px;
+    border: 1px solid #eee;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    background-color: white;
+    transform: translateY(-50%);
+  }
+
+  .darkMode .label {
+    border: 1px solid #1d1d1d;
+    background-color: #111;
+  }
+
+  .dev-button {
+    width: 110px;
+    padding: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 3px;
+    margin: 5px;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+
+  .dev-button:hover {
+    background-color: #fff;
+    border: 1px solid #111;
+    color: #111;
+    cursor: pointer;
+  }
+
+  .dev-button.is-active {
+    background-color: #111;
+    border: 1px solid #111;
+    color: white;
+  }
+
+  .nav {
+    width: 100%;
+    padding: 16px 32px;
+    text-align: center;
+  }
+
+  .nav .a-link {
+    color: red;
+    margin: 8px;
+  }
+
+  .buttons {
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: white;
+    text-align: center;
+    z-index: 10000;
+    box-shadow: 0 0 25px #ddd;
+    padding: 16px 32px;
+  }
+
+  .darkMode .buttons {
+    box-shadow: 0 0 25px #000;
+  }
+
+  .o-appWrapper {
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+  }
+
+  .darkMode {
+    background-color: #111;
+    color: white;
+  }
+
+  {% endset %}
+  {% includeCss logicCSS %}
+</style>
+
+<script type="text/javascript">
+  {% set viewSwitcher %}
+  const mobile = document.querySelector('.js-dev-mobile');
+  const tablet = document.querySelector('.js-dev-tablet');
+  const desktop = document.querySelector('.js-dev-desktop');
+  const fullwidth = document.querySelector('.js-dev-fullwidth');
+  const lightswitch = document.querySelector('.js-dev-lightswitch');
+  const section = [...document.querySelectorAll('.section')];
+
+  mobile.addEventListener('click', () => {
+    mobile.classList.add('is-active');
+    tablet.classList.remove('is-active');
+    desktop.classList.remove('is-active');
+    fullwidth.classList.remove('is-active');
+
+    section.forEach((el) => {
+      el.removeAttribute("style");
+      el.setAttribute("style", "max-width: 320px;");
+    });
+  });
+
+  tablet.addEventListener('click', () => {
+    mobile.classList.remove('is-active');
+    tablet.classList.add('is-active');
+    desktop.classList.remove('is-active');
+    fullwidth.classList.remove('is-active');
+
+    section.forEach((el) => {
+      el.removeAttribute("style");
+      el.setAttribute("style", "max-width: 768px;");
+    });
+  });
+
+  desktop.addEventListener('click', () => {
+    mobile.classList.remove('is-active');
+    tablet.classList.remove('is-active');
+    desktop.classList.add('is-active');
+    fullwidth.classList.remove('is-active');
+
+    section.forEach((el) => {
+      el.removeAttribute("style");
+      el.setAttribute("style", "max-width: 1024px;");
+    });
+  });
+
+  fullwidth.addEventListener('click', () => {
+    mobile.classList.remove('is-active');
+    tablet.classList.remove('is-active');
+    desktop.classList.remove('is-active');
+    fullwidth.classList.add('is-active');
+
+    section.forEach((el) => {
+      el.removeAttribute("style");
+      el.setAttribute("style", "max-width: none;");
+    });
+  });
+
+
+  lightswitch.addEventListener('click', (e) => {
+    const lightText = lightswitch.getAttribute('data-light');
+    const darkText = lightswitch.getAttribute('data-dark');
+
+    document.body.classList.toggle('darkMode');
+
+    if (document.body.classList.contains('darkMode')) {
+      lightswitch.innerHTML = lightText;
+    } else {
+      lightswitch.innerHTML = darkText;
+    }
+  });
+  {% endset %}
+  {% includeJs viewSwitcher %}
+</script>

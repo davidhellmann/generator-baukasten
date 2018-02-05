@@ -5,59 +5,69 @@
     {% redirect "/" %}
   {% endif %}
 {% endif %}
+<div class="buttons">
+  <button class="dev-button  js-dev-mobile">Mobile</button>
+  <button class="dev-button  js-dev-tablet">Tablet</button>
+  <button class="dev-button  js-dev-desktop">Desktop</button>
+  <button class="dev-button  js-dev-fullwidth">Full Width</button>
+  <button class="dev-button  js-dev-lightswitch" data-dark="Dark" data-light="Light">Dark</button>
+</div>
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'DEV Index',
-    url: '/dev/index.html'
-  }
-} only %}
+<div class="nav">
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'DEV Index',
+      url: '/dev/index.html'
+    }
+  } only %}
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'Modules Library',
-    url: '/dev/modules-library.html'
-  }
-} only %}
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'Modules Library',
+      url: '/dev/modules-library.html'
+    }
+  } only %}
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'Modules Status',
-    url: '/dev/modules-status.html'
-  }
-} only %}
+{#  #}{# -- link -- #}{#
+  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'Modules Status',
+      url: '/dev/modules-status.html'
+    }
+  } only %}#}
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'Modules CB',
-    url: '/dev/modules-content-builder'
-  }
-} only %}
+  {# -- link -- #}
+{#  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'Modules CB',
+      url: '/dev/modules-content-builder'
+    }
+  } only %}#}
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'Modules CB Nested',
-    url: '/dev/modules-content-builder-nested'
-  }
-} only %}
+  {# -- link -- #}
+{#  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'Modules CB Nested',
+      url: '/dev/modules-content-builder-nested'
+    }
+  } only %}#}
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'Typo',
-    url: '/dev/typo.html'
-  }
-} only %}
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'Typo',
+      url: '/dev/typo.html'
+    }
+  } only %}
 
-{# -- link -- #}
-{%- include '_atoms/link/_template.html' with {
-  opt: {
-    text: 'Forms',
-    url: '/dev/forms.html'
-  }
-} only %}
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.html' with {
+    opt: {
+      text: 'Forms',
+      url: '/dev/forms.html'
+    }
+  } only %}
+
+</div>

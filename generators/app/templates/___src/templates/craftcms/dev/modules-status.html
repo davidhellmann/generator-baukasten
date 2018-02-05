@@ -5,7 +5,7 @@
   ------------------------------------------------------------
 #}
 
-{% extends "_layouts/_master.html" %}
+{% extends "_layouts/_dev.html" %}
 {% set bodyClass = "p-development" %}
 {% if seomaticSiteMeta ?? null %}
   {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: Modules Status' }) %}
@@ -22,9 +22,9 @@
 
 {% block appContent %}
 
-<div class="o-section  o-section--pv-xlarge">
+<div class="o-section">
   <div class="o-row">
-    <div class="o-col-12  o-col-s-24">
+    <div class="o-col-36  o-col-m-84">
       {# -- headline -- #}
       {%- include '_atoms/headline/_template.html' with {
         opt: {

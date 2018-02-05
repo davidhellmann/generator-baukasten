@@ -41,9 +41,7 @@
 
       {# -- Link Text -- #}
       <span class="{{ opt.cn ~ '__text' }}">
-        {% filter typogrify %}
-          {{ opt.text }}
-        {% endfilter %}
+        {% filter typogrify %}{{ opt.text }}{% endfilter %}
       </span>
 
       {# -- Icon -- #}
@@ -53,9 +51,7 @@
         }
       } only %}
     {% else %}
-      {% filter typogrify %}
-        {{ opt.text }}
-      {% endfilter %}
+      {% filter typogrify %}{{ opt.text }}{% endfilter %}
     {% endif %}
   </a>
 {% endif %}

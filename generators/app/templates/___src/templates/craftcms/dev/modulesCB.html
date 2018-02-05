@@ -7,7 +7,7 @@
   When you view a single news on the website, this template gets loaded.
 #}
 
-{% extends "_layouts/_master.html" %}
+{% extends "_layouts/_dev.html" %}
 {% set bodyClass = "p-development p-cb p-modules" %}
 {% if seomaticSiteMeta ?? null %}
   {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: CB' }) %}
@@ -25,9 +25,9 @@
 {% block appContent %}
 
   <article role="article">
-    <div class="o-section  o-section--pv-xlarge">
+    <div class="o-section">
       <div class="o-row">
-        <div class="o-col-12  o-col-s-24">
+        <div class="o-col-36  o-col-m-84">
           {# -- Include Page Title -- #}
           {% include '_molecules/pageTitle/_template.html' with {
             opt: {

@@ -5,8 +5,8 @@
   ------------------------------------------------------------
 #}
 
-{% extends "_layouts/_master.html" %}
-{% set bodyClass = "p-development" %}
+{% extends "_layouts/_dev.html" %}
+{% set bodyClass = "p-development  t-devPages" %}
 {% if seomaticSiteMeta ?? null %}
   {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: Modules Library' }) %}
 {% else %}
@@ -21,625 +21,128 @@
 {% endblock %}
 
 {% block appContent %}
-{% set cK = craft.FmContentKing.getContent %}
-  {# -- Content -- #}
-  {% set content = craft.config.get('content', 'content') %}
-    <div class="o-section  o-section--pv-xlarge">
-      <div class="o-row">
-        <div class="o-col-12  o-col-s-24">
-          {# -- headline -- #}
-          {%- include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'DEV: Modules Library',
-              size: 'h1'
-            }
-          } only %}
 
-          {# -- Nav -- #}
-          {% include 'dev/_nav.html' %}
 
-          {# -- headline -- #}
-          {%- include '_atoms/headline/_template.html' with {
-              opt: {
-                text: 'Atoms',
-                size: 'h2'
-              }
-          } only %}
-
-          {# -- headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-              opt: {
-                text: 'Code',
-                size: 'h3'
-              }
-          } only %}
-
-          {# -- code -- #}
-          {% include '_atoms/code/_template.html' with {
-            opt: {
-              code: source(cK.code.content.code),
-              lang: cK.code.content.lang,
-              open: cK.code.content.open
-            }
-          } only %}
-
-          {# -- headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Divider',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- divider -- #}
-          {% include '_atoms/divider/_template.html' only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-              opt: {
-                text: 'Embed Default',
-                size: 'h3'
-              }
-          } only %}
-
-          {# -- embed -- #}
-          {% include '_atoms/embed/_template.html' with {
-            opt: {
-              code: cK.embed.content.embeds[0].embed
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-              opt: {
-                text: 'Embed Video',
-                size: 'h3'
-              }
-          } only %}
-
-          {# -- embed -- #}
-          {% include '_atoms/embed/_template.html' with {
-            opt: {
-              code: cK.embed.content.embeds[1].embed
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: cK.headline.content.sizes[0].size ~ ': ' ~ cK.headline.content.text,
-              size: cK.headline.content.sizes[0].size
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: cK.headline.content.sizes[1].size ~ ': ' ~ cK.headline.content.text,
-              size: cK.headline.content.sizes[1].size
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: cK.headline.content.sizes[2].size ~ ': ' ~ cK.headline.content.text,
-              size: cK.headline.content.sizes[2].size
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: cK.headline.content.sizes[3].size ~ ': ' ~ cK.headline.content.text,
-              size: cK.headline.content.sizes[3].size
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: cK.headline.content.sizes[4].size ~ ': ' ~ cK.headline.content.text,
-              size: cK.headline.content.sizes[4].size
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: cK.headline.content.sizes[5].size ~ ': ' ~ cK.headline.content.text,
-              size: cK.headline.content.sizes[5].size
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-              opt: {
-                text: 'Image',
-                size: 'h3'
-              }
-          } only %}
-
-          {# -- image -- #}
-          {% include '_atoms/image/_template.html' with {
-            opt: {
-              image: craft.app.config.general.custom.rootUrl ~ cK.image.content.image
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Info Text',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- infoText -- #}
-          {% include '_atoms/infoText/_template.html' with {
-            opt: {
-              text: cK.infoText.content.text
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Link',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- link -- #}
-          {% include '_atoms/link/_template.html' with {
-            opt: {
-              url: 'https://google.com',
-              text: 'Google.com'
-            }
-          } only %}
-
-          {# -- link -- #}
-          {% include '_atoms/link/_template.html' with {
-            opt: {
-              modifiers: ['styleSecondary'],
-              url: 'https://google.com',
-              text: 'Google.com'
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Plain Text',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- plainText -- #}
-          {% include '_atoms/plainText/_template.html' with {
-            opt: {
-              text: 'Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?
-
-              Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.'
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Rich Text',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- richText -- #}
-          {% include '_atoms/richText/_template.html' with {
-            opt: {
-              text: '<p>Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam <a href="http://baukasten.io">Lorem Ipsum</a> admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei?</p>
-
-              <ul>
-                <li>Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. </li>
-                <li>Ex dico dolor vis,se sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. </li>
-                <li>Ex dico dolor vis, splendide vit! Ad duo veritus intellegam, alterum appellantur vix et. </li>
-              </ul>
-              <ol>
-                <li>Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. </li>
-                <li>Ex dico dolor vis,se sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. </li>
-                <li>Ex dico dolor vis, splendide vit! Ad duo veritus intellegam, alterum appellantur vix et. </li>
-              </ol>
-
-              <p><em>Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</em></p>
-
-              <p><strong>Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</strong></p>
-
-              <p>Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</p>'
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Subline',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- subline -- #}
-          {% include '_atoms/subline/_template.html' with {
-            opt: {
-              text: 'This is the Subline',
-              size: 'h5'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'This is the Headline for the Subline',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'SVG Icon',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- svgIcon -- #}
-          {% include '_atoms/svgIcon/_template.html' with {
-            opt: {
-              icon: 'social/airbnb'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'SVG Sprite',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- svgSprite -- #}
-          {% include '_atoms/svgSprite/_template.html' with {
-            opt: {
-              icon: 'airbnb'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Label',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- label -- #}
-          {% include '_atoms/label/_template.html' with {
-            opt: {
-              for: 'labelFor',
-              text: 'This is a Label'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Tag',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- tag -- #}
-          {% include '_atoms/tag/_template.html' with {
-            opt: {
-              link: 'http://google.com',
-              text: 'Development'
-            }
-          } only %}
-
-          {# -- tag -- #}
-          {% include '_atoms/tag/_template.html' with {
-            opt: {
-              link: 'http://google.com',
-              text: 'Design'
-            }
-          } only %}
-
-          {# -- tag -- #}
-          {% include '_atoms/tag/_template.html' with {
-            opt: {
-              modifiers: ['noLink'],
-              text: 'Design'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Input',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- input -- #}
-          {% include '_atoms/input/_template.html' with {
-            opt: {
-              name: 'name'
-            }
-          } only %}
-        </div>
-      </div>
-    </div>
-
-    <div class="o-section  o-section--pv-xlarge">
-      <div class="o-row">
-        <div class="o-col-12  o-col-s-24">
-          {# -- headline -- #}
-          {%- include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Molecules',
-              size: 'h2'
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Caption',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- caption -- #}
-          {% include '_molecules/caption/_template.html' with {
-            opt: {
-              headline: cK.caption.content.headline,
-              text: cK.caption.content.text,
-              source: cK.caption.content.source,
-              sourceUrl: cK.caption.content.sourceUrl
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Figure',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- figure -- #}
-          {% include '_molecules/figure/_template.html' with {
-            opt: {
-              image: content.images[0].image,
-              caption: true,
-              captionHeadline: 'Caption Headline:',
-              captionText: content.lorem.p1,
-              captionSource: 'John Wayne',
-              captionSourceUrl: 'http://google.com'
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'PageTitle with Link',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- pageTitle -- #}
-          {% include '_molecules/pageTitle/_template.html' with {
-            opt: {
-              text: cK.pageTitle.content.text,
-              size: cK.pageTitle.content.size,
-              link: cK.pageTitle.content.link,
-            }
-          } only %}
-
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'PageTitle without Link',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- pageTitle -- #}
-          {% include '_molecules/pageTitle/_template.html' with {
-            opt: {
-              text: cK.pageTitle.content.text,
-              size: cK.pageTitle.content.size
-            }
-          } only %}
-        </div>
-      </div>
-    </div>
-
-    <div class="o-section  o-section--pv-xlarge">
-      <div class="o-row">
-        <div class="o-col-12  o-col-s-24">
-          {# -- headline -- #}
-          {%- include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Organisms',
-              size: 'h2'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Image Grid',
-              size: 'h3'
-            }
-          } only %}
-
-          {# -- imageGrid -- #}
-          {% include '_organisms/imageGrid/_template.html' with {
-            opt: {
-              modifiers: ['cols-2'],
-              images: content.images,
-              caption: true,
-              ratio: '16:10'
-            }
-          } only %}
-
-          {% include '_organisms/imageGrid/_template.html' with {
-            opt: {
-              modifiers: ['cols-3'],
-              images: content.images,
-              caption: true,
-              ratio: '1:1'
-            }
-          } only %}
-
-          {% include '_organisms/imageGrid/_template.html' with {
-            opt: {
-              modifiers: ['cols-4'],
-              images: content.images,
-              caption: false,
-              ratio: '1:1'
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Image Slider',
-              size: 'h3'
-            }
-          } only %}
-
-          {% include '_organisms/imageSlider/_template.html' with {
-            opt: {
-              images: content.images,
-              caption: false,
-              ratio: '16:10',
-              pagination: true,
-              buttons: true,
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Image Gallery',
-              size: 'h3'
-            }
-          } only %}
-
-          {% include '_organisms/imageGallery/_template.html' with {
-            opt: {
-              images: content.images,
-              js: true,
-              thumbsRatio: '1:1',
-            }
-          } only %}
-
-          {# -- Headline -- #}
-          {% include '_atoms/headline/_template.html' with {
-            opt: {
-              text: 'Image Single',
-              size: 'h3'
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-cover'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-full'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-threeQuarter'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-threeQuarter', 'center'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-threeQuarter', 'right'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-half'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-half', 'center'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-
-          {% include '_organisms/imageSingle/_template.html' with {
-            opt: {
-              modifiers: ['width-half', 'right'],
-              image: craft.app.config.general.custom.rootUrl ~ cK.imageSingle.content.image,
-              caption: cK.imageSingle.content.caption,
-              ratio: cK.imageSingle.content.ratio,
-            }
-          } only %}
-        </div>
-      </div>
-    </div>
+  {# -- Nav -- #}
+  {% include 'dev/_nav.html' %}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Headline</div>
+    {# -- headline -- #}
+    {% include '_atoms/headline/_template.html' with {
+      opt: {
+        text: 'Visit the green and glowing world of Amina Stella Steiner',
+        size: 'h1'
+      }
+    } only %}
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Headline + Subline</div>
+    {# -- headline -- #}
+    {% include '_atoms/headline/_template.html' with {
+      opt: {
+        text: 'Visit the green and glowing world of Amina Stella Steiner',
+        size: 'h1'
+      }
+    } only %}
+
+    {# -- Subline -- #}
+    {% include '_atoms/subline/_template.html' with {
+      opt: {
+        text: 'Visit the green and glowing world of Amina Stella Steiner',
+        size: 'h4'
+      }
+    } only %}
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Links</div>
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'inline'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'light'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'dark'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'cta'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'border-light'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'border-inactive'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+
+    {# -- link -- #}
+    {% include '_atoms/link/_template.html' with {
+      opt: {
+        modifiers: [
+          'border-active'
+        ],
+        url: siteUrl,
+        text: 'Click here'
+      }
+    } only %}
+  </div>
+  {# -- BLOCK END -- #}
+
+
+  {# -- Logic -- #}
+  {% include 'dev/_logic.html' %}
 {% endblock %}
-
