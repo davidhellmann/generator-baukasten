@@ -16,11 +16,11 @@ $bk-baseLineHeight: 1.5;
 $modularscale: (
         base: $bk-baseFontSizePx,
         ratio: $major-second,
-        map-get($bk-breakpoints, 'min'): (
+        $bk-minWidth: (
                 base: $bk-baseFontSizePx,
                 ratio: $major-second,
         ),
-        map-get($bk-breakpoints, 'm'): (
+        $bk-maxWidth:  (
                 base: $bk-baseFontSizeMaxPx,
                 ratio: $fourth,
         )
