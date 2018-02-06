@@ -40,7 +40,7 @@
 
   &__slide {
     width: 90%;
-    @include f($bk-gutterWidthMin * 2, $bk-gutterWidthMax * 2, margin-right);
+    @include f(s(2), s(4), margin-right);
 
     @include media('>=m') {
       width: 100%;
