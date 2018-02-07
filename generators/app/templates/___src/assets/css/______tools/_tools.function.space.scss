@@ -7,7 +7,7 @@
 @import 'tools.function.calc-rem';
 
 @function space($key) {
-  @return ($bk-gutterWidth * $key);
+  @return ($bk-gutter * $key);
 }
 
 // Shorthand Version
@@ -16,9 +16,9 @@
 }
 
 // Spacing Column Width
-@function spaceColumn($columns: 0, $context: $bk-columnsMax) {
-  @if $columns > $bk-columnsMax {
-    $columns: $bk-columnsMax;
+@function spaceColumn($columns: 0, $context: $bk-colsMax) {
+  @if $columns > $bk-colsMax {
+    $columns: $bk-colsMax;
   }
 
   // Col Width
@@ -30,6 +30,6 @@
 }
 
 // Shorthand Version
-@function sc($columns: 0, $context: $bk-columnsMax) {
+@function sc($columns: 0, $context: $bk-colsMax) {
   @return spaceColumn($columns, $context);
 }
