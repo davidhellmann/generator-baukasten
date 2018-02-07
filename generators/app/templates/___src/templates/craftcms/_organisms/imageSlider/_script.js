@@ -26,18 +26,20 @@ const imageSlider = {
     },
 
     init() {
-        const sliders = [...document.querySelectorAll(this.cfg.slider)];
-        if (sliders) {
-            sliders.forEach((slider) => {
-                const flkty = new Flickity(slider, this.cfg.sliderOptions);
-                flkty.resize();
-
-                setTimeout(() => {
+        window.addEventListener('load', () => {
+            const sliders = [...document.querySelectorAll(this.cfg.slider)];
+            if (sliders) {
+                sliders.forEach((slider) => {
+                    const flkty = new Flickity(slider, this.cfg.sliderOptions);
                     flkty.resize();
-                    slider.classList.add('is-ready');
-                }, 1000);
-            });
-        }
+
+                    setTimeout(() => {
+                        flkty.resize();
+                        slider.classList.add('is-ready');
+                    }, 1000);
+                });
+            }
+        });
     }
 };
 
