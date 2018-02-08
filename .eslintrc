@@ -12,8 +12,7 @@
     "airbnb",
     "vue",
     "plugin:import/errors",
-    "plugin:import/warnings",
-
+    "plugin:import/warnings"
   ],
   "settings": {
     "import/resolver": {
@@ -23,11 +22,9 @@
     }
   },
   "plugins": [
-    "html",
-    "prettier"
+    "html"
   ],
   "rules": {
-    "prettier/prettier": "error",
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "arrow-body-style": 0,
