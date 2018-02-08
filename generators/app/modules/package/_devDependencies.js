@@ -93,6 +93,7 @@ function addDevDependencies(files = {}) {
             'postcss-selector-matches': '^3.0.1',
             'postcss-short-size': '^3.0.0',
             'postcss-svg': '^2.3.0',
+            'prettier': '1.10.2',
             'require-dir': '^0.3.2',
             'run-sequence': '^2.2.0',
             'sass-loader': '^6.0.6',
