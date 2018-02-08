@@ -40,6 +40,7 @@ function addDevDependencies(files = {}) {
             'eslint-plugin-html': '^3.2.0',
             'eslint-plugin-import': '^2.8.0',
             'eslint-plugin-jsx-a11y': '^6.0.2',
+            'eslint-plugin-prettier': '^2.6.0',
             'eslint-plugin-react': '^7.0.1',
             'eslint-plugin-vue': '^2.1.0',
             'extract-text-webpack-plugin': '^3.0.0',
