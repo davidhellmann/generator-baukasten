@@ -3,7 +3,7 @@
   "status": "WIP",
   "type": "atom",
   "path": "_atoms/headline/",
-  "description": "headline Description goes here…",
+  "description": "An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.",
   "notes": "headline Notes goes here…",
   "opt": {
     "cn": "a-headline",
@@ -11,17 +11,8 @@
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "text": "The quick brown fox jumps over the lazy dog",
-    "sizes": [
-      { "size": "h1" },
-      { "size": "h2" },
-      { "size": "h3" },
-      { "size": "h4" },
-      { "size": "h5" },
-      { "size": "h6" }
-    ]
+    "size": "h2"
   }
 }

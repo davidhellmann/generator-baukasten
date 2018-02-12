@@ -2,7 +2,7 @@
 
 
 $opt = [
-    'image' => \Craft\craft()->assets->getFileById('11'),
+    'image' => \craft\elements\Asset::find()->id('11'),
 ];
 
 

@@ -11,11 +11,11 @@
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
-    "code": "_atoms/code/_template.html",
-    "lang": "twig",
-    "open": false
+    "waypointAni": null,
+    "open": true,
+    "textShow": 'Expand Code Block',
+    "textHide": 'Collapse Code Block',
+    "code": '<div class="foo">Foo Bar</div>',
+    "lang": 'html'
   }
 }

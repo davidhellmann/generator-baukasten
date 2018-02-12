@@ -1,7 +1,0 @@
-/* -------------------------------------------------- */
-/*    Offset
-/* -------------------------------------------------- */
-
-@mixin offset($columns, $context: $bk-columnsMax) {
-  margin-left: if($columns > 0, percentage($columns / $context), 0)
-}

@@ -43,7 +43,7 @@
       {% if opt.image %}
         {% include '_atoms/image/_template.html' with {
           opt: {
-            image: opt.item.singleImageEntry.one(),
+            image: opt.item.entryImage.one(),
             ratio: 'landscape'
           }
         } only %}
@@ -61,11 +61,11 @@
         } only %}
 
         {# -- Entry Intro -- #}
-        {% if opt.item.singleIntroText ?? null %}
+        {% if opt.item.entryIntroText ?? null %}
           <p>
             {% include '_atoms/richText/_template.html' with {
               opt: {
-                text: opt.item.singleIntroText | striptags | truncateOnWord(140)
+                text: opt.item.entryIntroText | striptags | truncateOnWord(140)
               }
             } only %}
           </p>

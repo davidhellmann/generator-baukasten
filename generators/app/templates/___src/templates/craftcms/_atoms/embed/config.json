@@ -11,16 +11,7 @@
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
-    "embeds": [
-      {
-        "embed": "<script src='https://gist.github.com/davidhellmann/698aa905dd63be3340673e3986a4efa2.js'></script>"
-      },
-      {
-        "embed": "<iframe src='https://player.vimeo.com/video/164705945' width='640' height='360' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p><a href='https://vimeo.com/164705945'>Cotic Race Team 2016</a> from <a href='https://vimeo.com/coticltd'>Cotic</a> on <a href='https://vimeo.com'>Vimeo</a>.</p>"
-      }
-    ]
+    "waypointAni": null,
+    "code": '<script src="https://gist.github.com/davidhellmann/698aa905dd63be3340673e3986a4efa2.js"></script>'
   }
 }

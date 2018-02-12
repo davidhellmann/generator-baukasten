@@ -56,16 +56,16 @@
         } only %}
 
         {# -- Entry Intro -- #}
-        {% if category.singleIntroText ?? null %}
+        {% if category.entryIntroText ?? null %}
           {% include '_atoms/richText/_template.html' with {
             opt: {
-              text: category.singleIntroText
+              text: category.entryIntroText
             }
           } only %}
         {% endif %}
 
         {# -- Image Entry -- #}
-        {% if category.singleImageEntry.one() ?? null %}
+        {% if category.entryImage.one() ?? null %}
           {% include '_atoms/headline/_template.html' with {
             opt: {
               text: 'Image Entry',
@@ -75,7 +75,7 @@
 
           {% include '_organisms/imageSingle/_template.html' with {
             opt: {
-              image: category.singleImageEntry.one() ?? null,
+              image: category.entryImage.one() ?? null,
               ratio: 'landscape'
             }
           } only %}

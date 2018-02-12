@@ -57,10 +57,10 @@
 
 
         {# -- Entry Intro -- #}
-        {% if entry.singleIntroText ?? null %}
+        {% if entry.entryIntroText ?? null %}
           {% include '_atoms/richText/_template.html' with {
             opt: {
-              text: entry.singleIntroText
+              text: entry.entryIntroText
             }
           } only %}
         {% endif %}

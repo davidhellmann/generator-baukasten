@@ -52,18 +52,6 @@
   {% endblock %}
 </div>
 
-{# -- Grid Overlay -- #}
-{% if craft.app.config.general.devMode %}
-  <div class="js-toggleGrid">G</div>
-  <div class="o-section  o-gridOverlay  ">
-    <div class="o-row">
-      {% for i in 1..24 %}
-        <div class="o-col"></div>
-      {% endfor %}
-    </div>
-  </div>
-{% endif %}
-
 {# -- SCRIPTS -- #}
 {% include '_partials/footer/_scripts.html' only %}
 

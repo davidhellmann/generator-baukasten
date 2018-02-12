@@ -33,7 +33,7 @@
 
   {# -- Custom Social Image -- #}
   {% if (
-  (entry.singleImageEntry ?? null) or
+  (entry.entryImage ?? null) or
   (seomaticSiteMeta.siteSeoImage is defined and seomaticSiteMeta.siteSeoImage | length )
   ) and (logo.globalLogo is defined and logo.globalLogo | length) %}
 
@@ -54,8 +54,8 @@
     {% set watermarkImage = watermarkImage[0].url %}
 
     {# -- Check if Entry Image exists or use the default SEO Image -- #}
-    {% if entry.singleImageEntry | length %}
-      {% set image = entry.singleImageEntry.first() %}
+    {% if entry.entryImage | length %}
+      {% set image = entry.entryImage.first() %}
     {% else %}
       {% set image = seomaticSiteMeta.siteSeoImage %}
     {% endif %}

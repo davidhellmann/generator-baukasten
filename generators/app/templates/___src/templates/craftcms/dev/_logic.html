@@ -6,6 +6,7 @@
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #eee;
+    background-color: #f8f8f8;
     margin-top: 64px;
     margin-bottom: 64px;
     position: relative;
@@ -13,8 +14,34 @@
     padding-bottom: 64px;
   }
 
+  .section-headline {
+    width: calc(100% - 32px);
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    padding: 16px;
+    text-align: center;
+    position: relative;
+    color: #ccc;
+  }
+
+  .section-headline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    background-color: black;
+    transform: translateX(-50%);
+  }
+
   .darkMode .section {
     border: 1px solid #1d1d1d;
+    background-color: #111;
+    margin-top: 64px;
   }
 
   .label {
@@ -123,7 +150,7 @@
 
     section.forEach((el) => {
       el.removeAttribute("style");
-      el.setAttribute("style", "max-width: 320px;");
+      el.setAttribute("style", "max-width: 352px;");
     });
   });
 
@@ -135,7 +162,7 @@
 
     section.forEach((el) => {
       el.removeAttribute("style");
-      el.setAttribute("style", "max-width: 768px;");
+      el.setAttribute("style", "max-width: 800px;");
     });
   });
 
@@ -147,7 +174,7 @@
 
     section.forEach((el) => {
       el.removeAttribute("style");
-      el.setAttribute("style", "max-width: 1024px;");
+      el.setAttribute("style", "max-width: 1056px;");
     });
   });
 

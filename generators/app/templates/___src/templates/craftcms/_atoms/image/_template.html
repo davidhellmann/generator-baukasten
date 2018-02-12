@@ -36,7 +36,7 @@
   {% set focalpoint = '50% 50%' %}
 
   {# -- Focal Point -- #}
-  {% if opt.objectFit and opt.image.focalPoint %}
+  {% if opt.objectFit and opt.image.focalpoint %}
     {% set focalpoint = opt.image.getFocalpoint('asCss') %}
   {% endif %}
 

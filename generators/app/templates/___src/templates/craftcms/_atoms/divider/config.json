@@ -12,8 +12,5 @@
     "js": null,
     "waypoint": null,
     "waypointAni": null
-  },
-  "content": {
-    "foo": "bar"
   }
 }
