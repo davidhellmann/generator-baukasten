@@ -1,13 +1,23 @@
-import browserSync from 'browser-sync'
-import chalk from 'chalk'
-import gulp from 'gulp'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackSettings from '../../webpack/webpack.config.babel'
-import pkg from '../../package.json'
+import browserSync from 'browser-sync';
+import chalk from 'chalk';
+import gulp from 'gulp';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackSettings from '../../webpack/webpack.config.babel';
+import pkg from '../../package.json';
 
-const bundler = webpack(webpackSettings)
+const bundler = webpack(webpackSettings);
+
+// Create Custom Port
+function port(str, base = 3000) {
+    return (
+        str
+            .split('')
+            .map((c, i) => c.charCodeAt(0) + i)
+            .reduce((a, c) => a + c, 0) + base
+    );
+}
 
 const browserSyncTask = () => {
     const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
@@ -20,6 +30,7 @@ const browserSyncTask = () => {
             target: pkg.browsersync.proxy,
             ws: true
         },
+        port: port(process.env.PWD),
         ghostMode: {
             clicks: true,
             forms: true,
@@ -84,8 +95,8 @@ const browserSyncTask = () => {
             }
         }]
     })
-}
+};
 
-gulp.task('browser-sync', browserSyncTask)
+gulp.task('browser-sync', browserSyncTask);
 
-module.exports = browserSyncTask
+module.exports = browserSyncTask;
