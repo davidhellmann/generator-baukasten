@@ -172,12 +172,14 @@ return [
 
     // Staging (pre-production) environment
     'live' => [
-
+        //  What transform method should be used for image transforms?
+        'transformMethod' => 'craft',
     ],
 
     // Staging (pre-production) environment
     'staging' => [
-
+        //  What transform method should be used for image transforms?
+        'transformMethod' => 'craft',
     ],
 
     // Staging (pre-production) environment
