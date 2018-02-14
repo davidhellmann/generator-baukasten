@@ -1,6 +1,6 @@
 // Importing message helper function
-const chalk = require('chalk')
-const message = require('../../helpers/prompts/_message')
+const chalk = require('chalk');
+const message = require('../../helpers/prompts/_message');
 
 const promptsProject = [
     {
@@ -16,16 +16,16 @@ const promptsProject = [
                 .split('/')
                 .pop(-1)
                 .toLowerCase()
-                .replace(/\s/g, '')
+                .replace(/\s/g, '');
         },
         validate(input) {
             // Do async stuff
             if (input.indexOf(' ') >= 0 || /[~`!#$%^&*+=[\]\\';,/{}|\\":<>?]/g.test(input)) {
                 // Pass the return value in the done callback
                 return `${chalk.styles.red.open}
-No whitespaces or special-chars allowed!${chalk.styles.red.close}`
+No whitespaces or special-chars allowed!${chalk.styles.red.close}`;
             }
-            return true
+            return true;
         }
     },
     {
@@ -82,9 +82,9 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
         default(answers) {
             // If the Answer includes .dev or .local
             if (answers.projectName.includes('.localhost') || answers.projectName.includes('.local') || answers.projectName.includes('.test')) {
-                return answers.projectName
+                return answers.projectName;
             }
-            return `${answers.projectName}.test`
+            return `${answers.projectName}.test`;
         },
         validate(input) {
             if (input !== false) {
@@ -92,11 +92,11 @@ No whitespaces or special-chars allowed!${chalk.styles.red.close}`
                     !input.match(/^([a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
                     // Pass the return value in the done callback
                     return `${chalk.styles.red.open}
-Not a valid URL! Example: foobar.test (or .local / .localhost) — (HOSTNAME.TLD)${chalk.styles.red.close}`
+Not a valid URL! Example: foobar.test (or .local / .localhost) — (HOSTNAME.TLD)${chalk.styles.red.close}`;
                 }
             }
             // Pass the return value in the done callback
-            return true
+            return true;
         }
     },
     {
@@ -110,22 +110,22 @@ Not a valid URL! Example: foobar.test (or .local / .localhost) — (HOSTNAME.TLD
     },
     {
         type: 'confirm',
+        name: 'projectVue',
+        message: message({
+            headline: 'Project VueJS',
+            description: 'Do you want to use Vue.js?'
+        }),
+        default: true
+    },
+    {
+        type: 'confirm',
         name: 'projectjQuery',
         message: message({
             headline: 'Project jQuery',
             description: 'Do you want to use jQuery (newest Version)?'
         }),
         default: false
-    },
-    {
-        type: 'confirm',
-        name: 'projectVue',
-        message: message({
-            headline: 'Project VueJS',
-            description: 'Do you want to use Vue.js?'
-        }),
-        default: false
     }
-]
+];
 
-module.exports = promptsProject
+module.exports = promptsProject;
