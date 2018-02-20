@@ -108,7 +108,7 @@ composer require newism/craft3-fields
 echo '--------------------------------------------------'
 
 echo ''
-echo '>>> Installing: Simple TExt'
+echo '>>> Installing: Simple Text'
 composer require craftcms/simple-text
 echo '--------------------------------------------------'
 
@@ -148,11 +148,6 @@ composer require studioespresso/craft-dumper
 echo '--------------------------------------------------'
 
 echo ''
-echo '>>> Installing: Craft Inventory'
-composer require doublesecretagency/craft-inventory
-echo '--------------------------------------------------'
-
-echo ''
 echo '>>> Installing: Supersort'
 composer require topshelfcraft/supersort
 echo '--------------------------------------------------'
@@ -167,3 +162,32 @@ echo '>>> Installing: Craft3 Image Optimize'
 composer require nystudio107/craft-imageoptimize
 echo '--------------------------------------------------'
 
+echo ''
+echo '>>> Installing: Architect'
+composer require pennebaker/craft-architect
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: AsyncQueue'
+composer require ostark/craft-async-queue
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Command Palette'
+composer require am-impact/amcommand
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Imager'
+composer require aelvan/imager
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Seomatic'
+composer require nystudio107/craft-seomatic
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Super Table'
+composer require verbb/super-table
+echo '--------------------------------------------------'
