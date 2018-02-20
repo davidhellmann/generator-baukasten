@@ -11,9 +11,7 @@
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }
