@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'a-subline',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   text: null,
   size: 'h2'
 } %}
@@ -25,9 +24,10 @@
   <{{ opt.size }} class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>

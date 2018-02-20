@@ -14,10 +14,9 @@
 {% set defaults = {
   cn: 'o-imageCover',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   image: null,
   ratio: null,
   text: null,
@@ -32,9 +31,10 @@
   <div class="{{- opt.cn -}}
               {% for modifier in opt.modifiers %}
                 {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}
-              {{- opt.waypointAni ? '  ' ~ opt.waypointAni : '' -}}"
-              {{- opt.waypoint ? '  data-waypoint' : '' -}}
               {% for key, value in opt.data %}
                 {{- '  data-' ~ key ~ '=' ~ value -}}
               {% endfor %}>

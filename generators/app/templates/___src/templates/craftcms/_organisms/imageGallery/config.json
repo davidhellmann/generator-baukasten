@@ -1,19 +1,17 @@
 {
   "title": "imageGallery",
-  "status": "WIP",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/imageGallery/",
   "description": "imageGallery Description goes here…",
-  "notes": "imageGallery Notes goes here…",
   "opt": {
     "cn": "o-imageGallery",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

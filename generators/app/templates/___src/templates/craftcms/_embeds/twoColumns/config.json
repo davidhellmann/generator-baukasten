@@ -1,19 +1,17 @@
 {
   "title": "twoColumns",
-  "status": "WIP",
+  "status": "none",
   "type": "emebd",
   "path": "_embeds/twoColumns/",
   "description": "twoColumns Description goes here…",
-  "notes": "twoColumns Notes goes here…",
   "opt": {
     "cn": "e-twoColumns",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

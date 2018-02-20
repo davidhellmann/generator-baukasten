@@ -1,19 +1,17 @@
 {
   "title": "card",
-  "status": "WIP",
+  "status": "none",
   "type": "molecule",
   "path": "_molecules/card/",
   "description": "card Description goes here…",
-  "notes": "card Notes goes here…",
   "opt": {
     "cn": "m-card",
     "modifiers": [],
+    "customClasses": [],
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

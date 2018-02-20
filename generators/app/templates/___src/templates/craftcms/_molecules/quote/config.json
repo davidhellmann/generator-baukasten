@@ -1,19 +1,17 @@
 {
   "title": "quote",
-  "status": "WIP",
+  "status": "none",
   "type": "molecule",
   "path": "_molecules/quote/",
   "description": "quote Description goes here…",
-  "notes": "quote Notes goes here…",
   "opt": {
     "cn": "m-quote",
     "modifiers": [],
+    "customClasses": [],
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

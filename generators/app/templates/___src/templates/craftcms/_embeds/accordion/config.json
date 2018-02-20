@@ -1,19 +1,17 @@
 {
   "title": "accordion",
-  "status": "WIP",
+  "status": "none",
   "type": "emebd",
   "path": "_embeds/accordion/",
   "description": "accordion Description goes here…",
-  "notes": "accordion Notes goes here…",
   "opt": {
     "cn": "e-accordion",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'e-accordion',
   modifiers: [],
+  customClasses: [],
   data: {},
-  js: null,
-  waypoint: null,
-  waypointAni: null,
+  js: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -22,12 +21,13 @@
 <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}
-            {{ opt.waypointAni ? opt.waypointAni : '' }}"
-    {{ opt.waypoint ? ' data-waypoint' : '' }}
-    {% for key, value in opt.data %}
-      {{ 'data-' ~ key ~ '=' ~ value }}
-    {% endfor %}> role="tablist">
+            {% endfor %}
+            {% for customClass in opt.customClasses %}
+              {{ customClass | length ? '  ' ~ customClass }}
+            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}"
+            {% for key, value in opt.data %}
+              {{ 'data-' ~ key ~ '=' ~ value }}
+            {% endfor %}> role="tablist">
   <div class="{{ opt.cn ~ '__item' }}" role="tab">
     <div class="{{ opt.cn ~ '__trigger' }}  js-accordionTrigger">
       <div class="{{ opt.cn ~ '__headline' }}">

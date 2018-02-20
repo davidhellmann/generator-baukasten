@@ -1,13 +1,13 @@
 {
   "title": "embed",
-  "status": "WIP",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/embed/",
   "description": "embed Description goes here…",
-  "notes": "embed Notes goes here…",
   "opt": {
     "cn": "a-embed",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,

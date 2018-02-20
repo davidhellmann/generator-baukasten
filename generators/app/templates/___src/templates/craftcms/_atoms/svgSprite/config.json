@@ -1,19 +1,17 @@
 {
   "title": "svgSprite",
-  "status": "WIP",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/svgSprite/",
   "description": "svgSprite Description goes here…",
-  "notes": "svgSprite Notes goes here…",
   "opt": {
     "cn": "a-svgSprite",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

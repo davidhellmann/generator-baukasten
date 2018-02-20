@@ -14,10 +14,9 @@
 {% set defaults = {
   cn: 'm-definitionList',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   items: null
 } %}
 
@@ -29,9 +28,10 @@
   <dl class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>

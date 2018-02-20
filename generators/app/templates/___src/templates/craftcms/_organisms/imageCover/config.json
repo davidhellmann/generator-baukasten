@@ -1,19 +1,17 @@
 {
-  "title": "imageSingle",
-  "status": "WIP",
+  "title": "imageCover",
+  "status": "none",
   "type": "organism",
-  "path": "_organisms/imageSingle/",
-  "description": "imageSingle Description goes here…",
-  "notes": "imageSingle Notes goes here…",
+  "path": "_organisms/imageCover/",
+  "description": "imageCover Description goes here…",
   "opt": {
-    "cn": "o-imageSingle",
+    "cn": "o-imageCover",
     "modifiers": [],
+    "customClasses": [],
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "image": "/assets/images/bitmap/_dummy/image_01.jpg",
     "ratio": "16:10",
     "caption": false,

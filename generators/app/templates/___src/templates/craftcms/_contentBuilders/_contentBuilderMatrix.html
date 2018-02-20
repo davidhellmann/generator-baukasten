@@ -11,6 +11,7 @@
 {% set defaults = {
   cn: 'o-contentBuilder',
   modifiers: [],
+  customClasses: [],
   object: entry ?? null,
   context: '12:24'
 } %}
@@ -27,6 +28,9 @@
   <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
+            {% endfor %}
+            {% for customClass in opt.customClasses %}
+              {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}">
 
   {% if opt.object.contentBuilderMatrix|length %}

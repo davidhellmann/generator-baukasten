@@ -10,10 +10,9 @@
 {% set defaults = {
   cn: 'a-input',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   type: 'text',
   name: null,
   value: null,
@@ -37,8 +36,10 @@
   <input class="{{ opt.cn }}
                 {% for modifier in opt.modifiers %}
                   {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-                {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}
-                {{ opt.waypointAni ? opt.waypointAni : '' }}"
+                {% endfor %}
+                {% for customClass in opt.customClasses %}
+                  {{ customClass | length ? '  ' ~ customClass }}
+                {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
          {% if opt.min %}type="{{ opt.type }}"{% endif %}
          {% if opt.min %}name="{{ opt.name }}"{% endif %}
          {% if opt.min %}value="{{ opt.value }}"{% endif %}
@@ -48,7 +49,6 @@
          {% if opt.maxlength %}maxlength="{{ opt.maxlength }}"{% endif %}
          {% if opt.step %}step="{{ opt.step }}"{% endif %}
          {% if opt.pattern %}pattern="{{ opt.pattern }}"{% endif %}
-                {{ opt.waypoint ? ' data-waypoint' : '' }}
                 {% for key, value in opt.data %}
                   {{ 'data-' ~ key ~ '=' ~ value }}
                 {% endfor %}

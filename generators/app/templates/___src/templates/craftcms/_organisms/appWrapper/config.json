@@ -1,19 +1,17 @@
 {
   "title": "appWrapper",
-  "status": "Ready",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/appWrapper/",
   "description": "appWrapper Description goes here…",
-  "notes": "appWrapper Notes goes here…",
   "opt": {
     "cn": "o-appWrapper",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

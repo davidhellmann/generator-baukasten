@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'o-imageSlider',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: true,
-  waypoint: null,
-  waypointAni: null,
   images: null,
   caption: null,
   ratio: null,
@@ -30,12 +29,13 @@
     <div class="{{ opt.cn ~ '__slider' }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-      {{ opt.waypoint ? ' data-waypoint' : '' }}
-      {% for key, value in opt.data %}
-        {{ 'data-' ~ key ~ '=' ~ value }}
-      {% endfor %} itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %} itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
       <!-- Slides -->
       {% for image in opt.images.all() %}
         <div class="{{ opt.cn ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">

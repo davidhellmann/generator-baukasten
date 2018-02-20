@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'a-tag',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   link: null,
   text: null,
 } %}
@@ -26,9 +25,10 @@
   <{{ element }} {{ opt.link ? 'href=' ~ opt.link }} class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>

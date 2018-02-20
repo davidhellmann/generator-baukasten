@@ -1,19 +1,17 @@
 {
   "title": "imageGrid",
-  "status": "WIP",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/imageGrid/",
   "description": "imageGrid Description goes here…",
-  "notes": "imageGrid Notes goes here…",
   "opt": {
     "cn": "o-imageGrid",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

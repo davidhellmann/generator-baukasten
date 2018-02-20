@@ -1,16 +1,17 @@
 {
   "title": "divider",
-  "status": "WIP",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/divider/",
   "description": "divider Description goes here…",
-  "notes": "divider Notes goes here…",
   "opt": {
     "cn": "a-divider",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
     "waypointAni": null
   }
 }
+

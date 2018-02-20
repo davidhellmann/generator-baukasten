@@ -1,10 +1,9 @@
 {
   "title": "<%= moduleName.replace('-', '_') %>",
-  "status": "WIP",
+  "status": "none",
   "type": "<%= pathOptions.key.slice(0, -1) %>",
   "path": "_<%= pathOptions.key %>/<%= moduleName.replace('-', '_') %>/",
   "description": "<%= moduleName.replace('-', '_') %> Description goes here…",
-  "notes": "<%= moduleName.replace('-', '_') %> Notes goes here…",
   "opt": {
     "cn": "<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>",
     "modifiers": [],

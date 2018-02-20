@@ -1,19 +1,17 @@
 {
   "title": "appFooter",
-  "status": "Prototype",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/appFooter/",
   "description": "appFooter Description goes here…",
-  "notes": "appFooter Notes goes here…",
   "opt": {
     "cn": "o-appFooter",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

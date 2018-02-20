@@ -2,7 +2,7 @@
 
 
 $opt = [
-    'image' => \craft\elements\Asset::find()->id('11'),
+    'image' => \craft\elements\Asset::find()->id('170')->one(),
 ];
 
 

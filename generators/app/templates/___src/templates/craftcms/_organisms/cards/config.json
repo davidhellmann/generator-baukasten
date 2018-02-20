@@ -1,19 +1,17 @@
 {
   "title": "cards",
-  "status": "WIP",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/cards/",
   "description": "cards Description goes here…",
-  "notes": "cards Notes goes here…",
   "opt": {
     "cn": "o-cards",
     "modifiers": [],
+    "customClasses": [],
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

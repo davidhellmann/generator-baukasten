@@ -1,19 +1,17 @@
 {
   "title": "oneColumn",
-  "status": "WIP",
+  "status": "none",
   "type": "emebd",
   "path": "_embeds/oneColumn/",
   "description": "oneColumn Description goes here…",
-  "notes": "oneColumn Notes goes here…",
   "opt": {
     "cn": "e-oneColumn",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

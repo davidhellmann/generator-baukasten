@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'a-link',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   url: null,
   targetBlank: null,
   text: null,
@@ -28,9 +27,10 @@
      class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}
-            {{ opt.waypointAni ? opt.waypointAni : '' }}"
-            {{ opt.waypoint ? ' data-waypoint' : '' }}
+            {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
             {{ opt.targetBlank ? 'target="_blank"'}}
      itemprop="url"
      role="button"

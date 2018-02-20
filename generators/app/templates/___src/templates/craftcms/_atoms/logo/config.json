@@ -1,19 +1,17 @@
 {
   "title": "logo",
-  "status": "WIP",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/logo/",
   "description": "logo Description goes here…",
-  "notes": "logo Notes goes here…",
   "opt": {
     "cn": "a-logo",
     "modifiers": [],
+    "customClasses": [],
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

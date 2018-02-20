@@ -1,19 +1,17 @@
 {
   "title": "appHeader",
-  "status": "Prototype",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/appHeader/",
   "description": "appHeader Description goes here…",
-  "notes": "appHeader Notes goes here…",
   "opt": {
     "cn": "o-appHeader",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

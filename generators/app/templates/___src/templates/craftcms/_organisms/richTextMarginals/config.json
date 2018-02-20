@@ -1,19 +1,17 @@
 {
   "title": "richTextMarginals",
-  "status": "WIP",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/richTextMarginals/",
   "description": "richTextMarginals Description goes here…",
-  "notes": "richTextMarginals Notes goes here…",
   "opt": {
     "cn": "o-richTextMarginals",
     "modifiers": [],
+    "customClasses": [],
     "data": {},
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

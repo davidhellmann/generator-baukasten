@@ -7,8 +7,6 @@
       modifiers: [],
       data: {},
       js: null,
-      waypoint: null,
-      waypointAni: null,
       intro: null,
       content: null
     },
@@ -28,10 +26,9 @@
 {% set defaults = {
   cn: 'e-oneColumn',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   intro: null,
   content: null
 } %}
@@ -44,12 +41,13 @@
   <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}
-            {{ opt.waypointAni ? opt.waypointAni : '' }}"
-    {{ opt.waypoint ? ' data-waypoint' : '' }}
-    {% for key, value in opt.data %}
-      {{ 'data-' ~ key ~ '=' ~ value }}
-    {% endfor %}>
+            {% endfor %}
+            {% for customClass in opt.customClasses %}
+              {{ customClass | length ? '  ' ~ customClass }}
+            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}"
+            {% for key, value in opt.data %}
+              {{ 'data-' ~ key ~ '=' ~ value }}
+            {% endfor %}>
 
     {% if opt.intro %}
       <div class="o-section">

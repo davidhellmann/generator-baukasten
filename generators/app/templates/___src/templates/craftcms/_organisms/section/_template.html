@@ -9,6 +9,7 @@
 {% set defaults = {
   cn: 'o-section',
   modifiers: [],
+  customClasses: [],
   offset: null,
   context: null
 } %}
@@ -33,6 +34,9 @@
 <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+            {% endfor %}
+            {% for customClass in opt.customClasses %}
+              {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.cn|replace({ 'o-' : 'js-' }) }}">
   <div class="{{ 'o-row-' ~ contextFirst ~  '  o-row-s-' ~ contextLast }}">
     <div class="{{ 'o-col-' ~ contextFirst ~  '  o-col-s-' ~ contextLast }}  {{ offset }}">

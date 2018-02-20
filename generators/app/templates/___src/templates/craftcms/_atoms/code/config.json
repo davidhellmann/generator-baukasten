@@ -1,21 +1,21 @@
 {
   "title": "code",
-  "status": "WIP",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/code/",
   "description": "Module Description goes here…",
-  "notes": "Module Notes goes here…",
   "opt": {
     "cn": "a-code",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
     "waypointAni": null,
     "open": true,
-    "textShow": 'Expand Code Block',
-    "textHide": 'Collapse Code Block',
-    "code": '<div class="foo">Foo Bar</div>',
-    "lang": 'html'
+    "textShow": "Expand Code Block",
+    "textHide": "Collapse Code Block",
+    "code": "<div class='foo'>Foo Bar</div>",
+    "lang": "html"
   }
 }

@@ -1,19 +1,17 @@
 {
   "title": "imageSlider",
-  "status": "WIP",
+  "status": "none",
   "type": "organism",
   "path": "_organisms/imageSlider/",
   "description": "imageSlider Description goes here…",
-  "notes": "imageSlider Notes goes here…",
   "opt": {
     "cn": "o-imageSlider",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

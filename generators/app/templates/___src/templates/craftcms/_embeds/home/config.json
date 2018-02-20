@@ -1,19 +1,17 @@
 {
   "title": "home",
-  "status": "WIP",
+  "status": "none",
   "type": "emebd",
   "path": "_embeds/home/",
   "description": "home Description goes here…",
-  "notes": "home Notes goes here…",
   "opt": {
     "cn": "e-home",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }

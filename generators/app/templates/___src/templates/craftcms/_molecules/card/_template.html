@@ -14,10 +14,9 @@
 {% set defaults = {
   cn: 'm-card',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   foo: null,
   item: null,
   image: null,
@@ -33,12 +32,13 @@
   <article class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-    {{ opt.waypoint ? ' data-waypoint' : '' }}
-    {% for key, value in opt.data %}
-      {{ 'data-' ~ key ~ '=' ~ value }}
-    {% endfor %}>
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %}>
     <a class="{{ opt.cn ~ '__link' }}" href="{{ opt.item.url }}">
       {% if opt.image %}
         {% include '_atoms/image/_template.html' with {

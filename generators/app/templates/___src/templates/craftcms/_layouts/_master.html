@@ -31,108 +31,124 @@
   {# -- SCRIPTS -- #}
   {% include '_partials/header/_scripts.html' %}
 
-  {# -- Custom Social Image -- #}
-  {% if (
-  (entry.entryImage ?? null) or
-  (seomaticSiteMeta.siteSeoImage is defined and seomaticSiteMeta.siteSeoImage | length )
-  ) and (logo.globalLogo is defined and logo.globalLogo | length) %}
 
-    {# -- Set Logo -- #}
-    {% set logo = logo.globalLogo.first() %}
+  {# -- Share Image -- #}
+  {% if entry ?? null and entry.entryImage.one() ?? null and watermark.globalWatermark.one() ?? null %}
+    {% set watermarkField = watermark.globalWatermark.one() %}
 
-    {# -- Imager: Watermark Image -- #}
-    {% set watermarkImage = craft.imager.transformImage(logo, [
-        {
-            width: 100,
-            height: 100
-        }], {
-            jpegQuality: 100,
-        })
-    %}
+    {# -- Check if Watermark Using active -- #}
+    {% if watermarkField.useWatermark %}
 
-    {# -- Watermark Image URL -- #}
-    {% set watermarkImage = watermarkImage[0].url %}
+      {# -- Watermark Image -- #}
+      {% if watermarkField.image.one() ?? null %}
+        {% set watermarkImage = watermarkField.image.one() %}
+        {% set watermarkWidth = watermarkField.width %}
+        {% set watermarkHeight = watermarkField.height %}
+        {% set watermarkOpacity = watermarkField.opacity + 0 %}
+        {% set watermarkOffsetX = watermarkField.offsetXAxis %}
+        {% set watermarkOffsetY = watermarkField.offsetYAxis %}
 
-    {# -- Check if Entry Image exists or use the default SEO Image -- #}
-    {% if entry.entryImage | length %}
-      {% set image = entry.entryImage.first() %}
-    {% else %}
-      {% set image = seomaticSiteMeta.siteSeoImage %}
-    {% endif %}
+        {# -- Imager: Watermark Image -- #}
+        {% set watermarkImage = craft.imager.transformImage(watermarkImage, [
+          { width: watermarkWidth, height: watermarkHeight }
+        ], {
+          jpegQuality: 100
+        }) %}
 
-    {# -- Check if Focal Point is set else use center center -- #}
-    {% if image.settingsFocalPoint is defined %}
-      {% set position = image.settingsFocalPoint %}
-    {% else %}
-      {% set position = '50% 50%' %}
-    {% endif %}
+        {# -- Watermark Image URL -- #}
+        {% set watermarkImageUrl = watermarkImage[0].url %}
+      {% endif %}
 
-    {# -- Imager: Entry / Default Image -- #}
-    {% set imageEntry = craft.imager.transformImage(image, [
-    {
-        width: 1200,
-        height: 630
-    }], {
+      {# -- Image Settings -- #}
+      {% set entryImage = entry.entryImage.one() %}
+      {% set focalpoint = entryImage.getFocalpoint('asCss') | default('50% 50%') %}
+
+      {# -- Facebook -- #}
+      {% set entryImageFacebook = craft.imager.transformImage(entryImage, [
+        { width: 1200, height: 630 }
+      ], {
         jpegQuality: 100,
         mode: 'crop',
-        position: position
-    })
-    %}
+        position: focalpoint
+      }) %}
 
-    {# -- Entry / Default Image URL -- #}
-    {% set imageEntry = imageEntry[0].url %}
+      {% set entryImageFacebookUrl = entryImageFacebook[0].url %}
 
-    {# -- Imager: Share Image -- #}
-    {% set shareIamge = craft.imager.transformImage(imageEntry, [
-    {
-        width: 1200,
-        height: 630
-    }], {
+      {# -- Imager: Share Image -- #}
+      {% set shareIamgeFacebook = craft.imager.transformImage(entryImageFacebookUrl, [
+        {
+          width: 1200,
+          height: 630
+        }], {
         jpegQuality: 100,
         mode: 'crop',
         ratio: '',
         watermark: {
-            image: watermarkImage,
-            width: 100,
-            height: 100,
-            position: {
-            left: 30,
-            bottom: 30,
-            opacity: 0.8
+          image: watermarkImageUrl,
+          width: watermarkWidth,
+          height: watermarkHeight,
+          position: {
+            right: watermarkOffsetX,
+            bottom: watermarkOffsetY
+          },
+          opacity: watermarkOpacity
         }
-    }
-    })
-    %}
+      }) %}
 
-    {# -- Share Image URL -- #}
-    {% set shareIamge = shareIamge[0].url %}
+      {% set shareIamgeFacebookUrl = shareIamgeFacebook[0].url %}
 
-    {# -- If Share Image exists -- #}
-    {% if shareIamge | length %}
+      {# -- Twitter -- #}
+      {% set entryImageTwitter = craft.imager.transformImage(entryImage, [
+        { width: 1120, height: 600 }
+      ], {
+        jpegQuality: 100,
+        mode: 'crop',
+        position: focalpoint
+      }) %}
 
-      {# -- Set Twitter Share Image -- #}
-      {% if seomaticMeta.twitter is defined and seomaticMeta.twitter is not empty %}
-        {% set twitter = seomaticMeta.twitter %}
-        {% set twitter = twitter | merge({'image': siteUrl|trim('/', 'right') ~ shareIamge}) %}
-        {% set seomaticMeta = seomaticMeta | merge({'twitter': twitter}) %}
-      {% endif %}
+      {% set entryImageTwitterUrl = entryImageTwitter[0].url %}
 
-      {# -- Set Default Share Image -- #}
-      {% set seomaticMeta = seomaticMeta | merge({'seoImage': siteUrl|trim('/', 'right') ~ shareIamge}) %}
+      {# -- Imager: Share Image -- #}
+      {% set shareIamgeTwitter = craft.imager.transformImage(entryImageTwitterUrl, [
+        {
+          width: 1120,
+          height: 600
+        }], {
+        jpegQuality: 100,
+        mode: 'crop',
+        ratio: '',
+        watermark: {
+          image: watermarkImageUrl,
+          width: watermarkWidth,
+          height: watermarkHeight,
+          position: {
+            right: watermarkOffsetX,
+            bottom: watermarkOffsetY
+          },
+          opacity: watermarkOpacity
+        }
+      }) %}
 
-      {# -- Set Facebook Share Image -- #}
-      {% if seomaticMeta.og is defined and seomaticMeta.og is not empty %}
-        {% set og = seomaticMeta.og %}
-        {% set og = og | merge({
-        'image': siteUrl|trim('/', 'right') ~ shareIamge,
-        'image:width': '1200',
-        'image:height': '630',
-        'image:type': 'image/jpeg'
-        }) %}
-        {% set seomaticMeta = seomaticMeta | merge({'og': og}) %}
-      {% endif %}
+      {% set shareIamgeTwitterUrl = shareIamgeTwitter[0].url %}
+
+      <meta property="og:image" content="{{ shareIamgeFacebookUrl }}"/>
+      <meta property="og:image:type" content="image/jpeg"/>
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="630"/>
+
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:image" content="{{ shareIamgeTwitterUrl }}"/>
+    {% elseif entry.entryImage.one() ?? null %}
+      <meta property="og:image" content="{{ entry.entryImage.one().url }}"/>
+      <meta property="og:image:type" content="image/jpeg"/>
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="630"/>
+
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:image" content="{{ entry.entryImage.one().url }}"/>
     {% endif %}
   {% endif %}
+
 
   {# -- SEO & TITLE TAG -- #}
   {% include '_partials/header/_seo.html' %}

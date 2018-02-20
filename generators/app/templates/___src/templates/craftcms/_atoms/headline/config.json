@@ -1,13 +1,13 @@
 {
-  "title": "headline",
-  "status": "WIP",
+  "title": "Headline",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/headline/",
   "description": "An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.",
-  "notes": "headline Notes goes here…",
   "opt": {
     "cn": "a-headline",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,

@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'a-image',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: null,
-  waypoint: null,
-  waypointAni: null,
   image: null,
   ratio: null,
   dominantColor: true,
@@ -95,7 +94,13 @@
   {% endif %}
 
   {# -- Image -- #}
-  <picture class="{{ opt.cn }}"
+  <picture class="{{ opt.cn }}
+                  {% for modifier in opt.modifiers %}
+                    {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+                  {% endfor %}
+                  {% for customClass in opt.customClasses %}
+                    {{ customClass | length ? '  ' ~ customClass }}
+                  {% endfor %}"
            {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
     <source srcset="{{ imageSrcsetWebP }}"
             sizes="100vw"

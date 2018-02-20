@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% hook 'seomaticRender' %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+
+
+  {# -- CRITICAL CSS -- #}
+  {% set cacheVal = getCookie('critical-css') %}
+  {% if not cacheVal or craft.app.config.general.devMode %}
+    {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
+    {% block appInlineCSS %}
+    {% endblock %}
+  {% endif %}
+
+  {% include '_partials/webpack/webpack-header.html' %}
+</head>
+<body>
+{% include component with {
+  opt: templateOptions.opt | default([])
+} %}
+
+
+{# TODO: Configs anpassen opt.part + content.part
+  opt: templateOptions.opt | default([]),
+  content: templateOptions.content | default([])
+#}
+
+{% include '_partials/webpack/webpack-scripts.html' %}
+
+</body>
+</html>

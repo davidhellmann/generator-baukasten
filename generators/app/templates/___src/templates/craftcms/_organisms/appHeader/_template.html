@@ -9,6 +9,7 @@
 {% set defaults = {
   cn: 'o-appHeader',
   modifiers: [],
+  customClasses: [],
   data: {},
 } %}
 
@@ -19,6 +20,9 @@
 <header class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+            {% endfor %}
+            {% for customClass in opt.customClasses %}
+              {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.cn|replace({ 'o-' : 'js-' }) }}">
   {% cache %}
     {% block appHeader %}

@@ -9,10 +9,9 @@
 {% set defaults = {
   cn: 'a-code',
   modifiers: [],
+  customClasses: [],
   data: {},
   js: true,
-  waypoint: null,
-  waypointAni: null,
   open: true,
   textShow: 'Expand Code Block',
   textHide: 'Collapse Code Block',
@@ -28,9 +27,10 @@
   <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %} data-status="{{ opt.open ? 'open' : 'closed' }}">

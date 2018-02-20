@@ -1,19 +1,17 @@
 {
   "title": "headline",
-  "status": "WIP",
+  "status": "none",
   "type": "atom",
   "path": "_atoms/headline/",
   "description": "headline Description goes here…",
-  "notes": "headline Notes goes here…",
   "opt": {
     "cn": "a-headline",
     "modifiers": [],
+    "customClasses": [],
     "data": "{}",
     "js": null,
     "waypoint": null,
-    "waypointAni": null
-  },
-  "content": {
+    "waypointAni": null,
     "foo": "bar"
   }
 }
