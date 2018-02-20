@@ -28,11 +28,6 @@ composer require craftcms/redactor
 echo '--------------------------------------------------'
 
 echo ''
-echo '>>> Installing: Anchors'
-composer require craftcms/anchors
-echo '--------------------------------------------------'
-
-echo ''
 echo '>>> Installing: Craft3 Cookies'
 composer require nystudio107/craft-cookies
 echo '--------------------------------------------------'
@@ -78,16 +73,6 @@ composer require doublesecretagency/craft-cpcss
 echo '--------------------------------------------------'
 
 echo ''
-echo '>>> Installing: Craft CPJS'
-composer require doublesecretagency/craft-cpjs
-echo '--------------------------------------------------'
-
-echo ''
-echo '>>> Installing: CP Nav'
-composer require verbb/cp-nav
-echo '--------------------------------------------------'
-
-echo ''
 echo '>>> Installing: Expanded Singles'
 composer require verbb/expanded-singles
 echo '--------------------------------------------------'
@@ -105,11 +90,6 @@ echo '--------------------------------------------------'
 echo ''
 echo '>>> Installing: Craft3 Fields'
 composer require newism/craft3-fields
-echo '--------------------------------------------------'
-
-echo ''
-echo '>>> Installing: Simple Text'
-composer require craftcms/simple-text
 echo '--------------------------------------------------'
 
 echo ''
@@ -191,3 +171,7 @@ echo ''
 echo '>>> Installing: Super Table'
 composer require verbb/super-table
 echo '--------------------------------------------------'
+
+
+
+
