@@ -16,6 +16,7 @@
 {% set defaults = {
     cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
     modifiers: [],
+    customClasses: [],
     data: {},
     js: null,
     waypoint: null,
@@ -31,12 +32,13 @@
   <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= pathOptions.key.charAt(0) %>-' : 'js-' }) : '' }}
-              {{ opt.waypointAni ? opt.waypointAni : '' }}"
-              {{ opt.waypoint ? ' data-waypoint' : '' }}
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= pathOptions.key.charAt(0) %>-' : 'js-' }) : '' }}"
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
     <%= moduleName.replace('-', '_') %>
   </div>
 {% endif %}
