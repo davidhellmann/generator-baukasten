@@ -27,13 +27,13 @@
 return [
     '*' => [
         //  What transform method should be used for image transforms?
-        'transformMethod' => 'imgix',
+        'transformMethod' => 'craft',
 
         // Domain for the Imgix transform service
-        'imgixDomain' => 'XXX',
+        // 'imgixDomain' => 'XXX',
 
         // API key for the Imgix transform service
-        'imgixApiKey' => 'XXX',
+        // 'imgixApiKey' => 'XXX',
 
         // Should image variant be created on Asset save (aka BeforePageLoad)
         'generateTransformsBeforePageLoad' => true,
