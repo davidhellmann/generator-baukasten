@@ -39,7 +39,8 @@
               {% endfor %}>
     <blockquote class="{{ opt.cn ~ '__blockquote' }}">
       <p>
-        {{ opt.quote }}
+        {% filter typogrify %}{{ '"' ~ opt.quote ~ '"' | raw }}{% endfilter %}
+
       </p>
       {% if opt.source %}
         <footer>

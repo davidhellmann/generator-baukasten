@@ -37,7 +37,7 @@
 
     {# TODO: Contact Form Module bauen mit seperaten Feldern und Simple #}
     <form method="post" action="" accept-charset="UTF-8" class="m-form">
-      {{ getCsrfInput() }}
+      {{ csrfInput() }}
 
       {% macro errorList(errors) %}
         {% if errors %}

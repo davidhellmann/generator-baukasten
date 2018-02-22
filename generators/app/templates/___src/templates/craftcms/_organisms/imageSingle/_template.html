@@ -37,7 +37,7 @@
               {% endfor %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
-              {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}
+              {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}"
               {% for key, value in opt.data %}
                 {{- '  data-' ~ key ~ '=' ~ value -}}
               {% endfor %}>
