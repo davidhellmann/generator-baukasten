@@ -1,4 +1,7 @@
 {
   "buttons": ["bold","italic","deleted","lists","link","horizontalrule"],
-  "plugins": ["fullscreen"]
+  "plugins": ["fullscreen"],
+  "pasteImages": false,
+  "pasteBlockTags": ["ul", "ol", "li"],
+  "pasteInlineTags": ["strong", "b", "u", "em", "i", "del", "sup", "sub"]
 }
