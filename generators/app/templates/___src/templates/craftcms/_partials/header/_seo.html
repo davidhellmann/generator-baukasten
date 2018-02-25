@@ -6,8 +6,9 @@
   Seomatic Plugin for Craft. Just awesome!
 #}
 
-{% if seomaticSiteMeta ?? null %}
-  {% hook 'seomaticRender' %}
-{% else %}
+{% set seo = seomatic.sitemap %}
+{#{{ d(seo) }}#}
+
+{% if not seomatic ?? null %}
   <title>{% if appTitle is defined %}{{ appTitle }} &mdash; {% endif %}{{ siteName }}</title>
 {% endif %}
