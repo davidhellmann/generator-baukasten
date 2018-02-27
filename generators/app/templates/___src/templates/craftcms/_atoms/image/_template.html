@@ -79,17 +79,6 @@
       {% endif %}
       {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesSquare.placeholderBox() %}
       {% set imageMaxWidth = opt.image.pluginOptimizedImagesSquare.maxSrcsetWidth() %}
-
-    {% default %}
-      {% set imageSrc = opt.image.pluginOptimizedImagesAuto.src() %}
-      {% set imageSrcset = opt.image.pluginOptimizedImagesAuto.srcset() %}
-      {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesAuto.srcsetWebP() %}
-      {% if opt.maxWidth %}
-        {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidth(opt.maxWidth) %}
-        {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidthWebP(opt.maxWidth) %}
-      {% endif %}
-      {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesAuto.placeholderBox() %}
-      {% set imageMaxWidth = opt.image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
     {% endswitch %}
   {% endif %}
 
@@ -102,7 +91,7 @@
                     {{ customClass | length ? '  ' ~ customClass }}
                   {% endfor %}"
            {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
-    <source srcset="{{ imageSrcsetWebP }}"
+    <source srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
             sizes="100vw"
             type="image/webp"/>
     <img class="{{ opt.cn ~ '__image' }}  lazyload"
@@ -112,7 +101,7 @@
         data-object-position="{{ focalpoint }}"
       {% endif %}
          src="{{ imagePlaceholderBox }}"
-         srcset="{{ imageSrcset }}"
+         srcset="{{ opt.maxWidth ? imageSrcsetMaxWidth : imageSrcset }}"
          sizes="100vw"
          width="{{ imageMaxWidth }}"
          height="auto"
