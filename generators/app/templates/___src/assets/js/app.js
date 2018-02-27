@@ -5,7 +5,7 @@
 // Polyfills
 import 'babel-polyfill';
 import 'svgxuse';
-import 'objectFitPolyfill/src/objectFitPolyfill';
+import 'object-fit-images';
 
 // Import Libs
 import './lib/bling';

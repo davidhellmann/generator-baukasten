@@ -96,9 +96,7 @@
             type="image/webp"/>
     <img class="{{ opt.cn ~ '__image' }}  lazyload"
       {% if opt.objectFit %}
-        style="object-fit: {{ opt.objectFit }}; object-position: {{ focalpoint }}"
-        data-object-fit="{{ opt.objectFit }}"
-        data-object-position="{{ focalpoint }}"
+        style="object-fit: {{ opt.objectFit }}; object-position: {{ focalpoint }}; font-size: 'object-fit: {{ opt.objectFit }};';"
       {% endif %}
          src="{{ imagePlaceholderBox }}"
          srcset="{{ opt.maxWidth ? imageSrcsetMaxWidth : imageSrcset }}"

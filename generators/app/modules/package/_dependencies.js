@@ -21,7 +21,7 @@ function addDependencies(files = {}) {
             'macy': '^2.2.0',
             'modularscale-sass': '^3.0.3',
             'normalize.css': '^7.0.0',
-            'objectFitPolyfill': '^2.0.5',
+            'object-fit-images': '^3.2.3',
             'photoswipe': '^4.1.1',
             'scrollmonitor': '^1.2.4',
             'smooth-scroll': '^12.1.0',
