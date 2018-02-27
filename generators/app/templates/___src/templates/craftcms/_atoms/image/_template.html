@@ -29,7 +29,7 @@
   {% set imageSrcset = opt.image.pluginOptimizedImagesAuto.srcset() %}
   {% set imageSrcsetWebP = opt.image.pluginOptimizedImagesAuto.srcsetWebP() %}
   {% set imageSrcsetMaxWidth = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidth(opt.maxWidth | default(2560)) %}
-  {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesLandscape.srcsetMaxWidthWebP(opt.maxWidth | default(2560)) %}
+  {% set imageSrcsetMaxWidthWebP = opt.image.pluginOptimizedImagesAuto.srcsetMaxWidthWebP(opt.maxWidth | default(2560)) %}
   {% set imagePlaceholderBox = opt.image.pluginOptimizedImagesAuto.placeholderBox() %}
   {% set imageMaxWidth = opt.image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
   {% set focalpoint = '50% 50%' %}
