@@ -7,7 +7,7 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  cn: 'a-code',
+    cn: 'a-codeSnippet',
   modifiers: [],
   customClasses: [],
   data: {},
@@ -15,15 +15,15 @@
   open: true,
   textShow: 'Expand Code Block',
   textHide: 'Collapse Code Block',
-  code: null,
-  lang: null
+  snippet: null,
+  language: null
 } %}
 
 {# -- Merge Default with Options -- #}
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
 {# -- Modul -- #}
-{% if opt.code %}
+{% if opt.snippet %}
   <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
@@ -34,11 +34,11 @@
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %} data-status="{{ opt.open ? 'open' : 'closed' }}">
-    <pre class="line-numbers  language-{{ opt.lang }}  {{ opt.cn ~ '__codeWrapper' }}">
-      <code class="{{ opt.cn ~ '__code' }}">
-        {{- opt.code | e -}}
-      </code>
-    </pre>
+    {% spaceless %}
+      <pre class="line-numbers  language-{{ opt.language }}  {{ opt.cn ~ '__codeWrapper' }}">
+        <code class="{{ opt.cn ~ '__code' }}">{{- opt.snippet | e -}}</code>
+      </pre>
+    {% endspaceless %}
   </div>
   <span class="{{ opt.cn ~ '__toggle' }}"
         data-status="{{ opt.open ? 'open' : 'closed' }}"

@@ -10,27 +10,16 @@
   cn: 'o-section',
   modifiers: [],
   customClasses: [],
-  offset: null,
   context: '12:24'
 } %}
 
 {# -- Merge Default with Options -- #}
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
-
-
 {# -- Colums Context -- #}
 {% set context = opt.context | split(':') %}
 {% set contextFirst = context[0] %}
 {% set contextLast = context[1] %}
-{% set offset = '' %}
-
-{% if opt.offset == 'yes' %}
-  {% set offsetValue = 4 %}
-  {% set contextLast = contextLast - offsetValue %}
-  {% set offsetValue = offsetValue + 1 %}
-  {% set offset = 'o-col-sa-s-' ~ offsetValue %}
-{% endif %}
 
 {# -- Modul -- #}
 <div class="{{ opt.cn }}
@@ -41,4 +30,4 @@
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.cn|replace({ 'o-' : 'js-' }) }}">
   <div class="{{ 'o-row-' ~ contextFirst ~  '  o-row-s-' ~ contextLast }}">
-    <div class="{{ 'o-col-' ~ contextFirst ~  '  o-col-s-' ~ contextLast }}  {{ offset }}">
+    <div class="{{ 'o-col-' ~ contextFirst ~  '  o-col-s-' ~ contextLast }}">

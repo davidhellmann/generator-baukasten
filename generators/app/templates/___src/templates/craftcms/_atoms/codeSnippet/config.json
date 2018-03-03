@@ -1,11 +1,11 @@
 {
-  "title": "code",
+  "title": "codeSnippet",
   "status": "none",
   "type": "atom",
-  "path": "_atoms/code/",
+  "path": "_atoms/codeSnippet/",
   "description": "Module Description goes here…",
   "opt": {
-    "cn": "a-code",
+    "cn": "a-codeSnippet",
     "modifiers": [],
     "customClasses": [],
     "data": "{}",
@@ -15,7 +15,7 @@
     "open": true,
     "textShow": "Expand Code Block",
     "textHide": "Collapse Code Block",
-    "code": "<div class='foo'>Foo Bar</div>",
-    "lang": "html"
+    "snippet": "<div class='foo'>Foo Bar</div>",
+    "language": "html"
   }
 }

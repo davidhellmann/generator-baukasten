@@ -172,6 +172,33 @@ echo '>>> Installing: Super Table'
 composer require verbb/super-table
 echo '--------------------------------------------------'
 
+echo ''
+echo '>>> Installing: Blockonomicon'
+composer require charliedev/blockonomicon
+echo '--------------------------------------------------'
 
+echo ''
+echo '>>> Installing: Disqus'
+composer require nystudio107/craft-disqus
+echo '--------------------------------------------------'
 
+echo ''
+echo '>>> Installing: HTTP2 Server Push'
+composer require superbig/craft3-http2serverpush
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Craft Inventory'
+composer require doublesecretagency/craft-inventory
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Craft Similar'
+composer require nystudio107/craft-similar
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Craft Linkfield'
+composer require sebastianlenz/linkfield
+echo '--------------------------------------------------'
 

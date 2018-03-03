@@ -2,13 +2,13 @@
  * code
  */
 
-const code = {
+const codeSnippet = {
     cfg: {
-        codeBlocks: [...document.querySelectorAll('.js-code')]
+        codeBlocks: [...document.querySelectorAll('.js-codeSnippet')]
     },
 
     toggleCodeBlock(els) {
-        els.forEach((el) => {
+        els.forEach(el => {
             const toggle = el.nextElementSibling;
             let status = el.getAttribute('data-status');
             const textHolder = toggle.querySelector('.js-textHolder');
@@ -20,12 +20,18 @@ const code = {
                     status = 'closed';
                     textHolder.innerHTML = showText;
                     toggle.setAttribute('data-status', 'closed');
-                    toggle.previousElementSibling.setAttribute('data-status', 'closed');
+                    toggle.previousElementSibling.setAttribute(
+                        'data-status',
+                        'closed'
+                    );
                 } else {
                     status = 'open';
                     textHolder.innerHTML = hideText;
                     toggle.setAttribute('data-status', 'open');
-                    toggle.previousElementSibling.setAttribute('data-status', 'open');
+                    toggle.previousElementSibling.setAttribute(
+                        'data-status',
+                        'open'
+                    );
                 }
             });
         });
@@ -38,4 +44,4 @@ const code = {
     }
 };
 
-export default code;
+export default codeSnippet;
