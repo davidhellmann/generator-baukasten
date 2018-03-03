@@ -37,7 +37,7 @@
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
 {# -- Modul -- #}
-{% if opt.intro and opt.content %}
+{% if opt.intro or opt.content %}
   <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}

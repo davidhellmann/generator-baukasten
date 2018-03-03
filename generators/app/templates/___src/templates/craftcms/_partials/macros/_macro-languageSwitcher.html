@@ -44,7 +44,7 @@
                 {% set current = true %}
               {% endif %}
 
-              {% if entry is defined %}
+              {% if entry ?? null %}
                 {% set siteEntry = craft.entries.id(entry.id).site(site).one() %}
 
                 {% if siteEntry and (siteEntry.site.handle is defined and siteEntry.site.handle == site) %}
@@ -53,13 +53,13 @@
                     {{ site }}
                   </a>
                 {% else %}
-                  <a href="{{ craft.config.siteUrl[site] }}"
+                  <a href="{{ craft.app.config.general.siteUrl[site] }}"
                      class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
                     {{ site }}
                   </a>
                 {% endif %}
               {% else %}
-                <a href="{{ craft.config.siteUrl[site] ~ craft.app.request.pathInfo }}"
+                <a href="{{ craft.app.config.general.siteUrl[site] ~ craft.app.request.pathInfo }}"
                    class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
                   {{ site }}
                 </a>

@@ -12,9 +12,9 @@
 // Settings
 $bk-grid-settings-custom: (
   cssgrid: false,
-  cssgrid-fallback: true,
+  cssgrid-fallback: false,
   flexboxgrid: true,
-  testing: true,
+  testing: false,
   prefix: 'o-',
   units: (
     gutter: 8px,

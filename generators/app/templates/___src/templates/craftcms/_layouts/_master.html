@@ -131,21 +131,12 @@
 
       {% set shareIamgeTwitterUrl = shareIamgeTwitter[0].url %}
 
-      <meta property="og:image" content="{{ shareIamgeFacebookUrl }}"/>
-      <meta property="og:image:type" content="image/jpeg"/>
-      <meta property="og:image:width" content="1200"/>
-      <meta property="og:image:height" content="630"/>
-
-      <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:image" content="{{ shareIamgeTwitterUrl }}"/>
-    {% elseif entry.entryImage.one() ?? null %}
-      <meta property="og:image" content="{{ entry.entryImage.one().url }}"/>
-      <meta property="og:image:type" content="image/jpeg"/>
-      <meta property="og:image:width" content="1200"/>
-      <meta property="og:image:height" content="630"/>
-
-      <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:image" content="{{ entry.entryImage.one().url }}"/>
+      {% if seomatic ?? null %}
+        {% do seomatic.meta.ogImage(shareIamgeFacebookUrl) %}
+        {% do seomatic.meta.twitterImage(shareIamgeTwitterUrl) %}
+        {% do seomatic.meta.twitterCard('summary_large_image') %}
+        {% do seomatic.meta.seoImage(shareIamgeFacebookUrl) %}
+      {% endif %}
     {% endif %}
   {% endif %}
 

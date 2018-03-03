@@ -1,8 +1,10 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
 {# @var entry \craft\elements\Entry #}
-{% if not craft.app.config.general.devMode %}
-  {% if not currentUser and not currentUser.admin %}
-    {% redirect "/" %}
+{% if craft.app.config.general.custom.craftEnv != 'staging' %}
+  {% if not craft.app.config.general.devMode %}
+    {% if not currentUser and not currentUser.admin %}
+      {% redirect "/" %}
+    {% endif %}
   {% endif %}
 {% endif %}
 <div class="buttons">

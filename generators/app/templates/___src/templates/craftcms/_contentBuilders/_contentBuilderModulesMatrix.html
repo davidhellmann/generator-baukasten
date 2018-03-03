@@ -28,6 +28,18 @@
       }
     } only %}
 
+  {# -- Snippet Modul -- #}
+  {% case 'codeSnippet' %}
+  {% include '_atoms/codeSnippet/_template.html' with {
+    opt: {
+      modifiers: [
+        'cb',
+      ],
+      snippet: data.snippet ?? null,
+      language: data.language ?? null
+    }
+  } only %}
+
   {# -- Definiton List Modul -- #}
   {% case 'definitionList' %}
     {% include '_molecules/definitionList/_template.html' with {

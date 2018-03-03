@@ -90,6 +90,9 @@
                   {% for customClass in opt.customClasses %}
                     {{ customClass | length ? '  ' ~ customClass }}
                   {% endfor %}"
+                  {% for key, value in opt.data %}
+                    {{ 'data-' ~ key ~ '=' ~ value }}
+                  {% endfor %}
            {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
     <source srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
             sizes="100vw"

@@ -3,7 +3,7 @@
  */
 
 import preloader from '../../../templates/_atoms/preloader/_script';
-import code from '../../../templates/_atoms/code/_script';
+import codeSnippet from '../../../templates/_atoms/codeSnippet/_script';
 import imageSlider from '../../../templates/_organisms/imageSlider/_script';
 import imageGallery from '../../../templates/_organisms/imageGallery/_script';
 // import accordion    from '../../../templates/_templates/accordion/_main'
@@ -15,7 +15,7 @@ import imageGallery from '../../../templates/_organisms/imageGallery/_script';
 // Modules Array
 const modulesArray = [
     preloader,
-    code,
+    codeSnippet,
     imageSlider,
     imageGallery,
     // accordion,

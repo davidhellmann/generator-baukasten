@@ -16,14 +16,15 @@
   modifiers: [],
   customClasses: [],
   data: {},
-  js: null
+  js: null,
+  form: null
 } %}
 
 {# -- Merge Default with Options -- #}
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
 {# -- Modul -- #}
-{% if opt.foo %}
+{% if opt.form %}
   <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
@@ -51,21 +52,21 @@
 
 
       <input type="hidden" name="action" value="amForms/submissions/saveSubmission">
-      <input type="hidden" name="handle" value="{{ form.handle }}">
-      <input type="hidden" name="namespace" value="{{ form.getNamespace() }}">
+      <input type="hidden" name="handle" value="{{ opt.form.handle }}">
+      <input type="hidden" name="namespace" value="{{ opt.form.getNamespace() }}">
 
       {# Normal Fields #}
-      {{ form.displayField('vorname') }}
-      {{ form.displayField('nachname') }}
-      {{ form.displayField('firma') }}
-      {{ form.displayField('strasseNr') }}
-      {{ form.displayField('plz') }}
-      {{ form.displayField('ort') }}
-      {{ form.displayField('email') }}
-      {{ form.displayField('telefon') }}
+      {{ opt.form.displayField('vorname') }}
+      {{ opt.form.displayField('nachname') }}
+      {{ opt.form.displayField('firma') }}
+      {{ opt.form.displayField('strasseNr') }}
+      {{ opt.form.displayField('plz') }}
+      {{ opt.form.displayField('ort') }}
+      {{ opt.form.displayField('email') }}
+      {{ opt.form.displayField('telefon') }}
 
       <hr>
-      {{ form.displayField('nachricht') }}
+      {{ opt.form.displayField('nachricht') }}
 
       <hr>
       <div class="form__row">
