@@ -41,7 +41,7 @@
         {% include '_organisms/section/_template.html' with {
           opt: {
             modifiers: ['cb'],
-            context: contextFirst ~  ':' ~ contextLast
+            context: opt.context
           }
         } only %}
       {% endif %}
