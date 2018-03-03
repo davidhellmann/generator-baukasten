@@ -11,11 +11,13 @@
   modifiers: [],
   customClasses: [],
   offset: null,
-  context: null
+  context: '12:24'
 } %}
 
 {# -- Merge Default with Options -- #}
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+
 
 {# -- Colums Context -- #}
 {% set context = opt.context | split(':') %}
@@ -26,7 +28,7 @@
 {% if opt.offset == 'yes' %}
   {% set offsetValue = 4 %}
   {% set contextLast = contextLast - offsetValue %}
-  {% set offsetValue = offsetValue + 1  %}
+  {% set offsetValue = offsetValue + 1 %}
   {% set offset = 'o-col-sa-s-' ~ offsetValue %}
 {% endif %}
 
