@@ -30,8 +30,8 @@
 {% if opt.object or opt.text %}
   {% if opt.text %}
     {% set headline = opt.text %}
-  {% elseif opt.object.entrySeoTitle ?? null and opt.object.entrySeoTitle | length %}
-    {% set headline = opt.object.entrySeoTitle %}
+  {% elseif opt.object.entryCustomH1 ?? null and opt.object.entryCustomH1 | length %}
+    {% set headline = opt.object.entryCustomH1 %}
   {% else %}
     {% set headline = opt.object.title %}
   {% endif %}
