@@ -202,3 +202,8 @@ echo '>>> Installing: Craft Linkfield'
 composer require sebastianlenz/linkfield
 echo '--------------------------------------------------'
 
+echo ''
+echo '>>> Installing: Craft Environment Label'
+composer require topshelfcraft/environment-label
+echo '--------------------------------------------------'
+
