@@ -53,13 +53,13 @@
                     {{ site }}
                   </a>
                 {% else %}
-                  <a href="{{ currentSite.baseUrl }}"
+                  <a href="{{ siteUrl }}"
                      class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
                     {{ site }}
                   </a>
                 {% endif %}
               {% else %}
-                <a href="{{ currentSite.baseUrl ~ craft.app.request.pathInfo }}"
+                <a href="{{ siteUrl ~ craft.app.request.pathInfo }}"
                    class="{{ opt.cn ~ '__link' }}{{ current ? ' ' ~ opt.cn ~ '__link--current' }}">
                   {{ site }}
                 </a>
