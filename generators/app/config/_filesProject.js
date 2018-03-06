@@ -25,6 +25,13 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
+            src: '___src/_craftCMS3/LocalValetDriver.php',
+            dest: '___dist/LocalValetDriver.php'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
             src: '___src/_craftCMS3/general.php',
             dest: '___dist/config/general.php'
         },

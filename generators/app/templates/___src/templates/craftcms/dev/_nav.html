@@ -20,7 +20,7 @@
   {%- include '_atoms/link/_template.html' with {
     opt: {
       text: 'Typo',
-      url:  siteUrl ~ 'dev/typo'
+      url:  currentSite.baseUrl ~ 'dev/typo'
     }
   } only %}
 
@@ -28,7 +28,7 @@
   {%- include '_atoms/link/_template.html' with {
     opt: {
       text: 'Modules Library',
-      url:  siteUrl ~ 'dev/modules-library'
+      url:  currentSite.baseUrl ~ 'dev/modules-library'
     }
   } only %}
 
@@ -60,7 +60,7 @@
   {%- include '_atoms/link/_template.html' with {
     opt: {
       text: 'Forms',
-      url:  siteUrl ~ 'dev/forms'
+      url:  currentSite.baseUrl ~ 'dev/forms'
     }
   } only %}
 
