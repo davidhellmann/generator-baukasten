@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.20)
 # Datenbank: db_12345678_craft3
-# Erstellt am: 2018-03-06 09:13:47 +0000
+# Erstellt am: 2018-03-06 13:09:14 +0000
 # ************************************************************
 
 
@@ -2807,7 +2807,11 @@ VALUES
 	(4,1,'iEWsRfwkIP2eIcMq2jn6f3j12Al9K28fouOOXUP3iHBLn2domqJCVL61j61nVlfZ505goKIHTFs9lnZIP_IQfiLS5ytJfMlXeFwq','2018-03-04 16:58:36','2018-03-04 16:58:39','e945c8df-2f08-4c40-abe2-a3a7e5e2a48d'),
 	(5,1,'V2UGCeU5sI6ImZ1GmhITX6SAnQjoUDwHD4Sw1-A0R2WLTxJ7MSIPvY0qW1nY4kNesWVmhMFlSWl-84g5xZ5W_ne4ZilBC_xZWnmr','2018-03-04 16:58:39','2018-03-04 17:02:57','06a5cc13-db17-4dc5-8033-ef4fbd6578f2'),
 	(6,1,'98bgXLu-b1ePqXd6ecGPA21Jj5aLNOFqyPQU_dpSmWUjy0-iBIazK7kQxYjcvDMt3WvJ0VQKgoMv5438YB1uQdHr7DgkbSiREeIq','2018-03-05 22:10:28','2018-03-05 22:11:37','2ce950f5-5101-4346-a2fe-e4b280d846ed'),
-	(7,1,'0OVkEX4A4ydbiN8g8uvaCbkSZ0sU5zcURRU9pigOqD1u1di5-JBcid8dp6EWYWU4SiJO_GLHzXA3cEmMldXy-wd79aKHUKFJkJxW','2018-03-06 09:13:03','2018-03-06 09:13:28','b1ec1686-7634-453a-8e93-be36233cf2dd');
+	(7,1,'0OVkEX4A4ydbiN8g8uvaCbkSZ0sU5zcURRU9pigOqD1u1di5-JBcid8dp6EWYWU4SiJO_GLHzXA3cEmMldXy-wd79aKHUKFJkJxW','2018-03-06 09:13:03','2018-03-06 09:15:28','b1ec1686-7634-453a-8e93-be36233cf2dd'),
+	(8,1,'R0-EpuxtSLzGXadRCJ25nBo6Qk0zgz5mGuT11CV_v1Blsorc7FLDKaYQyoO6a5-AKJm3LKDpA6WyhJnY3Revdw00bDgiN47jRTYK','2018-03-06 10:10:14','2018-03-06 10:10:15','31cbab1c-37bb-4b8e-9a09-8b7e9879a66b'),
+	(9,1,'JRUT3N3DtLiQDsrcHm5w3MtPvuCZioG-erMQXehdfU5Uxo6eNwUErHAEms9r8oTkfn-IShrZnKJRfJ9oEdBr73TsfUsDXEB5KS-s','2018-03-06 10:10:15','2018-03-06 10:10:21','81345390-b184-4c9a-b949-aacf4c49710b'),
+	(10,1,'LuhHFDl0tyAkD6fGjTRAYiFQl-S0WmzIri5G5qOrMIePfnh0ur88wN57q38JiOzdjwbfnEJVOhEgm9UG4s0-DpdXrq6DkcCyqoPq','2018-03-06 13:08:34','2018-03-06 13:08:34','a81cd866-eeab-411a-bde5-313feaa462bf'),
+	(11,1,'z6tIfyXaxW46lrNjYt7mz2OUL3Vq6VCgY_rmUcQK2clawcEijcOKVsCjamn1hZFZ2eeD3NoBDzYUoz0fupZZDGS72mJ8jWYSLm2H','2018-03-06 13:08:34','2018-03-06 13:08:46','394a7e5c-bc89-4d53-9f68-404df161438e');
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2889,7 +2893,7 @@ LOCK TABLES `sites` WRITE;
 
 INSERT INTO `sites` (`id`, `groupId`, `primary`, `name`, `handle`, `language`, `hasUrls`, `baseUrl`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,1,1,'Baukasten','default','de',1,'http://craft3.test/',1,'2017-12-06 09:19:32','2018-01-07 21:22:11','7b5acc38-9674-475e-b447-3ca40fa9f133');
+	(1,1,1,'Baukasten','default','de',1,'@web',1,'2017-12-06 09:19:32','2018-03-06 13:08:45','7b5acc38-9674-475e-b447-3ca40fa9f133');
 
 /*!40000 ALTER TABLE `sites` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3606,7 +3610,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `username`, `photoId`, `firstName`, `lastName`, `email`, `password`, `admin`, `client`, `locked`, `suspended`, `pending`, `lastLoginDate`, `lastLoginAttemptIp`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,0,'2018-03-06 09:13:03','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-03-06 09:13:03','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
+	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,0,'2018-03-06 13:08:34','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-03-06 13:08:34','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
