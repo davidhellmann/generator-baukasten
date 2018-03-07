@@ -39,9 +39,9 @@
   {% if entriesCount == 0 %}
     {% set finalEntries = entriesFromField %}
   {% elseif entriesCount == maxPostCount %}
-    {% set finalEntries = craft.entries.section(channel).limit(entriesCount).orderBy(channelOrder) %}
+    {% set finalEntries = craft.entries.section(channel).limit(entriesCount).orderBy(channelOrder).all() %}
   {% else %}
-    {% set finalEntries = craft.entries.section(channel).id('and, not '~excludePosts).limit(entriesCount).orderBy(channelOrder) %}
+    {% set finalEntries = craft.entries.section(channel).id('and, not '~excludePosts).limit(entriesCount).orderBy(channelOrder).all() %}
     {% set finalEntries = finalEntries | merge(entriesFromField) %}
   {% endif %}
 
