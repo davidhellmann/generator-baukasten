@@ -40,9 +40,9 @@
                 {% for customClass in opt.customClasses %}
                   {{ customClass | length ? '  ' ~ customClass }}
                 {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-         {% if opt.min %}type="{{ opt.type }}"{% endif %}
-         {% if opt.min %}name="{{ opt.name }}"{% endif %}
-         {% if opt.min %}value="{{ opt.value }}"{% endif %}
+         {% if opt.type %}type="{{ opt.type }}"{% endif %}
+         {% if opt.name %}name="{{ opt.name }}"{% endif %}
+         {% if opt.value %}value="{{ opt.value }}"{% endif %}
          {% if opt.min %}min="{{ opt.min }}"{% endif %}
          {% if opt.max %}max="{{ opt.max }}"{% endif %}
          {% if opt.minlength %}minlength="{{ opt.minlength }}"{% endif %}
