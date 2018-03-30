@@ -94,16 +94,16 @@
                     {{ 'data-' ~ key ~ '=' ~ value }}
                   {% endfor %}
            {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
-    <source srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
-            sizes="100vw"
+    <source data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
+            data-sizes="100vw"
             type="image/webp"/>
     <img class="{{ opt.cn ~ '__image' }}  lazyload"
       {% if opt.objectFit %}
         style="object-fit: {{ opt.objectFit }}; object-position: {{ focalpoint }}; font-size: 'object-fit: {{ opt.objectFit }};';"
       {% endif %}
          src="{{ imagePlaceholderBox }}"
-         srcset="{{ opt.maxWidth ? imageSrcsetMaxWidth : imageSrcset }}"
-         sizes="100vw"
+         data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidth : imageSrcset }}"
+         data-sizes="100vw"
          width="{{ imageMaxWidth }}"
          height="auto"
          alt="{{ opt.image.title }}"/>
