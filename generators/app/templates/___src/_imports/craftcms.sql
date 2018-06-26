@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: localhost (MySQL 5.7.20)
-# Datenbank: db_12345678_craft3
-# Erstellt am: 2018-03-06 13:09:14 +0000
+# Datenbank: bistum_passau_local
+# Erstellt am: 2018-06-26 10:16:50 +0000
 # ************************************************************
 
 
@@ -27,9 +27,9 @@ DROP TABLE IF EXISTS `assetindexdata`;
 
 CREATE TABLE `assetindexdata` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sessionId` varchar(36) NOT NULL DEFAULT '',
+  `sessionId` varchar(36) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `volumeId` int(11) NOT NULL,
-  `uri` text,
+  `uri` text CHARACTER SET utf8,
   `size` bigint(20) unsigned DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL,
   `recordId` int(11) DEFAULT NULL,
@@ -37,12 +37,12 @@ CREATE TABLE `assetindexdata` (
   `completed` tinyint(1) DEFAULT '0',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `assetindexdata_sessionId_volumeId_idx` (`sessionId`,`volumeId`),
   KEY `assetindexdata_volumeId_idx` (`volumeId`),
   CONSTRAINT `assetindexdata_volumeId_fk` FOREIGN KEY (`volumeId`) REFERENCES `volumes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -55,16 +55,16 @@ CREATE TABLE `assets` (
   `id` int(11) NOT NULL,
   `volumeId` int(11) DEFAULT NULL,
   `folderId` int(11) NOT NULL,
-  `filename` varchar(255) NOT NULL,
-  `kind` varchar(50) NOT NULL DEFAULT 'unknown',
+  `filename` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `kind` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT 'unknown',
   `width` int(11) unsigned DEFAULT NULL,
   `height` int(11) unsigned DEFAULT NULL,
   `size` bigint(20) unsigned DEFAULT NULL,
-  `focalPoint` varchar(13) DEFAULT NULL,
+  `focalPoint` varchar(13) CHARACTER SET utf8 DEFAULT NULL,
   `dateModified` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `assets_filename_folderId_unq_idx` (`filename`,`folderId`),
   KEY `assets_folderId_idx` (`folderId`),
@@ -72,7 +72,7 @@ CREATE TABLE `assets` (
   CONSTRAINT `assets_folderId_fk` FOREIGN KEY (`folderId`) REFERENCES `volumefolders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `assets_id_fk` FOREIGN KEY (`id`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `assets_volumeId_fk` FOREIGN KEY (`volumeId`) REFERENCES `volumes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `assets` WRITE;
 /*!40000 ALTER TABLE `assets` DISABLE KEYS */;
@@ -110,19 +110,19 @@ DROP TABLE IF EXISTS `assettransformindex`;
 CREATE TABLE `assettransformindex` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `assetId` int(11) NOT NULL,
-  `filename` varchar(255) DEFAULT NULL,
-  `format` varchar(255) DEFAULT NULL,
-  `location` varchar(255) NOT NULL,
+  `filename` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `format` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `location` varchar(255) CHARACTER SET utf8 NOT NULL,
   `volumeId` int(11) DEFAULT NULL,
   `fileExists` tinyint(1) NOT NULL DEFAULT '0',
   `inProgress` tinyint(1) NOT NULL DEFAULT '0',
   `dateIndexed` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `assettransformindex_volumeId_assetId_location_idx` (`volumeId`,`assetId`,`location`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -133,23 +133,23 @@ DROP TABLE IF EXISTS `assettransforms`;
 
 CREATE TABLE `assettransforms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
-  `mode` enum('stretch','fit','crop') NOT NULL DEFAULT 'crop',
-  `position` enum('top-left','top-center','top-right','center-left','center-center','center-right','bottom-left','bottom-center','bottom-right') NOT NULL DEFAULT 'center-center',
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `mode` enum('stretch','fit','crop') CHARACTER SET utf8 NOT NULL DEFAULT 'crop',
+  `position` enum('top-left','top-center','top-right','center-left','center-center','center-right','bottom-left','bottom-center','bottom-right') CHARACTER SET utf8 NOT NULL DEFAULT 'center-center',
   `width` int(11) unsigned DEFAULT NULL,
   `height` int(11) unsigned DEFAULT NULL,
-  `format` varchar(255) DEFAULT NULL,
+  `format` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `quality` int(11) DEFAULT NULL,
-  `interlace` enum('none','line','plane','partition') NOT NULL DEFAULT 'none',
+  `interlace` enum('none','line','plane','partition') CHARACTER SET utf8 NOT NULL DEFAULT 'none',
   `dimensionChangeTime` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `assettransforms_name_unq_idx` (`name`),
   UNIQUE KEY `assettransforms_handle_unq_idx` (`handle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `assettransforms` WRITE;
 /*!40000 ALTER TABLE `assettransforms` DISABLE KEYS */;
@@ -173,12 +173,12 @@ CREATE TABLE `categories` (
   `groupId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `categories_groupId_idx` (`groupId`),
   CONSTRAINT `categories_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `categorygroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `categories_id_fk` FOREIGN KEY (`id`) REFERENCES `elements` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
@@ -200,11 +200,11 @@ CREATE TABLE `categorygroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `structureId` int(11) NOT NULL,
   `fieldLayoutId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `categorygroups_name_unq_idx` (`name`),
   UNIQUE KEY `categorygroups_handle_unq_idx` (`handle`),
@@ -212,7 +212,7 @@ CREATE TABLE `categorygroups` (
   KEY `categorygroups_fieldLayoutId_idx` (`fieldLayoutId`),
   CONSTRAINT `categorygroups_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL,
   CONSTRAINT `categorygroups_structureId_fk` FOREIGN KEY (`structureId`) REFERENCES `structures` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `categorygroups` WRITE;
 /*!40000 ALTER TABLE `categorygroups` DISABLE KEYS */;
@@ -235,17 +235,17 @@ CREATE TABLE `categorygroups_sites` (
   `groupId` int(11) NOT NULL,
   `siteId` int(11) NOT NULL,
   `hasUrls` tinyint(1) NOT NULL DEFAULT '1',
-  `uriFormat` text,
-  `template` varchar(500) DEFAULT NULL,
+  `uriFormat` text CHARACTER SET utf8,
+  `template` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `categorygroups_sites_groupId_siteId_unq_idx` (`groupId`,`siteId`),
   KEY `categorygroups_sites_siteId_idx` (`siteId`),
   CONSTRAINT `categorygroups_sites_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `categorygroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `categorygroups_sites_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `categorygroups_sites` WRITE;
 /*!40000 ALTER TABLE `categorygroups_sites` DISABLE KEYS */;
@@ -267,30 +267,30 @@ CREATE TABLE `content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `elementId` int(11) NOT NULL,
   `siteId` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
-  `field_globalGoogleAnalytics` text,
-  `field_globalThirdPartySnippets` text,
-  `field_globalSocialNetworks` text,
-  `field_imageCaption` text,
-  `field_imageTitle` text,
-  `field_imageSource` text,
-  `field_imageSourceUrl` varchar(255) DEFAULT NULL,
-  `field_entryIntroText` text,
-  `field_entryCustomH1` text,
-  `field_pluginOptimizedImagesAuto` text,
-  `field_pluginOptimizedImagesLandscape` text,
-  `field_pluginOptimizedImagesPortrait` text,
-  `field_pluginOptimizedImagesSquare` text,
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `field_globalGoogleAnalytics` text CHARACTER SET utf8,
+  `field_globalThirdPartySnippets` text CHARACTER SET utf8,
+  `field_globalSocialNetworks` text CHARACTER SET utf8,
+  `field_imageCaption` text CHARACTER SET utf8,
+  `field_imageTitle` text CHARACTER SET utf8,
+  `field_imageSource` text CHARACTER SET utf8,
+  `field_imageSourceUrl` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_entryIntroText` text CHARACTER SET utf8,
+  `field_entryCustomH1` text CHARACTER SET utf8,
+  `field_pluginOptimizedImagesAuto` text CHARACTER SET utf8,
+  `field_pluginOptimizedImagesLandscape` text CHARACTER SET utf8,
+  `field_pluginOptimizedImagesPortrait` text CHARACTER SET utf8,
+  `field_pluginOptimizedImagesSquare` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   UNIQUE KEY `content_elementId_siteId_unq_idx` (`elementId`,`siteId`),
   KEY `content_siteId_idx` (`siteId`),
   KEY `content_title_idx` (`title`),
   CONSTRAINT `content_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `content_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `content` WRITE;
 /*!40000 ALTER TABLE `content` DISABLE KEYS */;
@@ -348,12 +348,12 @@ CREATE TABLE `cpnav_layout` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
-  `name` varchar(255) DEFAULT NULL,
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `isDefault` tinyint(1) NOT NULL DEFAULT '0',
-  `permissions` text,
+  `permissions` text CHARACTER SET utf8,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `cpnav_layout` WRITE;
 /*!40000 ALTER TABLE `cpnav_layout` DISABLE KEYS */;
@@ -375,23 +375,23 @@ CREATE TABLE `cpnav_navigation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   `layoutId` int(11) NOT NULL,
-  `handle` varchar(255) DEFAULT NULL,
-  `prevLabel` varchar(255) DEFAULT NULL,
-  `currLabel` varchar(255) DEFAULT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `prevLabel` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `currLabel` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `order` int(11) DEFAULT '0',
-  `prevUrl` varchar(255) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `icon` varchar(255) DEFAULT NULL,
-  `customIcon` varchar(255) DEFAULT NULL,
+  `prevUrl` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `icon` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `customIcon` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `manualNav` tinyint(1) NOT NULL DEFAULT '0',
   `newWindow` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `cpnav_navigation_layoutId_fk` (`layoutId`),
   CONSTRAINT `cpnav_navigation_layoutId_fk` FOREIGN KEY (`layoutId`) REFERENCES `cpnav_layout` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `cpnav_navigation` WRITE;
 /*!40000 ALTER TABLE `cpnav_navigation` DISABLE KEYS */;
@@ -423,15 +423,15 @@ DROP TABLE IF EXISTS `craftidtokens`;
 CREATE TABLE `craftidtokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `accessToken` text NOT NULL,
+  `accessToken` text CHARACTER SET utf8 NOT NULL,
   `expiryDate` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `craftidtokens_userId_fk` (`userId`),
   CONSTRAINT `craftidtokens_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -443,14 +443,14 @@ DROP TABLE IF EXISTS `craftql_tokens`;
 CREATE TABLE `craftql_tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `name` char(128) DEFAULT NULL,
-  `token` char(64) NOT NULL,
-  `scopes` varchar(2048) DEFAULT NULL,
+  `name` char(128) CHARACTER SET utf8 DEFAULT NULL,
+  `token` char(64) CHARACTER SET utf8 NOT NULL,
+  `scopes` varchar(2048) CHARACTER SET utf8 DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -461,19 +461,19 @@ DROP TABLE IF EXISTS `deprecationerrors`;
 
 CREATE TABLE `deprecationerrors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) NOT NULL,
-  `fingerprint` varchar(255) NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `fingerprint` varchar(255) CHARACTER SET utf8 NOT NULL,
   `lastOccurrence` datetime NOT NULL,
-  `file` varchar(255) NOT NULL,
+  `file` varchar(255) CHARACTER SET utf8 NOT NULL,
   `line` smallint(6) unsigned DEFAULT NULL,
-  `message` varchar(255) DEFAULT NULL,
-  `traces` text,
+  `message` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `traces` text CHARACTER SET utf8,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `deprecationerrors_key_fingerprint_unq_idx` (`key`,`fingerprint`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -484,14 +484,14 @@ DROP TABLE IF EXISTS `elementindexsettings`;
 
 CREATE TABLE `elementindexsettings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) NOT NULL,
-  `settings` text,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `settings` text CHARACTER SET utf8,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `elementindexsettings_type_unq_idx` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `elementindexsettings` WRITE;
 /*!40000 ALTER TABLE `elementindexsettings` DISABLE KEYS */;
@@ -513,19 +513,19 @@ DROP TABLE IF EXISTS `elements`;
 CREATE TABLE `elements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fieldLayoutId` int(11) DEFAULT NULL,
-  `type` varchar(255) NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `archived` tinyint(1) NOT NULL DEFAULT '0',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `elements_fieldLayoutId_idx` (`fieldLayoutId`),
   KEY `elements_type_idx` (`type`),
   KEY `elements_enabled_idx` (`enabled`),
   KEY `elements_archived_dateCreated_idx` (`archived`,`dateCreated`),
   CONSTRAINT `elements_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `elements` WRITE;
 /*!40000 ALTER TABLE `elements` DISABLE KEYS */;
@@ -616,12 +616,12 @@ CREATE TABLE `elements_sites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `elementId` int(11) NOT NULL,
   `siteId` int(11) NOT NULL,
-  `slug` varchar(255) DEFAULT NULL,
-  `uri` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `uri` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `elements_sites_elementId_siteId_unq_idx` (`elementId`,`siteId`),
   UNIQUE KEY `elements_sites_uri_siteId_unq_idx` (`uri`,`siteId`),
@@ -630,7 +630,7 @@ CREATE TABLE `elements_sites` (
   KEY `elements_sites_enabled_idx` (`enabled`),
   CONSTRAINT `elements_sites_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `elements_sites_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `elements_sites` WRITE;
 /*!40000 ALTER TABLE `elements_sites` DISABLE KEYS */;
@@ -726,7 +726,7 @@ CREATE TABLE `entries` (
   `expiryDate` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `entries_postDate_idx` (`postDate`),
   KEY `entries_expiryDate_idx` (`expiryDate`),
@@ -737,7 +737,7 @@ CREATE TABLE `entries` (
   CONSTRAINT `entries_id_fk` FOREIGN KEY (`id`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `entries_sectionId_fk` FOREIGN KEY (`sectionId`) REFERENCES `sections` (`id`) ON DELETE CASCADE,
   CONSTRAINT `entries_typeId_fk` FOREIGN KEY (`typeId`) REFERENCES `entrytypes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `entries` WRITE;
 /*!40000 ALTER TABLE `entries` DISABLE KEYS */;
@@ -770,12 +770,12 @@ CREATE TABLE `entrydrafts` (
   `sectionId` int(11) NOT NULL,
   `creatorId` int(11) NOT NULL,
   `siteId` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `notes` text,
-  `data` mediumtext NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `notes` text CHARACTER SET utf8,
+  `data` mediumtext CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `entrydrafts_sectionId_idx` (`sectionId`),
   KEY `entrydrafts_entryId_siteId_idx` (`entryId`,`siteId`),
@@ -785,7 +785,7 @@ CREATE TABLE `entrydrafts` (
   CONSTRAINT `entrydrafts_entryId_fk` FOREIGN KEY (`entryId`) REFERENCES `entries` (`id`) ON DELETE CASCADE,
   CONSTRAINT `entrydrafts_sectionId_fk` FOREIGN KEY (`sectionId`) REFERENCES `sections` (`id`) ON DELETE CASCADE,
   CONSTRAINT `entrydrafts_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -798,15 +798,15 @@ CREATE TABLE `entrytypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sectionId` int(11) NOT NULL,
   `fieldLayoutId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
   `hasTitleField` tinyint(1) NOT NULL DEFAULT '1',
-  `titleLabel` varchar(255) DEFAULT 'Title',
-  `titleFormat` varchar(255) DEFAULT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `titleLabel` varchar(255) CHARACTER SET utf8 DEFAULT 'Title',
+  `titleFormat` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `entrytypes_name_sectionId_unq_idx` (`name`,`sectionId`),
   UNIQUE KEY `entrytypes_handle_sectionId_unq_idx` (`handle`,`sectionId`),
@@ -814,7 +814,7 @@ CREATE TABLE `entrytypes` (
   KEY `entrytypes_fieldLayoutId_idx` (`fieldLayoutId`),
   CONSTRAINT `entrytypes_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL,
   CONSTRAINT `entrytypes_sectionId_fk` FOREIGN KEY (`sectionId`) REFERENCES `sections` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `entrytypes` WRITE;
 /*!40000 ALTER TABLE `entrytypes` DISABLE KEYS */;
@@ -843,11 +843,11 @@ CREATE TABLE `entryversions` (
   `creatorId` int(11) DEFAULT NULL,
   `siteId` int(11) NOT NULL,
   `num` smallint(6) unsigned NOT NULL,
-  `notes` text,
-  `data` mediumtext NOT NULL,
+  `notes` text CHARACTER SET utf8,
+  `data` mediumtext CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `entryversions_sectionId_idx` (`sectionId`),
   KEY `entryversions_entryId_siteId_idx` (`entryId`,`siteId`),
@@ -857,7 +857,7 @@ CREATE TABLE `entryversions` (
   CONSTRAINT `entryversions_entryId_fk` FOREIGN KEY (`entryId`) REFERENCES `entries` (`id`) ON DELETE CASCADE,
   CONSTRAINT `entryversions_sectionId_fk` FOREIGN KEY (`sectionId`) REFERENCES `sections` (`id`) ON DELETE CASCADE,
   CONSTRAINT `entryversions_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `entryversions` WRITE;
 /*!40000 ALTER TABLE `entryversions` DISABLE KEYS */;
@@ -1017,13 +1017,13 @@ DROP TABLE IF EXISTS `fieldgroups`;
 
 CREATE TABLE `fieldgroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `fieldgroups_name_unq_idx` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `fieldgroups` WRITE;
 /*!40000 ALTER TABLE `fieldgroups` DISABLE KEYS */;
@@ -1052,10 +1052,10 @@ CREATE TABLE `fieldlayoutfields` (
   `tabId` int(11) NOT NULL,
   `fieldId` int(11) NOT NULL,
   `required` tinyint(1) NOT NULL DEFAULT '0',
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `fieldlayoutfields_layoutId_fieldId_unq_idx` (`layoutId`,`fieldId`),
   KEY `fieldlayoutfields_sortOrder_idx` (`sortOrder`),
@@ -1064,7 +1064,7 @@ CREATE TABLE `fieldlayoutfields` (
   CONSTRAINT `fieldlayoutfields_fieldId_fk` FOREIGN KEY (`fieldId`) REFERENCES `fields` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fieldlayoutfields_layoutId_fk` FOREIGN KEY (`layoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fieldlayoutfields_tabId_fk` FOREIGN KEY (`tabId`) REFERENCES `fieldlayouttabs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `fieldlayoutfields` WRITE;
 /*!40000 ALTER TABLE `fieldlayoutfields` DISABLE KEYS */;
@@ -1175,13 +1175,13 @@ DROP TABLE IF EXISTS `fieldlayouts`;
 
 CREATE TABLE `fieldlayouts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fieldlayouts_type_idx` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `fieldlayouts` WRITE;
 /*!40000 ALTER TABLE `fieldlayouts` DISABLE KEYS */;
@@ -1235,16 +1235,16 @@ DROP TABLE IF EXISTS `fieldlayouttabs`;
 CREATE TABLE `fieldlayouttabs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `layoutId` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fieldlayouttabs_sortOrder_idx` (`sortOrder`),
   KEY `fieldlayouttabs_layoutId_idx` (`layoutId`),
   CONSTRAINT `fieldlayouttabs_layoutId_fk` FOREIGN KEY (`layoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `fieldlayouttabs` WRITE;
 /*!40000 ALTER TABLE `fieldlayouttabs` DISABLE KEYS */;
@@ -1301,23 +1301,23 @@ DROP TABLE IF EXISTS `fields`;
 CREATE TABLE `fields` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `groupId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(64) NOT NULL,
-  `context` varchar(255) NOT NULL DEFAULT 'global',
-  `instructions` text,
-  `translationMethod` varchar(255) NOT NULL DEFAULT 'none',
-  `translationKeyFormat` text,
-  `type` varchar(255) NOT NULL,
-  `settings` text,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `context` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT 'global',
+  `instructions` text CHARACTER SET utf8,
+  `translationMethod` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT 'none',
+  `translationKeyFormat` text CHARACTER SET utf8,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `settings` text CHARACTER SET utf8,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `fields_handle_context_unq_idx` (`handle`,`context`),
   KEY `fields_groupId_idx` (`groupId`),
   KEY `fields_context_idx` (`context`),
   CONSTRAINT `fields_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `fieldgroups` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `fields` WRITE;
 /*!40000 ALTER TABLE `fields` DISABLE KEYS */;
@@ -1409,19 +1409,19 @@ DROP TABLE IF EXISTS `globalsets`;
 
 CREATE TABLE `globalsets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
   `fieldLayoutId` int(11) DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `globalsets_name_unq_idx` (`name`),
   UNIQUE KEY `globalsets_handle_unq_idx` (`handle`),
   KEY `globalsets_fieldLayoutId_idx` (`fieldLayoutId`),
   CONSTRAINT `globalsets_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL,
   CONSTRAINT `globalsets_id_fk` FOREIGN KEY (`id`) REFERENCES `elements` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `globalsets` WRITE;
 /*!40000 ALTER TABLE `globalsets` DISABLE KEYS */;
@@ -1449,14 +1449,14 @@ CREATE TABLE `guide_guiderecord` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   `siteId` int(11) NOT NULL,
-  `some_field` varchar(255) NOT NULL DEFAULT '',
+  `some_field` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `guide_guiderecord_some_field_unq_idx` (`some_field`),
   KEY `guide_guiderecord_siteId_fk` (`siteId`),
   CONSTRAINT `guide_guiderecord_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -1467,26 +1467,26 @@ DROP TABLE IF EXISTS `info`;
 
 CREATE TABLE `info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `version` varchar(50) NOT NULL,
-  `schemaVersion` varchar(15) NOT NULL,
+  `version` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `schemaVersion` varchar(15) CHARACTER SET utf8 NOT NULL,
   `edition` tinyint(3) unsigned NOT NULL,
-  `timezone` varchar(30) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
+  `timezone` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `on` tinyint(1) NOT NULL DEFAULT '0',
   `maintenance` tinyint(1) NOT NULL DEFAULT '0',
-  `fieldVersion` char(12) NOT NULL DEFAULT '000000000000',
+  `fieldVersion` char(12) CHARACTER SET utf8 NOT NULL DEFAULT '000000000000',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `info` WRITE;
 /*!40000 ALTER TABLE `info` DISABLE KEYS */;
 
 INSERT INTO `info` (`id`, `version`, `schemaVersion`, `edition`, `timezone`, `name`, `on`, `maintenance`, `fieldVersion`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'3.0.0-RC13','3.0.83',2,'Europe/Berlin','Baukasten',1,0,'8axjsc8D5BBr','2017-12-06 09:19:32','2018-03-06 09:13:27','3daa3f7a-752b-4da4-9bab-0be7e86f8718');
+	(1,'3.0.12','3.0.91',1,'Europe/Berlin','Baukasten',1,0,'8axjsc8D5BBr','2017-12-06 09:19:32','2018-06-26 10:03:47','3daa3f7a-752b-4da4-9bab-0be7e86f8718');
 
 /*!40000 ALTER TABLE `info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1503,10 +1503,10 @@ CREATE TABLE `matrixblocks` (
   `ownerSiteId` int(11) DEFAULT NULL,
   `fieldId` int(11) NOT NULL,
   `typeId` int(11) NOT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `matrixblocks_ownerId_idx` (`ownerId`),
   KEY `matrixblocks_fieldId_idx` (`fieldId`),
@@ -1518,7 +1518,7 @@ CREATE TABLE `matrixblocks` (
   CONSTRAINT `matrixblocks_ownerId_fk` FOREIGN KEY (`ownerId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `matrixblocks_ownerSiteId_fk` FOREIGN KEY (`ownerSiteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `matrixblocks_typeId_fk` FOREIGN KEY (`typeId`) REFERENCES `matrixblocktypes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `matrixblocks` WRITE;
 /*!40000 ALTER TABLE `matrixblocks` DISABLE KEYS */;
@@ -1572,12 +1572,12 @@ CREATE TABLE `matrixblocktypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fieldId` int(11) NOT NULL,
   `fieldLayoutId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `matrixblocktypes_name_fieldId_unq_idx` (`name`,`fieldId`),
   UNIQUE KEY `matrixblocktypes_handle_fieldId_unq_idx` (`handle`,`fieldId`),
@@ -1585,7 +1585,7 @@ CREATE TABLE `matrixblocktypes` (
   KEY `matrixblocktypes_fieldLayoutId_idx` (`fieldLayoutId`),
   CONSTRAINT `matrixblocktypes_fieldId_fk` FOREIGN KEY (`fieldId`) REFERENCES `fields` (`id`) ON DELETE CASCADE,
   CONSTRAINT `matrixblocktypes_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `matrixblocktypes` WRITE;
 /*!40000 ALTER TABLE `matrixblocktypes` DISABLE KEYS */;
@@ -1625,44 +1625,44 @@ CREATE TABLE `matrixcontent_contentbuildermatrix` (
   `siteId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
-  `field_richText_richText` text,
-  `field_bkSection_width` varchar(255) DEFAULT NULL,
-  `field_bkSection_paddingVertical` varchar(255) DEFAULT NULL,
-  `field_headline_headline` text,
-  `field_headline_size` varchar(255) DEFAULT NULL,
-  `field_plainText_plainText` text,
-  `field_quote_quote` text,
-  `field_quote_source` text,
-  `field_quote_sourceUrl` varchar(255) DEFAULT NULL,
-  `field_definitionList_definitionList` text,
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `field_richText_richText` text CHARACTER SET utf8,
+  `field_bkSection_width` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_bkSection_paddingVertical` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_headline_headline` text CHARACTER SET utf8,
+  `field_headline_size` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_plainText_plainText` text CHARACTER SET utf8,
+  `field_quote_quote` text CHARACTER SET utf8,
+  `field_quote_source` text CHARACTER SET utf8,
+  `field_quote_sourceUrl` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_definitionList_definitionList` text CHARACTER SET utf8,
   `field_imageSingle_caption` tinyint(1) DEFAULT NULL,
-  `field_imageSingle_alignment` varchar(255) DEFAULT NULL,
-  `field_imageSingle_ratio` varchar(255) DEFAULT NULL,
-  `field_imageSingle_width` varchar(255) DEFAULT NULL,
-  `field_imageGallery_ratio` varchar(255) DEFAULT NULL,
+  `field_imageSingle_alignment` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageSingle_ratio` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageSingle_width` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageGallery_ratio` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `field_imageGrid_caption` tinyint(1) DEFAULT NULL,
-  `field_imageGrid_columns` varchar(255) DEFAULT NULL,
-  `field_imageGrid_ratio` varchar(255) DEFAULT NULL,
-  `field_imageSlider_ratio` varchar(255) DEFAULT NULL,
-  `field_embed_code` text,
-  `field_embed_position` varchar(255) DEFAULT NULL,
-  `field_embed_width` varchar(255) DEFAULT NULL,
-  `field_divider_style` varchar(255) DEFAULT NULL,
-  `field_divider_marginVertical` varchar(255) DEFAULT NULL,
-  `field_imageCover_text` text,
-  `field_imageCover_position` varchar(255) DEFAULT NULL,
-  `field_imageCover_alignment` varchar(255) DEFAULT NULL,
-  `field_imageCover_color` varchar(255) DEFAULT NULL,
-  `field_imageCover_ratio` varchar(255) DEFAULT NULL,
-  `field_codeSnippet_snippet` text,
-  `field_codeSnippet_language` varchar(255) DEFAULT NULL,
+  `field_imageGrid_columns` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageGrid_ratio` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageSlider_ratio` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_embed_code` text CHARACTER SET utf8,
+  `field_embed_position` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_embed_width` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_divider_style` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_divider_marginVertical` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageCover_text` text CHARACTER SET utf8,
+  `field_imageCover_position` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageCover_alignment` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageCover_color` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_imageCover_ratio` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_codeSnippet_snippet` text CHARACTER SET utf8,
+  `field_codeSnippet_language` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `matrixcontent_contentbuildermatrix_elementId_siteId_unq_idx` (`elementId`,`siteId`),
   KEY `matrixcontent_contentbuildermatrix_siteId_fk` (`siteId`),
   CONSTRAINT `matrixcontent_contentbuildermatrix_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `matrixcontent_contentbuildermatrix_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `matrixcontent_contentbuildermatrix` WRITE;
 /*!40000 ALTER TABLE `matrixcontent_contentbuildermatrix` DISABLE KEYS */;
@@ -1717,20 +1717,20 @@ CREATE TABLE `matrixcontent_globalcontact` (
   `siteId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
-  `field_contact_company` text,
-  `field_contact_street` text,
-  `field_contact_postalCode` text,
-  `field_contact_location` text,
-  `field_contact_mail` varchar(255) DEFAULT NULL,
-  `field_contact_phone` text,
-  `field_contact_mobilePhone` text,
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `field_contact_company` text CHARACTER SET utf8,
+  `field_contact_street` text CHARACTER SET utf8,
+  `field_contact_postalCode` text CHARACTER SET utf8,
+  `field_contact_location` text CHARACTER SET utf8,
+  `field_contact_mail` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `field_contact_phone` text CHARACTER SET utf8,
+  `field_contact_mobilePhone` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   UNIQUE KEY `matrixcontent_globalcontact_elementId_siteId_unq_idx` (`elementId`,`siteId`),
   KEY `matrixcontent_globalcontact_siteId_fk` (`siteId`),
   CONSTRAINT `matrixcontent_globalcontact_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `matrixcontent_globalcontact_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -1745,16 +1745,16 @@ CREATE TABLE `matrixcontent_globalnavigationmain` (
   `siteId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
-  `field_menuItem_menuItem` text,
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `field_menuItem_menuItem` text CHARACTER SET utf8,
   `field_menuItem_isActivated` tinyint(1) DEFAULT NULL,
-  `field_menuItem_highlightTriggers` text,
+  `field_menuItem_highlightTriggers` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   UNIQUE KEY `matrixcontent_globalnavigationmain_elementId_siteId_unq_idx` (`elementId`,`siteId`),
   KEY `matrixcontent_globalnavigationmain_siteId_fk` (`siteId`),
   CONSTRAINT `matrixcontent_globalnavigationmain_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `matrixcontent_globalnavigationmain_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -1769,7 +1769,7 @@ CREATE TABLE `matrixcontent_globalwatermark` (
   `siteId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   `field_watermark_offsetXAxis` int(10) DEFAULT NULL,
   `field_watermark_offsetYAxis` int(10) DEFAULT NULL,
   `field_watermark_width` int(10) DEFAULT NULL,
@@ -1781,7 +1781,7 @@ CREATE TABLE `matrixcontent_globalwatermark` (
   KEY `matrixcontent_globalwatermark_siteId_fk` (`siteId`),
   CONSTRAINT `matrixcontent_globalwatermark_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `matrixcontent_globalwatermark_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `matrixcontent_globalwatermark` WRITE;
 /*!40000 ALTER TABLE `matrixcontent_globalwatermark` DISABLE KEYS */;
@@ -1802,17 +1802,17 @@ DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pluginId` int(11) DEFAULT NULL,
-  `type` enum('app','plugin','content') NOT NULL DEFAULT 'app',
-  `name` varchar(255) NOT NULL,
+  `type` enum('app','plugin','content') CHARACTER SET utf8 NOT NULL DEFAULT 'app',
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `applyTime` datetime NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `migrations_pluginId_idx` (`pluginId`),
   KEY `migrations_type_pluginId_idx` (`type`,`pluginId`),
   CONSTRAINT `migrations_pluginId_fk` FOREIGN KEY (`pluginId`) REFERENCES `plugins` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
@@ -1921,7 +1921,13 @@ VALUES
 	(102,41,'plugin','m180219_000000_sites','2018-02-20 16:41:02','2018-02-20 16:41:02','2018-02-20 16:41:02','c5f56131-9af1-4869-9c65-817552375dd0'),
 	(103,41,'plugin','m180220_000000_fix_context','2018-02-20 16:41:02','2018-02-20 16:41:02','2018-02-20 16:41:02','21f32fb4-80fe-43ff-ab60-b8b570754bb7'),
 	(104,NULL,'app','m180217_172123_tiny_ints','2018-02-22 15:46:19','2018-02-22 15:46:19','2018-02-22 15:46:19','87ba6f51-0baa-4895-9872-10ab1a778aae'),
-	(105,54,'plugin','Install','2018-03-03 22:46:29','2018-03-03 22:46:29','2018-03-03 22:46:29','4a21bf63-0fbb-44d6-ac1c-e231936c2085');
+	(105,54,'plugin','Install','2018-03-03 22:46:29','2018-03-03 22:46:29','2018-03-03 22:46:29','4a21bf63-0fbb-44d6-ac1c-e231936c2085'),
+	(106,NULL,'app','m180321_233505_small_ints','2018-06-26 10:03:46','2018-06-26 10:03:46','2018-06-26 10:03:46','00c27b2e-abde-444f-a957-eec1c86cfd6a'),
+	(107,NULL,'app','m180328_115523_new_license_key_statuses','2018-06-26 10:03:46','2018-06-26 10:03:46','2018-06-26 10:03:46','e7a1713c-b323-499e-96c1-75ab3dcc5b07'),
+	(108,NULL,'app','m180404_182320_edition_changes','2018-06-26 10:03:47','2018-06-26 10:03:47','2018-06-26 10:03:47','28edf050-344e-490b-84f8-07c86f5531e9'),
+	(109,NULL,'app','m180411_102218_fix_db_routes','2018-06-26 10:03:47','2018-06-26 10:03:47','2018-06-26 10:03:47','4d013761-2e58-4e30-aa8f-315cfee0b285'),
+	(110,NULL,'app','m180416_205628_resourcepaths_table','2018-06-26 10:03:47','2018-06-26 10:03:47','2018-06-26 10:03:47','d5ae91da-2393-489c-8d09-c9599c515bdd'),
+	(111,NULL,'app','m180418_205713_widget_cleanup','2018-06-26 10:03:47','2018-06-26 10:03:47','2018-06-26 10:03:47','e6eb251e-3d8a-4549-aae1-aecad61f2e41');
 
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1934,21 +1940,21 @@ DROP TABLE IF EXISTS `plugins`;
 
 CREATE TABLE `plugins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `handle` varchar(255) NOT NULL,
-  `version` varchar(255) NOT NULL,
-  `schemaVersion` varchar(255) NOT NULL,
-  `licenseKey` char(24) DEFAULT NULL,
-  `licenseKeyStatus` enum('valid','invalid','mismatched','unknown') NOT NULL DEFAULT 'unknown',
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `version` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `schemaVersion` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `licenseKey` char(24) CHARACTER SET utf8 DEFAULT NULL,
+  `licenseKeyStatus` enum('valid','invalid','mismatched','astray','unknown') CHARACTER SET utf8 NOT NULL DEFAULT 'unknown',
   `enabled` tinyint(1) NOT NULL DEFAULT '0',
-  `settings` text,
+  `settings` text CHARACTER SET utf8,
   `installDate` datetime NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `plugins_handle_unq_idx` (`handle`),
   KEY `plugins_enabled_idx` (`enabled`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `plugins` WRITE;
 /*!40000 ALTER TABLE `plugins` DISABLE KEYS */;
@@ -2001,7 +2007,7 @@ DROP TABLE IF EXISTS `queue`;
 CREATE TABLE `queue` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `job` longblob NOT NULL,
-  `description` text,
+  `description` text CHARACTER SET utf8,
   `timePushed` int(11) NOT NULL,
   `ttr` int(11) NOT NULL,
   `delay` int(11) NOT NULL DEFAULT '0',
@@ -2012,11 +2018,11 @@ CREATE TABLE `queue` (
   `attempt` int(11) DEFAULT NULL,
   `fail` tinyint(1) DEFAULT '0',
   `dateFailed` datetime DEFAULT NULL,
-  `error` text,
+  `error` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   KEY `queue_fail_timeUpdated_timePushed_idx` (`fail`,`timeUpdated`,`timePushed`),
   KEY `queue_fail_timeUpdated_delay_idx` (`fail`,`timeUpdated`,`delay`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -2031,10 +2037,10 @@ CREATE TABLE `relations` (
   `sourceId` int(11) NOT NULL,
   `sourceSiteId` int(11) DEFAULT NULL,
   `targetId` int(11) NOT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `relations_fieldId_sourceId_sourceSiteId_targetId_unq_idx` (`fieldId`,`sourceId`,`sourceSiteId`,`targetId`),
   KEY `relations_sourceId_idx` (`sourceId`),
@@ -2044,7 +2050,7 @@ CREATE TABLE `relations` (
   CONSTRAINT `relations_sourceId_fk` FOREIGN KEY (`sourceId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `relations_sourceSiteId_fk` FOREIGN KEY (`sourceSiteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `relations_targetId_fk` FOREIGN KEY (`targetId`) REFERENCES `elements` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `relations` WRITE;
 /*!40000 ALTER TABLE `relations` DISABLE KEYS */;
@@ -2096,6 +2102,42 @@ VALUES
 UNLOCK TABLES;
 
 
+# Export von Tabelle resourcepaths
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `resourcepaths`;
+
+CREATE TABLE `resourcepaths` (
+  `hash` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `resourcepaths` WRITE;
+/*!40000 ALTER TABLE `resourcepaths` DISABLE KEYS */;
+
+INSERT INTO `resourcepaths` (`hash`, `path`)
+VALUES
+	('19df0757','@lib/garnishjs'),
+	('23630c42','@lib/jquery-touch-events'),
+	('24c73080','@lib/picturefill'),
+	('2a6210d1','@lib/d3'),
+	('3c2f317e','@lib/fileupload'),
+	('70b91d04','@lib/selectize'),
+	('7696384d','@craft/web/assets/cp/dist'),
+	('7ad5598e','@lib/xregexp'),
+	('87fda7f2','@lib/element-resize-detector'),
+	('a5c55492','@lib/jquery.payment'),
+	('a86d0c07','@bower/jquery/dist'),
+	('b9e2fb7a','@lib/velocity'),
+	('c342a018','@craft/web/assets/login/dist'),
+	('c99d369','@lib/fabric'),
+	('f74b60df','@lib/jquery-ui');
+
+/*!40000 ALTER TABLE `resourcepaths` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Export von Tabelle routes
 # ------------------------------------------------------------
 
@@ -2104,18 +2146,18 @@ DROP TABLE IF EXISTS `routes`;
 CREATE TABLE `routes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `siteId` int(11) DEFAULT NULL,
-  `uriParts` varchar(255) NOT NULL,
-  `uriPattern` varchar(255) NOT NULL,
-  `template` varchar(500) NOT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `uriParts` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `uriPattern` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `template` varchar(500) CHARACTER SET utf8 NOT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `routes_uriPattern_idx` (`uriPattern`),
   KEY `routes_siteId_idx` (`siteId`),
   CONSTRAINT `routes_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -2126,13 +2168,13 @@ DROP TABLE IF EXISTS `searchindex`;
 
 CREATE TABLE `searchindex` (
   `elementId` int(11) NOT NULL,
-  `attribute` varchar(25) NOT NULL,
+  `attribute` varchar(25) CHARACTER SET utf8 NOT NULL,
   `fieldId` int(11) NOT NULL,
   `siteId` int(11) NOT NULL,
-  `keywords` text NOT NULL,
+  `keywords` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`elementId`,`attribute`,`fieldId`,`siteId`),
   FULLTEXT KEY `searchindex_keywords_idx` (`keywords`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `searchindex` WRITE;
 /*!40000 ALTER TABLE `searchindex` DISABLE KEYS */;
@@ -2662,20 +2704,20 @@ DROP TABLE IF EXISTS `sections`;
 CREATE TABLE `sections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `structureId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
-  `type` enum('single','channel','structure') NOT NULL DEFAULT 'channel',
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `type` enum('single','channel','structure') CHARACTER SET utf8 NOT NULL DEFAULT 'channel',
   `enableVersioning` tinyint(1) NOT NULL DEFAULT '0',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   `propagateEntries` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sections_handle_unq_idx` (`handle`),
   UNIQUE KEY `sections_name_unq_idx` (`name`),
   KEY `sections_structureId_idx` (`structureId`),
   CONSTRAINT `sections_structureId_fk` FOREIGN KEY (`structureId`) REFERENCES `structures` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `sections` WRITE;
 /*!40000 ALTER TABLE `sections` DISABLE KEYS */;
@@ -2701,17 +2743,17 @@ CREATE TABLE `sections_sites` (
   `siteId` int(11) NOT NULL,
   `enabledByDefault` tinyint(1) NOT NULL DEFAULT '1',
   `hasUrls` tinyint(1) NOT NULL DEFAULT '1',
-  `uriFormat` text,
-  `template` varchar(500) DEFAULT NULL,
+  `uriFormat` text CHARACTER SET utf8,
+  `template` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sections_sites_sectionId_siteId_unq_idx` (`sectionId`,`siteId`),
   KEY `sections_sites_siteId_idx` (`siteId`),
   CONSTRAINT `sections_sites_sectionId_fk` FOREIGN KEY (`sectionId`) REFERENCES `sections` (`id`) ON DELETE CASCADE,
   CONSTRAINT `sections_sites_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `sections_sites` WRITE;
 /*!40000 ALTER TABLE `sections_sites` DISABLE KEYS */;
@@ -2735,31 +2777,31 @@ CREATE TABLE `seomatic_metabundles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
-  `bundleVersion` varchar(255) NOT NULL DEFAULT '',
-  `sourceBundleType` varchar(255) NOT NULL DEFAULT '',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `bundleVersion` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `sourceBundleType` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `sourceId` int(11) DEFAULT NULL,
-  `sourceName` varchar(255) NOT NULL DEFAULT '',
-  `sourceHandle` varchar(64) NOT NULL DEFAULT '',
-  `sourceType` varchar(64) NOT NULL DEFAULT '',
-  `sourceTemplate` varchar(500) DEFAULT '',
+  `sourceName` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `sourceHandle` varchar(64) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `sourceType` varchar(64) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `sourceTemplate` varchar(500) CHARACTER SET utf8 DEFAULT '',
   `sourceSiteId` int(11) DEFAULT NULL,
-  `sourceAltSiteSettings` text,
+  `sourceAltSiteSettings` text CHARACTER SET utf8,
   `sourceDateUpdated` datetime NOT NULL,
-  `metaGlobalVars` text,
-  `metaSiteVars` text,
-  `metaSitemapVars` text,
-  `metaContainers` text,
-  `redirectsContainer` text,
-  `frontendTemplatesContainer` text,
-  `metaBundleSettings` text,
+  `metaGlobalVars` text CHARACTER SET utf8,
+  `metaSiteVars` text CHARACTER SET utf8,
+  `metaSitemapVars` text CHARACTER SET utf8,
+  `metaContainers` text CHARACTER SET utf8,
+  `redirectsContainer` text CHARACTER SET utf8,
+  `frontendTemplatesContainer` text CHARACTER SET utf8,
+  `metaBundleSettings` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   KEY `seomatic_metabundles_sourceBundleType_idx` (`sourceBundleType`),
   KEY `seomatic_metabundles_sourceId_idx` (`sourceId`),
   KEY `seomatic_metabundles_sourceSiteId_idx` (`sourceSiteId`),
   KEY `seomatic_metabundles_sourceHandle_idx` (`sourceHandle`),
   CONSTRAINT `seomatic_metabundles_sourceSiteId_fk` FOREIGN KEY (`sourceSiteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `seomatic_metabundles` WRITE;
 /*!40000 ALTER TABLE `seomatic_metabundles` DISABLE KEYS */;
@@ -2784,17 +2826,17 @@ DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `token` char(100) NOT NULL,
+  `token` char(100) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `sessions_uid_idx` (`uid`),
   KEY `sessions_token_idx` (`token`),
   KEY `sessions_dateUpdated_idx` (`dateUpdated`),
   KEY `sessions_userId_idx` (`userId`),
   CONSTRAINT `sessions_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
@@ -2825,15 +2867,15 @@ DROP TABLE IF EXISTS `shunnedmessages`;
 CREATE TABLE `shunnedmessages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8 NOT NULL,
   `expiryDate` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `shunnedmessages_userId_message_unq_idx` (`userId`,`message`),
   CONSTRAINT `shunnedmessages_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -2844,13 +2886,13 @@ DROP TABLE IF EXISTS `sitegroups`;
 
 CREATE TABLE `sitegroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sitegroups_name_unq_idx` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `sitegroups` WRITE;
 /*!40000 ALTER TABLE `sitegroups` DISABLE KEYS */;
@@ -2872,21 +2914,21 @@ CREATE TABLE `sites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `groupId` int(11) NOT NULL,
   `primary` tinyint(1) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
-  `language` varchar(12) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `language` varchar(12) CHARACTER SET utf8 NOT NULL,
   `hasUrls` tinyint(1) NOT NULL DEFAULT '0',
-  `baseUrl` varchar(255) DEFAULT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `baseUrl` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sites_handle_unq_idx` (`handle`),
   KEY `sites_sortOrder_idx` (`sortOrder`),
   KEY `sites_groupId_fk` (`groupId`),
   CONSTRAINT `sites_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `sitegroups` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `sites` WRITE;
 /*!40000 ALTER TABLE `sites` DISABLE KEYS */;
@@ -2911,13 +2953,13 @@ CREATE TABLE `snitch_collisions` (
   `whenEntered` datetime NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `snitch_collisions_userId_fk` (`userId`),
   KEY `snitch_collisions_elementId_fk` (`elementId`),
   CONSTRAINT `snitch_collisions_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `snitch_collisions_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `snitch_collisions` WRITE;
 /*!40000 ALTER TABLE `snitch_collisions` DISABLE KEYS */;
@@ -2945,7 +2987,7 @@ CREATE TABLE `structureelements` (
   `level` smallint(6) unsigned NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `structureelements_structureId_elementId_unq_idx` (`structureId`,`elementId`),
   KEY `structureelements_root_idx` (`root`),
@@ -2955,7 +2997,7 @@ CREATE TABLE `structureelements` (
   KEY `structureelements_elementId_idx` (`elementId`),
   CONSTRAINT `structureelements_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `structureelements_structureId_fk` FOREIGN KEY (`structureId`) REFERENCES `structures` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `structureelements` WRITE;
 /*!40000 ALTER TABLE `structureelements` DISABLE KEYS */;
@@ -2983,9 +3025,9 @@ CREATE TABLE `structures` (
   `maxLevels` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `structures` WRITE;
 /*!40000 ALTER TABLE `structures` DISABLE KEYS */;
@@ -3013,7 +3055,7 @@ CREATE TABLE `supertableblocks` (
   `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `supertableblocks_ownerId_idx` (`ownerId`),
   KEY `supertableblocks_fieldId_idx` (`fieldId`),
@@ -3024,7 +3066,7 @@ CREATE TABLE `supertableblocks` (
   CONSTRAINT `supertableblocks_ownerId_fk` FOREIGN KEY (`ownerId`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `supertableblocks_ownerSiteId_fk` FOREIGN KEY (`ownerSiteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `supertableblocks_typeId_fk` FOREIGN KEY (`typeId`) REFERENCES `supertableblocktypes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3039,13 +3081,13 @@ CREATE TABLE `supertableblocktypes` (
   `fieldLayoutId` int(11) DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `supertableblocktypes_fieldId_idx` (`fieldId`),
   KEY `supertableblocktypes_fieldLayoutId_idx` (`fieldLayoutId`),
   CONSTRAINT `supertableblocktypes_fieldId_fk` FOREIGN KEY (`fieldId`) REFERENCES `fields` (`id`) ON DELETE CASCADE,
   CONSTRAINT `supertableblocktypes_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3056,17 +3098,17 @@ DROP TABLE IF EXISTS `systemmessages`;
 
 CREATE TABLE `systemmessages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `language` varchar(255) NOT NULL,
-  `key` varchar(255) NOT NULL,
-  `subject` text NOT NULL,
-  `body` text NOT NULL,
+  `language` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `subject` text CHARACTER SET utf8 NOT NULL,
+  `body` text CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `systemmessages_key_language_unq_idx` (`key`,`language`),
   KEY `systemmessages_language_idx` (`language`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3077,14 +3119,14 @@ DROP TABLE IF EXISTS `systemsettings`;
 
 CREATE TABLE `systemsettings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(15) NOT NULL,
-  `settings` text,
+  `category` varchar(15) CHARACTER SET utf8 NOT NULL,
+  `settings` text CHARACTER SET utf8,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `systemsettings_category_unq_idx` (`category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `systemsettings` WRITE;
 /*!40000 ALTER TABLE `systemsettings` DISABLE KEYS */;
@@ -3105,18 +3147,18 @@ DROP TABLE IF EXISTS `taggroups`;
 
 CREATE TABLE `taggroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
   `fieldLayoutId` int(11) DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `taggroups_name_unq_idx` (`name`),
   UNIQUE KEY `taggroups_handle_unq_idx` (`handle`),
   KEY `taggroups_fieldLayoutId_fk` (`fieldLayoutId`),
   CONSTRAINT `taggroups_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3130,12 +3172,12 @@ CREATE TABLE `tags` (
   `groupId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `tags_groupId_idx` (`groupId`),
   CONSTRAINT `tags_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `taggroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `tags_id_fk` FOREIGN KEY (`id`) REFERENCES `elements` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3151,7 +3193,7 @@ CREATE TABLE `templatecacheelements` (
   KEY `templatecacheelements_elementId_idx` (`elementId`),
   CONSTRAINT `templatecacheelements_cacheId_fk` FOREIGN KEY (`cacheId`) REFERENCES `templatecaches` (`id`) ON DELETE CASCADE,
   CONSTRAINT `templatecacheelements_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `elements` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3163,13 +3205,13 @@ DROP TABLE IF EXISTS `templatecachequeries`;
 CREATE TABLE `templatecachequeries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cacheId` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `query` longtext NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `query` longtext CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   KEY `templatecachequeries_cacheId_idx` (`cacheId`),
   KEY `templatecachequeries_type_idx` (`type`),
   CONSTRAINT `templatecachequeries_cacheId_fk` FOREIGN KEY (`cacheId`) REFERENCES `templatecaches` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3181,16 +3223,16 @@ DROP TABLE IF EXISTS `templatecaches`;
 CREATE TABLE `templatecaches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `siteId` int(11) NOT NULL,
-  `cacheKey` varchar(255) NOT NULL,
-  `path` varchar(255) DEFAULT NULL,
+  `cacheKey` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `expiryDate` datetime NOT NULL,
-  `body` mediumtext NOT NULL,
+  `body` mediumtext CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   KEY `templatecaches_cacheKey_siteId_expiryDate_path_idx` (`cacheKey`,`siteId`,`expiryDate`,`path`),
   KEY `templatecaches_cacheKey_siteId_expiryDate_idx` (`cacheKey`,`siteId`,`expiryDate`),
   KEY `templatecaches_siteId_idx` (`siteId`),
   CONSTRAINT `templatecaches_siteId_fk` FOREIGN KEY (`siteId`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3201,18 +3243,18 @@ DROP TABLE IF EXISTS `tokens`;
 
 CREATE TABLE `tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `token` char(32) NOT NULL,
-  `route` text,
+  `token` char(32) CHARACTER SET utf8 NOT NULL,
+  `route` text CHARACTER SET utf8,
   `usageLimit` tinyint(3) unsigned DEFAULT NULL,
   `usageCount` tinyint(3) unsigned DEFAULT NULL,
   `expiryDate` datetime NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tokens_token_unq_idx` (`token`),
   KEY `tokens_expiryDate_idx` (`expiryDate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3223,15 +3265,15 @@ DROP TABLE IF EXISTS `usergroups`;
 
 CREATE TABLE `usergroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `usergroups_handle_unq_idx` (`handle`),
   UNIQUE KEY `usergroups_name_unq_idx` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `usergroups` WRITE;
 /*!40000 ALTER TABLE `usergroups` DISABLE KEYS */;
@@ -3256,13 +3298,13 @@ CREATE TABLE `usergroups_users` (
   `userId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `usergroups_users_groupId_userId_unq_idx` (`groupId`,`userId`),
   KEY `usergroups_users_userId_idx` (`userId`),
   CONSTRAINT `usergroups_users_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `usergroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `usergroups_users_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3273,13 +3315,13 @@ DROP TABLE IF EXISTS `userpermissions`;
 
 CREATE TABLE `userpermissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `userpermissions_name_unq_idx` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `userpermissions` WRITE;
 /*!40000 ALTER TABLE `userpermissions` DISABLE KEYS */;
@@ -3375,13 +3417,13 @@ CREATE TABLE `userpermissions_usergroups` (
   `groupId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `userpermissions_usergroups_permissionId_groupId_unq_idx` (`permissionId`,`groupId`),
   KEY `userpermissions_usergroups_groupId_idx` (`groupId`),
   CONSTRAINT `userpermissions_usergroups_groupId_fk` FOREIGN KEY (`groupId`) REFERENCES `usergroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `userpermissions_usergroups_permissionId_fk` FOREIGN KEY (`permissionId`) REFERENCES `userpermissions` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `userpermissions_usergroups` WRITE;
 /*!40000 ALTER TABLE `userpermissions_usergroups` DISABLE KEYS */;
@@ -3530,13 +3572,13 @@ CREATE TABLE `userpermissions_users` (
   `userId` int(11) NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `userpermissions_users_permissionId_userId_unq_idx` (`permissionId`,`userId`),
   KEY `userpermissions_users_userId_idx` (`userId`),
   CONSTRAINT `userpermissions_users_permissionId_fk` FOREIGN KEY (`permissionId`) REFERENCES `userpermissions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `userpermissions_users_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3547,10 +3589,10 @@ DROP TABLE IF EXISTS `userpreferences`;
 
 CREATE TABLE `userpreferences` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
-  `preferences` text,
+  `preferences` text CHARACTER SET utf8,
   PRIMARY KEY (`userId`),
   CONSTRAINT `userpreferences_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `userpreferences` WRITE;
 /*!40000 ALTER TABLE `userpreferences` DISABLE KEYS */;
@@ -3570,31 +3612,31 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `username` varchar(100) CHARACTER SET utf8 NOT NULL,
   `photoId` int(11) DEFAULT NULL,
-  `firstName` varchar(100) DEFAULT NULL,
-  `lastName` varchar(100) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `firstName` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `lastName` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
-  `client` tinyint(1) NOT NULL DEFAULT '0',
   `locked` tinyint(1) NOT NULL DEFAULT '0',
   `suspended` tinyint(1) NOT NULL DEFAULT '0',
   `pending` tinyint(1) NOT NULL DEFAULT '0',
   `lastLoginDate` datetime DEFAULT NULL,
-  `lastLoginAttemptIp` varchar(45) DEFAULT NULL,
+  `lastLoginAttemptIp` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `invalidLoginWindowStart` datetime DEFAULT NULL,
   `invalidLoginCount` tinyint(3) unsigned DEFAULT NULL,
   `lastInvalidLoginDate` datetime DEFAULT NULL,
   `lockoutDate` datetime DEFAULT NULL,
-  `verificationCode` varchar(255) DEFAULT NULL,
+  `hasDashboard` tinyint(1) NOT NULL DEFAULT '0',
+  `verificationCode` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `verificationCodeIssuedDate` datetime DEFAULT NULL,
-  `unverifiedEmail` varchar(255) DEFAULT NULL,
+  `unverifiedEmail` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `passwordResetRequired` tinyint(1) NOT NULL DEFAULT '0',
   `lastPasswordChangeDate` datetime DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_username_unq_idx` (`username`),
   UNIQUE KEY `users_email_unq_idx` (`email`),
@@ -3603,14 +3645,14 @@ CREATE TABLE `users` (
   KEY `users_photoId_fk` (`photoId`),
   CONSTRAINT `users_id_fk` FOREIGN KEY (`id`) REFERENCES `elements` (`id`) ON DELETE CASCADE,
   CONSTRAINT `users_photoId_fk` FOREIGN KEY (`photoId`) REFERENCES `assets` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `username`, `photoId`, `firstName`, `lastName`, `email`, `password`, `admin`, `client`, `locked`, `suspended`, `pending`, `lastLoginDate`, `lastLoginAttemptIp`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
+INSERT INTO `users` (`id`, `username`, `photoId`, `firstName`, `lastName`, `email`, `password`, `admin`, `locked`, `suspended`, `pending`, `lastLoginDate`, `lastLoginAttemptIp`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `hasDashboard`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,0,'2018-03-06 13:08:34','127.0.0.1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-03-06 13:08:34','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
+	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,'2018-03-06 13:08:34','127.0.0.1',NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-03-06 13:08:34','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3625,18 +3667,18 @@ CREATE TABLE `volumefolders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parentId` int(11) DEFAULT NULL,
   `volumeId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `path` varchar(255) DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `volumefolders_name_parentId_volumeId_unq_idx` (`name`,`parentId`,`volumeId`),
   KEY `volumefolders_parentId_idx` (`parentId`),
   KEY `volumefolders_volumeId_idx` (`volumeId`),
   CONSTRAINT `volumefolders_parentId_fk` FOREIGN KEY (`parentId`) REFERENCES `volumefolders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `volumefolders_volumeId_fk` FOREIGN KEY (`volumeId`) REFERENCES `volumes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `volumefolders` WRITE;
 /*!40000 ALTER TABLE `volumefolders` DISABLE KEYS */;
@@ -3662,22 +3704,22 @@ DROP TABLE IF EXISTS `volumes`;
 CREATE TABLE `volumes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fieldLayoutId` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `handle` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `handle` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
   `hasUrls` tinyint(1) NOT NULL DEFAULT '1',
-  `url` varchar(255) DEFAULT NULL,
-  `settings` text,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `settings` text CHARACTER SET utf8,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `volumes_name_unq_idx` (`name`),
   UNIQUE KEY `volumes_handle_unq_idx` (`handle`),
   KEY `volumes_fieldLayoutId_idx` (`fieldLayoutId`),
   CONSTRAINT `volumes_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `fieldlayouts` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `volumes` WRITE;
 /*!40000 ALTER TABLE `volumes` DISABLE KEYS */;
@@ -3701,29 +3743,27 @@ DROP TABLE IF EXISTS `widgets`;
 CREATE TABLE `widgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `sortOrder` tinyint(3) unsigned DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `sortOrder` smallint(6) unsigned DEFAULT NULL,
   `colspan` tinyint(1) NOT NULL DEFAULT '0',
-  `settings` text,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `settings` text CHARACTER SET utf8,
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
-  `uid` char(36) NOT NULL DEFAULT '0',
+  `uid` char(36) CHARACTER SET utf8 NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `widgets_userId_idx` (`userId`),
   CONSTRAINT `widgets_userId_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `widgets` WRITE;
 /*!40000 ALTER TABLE `widgets` DISABLE KEYS */;
 
-INSERT INTO `widgets` (`id`, `userId`, `type`, `sortOrder`, `colspan`, `settings`, `enabled`, `dateCreated`, `dateUpdated`, `uid`)
+INSERT INTO `widgets` (`id`, `userId`, `type`, `sortOrder`, `colspan`, `settings`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,1,'craft\\widgets\\RecentEntries',2,2,'{\"section\":\"*\",\"siteId\":\"1\",\"limit\":10}',1,'2017-12-06 09:19:34','2018-01-07 21:19:46','d0b81709-9fd7-4701-968b-5b4f6e41ecd2'),
-	(2,1,'craft\\widgets\\CraftSupport',3,2,'[]',1,'2017-12-06 09:19:34','2018-01-07 21:19:50','da173236-2c7f-4d2e-a54c-84468ac7c0d2'),
-	(3,1,'craft\\widgets\\Updates',4,2,'[]',1,'2017-12-06 09:19:34','2018-01-07 21:19:52','0545b0ad-0436-490a-bade-f1fc62487276'),
-	(4,1,'craft\\widgets\\Feed',5,2,'{\"url\":\"https://craftcms.com/news.rss\",\"title\":\"Craft News\",\"limit\":5}',1,'2017-12-06 09:19:34','2018-01-07 21:19:52','0e9d2453-0977-4a42-ba1d-d5eaab7b6713'),
-	(5,1,'craft\\widgets\\QuickPost',1,2,'{\"section\":\"2\",\"entryType\":\"\",\"fields\":[\"58\",\"50\",\"48\",\"2\",\"1\"]}',0,'2017-12-22 01:19:51','2018-01-07 21:19:35','8ac97574-ccca-40de-bd4e-acdd013d1767');
+	(1,1,'craft\\widgets\\RecentEntries',2,2,'{\"section\":\"*\",\"siteId\":\"1\",\"limit\":10}','2017-12-06 09:19:34','2018-01-07 21:19:46','d0b81709-9fd7-4701-968b-5b4f6e41ecd2'),
+	(2,1,'craft\\widgets\\CraftSupport',3,2,'[]','2017-12-06 09:19:34','2018-01-07 21:19:50','da173236-2c7f-4d2e-a54c-84468ac7c0d2'),
+	(3,1,'craft\\widgets\\Updates',4,2,'[]','2017-12-06 09:19:34','2018-01-07 21:19:52','0545b0ad-0436-490a-bade-f1fc62487276'),
+	(4,1,'craft\\widgets\\Feed',5,2,'{\"url\":\"https://craftcms.com/news.rss\",\"title\":\"Craft News\",\"limit\":5}','2017-12-06 09:19:34','2018-01-07 21:19:52','0e9d2453-0977-4a42-ba1d-d5eaab7b6713');
 
 /*!40000 ALTER TABLE `widgets` ENABLE KEYS */;
 UNLOCK TABLES;
