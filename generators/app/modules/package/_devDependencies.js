@@ -69,7 +69,6 @@ function addDevDependencies(files = {}) {
             'gulp-svg-sprite': '^1.2.19',
             'gulp-twig': '^1.1.1',
             'gulp-uglify': '^3.0.0',
-            'gulp-util': '^3.0.7',
             'gulp-watch': '^4.3.5',
             'html-webpack-plugin': '^2.30.1',
             'http-proxy-middleware': '^0.17.4',
