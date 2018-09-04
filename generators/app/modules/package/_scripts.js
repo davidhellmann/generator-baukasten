@@ -39,7 +39,8 @@ function addNPMScripts(files = {}, context) {
             'backup:db': './___dist/craft-scripts/backup_db.sh',
             'backup:assets': './___dist/craft-scripts/backup_assets.sh',
             'backup:all': 'npm run backup:db && npm run backup:assets',
-            'clear:caches': './___dist/craft-scripts/clear_caches.sh'
+            'clear:caches': './___dist/craft-scripts/clear_caches.sh',
+            'install:plugins': 'cd ___dist && sh ./plugins.sh'
         }
     })
 }
