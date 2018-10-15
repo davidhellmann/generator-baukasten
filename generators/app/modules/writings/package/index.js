@@ -13,7 +13,6 @@ const addEngines = require('../../package/_engines')
 const addFaviconsSettings = require('../../package/_favicons')
 const addSystemFiles = require('../../package/_sytemFiles')
 const addInlineJSFiles = require('../../package/_inlineJS')
-const addJquerySettings = require('../../package/_jquery')
 const addMinifyImagesSettings = require('../../package/_minify')
 const addNPMScripts = require('../../package/_scripts')
 const addVueJS = require('../../package/_vueJS')
@@ -29,52 +28,47 @@ const writePackageJSON = () => {
     return {
         writing: (context) => {
             return new Promise((resolve) => {
-                logMessage({message: 'Writing package.json'})
+                logMessage({ message: 'Writing package.json' })
 
                 // Getting the template files
                 const pkg = context.fs.readJSON(context.templatePath('_package.json'), {})
                 // Write Settings into packackge.json
                 // Base Stuff
-                addBaseData({pkg}, context)
-                addProjectSettings({pkg}, context)
+                addBaseData({ pkg }, context)
+                addProjectSettings({ pkg }, context)
 
                 // NPM Scripts
-                addNPMScripts({pkg}, context)
+                addNPMScripts({ pkg }, context)
 
                 // Paths
-                addSrcPaths({pkg}, context)
+                addSrcPaths({ pkg }, context)
                 if (context.props.projectType === 'craftCMS3') {
-                    addDistPathsCraftCMS3({pkg})
+                    addDistPathsCraftCMS3({ pkg })
                 } else if (context.props.projectType === 'wordpress') {
-                    addDistPathsWordpress({pkg}, context)
+                    addDistPathsWordpress({ pkg }, context)
                 }
 
                 // Files
-                addSystemFiles({pkg})
-                addInlineJSFiles({pkg})
+                addSystemFiles({ pkg })
+                addInlineJSFiles({ pkg })
 
                 // Dependencies
-                addDependencies({pkg})
-                addDevDependencies({pkg})
-                addEngines({pkg})
-
-                // If jQuery True
-                if (context.props.projectjQuery === true) {
-                    addJquerySettings({pkg})
-                }
+                addDependencies({ pkg })
+                addDevDependencies({ pkg })
+                addEngines({ pkg })
 
                 // If VueJS True
                 if (context.props.projectVue === true) {
-                    addVueJS({pkg})
+                    addVueJS({ pkg })
                 }
 
                 // Project Settings
-                addFaviconsSettings({pkg}, context)
-                addMinifyImagesSettings({pkg})
-                addCriticalCSSSettings({pkg})
-                addCSSSettings({pkg})
-                addBrowserlistSettings({pkg})
-                addBrowserSyncSettings({pkg}, context)
+                addFaviconsSettings({ pkg }, context)
+                addMinifyImagesSettings({ pkg })
+                addCriticalCSSSettings({ pkg })
+                addCSSSettings({ pkg })
+                addBrowserlistSettings({ pkg })
+                addBrowserSyncSettings({ pkg }, context)
 
                 // Write package.json
                 context.fs.writeJSON(context.destinationPath('package.json'), pkg)
