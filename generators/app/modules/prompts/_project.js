@@ -116,15 +116,6 @@ Not a valid URL! Example: foobar.test (or .local / .localhost) — (HOSTNAME.TLD
             description: 'Do you want to use Vue.js?'
         }),
         default: true
-    },
-    {
-        type: 'confirm',
-        name: 'projectjQuery',
-        message: message({
-            headline: 'Project jQuery',
-            description: 'Do you want to use jQuery (newest Version)?'
-        }),
-        default: false
     }
 ];
 
