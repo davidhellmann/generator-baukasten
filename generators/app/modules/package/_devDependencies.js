@@ -3,12 +3,12 @@ const extend = require('deep-extend')
 function addDevDependencies(files = {}) {
     extend(files.pkg, {
         devDependencies: {
-            '@babel/core': '^7.0.0-beta.41',
-            '@babel/plugin-proposal-object-rest-spread': '^7.0.0-beta.41',
-            '@babel/plugin-syntax-dynamic-import': '^7.0.0-beta.41',
-            '@babel/polyfill': '^7.0.0-beta.41',
-            '@babel/preset-env': '^7.0.0-beta.41',
-            '@babel/register': '^7.0.0-beta.41',
+            '@babel/core': '^7.0.0',
+            '@babel/plugin-proposal-object-rest-spread': '^7.0.0',
+            '@babel/plugin-syntax-dynamic-import': '^7.0.0',
+            '@babel/polyfill': '^7.0.0',
+            '@babel/preset-env': '^7.0.0',
+            '@babel/register': '^7.0.0',
             'autoprefixer': '^7.1.6',
             'babel-eslint': '8.2.2',
             'babel-loader': '8.0.0-beta.2',
