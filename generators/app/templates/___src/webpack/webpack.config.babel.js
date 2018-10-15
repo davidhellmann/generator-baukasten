@@ -27,24 +27,24 @@ const { ifProduction, ifDevelopment } = getIfUtils(process.env.NODE_ENV);
 // der string wird benötigt um hot reloading nutzen zu können
 // der wird einfach an den entry point gehangen
 const hot_client =
-  'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true';
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true';
 
 // hier holen wir uns die dateien in die wir unsere Build Files
 // (app.23r23fwef23r.js und app.323r233.css zum beispiel injecten wollen,
 // also eine datei für den header und eine für den footer)
 // dann definieren wir noch wo die hinsollen und
 // bauen eine funktion die das plugin ausspuckt
-const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>;
-const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>;
-const headerFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
-const headerFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
-const scriptsFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
-const scriptsFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
+const inject_folder = <% if (projectType === 'wordpress') { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>;
+const fileExtension = <% if (projectType === 'wordpress') { %> '.php' <% } else { %> '.html' <% } %>;
+const headerFilenameSRC = <% if (projectType === 'wordpress') { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
+const headerFilenameDIST = <% if (projectType === 'wordpress') { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
+const scriptsFilenameSRC = <% if (projectType === 'wordpress') { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
+const scriptsFilenameDIST = <% if (projectType === 'wordpress') { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
 const folderDIST = pkg.dist.markup;
 
 const inject_templates = [
     {
-    // DIST File
+        // DIST File
         filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
 
         // SRC File
@@ -52,7 +52,7 @@ const inject_templates = [
         inject: false,
     },
     {
-    // DIST File
+        // DIST File
         filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
 
         // SRC File
@@ -148,7 +148,7 @@ module.exports = {
     },
 
     output: {
-    // in das verzeichnis kommt alles rein
+        // in das verzeichnis kommt alles rein
         path: resolve(`${pkg.dist.base}assets/`),
         publicPath: '/assets/',
         // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
@@ -171,7 +171,6 @@ module.exports = {
             // alias der auf den Standalone Build geht, falls du Vue ausserhalb von
             // Single File Components nutzen möchtest
             vue$: 'vue/dist/vue.esm.js',
-            MODULES: resolve(pkg.src.modules.base),
             CSS: resolve(pkg.src.css),
             '@': resolve(pkg.src.base),
             JS: resolve(pkg.src.js),
@@ -187,8 +186,8 @@ module.exports = {
     },
 
     module: {
-    // hier wird definiert mit welcher datei was gemacht wird
-    // das passiert über loader, hier kommen auch vue, css etc. rein später
+        // hier wird definiert mit welcher datei was gemacht wird
+        // das passiert über loader, hier kommen auch vue, css etc. rein später
         rules: [
             // als erstes ESLint für .js und .vue dateien
             {
@@ -302,8 +301,8 @@ module.exports = {
     },
 
     plugins: removeEmpty([
-    // Dateiname für das Extracted CSS von Vue
-    // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
+        // Dateiname für das Extracted CSS von Vue
+        // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
         ifProduction(
             new ExtractTextPlugin({
                 filename: 'css/[name].[chunkhash].min.css',
