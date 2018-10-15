@@ -29,7 +29,7 @@ const copyVectors = () => {
     .pipe(gulp.dest(pkg.src.images.svg.single + 'inline/'))
     .pipe(gulp.dest(vectorDist + 'inline/'))
     .pipe(gulp.dest(pkg.src.templates + '_partials/svg/'))
-    .pipe(gulp.dest(pkg.dist.markup + '_partials/svg/'));
+    .pipe(gulp.dest(pkg.dist.markup + '_partials/svg/'))
 }
 
 gulp.task('copy:svg-single', copyVectors)
