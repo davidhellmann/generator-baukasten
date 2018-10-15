@@ -11,6 +11,13 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
+            src: '___src/_craftCMS3/imager/craft-gonzo.php',
+            dest: '___dist/config/craft-gonzo.php'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
             src: '___src/_craftCMS3/image-optimize/image-optimize.php',
             dest: '___dist/config/image-optimize.php'
         },
