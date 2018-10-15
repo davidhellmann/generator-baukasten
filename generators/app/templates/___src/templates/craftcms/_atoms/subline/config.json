@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/headline/",
   "description": "headline Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-headline",
     "modifiers": [],
     "customClasses": [],

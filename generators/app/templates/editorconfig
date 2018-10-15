@@ -16,8 +16,12 @@ trim_trailing_whitespace = true
 indent_size = 4
 
 # JS Settings
-[*.{js, vue}]
+[*.js]
 indent_size = 4
+
+# Vue Settings
+[*.vue]
+indent_size = 2
 
 # Markdown Settings
 [*.md]

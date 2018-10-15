@@ -9,7 +9,12 @@
 @import '../../templates/_embeds/oneColumn/style';
 @import '../../templates/_embeds/twoColumns/style';
 
+// Views
+@import '../../templates/_views/home/style';
+
 // Atoms
+@import '../../templates/_atoms/button/style';
+@import '../../templates/_atoms/checkbox/style';
 @import '../../templates/_atoms/codeSnippet/style';
 @import '../../templates/_atoms/divider/style';
 @import '../../templates/_atoms/embed/style';
@@ -22,11 +27,14 @@
 @import '../../templates/_atoms/logo/style';
 @import '../../templates/_atoms/plainText/style';
 @import '../../templates/_atoms/preloader/style';
+@import '../../templates/_atoms/radio/style';
 @import '../../templates/_atoms/richText/style';
+@import '../../templates/_atoms/select/style';
 @import '../../templates/_atoms/subline/style';
 @import '../../templates/_atoms/svgIcon/style';
 @import '../../templates/_atoms/svgSprite/style';
 @import '../../templates/_atoms/tag/style';
+@import '../../templates/_atoms/textarea/style';
 
 // Molecules
 @import '../../templates/_molecules/caption/style';

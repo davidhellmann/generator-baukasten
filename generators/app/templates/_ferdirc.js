@@ -6,7 +6,7 @@ module.exports = {
         style: true,
         javascript: true,
         vue: false,
-        config: true
+        config: true,
     },
     fileHeader: {
         authors: pkg.authors,
@@ -40,7 +40,7 @@ module.exports = {
         config: {
             name: 'config',
             postfix: '',
-            extension: 'json',
+            extension: 'php',
             description: 'ferdi should create Config File'
         },
     },

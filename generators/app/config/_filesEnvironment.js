@@ -17,10 +17,6 @@ module.exports = {
             dest: '.gitignore'
         },
         {
-            src: '_labels.json',
-            dest: 'labels.json'
-        },
-        {
             src: 'editorconfig',
             dest: '.editorconfig'
         },
@@ -35,6 +31,10 @@ module.exports = {
         {
             src: 'eslintrc',
             dest: '.eslintrc'
+        },
+        {
+            src: '_prettierrc.js',
+            dest: 'prettierrc.js'
         },
         {
             src: 'eslintignore',

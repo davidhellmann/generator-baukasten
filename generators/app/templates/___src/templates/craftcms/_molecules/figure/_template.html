@@ -38,33 +38,33 @@
               {% for key, value in opt.data %}
                 {{- '  data-' ~ key ~ '=' ~ value -}}
               {% endfor %}
-       itemprop="associatedMedia"
-       itemscope itemtype="http://schema.org/ImageObject">
+       itemprop=" associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject">
 
-    <div class="{{- opt.cn ~ '__image' -}}">
-      {# -- image -- #}
-      {% include '_atoms/image/_template.html' with {
+  <div class="{{- opt.cn ~ '__image' -}}">
+    {# -- image -- #}
+    {% include '_atoms/image/_template.html' with {
+      opt: {
+        image: opt.image,
+        ratio: opt.ratio,
+        dominantColor: opt.dominantColor,
+        objectFit: opt.objectFit
+      }
+    } only %}
+  </div>
+
+  {% if opt.caption %}
+    <div class="{{- opt.cn ~ '__caption' -}}">
+      {# -- caption -- #}
+      {% include '_molecules/caption/_template.html' with {
         opt: {
-          image: opt.image,
-          ratio: opt.ratio,
-          dominantColor: opt.dominantColor,
-          objectFit: opt.objectFit
+          headline: opt.captionHeadline ?? null,
+          text: opt.captionText ?? null,
+          source: opt.captionSource ?? null,
+          sourceUrl: opt.captionSourceUrl ?? null
         }
       } only %}
     </div>
-
-    <div class="{{- opt.cn ~ '__caption' -}}">
-      {# -- caption -- #}
-      {% if opt.caption %}
-        {% include '_molecules/caption/_template.html' with {
-          opt: {
-            headline: opt.captionHeadline ?? null,
-            text: opt.captionText ?? null,
-            source: opt.captionSource ?? null,
-            sourceUrl: opt.captionSourceUrl ?? null
-          }
-        } only %}
-      {% endif %}
-    </div>
+  {% endif %}
   </div>
 {% endif %}

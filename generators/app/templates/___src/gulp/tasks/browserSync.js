@@ -28,14 +28,14 @@ const browserSyncTask = () => {
     browserSync.init({
         proxy: {
             target: pkg.browsersync.proxy,
-            ws: true
+            ws: true,
         },
         port: port(process.env.PWD),
         ghostMode: {
             clicks: true,
             forms: true,
             links: true,
-            scroll: true
+            scroll: true,
         },
         logLevel: 'info', // info, debug, warn, silent
         watchTask: true,
@@ -43,58 +43,58 @@ const browserSyncTask = () => {
         stream: true,
         middleware: [
             webpackDevMiddleware(bundler, {
-                quiet: true,
+                logLevel: 'silent',
                 path: webpackSettings.output.path,
                 publicPath: webpackSettings.output.publicPath,
                 stats: {
-                    colors: true
-                }
+                    colors: true,
+                },
             }),
             webpackHotMiddleware(bundler, {
-                log: () => {
-                }
-            })
+                log: false,
+            }),
         ],
         notify: {
             styles: [
-                'padding: 20px 40px;',
+                'padding: 10px 20px;',
                 'font-family: arial;',
                 'line-height: 1',
                 'position: fixed;',
-                'font-size: 16px;',
+                'font-size: 13px;',
                 'font-weight: bold',
                 'z-index: 9999;',
                 'top: inherit',
                 'border-radius: 0',
-                'right: 0;',
-                'bottom: 0;',
+                'left: 0;',
+                'bottom: 32px;',
                 'color: #fff;',
                 'background-color: rgba(255,0,0, .8)',
-                'text-transform: uppercase'
-            ]
-        },
-        files: [{
-            match: [
-                `${pkg.dist.markup}**/*.{html,php,twig,rss}`,
-                `${pkg.dist.css}**/*.{css}`,
-                `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`
+                'text-transform: uppercase',
             ],
-            fn(event, file) {
-                console.log(chalk`-> Event: {cyan ${event}}: {magenta ${file}}`)
-                if (event === 'change' && file.includes('.css')) {
-                    browserSync.reload('*.css')
-                }
-                if (event === 'change' && (
-                        file.includes('.php') ||
-                        file.includes('.html') ||
-                        file.includes('.twig')) ||
-                        file.includes('.json')
-                ) {
-                    browserSync.reload()
-                }
-            }
-        }]
-    })
+        },
+        files: [
+            {
+                match: [
+                    `${pkg.dist.markup}**/*.{html,php,twig,rss}`,
+                    `${pkg.dist.css}**/*.{css}`,
+                    `${pkg.dist.images.base}**/*.{jpg,jpeg,webp,gif,png,svg,ico}`,
+                ],
+                fn(event, file) {
+                    console.log(chalk`-> Event: {cyan ${event}}: {magenta ${file}}`);
+                    if (event === 'change' && file.includes('.css')) {
+                        browserSync.reload('*.css');
+                    }
+                    if (
+                        (event === 'change' &&
+              (file.includes('.php') || file.includes('.html') || file.includes('.twig'))) ||
+            file.includes('.json')
+                    ) {
+                        browserSync.reload();
+                    }
+                },
+            },
+        ],
+    });
 };
 
 gulp.task('browser-sync', browserSyncTask);

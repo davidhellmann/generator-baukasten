@@ -34,20 +34,6 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
-            src: '___src/scripts/lang/',
-            dest: 'scripts/lang/'
-        },
-        {
-            projectContext: [
-                'craftCMS3'
-            ],
-            src: '___src/scripts/module/',
-            dest: 'scripts/module/'
-        },
-        {
-            projectContext: [
-                'craftCMS3'
-            ],
             src: '___src/scripts/ferdi/',
             dest: 'scripts/ferdi/'
         },
@@ -72,6 +58,13 @@ module.exports = {
             ],
             src: '___src/_craftCMS3/craft-scripts/',
             dest: '___dist/craft-scripts/'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
+            src: '___src/_craftCMS3/_partials/',
+            dest: '___dist/config/_partials'
         },
         {
             projectContext: [

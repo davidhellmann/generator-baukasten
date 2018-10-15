@@ -4,7 +4,7 @@
   "type": "organism",
   "path": "_organisms/imageSlider/",
   "description": "imageSlider Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "o-imageSlider",
     "modifiers": [],
     "customClasses": [],

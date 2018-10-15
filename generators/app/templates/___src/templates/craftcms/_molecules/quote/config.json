@@ -4,7 +4,7 @@
   "type": "molecule",
   "path": "_molecules/quote/",
   "description": "quote Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "m-quote",
     "modifiers": [],
     "customClasses": [],

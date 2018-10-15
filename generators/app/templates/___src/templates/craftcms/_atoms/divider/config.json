@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/divider/",
   "description": "divider Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-divider",
     "modifiers": [],
     "customClasses": [],

@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/svgIcon/",
   "description": "svgIcon Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-svgIcon",
     "modifiers": [],
     "customClasses": [],

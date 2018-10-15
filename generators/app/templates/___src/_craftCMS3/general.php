@@ -50,7 +50,6 @@ return array(
         // ],
         // 'useEmailAsUsername' => true,
 
-
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
             '@basePath' => getenv('CRAFTENV_BASE_PATH'),
@@ -98,7 +97,7 @@ return array(
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'isSystemOn' => false,
+        'isSystemOn' => true,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],

@@ -27,7 +27,7 @@
             {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}"
             {% for key, value in opt.data %}
               {{ 'data-' ~ key ~ '=' ~ value }}
-            {% endfor %}> role="tablist">
+            {% endfor %} role="tablist">
   <div class="{{ opt.cn ~ '__item' }}" role="tab">
     <div class="{{ opt.cn ~ '__trigger' }}  js-accordionTrigger">
       <div class="{{ opt.cn ~ '__headline' }}">

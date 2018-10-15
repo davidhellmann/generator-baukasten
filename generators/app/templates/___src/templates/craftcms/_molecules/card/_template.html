@@ -17,7 +17,6 @@
   customClasses: [],
   data: {},
   js: null,
-  foo: null,
   item: null,
   image: null,
   content: null,
@@ -62,13 +61,13 @@
 
         {# -- Entry Intro -- #}
         {% if opt.item.entryIntroText ?? null %}
-          <p>
+
             {% include '_atoms/richText/_template.html' with {
               opt: {
-                text: opt.item.entryIntroText | striptags | truncateOnWord(140)
+                text: '<p>' ~ opt.item.entryIntroText | striptags | truncateOnWord(140) ~ '</p>'
               }
             } only %}
-          </p>
+
         {% endif %}
       {% endif %}
 

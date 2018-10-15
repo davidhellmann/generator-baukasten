@@ -4,7 +4,7 @@
   "type": "molecule",
   "path": "_molecules/definitionList/",
   "description": "definitionList Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "m-definitionList",
     "modifiers": [],
     "customClasses": [],

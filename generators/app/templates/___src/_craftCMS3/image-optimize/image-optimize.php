@@ -170,7 +170,7 @@ return [
         ],
     ],
 
-    // Staging (pre-production) environment
+    // Live (production) environment
     'live' => [
         //  What transform method should be used for image transforms?
         'transformMethod' => 'craft',
@@ -182,7 +182,7 @@ return [
         'transformMethod' => 'craft',
     ],
 
-    // Staging (pre-production) environment
+    // Local (development) environment
     'local' => [
         //  What transform method should be used for image transforms?
         'transformMethod' => 'craft',

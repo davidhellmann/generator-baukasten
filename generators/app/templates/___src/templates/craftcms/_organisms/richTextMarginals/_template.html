@@ -17,8 +17,8 @@
   customClasses: [],
   data: {},
   js: null,
+  text: null,
   marginals: null,
-  text: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -33,19 +33,17 @@
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
 
     {# -- Marginal First -- #}
-    {% if opt.marginals.total >= 1 %}
-      {% set marginalFirst = opt.marginals.first() ?? null %}
-      {% if marginalFirst.children ?? null %}
-        {% for marginalContent in marginalFirst.children %}
-          <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--first' }}">
-            {% include '_contentBuilders/_contentBuilderModules.html' with { data: marginalContent } only %}
-          </aside>
-        {% endfor %}
+    {% if opt.marginals | length >= 1 %}
+      {% set marginalFirst = opt.marginals.marginal[0] ?? null %}
+      {% if marginalFirst ?? null %}
+        <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--first' }}">
+          {% include '_contentBuilders/_contentBuilderModulesMatrix.html' with { data: marginalFirst } only %}
+        </aside>
       {% endif %}
     {% endif %}
 
@@ -55,14 +53,12 @@
     </div>
 
     {# -- Marginal Last -- #}
-    {% if opt.marginals.total > 1 %}
-      {% set marginalLast = opt.marginals.last() ?? null %}
-      {% if marginalLast.children ?? null %}
-        {% for marginalContent in marginalLast.children %}
-          <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--last' }}">
-            {% include '_contentBuilders/_contentBuilderModules.html' with { data: marginalContent } only %}
-          </aside>
-        {% endfor %}
+    {% if opt.marginals | length > 1 %}
+      {% set marginalLast = opt.marginals.marginal[0] ?? null %}
+      {% if marginalLast ?? null %}
+        <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--last' }}">
+          {% include '_contentBuilders/_contentBuilderModulesMatrix.html' with { data: marginalLast } only %}
+        </aside>
       {% endif %}
     {% endif %}
   </div>

@@ -128,7 +128,7 @@
           data.alignment ?? null,
           data.width ?? null
         ],
-        image: data.image.one() ?? null,
+        image: data.image.one() ?? data.imageST.one() ?? null,
         ratio: data.ratio ?? null,
         caption: data.caption ?? null,
         captionHeadline: data.image.one().imageTitle ?? null,
@@ -187,17 +187,16 @@
     } only %}
 
   {# -- Rich Text Modul -- #}
-  {# TODO: RichText Marginals wenn Supertable is Ready #}
-  {#{% case 'richTextMarginals' %}
+  {% case 'richTextMarginals' %}
     {% include '_organisms/richTextMarginals/_template.html' with {
       opt: {
         modifiers: [
           'cb',
         ],
-        marginals: data.children ?? null,
-        text: data.singleRichText ?? null
+        marginals: data.marginals ?? null,
+        text: data.richText ?? null
       }
-    } only %}#}
+    } only %}
 
   {# -- Separator Modul -- #}
   {% case 'divider' %}

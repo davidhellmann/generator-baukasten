@@ -28,6 +28,8 @@
   }
 
   &__readmore {
+    margin-top: s(1);
+    display: inline-block;
     color: c('blue');
     text-decoration: none;
     transition: all 0.25s ease('out-cubic');

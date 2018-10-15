@@ -12,15 +12,18 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-    cn: 'o-cards',
-    modifiers: [],
-    customClasses: [],
-    data: {},
-    js: null,
-    items: null,
-    pageInfo: null,
-    pagionation: null,
-    paginationSimple: null
+  cn: 'o-cards',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: null,
+  items: null,
+  image: true,
+  content: true,
+  link: true,
+  pageInfo: null,
+  pagination: null,
+  paginationSimple: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -35,17 +38,17 @@
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
     {% for item in opt.items %}
       <div class="o-col-12  o-col-s-24  o-col-l-8  {{ opt.cn ~ '__item' }}">
         {% include '_molecules/card/_template.html' with {
           opt: {
             item: item,
-            image: true,
-            content: true,
-            link: true
+            image: opt.image,
+            content: opt.content,
+            link: opt.link
           }
         } only %}
       </div>

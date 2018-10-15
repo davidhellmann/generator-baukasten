@@ -4,7 +4,7 @@
   "type": "organism",
   "path": "_organisms/appHeader/",
   "description": "appHeader Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "o-appHeader",
     "modifiers": [],
     "customClasses": [],

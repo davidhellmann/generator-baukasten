@@ -4,7 +4,7 @@
   "type": "emebd",
   "path": "_embeds/oneColumn/",
   "description": "oneColumn Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "e-oneColumn",
     "modifiers": [],
     "customClasses": [],

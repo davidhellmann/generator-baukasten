@@ -15,29 +15,22 @@
   @include make-vr();
   width: 100%;
   display: grid;
-  grid-template-rows: repeat(3, auto);
-  @include make-row();
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    'marginalFirst marginalFirst marginalFirst'
+    'text text text'
+    'marginalLast marginalLast marginalLast';
 
-  .o-contentBuilder--nested & {
-    @include make-row(12, 16);
+  @include media('>=l') {
+    @include f(s(1), s(2), grid-column-gap);
+    grid-template-areas: 'marginalFirst text marginalLast';
   }
 
-  &__text {
-    @include make-col(12);
 
-    @include media('>=s') {
-      @include make-col(24);
-    }
+  &__text {
+    grid-area: text;
 
     @include media('>=l') {
-      @include make-col(12);
-      @include col-pos(5);
-
-      .o-contentBuilder--nested & {
-        @include make-col(10);
-        @include col-pos(7);
-      }
-
       > * {
         margin-top: 0;
       }
@@ -58,7 +51,7 @@
         @include make-col(6);
       }
 
-      > * {
+      > * > * {
         margin-top: 0;
       }
     }

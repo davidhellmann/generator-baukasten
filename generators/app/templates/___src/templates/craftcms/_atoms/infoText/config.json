@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/infoText/",
   "description": "infoText Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-infoText",
     "modifiers": [],
     "customClasses": [],

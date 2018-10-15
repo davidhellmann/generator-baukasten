@@ -5,14 +5,13 @@
  * @author David Hellmann <david@hellmann.io>
  */
 
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
-import {getIfUtils, removeEmpty} from 'webpack-config-utils';
-// import DashboardPlugin from 'webpack-dashboard/plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { getIfUtils, removeEmpty } from 'webpack-config-utils';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin';
-import StyleLintPlugin from 'stylelint-webpack-plugin';
+import EasyStylelintPlugin from 'easy-stylelint-plugin';
 import webpack from 'webpack';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import path from 'path';
@@ -23,11 +22,12 @@ function resolve(dir) {
     return path.resolve(__dirname, `../${dir}`);
 }
 
-const {ifProduction, ifDevelopment} = getIfUtils(process.env.NODE_ENV);
+const { ifProduction, ifDevelopment } = getIfUtils(process.env.NODE_ENV);
 
 // der string wird benötigt um hot reloading nutzen zu können
 // der wird einfach an den entry point gehangen
-const hot_client = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true';
+const hot_client =
+  'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true';
 
 // hier holen wir uns die dateien in die wir unsere Build Files
 // (app.23r23fwef23r.js und app.323r233.css zum beispiel injecten wollen,
@@ -42,40 +42,39 @@ const scriptsFilenameSRC = <% if (projectType === 'wordpress' ) { %> '_webpack-s
 const scriptsFilenameDIST = <% if (projectType === 'wordpress' ) { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;
 const folderDIST = pkg.dist.markup;
 
-
 const inject_templates = [
     {
-        // DIST File
+    // DIST File
         filename: resolve(`${folderDIST + inject_folder}/${headerFilenameDIST}${fileExtension}`),
 
         // SRC File
         file: `${pkg.src.templates + inject_folder}/${headerFilenameSRC}${fileExtension}`,
-        inject: false
+        inject: false,
     },
     {
-        // DIST File
+    // DIST File
         filename: resolve(`${folderDIST + inject_folder}/${scriptsFilenameDIST}${fileExtension}`),
 
         // SRC File
         file: `${pkg.src.templates + inject_folder}/${scriptsFilenameSRC}${fileExtension}`,
-        inject: false
-    }
+        inject: false,
+    },
 ];
 
 // Leeres Array welches wir später mittels ...restParameter
 // in die Plugins mit einfügen
-const chunks = []
+const chunks = [];
 
 // Befüllen des obigen Arrays mit den chunks die wir definiert haben.
-inject_templates.forEach((chunk) => {
+inject_templates.forEach(chunk => {
     const plugin = new HtmlWebpackPlugin({
         filename: chunk.filename,
         template: chunk.file,
         inject: chunk.inject,
         minify: false,
-        chunksSortMode: 'dependency'
+        chunksSortMode: 'dependency',
     });
-    chunks.push(plugin)
+    chunks.push(plugin);
 });
 
 // Sass Resources Loader
@@ -86,8 +85,8 @@ inject_templates.forEach((chunk) => {
 const sass_resources_loader = {
     loader: 'sass-resources-loader',
     options: {
-        resources: [resolve(`${pkg.src.css}_settings.scss`), resolve(`${pkg.src.css}_tools.scss`)]
-    }
+        resources: [resolve(`${pkg.src.css}_settings.scss`), resolve(`${pkg.src.css}_tools.scss`)],
+    },
 };
 
 // SCSS Loader Config
@@ -98,21 +97,21 @@ const SCSS_LOADERS = [
             autoprefixer: false,
             sourceMap: true,
             importLoaders: 2,
-            url: true
-        }
+            url: true,
+        },
     },
     {
         loader: 'postcss-loader',
         options: {
-            sourceMap: true
-        }
+            sourceMap: true,
+        },
     },
     {
         loader: 'sass-loader',
         options: {
-            sourceMap: true
-        }
-    }
+            sourceMap: true,
+        },
+    },
 ];
 
 // CSS Loader Config
@@ -123,37 +122,41 @@ const CSS_LOADERS = [
             autoprefixer: false,
             sourceMap: true,
             importLoaders: 2,
-            url: true
-        }
+            url: true,
+        },
     },
     {
         loader: 'postcss-loader',
         options: {
-            sourceMap: true
-        }
-    }
+            sourceMap: true,
+        },
+    },
 ];
 
 module.exports = {
-    devtool: ifProduction('#source-map', '#eval-cheap-module-source-map'),
+    mode: ifProduction('production', 'development'),
+    devtool: ifProduction('#source-map', '#eval'),
 
     // javascript file in dem alles importiert wird, erstmal der simpelste zweck
     // hier ein object, jede datei die hier definiert wird kommt als eigener outputh raus,
     // also wenn du eine admin.js im src folder machst kommt eine admin.js in den dist folder raus
     entry: {
-        app: ifDevelopment([resolve(`${pkg.src.js}app.js`), hot_client], resolve(`${pkg.src.js}app.js`))
+        app: ifDevelopment(
+            [resolve(`${pkg.src.js}app.js`), hot_client],
+            resolve(`${pkg.src.js}app.js`),
+        ),
     },
 
-        output: {
-            // in das verzeichnis kommt alles rein
-            path: resolve(`${pkg.dist.base}assets/`),
-            publicPath: '/assets/',
-            // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
-            filename: ifProduction('js/[name].[hash].min.js', 'js/[name].js'),
-            chunkFilename: 'js/[name].[chunkhash].js',
-            hotUpdateChunkFilename: '[id].[hash].hot-update.js',
-            hotUpdateMainFilename: '[hash].hot-update.json',
-        },
+    output: {
+    // in das verzeichnis kommt alles rein
+        path: resolve(`${pkg.dist.base}assets/`),
+        publicPath: '/assets/',
+        // [name] sorgt dafür das der key aus dem entry object als dateiname benutzt wird
+        filename: ifProduction('js/[name].[hash].min.js', 'js/[name].js'),
+        chunkFilename: 'js/[name].[chunkhash].js',
+        hotUpdateChunkFilename: '[id].[hash].hot-update.js',
+        hotUpdateMainFilename: '[hash].hot-update.json',
+    },
 
     resolve: {
         extensions: ['.js', '.json', '.vue'],
@@ -173,13 +176,19 @@ module.exports = {
             '@': resolve(pkg.src.base),
             JS: resolve(pkg.src.js),
             FONTS: resolve(pkg.src.fonts),
-            ASSETS: resolve(pkg.src.images.base)
-        }
+            ASSETS: resolve(pkg.src.images.base),
+        },
+    },
+
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
     },
 
     module: {
-        // hier wird definiert mit welcher datei was gemacht wird
-        // das passiert über loader, hier kommen auch vue, css etc. rein später
+    // hier wird definiert mit welcher datei was gemacht wird
+    // das passiert über loader, hier kommen auch vue, css etc. rein später
         rules: [
             // als erstes ESLint für .js und .vue dateien
             {
@@ -187,14 +196,14 @@ module.exports = {
                 loader: 'eslint-loader',
                 // damit weiß webpack das dieser loader vor allen anderen kommen soll
                 enforce: 'pre',
-                include: resolve(pkg.src.base)
+                include: resolve(pkg.src.base),
             },
 
             // hier dann das eigentliche laden von JS
             {
                 test: /\.js/,
                 loader: 'babel-loader',
-                include: resolve(pkg.src.base)
+                include: resolve(pkg.src.base),
             },
 
             // Vue Loader Wohooo
@@ -206,12 +215,12 @@ module.exports = {
                     loaders: {
                         scss: ifProduction(
                             ExtractTextPlugin.extract({
-                                use: [...SCSS_LOADERS, sass_resources_loader]
+                                use: [...SCSS_LOADERS, sass_resources_loader],
                             }),
-                            ['vue-style-loader', ...SCSS_LOADERS, sass_resources_loader]
-                        )
-                    }
-                }
+                            ['vue-style-loader', ...SCSS_LOADERS, sass_resources_loader],
+                        ),
+                    },
+                },
             },
 
             // SCSS Loading
@@ -221,20 +230,20 @@ module.exports = {
                     // extract Text Plugin für Production
                     ExtractTextPlugin.extract({
                         use: [...SCSS_LOADERS, sass_resources_loader],
-                        fallback: 'style-loader'
+                        fallback: 'style-loader',
                     }),
                     // im development fügen wir den style-loader ein um styles zu injecten
                     [
                         {
                             loader: 'style-loader',
                             options: {
-                                sourceMap: true
-                            }
+                                sourceMap: true,
+                            },
                         },
-                        ...SCSS_LOADERS
-                    ]
+                        ...SCSS_LOADERS,
+                    ],
                 ),
-                include: resolve(pkg.src.base)
+                include: resolve(pkg.src.base),
             },
 
             // CSS Loading
@@ -244,20 +253,20 @@ module.exports = {
                     // extract Text Plugin für Production
                     ExtractTextPlugin.extract({
                         use: [...CSS_LOADERS],
-                        fallback: 'style-loader'
+                        fallback: 'style-loader',
                     }),
                     // im development fügen wir den style-loader ein um styles zu injecten
                     [
                         {
                             loader: 'style-loader',
                             options: {
-                                sourceMap: true
-                            }
+                                sourceMap: true,
+                            },
                         },
-                        ...CSS_LOADERS
-                    ]
+                        ...CSS_LOADERS,
+                    ],
                 ),
-                include: resolve(pkg.src.base)
+                include: resolve(pkg.src.base),
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -265,12 +274,12 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: (filePath) => {
-                        const filename = path.basename(filePath)
-                        const folder = path.relative(pkg.src.images.base, filePath).replace(filename, '')
-                        return `${folder}[name].[hash:4].[ext]`
+                    name: filePath => {
+                        const filename = path.basename(filePath);
+                        const folder = path.relative(pkg.src.images.base, filePath).replace(filename, '');
+                        return `${folder}[name].[hash:4].[ext]`;
                     },
-                }
+                },
             },
             {
                 // Match woff2 in addition to patterns like .woff?v=1.1.1.
@@ -287,29 +296,24 @@ module.exports = {
 
                     // Output below fonts directory
                     name: 'fonts/[name].[ext]',
-                }
+                },
             },
-        ]
+        ],
     },
 
     plugins: removeEmpty([
-        // Dateiname für das Extracted CSS von Vue
-        // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
-        new ExtractTextPlugin({
-            filename: 'css/[name].[chunkhash].min.css',
-            allChunks: true
-        }),
-
-        // Webpack Dashboard
-        // Breaks the Build Task
-        // Todo: Refactor / Problem Solving
-        // ifDevelopment(new DashboardPlugin({ port: 3002 })),
+    // Dateiname für das Extracted CSS von Vue
+    // wenn du dein eigenes css über webpack laufen lässt kommen beide in eine datei
+        ifProduction(
+            new ExtractTextPlugin({
+                filename: 'css/[name].[chunkhash].min.css',
+                allChunks: true,
+            }),
+        ),
 
         // nötig für HMR
         ifDevelopment(new webpack.HotModuleReplacementPlugin()),
-        ifDevelopment(new webpack.NamedModulesPlugin()),
-        ifDevelopment(new webpack.NoEmitOnErrorsPlugin()),
-        ifDevelopment(new FriendlyErrorsWebpackPlugin()),
+        new FriendlyErrorsWebpackPlugin(),
 
         // Webpack Bundle Analyzer
         ifProduction(
@@ -317,8 +321,8 @@ module.exports = {
                 analyzerMode: 'disabled',
                 generateStatsFile: true,
                 statsFilename: resolve('webpack/stats.json'),
-                logLevel: 'info'
-            })
+                logLevel: 'info',
+            }),
         ),
 
         // Optimize CSS Asset Stuff
@@ -330,81 +334,16 @@ module.exports = {
             }),
         ),
 
-        <% if (projectjQuery) { %>
-        // jQuery Stuff
-        new webpack.ProvidePlugin({
-           $: 'jquery',
-           jQuery: 'jquery'
-        }),
-        <% } %>
-
-        // Uglify JS
-        ifProduction(
-            new webpack.optimize.UglifyJsPlugin({
-                sourceMap: true,
-                compress: {
-                    warnings: false
-                }
-            })
-        ),
-
-        // Stylelint Stuff
-        new StyleLintPlugin({
+        new EasyStylelintPlugin({
             context: resolve(pkg.src.base),
-            syntax: 'scss',
-            quiet: false
         }),
-
-        // commons chunk shizzle
-        // damit werden automatisch libraries wie Vue, jQuery (haha)
-        // und andere automatisch in ne extra datei gesplittet
-        // dadurch kann das vom browser gecached werden
-        ifProduction(
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
-                minChunks(module) {
-                    // this assumes your vendor imports exist in the node_modules directory
-                    return module.context && module.context.indexOf('node_modules') !== -1
-                }
-            })
-        ),
-
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
-        ifProduction(
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'manifest',
-                chunks: ['vendor']
-            })
-        ),
-
-        // Minimize Stuff
-        ifProduction(
-            new webpack.LoaderOptionsPlugin({
-                minimize: true
-            })
-        ),
-
-        // funktion aus den webpack-utils
-        // wird nur ausgeführt wenn das NODE_ENV auf production steht
-        ifProduction(
-            // hier wird den loadern etc. mitgeteilt das es in den production mode geht
-            new webpack.DefinePlugin({
-                'process.env': {
-                    NODE_ENV: '"production"'
-                }
-            })
-        ),
 
         // Hier das Array der Chunks mit dem Plugin Array zusammenfügen
         ...chunks,
 
         new WriteFilePlugin({
-            log: true,
-            test: /^(?!.+(?:hot-update.(js|json))).+$/
+            log: false,
+            test: /^(?!.+(?:hot-update.(js|json))).+$/,
         }),
-
-        // webpack scope hoisting magic, weiß ich auch nicht so genau was es tut :D
-        ifProduction(new webpack.optimize.ModuleConcatenationPlugin())
-    ])
+    ]),
 };

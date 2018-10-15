@@ -8,12 +8,12 @@ const divider = {
     },
 
     log(msg) {
-        console.log(msg)
+        console.log(msg);
     },
 
     init() {
-        this.log(`Init: ${this.cfg.name}`)
+        this.log(`Init: ${this.cfg.name}`);
     }
 }
 
-export default divider
+export default divider;

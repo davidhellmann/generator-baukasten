@@ -21,7 +21,6 @@ const imageSlider = {
             pageDots: true,
             wrapAround: false,
             // watchCSS: true
-
         }
     },
 

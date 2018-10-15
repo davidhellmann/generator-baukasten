@@ -10,15 +10,36 @@
 
 const <%= moduleName.replace('-', '_') %> = {
     cfg:  {
-        name: '<%= moduleName.replace('-', '_') %>'
+        name: '<%= moduleName.replace('-', '_') %>',
+        selectors: {
+            sample: '.sample',
+        },
+        classes: {
+            active: 'is-active',
+            inActive: 'is-inActive',
+            hidden: 'is-hidden',
+            visible: 'is-visible'
+        },
+        el: {
+            $sample: undefined
+        },
+        els: {
+            $sample: undefined
+        }
     },
 
     log(msg) {
         console.log(msg);
     },
 
+    setElements() {
+        console.debug('Set Elements…')
+        this.cfg.el.$sample = document.querySelector(this.cfg.selectors.sample);
+    },
+
     init() {
-        this.log(`Init: ${this.cfg.name}`);
+        this.debug(`Init: ${this.cfg.name}`);
+        this.setElements();
     }
 };
 

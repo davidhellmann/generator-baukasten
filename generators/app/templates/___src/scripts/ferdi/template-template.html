@@ -19,8 +19,6 @@
     customClasses: [],
     data: {},
     js: null,
-    waypoint: null,
-    waypointAni: null,
     foo: null
 } %}
 
@@ -36,9 +34,10 @@
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= pathOptions.key.charAt(0) %>-' : 'js-' }) : '' }}"
-    {% for key, value in opt.data %}
-      {{ 'data-' ~ key ~ '=' ~ value }}
-    {% endfor %}>
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %}>
     <%= moduleName.replace('-', '_') %>
   </div>
 {% endif %}
+

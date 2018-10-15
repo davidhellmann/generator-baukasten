@@ -40,7 +40,7 @@ const preloader = {
         setTimeout(() => {
             this.cfg.body.classList.remove(this.cfg.states.interact);
             this.cfg.body.classList.add(this.cfg.states.complete);
-        }, 500);
+        }, 250);
     },
 
     progressLoader() {

@@ -4,7 +4,7 @@
   "type": "emebd",
   "path": "_embeds/accordion/",
   "description": "accordion Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "e-accordion",
     "modifiers": [],
     "customClasses": [],

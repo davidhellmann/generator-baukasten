@@ -5,7 +5,7 @@
 // Polyfills
 import 'babel-polyfill';
 import 'svgxuse';
-import 'object-fit-images';
+import objectFitImages from 'object-fit-images';
 
 // Import Libs
 import './lib/bling';
@@ -19,7 +19,7 @@ import './scripts/prism';
 import scripts from './partials/scripts';
 import templates from './partials/templates';
 import modules from './partials/modules';
-<% if (projectVue) { %>
+
 // Vue Exampleimport
 const vueElement = document.querySelector('#js-vue');
 
@@ -27,7 +27,7 @@ const vueElement = document.querySelector('#js-vue');
 if (vueElement) {
     import('./vue/vueExample');
 }
-<% } %>
+
 const app = {
     toggleGrid() {
         const gridOverlay = document.querySelector('.o-gridOverlay');
@@ -38,6 +38,7 @@ const app = {
         scripts.init();
         templates.init();
         modules.init();
+        objectFitImages();
 
         const gridToggle = document.querySelector('.js-toggleGrid');
         if (gridToggle) {

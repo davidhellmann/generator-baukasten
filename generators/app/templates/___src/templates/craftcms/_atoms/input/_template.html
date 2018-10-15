@@ -25,6 +25,9 @@
   required: null,
   disabled: null,
   step: null,
+  info: null,
+  label: null,
+  id: null,
   placeholder: null
 } %}
 
@@ -32,27 +35,32 @@
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
 {# -- Modul -- #}
-{% if opt.type and opt.name %}
-  <input class="{{ opt.cn }}
+{% if opt.type and opt.name and opt.label %}
+  <div class="{{ opt.cn }}
                 {% for modifier in opt.modifiers %}
                   {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
                 {% endfor %}
-                {% for customClass in opt.customClasses %}
-                  {{ customClass | length ? '  ' ~ customClass }}
-                {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-         {% if opt.type %}type="{{ opt.type }}"{% endif %}
-         {% if opt.name %}name="{{ opt.name }}"{% endif %}
-         {% if opt.value %}value="{{ opt.value }}"{% endif %}
-         {% if opt.min %}min="{{ opt.min }}"{% endif %}
-         {% if opt.max %}max="{{ opt.max }}"{% endif %}
-         {% if opt.minlength %}minlength="{{ opt.minlength }}"{% endif %}
-         {% if opt.maxlength %}maxlength="{{ opt.maxlength }}"{% endif %}
-         {% if opt.step %}step="{{ opt.step }}"{% endif %}
-         {% if opt.pattern %}pattern="{{ opt.pattern }}"{% endif %}
-                {% for key, value in opt.data %}
-                  {{ 'data-' ~ key ~ '=' ~ value }}
-                {% endfor %}
-                {{ opt.required ? 'required' }}
-                {{ opt.readonly ? 'readonly' }}
-                {{ opt.disabled ? 'disabled' }}  placeholder="{{ opt.placeholder }}">
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}">
+    <input class="{{ opt.cn ~ '__input' }}"
+           {% if opt.id %}id="{{ opt.id }}"{% endif %}
+      {% if opt.type %}type="{{ opt.type }}"{% endif %}
+      {% if opt.name %}name="{{ opt.name }}"{% endif %}
+      {% if opt.value %}value="{{ opt.value }}"{% endif %}
+      {% if opt.min %}min="{{ opt.min }}"{% endif %}
+      {% if opt.max %}max="{{ opt.max }}"{% endif %}
+      {% if opt.minlength %}minlength="{{ opt.minlength }}"{% endif %}
+      {% if opt.maxlength %}maxlength="{{ opt.maxlength }}"{% endif %}
+      {% if opt.step %}step="{{ opt.step }}"{% endif %}
+      {% if opt.pattern %}pattern="{{ opt.pattern }}"{% endif %}
+      {% for key, value in opt.data %}
+        data-{{ key }}="{{ value }}"
+      {% endfor %}
+      {% if opt.required %} required data-required="true"{% endif %}
+      {{ opt.readonly ? ' readonly' }}
+      {{ opt.disabled ? ' disabled' }}  placeholder="{{ opt.placeholder }}">
+    <label class="{{ opt.cn ~ '__label' }}" for="{{ opt.id }}">{{ opt.label }}</label>
+    <span class="{{ opt.cn ~ '__info' }}">{{ opt.info }}</span>
+  </div>
 {% endif %}

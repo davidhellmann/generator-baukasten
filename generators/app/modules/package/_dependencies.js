@@ -4,10 +4,12 @@ function addDependencies(files = {}) {
     extend(files.pkg, {
         dependencies: {
             'animejs': '^2.0.0',
+            'axios': '^0.17.0',
             'babel-polyfill': '^6.26.0',
             'baukasten-grid': '^1.0.0',
             'bowser': '^1.8.1',
             'cookieconsent': '^3.0.4',
+            'eslint-plugin-react': '^7.7.0',
             'family.scss': '^1.0.4',
             'ferdi': '^0.0.9',
             'flickity': '^2.0.10',
@@ -20,8 +22,10 @@ function addDependencies(files = {}) {
             'lodash': '^4.16.6',
             'macy': '^2.2.0',
             'modularscale-sass': '^3.0.3',
+            'node-sass': '^4.7.2',
             'normalize.css': '^7.0.0',
             'object-fit-images': '^3.2.3',
+            'objectFitPolyfill': '^2.0.5',
             'photoswipe': '^4.1.1',
             'scrollmonitor': '^1.2.4',
             'smooth-scroll': '^12.1.0',

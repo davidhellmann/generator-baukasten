@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/image/",
   "description": "image Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-image",
     "modifiers": [],
     "customClasses": [],
