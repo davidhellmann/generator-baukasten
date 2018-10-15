@@ -8,12 +8,10 @@ function addNPMScripts(files = {}, context) {
 
     extend(files.pkg, {
         scripts: {
-            'start': initCommands,
+            'start': 'cross-env NODE_ENV=production gulp init && npm run webpack && cd ___dist && composer install',
             'dev': 'cross-env NODE_ENV=production gulp build && cross-env NODE_ENV=development gulp',
             'dev:single': 'cross-env NODE_ENV=development gulp',
-            'dev:dashboard': 'cross-env NODE_ENV=development webpack-dashboard -p 3002 && cross-env NODE_ENV=development gulp',
             'build': 'cross-env NODE_ENV=production gulp build && npm run webpack',
-            'lang': 'node scripts/lang.js',
             'critical': 'node scripts/critical.js',
             'clean:dist': 'cross-env NODE_ENV=development gulp clean:dist',
             'clean:templates': 'cross-env NODE_ENV=development gulp clean:templates',
@@ -29,9 +27,8 @@ function addNPMScripts(files = {}, context) {
             'compile:templates': 'cross-env NODE_ENV=development gulp compile:templates',
             'create:favicons': 'cross-env NODE_ENV=development gulp favicons',
             'create:inlineJS': 'cross-env NODE_ENV=development gulp create:inlineJS',
-            'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --config=webpack/webpack.config.babel.js',
-            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/public/assets/',
-            'install:plugins': 'cd ___dist && sh ./plugins.sh',
+            'webpack': 'cross-env NODE_ENV=production webpack --hide-modules --mode=production --config=webpack/webpack.config.babel.js',
+            'webpack:analyze': 'webpack-bundle-analyzer webpack/stats.json ___dist/web/assets/',
             'pull:db': './___dist/craft-scripts/pull_db.sh',
             'pull:assets': './___dist/craft-scripts/pull_assets.sh',
             'pull:backups': './___dist/craft-scripts/pull_backups.sh',
