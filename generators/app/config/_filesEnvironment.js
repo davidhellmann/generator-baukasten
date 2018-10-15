@@ -37,6 +37,10 @@ module.exports = {
             dest: '.eslintrc'
         },
         {
+            src: '_prettierrc.js',
+            dest: 'prettierrc.js'
+        },
+        {
             src: 'eslintignore',
             dest: '.eslintignore'
         },

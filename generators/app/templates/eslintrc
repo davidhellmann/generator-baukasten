@@ -4,13 +4,13 @@
     "es6": true,
     "node": true
   },
-  "parser": "babel-eslint",
   "parserOptions": {
+    "parser": "babel-eslint",
     "sourceType": "module"
   },
   "extends": [
     "airbnb",
-    "vue",
+    "plugin:vue/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "prettier"
@@ -18,14 +18,11 @@
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "webpack.config.js"
+        "config": "webpack/webpack.config.babel.js"
       }
     }
   },
-  "plugins": ["html"],
   "rules": {
-    "jsx-a11y/href-no-hash": "off",
-    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "arrow-body-style": 0,
     "block-scoped-var": 0,
     "brace-style": [2, "1tbs", { "allowSingleLine": false }],
@@ -84,7 +81,6 @@
     "keyword-spacing": 1,
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, "never"],
-    "function-paren-newline": [2, "consistent"],
     "space-in-parens": [2, "never"],
     "spaced-comment": [2, "always"],
     "use-isnan": 2,
@@ -101,6 +97,13 @@
     "vars-on-top": 1,
     "wrap-iife": [2, "outside"],
     "yoda": 2,
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "vue/max-attributes-per-line": [2, {
+      "singleline": 3,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": true
+      }
+    }]
   }
 }

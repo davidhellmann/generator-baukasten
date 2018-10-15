@@ -17,9 +17,6 @@ yarn-error.log*
 # Yarn Integrity file
 .yarn-integrity
 
-# Yarn Clean
-.yarnclean
-
 # Optional eslint cache
 .eslintcache
 
@@ -105,6 +102,9 @@ ___dist/wp-content/themes/*
 ___dist/wp-content/themes/<%= projectName %>/*
 !___dist/wp-content/themes/<%= projectName %>/acf-json/
 <% } %>
+
+
+
 
 <% if (projectType === 'craftCMS3' ) { %>
 # Craft CMS
