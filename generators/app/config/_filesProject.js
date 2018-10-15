@@ -25,6 +25,13 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
+            src: '___src/_craftCMS3/element-api.php',
+            dest: '___dist/config/element-api.php'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
             src: '___src/_craftCMS3/image-optimize/image-optimize.php',
             dest: '___dist/config/image-optimize.php'
         },

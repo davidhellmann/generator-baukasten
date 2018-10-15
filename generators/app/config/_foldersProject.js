@@ -75,6 +75,13 @@ module.exports = {
         },
         {
             projectContext: [
+                'craftCMS3'
+            ],
+            src: '___src/_craftCMS3/_partials/',
+            dest: '___dist/config/_partials'
+        },
+        {
+            projectContext: [
                 'wordpress'
             ],
             src: '___src/templates/webpack-wordpress/',
