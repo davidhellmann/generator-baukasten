@@ -21,7 +21,7 @@ GLOBAL_DB_TABLE_PREFIX=""
 GLOBAL_CRAFT_PATH="./"
 
 # The maximum age of db backups in days; backups older than this will be automatically removed
-GLOBAL_DB_BACKUPS_MAX_AGE=90
+GLOBAL_DB_BACKUPS_MAX_AGE=30
 
 # The database driver for this Craft install ('mysql' or 'pgsql')
 GLOBAL_DB_DRIVER="mysql"
