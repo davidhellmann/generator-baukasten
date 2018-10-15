@@ -17,10 +17,6 @@ module.exports = {
             dest: '.gitignore'
         },
         {
-            src: '_labels.json',
-            dest: 'labels.json'
-        },
-        {
             src: 'editorconfig',
             dest: '.editorconfig'
         },
