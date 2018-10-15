@@ -36,7 +36,7 @@
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %} itemscope itemtype="http://schema.org/ImageGallery">
-    {% for image in opt.images.all() %}
+    {% for image in opt.images %}
       {% set imageSrc = image.pluginOptimizedImagesAuto.src() %}
       {% set imageMaxWidth = image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
       {% set imageMaxHeight = (imageMaxWidth / image.width) * image.height %}

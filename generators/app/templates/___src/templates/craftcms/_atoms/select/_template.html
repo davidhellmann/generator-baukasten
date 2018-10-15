@@ -1,0 +1,70 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Description of what this file is for
+
+  @package  craft3
+  @author David Hellmann [david@hellmann.io]
+
+  a-select
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+    cn: 'a-select',
+    modifiers: [],
+    customClasses: [],
+    data: {},
+    js: null,
+    info: null,
+    array: null,
+    object: null,
+    firstOption: null,
+    required: null,
+    disabled: null,
+    model: null,
+    name: null,
+    id: null,
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+{% if opt.object or opt.array %}
+  <div class="{{ opt.cn }}
+                {% for modifier in opt.modifiers %}
+                  {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+                {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}">
+    <select class="{{ opt.cn ~ '__select' }}"
+      {% if opt.required %} required data-required="true"{% endif %}
+      {% if opt.id %}id="{{ opt.id }}"{% endif %}
+      {% if opt.name %}name="{{ opt.name }}"{% endif %} {{ opt.disabled ? ' disabled' }}>
+      {% if opt.info %}
+        <option disabled value="___placeholderOption___" {% if not optionValue %}selected="selected"{% endif %}>
+          {{ opt.info }}{% if opt.required %} *{% endif %}
+        </option>
+      {% endif %}
+
+      {% if opt.firstOption %}
+        <option value="{{ opt.firstOption.value }}">{{ opt.firstOption.text }}</option>
+      {% endif %}
+      {% if opt.object %}
+        {% for item in opt.object %}
+          <option value="{{ key }}" {% if key == optionValue %} selected{% endif %}>{{ option }}</option>
+        {% endfor %}
+      {% endif %}
+
+      {% if opt.array %}
+        {% for key, option in opt.array %}
+          <option value="{{ key }}">{{ option }}</option>
+        {% endfor %}
+      {% endif %}
+    </select>
+  </div>
+{% endif %}
+

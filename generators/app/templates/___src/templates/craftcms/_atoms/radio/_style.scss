@@ -1,0 +1,88 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .a-radio
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.a-radio {
+  $root: &;
+  margin-top: 16px;
+  width: 100%;
+
+  &__radio {
+    &:checked,
+    &:not(:checked) {
+      position: absolute;
+      left: -99999px;
+    }
+
+    &:checked + *,
+    &:not(:checked) + * {
+      position: relative;
+      padding-left: 32px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    &:checked + *::before,
+    &:not(:checked) + *::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      @include f(13px, 15px, top);
+      transform: translateY(-50%);
+      margin-top: -2px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid c('black');
+      border-radius: 100%;
+      background: c('white');
+    }
+
+    &:focus + *::before {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(c('blue'), 0.5), 0 0 0 1.5px rgba(c('blue'), 0.5);
+    }
+
+    &:checked + *::after,
+    &:not(:checked) + *::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: c('black');
+      position: absolute;
+      @include f(13px, 15px, top);
+      margin-top: -7px;
+      transform: translateY(-50%);
+      left: 5px;
+      border-radius: 100%;
+      transition: all 0.2s ease('out-cubic');
+    }
+
+    &:not(:checked) + *::after {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    &:checked + *::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &:disabled {
+      + *::before {
+        border: 1px solid c('black', '15');
+      }
+
+      + label {
+        color: c('black', '30');
+      }
+    }
+  }
+}

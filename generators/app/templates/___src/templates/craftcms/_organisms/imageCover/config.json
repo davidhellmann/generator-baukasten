@@ -4,7 +4,7 @@
   "type": "organism",
   "path": "_organisms/imageCover/",
   "description": "imageCover Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "o-imageCover",
     "modifiers": [],
     "customClasses": [],
@@ -12,7 +12,7 @@
     "js": null,
     "waypoint": null,
     "waypointAni": null,
-    "image": "/assets/images/bitmap/_dummy/image_01.jpg",
+    "image": null,
     "ratio": "16:10",
     "caption": false,
     "captionHeadline": "Caption Headline",

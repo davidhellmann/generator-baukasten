@@ -4,7 +4,7 @@
   "type": "molecule",
   "path": "_molecules/pageTitle/",
   "description": "pageTitle Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "m-pageTitle",
     "modifiers": [],
     "customClasses": [],

@@ -20,10 +20,6 @@
   image: null,
   caption: null,
   ratio: null,
-  captionHeadline: null,
-  captionText: null,
-  captionSource: null,
-  captionSourceUrl: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -44,12 +40,12 @@
     {% include '_molecules/figure/_template.html' with {
       opt: {
         image: opt.image ?? null,
-        caption: opt.caption ?? null,
         ratio: opt.ratio ?? null,
-        captionHeadline: opt.captionHeadline ?? null,
-        captionText: opt.captionText ?? null,
-        captionSource: opt.captionSource ?? null,
-        captionSourceUrl: opt.captionSourceUrl ?? null
+        caption: opt.caption ?? null,
+        captionHeadline: opt.image.imageTitle ?? null,
+        captionText: opt.image.imageCaption ?? null,
+        captionSource: opt.image.imageSource ?? null,
+        captionSourceUrl: opt.image.imageSourceUrl ?? null
       }
     } only %}
   </div>

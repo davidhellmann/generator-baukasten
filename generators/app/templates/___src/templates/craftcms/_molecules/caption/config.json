@@ -4,7 +4,7 @@
   "type": "molecule",
   "path": "_molecules/caption/",
   "description": "caption Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "m-caption",
     "modifiers": [],
     "customClasses": [],

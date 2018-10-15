@@ -32,17 +32,17 @@
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>
-    {% for image in opt.images.all() %}
+    {% for image in opt.images %}
       <div class="{{ opt.cn ~ '__item' }}">
         {% include '_molecules/figure/_template.html' with {
           opt: {
-            image: image,
-            ratio: opt.ratio,
-            caption: opt.caption,
-            captionHeadline: image.imageTitle,
-            captionText: image.imageCaption,
-            captionSource: image.imageSource,
-            captionSourceUrl: image.imageSourceUrl
+            image: image ?? null,
+            ratio: opt.ratio ?? null,
+            caption: opt.caption ?? null,
+            captionHeadline: image.imageTitle ?? null,
+            captionText: image.imageCaption ?? null,
+            captionSource: image.imageSource ?? null,
+            captionSourceUrl: image.imageSourceUrl ?? null
           }
         } only %}
       </div>

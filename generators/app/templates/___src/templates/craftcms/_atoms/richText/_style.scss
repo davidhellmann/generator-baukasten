@@ -12,8 +12,6 @@
 }
 
 // Modul Modifiers Example
-.a-richText--modifier {
-  .a-richText__block {
-    // Styles here
-  }
+.a-richText--intro {
+  @include ms-respond(font-size, 1);
 }

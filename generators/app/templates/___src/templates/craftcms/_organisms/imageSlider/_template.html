@@ -15,9 +15,6 @@
   images: null,
   caption: null,
   ratio: null,
-  pagination: null,
-  buttons: null,
-  scrollbar: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -37,7 +34,7 @@
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %} itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
       <!-- Slides -->
-      {% for image in opt.images.all() %}
+      {% for image in opt.images %}
         <div class="{{ opt.cn ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
           <div class="{{ opt.cn ~ '__slideInner' }}">
             {% include '_molecules/figure/_template.html' with {

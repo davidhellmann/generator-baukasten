@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/svgSprite/",
   "description": "svgSprite Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-svgSprite",
     "modifiers": [],
     "customClasses": [],

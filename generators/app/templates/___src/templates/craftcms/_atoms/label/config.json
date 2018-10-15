@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/label/",
   "description": "label Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-label",
     "modifiers": [],
     "customClasses": [],

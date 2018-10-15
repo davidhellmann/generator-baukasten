@@ -15,8 +15,22 @@
 }
 
 // Modul Modifiers Example
-.a-svgSprite--modifier {
-  .a-svgSprite__block {
-    // Styles here
-  }
+.a-svgSprite--32 {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.a-svgSprite--48 {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+.a-svgSprite--64 {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+.a-svgSprite--96 {
+  max-width: 96px;
+  max-height: 96px;
 }

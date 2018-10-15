@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/logo/",
   "description": "logo Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-logo",
     "modifiers": [],
     "customClasses": [],

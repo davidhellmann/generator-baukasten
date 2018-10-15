@@ -4,7 +4,7 @@
   "type": "atom",
   "path": "_atoms/tag/",
   "description": "tag Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "a-tag",
     "modifiers": [],
     "customClasses": [],

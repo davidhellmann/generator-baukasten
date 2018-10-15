@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% hook 'seomaticRender' %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-
+  <title>{% if templateOptions is defined %}
+      [{{ templateOptions.status }}]
+      {{ templateOptions.title }}
+      &mdash;
+    {% endif %}{{ siteName }}
+  </title>
 
   {# -- CRITICAL CSS -- #}
   {% set cacheVal = getCookie('critical-css') %}
@@ -19,17 +22,13 @@
   {% include '_partials/webpack/webpack-header.html' %}
 </head>
 <body>
-{% include component with {
-  opt: templateOptions.opt | default([])
-} %}
+<div class="o-appWrapper">
+  {# Render Pattern Lib Content #}
+  {% include component with {
+    opt: templateOptions | default([])
+  } %}
 
-
-{# TODO: Configs anpassen opt.part + content.part
-  opt: templateOptions.opt | default([]),
-  content: templateOptions.content | default([])
-#}
-
-{% include '_partials/webpack/webpack-scripts.html' %}
-
+  {% include '_partials/webpack/webpack-scripts.html' %}
+</div>
 </body>
 </html>

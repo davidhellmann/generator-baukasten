@@ -20,7 +20,7 @@
 
   .a-preloader--complete {
     transform: translateY(-100%);
-    transition: all 0.5s 2.5s ease('out-cubic');
+    transition: all 0.25s 1s ease('out-cubic');
   }
 
   .a-preloader__inner {
@@ -35,6 +35,6 @@
 
   .is-complete .a-preloader__inner {
     transform: translateX(0);
-    transition: all 1s ease-in-out;
+    transition: all 1s ease('out-cubic');
   }
 }

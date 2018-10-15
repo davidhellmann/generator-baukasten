@@ -4,7 +4,7 @@
   "type": "emebd",
   "path": "_embeds/home/",
   "description": "home Description goes here…",
-  "opt": {
+  "meta": {
     "cn": "e-home",
     "modifiers": [],
     "customClasses": [],
