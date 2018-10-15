@@ -18,6 +18,13 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
+            src: '___src/_craftCMS3/seomatic.php',
+            dest: '___dist/config/seomatic.php'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
             src: '___src/_craftCMS3/image-optimize/image-optimize.php',
             dest: '___dist/config/image-optimize.php'
         },
