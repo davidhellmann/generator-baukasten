@@ -66,6 +66,10 @@ return [
         ]),
         'imageGrid--single' => array_merge($defaultVariant, [
             'title' => 'Image Grid One Column',
+            'modifiers' => [],
+            'images' => [
+                \craft\elements\Asset::find()->id('169')->one(),
+            ],
         ]),
     ]
 ];
