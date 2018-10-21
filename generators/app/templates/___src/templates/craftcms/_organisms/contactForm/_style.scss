@@ -34,8 +34,10 @@
   &__rowContent {
     width: 100%;
 
-    &--half {
-      width: calc(50% - 8px);
+    @include media('>=m') {
+      &--half {
+        width: calc(50% - 8px);
+      }
     }
   }
 
