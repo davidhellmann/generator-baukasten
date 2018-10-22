@@ -24,11 +24,6 @@ composer require pennebaker/craft-architect
 echo '--------------------------------------------------'
 
 echo ''
-echo '>>> Installing: Asset Usage'
-composer require born05/craft-assetusage
-echo '--------------------------------------------------'
-
-echo ''
 echo '>>> Installing: AsyncQueue'
 composer require ostark/craft-async-queue
 echo '--------------------------------------------------'
