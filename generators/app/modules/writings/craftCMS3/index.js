@@ -17,7 +17,7 @@ const installCraftCMS3 = () => {
                 [
                     'create-project',
                     'craftcms/craft',
-                    '___dist', '-s',
+                    '___dist',
                 ])
         },
 
