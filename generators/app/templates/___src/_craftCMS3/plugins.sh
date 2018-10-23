@@ -65,7 +65,7 @@ echo '--------------------------------------------------'
 
 echo ''
 echo '>>> Installing: Gonzo Patternlib'
-composer require martinherweg/craft-gonzo
+composer require haariga/craft-gonzo
 echo '--------------------------------------------------'
 
 echo ''
@@ -91,11 +91,6 @@ echo '--------------------------------------------------'
 echo ''
 echo '>>> Installing: Freeform Lite'
 composer require solspace/craft3-freeform
-echo '--------------------------------------------------'
-
-echo ''
-echo '>>> Installing: HTTP2 Server Push'
-composer require superbig/craft3-http2serverpush
 echo '--------------------------------------------------'
 
 echo ''

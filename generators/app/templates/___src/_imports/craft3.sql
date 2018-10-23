@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: localhost (MySQL 8.0.11)
+# Host: localhost (MySQL 8.0.12)
 # Datenbank: craft3_local
-# Erstellt am: 2018-10-14 20:27:53 +0000
+# Erstellt am: 2018-10-23 00:25:20 +0000
 # ************************************************************
 
 
@@ -2625,44 +2625,43 @@ LOCK TABLES `plugins` WRITE;
 
 INSERT INTO `plugins` (`id`, `handle`, `version`, `schemaVersion`, `licenseKey`, `licenseKeyStatus`, `enabled`, `settings`, `installDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(4,'redactor','2.1.6','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:07:59','2017-12-06 11:07:59','2018-10-14 19:49:23','1118534b-04da-4520-80db-75421f46f720'),
-	(6,'cookies','1.1.10','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:15:08','2017-12-06 11:15:08','2018-10-14 19:49:23','3f6005f7-7c9c-46b4-9300-cb0550d29802'),
-	(8,'minify','1.2.9','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:22:51','2017-12-06 11:22:51','2018-10-14 19:49:23','34fcbd22-0064-4e51-aa32-48e3be0a79ba'),
-	(11,'typogrify','1.1.15','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:00:58','2017-12-06 13:00:58','2018-10-14 19:49:23','63536b19-23b8-42f6-b75b-51a9cdc7d8d6'),
+	(4,'redactor','2.1.6','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:07:59','2017-12-06 11:07:59','2018-10-23 00:23:57','1118534b-04da-4520-80db-75421f46f720'),
+	(6,'cookies','1.1.10','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:15:08','2017-12-06 11:15:08','2018-10-23 00:23:57','3f6005f7-7c9c-46b4-9300-cb0550d29802'),
+	(8,'minify','1.2.9','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:22:51','2017-12-06 11:22:51','2018-10-23 00:23:57','34fcbd22-0064-4e51-aa32-48e3be0a79ba'),
+	(11,'typogrify','1.1.15','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:00:58','2017-12-06 13:00:58','2018-10-23 00:23:57','63536b19-23b8-42f6-b75b-51a9cdc7d8d6'),
 	(14,'command-palette','3.1.0','3.0.0',NULL,'unknown',1,'{\"pluginName\":\"\",\"theme\":\"Palette Dark.css\",\"elementSearchElementTypes\":{\"asset\":{\"elementType\":\"Asset\",\"enabled\":\"1\"},\"category\":{\"elementType\":\"Category\",\"enabled\":\"1\"},\"entry\":{\"elementType\":\"Entry\",\"enabled\":\"1\"},\"globalset\":{\"elementType\":\"Global Set\",\"enabled\":\"1\"},\"matrixblock\":{\"elementType\":\"Matrix Block\",\"enabled\":\"1\"},\"tag\":{\"elementType\":\"Tag\",\"enabled\":\"\"},\"user\":{\"elementType\":\"User\",\"enabled\":\"1\"}}}','2017-12-06 13:15:27','2017-12-06 13:15:27','2018-04-05 09:13:29','9a1bc271-396e-43ef-ba37-80555d0fd10a'),
 	(15,'cp-body-classes','v2.0.0','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:17:21','2017-12-06 13:17:21','2017-12-14 13:47:11','bc093d0c-5cff-476d-9c0e-d30b5c2c8ed6'),
-	(16,'cp-css','2.1.0','2.0.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#content {\\r\\n  padding-bottom: 50vh !important;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .matrixblock[data-type=\\\"bkSection\\\"] {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-left: 0%;\\r\\n  margin-top: 40px;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection {\\r\\n  border-bottom: 2px solid #da5a47;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-12-06 13:17:35','2017-12-06 13:17:35','2018-10-14 19:49:23','f2244f9e-d8ec-46e5-bf39-232c8b80e304'),
-	(19,'expanded-singles','1.0.4','1.0.0',NULL,'unknown',1,'{\"expandSingles\":\"1\",\"redirectToEntry\":\"1\"}','2017-12-06 13:21:45','2017-12-06 13:21:45','2018-10-14 19:49:23','15bd775c-1dc1-4a64-b10f-e3131eb89ee1'),
-	(21,'code-mirror','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:36:58','2017-12-06 13:36:58','2018-10-14 19:49:23','9c83a2af-f6a8-4ab0-b333-f6654351df95'),
+	(16,'cp-css','2.1.0','2.0.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#content {\\r\\n  padding-bottom: 50vh !important;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .matrixblock[data-type=\\\"bkSection\\\"] {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-left: 0%;\\r\\n  margin-top: 40px;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection {\\r\\n  border-bottom: 2px solid #da5a47;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-12-06 13:17:35','2017-12-06 13:17:35','2018-10-23 00:23:57','f2244f9e-d8ec-46e5-bf39-232c8b80e304'),
+	(19,'expanded-singles','1.0.4','1.0.0',NULL,'unknown',1,'{\"expandSingles\":\"1\",\"redirectToEntry\":\"1\"}','2017-12-06 13:21:45','2017-12-06 13:21:45','2018-10-23 00:23:57','15bd775c-1dc1-4a64-b10f-e3131eb89ee1'),
+	(21,'code-mirror','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:36:58','2017-12-06 13:36:58','2018-10-23 00:23:57','9c83a2af-f6a8-4ab0-b333-f6654351df95'),
 	(27,'matrix-colors','v2.0.0','2.0.0',NULL,'unknown',1,'{\"matrixBlockColors\":[{\"blockType\":\"bkSection\",\"backgroundColor\":\"#EBF0E5\"},{\"blockType\":\"imageGallery\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageGrid\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageSingle\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageSlider\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"richText\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"headline\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"plainText\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"quote\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"definitionList\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"embed\",\"backgroundColor\":\"#F0ECE5\"},{\"blockType\":\"divider\",\"backgroundColor\":\"#F0ECE5\"}]}','2017-12-13 01:50:23','2017-12-13 01:50:23','2017-12-13 02:10:49','81519fcf-850a-42e5-a770-e98d0079392f'),
-	(28,'child-me','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-12-13 01:52:14','2017-12-13 01:52:14','2018-10-14 19:49:23','0caa94c0-fdce-4836-8008-d0e3433ce35c'),
-	(31,'cp-field-inspect','1.0.5','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:51','2017-12-15 01:37:51','2018-10-14 19:49:23','21aef169-efa2-4c3c-be1a-562ad38c3ba9'),
-	(32,'logs','3.0.0','3.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:58','2017-12-15 01:37:58','2018-10-14 19:49:23','fb6cb193-4ab5-4d0a-92d8-fc9becec28ad'),
+	(28,'child-me','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-12-13 01:52:14','2017-12-13 01:52:14','2018-10-23 00:23:57','0caa94c0-fdce-4836-8008-d0e3433ce35c'),
+	(31,'cp-field-inspect','1.0.5','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:51','2017-12-15 01:37:51','2018-10-23 00:23:57','21aef169-efa2-4c3c-be1a-562ad38c3ba9'),
+	(32,'logs','3.0.0','3.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:58','2017-12-15 01:37:58','2018-10-23 00:23:57','fb6cb193-4ab5-4d0a-92d8-fc9becec28ad'),
 	(33,'advanced-url-field','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:38:24','2017-12-15 01:38:24','2018-02-22 15:47:13','19ed52eb-e7ae-44f2-9699-95627155b822'),
-	(34,'dumper','1.3.1','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:42:34','2017-12-15 01:42:34','2018-10-14 19:49:23','7e23f542-ff7c-4bf2-8ecd-5f8de4af01f4'),
-	(36,'supersort','3.0.1','0.0.0.0',NULL,'unknown',1,NULL,'2017-12-25 23:06:33','2017-12-25 23:06:33','2018-10-14 19:49:23','df522b45-89f9-49f6-9cf8-942a646e4b98'),
-	(38,'image-optimize','1.4.41','1.0.0',NULL,'invalid',1,NULL,'2018-01-07 20:45:25','2018-01-07 20:45:25','2018-10-14 19:49:23','a8636095-e8db-4a94-b04a-d224d1657382'),
-	(39,'architect','2.2.10','2.0.0',NULL,'unknown',1,NULL,'2018-01-29 21:53:24','2018-01-29 21:53:24','2018-10-14 19:49:23','41b89fab-16b7-4005-9a67-d9c491988809'),
+	(34,'dumper','1.3.1','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:42:34','2017-12-15 01:42:34','2018-10-23 00:23:57','7e23f542-ff7c-4bf2-8ecd-5f8de4af01f4'),
+	(36,'supersort','3.0.1','0.0.0.0',NULL,'unknown',1,NULL,'2017-12-25 23:06:33','2017-12-25 23:06:33','2018-10-23 00:23:57','df522b45-89f9-49f6-9cf8-942a646e4b98'),
+	(38,'image-optimize','1.4.42','1.0.0',NULL,'invalid',1,NULL,'2018-01-07 20:45:25','2018-01-07 20:45:25','2018-10-23 00:23:57','a8636095-e8db-4a94-b04a-d224d1657382'),
+	(39,'architect','2.2.10','2.0.0',NULL,'unknown',1,NULL,'2018-01-29 21:53:24','2018-01-29 21:53:24','2018-10-23 00:23:56','41b89fab-16b7-4005-9a67-d9c491988809'),
 	(40,'craft3-gonzo','0.0.1','0.0.1',NULL,'unknown',1,NULL,'2018-02-06 23:05:18','2018-02-06 23:05:18','2018-02-18 19:48:31','7b317966-b958-46c0-a31c-5ddb6e8f2fe4'),
-	(41,'super-table','2.0.10','2.0.4',NULL,'unknown',1,NULL,'2018-02-12 21:06:02','2018-02-12 21:06:02','2018-10-14 19:49:23','31571d13-df35-4080-8c53-44e49f9c8590'),
-	(44,'imager','v2.1.0','2.0.0',NULL,'unknown',1,NULL,'2018-02-17 15:00:56','2018-02-17 15:00:56','2018-10-14 19:49:23','fd39c2bb-f263-4abb-bc12-4491e0b6d770'),
-	(46,'async-queue','1.3.3','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 16:41:46','2018-02-20 16:41:46','2018-10-14 19:49:23','e15a6740-13b4-4688-9dc5-1b50153a7081'),
-	(47,'craft-gonzo','0.0.1','0.0.1',NULL,'unknown',1,NULL,'2018-02-20 16:43:21','2018-02-20 16:43:21','2018-10-14 19:49:23','968e851a-338b-4260-beb5-5e775838b9d9'),
-	(49,'splash','3.0.2','3.0.0',NULL,'unknown',1,'{\"volume\":\"1\",\"authorField\":\"\",\"authorUrlField\":\"\",\"colorField\":\"\"}','2018-02-20 17:07:28','2018-02-20 17:07:28','2018-10-14 19:49:23','30ff7ea1-c3d9-4c5f-aef8-f82cce62a929'),
-	(51,'mailgun','1.2.0','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 17:09:49','2018-02-20 17:09:49','2018-10-14 19:49:23','8a54cfd6-7523-4824-8121-f3f7d226035e'),
+	(41,'super-table','2.0.10','2.0.4',NULL,'unknown',1,NULL,'2018-02-12 21:06:02','2018-02-12 21:06:02','2018-10-23 00:23:57','31571d13-df35-4080-8c53-44e49f9c8590'),
+	(44,'imager','v2.1.0','2.0.0',NULL,'unknown',1,NULL,'2018-02-17 15:00:56','2018-02-17 15:00:56','2018-10-23 00:23:57','fd39c2bb-f263-4abb-bc12-4491e0b6d770'),
+	(46,'async-queue','1.3.3','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 16:41:46','2018-02-20 16:41:46','2018-10-23 00:23:57','e15a6740-13b4-4688-9dc5-1b50153a7081'),
+	(47,'craft-gonzo','dev-master','0.0.1',NULL,'unknown',1,NULL,'2018-02-20 16:43:21','2018-02-20 16:43:21','2018-10-23 00:23:57','968e851a-338b-4260-beb5-5e775838b9d9'),
+	(49,'splash','3.0.2','3.0.0',NULL,'unknown',1,'{\"volume\":\"1\",\"authorField\":\"\",\"authorUrlField\":\"\",\"colorField\":\"\"}','2018-02-20 17:07:28','2018-02-20 17:07:28','2018-10-23 00:23:57','30ff7ea1-c3d9-4c5f-aef8-f82cce62a929'),
+	(51,'mailgun','1.2.0','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 17:09:49','2018-02-20 17:09:49','2018-10-23 00:23:57','8a54cfd6-7523-4824-8121-f3f7d226035e'),
 	(52,'collections','2.0.0','2.0.0',NULL,'unknown',1,NULL,'2018-02-22 15:47:10','2018-02-22 15:47:10','2018-03-03 21:58:47','c9d3aff6-3238-41e9-8540-44133e69a821'),
-	(53,'typedlinkfield','1.0.14','1.0.0',NULL,'unknown',1,NULL,'2018-02-22 15:50:24','2018-02-22 15:50:24','2018-10-14 19:49:23','e1b9cb51-8221-4753-bf6d-41c321d5335a'),
-	(55,'http2-server-push','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2018-03-03 22:48:50','2018-03-03 22:48:50','2018-10-14 19:49:23','c2ee6d2c-495d-4ce3-961d-f36c4e1619ae'),
-	(56,'environment-label','3.1.4','1.0.0',NULL,'unknown',1,NULL,'2018-03-05 22:11:01','2018-03-05 22:11:01','2018-10-14 19:49:23','7f9e37b8-4316-41e6-a0b3-7f1335266069'),
-	(57,'seomatic','3.1.22','3.0.6',NULL,'invalid',1,NULL,'2018-07-25 23:59:49','2018-07-25 23:59:49','2018-10-14 19:49:23','d7cd9095-7d36-4f49-8d5f-e55930e113e3'),
-	(58,'element-api','2.5.4','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:29:49','2018-07-26 00:29:49','2018-10-14 19:49:23','48798727-6640-4ca8-9d67-d8a2f2bd122c'),
-	(59,'cp-clearcache','1.0.2','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:32:22','2018-07-26 00:32:22','2018-10-14 19:49:23','b01539b8-05b4-4aab-b13e-9e6edb9f1423'),
-	(60,'cp-element-count','1.0.1','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:33:01','2018-07-26 00:33:01','2018-10-14 19:49:23','3a27d0ba-03d8-4f9f-a2af-4d2365bcad65'),
-	(61,'twig-perversion','2.0.5','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:35:59','2018-07-26 00:35:59','2018-10-14 19:49:23','eb0f6655-8371-45ef-997d-7ec5a8a8d7c5'),
-	(62,'image-resizer','2.0.3','2.0.0',NULL,'unknown',1,'{\"enabled\":\"1\",\"imageWidth\":\"2600\",\"imageHeight\":\"2600\",\"imageQuality\":\"100\",\"assetSourceSettings\":{\"1\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"2\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"3\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"4\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"}},\"skipLarger\":\"1\",\"nonDestructiveResize\":\"1\",\"nonDestructiveCrop\":false}','2018-07-26 00:40:02','2018-07-26 00:40:02','2018-10-14 19:49:23','cc3529a7-fcfc-4bee-a506-0b1ae4204f1f'),
-	(63,'spoon','3.2.4','3.0.0',NULL,'invalid',1,NULL,'2018-07-26 00:40:59','2018-07-26 00:40:59','2018-10-14 19:49:23','223bc963-f63d-4fc4-a3a7-cf40cfd18f3e'),
-	(64,'assetusage','2.0.0-beta.1','2.0.0',NULL,'unknown',1,NULL,'2018-10-10 23:58:44','2018-10-10 23:58:44','2018-10-14 19:49:23','11658df0-58b0-473b-8ce2-44ef17dac402'),
-	(65,'freeform','2.4.1','2.1.1',NULL,'invalid',1,'{\"pluginName\":\"Forms\",\"formTemplateDirectory\":null,\"emailTemplateDirectory\":null,\"emailTemplateStorage\":\"db\",\"defaultView\":\"dashboard\",\"fieldDisplayOrder\":\"name\",\"showTutorial\":false,\"removeNewlines\":\"\",\"defaultTemplates\":\"\",\"footerScripts\":\"0\",\"formSubmitDisable\":\"1\",\"freeformHoneypot\":\"1\",\"spamProtectionBehaviour\":\"simulate_success\",\"submissionThrottlingCount\":\"1\",\"submissionThrottlingTimeFrame\":\"m\",\"blockedEmails\":\"\",\"blockedKeywords\":\"\",\"blockedKeywordsError\":\"Invalid Entry Data\",\"blockedEmailsError\":\"Invalid Email Address\",\"showErrorsForBlockedEmails\":\"\",\"showErrorsForBlockedKeywords\":\"\",\"blockedIpAddresses\":\"\",\"purgableSubmissionAgeInDays\":\"0\",\"purgableSpamAgeInDays\":\"30\",\"salesforce_client_id\":null,\"salesforce_client_secret\":null,\"salesforce_username\":null,\"salesforce_password\":null,\"spamFolderEnabled\":\"1\",\"recaptchaEnabled\":false,\"recaptchaKey\":null,\"recaptchaSecret\":null}','2018-10-13 20:48:25','2018-10-13 20:48:25','2018-10-14 19:52:21','f6bc33ca-cb8a-42db-aa18-2f89b7f72feb');
+	(53,'typedlinkfield','1.0.14','1.0.0',NULL,'unknown',1,NULL,'2018-02-22 15:50:24','2018-02-22 15:50:24','2018-10-23 00:23:57','e1b9cb51-8221-4753-bf6d-41c321d5335a'),
+	(56,'environment-label','3.1.4','1.0.0',NULL,'unknown',1,NULL,'2018-03-05 22:11:01','2018-03-05 22:11:01','2018-10-23 00:23:57','7f9e37b8-4316-41e6-a0b3-7f1335266069'),
+	(57,'seomatic','3.1.23','3.0.6',NULL,'invalid',1,NULL,'2018-07-25 23:59:49','2018-07-25 23:59:49','2018-10-23 00:23:57','d7cd9095-7d36-4f49-8d5f-e55930e113e3'),
+	(58,'element-api','2.5.4','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:29:49','2018-07-26 00:29:49','2018-10-23 00:23:57','48798727-6640-4ca8-9d67-d8a2f2bd122c'),
+	(59,'cp-clearcache','1.0.2','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:32:22','2018-07-26 00:32:22','2018-10-23 00:23:57','b01539b8-05b4-4aab-b13e-9e6edb9f1423'),
+	(60,'cp-element-count','1.0.1','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:33:01','2018-07-26 00:33:01','2018-10-23 00:23:57','3a27d0ba-03d8-4f9f-a2af-4d2365bcad65'),
+	(61,'twig-perversion','2.0.6','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:35:59','2018-07-26 00:35:59','2018-10-23 00:23:57','eb0f6655-8371-45ef-997d-7ec5a8a8d7c5'),
+	(62,'image-resizer','2.0.3','2.0.0',NULL,'unknown',1,'{\"enabled\":\"1\",\"imageWidth\":\"2600\",\"imageHeight\":\"2600\",\"imageQuality\":\"100\",\"assetSourceSettings\":{\"1\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"2\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"3\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"4\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"}},\"skipLarger\":\"1\",\"nonDestructiveResize\":\"1\",\"nonDestructiveCrop\":false}','2018-07-26 00:40:02','2018-07-26 00:40:02','2018-10-23 00:23:57','cc3529a7-fcfc-4bee-a506-0b1ae4204f1f'),
+	(63,'spoon','3.2.4','3.0.0',NULL,'invalid',1,NULL,'2018-07-26 00:40:59','2018-07-26 00:40:59','2018-10-23 00:23:57','223bc963-f63d-4fc4-a3a7-cf40cfd18f3e'),
+	(64,'assetusage','2.0.0-beta.1','2.0.0',NULL,'unknown',1,NULL,'2018-10-10 23:58:44','2018-10-10 23:58:44','2018-10-23 00:23:57','11658df0-58b0-473b-8ce2-44ef17dac402'),
+	(65,'freeform','2.4.1','2.1.1',NULL,'invalid',1,'{\"pluginName\":\"Forms\",\"formTemplateDirectory\":null,\"emailTemplateDirectory\":null,\"emailTemplateStorage\":\"db\",\"defaultView\":\"dashboard\",\"fieldDisplayOrder\":\"name\",\"showTutorial\":false,\"removeNewlines\":\"\",\"defaultTemplates\":\"\",\"footerScripts\":\"0\",\"formSubmitDisable\":\"1\",\"freeformHoneypot\":\"1\",\"spamProtectionBehaviour\":\"simulate_success\",\"submissionThrottlingCount\":\"1\",\"submissionThrottlingTimeFrame\":\"m\",\"blockedEmails\":\"\",\"blockedKeywords\":\"\",\"blockedKeywordsError\":\"Invalid Entry Data\",\"blockedEmailsError\":\"Invalid Email Address\",\"showErrorsForBlockedEmails\":\"\",\"showErrorsForBlockedKeywords\":\"\",\"blockedIpAddresses\":\"\",\"purgableSubmissionAgeInDays\":\"0\",\"purgableSpamAgeInDays\":\"30\",\"salesforce_client_id\":null,\"salesforce_client_secret\":null,\"salesforce_username\":null,\"salesforce_password\":null,\"spamFolderEnabled\":\"1\",\"recaptchaEnabled\":false,\"recaptchaKey\":null,\"recaptchaSecret\":null}','2018-10-13 20:48:25','2018-10-13 20:48:25','2018-10-23 00:23:57','f6bc33ca-cb8a-42db-aa18-2f89b7f72feb');
 
 /*!40000 ALTER TABLE `plugins` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2870,6 +2869,7 @@ VALUES
 	('3f183013','@app/web/assets/deprecationerrors/dist'),
 	('4060c91e','@lib/garnishjs'),
 	('41d6b7be','@lib/selectize'),
+	('41e4289b','/Users/davidhellmann/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('432b65cc','@craft/web/assets/plugins/dist'),
 	('4413ebe','@martinherweg/craftgonzo/assetbundles/gonzo/dist'),
 	('44330d3','@app/web/assets/utilities/dist'),
@@ -2957,6 +2957,7 @@ VALUES
 	('7a6c057e','@lib/element-resize-detector'),
 	('7adcc20b','@lib/jquery-touch-events'),
 	('7b53e61','@lib/element-resize-detector'),
+	('7c4f6f05','@app/web/assets/plugins/dist'),
 	('7d001ab7','@craft/web/assets/matrix/dist'),
 	('7d003f69','@app/web/assets/pluginstore/dist'),
 	('7d22b945','@nystudio107/imageoptimize/assetbundles/imageoptimize/dist'),
@@ -3091,6 +3092,7 @@ VALUES
 	('cb67217f','@craft/web/assets/matrixsettings/dist'),
 	('cd432e7d','/Users/davidhellmann/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('cdb11f10','@lib/velocity'),
+	('ce2b5b86','@app/web/assets/updater/dist'),
 	('d00bed2c','@lib/xregexp'),
 	('d10c57e5','@marionnewlevant/snitch/assetbundles/snitch/dist'),
 	('d166e4be','@lib/fabric'),
@@ -3105,6 +3107,7 @@ VALUES
 	('d62f2f0','@nystudio107/imageoptimize/assetbundles/imageoptimize/dist'),
 	('d7f3b25d','@lib/d3'),
 	('d805e358','/Users/davidhellmann/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
+	('d89a7bd4','@craft/web/assets/plugins/dist'),
 	('d92e7672','@craft/web/assets/matrix/dist'),
 	('d956920c','@lib/picturefill'),
 	('d997723c','@bower/jquery/dist'),
@@ -3137,6 +3140,7 @@ VALUES
 	('e6bea0e2','@craft/web/assets/pluginstore/dist'),
 	('e6cbf895','@craft/web/assets/plugins/dist'),
 	('e7a1f507','@verbb/supertable/resources/dist'),
+	('e7cfa7bb','/Users/davidhellmann/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('e7fe711d','@app/web/assets/plugins/dist'),
 	('e86bde4','@lib/xregexp'),
 	('e8800611','@craft/web/assets/utilities/dist'),
@@ -3173,6 +3177,7 @@ VALUES
 	('fb76c312','@craft/web/assets/clearcaches/dist'),
 	('fc7a9adb','@lib/jquery.payment'),
 	('fce0eb5','@nystudio107/imageoptimize/assetbundles/optimizedimagesfield/dist'),
+	('fd896c5a','@app/web/assets/cp/dist'),
 	('fe9c3b95','@lib/jquery-touch-events'),
 	('ff457f0c','@angellco/spoon/assetbundles/spoon/dist'),
 	('ffa1fed','@lib/garnishjs');
@@ -3934,7 +3939,7 @@ VALUES
 	(12,1,'1petn3y97YmZKE8zKkCbrCEGDXZQjfzKeB_VnsNlKD7uoSfkY4Jj133kvwdot7p0te6_bC1D9-d2ztbjzv70SNfdGQzowQUaNEyl','2018-07-25 23:23:12','2018-07-28 09:08:00','dfa87f36-f3ba-4768-bdfa-d567b9f9bd02'),
 	(13,1,'pwIi-89IScFw40JtKCjiPFh8Uncxb8ks-QGA--fus0em7o2lSH4kEljqOcMF41aDmkP1ayjrvGZpkbbYMpsxqahQnUOhw3BmWJQ_','2018-08-11 13:43:25','2018-08-11 15:27:51','7b623ef2-4018-4f18-a85c-6ac7089cbcc5'),
 	(14,1,'gYV5r3VLHcV-ViyuxCU0kVJSbT6TDSG4cUKU9Qlh_y6xeGGf0NpMuFWNQggc5CFlF3p7Daw-6yHQs34oDZoZD2785UUQ-uwImD5w','2018-09-07 16:24:41','2018-09-11 19:15:23','fc343155-cff3-45ea-b2bf-ef681b33cc10'),
-	(15,1,'ylZWcrZReN-G3RCEJhLOFJA8YcJs9VZZVP42aqbFbs8eyghqpqcBDn1E_UjMbL0_anyfvde-GZOyINzYU85S1NHjSCbCDWSQUTxz','2018-10-13 10:41:18','2018-10-13 19:01:41','705996fe-a124-491e-9980-15fac034cd8d'),
+	(15,1,'ylZWcrZReN-G3RCEJhLOFJA8YcJs9VZZVP42aqbFbs8eyghqpqcBDn1E_UjMbL0_anyfvde-GZOyINzYU85S1NHjSCbCDWSQUTxz','2018-10-13 10:41:18','2018-10-23 00:24:51','705996fe-a124-491e-9980-15fac034cd8d'),
 	(16,1,'vnO9i4aOaUDsDEtYoW2JScP7VcidI0fo713nW8LLTsmYj_Vw22mGPyOZPn96LDgJUNyqwkTE4DPvWzMrqF8qFkx1GEEPgtLi3FF6','2018-10-13 19:15:52','2018-10-14 20:27:16','6fc5231a-7763-4017-8f8b-1c49ca6548c9');
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
