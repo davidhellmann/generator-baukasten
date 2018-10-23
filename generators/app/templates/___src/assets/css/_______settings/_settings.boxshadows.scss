@@ -11,7 +11,7 @@ $box-shadow-level-3: 0 10px 20px rgba(0, 0, 0, 0.10), 0 6px 6px rgba(0, 0, 0, 0.
 $box-shadow-level-4: 0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.11);
 $box-shadow-level-5: 0 19px 38px rgba(0, 0, 0, 0.15), 0 15px 12px rgba(0, 0, 0, 0.11);
 
-$dh-boxshadows: (
+$bk-boxshadows: (
   '0':      $box-shadow-level-0,
   '1':      $box-shadow-level-1,
   '2':      $box-shadow-level-2,
