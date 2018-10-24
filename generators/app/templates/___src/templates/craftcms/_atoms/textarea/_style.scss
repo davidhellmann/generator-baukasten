@@ -61,22 +61,26 @@
         }
       }
     }
+    
+    #{$root}.is-invalid & {
+      border: 1px solid c('red');
+    }
 
     &.has-focused:required:invalid {
-      border: 1px solid c('black');
+      border: 1px solid c('red');
     }
 
     &.has-focused:focus:invalid,
     &.has-content:focus:invalid {
-      border: 1px solid c('black');
+      border: 1px solid c('red');
     }
 
     &:required:valid {
-      border: 1px solid c('black');
+      border: 1px solid c('red');
     }
 
     &.has-content:focus:valid {
-      border: 1px solid c('black');
+      border: 1px solid c('red');
     }
   }
 
