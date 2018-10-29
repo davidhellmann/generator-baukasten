@@ -94,6 +94,11 @@ composer require solspace/craft3-freeform
 echo '--------------------------------------------------'
 
 echo ''
+echo '>>> Installing: HTTP2 Server Push'
+composer require superbig/craft3-http2serverpush
+echo '--------------------------------------------------'
+
+echo ''
 echo '>>> Installing: ImageOptimize'
 composer require nystudio107/craft-imageoptimize
 echo '--------------------------------------------------'
@@ -116,6 +121,11 @@ echo '--------------------------------------------------'
 echo ''
 echo '>>> Installing: Mailgun'
 composer require craftcms/mailgun
+echo '--------------------------------------------------'
+
+echo ''
+echo '>>> Installing: Matrix Toolbar'
+composer require monachilada/craft-matrixtoolbar
 echo '--------------------------------------------------'
 
 echo ''
@@ -167,4 +177,3 @@ echo ''
 echo '>>> Installing: Typogrify'
 composer require nystudio107/craft-typogrify
 echo '--------------------------------------------------'
-

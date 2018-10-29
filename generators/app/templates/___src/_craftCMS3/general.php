@@ -41,8 +41,7 @@ return array(
         'usePathInfo' => true,
         'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
 
-        // Not needed anymore
-        // 'siteUrl' => getenv('CRAFTENV_SITE_URL'),
+        'siteUrl' => getenv('CRAFTENV_SITE_URL'),
         // Multisite Settings
         // 'siteUrl' => [
         //    'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
