@@ -1,7 +1,19 @@
 <?php
-$defaultVariant = [
+// Describe your component
+$componentMeta = [
     'title' => 'plainText',
     'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/plainText/',
+    'description' => 'plainText Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
+$defaultVariant = [
+    'title' => 'plainText',
+    'status' => '',
     'description' => 'plainText Description goes here…',
     'cn' => 'a-plainText',
     'modifiers' => [],
@@ -15,21 +27,15 @@ $defaultVariant = [
 An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.',
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'plainText',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/plainText/',
-        'description' => 'plainText Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'plainText' => array_merge($defaultVariant, []),
         /*
-        'plainText--variant' => array_merge($defaultVariant, [
+        'plainText--variantName' => array_merge($defaultVariant, [
             'title' => 'plainText Intro',
-            'status' => 'wip',
             'description' => 'plainText Description goes here…',
             'modifiers' => ['variant'],
         ]),

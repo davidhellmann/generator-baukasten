@@ -1,4 +1,16 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'Cards',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'organism',
+    'path' => '_organisms/cards/',
+    'description' => 'cards Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultItem = array(
     'title' => 'This is a card.',
     'url' => 'http://baukasten.io',
@@ -11,7 +23,7 @@ $defaultItem = array(
 
 $defaultVariant = [
     'title' => 'Cards',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'cards Description goes here…',
     'cn' => 'o-cards',
     'modifiers' => [],
@@ -33,15 +45,10 @@ $defaultVariant = [
     'paginationSimple' => null
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'Cards',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'organism',
-        'path' => '_organisms/cards/',
-        'description' => 'cards Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'cards' => array_merge($defaultVariant, []),
         'cards--noImages' => array_merge($defaultVariant, [

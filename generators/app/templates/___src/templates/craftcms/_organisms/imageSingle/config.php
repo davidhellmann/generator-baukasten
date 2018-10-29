@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'imageSingle',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'organism',
+    'path' => '_organisms/imageSingle/',
+    'description' => 'imageSingle Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Image Single Landscape',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'imageSingle Description goes here…',
     'cn' => 'o-imageSingle',
     'modifiers' => [],
@@ -14,15 +26,10 @@ $defaultVariant = [
     'ratio' => 'landscape'
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'imageSingle',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'organism',
-        'path' => '_organisms/imageSingle/',
-        'description' => 'imageSingle Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'imageSingle' => array_merge($defaultVariant, []),
         'imageSingle--landscape-caption' => array_merge($defaultVariant, [

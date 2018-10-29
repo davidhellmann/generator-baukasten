@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'image',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/image/',
+    'description' => 'Default Image Formats.'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Image landscape',
-    'status' => 'done',
+    'status' => '',
     'description' => 'This is an image in landscape mode.',
     'cn' => 'a-image',
     'modifiers' => [],
@@ -17,26 +29,19 @@ $defaultVariant = [
     'image' => \craft\elements\Asset::find()->id('169')->one(),
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'image',
-        'status' => 'done',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/image/',
-        'description' => 'Default Image Formats.'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'image--landscape' => array_merge($defaultVariant, []),
         'image--portrait' => array_merge($defaultVariant, [
             'title' => 'Image portrait',
-            'status' => 'done',
             'description' => 'This is an image in portrait mode.',
             'ratio' => 'portrait',
         ]),
         'image--square' => array_merge($defaultVariant, [
             'title' => 'Image square',
-            'status' => 'done',
             'description' => 'This is an image in square mode.',
             'ratio' => 'square',
         ]),

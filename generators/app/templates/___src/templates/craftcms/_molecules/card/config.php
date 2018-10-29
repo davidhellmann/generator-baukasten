@@ -1,7 +1,19 @@
 <?php
-$defaultVariant = [
+// Describe your component
+$componentMeta = [
     'title' => 'Card',
     'status' => 'wip',
+    'visible' => true,
+    'type' => 'molecule',
+    'path' => '_molecules/card/',
+    'description' => 'card Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
+$defaultVariant = [
+    'title' => 'Card',
+    'status' => '',
     'description' => 'card Description goes here…',
     'cn' => 'm-card',
     'modifiers' => [],
@@ -21,15 +33,10 @@ $defaultVariant = [
     'link' => true
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'Card',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'molecule',
-        'path' => '_molecules/card/',
-        'description' => 'card Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'card' => array_merge($defaultVariant, []),
         'card--noImage' => array_merge($defaultVariant, [

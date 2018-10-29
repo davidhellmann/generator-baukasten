@@ -12,20 +12,21 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-    cn: 'a-select',
-    modifiers: [],
-    customClasses: [],
-    data: {},
-    js: null,
-    info: null,
-    array: null,
-    object: null,
-    firstOption: null,
-    required: null,
-    disabled: null,
-    model: null,
-    name: null,
-    id: null,
+  cn: 'a-select',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: null,
+  info: null,
+  array: null,
+  object: null,
+  label: null,
+  firstOption: null,
+  required: null,
+  disabled: null,
+  name: null,
+  id: null,
+  selected: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -44,18 +45,13 @@
       {% if opt.required %} required data-required="true"{% endif %}
       {% if opt.id %}id="{{ opt.id }}"{% endif %}
       {% if opt.name %}name="{{ opt.name }}"{% endif %} {{ opt.disabled ? ' disabled' }}>
-      {% if opt.info %}
-        <option disabled value="___placeholderOption___" {% if not optionValue %}selected="selected"{% endif %}>
-          {{ opt.info }}{% if opt.required %} *{% endif %}
-        </option>
-      {% endif %}
 
       {% if opt.firstOption %}
         <option value="{{ opt.firstOption.value }}">{{ opt.firstOption.text }}</option>
       {% endif %}
       {% if opt.object %}
-        {% for item in opt.object %}
-          <option value="{{ key }}" {% if key == optionValue %} selected{% endif %}>{{ option }}</option>
+        {% for key, value in opt.object %}
+          <option value="{{ key }}" {% if key == opt.selected %} selected{% endif %}>{{ value }}</option>
         {% endfor %}
       {% endif %}
 
@@ -65,6 +61,8 @@
         {% endfor %}
       {% endif %}
     </select>
+    <label class="{{ opt.cn ~ '__label' }}" for="{{ opt.id }}">{{ opt.label }}</label>
+    <span class="{{ opt.cn ~ '__info' }}">{{ opt.info }}</span>
   </div>
 {% endif %}
 

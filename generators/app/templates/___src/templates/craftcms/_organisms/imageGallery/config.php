@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'imageGallery',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'organism',
+    'path' => '_organisms/imageGallery/',
+    'description' => 'imageGallery Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Image Gallery Square Sized Thumbs',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'imageGallery Description goes here…',
     'cn' => 'o-imageGallery',
     'modifiers' => [],
@@ -27,15 +39,10 @@ $defaultVariant = [
     'ratio' => 'square'
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'imageGallery',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'organism',
-        'path' => '_organisms/imageGallery/',
-        'description' => 'imageGallery Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'imageGallery' => array_merge($defaultVariant, []),
         'imageGallery--landscape' => array_merge($defaultVariant, [

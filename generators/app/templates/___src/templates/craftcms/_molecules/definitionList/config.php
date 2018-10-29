@@ -1,7 +1,19 @@
 <?php
-$defaultVariant = [
+// Describe your component
+$componentMeta = [
     'title' => 'DefinitionList',
     'status' => 'wip',
+    'visible' => true,
+    'type' => 'molecule',
+    'path' => '_molecules/definitionList/',
+    'description' => 'definitionList Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
+$defaultVariant = [
+    'title' => 'DefinitionList',
+    'status' => '',
     'description' => 'definitionList Description goes here…',
     'cn' => 'm-definitionList',
     'modifiers' => [],
@@ -22,21 +34,15 @@ $defaultVariant = [
     ],
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'DefinitionList',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'molecule',
-        'path' => '_molecules/definitionList/',
-        'description' => 'definitionList Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'definitionList' => array_merge($defaultVariant, []),
         /*
-        'definitionList--variant' => array_merge($defaultVariant, [
+        'definitionList--variantName' => array_merge($defaultVariant, [
             'title' => 'definitionList Intro',
-            'status' => 'wip',
             'description' => 'definitionList Description goes here…',
             'modifiers' => ['variant'],
         ]),

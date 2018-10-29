@@ -1,7 +1,19 @@
 <?php
-$defaultVariant = [
+// Describe your component
+$componentMeta = [
     'title' => 'codeSnippet',
     'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => 'atoms/codeSnippet',
+    'description' => 'codeSnippet Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
+$defaultVariant = [
+    'title' => 'codeSnippet',
+    'status' => '',
     'description' => 'codeSnippet Description goes here…',
     'cn' => 'a-codeSnippet',
     'modifiers' => [],
@@ -18,22 +30,15 @@ $defaultVariant = [
     'language' => 'html'
 ];
 
-
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'codeSnippet',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => 'atoms/codeSnippet',
-        'description' => 'codeSnippet Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'codeSnippet' => array_merge($defaultVariant, []),
         /*
-        'codeSnippet--variant' => array_merge($defaultVariant, [
+        'codeSnippet--variantName' => array_merge($defaultVariant, [
             'title' => 'codeSnippet Intro',
-            'status' => 'wip',
             'description' => 'codeSnippet Description goes here…',
             'modifiers' => ['variant'],
         ]),

@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'input',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/input/',
+    'description' => 'input Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Input default',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'input Description goes here…',
     'cn' => 'a-input',
     'modifiers' => [],
@@ -26,20 +38,14 @@ $defaultVariant = [
     'placeholder' => null
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'input',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/input/',
-        'description' => 'input Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'input--default' => array_merge($defaultVariant, []),
         'input--disabled' => array_merge($defaultVariant, [
             'title' => 'Input disabled',
-            'status' => 'wip',
             'disabled' =>  true,
         ])
     ]

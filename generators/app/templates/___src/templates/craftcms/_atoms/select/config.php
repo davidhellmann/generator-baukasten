@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'select',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/select/',
+    'description' => 'select Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Select',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'select Description goes here…',
     'cn' => 'a-select',
     'modifiers' => [],
@@ -11,30 +23,25 @@ $defaultVariant = [
     'waypoint' => null,
     'waypointAni' => null,
     'array' => ['foo', 'bar'],
+    'label' => 'Sample',
+    'info' => 'Please select…'
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'select',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/select/',
-        'description' => 'select Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'select' => array_merge($defaultVariant, []),
-        'select--variant' => array_merge($defaultVariant, [
+        'select--disabled' => array_merge($defaultVariant, [
             'title' => 'Select disabled',
-            'status' => 'wip',
             'disabled' => true
         ]),
-        'input--firstOption' => array_merge($defaultVariant, [
+        'select--firstOption' => array_merge($defaultVariant, [
             'title' => 'Input custom first option',
-            'status' => 'wip',
             'firstOption' => [
                 'text' => 'Please select',
-                'value' => 'not set'
+                'value' => ''
             ]
         ]),
     ]

@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'Richt Text',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => 'atoms/richText',
+    'description' => 'Rich Text is a field for formatted content. The authors can use a Content Builder and a rich text modul is part of this content builder. The options for this field type are adjustable. But the rich Text is not a field type like in WordPress.'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Default Richt Text',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'richText Description goes here…',
     'cn' => 'a-richText',
     'modifiers' => [],
@@ -51,21 +63,14 @@ $defaultVariant = [
 '
 ];
 
-
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'Richt Text',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => 'atoms/richText',
-        'description' => 'Rich Text is a field for formatted content. The authors can use a Content Builder and a rich text modul is part of this content builder. The options for this field type are adjustable. But the rich Text is not a field type like in WordPress.'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'richText' => array_merge($defaultVariant, []),
         'richText--intro' => array_merge($defaultVariant, [
             'title' => 'Rich Text Intro',
-            'status' => 'done',
             'description' => 'richText Description goes here…',
             'modifiers' => ['intro'],
             'text' => '<p>Lorem ipsum dolor sit amet, quas <a href="http://baukasten.io">appetere</a> qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</p>

@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'svgIcon',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/svgIcon/',
+    'description' => 'svgIcon Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'SVG Icon 24',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'svgIcon Description goes here…',
     'cn' => 'a-svgIcon',
     'modifiers' => [],
@@ -13,15 +25,10 @@ $defaultVariant = [
     'icon' => 'social/instagram',
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'svgIcon',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/svgIcon/',
-        'description' => 'svgIcon Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'svgIcon--24' => array_merge($defaultVariant, []),
         'svgIcon--32' => array_merge($defaultVariant, [

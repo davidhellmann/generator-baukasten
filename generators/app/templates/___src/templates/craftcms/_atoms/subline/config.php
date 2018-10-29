@@ -1,7 +1,19 @@
 <?php
-$defaultVariant = [
+// Describe your component
+$componentMeta = [
     'title' => 'subline',
     'status' => 'wip',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/subline/',
+    'description' => 'subline Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
+$defaultVariant = [
+    'title' => 'subline',
+    'status' => '',
     'description' => 'subline Description goes here…',
     'cn' => 'a-subline',
     'modifiers' => [],
@@ -14,21 +26,15 @@ $defaultVariant = [
     'size' => 'h2'
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'subline',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/subline/',
-        'description' => 'subline Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'subline' => array_merge($defaultVariant, []),
         /*
-        'subline--variant' => array_merge($defaultVariant, [
+        'subline--variantName' => array_merge($defaultVariant, [
             'title' => 'subline Intro',
-            'status' => 'wip',
             'description' => 'subline Description goes here…',
             'modifiers' => ['variant'],
         ]),

@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'imageSlider',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'organism',
+    'path' => '_organisms/imageSlider/',
+    'description' => 'imageSlider Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Image Slider Landscape Sized',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'imageSlider Description goes here…',
     'cn' => 'o-imageSlider',
     'modifiers' => [],
@@ -28,15 +40,10 @@ $defaultVariant = [
     'ratio' => 'landscape',
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'imageSlider',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'organism',
-        'path' => '_organisms/imageSlider/',
-        'description' => 'imageSlider Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'imageSlider' => array_merge($defaultVariant, []),
         'imageSlider--landscape-caption' => array_merge($defaultVariant, [

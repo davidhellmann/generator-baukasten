@@ -1,7 +1,19 @@
 <?php
-$defaultVariant = [
+// Describe your component
+$componentMeta = [
     'title' => 'richTextMarginals',
     'status' => 'wip',
+    'visible' => true,
+    'type' => 'organism',
+    'path' => '_organisms/richTextMarginals/',
+    'description' => 'richTextMarginals Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
+$defaultVariant = [
+    'title' => 'richTextMarginals',
+    'status' => '',
     'description' => 'richTextMarginals Description goes here…',
     'cn' => 'o-richTextMarginals',
     'modifiers' => [],
@@ -21,21 +33,15 @@ $defaultVariant = [
     ]
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'richTextMarginals',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'organism',
-        'path' => '_organisms/richTextMarginals/',
-        'description' => 'richTextMarginals Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'richTextMarginals' => array_merge($defaultVariant, []),
         /*
-        'richTextMarginals--variant' => array_merge($defaultVariant, [
+        'richTextMarginals--variantName' => array_merge($defaultVariant, [
             'title' => 'richTextMarginals Intro',
-            'status' => 'wip',
             'description' => 'richTextMarginals Description goes here…',
             'modifiers' => ['variant'],
         ]),

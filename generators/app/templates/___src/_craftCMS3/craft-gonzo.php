@@ -17,12 +17,10 @@ return [
         "fluid" => "100vw"
     ],
     "compStatus" => [
-        0 => ["name" => "none", "color" => "#607D8B"],
-        1 => ["name" => "prototype", "color" => "#03A9F4"],
-        2 => ["name" => "wip", "color" => "#FF9800"],
-        3 => ["name" => "review", "color" => "#E91E63"],
-        4 => ["name" => "done", "color" => "#4CAF50"],
-        5 => ["name" => "discarded", "color" => "#F44336"],
+        0 => ["name" => "wip", "color" => "#FF9800"],
+        1 => ["name" => "review", "color" => "#E91E63"],
+        2 => ["name" => "done", "color" => "#4CAF50"],
+        3 => ["name" => "discarded", "color" => "#F44336"],
     ],
     "pages" => [
         'typography' => [

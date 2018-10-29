@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'Headline',
+    'status' => 'done',
+    'visible' => true,
+    'type' => 'atom',
+    'path' => '_atoms/headline/',
+    'description' => 'This area the global / default Headline styles.'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Headline H1',
-    'status' => 'done',
+    'status' => '',
     'description' => 'This is a H1 Headline.',
     'cn' => 'a-headline',
     'modifiers' => [],
@@ -14,15 +26,10 @@ $defaultVariant = [
     'size' => 'h1'
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'Headline',
-        'status' => 'done',
-        'visible' => true,
-        'type' => 'atom',
-        'path' => '_atoms/headline/',
-        'description' => 'This area the global / default Headline styles.'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'headline' => array_merge($defaultVariant, []),
         'headline--h2' => array_merge($defaultVariant, [

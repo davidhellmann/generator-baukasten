@@ -1,7 +1,19 @@
 <?php
+// Describe your component
+$componentMeta = [
+    'title' => 'imageGrid',
+    'status' => 'wip',
+    'visible' => true,
+    'type' => 'organism',
+    'path' => '_organisms/imageGrid/',
+    'description' => 'imageGrid Description goes here…'
+];
+
+// That's your default Variant. When you need just a single
+// Variant you can describe it all here.
 $defaultVariant = [
     'title' => 'Image Grid Two Columns',
-    'status' => 'wip',
+    'status' => '',
     'description' => 'imageGrid Description goes here…',
     'cn' => 'o-imageGrid',
     'modifiers' => ['c-2'],
@@ -17,15 +29,10 @@ $defaultVariant = [
     'ratio' => 'portrait'
 ];
 
+// When you need more as one variant this part is your friend.
+// You can add endless variants.
 return [
-    'meta' => [
-        'title' => 'imageGrid',
-        'status' => 'none',
-        'visible' => true,
-        'type' => 'organism',
-        'path' => '_organisms/imageGrid/',
-        'description' => 'imageGrid Description goes here…'
-    ],
+    'meta' => array_merge($componentMeta, []),
     'variants' => [
         'imageGrid' => array_merge($defaultVariant, []),
         'imageGrid--c-2-landscape' => array_merge($defaultVariant, [
