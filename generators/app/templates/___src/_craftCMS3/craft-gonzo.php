@@ -18,7 +18,7 @@ return [
     ],
     "compStatus" => [
         0 => ["name" => "wip", "color" => "#FF9800"],
-        1 => ["name" => "review", "color" => "#E91E63"],
+        1 => ["name" => "review", "color" => "#369BF4"],
         2 => ["name" => "done", "color" => "#4CAF50"],
         3 => ["name" => "discarded", "color" => "#F44336"],
     ],
