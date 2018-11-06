@@ -1,9 +1,7 @@
 # Baukasten
 
 [![Build Status](https://travis-ci.org/davidhellmann/generator-baukasten.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-baukasten)
-[![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten)
-[![bitHound Code](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/code.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten)
-[![bitHound Dependencies](https://www.bithound.io/github/davidhellmann/generator-baukasten/badges/dependencies.svg)](https://www.bithound.io/github/davidhellmann/generator-baukasten/master/dependencies/npm)
+
 
 <img alt="Baukasten" src="https://raw.githubusercontent.com/davidhellmann/generator-baukasten/master/baukasten.png" width="300">
 
@@ -15,34 +13,72 @@
    Github   :   https://github.com/davidhellmann/generator-baukasten
 ```
 
-## Install baukasten
-```
-npm i generator-baukasten -g
-```
+---
 
-## Start Generator
-```
-// Go to your project directory and do that
-yo baukasten
-```
+**Table of contents**
+
+* [Intro](#intro)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Setup a new project](#setup-a-new-project)
+* [Most important commands](#most-important-commands)
+* [Scss Framework](#scss-framework)
+* [Grid System](#grid-system)
+* [Thanks](#thanks)
+* [Roadmap](#roadmap)
+
+---
+
 
 ## Intro
 It's just a little 'Baukasten' or Boilerplate for your next Craft CMS or Prototyping Project. WordPress is also on Board
 but has not the priority as the other ones. Most of the stuff fits for my own requirements and maybe you have the same
 you can have a lot of fun with it. Give it a try.
 
-## IMPORTANT NOTE
-Actually the WordPress Version has no Focus. Craft CMS + Prototyping have priority! But you can use it, no problem.
 
-Big thanks to [Sascha Fuchs](https://github.com/gisu) and his [Kittn](http://kittn.de/) for a lot of help and inspiration.
-Also big thanks to [Martin Herweg](https://github.com/martinherweg) and his [YO Generator](https://www.npmjs.com/package/generator-mh-boilerplate) that help me a lot too.
-And last but not least thanks to all members from our Slack Channel [webdevs](http://webdevs.xyz/) — feel free to join us.
+## Requirments
+```
+composer
+node
+yarn (npm works also)
+```
 
 
-## What's inside? A lot! :-)
-### This three scenarios are covered by the generator:
-- Craft CMS — Up to Date
-- WordPress — No up to date but a good startpoint
+## Installation
+This installs Baukasten global on you computer
+
+```
+yarn global add generator-baukasten
+```
+
+## Setup a new project
+Go to you project directory and run this command and run through the questions 
+
+```
+yo baukasten
+```
+
+![Screenshot](_screenshots/baukasten-01.png)
+
+When you answered all question the generator do some magic.
+When he's done and all is fine he runs an `yarn start` to initialize the project. 
+
+
+## Most important commands
+When you need more details look at the `package.json`
+
+```
+yarn start         // run this command only if you setup a new project. Normally the generator execute this command by itself
+yarn install       // to install NPM Packages
+yarn dev           // to start the dev process. It runs a yarn build in front of that
+yarn dev:single    // runs just the dev task without a build process in front
+yarn build         // runs the build task
+```
+
+
+
+## Scss Framework
+There is a little CSS Framework inside. It's simple as possible to have a good point to start. 
 
 ### Settings
 You can find this stuff here: `___src/assets/css/_______settings`
@@ -56,91 +92,46 @@ You can find this stuff here: `___src/assets/css/______tools`
 You can find this stuff here: `___src/assets/css/_______settings`
 
 
-## Install NPM Packages
-```
-npm install // yarn install
+## Grid system
+We've outsourced the Scss Grid Framework in his own NPM Package to use it in different environments
+You can find it here: [https://github.com/davidhellmann/baukasten-grid](https://github.com/davidhellmann/baukasten-grid)
+Or directly to the [Readme](https://github.com/davidhellmann/baukasten-grid/blob/master/readme.md)
+
+To modify you settings you must open the `___src/assets/css/_______settings/_settings.breakpoints.scss` and there you can
+change what you want. The dafaults look like this: 
+
+```scss
+// Settings
+$bk-grid-settings-custom: (
+  cssgrid: false,
+  cssgrid-fallback: false,
+  flexboxgrid: true,
+  testing: false,
+  prefix: 'o-',
+  units: (
+    gutter: 8px,
+    gutter-min-factor: 1,
+    gutter-max-factor: 2,
+    gutter-min-vertical-factor: 1,
+    gutter-max-vertical-factor: 2
+  ),
+  offset-classes: false,
+  push-classes: false,
+  pull-classes: false,
+  disable-padding-horizontal: false,
+  breakpoints: (
+    min: (from: 320px, cols: 12, create-classes: true),
+    xs:  (from: 400px, cols: 12, create-classes: false),
+    s:   (from: 600px, cols: 24, create-classes: true),
+    m:   (from: 800px, cols: 24, create-classes: false),
+    l:   (from: 1000px, cols: 24, create-classes: true),
+    max: (from: 1440px, cols: 24, create-classes: false)
+  )
+);
 ```
 
 
-## Initialize Project
-```
-npm run start OR yarn start
-```
-
-
-### Default Task with BrowserSync
-```
-npm run dev OR yarn dev
-```
-
-
-### Task for Building
-This Task clean the folder, build the stuff from ground up and optimize the images and minifiy JS / CSS files. Ready for live!
-
-```
-npm run build OR yarn build
-```
-
-
-### Other Tasks
-There are some other Tasks there…
-
-```
-// NPM RUN / YARN COMMANDS
-npm start
-npm dev
-npm dev:single
-npm build
-npm module
-npm critical
-npm clean:dist
-npm clean:templates
-npm clean:images
-npm clean:js
-npm clean:css
-npm copy:fonts
-npm copy:images
-npm copy:svg
-npm copy:svg-single
-npm create:svg-sprite
-npm copy:systemFiles
-npm compile:templates
-npm create:favicons
-npm create:inlineJS
-npm webpack
-npm webpack:analyze
-```
-
-```
-// Clean Tasks
-// Clean the specific folder in the "___dist" dir
-npm clean:templates
-npm clean:css
-npm clean:js
-npm clean:images
-```
-
-```
-// Main Tasks
-// All this are triggered within "gulp init" & "gulp build" task.
-// Some of this are triggered within the "gulp" task.
-npm compile:templates
-npm create:inlineJS,
-npm copy:systemFiles
-npm copy:fonts
-npm copy:images
-npm copy:svg-single
-npm create:svg-sprite
-```
-
-```
-// Minify Tasks
-// This task are triggered within the "guld build" task.
-gulp minify:images
-```
-
-
-## Thanks to
+## Thanks
 - webdevs - for so many things: [Website](http://webdevs.xyz)
 - Sascha Fuchs - for help help help: [Website](https://github.com/gisu)
 - Martin Herweg - for help help help: [Website](https://github.com/martinherweg)
@@ -149,4 +140,9 @@ gulp minify:images
 - Hugo Giraudel & Eduardo Bouças - for include media: [Website](http://include-media.com/)
 - @LukyVj - for family.scss: [Website](http://lukyvj.github.io/family.scss/)
 - inuitcss - for some snippets and inspiration: [website](https://github.com/inuitcss/inuitcss)
+
+
+## Roadmap
+* Add Laravel as option
+* Add Vue CLI as option
 
