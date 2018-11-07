@@ -8,7 +8,7 @@ import imageSlider from '../../../templates/_organisms/imageSlider/_script';
 import imageGallery from '../../../templates/_organisms/imageGallery/_script';
 import input from '../../../templates/_atoms/input/_script';
 import textarea from '../../../templates/_atoms/textarea/_script';
-import accordion    from '../../../templates/_embeds/accordion/_script'
+import accordion    from '../../../templates/_embeds/accordion/_script';
 // import cookiebar    from '../../../templates/_modules/cookiebar/_main'
 // import imageSlider  from '../../../templates/_modules/imageSlider/_main'
 // import imageGallery from '../../../templates/_modules/imageGallery/_main'
