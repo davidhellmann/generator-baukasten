@@ -24,7 +24,7 @@
         },
         data() {
             return {
-                cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %'
+                cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>'
             };
         },
         computed: {
@@ -45,15 +45,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') % {
+    .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %> {
         $root: &;
         @include make-vr();
         width: 100%;
     }
 
     // Modul Modifiers Example
-    .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %--modifier {
-        .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %__block {
+    .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>--modifier {
+        .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>__block {
             // Styles here
         }
 
