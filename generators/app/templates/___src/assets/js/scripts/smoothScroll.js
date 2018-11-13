@@ -15,14 +15,14 @@ const scroll = new SmoothScroll('[data-scroll]', {
     speed: 250,
 
     // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
-    offset: 0,
+    offset: 50,
 
     // Easing pattern to use
     easing: 'easeInOutCubic',
 
     // Callback API
-    before() { }, // Callback to run before scroll
-    after() { } // Callback to run after scroll
+    // before() { }, // Callback to run before scroll
+    // after() { } // Callback to run after scroll
 });
 
 
@@ -36,7 +36,6 @@ if (window.location.hash) {
 
         // Any custom options you want to use would go here
         const options = {};
-        SmoothScroll.animateScroll(anchor, toggle, options);
-    }, 250);
+        scroll.animateScroll(anchor, toggle, options);
+    }, 1000);
 }
-
