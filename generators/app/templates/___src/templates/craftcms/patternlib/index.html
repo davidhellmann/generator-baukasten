@@ -22,8 +22,72 @@
   {% include '_partials/webpack/webpack-header.html' %}
 </head>
 <body>
-<div class="o-appWrapper" style="padding: 16px;">
+
+<div class="o-appWrapper" style="padding: 32px 32px 64px 32px; position: relative;">
+  <div class="colorSwitcher"></div>
   {# Render Pattern Lib Content #}
+
+  <style>
+    .colorSwitcher {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -32px;
+      height: 20px;
+      user-select: none;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .colorButton {
+      width: 12px;
+      height: 12px;
+      margin: 4px;
+      border-radius: 100%;
+      user-select: none;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+  </style>
+
+
+  <script type="text/javascript">
+    var wrapper = document.querySelector('.o-appWrapper');
+    var switcher = document.querySelector('.colorSwitcher');
+    var colors = [
+      '#fff',
+      '#7f7f7f',
+      '#000',
+    ];
+
+    colors.forEach(function (color) {
+      var newDiv = document.createElement('div');
+      newDiv.style.backgroundColor = color;
+      newDiv.className = 'colorButton';
+      newDiv.setAttribute('data-color', color);
+      switcher.appendChild(newDiv);
+    });
+
+    wrapper.style.transition = 'all 0.25s ease-in-out';
+    if (localStorage.getItem('iFrameColor')) {
+      wrapper.style.backgroundColor = localStorage.getItem('iFrameColor');
+    }
+
+    var buttons = document.querySelectorAll('.colorButton');
+    console.log(buttons);
+
+    if (buttons) {
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function() {
+          localStorage.setItem('iFrameColor', button.getAttribute('data-color'));
+          wrapper.style.backgroundColor = button.getAttribute('data-color');
+        })
+      })
+    }
+  </script>
+
+
   {% include component with {
     opt: templateOptions | default([])
   } %}
