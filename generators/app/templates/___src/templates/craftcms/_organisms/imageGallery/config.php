@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'imageGallery',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'organism',
     'path' => '_organisms/imageGallery/',

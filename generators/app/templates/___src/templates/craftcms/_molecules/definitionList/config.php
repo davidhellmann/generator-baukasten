@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'DefinitionList',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'molecule',
     'path' => '_molecules/definitionList/',

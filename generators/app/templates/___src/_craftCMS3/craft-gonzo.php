@@ -21,6 +21,7 @@ return [
         1 => ["name" => "review", "color" => "#369BF4"],
         2 => ["name" => "done", "color" => "#4CAF50"],
         3 => ["name" => "discarded", "color" => "#F44336"],
+        4 => ["name" => "none", "color" => "#000"],
     ],
     "pages" => [
         'typography' => [

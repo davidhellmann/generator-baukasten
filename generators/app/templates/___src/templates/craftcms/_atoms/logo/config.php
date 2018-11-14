@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'logo',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => '_atoms/logo/',

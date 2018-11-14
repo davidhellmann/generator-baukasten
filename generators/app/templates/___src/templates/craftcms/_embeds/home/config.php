@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'home',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'embed',
     'path' => '_embeds/home/',

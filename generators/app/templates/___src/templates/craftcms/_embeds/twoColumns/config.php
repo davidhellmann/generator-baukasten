@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'twoColumns',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'embed',
     'path' => '_embeds/twoColumns/',

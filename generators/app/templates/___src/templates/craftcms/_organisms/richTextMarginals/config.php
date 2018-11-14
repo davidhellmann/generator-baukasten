@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'richTextMarginals',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'organism',
     'path' => '_organisms/richTextMarginals/',

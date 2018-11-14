@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'select',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => '_atoms/select/',

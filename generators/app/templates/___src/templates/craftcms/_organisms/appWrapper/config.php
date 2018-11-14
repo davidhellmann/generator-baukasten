@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'appWrapper',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'organism',
     'path' => '_organisms/appWrapper/',

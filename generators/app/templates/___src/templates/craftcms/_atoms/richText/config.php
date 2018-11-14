@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'Richt Text',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => 'atoms/richText',

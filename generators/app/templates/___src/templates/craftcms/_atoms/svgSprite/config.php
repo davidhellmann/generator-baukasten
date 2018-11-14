@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'svgSprite',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => '_atoms/svgSprite/',

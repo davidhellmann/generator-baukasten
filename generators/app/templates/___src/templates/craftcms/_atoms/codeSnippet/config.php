@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'codeSnippet',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => 'atoms/codeSnippet',

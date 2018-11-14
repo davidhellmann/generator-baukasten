@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'button',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => '_atoms/button/',

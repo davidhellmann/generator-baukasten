@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => '<%= moduleName.replace('-', '_') %>',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => '<%= pathOptions.key.slice(0, -1) %>',
     'path' => '_<%= pathOptions.key %>/<%= moduleName.replace('-', '_') %>/',

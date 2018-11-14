@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'accordion',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'embed',
     'path' => '_embeds/accordion/',

@@ -2,7 +2,7 @@
 // Describe your component
 $componentMeta = [
     'title' => 'embed',
-    'status' => 'wip',
+    'status' => 'none',
     'visible' => true,
     'type' => 'atom',
     'path' => '_atoms/embed/',
