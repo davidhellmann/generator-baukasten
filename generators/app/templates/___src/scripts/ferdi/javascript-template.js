@@ -38,7 +38,7 @@ const <%= moduleName.replace('-', '_') %> = {
     },
 
     init() {
-        this.debug(`Init: ${this.cfg.name}`);
+        console.debug(`Init: ${this.cfg.name}`);
         this.setElements();
     }
 };
