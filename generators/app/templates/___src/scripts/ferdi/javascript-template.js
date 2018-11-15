@@ -12,7 +12,7 @@ const <%= moduleName.replace('-', '_') %> = {
     cfg:  {
         name: '<%= moduleName.replace('-', '_') %>',
         selectors: {
-            sample: '.sample',
+            <%= moduleName.replace('-', '_') %>: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
         },
         classes: {
             active: 'is-active',
@@ -21,10 +21,10 @@ const <%= moduleName.replace('-', '_') %> = {
             visible: 'is-visible'
         },
         el: {
-            $sample: undefined
+            $<%= moduleName.replace('-', '_') %>: undefined
         },
         els: {
-            $sample: undefined
+            $<%= moduleName.replace('-', '_') %>: undefined
         }
     },
 
@@ -33,12 +33,12 @@ const <%= moduleName.replace('-', '_') %> = {
     },
 
     setElements() {
-        console.debug('Set Elements…')
-        this.cfg.el.$sample = document.querySelector(this.cfg.selectors.sample);
+        console.debug('Set Elements…');
+        this.cfg.el.$<%= moduleName.replace('-', '_') %> = document.querySelector(this.cfg.selectors.<%= moduleName.replace('-', '_') %>);
     },
 
     init() {
-        console.debug(`Init: ${this.cfg.name}`);
+        this.debug(`Init: ${this.cfg.name}`);
         this.setElements();
     }
 };
