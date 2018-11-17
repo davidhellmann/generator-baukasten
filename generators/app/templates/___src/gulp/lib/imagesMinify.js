@@ -10,7 +10,7 @@ const minifyImages = (srcFiles, distFiles) => {
     return gulp
         .src(srcFiles)
         .pipe($.imagemin({
-            optimizationLevel: pkg.minify.images.optimizationLxevel,
+            optimizationLevel: pkg.minify.images.optimizationLevel,
             use: [
                 pngquant(pkg.minify.images.pngquant),
                 jpegCompress({
