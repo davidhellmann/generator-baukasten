@@ -94,7 +94,7 @@ return array(
     'staging' => [
         'allowUpdates' => false,
         'backupOnUpdate' => false,
-        'devMode' => false,
+        'devMode' => true,
         'enableTemplateCaching' => true,
         'isSystemOn' => true,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
