@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 8.0.11)
 # Database: bistum_local
-# Generation Time: 2018-11-19 11:05:41 +0000
+# Generation Time: 2018-11-19 13:06:57 +0000
 # ************************************************************
 
 
@@ -125,6 +125,16 @@ CREATE TABLE `assettransformindex` (
   KEY `assettransformindex_volumeId_assetId_location_idx` (`volumeId`,`assetId`,`location`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `assettransformindex` WRITE;
+/*!40000 ALTER TABLE `assettransformindex` DISABLE KEYS */;
+
+INSERT INTO `assettransformindex` (`id`, `assetId`, `filename`, `format`, `location`, `volumeId`, `fileExists`, `inProgress`, `dateIndexed`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,169,'cat_01.jpg','jpg','_1200x630_crop_center-center_82_none',1,1,0,'2018-11-19 11:07:38','2018-11-19 11:07:38','2018-11-19 11:07:39','88398306-30aa-462b-a420-7e1f81fc9f5c'),
+	(2,169,'cat_01.jpg','jpg','_800x418_crop_center-center_82_none',1,1,0,'2018-11-19 11:07:39','2018-11-19 11:07:39','2018-11-19 11:07:39','7d1e0d51-de6a-4dc1-ab6f-c4d5e1a7ac60');
+
+/*!40000 ALTER TABLE `assettransformindex` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table assettransforms
@@ -2488,45 +2498,44 @@ LOCK TABLES `plugins` WRITE;
 
 INSERT INTO `plugins` (`id`, `handle`, `version`, `schemaVersion`, `licenseKey`, `licenseKeyStatus`, `enabled`, `settings`, `installDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(4,'redactor','2.1.6','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:07:59','2017-12-06 11:07:59','2018-11-13 20:12:14','1118534b-04da-4520-80db-75421f46f720'),
-	(6,'cookies','1.1.10','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:15:08','2017-12-06 11:15:08','2018-11-13 20:12:14','3f6005f7-7c9c-46b4-9300-cb0550d29802'),
-	(8,'minify','1.2.9','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:22:51','2017-12-06 11:22:51','2018-11-13 20:12:14','34fcbd22-0064-4e51-aa32-48e3be0a79ba'),
-	(11,'typogrify','1.1.16','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:00:58','2017-12-06 13:00:58','2018-11-13 20:12:14','63536b19-23b8-42f6-b75b-51a9cdc7d8d6'),
+	(4,'redactor','2.1.6','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:07:59','2017-12-06 11:07:59','2018-11-19 13:05:24','1118534b-04da-4520-80db-75421f46f720'),
+	(6,'cookies','1.1.10','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:15:08','2017-12-06 11:15:08','2018-11-19 13:05:24','3f6005f7-7c9c-46b4-9300-cb0550d29802'),
+	(8,'minify','1.2.9','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 11:22:51','2017-12-06 11:22:51','2018-11-19 13:05:24','34fcbd22-0064-4e51-aa32-48e3be0a79ba'),
+	(11,'typogrify','1.1.16','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:00:58','2017-12-06 13:00:58','2018-11-19 13:05:24','63536b19-23b8-42f6-b75b-51a9cdc7d8d6'),
 	(14,'command-palette','3.1.0','3.0.0',NULL,'unknown',1,'{\"pluginName\":\"\",\"theme\":\"Palette Dark.css\",\"elementSearchElementTypes\":{\"asset\":{\"elementType\":\"Asset\",\"enabled\":\"1\"},\"category\":{\"elementType\":\"Category\",\"enabled\":\"1\"},\"entry\":{\"elementType\":\"Entry\",\"enabled\":\"1\"},\"globalset\":{\"elementType\":\"Global Set\",\"enabled\":\"1\"},\"matrixblock\":{\"elementType\":\"Matrix Block\",\"enabled\":\"1\"},\"tag\":{\"elementType\":\"Tag\",\"enabled\":\"\"},\"user\":{\"elementType\":\"User\",\"enabled\":\"1\"}}}','2017-12-06 13:15:27','2017-12-06 13:15:27','2018-04-05 09:13:29','9a1bc271-396e-43ef-ba37-80555d0fd10a'),
 	(15,'cp-body-classes','v2.0.0','2.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:17:21','2017-12-06 13:17:21','2017-12-14 13:47:11','bc093d0c-5cff-476d-9c0e-d30b5c2c8ed6'),
-	(16,'cp-css','2.1.0','2.0.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#content {\\r\\n  padding-bottom: 50vh !important;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .matrixblock[data-type=\\\"bkSection\\\"] {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-left: 0%;\\r\\n  margin-top: 40px;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection {\\r\\n  border-bottom: 2px solid #da5a47;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-12-06 13:17:35','2017-12-06 13:17:35','2018-11-13 20:12:14','f2244f9e-d8ec-46e5-bf39-232c8b80e304'),
-	(19,'expanded-singles','1.0.5','1.0.0',NULL,'unknown',1,'{\"expandSingles\":\"1\",\"redirectToEntry\":\"1\"}','2017-12-06 13:21:45','2017-12-06 13:21:45','2018-11-13 20:12:14','15bd775c-1dc1-4a64-b10f-e3131eb89ee1'),
-	(21,'code-mirror','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:36:58','2017-12-06 13:36:58','2018-11-13 20:12:14','9c83a2af-f6a8-4ab0-b333-f6654351df95'),
+	(16,'cp-css','2.1.0','2.0.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#content {\\r\\n  padding-bottom: 50vh !important;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .matrixblock[data-type=\\\"bkSection\\\"] {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-left: 0%;\\r\\n  margin-top: 40px;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--bkSection {\\r\\n  border-bottom: 2px solid #da5a47;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n}\\r\\n\\r\\n.ni_block--bkSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-12-06 13:17:35','2017-12-06 13:17:35','2018-11-19 13:05:24','f2244f9e-d8ec-46e5-bf39-232c8b80e304'),
+	(19,'expanded-singles','1.0.5','1.0.0',NULL,'unknown',1,'{\"expandSingles\":\"1\",\"redirectToEntry\":\"1\"}','2017-12-06 13:21:45','2017-12-06 13:21:45','2018-11-19 13:05:24','15bd775c-1dc1-4a64-b10f-e3131eb89ee1'),
+	(21,'code-mirror','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-06 13:36:58','2017-12-06 13:36:58','2018-11-19 13:05:24','9c83a2af-f6a8-4ab0-b333-f6654351df95'),
 	(27,'matrix-colors','v2.0.0','2.0.0',NULL,'unknown',1,'{\"matrixBlockColors\":[{\"blockType\":\"bkSection\",\"backgroundColor\":\"#EBF0E5\"},{\"blockType\":\"imageGallery\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageGrid\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageSingle\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"imageSlider\",\"backgroundColor\":\"#E5ECF0\"},{\"blockType\":\"richText\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"headline\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"plainText\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"quote\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"definitionList\",\"backgroundColor\":\"#F0E5E7\"},{\"blockType\":\"embed\",\"backgroundColor\":\"#F0ECE5\"},{\"blockType\":\"divider\",\"backgroundColor\":\"#F0ECE5\"}]}','2017-12-13 01:50:23','2017-12-13 01:50:23','2017-12-13 02:10:49','81519fcf-850a-42e5-a770-e98d0079392f'),
-	(28,'child-me','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-12-13 01:52:14','2017-12-13 01:52:14','2018-11-13 20:12:14','0caa94c0-fdce-4836-8008-d0e3433ce35c'),
-	(31,'cp-field-inspect','1.0.5','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:51','2017-12-15 01:37:51','2018-11-13 20:12:14','21aef169-efa2-4c3c-be1a-562ad38c3ba9'),
-	(32,'logs','3.0.0','3.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:58','2017-12-15 01:37:58','2018-11-13 20:12:14','fb6cb193-4ab5-4d0a-92d8-fc9becec28ad'),
+	(28,'child-me','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-12-13 01:52:14','2017-12-13 01:52:14','2018-11-19 13:05:24','0caa94c0-fdce-4836-8008-d0e3433ce35c'),
+	(31,'cp-field-inspect','1.0.5','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:51','2017-12-15 01:37:51','2018-11-19 13:05:24','21aef169-efa2-4c3c-be1a-562ad38c3ba9'),
+	(32,'logs','3.0.0','3.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:37:58','2017-12-15 01:37:58','2018-11-19 13:05:24','fb6cb193-4ab5-4d0a-92d8-fc9becec28ad'),
 	(33,'advanced-url-field','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:38:24','2017-12-15 01:38:24','2018-02-22 15:47:13','19ed52eb-e7ae-44f2-9699-95627155b822'),
-	(34,'dumper','1.3.1','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:42:34','2017-12-15 01:42:34','2018-11-13 20:12:14','7e23f542-ff7c-4bf2-8ecd-5f8de4af01f4'),
-	(36,'supersort','3.0.1','0.0.0.0',NULL,'unknown',1,NULL,'2017-12-25 23:06:33','2017-12-25 23:06:33','2018-11-13 20:12:14','df522b45-89f9-49f6-9cf8-942a646e4b98'),
-	(38,'image-optimize','1.4.44','1.0.0',NULL,'invalid',1,NULL,'2018-01-07 20:45:25','2018-01-07 20:45:25','2018-11-19 11:01:48','a8636095-e8db-4a94-b04a-d224d1657382'),
-	(39,'architect','2.2.11','2.0.0',NULL,'unknown',1,NULL,'2018-01-29 21:53:24','2018-01-29 21:53:24','2018-11-19 11:01:48','41b89fab-16b7-4005-9a67-d9c491988809'),
+	(34,'dumper','1.3.1','1.0.0',NULL,'unknown',1,NULL,'2017-12-15 01:42:34','2017-12-15 01:42:34','2018-11-19 13:05:24','7e23f542-ff7c-4bf2-8ecd-5f8de4af01f4'),
+	(36,'supersort','3.0.1','0.0.0.0',NULL,'unknown',1,NULL,'2017-12-25 23:06:33','2017-12-25 23:06:33','2018-11-19 13:05:24','df522b45-89f9-49f6-9cf8-942a646e4b98'),
+	(38,'image-optimize','1.4.44','1.0.0',NULL,'invalid',1,NULL,'2018-01-07 20:45:25','2018-01-07 20:45:25','2018-11-19 13:05:24','a8636095-e8db-4a94-b04a-d224d1657382'),
+	(39,'architect','2.2.11','2.0.0',NULL,'unknown',1,NULL,'2018-01-29 21:53:24','2018-01-29 21:53:24','2018-11-19 13:05:23','41b89fab-16b7-4005-9a67-d9c491988809'),
 	(40,'craft3-gonzo','0.0.1','0.0.1',NULL,'unknown',1,NULL,'2018-02-06 23:05:18','2018-02-06 23:05:18','2018-02-18 19:48:31','7b317966-b958-46c0-a31c-5ddb6e8f2fe4'),
-	(41,'super-table','2.0.14','2.0.4',NULL,'unknown',1,NULL,'2018-02-12 21:06:02','2018-02-12 21:06:02','2018-11-13 20:12:14','31571d13-df35-4080-8c53-44e49f9c8590'),
-	(44,'imager','v2.1.1','2.0.0',NULL,'unknown',1,NULL,'2018-02-17 15:00:56','2018-02-17 15:00:56','2018-11-13 20:12:14','fd39c2bb-f263-4abb-bc12-4491e0b6d770'),
-	(46,'async-queue','1.3.3','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 16:41:46','2018-02-20 16:41:46','2018-11-13 20:12:14','e15a6740-13b4-4688-9dc5-1b50153a7081'),
-	(47,'craft-gonzo','dev-master','0.0.1',NULL,'unknown',1,NULL,'2018-02-20 16:43:21','2018-02-20 16:43:21','2018-11-13 20:12:14','968e851a-338b-4260-beb5-5e775838b9d9'),
-	(49,'splash','3.0.2','3.0.0',NULL,'unknown',1,'{\"volume\":\"1\",\"authorField\":\"\",\"authorUrlField\":\"\",\"colorField\":\"\"}','2018-02-20 17:07:28','2018-02-20 17:07:28','2018-11-13 20:12:14','30ff7ea1-c3d9-4c5f-aef8-f82cce62a929'),
-	(51,'mailgun','1.3.0','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 17:09:49','2018-02-20 17:09:49','2018-11-13 20:12:14','8a54cfd6-7523-4824-8121-f3f7d226035e'),
+	(41,'super-table','2.0.14','2.0.4',NULL,'unknown',1,NULL,'2018-02-12 21:06:02','2018-02-12 21:06:02','2018-11-19 13:05:24','31571d13-df35-4080-8c53-44e49f9c8590'),
+	(44,'imager','v2.1.1','2.0.0',NULL,'unknown',1,NULL,'2018-02-17 15:00:56','2018-02-17 15:00:56','2018-11-19 13:05:24','fd39c2bb-f263-4abb-bc12-4491e0b6d770'),
+	(46,'async-queue','1.3.3','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 16:41:46','2018-02-20 16:41:46','2018-11-19 13:05:24','e15a6740-13b4-4688-9dc5-1b50153a7081'),
+	(47,'craft-gonzo','dev-master','0.0.1',NULL,'unknown',1,NULL,'2018-02-20 16:43:21','2018-02-20 16:43:21','2018-11-19 13:05:24','968e851a-338b-4260-beb5-5e775838b9d9'),
+	(49,'splash','3.0.2','3.0.0',NULL,'unknown',1,'{\"volume\":\"1\",\"authorField\":\"\",\"authorUrlField\":\"\",\"colorField\":\"\"}','2018-02-20 17:07:28','2018-02-20 17:07:28','2018-11-19 13:05:24','30ff7ea1-c3d9-4c5f-aef8-f82cce62a929'),
+	(51,'mailgun','1.3.0','1.0.0',NULL,'unknown',1,NULL,'2018-02-20 17:09:49','2018-02-20 17:09:49','2018-11-19 13:05:24','8a54cfd6-7523-4824-8121-f3f7d226035e'),
 	(52,'collections','2.0.0','2.0.0',NULL,'unknown',1,NULL,'2018-02-22 15:47:10','2018-02-22 15:47:10','2018-03-03 21:58:47','c9d3aff6-3238-41e9-8540-44133e69a821'),
-	(53,'typedlinkfield','1.0.15','1.0.0',NULL,'unknown',1,NULL,'2018-02-22 15:50:24','2018-02-22 15:50:24','2018-11-13 20:12:14','e1b9cb51-8221-4753-bf6d-41c321d5335a'),
-	(55,'http2-server-push','1.0.0','1.0.0',NULL,'unknown',1,NULL,'2018-03-03 22:48:50','2018-03-03 22:48:50','2018-10-28 21:59:50','c2ee6d2c-495d-4ce3-961d-f36c4e1619ae'),
-	(56,'environment-label','3.1.5','1.0.0',NULL,'unknown',1,NULL,'2018-03-05 22:11:01','2018-03-05 22:11:01','2018-11-13 20:12:14','7f9e37b8-4316-41e6-a0b3-7f1335266069'),
-	(57,'seomatic','3.1.31','3.0.6',NULL,'invalid',1,NULL,'2018-07-25 23:59:49','2018-07-25 23:59:49','2018-11-19 11:01:48','d7cd9095-7d36-4f49-8d5f-e55930e113e3'),
-	(58,'element-api','2.5.4','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:29:49','2018-07-26 00:29:49','2018-11-13 20:12:14','48798727-6640-4ca8-9d67-d8a2f2bd122c'),
-	(59,'cp-clearcache','1.0.2','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:32:22','2018-07-26 00:32:22','2018-11-13 20:12:14','b01539b8-05b4-4aab-b13e-9e6edb9f1423'),
-	(60,'cp-element-count','1.0.1','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:33:01','2018-07-26 00:33:01','2018-11-13 20:12:14','3a27d0ba-03d8-4f9f-a2af-4d2365bcad65'),
-	(61,'twig-perversion','2.0.6','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:35:59','2018-07-26 00:35:59','2018-11-13 20:12:14','eb0f6655-8371-45ef-997d-7ec5a8a8d7c5'),
-	(62,'image-resizer','2.0.4','2.0.0',NULL,'unknown',1,'{\"enabled\":\"1\",\"imageWidth\":\"2600\",\"imageHeight\":\"2600\",\"imageQuality\":\"100\",\"assetSourceSettings\":{\"1\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"2\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"3\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"4\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"}},\"skipLarger\":\"1\",\"nonDestructiveResize\":\"1\",\"nonDestructiveCrop\":false}','2018-07-26 00:40:02','2018-07-26 00:40:02','2018-11-13 20:12:14','cc3529a7-fcfc-4bee-a506-0b1ae4204f1f'),
-	(63,'spoon','3.2.4','3.0.0',NULL,'invalid',1,NULL,'2018-07-26 00:40:59','2018-07-26 00:40:59','2018-11-13 20:12:14','223bc963-f63d-4fc4-a3a7-cf40cfd18f3e'),
+	(53,'typedlinkfield','1.0.15','1.0.0',NULL,'unknown',1,NULL,'2018-02-22 15:50:24','2018-02-22 15:50:24','2018-11-19 13:05:24','e1b9cb51-8221-4753-bf6d-41c321d5335a'),
+	(56,'environment-label','3.1.5','1.0.0',NULL,'unknown',1,NULL,'2018-03-05 22:11:01','2018-03-05 22:11:01','2018-11-19 13:05:24','7f9e37b8-4316-41e6-a0b3-7f1335266069'),
+	(57,'seomatic','3.1.31','3.0.6',NULL,'invalid',1,NULL,'2018-07-25 23:59:49','2018-07-25 23:59:49','2018-11-19 13:05:24','d7cd9095-7d36-4f49-8d5f-e55930e113e3'),
+	(58,'element-api','2.5.4','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:29:49','2018-07-26 00:29:49','2018-11-19 13:05:24','48798727-6640-4ca8-9d67-d8a2f2bd122c'),
+	(59,'cp-clearcache','1.0.2','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:32:22','2018-07-26 00:32:22','2018-11-19 13:05:24','b01539b8-05b4-4aab-b13e-9e6edb9f1423'),
+	(60,'cp-element-count','1.0.1','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:33:01','2018-07-26 00:33:01','2018-11-19 13:05:24','3a27d0ba-03d8-4f9f-a2af-4d2365bcad65'),
+	(61,'twig-perversion','2.0.6','1.0.0',NULL,'unknown',1,NULL,'2018-07-26 00:35:59','2018-07-26 00:35:59','2018-11-19 13:05:24','eb0f6655-8371-45ef-997d-7ec5a8a8d7c5'),
+	(62,'image-resizer','2.0.4','2.0.0',NULL,'unknown',1,'{\"enabled\":\"1\",\"imageWidth\":\"2600\",\"imageHeight\":\"2600\",\"imageQuality\":\"100\",\"assetSourceSettings\":{\"1\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"2\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"3\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"},\"4\":{\"enabled\":\"1\",\"imageWidth\":\"\",\"imageHeight\":\"\",\"imageQuality\":\"\"}},\"skipLarger\":\"1\",\"nonDestructiveResize\":\"1\",\"nonDestructiveCrop\":false}','2018-07-26 00:40:02','2018-07-26 00:40:02','2018-11-19 13:05:24','cc3529a7-fcfc-4bee-a506-0b1ae4204f1f'),
+	(63,'spoon','3.2.4','3.0.0',NULL,'invalid',1,NULL,'2018-07-26 00:40:59','2018-07-26 00:40:59','2018-11-19 13:05:24','223bc963-f63d-4fc4-a3a7-cf40cfd18f3e'),
 	(64,'assetusage','2.0.0-beta.2','2.0.0',NULL,'unknown',1,NULL,'2018-10-10 23:58:44','2018-10-10 23:58:44','2018-10-29 22:47:24','11658df0-58b0-473b-8ce2-44ef17dac402'),
-	(65,'freeform','2.5.0','2.1.2',NULL,'invalid',1,'{\"pluginName\":\"Forms\",\"formTemplateDirectory\":null,\"emailTemplateDirectory\":null,\"emailTemplateStorage\":\"db\",\"defaultView\":\"dashboard\",\"fieldDisplayOrder\":\"name\",\"showTutorial\":false,\"removeNewlines\":\"\",\"defaultTemplates\":\"\",\"footerScripts\":\"0\",\"formSubmitDisable\":\"1\",\"freeformHoneypot\":\"1\",\"spamProtectionBehaviour\":\"simulate_success\",\"submissionThrottlingCount\":\"1\",\"submissionThrottlingTimeFrame\":\"m\",\"blockedEmails\":\"\",\"blockedKeywords\":\"\",\"blockedKeywordsError\":\"Invalid Entry Data\",\"blockedEmailsError\":\"Invalid Email Address\",\"showErrorsForBlockedEmails\":\"\",\"showErrorsForBlockedKeywords\":\"\",\"blockedIpAddresses\":\"\",\"purgableSubmissionAgeInDays\":\"0\",\"purgableSpamAgeInDays\":\"30\",\"salesforce_client_id\":null,\"salesforce_client_secret\":null,\"salesforce_username\":null,\"salesforce_password\":null,\"spamFolderEnabled\":\"1\",\"recaptchaEnabled\":false,\"recaptchaKey\":null,\"recaptchaSecret\":null}','2018-10-13 20:48:25','2018-10-13 20:48:25','2018-11-19 11:01:55','f6bc33ca-cb8a-42db-aa18-2f89b7f72feb'),
-	(66,'matrixtoolbar','1.0.6','1.0.4',NULL,'unknown',1,NULL,'2018-10-29 22:46:13','2018-10-29 22:46:13','2018-11-13 20:12:14','a946550e-9912-4080-b711-cea84a704d3f');
+	(65,'freeform','2.5.0','2.1.2',NULL,'invalid',1,'{\"pluginName\":\"Forms\",\"formTemplateDirectory\":null,\"emailTemplateDirectory\":null,\"emailTemplateStorage\":\"db\",\"defaultView\":\"dashboard\",\"fieldDisplayOrder\":\"name\",\"showTutorial\":false,\"removeNewlines\":\"\",\"defaultTemplates\":\"\",\"footerScripts\":\"0\",\"formSubmitDisable\":\"1\",\"freeformHoneypot\":\"1\",\"spamProtectionBehaviour\":\"simulate_success\",\"submissionThrottlingCount\":\"1\",\"submissionThrottlingTimeFrame\":\"m\",\"blockedEmails\":\"\",\"blockedKeywords\":\"\",\"blockedKeywordsError\":\"Invalid Entry Data\",\"blockedEmailsError\":\"Invalid Email Address\",\"showErrorsForBlockedEmails\":\"\",\"showErrorsForBlockedKeywords\":\"\",\"blockedIpAddresses\":\"\",\"purgableSubmissionAgeInDays\":\"0\",\"purgableSpamAgeInDays\":\"30\",\"salesforce_client_id\":null,\"salesforce_client_secret\":null,\"salesforce_username\":null,\"salesforce_password\":null,\"spamFolderEnabled\":\"1\",\"recaptchaEnabled\":false,\"recaptchaKey\":null,\"recaptchaSecret\":null}','2018-10-13 20:48:25','2018-10-13 20:48:25','2018-11-19 13:05:24','f6bc33ca-cb8a-42db-aa18-2f89b7f72feb'),
+	(66,'matrixtoolbar','1.0.6','1.0.4',NULL,'unknown',1,NULL,'2018-10-29 22:46:13','2018-10-29 22:46:13','2018-11-19 13:05:24','a946550e-9912-4080-b711-cea84a704d3f');
 
 /*!40000 ALTER TABLE `plugins` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2673,10 +2682,12 @@ VALUES
 	('1c95cfb2','@lib/timepicker'),
 	('1d0baa3d','@craft/web/assets/utilities/dist'),
 	('1dd21a91','@craft/web/assets/utilities/dist'),
+	('1ecf3ee7','@martinherweg/craftgonzo'),
 	('1f47153a','@app/web/assets/clearcaches/dist'),
 	('1fd2a7fd','@verbb/imageresizer/resources/dist'),
 	('205b5c9c','/Users/dh/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('20dde054','/Users/dh/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
+	('20f0b542','@app/web/assets/feed/dist'),
 	('2168b2a','@lib/d3'),
 	('2179ed67','@app/web/assets/updates/dist'),
 	('218252e5','@mmikkel/cpfieldinspect/resources'),
@@ -2760,6 +2771,7 @@ VALUES
 	('4413ebe','@martinherweg/craftgonzo/assetbundles/gonzo/dist'),
 	('44330d3','@app/web/assets/utilities/dist'),
 	('447359f6','@lib/velocity'),
+	('44a6d971','@app/web/assets/recententries/dist'),
 	('44cbb43c','@mmikkel/cpclearcache/resources'),
 	('459d078b','/Users/dh/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('46ef76ce','@craft/web/assets/sites/dist'),
@@ -2859,6 +2871,7 @@ VALUES
 	('727c2031','/Users/dh/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('739ce511','@typedlinkfield/resources'),
 	('73ddde98','@lib/d3'),
+	('748e37de','@app/web/assets/craftsupport/dist'),
 	('75923bd0','@bower/jquery/dist'),
 	('75dbcece','@craft/web/assets/utilities/dist'),
 	('75eb7075','@lib/xregexp'),
@@ -2872,6 +2885,7 @@ VALUES
 	('78ca3703','@lib/fabric'),
 	('797a17de','@typedlinkfield/resources'),
 	('79a811b6','@craft/web/assets/cp/dist'),
+	('7a1c9b1f','@app/web/assets/updateswidget/dist'),
 	('7a6c057e','@lib/element-resize-detector'),
 	('7adcc20b','@lib/jquery-touch-events'),
 	('7b53e61','@lib/element-resize-detector'),
@@ -2942,6 +2956,7 @@ VALUES
 	('995ede6','@mmikkel/cpfieldinspect/resources'),
 	('9994eb75','@lib/fabric'),
 	('99979ec4','@lib/garnishjs'),
+	('9ae6b0b0','@app/web/assets/dashboard/dist'),
 	('9b91fb66','@lib/selectize'),
 	('9d94865','@craft/web/assets/clearcaches/dist'),
 	('9db8de60','@lib/fabric'),
@@ -3005,6 +3020,7 @@ VALUES
 	('b8b47e4','@craft/web/assets/matrixsettings/dist'),
 	('b8b5228a','@app/web/assets/cp/dist'),
 	('b8bba377','@lib/timepicker'),
+	('b900e093','@martinherweg/craftgonzo/assetbundles/gonzo/dist'),
 	('b946c9d','@verbb/imageresizer/resources/dist'),
 	('b95a0718','@nystudio107/imageoptimize/assetbundles/optimizedimagesfield/dist'),
 	('bab2f90','@cpelementcount/resources'),
@@ -3082,6 +3098,7 @@ VALUES
 	('d7f3b25d','@lib/d3'),
 	('d805e358','/Users/davidhellmann/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('d815c847','/Users/dh/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
+	('d82dfda3','@app/web/assets/plugins/dist'),
 	('d83f3c4e','/Users/dh/___DEV/___Private/craft-gonzo/src/assetbundles/gonzo/dist'),
 	('d92e7672','@craft/web/assets/matrix/dist'),
 	('d956920c','@lib/picturefill'),
@@ -3947,7 +3964,8 @@ VALUES
 	(14,1,'gYV5r3VLHcV-ViyuxCU0kVJSbT6TDSG4cUKU9Qlh_y6xeGGf0NpMuFWNQggc5CFlF3p7Daw-6yHQs34oDZoZD2785UUQ-uwImD5w','2018-09-07 16:24:41','2018-09-11 19:15:23','fc343155-cff3-45ea-b2bf-ef681b33cc10'),
 	(15,1,'ylZWcrZReN-G3RCEJhLOFJA8YcJs9VZZVP42aqbFbs8eyghqpqcBDn1E_UjMbL0_anyfvde-GZOyINzYU85S1NHjSCbCDWSQUTxz','2018-10-13 10:41:18','2018-10-13 19:01:41','705996fe-a124-491e-9980-15fac034cd8d'),
 	(16,1,'vnO9i4aOaUDsDEtYoW2JScP7VcidI0fo713nW8LLTsmYj_Vw22mGPyOZPn96LDgJUNyqwkTE4DPvWzMrqF8qFkx1GEEPgtLi3FF6','2018-10-13 19:15:52','2018-11-11 16:11:20','6fc5231a-7763-4017-8f8b-1c49ca6548c9'),
-	(17,1,'ajjVlik3SLASsVktEfAuBc_VOrrdJDtw-x-qx4uXWstaFfcPqiMR6195nxkz8I2hy6FnlA4Hm3o_vPP-Re9x3j76rxidZa9aF3gQ','2018-11-13 19:37:57','2018-11-13 20:12:14','9e664a57-7596-4cd3-ab17-d438d1cf2473');
+	(17,1,'ajjVlik3SLASsVktEfAuBc_VOrrdJDtw-x-qx4uXWstaFfcPqiMR6195nxkz8I2hy6FnlA4Hm3o_vPP-Re9x3j76rxidZa9aF3gQ','2018-11-13 19:37:57','2018-11-13 20:12:14','9e664a57-7596-4cd3-ab17-d438d1cf2473'),
+	(18,1,'wR1l2eh1rN-OreassxFywJoBMlQ2984eJjX2hy-HOP5q_uBZdFh3Coqh_nHvTEpXZNyuM05qDfdSx6x48xBp69Upz6yvlginATRV','2018-11-19 11:07:20','2018-11-19 13:05:25','87d59442-54f7-4e08-b8e3-ae953d52103b');
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -4850,7 +4868,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `username`, `photoId`, `firstName`, `lastName`, `email`, `password`, `admin`, `locked`, `suspended`, `pending`, `lastLoginDate`, `lastLoginAttemptIp`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `hasDashboard`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,'2018-11-13 19:37:57','127.0.0.1',NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-11-13 19:37:57','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
+	(1,'superuser',NULL,'','','name@domain.com','$2y$13$M/o/yHwdRHEnsn.kaEb3vu1TMNYJGa.tVW5gfYFzwbj44Rw3ugUku',1,0,0,0,'2018-11-19 11:07:20','127.0.0.1',NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,0,'2017-12-07 00:04:06','2017-12-06 09:19:32','2018-11-19 11:07:20','6ea1c9e1-52f9-47b2-a1e0-6a679f0b084d');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
