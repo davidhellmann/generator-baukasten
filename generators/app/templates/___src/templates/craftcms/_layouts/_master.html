@@ -170,16 +170,9 @@
   {% include '_organisms/appFooter/_template.html' only %}
 </div>
 
-{# -- Grid Overlay -- #}
 {% if craft.app.config.general.devMode %}
-  <div class="js-toggleGrid">G</div>
-  <div class="o-section  o-gridOverlay  ">
-    <div class="o-row">
-      {% for i in 1..24 %}
-        <div class="o-col"></div>
-      {% endfor %}
-    </div>
-  </div>
+  {# -- gridOverlay -- #}
+  {% include '_molecules/gridOverlay/_template.html' only %}
 {% endif %}
 
 {# -- SCRIPTS -- #}

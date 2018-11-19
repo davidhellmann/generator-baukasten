@@ -1,0 +1,47 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Description of what this file is for
+
+  @package  craft3
+  @author David Hellmann [david@hellmann.io]
+
+  m-gridOverlay
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+    cn: 'm-gridOverlay',
+    modifiers: [],
+    customClasses: ['o-section'],
+    data: {},
+    js: null,
+    cols: null | default(24)
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+
+{# -- Modul -- #}
+{% if opt.cols %}
+  <div class="js-toggleGrid">G</div>
+  <div class="{{ opt.cn }}
+              {% for modifier in opt.modifiers %}
+                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %}>
+    <div class="o-row">
+      {% for i in 1..opt.cols %}
+        <div class="o-col"></div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+

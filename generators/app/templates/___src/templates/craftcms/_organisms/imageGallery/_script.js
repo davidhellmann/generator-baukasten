@@ -272,7 +272,6 @@ const imageGallery = {
 
     init() {
         const gallery = document.querySelector('.js-imageGallery');
-        console.log(gallery);
         if (gallery) {
             this.addCode();
             this.creatGallery('.js-imageGallery');

@@ -1,9 +1,15 @@
 /*
  |--------------------------------------------------------------------------
- |  Grid Overlay
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .m-gridOverlay
  |--------------------------------------------------------------------------
  */
 
+// Modul
 /* stylelint-disable */
 .t-devMode {
   .js-toggleGrid {
@@ -25,7 +31,8 @@
     box-shadow: 0 2px 10px rgba(c('black'), 0.5);
   }
 
-  .o-gridOverlay {
+
+  .m-gridOverlay {
     position: fixed !important;
     left: 50%;
     top: 0;
@@ -45,10 +52,14 @@
     }
 
     .o-col {
-      box-shadow: inset 0 0 0 1px rgba(cyan, 0.3);
+      box-shadow: 1px 0 0 rgba(cyan, 0.3);
       height: 100vh;
       margin: 0;
       background: rgba(cyan, 0.1);
+
+      &:first-child {
+        box-shadow: 1px 0 0 rgba(cyan, 0.3), -1px 0 0 rgba(cyan, 0.3), ;
+      }
 
       &:nth-child(12n) ~ .o-col {
         display: none;
@@ -59,14 +70,14 @@
       }
 
       @at-root {
-        .t-oldies .o-col {
+        .o-col {
           &::before,
           &::after {
             content: '';
             position: absolute;
             @include f(s(1), s(2), width);
             height: 100vh;
-            background: rgba(red, 0.1);
+            background: rgba(red, 0.05);
           }
 
           &::before {

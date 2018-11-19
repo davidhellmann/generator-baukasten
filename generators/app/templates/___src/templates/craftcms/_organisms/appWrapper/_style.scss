@@ -10,6 +10,13 @@
   font-family: sans-serif;
 
   @include wf('base');
+
+  .is-patternLib & {
+    padding-top: 16px;
+    padding-bottom: 64px;
+    @include make-col-padding(2);
+    position: relative;
+  }
 }
 
 .js .o-appWrapper  {
