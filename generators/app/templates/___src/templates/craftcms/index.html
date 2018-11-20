@@ -17,7 +17,7 @@
 {% block appContent %}
 
   {# -- Cache -- #}
-  {% cache globally using key 'home' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
+  {% cache using key 'home' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
 
   {% embed '_embeds/home/_template.html' with {
     opt: {

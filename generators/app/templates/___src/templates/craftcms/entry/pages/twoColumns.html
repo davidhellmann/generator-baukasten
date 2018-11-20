@@ -16,9 +16,9 @@
 {# -- App Content -- #}
 {% block appContent %}
   {# -- Cache -- #}
-  {% cache globally using key _self ~ "-page-" ~ craft.app.request.pathInfo %}
+  {% cache using key _self.getTemplateName() ~ "-page-" ~ craft.app.request.pathInfo %}
   {# If you have a Template with Pagination use this: #}
-  {# {% cache globally using key _self.getTemplateName() ~ '-archive-' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %} #}
+  {# {% cache using key _self.getTemplateName() ~ '-archive-' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %} #}
 
     {% embed '_embeds/twoColumns/_template.html' with {
       opt: {

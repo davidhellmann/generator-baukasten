@@ -16,7 +16,7 @@
 {# -- App Content -- #}
 {% block appContent %}
   {# -- Cache -- #}
-  {% cache globally using key 'viewHome' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
+  {% cache using key 'viewHome' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
 
     {% include '_atoms/headline/_template.html' with {
       opt: {
