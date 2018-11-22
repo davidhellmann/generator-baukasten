@@ -14,7 +14,7 @@ return [
         "m" => "800px",
         "l" => "1000px",
         "max" => "1440px",
-        "fluid" => "100vw"
+        "fluid" => "100%"
     ],
     "compStatus" => [
         0 => ["name" => "wip", "color" => "#FF9800"],
