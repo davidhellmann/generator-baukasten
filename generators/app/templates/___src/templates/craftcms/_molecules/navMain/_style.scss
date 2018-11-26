@@ -1,0 +1,28 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  craft3
+ | @author David Hellmann [david@hellmann.io]
+ | .m-navMain
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-navMain {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+}
+
+// Modul Modifiers Example
+.m-navMain--modifier {
+  .m-navMain__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}

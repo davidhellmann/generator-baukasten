@@ -1,0 +1,89 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Description of what this file is for
+
+  @package  craft3
+  @author David Hellmann [david@hellmann.io]
+
+  m-navMain
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+    cn: 'm-navMain',
+    modifiers: [],
+    customClasses: [],
+    data: {},
+    js: null,
+    items: null
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Macros -- #}
+{% import '_partials/macros/_macro-isActive.twig' as macroIsActive %}
+
+{# -- Modul -- #}
+{% if opt.items %}
+  <div class="{{ opt.cn }}
+              {% for modifier in opt.modifiers %}
+                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %}>
+
+    <ul class="{{ opt.cn ~ '__list' }}  {{ opt.cn ~ '__list--level-1' }}">
+      {% nav item in opt.items %}
+        {% set level = item.level %}
+        {% set level = level + 0 %}
+
+        <li class="{{ opt.cn ~ '__listItem' }}  {{ opt.cn ~ '__listItem--level-' ~ level }}">
+          {# -- Get Position -- #}
+          {% set segmentPosition = item.navigationSegmentPosition + 0 %}
+
+          {# -- Get Position -- #}
+          {% set segments = item.navigationHighlightTriggers | default('notSet') | replace({'home': ''}) | trim  | split(',') %}
+
+          {# -- Set Text -- #}
+          {% set text = item.navigationLink.customText ?
+            item.navigationLink.customText | raw :
+            item.navigationLink.getText() %}
+
+          {# -- link -- #}
+          {% include '_atoms/link/_template.twig' with {
+            opt: {
+              modifiers: [
+                'inline', 'navMain'
+              ],
+              customClasses: [
+                macroIsActive.isActive(segments, segmentPosition) | trim
+              ],
+              text: text,
+              targetBlank: item.navigationLink.getTarget() ? true : false,
+              url: item.navigationLink.getUrl()
+            }
+          } only %}
+
+          {% ifchildren %}
+            {% set level = item.level %}
+            {% set level = level + 1 %}
+
+            <ul class="{{ opt.cn ~ '__list' }}  {{ opt.cn ~ '__list--level-' ~ level }}">
+              {% children %}
+            </ul>
+
+          {% endifchildren %}
+        </li>
+      {% endnav %}
+    </ul>
+
+  </div>
+{% endif %}
+
