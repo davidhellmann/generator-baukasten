@@ -12,9 +12,9 @@
   @include wf('base');
 
   .is-patternLib & {
+    @include make-section();
     padding-top: 16px;
     padding-bottom: 64px;
-    @include make-col-padding(2);
     position: relative;
   }
 }
