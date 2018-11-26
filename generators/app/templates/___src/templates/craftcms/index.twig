@@ -40,6 +40,14 @@
 
     {# -- Block: Content -- #}
     {% block content %}
+      <ul>
+        <li><a href="{{ siteUrl }}articles">Articles Overview</a></li>
+        <li><a href="{{ siteUrl }}article/first-article">First Article</a></li>
+        {% if craft.app.plugins.isPluginEnabled('craft-gonzo') %}
+          <li><a href="{{ siteUrl }}patternlib">Pattern Library</a></li>
+        {% endif %}
+      </ul>
+
       {# -- Vue Stuff -- #}
       <div id="js-vue"></div>
     {% endblock %}

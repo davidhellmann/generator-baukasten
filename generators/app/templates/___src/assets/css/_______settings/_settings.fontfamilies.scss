@@ -6,13 +6,11 @@
 
 $font-family-serif: Georgia, "Times New Roman", Times, serif;
 $font-family-sans-serif: Helvetica, Arial, sans-serif;
-$font-family-base: $font-family-sans-serif;
-$font-family-headline: $font-family-sans-serif;
 
 $bk-fontfamilies: (
   'serif': $font-family-serif,
   'sans-serif': $font-family-sans-serif,
-  'base': $font-family-base,
-  'headline': $font-family-headline,
-  'bold': $font-family-headline,
+  'base': $font-family-sans-serif,
+  'headline': $font-family-sans-serif,
+  'bold': $font-family-sans-serif,
 );

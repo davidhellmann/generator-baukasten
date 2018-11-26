@@ -30,7 +30,7 @@ function addSrcPaths(files = {}, context) {
                 base: '___src/templates/_modules/',
                 jsFile: '_main.js',
                 cssFile: '_style.scss',
-                templateFile: '_template.html',
+                templateFile: '_template.twig',
                 configFile: 'config.json',
             },
             languages: {

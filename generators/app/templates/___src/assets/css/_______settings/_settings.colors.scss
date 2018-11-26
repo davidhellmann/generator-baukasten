@@ -4,65 +4,63 @@
  |--------------------------------------------------------------------------
  */
 
-// Shades of Gray
-$color__white: #fff;
-$color__black: #000;
-
-// Colored
-$color__red: #F44336;
-$color__green: #4CAF50;
-$color__blue: #2196F3;
-
-$bk-grayShades: (
-        'white': (
-                'base': $color__white,
-                'dark': mix(black, $color__white, 10%),
-                'trans': rgba($color__white, 0.5),
-        ),
-        'black': (
-                'base': $color__black,
-                '05': mix(black, $color__white, 5%),
-                '10': mix(black, $color__white, 10%),
-                '15': mix(black, $color__white, 15%),
-                '20': mix(black, $color__white, 20%),
-                '25': mix(black, $color__white, 25%),
-                '30': mix(black, $color__white, 30%),
-                '35': mix(black, $color__white, 35%),
-                '40': mix(black, $color__white, 40%),
-                '45': mix(black, $color__white, 45%),
-                '50': mix(black, $color__white, 50%),
-                '55': mix(black, $color__white, 55%),
-                '60': mix(black, $color__white, 60%),
-                '65': mix(black, $color__white, 65%),
-                '70': mix(black, $color__white, 70%),
-                '75': mix(black, $color__white, 75%),
-                '80': mix(black, $color__white, 80%),
-                '85': mix(black, $color__white, 85%),
-                '90': mix(black, $color__white, 90%),
-                '95': mix(black, $color__white, 95%),
-                'trans': rgba($color__black, 0.5),
-        )
+$bk-colored: (
+  'red': (
+    'base': #F44336,
+    'dark': mix(#000, #F44336, 10%),
+    'light': mix(#fff, #F44336, 10%),
+    'trans': rgba(#F44336, 0.5),
+  ),
+  'green': (
+    'base': #4CAF50,
+    'dark': mix(#000, #4CAF50, 10%),
+    'light': mix(#fff, #4CAF50, 10%),
+    'trans': rgba(#4CAF50, 0.5),
+  ),
+  'blue': (
+    'base': #2196F3,
+    'dark': mix(#000, #2196F3, 10%),
+    'light': mix(#fff, #2196F3, 10%),
+    'trans': rgba(#2196F3, 0.5),
+  ),
 );
 
-$bk-colored: (
-        'red': (
-                'base': $color__red,
-                'dark': mix(black, $color__red, 10%),
-                'light': mix(white, $color__red, 10%),
-                'trans': rgba($color__red, 0.5),
-        ),
-        'green': (
-                'base': $color__green,
-                'dark': mix(black, $color__green, 10%),
-                'light': mix(white, $color__green, 10%),
-                'trans': rgba($color__green, 0.5),
-        ),
-        'blue': (
-                'base': $color__blue,
-                'dark': mix(black, $color__blue, 10%),
-                'light': mix(white, $color__blue, 10%),
-                'trans': rgba($color__blue, 0.5),
-        ),
+
+/*
+ |--------------------------------------------------------------------------
+ |  Shades of gray
+ |--------------------------------------------------------------------------
+ */
+
+$bk-grayShades: (
+  'white': (
+    'base': #fff,
+    'dark': mix(#000, #fff, 10%),
+    'trans': rgba(#fff, 0.5),
+  ),
+  '#000': (
+    'base': #000,
+    '05': mix(#000, #fff, 5%),
+    '10': mix(#000, #fff, 10%),
+    '15': mix(#000, #fff, 15%),
+    '20': mix(#000, #fff, 20%),
+    '25': mix(#000, #fff, 25%),
+    '30': mix(#000, #fff, 30%),
+    '35': mix(#000, #fff, 35%),
+    '40': mix(#000, #fff, 40%),
+    '45': mix(#000, #fff, 45%),
+    '50': mix(#000, #fff, 50%),
+    '55': mix(#000, #fff, 55%),
+    '60': mix(#000, #fff, 60%),
+    '65': mix(#000, #fff, 65%),
+    '70': mix(#000, #fff, 70%),
+    '75': mix(#000, #fff, 75%),
+    '80': mix(#000, #fff, 80%),
+    '85': mix(#000, #fff, 85%),
+    '90': mix(#000, #fff, 90%),
+    '95': mix(#000, #fff, 95%),
+    'trans': rgba(#000, 0.5),
+  )
 );
 
 // Merge Gray Shades and Colored Map
