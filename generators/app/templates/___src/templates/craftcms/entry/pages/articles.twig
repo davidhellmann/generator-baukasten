@@ -1,0 +1,86 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{# -- Pages Articles -- #}
+{# ---------------------------------------------------------------------- #}
+
+{% extends "_layouts/_master.twig" %}
+{% set bodyClass = "p-articles" %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{# -- Query Entries -- #}
+{# To Skip the Current id add: id: 'and, not ' ~ entry.id #}
+{% set entries = craft.entries({
+  section: 'articles',
+  relatedTo: null,
+  limit: 3,
+  offset: null
+}) %}
+{% paginate entries as pageInfo, pageEntries %}
+
+{# -- Rel Nav -- #}
+{% block appHeader %}
+  {% include '_partials/header/_siteHeaderLinks.twig' with {
+    pageInfo: pageInfo
+  } only %}
+{% endblock %}
+
+{# -- App Content -- #}
+{% block appContent %}
+  {# -- Cache -- #}
+  {% cache using key 'article-archive-' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
+
+    {% embed '_embeds/oneColumn/_template.twig' with {
+      opt: {
+        intro: true,
+        content: true
+      },
+      entry: entry,
+      pageEntries: pageEntries,
+      pageInfo: pageInfo
+    } only %}
+
+      {# -- Block: Intro -- #}
+      {% block intro %}
+        {# -- Include Page Title -- #}
+        {% include '_molecules/pageTitle/_template.twig' with {
+          opt: {
+            object: entry,
+            size: 'h1'
+          }
+        } only %}
+
+
+        {# -- Entry Intro -- #}
+        {% if entry.entryIntroText ?? null %}
+          {% include '_atoms/richText/_template.twig' with {
+            opt: {
+              text: entry.entryIntroText
+            }
+          } only %}
+        {% endif %}
+      {% endblock %}
+
+      {# -- Block: Content -- #}
+      {% block content %}
+        {# -- Cards --#}
+        {% include '_organisms/cards/_template.twig' with {
+          opt: {
+            items: pageEntries,
+            pageInfo: pageInfo,
+            pagination: true,
+            paginationSimple: false
+          }
+        } only %}
+      {% endblock %}
+    {% endembed %}
+
+  {# -- Cache End -- #}
+  {% endcache %}
+{% endblock %}
+

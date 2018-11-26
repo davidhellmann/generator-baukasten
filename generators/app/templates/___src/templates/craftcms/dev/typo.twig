@@ -1,0 +1,408 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Home Page
+  ------------------------------------------------------------
+
+  This is your Homepage!
+#}
+
+{% extends "_layouts/_dev.twig" %}
+{% set bodyClass = "p-development p-home" %}
+{% if seomaticSiteMeta ?? null %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'DEV: Typo' }) %}
+{% else %}
+  {% set appTitle = 'DEV: Typo' %}
+{% endif %}
+
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{% block appContent %}
+  {# -- Nav -- #}
+  {% include 'dev/_nav.twig' %}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Headings Uppercase</div>
+    <div class="headings uppercase">
+      <h1 class="heading ms-res-6" data-text="MS Respond 6">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-5" data-text="MS Respond 5">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-4" data-text="MS Respond 4">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-3" data-text="MS Respond 3">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-2" data-text="MS Respond 2">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-1" data-text="MS Respond 1">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-0" data-text="MS Respond 0">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res--1" data-text="MS Respond -1">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res--2" data-text="MS Respond -2">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Headings normal</div>
+    <div class="headings">
+      <h1 class="heading ms-res-6" data-text="MS Respond 6">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-5" data-text="MS Respond 5">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-4" data-text="MS Respond 4">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-3" data-text="MS Respond 3">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-2" data-text="MS Respond 2">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-1" data-text="MS Respond 1">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res-0" data-text="MS Respond 0">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res--1" data-text="MS Respond -1">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+      <h1 class="heading ms-res--2" data-text="MS Respond -2">
+        The quick brown fox jumps over a Dog. Zwei Boxkämpfer jagen Eva durch Sylt portez ce vieux Whiskey blond.
+      </h1>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Paragraphs MS Respond 2</div>
+    <div class="paragraphs ms-res-1">
+      <p>
+        Shooting <del>highlining</del> in front of the <strong>supermoo*n</strong> was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+      <p>
+        Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it. Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Paragraphs MS Respond 0</div>
+    <div class="paragraphs ms-res-0">
+      <p>
+        Shooting <del>highlining</del> in front of the <strong>supermoo*n</strong> was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+      <p>
+        Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it. Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Paragraphs MS Respond -1</div>
+    <div class="paragraphs ms-res--1">
+      <p>
+        Shooting <del>highlining</del> in front of the <strong>supermoo*n</strong> was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+      <p>
+        Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it. Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Paragraphs MS Respond -2</div>
+    <div class="paragraphs ms-res--2">
+      <p>
+        Shooting <del>highlining</del> in front of the <strong>supermoo*n</strong> was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+      <p>
+        Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it. Shooting highlining in front of the supermoo*n was one of the most difficu*lt shots I’ve *chased to date. It is a completely hybrid process between shooting an action sport in the midst of a very technical landscape photograph. It started as a simple challenge to myself and I quickly became immersed in the process of figuring out how to shoot it.
+      </p>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Glyphs Latin Lowercase</div>
+    <div class="glyphs">
+      <div class="glyph">a</div>
+      <div class="glyph">b</div>
+      <div class="glyph">c</div>
+      <div class="glyph">d</div>
+      <div class="glyph">e</div>
+      <div class="glyph">f</div>
+      <div class="glyph">g</div>
+      <div class="glyph">h</div>
+      <div class="glyph">i</div>
+      <div class="glyph">j</div>
+      <div class="glyph">k</div>
+      <div class="glyph">l</div>
+      <div class="glyph">m</div>
+      <div class="glyph">n</div>
+      <div class="glyph">o</div>
+      <div class="glyph">p</div>
+      <div class="glyph">q</div>
+      <div class="glyph">r</div>
+      <div class="glyph">s</div>
+      <div class="glyph">t</div>
+      <div class="glyph">u</div>
+      <div class="glyph">v</div>
+      <div class="glyph">w</div>
+      <div class="glyph">x</div>
+      <div class="glyph">y</div>
+      <div class="glyph">z</div>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Glyphs Latin Uppercase</div>
+    <div class="glyphs uppercase">
+      <div class="glyph">a</div>
+      <div class="glyph">b</div>
+      <div class="glyph">c</div>
+      <div class="glyph">d</div>
+      <div class="glyph">e</div>
+      <div class="glyph">f</div>
+      <div class="glyph">g</div>
+      <div class="glyph">h</div>
+      <div class="glyph">i</div>
+      <div class="glyph">j</div>
+      <div class="glyph">k</div>
+      <div class="glyph">l</div>
+      <div class="glyph">m</div>
+      <div class="glyph">n</div>
+      <div class="glyph">o</div>
+      <div class="glyph">p</div>
+      <div class="glyph">q</div>
+      <div class="glyph">r</div>
+      <div class="glyph">s</div>
+      <div class="glyph">t</div>
+      <div class="glyph">u</div>
+      <div class="glyph">v</div>
+      <div class="glyph">w</div>
+      <div class="glyph">x</div>
+      <div class="glyph">y</div>
+      <div class="glyph">z</div>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Glyphs Latin Ligatures</div>
+    <div class="glyphs">
+      <div class="glyph">ﬀ</div>
+      <div class="glyph">ﬁ</div>
+      <div class="glyph">ﬂ</div>
+      <div class="glyph">ﬃ</div>
+      <div class="glyph">ﬄ</div>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Glyphs Latin Punctuation</div>
+    <div class="glyphs">
+      <div class="glyph">&excl;</div>
+      <div class="glyph">&quot;</div>
+      <div class="glyph">&num;</div>
+      <div class="glyph">&percnt;</div>
+      <div class="glyph">&amp;</div>
+      <div class="glyph">&apos;</div>
+      <div class="glyph">&lpar;</div>
+      <div class="glyph">&rpar;</div>
+      <div class="glyph">&ast;</div>
+      <div class="glyph">&comma;</div>
+      <div class="glyph">&period;</div>
+      <div class="glyph">&sol;</div>
+      <div class="glyph">&colon;</div>
+      <div class="glyph">&semi;</div>
+      <div class="glyph">&quest;</div>
+      <div class="glyph">&commat;</div>
+      <div class="glyph">&lbrack;</div>
+      <div class="glyph">&bsol;</div>
+      <div class="glyph">&rbrack;</div>
+      <div class="glyph">&Hat;</div>
+      <div class="glyph">&lowbar;</div>
+      <div class="glyph">&grave;</div>
+      <div class="glyph">&lbrace;</div>
+      <div class="glyph">&vert;</div>
+      <div class="glyph">&rbrace;</div>
+      <div class="glyph">&tilde;</div>
+      <div class="glyph">&iexcl;</div>
+      <div class="glyph">&brvbar;</div>
+      <div class="glyph">&sect;</div>
+      <div class="glyph">&uml;</div>
+      <div class="glyph">&copy;</div>
+      <div class="glyph">&ordf;</div>
+      <div class="glyph">&laquo;</div>
+      <div class="glyph">&not;</div>
+      <div class="glyph">&reg;</div>
+      <div class="glyph">&macr;</div>
+      <div class="glyph">&sup2;</div>
+      <div class="glyph">&sup3;</div>
+      <div class="glyph">&acute;</div>
+      <div class="glyph">&para;</div>
+      <div class="glyph">&middot;</div>
+      <div class="glyph">&sup1;</div>
+      <div class="glyph">&ordm;</div>
+      <div class="glyph">&raquo;</div>
+      <div class="glyph">&iquest;</div>
+      <div class="glyph">&hyphen;</div>
+      <div class="glyph">&ndash;</div>
+      <div class="glyph">&mdash;</div>
+      <div class="glyph">&horbar;</div>
+      <div class="glyph">&lsquo;</div>
+      <div class="glyph">&rsquo;</div>
+      <div class="glyph">&sbquo;</div>
+      <div class="glyph">&ldquo;</div>
+      <div class="glyph">&rdquo;</div>
+      <div class="glyph">&bdquo;</div>
+      <div class="glyph">&bull;</div>
+      <div class="glyph">&trade;</div>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+  {# -- BLOCK -- #}
+  <div class="section">
+    <div class="label">Glyphs Latin Currency</div>
+    <div class="glyphs">
+      <div class="glyph">&dollar;</div>
+      <div class="glyph">&cent;</div>
+      <div class="glyph">&pound;</div>
+      <div class="glyph">&euro;</div>
+      <div class="glyph">&yen;</div>
+      <div class="glyph">&#3647;</div>
+    </div>
+  </div>
+  {# -- BLOCK END -- #}
+
+
+  <style>
+    {% set typoCSS %}
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+
+    .headings {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 32px;
+      padding: 16px;
+    }
+
+    .heading {
+      position: relative;
+    }
+
+    .heading:before {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: -16px;
+      line-height: 1;
+      font-weight: 400;
+      color: #333;
+      font-size: 10px;
+      font-family: sans-serif;
+      text-transform: uppercase;
+    }
+
+    .paragraphs {
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 32px;
+      padding: 16px;
+    }
+
+
+    .glyphs {
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 16px;
+    }
+
+    .glyph {
+      width: 64px;
+      height: 64px;
+      line-height: 64px;
+      text-align: center;
+      flex: 0 0 64px;
+      border: 1px solid #eee;
+      margin: 0 -1px -1px 0;
+      transition: all 0.25s;
+    }
+
+    .glyph:hover {
+      background-color: #f4f4f4;
+      box-shadow: inset 0 0 25px #ddd;
+    }
+
+    .darkMode .glyph {
+      border: 1px solid #1d1d1d;
+    }
+
+    .darkMode .glyph:hover {
+      border: 1px solid #1d1d1d;
+      background-color: #080808;
+      box-shadow: inset 0 0 25px #000;
+    }
+
+    {% endset %}
+    {% css typoCSS %}
+  </style>
+
+
+  {# -- Logic -- #}
+  {% include 'dev/_logic.twig' %}
+{% endblock %}

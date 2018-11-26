@@ -1,0 +1,61 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Master Layout
+  ------------------------------------------------------------
+
+  This i the basic layout. Feel free to modify
+#}
+
+<!DOCTYPE html>
+<html class="" lang="{{ craft.app.locale }}">
+<head>
+
+  {# -- CHECK JS -- #}
+  {% include '_partials/global/_checkJS.twig' %}
+
+  {# -- CRITICAL CSS -- #}
+  {% set cacheVal = getCookie('critical-css') %}
+  {% if not cacheVal or craft.app.config.general.devMode %}
+    {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
+    {% block appInlineCSS %}
+    {% endblock %}
+  {% endif %}
+
+  {# -- CSS Part -- #}
+  {% include '_partials/header/_css-part.twig' %}
+
+  {# -- META -- #}
+  {% include '_partials/header/_meta.twig' %}
+
+  {# -- SCRIPTS -- #}
+  {% include '_partials/header/_scripts.twig' %}
+
+  {# -- SEO & TITLE TAG -- #}
+  {% include '_partials/header/_seo.twig' %}
+
+  {# -- FAV ICON -- #}
+  {% include '_partials/header/_favicons.twig' %}
+
+  {% block siteHeader %}{% endblock %}
+</head>
+{% minify html %}
+<body id="home"
+      class="{{ bodyClass is defined ? bodyClass }}  {{ craft.app.request.isLivePreview ? 'is-livePreview' }}  {{ craft.app.config.general.devMode ? 't-devMode' }}">
+
+{# -- Preloader#}
+{% include '_atoms/preloader/_template.twig' only %}
+
+<div class="o-appWrapper">
+  {% block appContent %}
+    Content
+  {% endblock %}
+</div>
+
+{# -- SCRIPTS -- #}
+{% include '_partials/footer/_scripts.twig' only %}
+
+</body>
+{% endminify %}
+<!-- Läuft, weitermachen! -->
+</html>

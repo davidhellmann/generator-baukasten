@@ -1,0 +1,61 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  a-link
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'a-link',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: null,
+  url: null,
+  targetBlank: null,
+  text: null,
+  icon: null,
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+{% if opt.text and opt.url %}
+  <a href="{{ opt.url }}" {{ opt.url starts with '#' ? 'data-scroll' : '' }}
+     class="{{ opt.cn }}
+            {% for modifier in opt.modifiers %}
+              {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+            {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
+            {{ opt.targetBlank ? 'target="_blank"'}}
+     itemprop="url"
+     role="button"
+      {% for item in opt.data %}
+        {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+      {% endfor %}>
+    {% if opt.icon %}
+
+      {# -- Link Text -- #}
+      <span class="{{ opt.cn ~ '__text' }}">
+        {% filter typogrify %}{{ opt.text }}{% endfilter %}
+      </span>
+
+      {# -- Icon -- #}
+      {% include '_atoms/svgIcon/_template.twig' with {
+        opt: {
+          icon: opt.icon
+        }
+      } only %}
+    {% else %}
+      {% filter typogrify %}{{ opt.text }}{% endfilter %}
+    {% endif %}
+  </a>
+{% endif %}
+
+
+
+

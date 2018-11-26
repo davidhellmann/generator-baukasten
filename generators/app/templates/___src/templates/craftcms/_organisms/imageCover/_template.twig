@@ -1,0 +1,56 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Description of what this file is for
+
+  @package  baukasten
+  @author David Hellmann [davidhellmann.com@gmail.com]
+
+  o-imageCover
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'o-imageCover',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: null,
+  image: null,
+  ratio: null,
+  text: null,
+  objectFit: null
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+{% if opt.image %}
+  <div class="{{- opt.cn -}}
+              {% for modifier in opt.modifiers %}
+                {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}"
+              {% for key, value in opt.data %}
+                {{- '  data-' ~ key ~ '=' ~ value -}}
+              {% endfor %}>
+    {% include '_molecules/figure/_template.twig' with {
+      opt: {
+        image: opt.image ?? null,
+        ratio: opt.ratio ?? null,
+        objectFit: opt.objectFit ?? 'cover'
+      }
+    } only %}
+
+    {# -- Text -- #}
+    {% if opt.text %}
+      <div class="{{ opt.cn ~ '__text' }}">
+        {{ opt.text }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

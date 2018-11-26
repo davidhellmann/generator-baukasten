@@ -1,0 +1,54 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  Accordion
+  =========
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'o-accordion',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: null,
+  items: null
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# Modul #}
+{% if opt.items %}
+  <div class="{{ opt.cn }}
+            {% for modifier in opt.modifiers %}
+              {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+            {% endfor %}
+            {% for customClass in opt.customClasses %}
+              {{ customClass | length ? '  ' ~ customClass }}
+            {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}"
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %} role="tablist">
+
+    {% for item in opt.items %}
+      <div class="{{ opt.cn ~ '__item' }}" role="tab">
+        <div class="{{ opt.cn ~ '__trigger' }}  js-accordionTrigger">
+          <div class="{{ opt.cn ~ '__headline' }}">
+            {{ item.accordionTrigger ?? 'Trigger' }}
+          </div>
+        </div>
+
+        <div class="{{ opt.cn ~ '__content' }}" role="tabpanel">
+          {# -- richText -- #}
+          {% include '_atoms/richText/_template.twig' with {
+            opt: {
+              text: item.accordionContent ?? null
+            }
+          } only %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+

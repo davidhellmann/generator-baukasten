@@ -23,7 +23,7 @@ const copyVectors = () => {
         <% if (projectType === 'wordpress' ) { %>
         extname: ".svg.php"
         <% } else { %>
-        extname: ".svg.html"
+        extname: ".svg.twig"
         <% } %>
     }))
     .pipe(gulp.dest(pkg.src.images.svg.single + 'inline/'))

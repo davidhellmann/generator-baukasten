@@ -1,0 +1,67 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{% if craft.app.config.general.custom.craftEnv != 'staging' %}
+  {% if not craft.app.config.general.devMode %}
+    {% if not currentUser and not currentUser.admin %}
+      {% redirect "/" %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+<div class="buttons">
+  <button class="dev-button  js-dev-mobile">Mobile</button>
+  <button class="dev-button  js-dev-tablet">Tablet</button>
+  <button class="dev-button  js-dev-desktop">Desktop</button>
+  <button class="dev-button  js-dev-fullwidth">Full Width</button>
+  <button class="dev-button  js-dev-lightswitch" data-dark="Dark" data-light="Light">Dark</button>
+</div>
+
+<div class="nav">
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.twig' with {
+    opt: {
+      text: 'Typo',
+      url:  siteUrl ~ 'dev/typo'
+    }
+  } only %}
+
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.twig' with {
+    opt: {
+      text: 'Modules Library',
+      url:  siteUrl ~ 'dev/modules-library'
+    }
+  } only %}
+
+{#  #}{# -- link -- #}{#
+  {%- include '_atoms/link/_template.twig' with {
+    opt: {
+      text: 'Modules Status',
+      url: '/dev/modules-status.twig'
+    }
+  } only %}#}
+
+  {# -- link -- #}
+{#  {%- include '_atoms/link/_template.twig' with {
+    opt: {
+      text: 'Modules CB',
+      url: '/dev/modules-content-builder'
+    }
+  } only %}#}
+
+  {# -- link -- #}
+{#  {%- include '_atoms/link/_template.twig' with {
+    opt: {
+      text: 'Modules CB Nested',
+      url: '/dev/modules-content-builder-nested'
+    }
+  } only %}#}
+
+  {# -- link -- #}
+  {%- include '_atoms/link/_template.twig' with {
+    opt: {
+      text: 'Forms',
+      url:  siteUrl ~ 'dev/forms'
+    }
+  } only %}
+
+</div>

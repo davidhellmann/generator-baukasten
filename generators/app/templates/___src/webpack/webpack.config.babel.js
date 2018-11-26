@@ -35,7 +35,7 @@ const hot_client =
 // dann definieren wir noch wo die hinsollen und
 // bauen eine funktion die das plugin ausspuckt
 const inject_folder = <% if (projectType === 'wordpress') { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>;
-const fileExtension = <% if (projectType === 'wordpress') { %> '.php' <% } else { %> '.html' <% } %>;
+const fileExtension = <% if (projectType === 'wordpress') { %> '.php' <% } else { %> '.twig' <% } %>;
 const headerFilenameSRC = <% if (projectType === 'wordpress') { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
 const headerFilenameDIST = <% if (projectType === 'wordpress') { %> '_webpack-header' <% } else { %> 'webpack-header' <% } %>;
 const scriptsFilenameSRC = <% if (projectType === 'wordpress') { %> '_webpack-scripts' <% } else { %> 'webpack-scripts' <% } %>;

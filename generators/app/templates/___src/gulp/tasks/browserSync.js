@@ -21,7 +21,7 @@ function port(str, base = 3000) {
 
 const browserSyncTask = () => {
     const inject_folder = <% if (projectType === 'wordpress' ) { %> '_partials/_webpack' <% } else { %> '_partials/webpack' <% } %>
-    const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
+    const fileExtension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.twig' <% } %>
     const fileName = <% if (projectType === 'wordpress' ) { %> '_webpack' <% } else { %> 'webpack' <% } %>
 
     // Browser Sync Init

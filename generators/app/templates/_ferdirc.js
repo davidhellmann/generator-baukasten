@@ -16,7 +16,7 @@ module.exports = {
         template: {
             name: '_template',
             postfix: '',
-            extension: 'html',
+            extension: 'twig',
             description: 'ferdi should create a Template File'
         },
         style: {

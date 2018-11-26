@@ -1,0 +1,56 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{# @var entry \craft\elements\Entry #}
+{#
+  o-imageSlider
+  ------------------------------------------------------------
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  cn: 'o-imageSlider',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: true,
+  images: null,
+  caption: null,
+  ratio: null,
+} %}
+
+{# -- Merge Default with Options -- #}
+{% set opt = opt is defined ? defaults|merge(opt) : defaults %}
+
+{# -- Modul -- #}
+{% if opt.images %}
+  <div class="{{ opt.cn }}">
+    <div class="{{ opt.cn ~ '__slider' }}
+              {% for modifier in opt.modifiers %}
+                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+              {% endfor %}
+              {% for customClass in opt.customClasses %}
+                {{ customClass | length ? '  ' ~ customClass }}
+              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
+              {% for key, value in opt.data %}
+                {{ 'data-' ~ key ~ '=' ~ value }}
+              {% endfor %} itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+      <!-- Slides -->
+      {% for image in opt.images %}
+        <div class="{{ opt.cn ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
+          <div class="{{ opt.cn ~ '__slideInner' }}">
+            {% include '_molecules/figure/_template.twig' with {
+              opt: {
+                image: image,
+                ratio: opt.ratio,
+                caption: opt.caption,
+                captionHeadline: image.imageTitle,
+                captionText: image.imageCaption,
+                captionSource: image.imageSource,
+                captionSourceUrl: image.imageSourceUrl
+              }
+            } only %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
