@@ -23,10 +23,10 @@ describe('It is a Craft CMS 3 Project, Yay!', () => {
 
     it('adds craft templates to the src folder', () => {
         assert.file([
-            '___src/templates/index.html',
-            '___src/templates/_layouts/_master.html',
-            '___src/templates/_partials/header/_scripts.html',
-            '___src/templates/_partials/footer/_scripts.html'
+            '___src/templates/index.twig',
+            '___src/templates/_layouts/_master.twig',
+            '___src/templates/_partials/header/_scripts.twig',
+            '___src/templates/_partials/footer/_scripts.twig'
         ])
     })
 })
