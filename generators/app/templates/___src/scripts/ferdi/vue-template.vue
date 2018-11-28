@@ -8,58 +8,37 @@
  <%= moduleName.replace('-', '_') %>
 -->
 <template>
-    <div :class="rootClass">
-        <%= moduleName %>
-    </div>
+  <div :class="rootClass">
+    <%= moduleName %>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: '<%= moduleName.replace('-', '_') %>',
-        props: {
-            modifiers: {
-                type: Array,
-                default: () => []
-            },
+export default {
+    name: '<%= moduleName.replace('-', '_').charAt(0).toUpperCase() %><%= moduleName.replace('-', '_').slice(1) %>',
+    components: {},
+    props: {
+        modifiers: {
+            type: Array,
+            default: () => []
         },
-        data() {
-            return {
-                cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>'
-            };
-        },
-        computed: {
-            rootClass() {
-                const modifiers = this.modifiers
-                    .map(mod => this.cn + "--" + mod)
-                    .join("  ");
-                return [this.cn, modifiers];
-            }
-        },
-        methods: {},
-        watch: {},
-        mounted() {},
-        created() {},
-        components: {},
-    }
+    },
+    data() {
+        return {
+            cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>'
+        };
+    },
+    computed: {
+        rootClass() {
+            const modifiers = this.modifiers
+                .map(mod => `${this.cn}--${mod}`)
+                .join('  ');
+            return [this.cn, modifiers];
+        }
+    },
+    watch: {},
+    mounted() {},
+    created() {},
+    methods: {},
+}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-    .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %> {
-        $root: &;
-        @include make-vr();
-        width: 100%;
-    }
-
-    // Modul Modifiers Example
-    .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>--modifier {
-        .<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>__block {
-            // Styles here
-        }
-
-        @at-root {
-            // Use this for nesting with root selector
-        }
-    }
-</style>
-

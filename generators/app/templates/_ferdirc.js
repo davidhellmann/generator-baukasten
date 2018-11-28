@@ -5,7 +5,7 @@ module.exports = {
         template: true,
         style: true,
         javascript: true,
-        vue: false,
+        vue: true,
         config: true,
     },
     fileHeader: {
@@ -32,7 +32,7 @@ module.exports = {
             description: 'ferdi should create JavaScript File'
         },
         vue: {
-            name: 'vue',
+            name: '_component',
             postfix: '',
             extension: 'vue',
             description: 'ferdi should create Vue File'

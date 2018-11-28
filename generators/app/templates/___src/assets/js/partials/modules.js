@@ -10,6 +10,7 @@ import input from '../../../templates/_atoms/input/_script';
 import textarea from '../../../templates/_atoms/textarea/_script';
 import accordion    from '../../../templates/_organisms/accordion/_script';
 import gridOverlay    from '../../../templates/_molecules/gridOverlay/_script';
+import vueComp    from '../../../templates/_molecules/vueComp/_script';
 // import cookiebar    from '../../../templates/_modules/cookiebar/_main'
 // import imageSlider  from '../../../templates/_modules/imageSlider/_main'
 // import imageGallery from '../../../templates/_modules/imageGallery/_main'
@@ -25,6 +26,7 @@ const modulesArray = [
     textarea,
     accordion,
     gridOverlay,
+    vueComp,
     // cookiebar,
     // imageGallery,
     // navCategories

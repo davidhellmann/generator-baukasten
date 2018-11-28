@@ -1,0 +1,32 @@
+/*
+ |--------------------------------------------------------------------------
+ |
+ | Description of what this file is for
+ |
+ | @package  de.bistum-passau.www
+ | @author David Hellmann [david@fredmansky.at]
+ | .m-vueComp
+ |--------------------------------------------------------------------------
+ */
+
+// Modul
+.m-vueComp {
+  $root: &;
+  @include make-vr();
+  width: 100%;
+
+  &__input {
+    @include make-vr();
+  }
+}
+
+// Modul Modifiers Example
+.m-vueComp--modifier {
+  .m-vueComp__block {
+    // Styles here
+  }
+
+  @at-root {
+    // Use this for nesting with root selector
+  }
+}
