@@ -4,10 +4,6 @@
 
 .o-appWrapper {
   $root: &;
-  font-weight: 400;
-  color: c('black', '90');
-  background: c('white');
-  font-family: sans-serif;
 
   @include wf('base');
 
