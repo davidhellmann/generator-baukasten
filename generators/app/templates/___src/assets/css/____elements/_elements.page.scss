@@ -12,6 +12,10 @@ html {
 
 body {
   @include ms-respond(font-size, 0);
+  @include wf('base');  
+  font-weight: 400;
+  color: c('black', '90');
+  background: c('white');
   line-height: $bk-baseLineHeight;
 
   /* stylelint-disable */
