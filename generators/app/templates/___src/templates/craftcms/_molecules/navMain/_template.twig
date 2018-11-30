@@ -53,23 +53,14 @@
 
           {# -- Set Text -- #}
           {% set text = item.navigationLink.customText ?
-            item.navigationLink.customText | raw :
+            item.navigationLink.customText :
             item.navigationLink.getText() %}
 
-          {# -- link -- #}
-          {% include '_atoms/link/_template.twig' with {
-            opt: {
-              modifiers: [
-                'inline', 'navMain'
-              ],
-              customClasses: [
-                macroIsActive.isActive(segments, segmentPosition) | trim
-              ],
-              text: text,
-              targetBlank: item.navigationLink.getTarget() ? true : false,
-              url: item.navigationLink.getUrl()
-            }
-          } only %}
+          <a href="{{ item.navigationLink.getUrl() }}"
+             class="{{ opt.cn ~ '__listItemLink' }}  {{ opt.cn ~ '__listItemLink--level-' ~ level }}  {{ macroIsActive.isActive(segments, segmentPosition) }}" {{ item.navigationLink.getTarget() ? 'target=blank' : '' }}>
+            {{ text | raw }}
+          </a>
+
 
           {% ifchildren %}
             {% set level = item.level %}
