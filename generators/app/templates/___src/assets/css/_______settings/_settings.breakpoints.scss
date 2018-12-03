@@ -9,6 +9,13 @@
 // Cause we set the map our Breakpoints to their map $breakpoints
 @import '~include-media/dist/include-media';
 
+$bk-bp-min: 320px;
+$bk-bp-xs: 400px;
+$bk-bp-s: 600px;
+$bk-bp-m: 800px;
+$bk-bp-l: 1000px;
+$bk-bp-max: 1440px;
+
 // Settings
 $bk-grid-settings-custom: (
   cssgrid: false,
@@ -28,12 +35,12 @@ $bk-grid-settings-custom: (
   pull-classes: false,
   disable-padding-horizontal: false,
   breakpoints: (
-    min: (from: 320px, cols: 12, create-classes: true),
-    xs:  (from: 400px, cols: 12, create-classes: false),
-    s:   (from: 600px, cols: 24, create-classes: true),
-    m:   (from: 800px, cols: 24, create-classes: false),
-    l:   (from: 1000px, cols: 24, create-classes: true),
-    max: (from: 1440px, cols: 24, create-classes: false)
+    min: (from: $bk-bp-min, cols: 6, create-classes: true),
+    xs:  (from: $bk-bp-xs, cols: 6, create-classes: false),
+    s:   (from: $bk-bp-s, cols: 24, create-classes: true),
+    m:   (from: $bk-bp-m, cols: 24, create-classes: false),
+    l:   (from: $bk-bp-l, cols: 24, create-classes: false),
+    max: (from: $bk-bp-max, cols: 24, create-classes: false)
   )
 );
 
