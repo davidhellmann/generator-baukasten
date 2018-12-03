@@ -68,26 +68,22 @@
           display: block;
         }
       }
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        @include f(s(1), s(2), width);
+        height: 100vh;
+        background: rgba(red, 0.05);
+      }
 
-      @at-root {
-        .o-col {
-          &::before,
-          &::after {
-            content: '';
-            position: absolute;
-            @include f(s(1), s(2), width);
-            height: 100vh;
-            background: rgba(red, 0.05);
-          }
+      &::before {
+        left: 0;
+      }
 
-          &::before {
-            left: 0;
-          }
-
-          &::after {
-            right: 0;
-          }
-        }
+      &::after {
+        right: 0;
       }
     }
   }
