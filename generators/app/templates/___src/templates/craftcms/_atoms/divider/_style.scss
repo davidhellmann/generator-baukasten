@@ -7,7 +7,7 @@
 // Modul
 .a-divider {
   $root: &;
-  @include f(s(1), s(2), padding-top padding-bottom);
+  @include make-section-padding();
 
   &__hr {
     border: 0;
@@ -18,17 +18,13 @@
   }
 }
 
-// Modul Modifiers Example
-.a-divider--mv-small {
-  @include f(s(2), s(4), padding-top padding-bottom);
-}
 
 .a-divider--mv-medium {
-  @include f(s(3), s(6), padding-top padding-bottom);
+  @include make-section-padding(2);
 }
 
 .a-divider--mv-large {
-  @include f(s(4), s(8), padding-top padding-bottom);
+  @include make-section-padding(3);
 }
 
 .a-divider--mv-none {

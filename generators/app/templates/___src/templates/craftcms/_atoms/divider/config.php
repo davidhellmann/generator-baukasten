@@ -36,12 +36,17 @@ return [
     'meta' => array_merge($componentMeta, []),
     'variants' => [
         'divider' => array_merge($defaultVariant, []),
-        /*
-        'divider--variantName' => array_merge($defaultVariant, [
-            'title' => 'divider Intro',
-            'description' => 'divider Description goes here…',
-            'modifiers' => ['variant'],
+        'divider--mv-medium' => array_merge($defaultVariant, [
+            'title' => 'divider margin medium',
+            'modifiers' => ['mv-medium'],
         ]),
-        */
+        'divider--mv-large' => array_merge($defaultVariant, [
+            'title' => 'divider margin large',
+            'modifiers' => ['mv-large'],
+        ]),
+        'divider--mv-none' => array_merge($defaultVariant, [
+            'title' => 'divider margin none',
+            'modifiers' => ['mv-none'],
+        ]),
     ]
 ];
