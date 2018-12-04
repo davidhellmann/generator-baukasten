@@ -1,6 +1,6 @@
 {
   "name": "generator-baukasten",
-  "version": "4.1.26",
+  "version": "4.1.27",
   "description": "A little 'Baukasten' for your next project to gettings shit done. It's focused on Craft CMS but there is also a bit WordPress stuff on board.",
   "main": "generators/app/index.js",
   "scripts": {
