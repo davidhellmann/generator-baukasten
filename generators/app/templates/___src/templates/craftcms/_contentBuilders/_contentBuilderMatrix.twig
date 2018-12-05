@@ -49,6 +49,7 @@
       {# Check if an other Section is opened and close the Section before #}
       {% if content.type == 'bkSection' %}
         {% if not loop.first %}
+                </div>
               </div>
             </div>
           </div>
@@ -68,6 +69,7 @@
         } only %}
       {% endif %}
     {% endfor %}
+          </div>
         </div>
       </div>
     </div>

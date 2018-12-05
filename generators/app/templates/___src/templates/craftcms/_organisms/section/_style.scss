@@ -15,11 +15,19 @@
   .o-section {
     @include f(0, 0, padding-left padding-right);
   }
+
+  .o-section__content {
+    @include f(0, 0, padding-left padding-right);
+  }
 }
 
 // Width
 .o-section--w-fluid {
   max-width: none;
+
+  .o-section__content {
+    @include make-section();
+  }
 }
 
 // No Padding
@@ -32,6 +40,10 @@
   background-color: c('white');
 }
 
+.o-section--bg-lightgray {
+  background-color: c('black', '05');
+}
+
 .o-section--bg-black {
   background-color: c('black');
 }
@@ -40,6 +52,10 @@
 .o-section--pv-none {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.o-section--pv-small {
+  @include make-section-padding(1);
 }
 
 .o-section--pv-medium {
@@ -52,4 +68,11 @@
 
 .o-section--pv-xlarge {
   @include make-section-padding(4);
+}
+
+.o-section--cb.o-section--w-fluid {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
 }
