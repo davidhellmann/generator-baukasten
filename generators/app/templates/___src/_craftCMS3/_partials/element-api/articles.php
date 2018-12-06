@@ -10,6 +10,8 @@ return [
         'section' => 'articles',
     ],
     'cache' => \Craft::$app->config->env === 'live',
-    'paginate' => false,
-    'transformer' => $transformer
+    'paginate' => true,
+    'elementsPerPage' => 3,
+    'pageParam' => 'page',
+    'transformer' => $transformer,
 ];

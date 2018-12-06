@@ -6,8 +6,11 @@
  * cards
  */
 
+import Vue from 'vue';
+import Cards from './_component.vue';
+
 const cards = {
-    cfg:  {
+    cfg: {
         name: 'cards'
     },
 
@@ -16,6 +19,11 @@ const cards = {
     },
 
     init() {
+        new Vue({
+            name: 'CardsRoot',
+            components: { Cards }
+        }).$mount('[data-component="cards"]');
+
         this.log(`Init: ${this.cfg.name}`);
     }
 };

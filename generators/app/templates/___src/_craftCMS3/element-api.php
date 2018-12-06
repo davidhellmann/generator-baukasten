@@ -19,7 +19,7 @@ $endpoints = [
 
 
 foreach ($endpoints as $endpoint) {
-    $url = $endpoint . '.json';
+    $url = '/api/' . $endpoint . '.json';
     $result['endpoints'][$url] = loadElementApiEndpoint($endpoint);
 }
 
