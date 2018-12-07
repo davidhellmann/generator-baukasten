@@ -29,7 +29,7 @@ const scroll = new SmoothScroll('[data-scroll]', {
 if (window.location.hash) {
     setTimeout(() => {
         // Get the anchor
-        const anchor = document.querySelector(window.location.hash);
+        const anchor = document.getElementById(window.location.hash);
 
         // Get the toggle (if one exists)
         const toggle = document.querySelector(`a[href*="${window.location.hash}"]`);
