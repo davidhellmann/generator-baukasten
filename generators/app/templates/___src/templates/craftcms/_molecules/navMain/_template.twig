@@ -46,10 +46,24 @@
 
         <li class="{{ opt.cn ~ '__listItem' }}  {{ opt.cn ~ '__listItem--level-' ~ level }}">
           {# -- Get Position -- #}
-          {% set segmentPosition = item.navigationSegmentPosition + 0 %}
+          {% set segmentPosition = item.level %}
+
+          {% if item.navigationSegmentPosition %}
+            {% set segmentPosition = item.navigationSegmentPosition + 0 %}
+          {% endif %}
 
           {# -- Get Position -- #}
-          {% set segments = item.navigationHighlightTriggers | default('notSet') | replace({'home': ''}) | trim  | split(',') %}
+          {% set segments = 'notSet' %}
+
+          {% if item.navigationLink.element %}
+            {% set segments = item.navigationLink.element.slug %}
+          {% endif %}
+
+          {% if item.navigationHighlightTriggers %}
+            {% set segments = item.navigationHighlightTriggers %}
+          {% endif %}
+
+          {% set segments = segments | replace({'home': ''}) | trim  | split(',') %}
 
           {# -- Set Text -- #}
           {% set text = item.navigationLink.customText ?
