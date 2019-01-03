@@ -122,6 +122,7 @@
 
   {# -- Image Single Modul -- #}
   {% case 'imageSingle' %}
+    {% set image = data.image.one() %}
     {% include '_organisms/imageSingle/_template.twig' with {
       opt: {
         modifiers: [
@@ -129,13 +130,13 @@
           data.alignment ?? null,
           data.width ?? null
         ],
-        image: data.image.one() ?? data.imageST.one() ?? null,
+        image: image ?? null,
         ratio: data.ratio ?? null,
         caption: data.caption ?? null,
-        captionHeadline: data.image.one().imageTitle ?? null,
-        captionText: data.image.one().imageCaption ?? null,
-        captionSource: data.image.one().imageSource ?? null,
-        captionSourceUrl: data.image.one().imageSourceUrl ?? null
+        captionHeadline: image.imageTitle ?? null,
+        captionText: image.imageCaption ?? null,
+        captionSource: image.imageSource ?? null,
+        captionSourceUrl: image.imageSourceUrl ?? null
       }
     } only %}
 
