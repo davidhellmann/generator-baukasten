@@ -35,6 +35,7 @@ return array(
             'subLeft' => true,
             'subRight' => true,
         ],
+        'limitAutoSlugsToAscii' => true,
         'enableCsrfProtection' => true,
         'generateTransformsBeforePageLoad' => true,
         'omitScriptNameInUrls' => true,
