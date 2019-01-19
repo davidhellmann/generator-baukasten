@@ -23,7 +23,7 @@ $defaultVariant = [
     'waypoint' => null,
     'waypointAni' => null,
     'items' => \craft\elements\Entry::find()->where([
-        'sectionId' => 4,
+        'sectionId' => 3,
     ])->all(),
 ];
 

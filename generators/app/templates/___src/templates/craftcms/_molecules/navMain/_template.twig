@@ -66,12 +66,12 @@
           {% set segments = segments | replace({'home': ''}) | trim  | split(',') %}
 
           {# -- Set Text -- #}
-          {% set text = item.navigationLink.customText ?
-            item.navigationLink.customText :
-            item.navigationLink.getText() %}
+          {% set text = item.navigationLink.text ?
+            item.navigationLink.text :
+            item.title %}
 
-          <a href="{{ item.navigationLink.getUrl() }}"
-             class="{{ opt.cn ~ '__listItemLink' }}  {{ opt.cn ~ '__listItemLink--level-' ~ level }}  {{ macroIsActive.isActive(segments, segmentPosition) }}" {{ item.navigationLink.getTarget() ? 'target=blank' : '' }}>
+          <a href="{{ item.navigationLink.url }}"
+             class="{{ opt.cn ~ '__listItemLink' }}  {{ opt.cn ~ '__listItemLink--level-' ~ level }}  {{ macroIsActive.isActive(segments, segmentPosition) }}" {{ item.navigationLink.target ? 'target=blank' : '' }}>
             {{ text | raw }}
           </a>
 
