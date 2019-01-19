@@ -60,6 +60,13 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
+            src: '___src/_craftCMS3/project.yaml',
+            dest: '___dist/config/project.yaml'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
             src: '___src/_craftCMS3/web/index.php',
             dest: '___dist/web/index.php'
         },

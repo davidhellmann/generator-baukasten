@@ -33,8 +33,8 @@
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}">
 
-  {% if opt.object.contentBuilderMatrix|length %}
-    {% set matrixfield = opt.object.contentBuilderMatrix.all() %}
+  {% if opt.object.contentBuilder|length %}
+    {% set matrixfield = opt.object.contentBuilder.all() %}
 
     {% for content in matrixfield %}
       {% if loop.first and content.type != 'bkSection' %}
@@ -56,14 +56,14 @@
         <!-- end: o-section -->
         {% endif %}
         <!-- start: o-section -->
-        {% include '_contentBuilders/_contentBuilderModulesMatrix.twig' with {
+        {% include '_contentBuilders/_contentBuilderModules.twig' with {
           data: content,
           context: opt.context
         } only %}
 
       {# All other Content Modules #}
       {% elseif content.type != 'bkSection' %}
-        {% include '_contentBuilders/_contentBuilderModulesMatrix.twig' with {
+        {% include '_contentBuilders/_contentBuilderModules.twig' with {
           data: content,
           context: opt.context
         } only %}

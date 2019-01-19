@@ -7,11 +7,25 @@
 
 {% switch data.type %}
   {# -- Accordion Modul -- #}
-  {# TODO: Accordion Simple Headline Text #}
   {% case 'accordion' %}
     {% include '_modules/accordion/_template.twig' with {
       opt: {
         rows: data.children ?? null
+      }
+    } only %}
+
+  {# -- Link Modul -- #}
+  {% case 'link' %}
+    {% include '_atoms/link/_template.twig' with {
+      opt: {
+        url: data.singleLink.url ?? null,
+        modifiers: [
+          'cb',
+          data.settingsLink.style ?? null,
+          data.settingsLink.alignment ?? null
+        ],
+        target: data.singleLink.target ?? null,
+        text: data.singleLink.text ?? null
       }
     } only %}
 
@@ -21,34 +35,24 @@
       opt: {
         modifiers: [
           'cb',
-          data.paddingVertical ?? null,
-          data.width ?? null,
-          data.background ?? null
+          data.settingsSection.paddingVertical ?? null,
+          data.settingsSection.width ?? null
         ],
+        offset: data.settingsSection.offset,
         context: context
       }
     } only %}
 
-  {# -- Snippet Modul -- #}
-  {% case 'codeSnippet' %}
-  {% include '_atoms/codeSnippet/_template.twig' with {
-    opt: {
-      modifiers: [
-        'cb',
-      ],
-      snippet: data.snippet ?? null,
-      language: data.language ?? null
-    }
-  } only %}
-
   {# -- Definiton List Modul -- #}
   {% case 'definitionList' %}
-    {% include '_molecules/definitionList/_template.twig' with {
+    {% include '_modules/definitionList/_template.twig' with {
       opt: {
         modifiers: [
           'cb',
+          data.settingsDefinitionList.layout ?? null,
+          data.settingsDefinitionList.ratio ?? null
         ],
-        items: data.definitionList ?? null
+        items: data.singleDefinitionList ?? null
       }
     } only %}
 
@@ -58,10 +62,10 @@
       opt: {
         modifiers: [
           'cb',
-          data.position ?? null,
-          data.width ?? null
+          data.settingsEmbed.position ?? null,
+          data.settingsEmbed.width ?? null
         ],
-        code: data.code ?? null
+        embedCode: data.singleEmbedCode ?? null
       }
     } only %}
 
@@ -72,8 +76,8 @@
         modifiers: [
           'cb',
         ],
-        text: data.headline ?? null,
-        size: data.size ?? null
+        text: data.singleHeadline ?? null,
+        size: data.settingsHeadline.size ?? null
       }
     } only %}
 
@@ -83,13 +87,13 @@
       opt: {
         modifiers: [
           'cb',
-          data.color ?? null,
-          data.position ?? null,
-          data.alignment ?? null
+          data.settingsImageCover.textColor ?? null,
+          data.settingsImageCover.textAlignment ?? null,
+          data.settingsImageCover.textVerticalPosition ?? null
         ],
-        image: data.image.one() ?? null,
-        ratio: data.ratio ?? null,
-        text: data.text ?? null
+        image: data.singleImage.first() ?? null,
+        bgPosition: data.settingsImageCover.backgroundPosition ?? null,
+        text: data.singleText ?? null
       }
     } only %}
 
@@ -98,11 +102,11 @@
     {% include '_organisms/imageGallery/_template.twig' with {
       opt: {
         modifiers: [
-          'cb'
+          'cb',
+          data.settingsImageGallery.columns ?? null
         ],
-        js: true,
-        images: data.images ?? null,
-        ratio: data.ratio ?? null,
+        images: data.singleImages ?? null,
+        thumbsRatio: data.settingsImageGallery.thumbsRatio ?? null
       }
     } only %}
 
@@ -112,31 +116,42 @@
       opt: {
         modifiers: [
           'cb',
-          data.columns ?? null
+          data.settingsImageGrid.columns ?? null
         ],
-        images: data.images ?? null,
-        ratio: data.ratio ?? null,
-        caption: data.caption ?? null,
+        images: data.singleImages ?? null,
+        ratio: data.settingsImageGrid.ratio ?? null,
+        caption: data.settingsImageGrid.caption ?? null
       }
     } only %}
 
   {# -- Image Single Modul -- #}
   {% case 'imageSingle' %}
-    {% set image = data.image.one() %}
     {% include '_organisms/imageSingle/_template.twig' with {
       opt: {
         modifiers: [
           'cb',
-          data.alignment ?? null,
-          data.width ?? null
+          data.settingsImageSingle.alignment ?? null,
+          data.settingsImageSingle.width ?? null
         ],
-        image: image ?? null,
-        ratio: data.ratio ?? null,
-        caption: data.caption ?? null,
-        captionHeadline: image.imageTitle ?? null,
-        captionText: image.imageCaption ?? null,
-        captionSource: image.imageSource ?? null,
-        captionSourceUrl: image.imageSourceUrl ?? null
+        image: data.singleImage.first() ?? null,
+        ratio: data.settingsImageSingle.ratio ?? null,
+        caption: data.settingsImageSingle.caption ?? null
+      }
+    } only %}
+
+
+  {# -- Image Single Modul -- #}
+  {% case 'image' %}
+    {% include '_atoms/image/_template.twig' with {
+      opt: {
+        modifiers: [
+          'cb',
+          data.settingsImageSingle.alignment ?? null,
+          data.settingsImageSingle.width ?? null
+        ],
+        image: data.singleImage.first() ?? null,
+        ratio: data.settingsImageSingle.ratio ?? null,
+        caption: data.settingsImageSingle.caption ?? null
       }
     } only %}
 
@@ -147,9 +162,8 @@
         modifiers: [
           'cb',
         ],
-        js: true,
-        images: data.images ?? null,
-        ratio: data.ratio ?? null,
+        images: data.singleImages ?? null,
+        ratio: data.settingsImageSlider.ratio ?? null
       }
     } only %}
 
@@ -160,7 +174,7 @@
         modifiers: [
           'cb',
         ],
-        text: data.plainText ?? null
+        text: data.singlePlainText ?? null
       }
     } only %}
 
@@ -171,9 +185,9 @@
         modifiers: [
           'cb',
         ],
-        quote: data.quote ?? null,
-        source: data.source ?? null,
-        sourceUrl: data.sourceUrl ?? null
+        quote: data.singleQuote ?? null,
+        source: data.singleSource ?? null,
+        sourceUrl: data.singleSourceUrl ?? null
       }
     } only %}
 
@@ -184,7 +198,7 @@
         modifiers: [
           'cb',
         ],
-        text: data.richText ?? null
+        text: data.singleRichText ?? null
       }
     } only %}
 
@@ -195,8 +209,8 @@
         modifiers: [
           'cb',
         ],
-        marginals: data.marginals ?? null,
-        text: data.richText ?? null
+        marginals: data.children ?? null,
+        text: data.singleRichText ?? null
       }
     } only %}
 

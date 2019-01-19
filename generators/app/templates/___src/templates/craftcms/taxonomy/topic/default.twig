@@ -56,10 +56,10 @@
         } only %}
 
         {# -- Entry Intro -- #}
-        {% if category.entryIntroText ?? null %}
+        {% if category.entrySummary ?? null %}
           {% include '_atoms/richText/_template.twig' with {
             opt: {
-              text: category.entryIntroText
+              text: category.entrySummary
             }
           } only %}
         {% endif %}

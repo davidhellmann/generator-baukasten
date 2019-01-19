@@ -83,7 +83,7 @@ return array(
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'isSystemOn' => true,
+        'isSystemLive' => true,
         'allowAdminChanges' => false,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
@@ -99,7 +99,7 @@ return array(
         'backupOnUpdate' => false,
         'devMode' => true,
         'enableTemplateCaching' => true,
-        'isSystemOn' => true,
+        'isSystemLive' => true,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],
@@ -114,7 +114,7 @@ return array(
         'backupOnUpdate' => true,
         'devMode' => true,
         'enableTemplateCaching' => false,
-        'isSystemOn' => true,
+        'isSystemLive' => true,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],

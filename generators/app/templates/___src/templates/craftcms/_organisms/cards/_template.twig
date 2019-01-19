@@ -42,7 +42,7 @@
       {{ 'data-' ~ key ~ '=' ~ value }}
     {% endfor %}>
     {% for item in opt.items %}
-      <div class="o-col-12  o-col-s-8  {{ opt.cn ~ '__item' }}">
+      <div class="o-col-12  o-col-s-8 {{ opt.cn ~ '__item' }}">
         {% include '_molecules/card/_template.twig' with {
           opt: {
             item: item,

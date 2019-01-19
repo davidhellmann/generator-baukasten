@@ -60,11 +60,11 @@
         } only %}
 
         {# -- Entry Intro -- #}
-        {% if opt.item.entryIntroText ?? null %}
+        {% if opt.item.entrySummary ?? null %}
 
             {% include '_atoms/richText/_template.twig' with {
               opt: {
-                text: '<p>' ~ opt.item.entryIntroText | striptags | truncateOnWord(140) ~ '</p>'
+                text: '<p>' ~ opt.item.entrySummary | striptags | truncateOnWord(140) ~ '</p>'
               }
             } only %}
 

@@ -39,10 +39,10 @@
         } only %}
 
         {# -- Entry Intro -- #}
-        {% if entry.entryIntroText ?? null %}
+        {% if entry.entrySummary ?? null %}
           {% include '_atoms/richText/_template.twig' with {
             opt: {
-              text: entry.entryIntroText
+              text: entry.entrySummary
             }
           } only %}
         {% endif %}
@@ -68,7 +68,7 @@
       {# -- Block: Content -- #}
       {% block content %}
         {# -- Content Builder -- #}
-        {% include '_contentBuilders/_contentBuilderMatrix.twig' with {
+        {% include '_contentBuilders/_contentBuilder.twig' with {
           opt: {
             object: entry
           }

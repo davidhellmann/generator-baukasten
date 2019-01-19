@@ -109,6 +109,11 @@ composer require aelvan/imager
 echo '--------------------------------------------------'
 
 echo ''
+echo '>>> Installing: Link It'
+composer require fruitstudios/linkit
+echo '--------------------------------------------------'
+
+echo ''
 echo '>>> Installing: Logs'
 composer require ether/logs
 echo '--------------------------------------------------'
@@ -139,11 +144,6 @@ composer require nystudio107/craft-seomatic
 echo '--------------------------------------------------'
 
 echo ''
-echo '>>> Installing: Splash'
-composer require ether/splash
-echo '--------------------------------------------------'
-
-echo ''
 echo '>>> Installing: Spoon'
 composer require angellco/spoon
 echo '--------------------------------------------------'
@@ -161,11 +161,6 @@ echo '--------------------------------------------------'
 echo ''
 echo '>>> Installing: Twig Perversion'
 composer require marionnewlevant/twig-perversion
-echo '--------------------------------------------------'
-
-echo ''
-echo '>>> Installing: Typed link field'
-composer require sebastianlenz/linkfield
 echo '--------------------------------------------------'
 
 echo ''
