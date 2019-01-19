@@ -42,7 +42,7 @@
       {% set marginalFirst = opt.marginals.marginal[0] ?? null %}
       {% if marginalFirst ?? null %}
         <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--first' }}">
-          {% include '_contentBuilders/_contentBuilderModulesMatrix.twig' with { data: marginalFirst } only %}
+          {% include '_contentBuilders/_contentBuilderModules.twig' with { data: marginalFirst } only %}
         </aside>
       {% endif %}
     {% endif %}
@@ -57,7 +57,7 @@
       {% set marginalLast = opt.marginals.marginal[0] ?? null %}
       {% if marginalLast ?? null %}
         <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--last' }}">
-          {% include '_contentBuilders/_contentBuilderModulesMatrix.twig' with { data: marginalLast } only %}
+          {% include '_contentBuilders/_contentBuilderModules.twig' with { data: marginalLast } only %}
         </aside>
       {% endif %}
     {% endif %}
