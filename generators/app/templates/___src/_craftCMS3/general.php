@@ -41,6 +41,7 @@ return array(
         'omitScriptNameInUrls' => true,
         'usePathInfo' => true,
         'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
+        'useProjectConfigFile' => true,
 
         'siteUrl' => getenv('CRAFTENV_SITE_URL'),
         // Multisite Settings
@@ -83,6 +84,7 @@ return array(
         'devMode' => false,
         'enableTemplateCaching' => true,
         'isSystemOn' => true,
+        'allowAdminChanges' => false,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],
