@@ -6,7 +6,7 @@
   $root: &;
 
   .is-patternLib & {
-    @include make-section();
+    @include make-section('fluid');
     padding-top: 16px;
     padding-bottom: 64px;
     position: relative;
