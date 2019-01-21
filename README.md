@@ -37,6 +37,7 @@ you can have a lot of fun with it. Give it a try.
 ## Requirments
 
 ```
+yeoman
 composer
 node
 yarn (npm works also)
