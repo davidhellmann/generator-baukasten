@@ -12,18 +12,13 @@
 // Modul
 .o-imageSingle {
   $root: &;
-  width: 100%;
 
-  .m-figure {
+  .m-figure__inner {
     width: auto;
-    @include make-row(12);
-
-    @include media('>=s') {
-      @include make-col(24);
-    }
+    @include make-row();
   }
 
-  .m-figure__image {
+  .m-figure__figure {
     @include make-col-padding();
   }
 
@@ -34,7 +29,7 @@
 
 // Full Image
 .o-imageSingle--w-full {
-  .m-figure__image {
+  .m-figure__figure {
     @include make-col(12, 12);
 
     @include media('>=m') {
@@ -53,7 +48,7 @@
 
 // Half Image
 .o-imageSingle--w-half {
-  .m-figure__image {
+  .m-figure__figure {
     @include make-col(12, 12);
 
     @include media('>=m') {
@@ -70,7 +65,7 @@
   }
 
   &.o-imageSingle--a-right {
-    .m-figure__image {
+    .m-figure__figure {
       @include media('>=m') {
         order: 2;
       }
@@ -86,7 +81,7 @@
 
 // Three Quarter Image
 .o-imageSingle--w-threeQuarter {
-  .m-figure__image {
+  .m-figure__figure {
     @include make-col(12, 12);
 
     @include media('>=m') {
@@ -103,7 +98,7 @@
   }
 
   &.o-imageSingle--a-right {
-    .m-figure__image {
+    .m-figure__figure {
       @include media('>=m') {
         order: 2;
       }

@@ -13,12 +13,22 @@
 .m-quote {
   $root: &;
   @include make-vr();
-  width: 100%;
-  max-width: 80ch;
-  @include f(s(8), s(16), padding-left);
+
+  &__wrapper {
+    @include make-row();
+  }
+
+  &__inner {
+    @include make-col-padding();
+
+    @include media('>=m') {
+      @include col-offset(4, 24);
+    }
+  }
 
   &__blockquote {
     p {
+      max-width: 40ch;
       font-weight: 700;
       font-style: normal;
     }

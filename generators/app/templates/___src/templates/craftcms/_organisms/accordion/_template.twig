@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   items: null
 } %}
 
@@ -24,6 +25,9 @@
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+            {% if opt.vSpace %}
+              {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+            {% endif %}
             {% for customClass in opt.customClasses %}
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}"
@@ -31,24 +35,28 @@
       {{ 'data-' ~ key ~ '=' ~ value }}
     {% endfor %} role="tablist">
 
-    {% for item in opt.items %}
-      <div class="{{ opt.cn ~ '__item' }}" role="tab">
-        <div class="{{ opt.cn ~ '__trigger' }}  js-accordionTrigger">
-          <div class="{{ opt.cn ~ '__headline' }}">
-            {{ item.accordionTrigger ?? 'Trigger' }}
-          </div>
-        </div>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% for item in opt.items %}
+          <div class="{{ opt.cn ~ '__item' }}" role="tab">
+            <div class="{{ opt.cn ~ '__trigger' }}  js-accordionTrigger">
+              <div class="{{ opt.cn ~ '__headline' }}">
+                {{ item.accordionTrigger ?? 'Trigger' }}
+              </div>
+            </div>
 
-        <div class="{{ opt.cn ~ '__content' }}" role="tabpanel">
-          {# -- richText -- #}
-          {% include '_atoms/richText/_template.twig' with {
-            opt: {
-              text: item.accordionContent ?? null
-            }
-          } only %}
-        </div>
+            <div class="{{ opt.cn ~ '__content' }}" role="tabpanel">
+              {# -- richText -- #}
+              {% include '_atoms/richText/_template.twig' with {
+                opt: {
+                  text: item.accordionContent ?? null
+                }
+              } only %}
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
   </div>
 {% endif %}
 

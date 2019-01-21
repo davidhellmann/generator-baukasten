@@ -30,6 +30,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   intro: null,
   content: null,
   sidebar: null
@@ -44,46 +45,53 @@
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+            {% if opt.vSpace %}
+              {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+            {% endif %}
             {% for customClass in opt.customClasses %}
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.js ? opt.cn|replace({ 'e-' : 'js-' }) : '' }}"
-            {% for key, value in opt.data %}
-              {{ 'data-' ~ key ~ '=' ~ value }}
-            {% endfor %}>
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
 
-    {# -- Block: Intro -- #}
-    {% if opt.intro %}
-      <div class="o-section">
-        <div class="o-row">
-          <div class="o-col-12  o-col-s-24  {{ opt.cn ~ '__intro' }}">
-            {% block intro %}
-              Block: Intro!
-            {% endblock %}
-          </div>
-        </div>
-      </div>
-    {% endif %}
-
-    {# -- Block: Content -- #}
-    {% if opt.content %}
-      <div class="o-section">
-        <div class="o-row">
-          <div class="o-col-12  o-col-s-16  {{ opt.cn ~ '__content' }}">
-            {% block content %}
-              Block: Content!
-            {% endblock %}
-          </div>
-
-          {# -- Block: Sidebar -- #}
-          {% if opt.sidebar %}
-            <div class="o-col-12  o-col-s-8  {{ opt.cn ~ '__sidebar' }}">
-              {% block sidebar %}
-                Block: Sidebar!
-              {% endblock %}
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {# -- Block: Intro -- #}
+        {% if opt.intro %}
+          <div class="o-section">
+            <div class="o-row">
+              <div class="o-col-6  o-col-s-24  {{ opt.cn ~ '__intro' }}">
+                {% block intro %}
+                  Block: Intro!
+                {% endblock %}
+              </div>
             </div>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
+
+        {# -- Block: Content -- #}
+        {% if opt.content %}
+          <div class="o-section">
+            <div class="o-row">
+              <div class="o-col-6  o-col-s-16  {{ opt.cn ~ '__content' }}">
+                {% block content %}
+                  Block: Content!
+                {% endblock %}
+              </div>
+
+              {# -- Block: Sidebar -- #}
+              {% if opt.sidebar %}
+                <div class="o-col-6  o-col-s-8  {{ opt.cn ~ '__sidebar' }}">
+                  {% block sidebar %}
+                    Block: Sidebar!
+                  {% endblock %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
+    </div>
   </div>
 {% endif %}

@@ -12,8 +12,7 @@
 // Modul
 .a-radio {
   $root: &;
-  margin-top: 16px;
-  width: 100%;
+  @include make-vr(1/2);
 
   &__radio {
     &:checked,

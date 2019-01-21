@@ -7,8 +7,11 @@
 // Modul
 .m-figure {
   $root: &;
-  @include make-vr();
-  width: 100%;
+
+  &__figure {
+    @include make-vr();
+    width: 100%;
+  }
 
   .a-image {
     margin-top: 0;

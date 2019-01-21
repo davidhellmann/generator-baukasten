@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   icon: null
 } %}
 
@@ -24,12 +25,21 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
               {% for key, value in opt.data %}
                 {{ 'data-' ~ key ~ '=' ~ value }}
               {% endfor %}>
-    {% include '_partials/svg/' ~ opt.icon ~ '.svg.twig' %}
+    <span class="{{ opt.cn ~ '__wrapper' }}">
+      <span class="{{ opt.cn ~ '__inner' }}">
+        <span class="{{ opt.cn ~ '__icon' }}">
+          {% include '_partials/svg/' ~ opt.icon ~ '.svg.twig' %}
+        </span>
+      </span>
+    </span>
   </span>
 {% endif %}

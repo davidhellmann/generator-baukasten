@@ -19,7 +19,6 @@ $defaultVariant = [
     'modifiers' => [],
     'customClasses' => [],
     'data' => [],
-    'js' => null,
     'waypoint' => null,
     'waypointAni' => null,
     'text' => 'codeSnippet lorem ipsum dolor sit amet…',

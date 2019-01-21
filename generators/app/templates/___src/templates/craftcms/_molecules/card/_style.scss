@@ -13,7 +13,10 @@
 .m-card {
   $root: &;
   @include make-vr();
-  width: 100%;
+
+  .a-headline {
+    @include make-vr(1);
+  }
 
   &__link {
     color: inherit;

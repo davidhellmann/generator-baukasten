@@ -7,10 +7,13 @@
 // Modul
 .a-textarea {
   $root: &;
-  width: 100%;
-  display: block;
-  position: relative;
-  margin-top: s(4);
+
+  &__inner {
+    width: 100%;
+    display: block;
+    position: relative;
+    margin-top: s(4);
+  }
 
   ::placeholder {
     color: c('black', '45');
@@ -61,7 +64,7 @@
         }
       }
     }
-    
+
     #{$root}.is-invalid & {
       border: 1px solid c('red');
     }
@@ -76,11 +79,11 @@
     }
 
     &:required:valid {
-      border: 1px solid c('red');
+      border: 1px solid c('green');
     }
 
     &.has-content:focus:valid {
-      border: 1px solid c('red');
+      border: 1px solid c('green');
     }
   }
 

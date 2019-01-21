@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   form: null
 } %}
 
@@ -28,6 +29,9 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
@@ -35,104 +39,106 @@
     {{ 'data-' ~ key ~ '=' ~ value }}
   {% endfor %}>
 
-  {% set form = craft.freeform.form("contactForm") %}
+  <div class="{{ opt.cn ~ '__wrapper' }}">
+    <div class="{{ opt.cn ~ '__inner' }}">
+      {% set form = craft.freeform.form("contactForm") %}
 
-  {{ form.renderTag({
-    returnUrl: "http://craft3.test:6633/",
-    errorClass: opt.cn ~ '__fieldErrors',
-  }) }}
+      {{ form.renderTag({
+        returnUrl: "http://craft3.test:6633/",
+        errorClass: opt.cn ~ '__fieldErrors',
+      }) }}
 
-  {% set name = form.get("name") %}
-  {% set mail = form.get("email") %}
-  {% set message = form.get("message") %}
+      {% set name = form.get("name") %}
+      {% set mail = form.get("email") %}
+      {% set message = form.get("message") %}
 
-  <div class="{{ opt.cn ~ '__row' }}">
-    <div class="{{ opt.cn ~ '__rowContent' }}  {{ opt.cn ~ '__rowContent--half' }}">
-      {# -- input -- #}
-      {% include '_atoms/input/_template.twig' with {
-        opt: {
-          type: 'text',
-          name: name.handle,
-          value: name.value,
-          label: name.label,
-          info: 'Please type in your name' | t,
-          required: false
-        }
-      } only %}
-      {{ name.renderErrors() }}
-    </div>
-  </div>
-
-  <div class="{{ opt.cn ~ '__row' }}">
-    <div class="{{ opt.cn ~ '__rowContent' }}  {{ opt.cn ~ '__rowContent--half' }}">
-      {# -- input -- #}
-      {% include '_atoms/input/_template.twig' with {
-        opt: {
-          customClasses: [''],
-          type: 'email',
-          name: mail.handle,
-          value: mail.valueAsString,
-          label: mail.label,
-          info: 'Please type in your mail' | t,
-          required: false
-        }
-      } only %}
-      {{ mail.renderErrors() }}
-    </div>
-  </div>
-
-
-  <div class="{{ opt.cn ~ '__row' }}">
-    <div class="{{ opt.cn ~ '__rowContent' }}">
-      {# -- textarea -- #}
-      {% include '_atoms/textarea/_template.twig' with {
-        opt: {
-          name: message.handle,
-          label: message.label,
-          info: 'Please type in your message' | t,
-          required: false
-        }
-      } only %}
-      {{ message.renderErrors() }}
-    </div>
-  </div>
-
-
-  {% if form.hasErrors %}
-    <div class="{{ opt.cn ~ '__row' }}">
-      <div class="{{ opt.cn ~ '__rowContent' }}">
-        <div class="{{ opt.cn ~ '__errorListWrapper' }}">
-          <p>
-            {{ "There was an error submitting this form"|t }}
-          </p>
-
-          {% if form.errors|length %}
-            <ul class="{{ opt.cn ~ '__errorList' }}">
-              {% for error in form.errors %}
-                <li class="{{ opt.cn ~ '__errorListItem' }}">{{ error }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
+      <div class="{{ opt.cn ~ '__row' }}">
+        <div class="{{ opt.cn ~ '__rowContent' }}  {{ opt.cn ~ '__rowContent--half' }}">
+          {# -- input -- #}
+          {% include '_atoms/input/_template.twig' with {
+            opt: {
+              type: 'text',
+              name: name.handle ?? null,
+              value: name.value ?? null,
+              label: name.label ?? null,
+              info: 'Please type in your name' | t,
+              required: false
+            }
+          } only %}
+          {{ name.renderErrors() }}
         </div>
       </div>
-    </div>
-  {% endif %}
 
-  {# -- button -- #}
+      <div class="{{ opt.cn ~ '__row' }}">
+        <div class="{{ opt.cn ~ '__rowContent' }}  {{ opt.cn ~ '__rowContent--half' }}">
+          {# -- input -- #}
+          {% include '_atoms/input/_template.twig' with {
+            opt: {
+              customClasses: [''],
+              type: 'email',
+              name: mail.handle ?? null,
+              value: mail.valueAsString ?? null,
+              label: mail.label ?? null,
+              info: 'Please type in your mail' | t,
+              required: false
+            }
+          } only %}
+          {{ mail.renderErrors() }}
+        </div>
+      </div>
 
-  <div class="{{ opt.cn ~ '__row' }}">
-    <div class="{{ opt.cn ~ '__rowContent' }}">
-      {% include '_atoms/button/_template.twig' with {
-        opt: {
-          text: "Submit Formular" | t,
-          type: 'submit',
-          modifiers: ['stylePrimary']
-        }
-      } only %}
+
+      <div class="{{ opt.cn ~ '__row' }}">
+        <div class="{{ opt.cn ~ '__rowContent' }}">
+          {# -- textarea -- #}
+          {% include '_atoms/textarea/_template.twig' with {
+            opt: {
+              name: message.handle ?? null,
+              label: message.label ?? null,
+              info: 'Please type in your message' | t,
+              required: false
+            }
+          } only %}
+          {{ message.renderErrors() }}
+        </div>
+      </div>
+
+
+      {% if form.hasErrors %}
+        <div class="{{ opt.cn ~ '__row' }}">
+          <div class="{{ opt.cn ~ '__rowContent' }}">
+            <div class="{{ opt.cn ~ '__errorListWrapper' }}">
+              <p>
+                {{ "There was an error submitting this form"|t }}
+              </p>
+
+              {% if form.errors|length %}
+                <ul class="{{ opt.cn ~ '__errorList' }}">
+                  {% for error in form.errors %}
+                    <li class="{{ opt.cn ~ '__errorListItem' }}">{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {# -- button -- #}
+
+      <div class="{{ opt.cn ~ '__row' }}">
+        <div class="{{ opt.cn ~ '__rowContent' }}">
+          {% include '_atoms/button/_template.twig' with {
+            opt: {
+              text: "Submit Formular" | t,
+              type: 'submit',
+              modifiers: ['stylePrimary']
+            }
+          } only %}
+        </div>
+      </div>
+
+      {{ form.renderClosingTag }}
     </div>
   </div>
-
-  {{ form.renderClosingTag }}
-
-
 </div>

@@ -8,10 +8,13 @@
 .a-codeSnippet {
   $root: &;
   @include make-vr();
-  width: 100%;
-  height: auto;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+
+  &__inner {
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 
   &[data-status='closed'] {
     height: 92px !important;

@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   image: null,
   ratio: null,
   dominantColor: true,
@@ -83,30 +84,39 @@
   {% endif %}
 
   {# -- Image -- #}
-  <picture class="{{ opt.cn }}
+  <div class="{{ opt.cn }}
                   {% for modifier in opt.modifiers %}
                     {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
                   {% endfor %}
+                  {% if opt.vSpace %}
+                    {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+                  {% endif %}
                   {% for customClass in opt.customClasses %}
                     {{ customClass | length ? '  ' ~ customClass }}
                   {% endfor %}"
-                  {% for key, value in opt.data %}
-                    {{ 'data-' ~ key ~ '=' ~ value }}
-                  {% endfor %}
-           {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
-    <source data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
-            data-sizes="auto"
-            type="image/webp"/>
-    <img class="{{ opt.cn ~ '__image' }}  lazyload"
-      {% if opt.objectFit %}
-        style="object-fit: {{ opt.objectFit }}; object-position: {{ focalpoint }}; font-size: 'object-fit: {{ opt.objectFit }};';"
-      {% endif %}
-         src="{{ imagePlaceholderBox }}"
-         data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidth : imageSrcset }}"
-         data-sizes="auto"
-         width="{{ imageMaxWidth }}"
-         height="auto"
-         alt="{{ opt.image.title }}"/>
-    <noscript><img src="{{ imageSrc }}" alt="{{ opt.image.title }}"></noscript>
-  </picture>
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <div class="{{ opt.cn ~ '__picture' }}"
+             {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
+          <source data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
+                  data-sizes="auto"
+                  type="image/webp"/>
+          <img class="{{ opt.cn ~ '__image' }}  lazyload"
+            {% if opt.objectFit %}
+              style="object-fit: {{ opt.objectFit }}; object-position: {{ focalpoint }}; font-size: 'object-fit: {{ opt.objectFit }};';"
+            {% endif %}
+               src="{{ imagePlaceholderBox }}"
+               data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidth : imageSrcset }}"
+               data-sizes="auto"
+               width="{{ imageMaxWidth }}"
+               height="auto"
+               alt="{{ opt.image.title }}"/>
+          <noscript><img src="{{ imageSrc }}" alt="{{ opt.image.title }}"></noscript>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endif %}

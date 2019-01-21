@@ -29,7 +29,6 @@ const vueComp = {
         }
     },
 
-
     init() {
         new Vue({
             el: '#vueComp',

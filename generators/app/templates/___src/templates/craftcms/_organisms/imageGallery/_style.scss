@@ -10,6 +10,10 @@
 .o-imageGallery {
   $root: &;
 
+  &__inner {
+    @include make-row();
+  }
+
   &__link {
     display: block;
   }

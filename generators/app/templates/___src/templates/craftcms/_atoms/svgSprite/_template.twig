@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   icon: null
 } %}
 
@@ -20,17 +21,27 @@
 
 {# -- Modul -- #}
 {% if opt.icon %}
-  <svg class="{{ opt.cn }}  {{ opt.cn ~ '--' ~ opt.icon }}
+  <span class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-       viewbox="0 0 48 48"
       {% for key, value in opt.data %}
         {{ 'data-' ~ key ~ '=' ~ value }}
       {% endfor %}>
-    <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ opt.icon }}"></use>
-  </svg>
+
+    <span class="{{ opt.cn ~ '__wrapper' }}">
+      <span class="{{ opt.cn ~ '__inner' }}">
+        <svg class="{{ opt.cn ~ '__icon' }}  {{ opt.cn ~ '--' ~ opt.icon }}"
+             viewbox="0 0 48 48">
+          <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ opt.icon }}"></use>
+        </svg>
+      </span>
+    </span>
+  </span>
 {% endif %}

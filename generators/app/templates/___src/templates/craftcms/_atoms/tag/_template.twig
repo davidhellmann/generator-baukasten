@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   link: null,
   text: null,
 } %}
@@ -21,17 +22,26 @@
 
 {# -- Modul -- #}
 {% if opt.text %}
-  {% set element = opt.link ? 'a' : 'span' %}
-  <{{ element }} {{ opt.link ? 'href=' ~ opt.link }} class="{{ opt.cn }}
-              {% for modifier in opt.modifiers %}
-                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}
-              {% for customClass in opt.customClasses %}
-                {{ customClass | length ? '  ' ~ customClass }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-  {% filter typogrify %}{{ opt.text }}{% endfilter %}
-  </{{ element }}>
+  <span class="{{ opt.cn }}
+        {% for modifier in opt.modifiers %}
+          {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+        {% endfor %}
+        {% if opt.vSpace %}
+          {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+        {% endif %}
+        {% for customClass in opt.customClasses %}
+          {{ customClass | length ? '  ' ~ customClass }}
+        {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
+        {% for key, value in opt.data %}
+          {{ 'data-' ~ key ~ '=' ~ value }}
+        {% endfor %}>
+    <span class="{{ opt.cn ~ '__wrapper' }}">
+      <span class="{{ opt.cn ~ '__inner' }}">
+        {% set element = opt.link ? 'a' : 'span' %}
+        <{{ element }} {{ opt.link ? 'href=' ~ opt.link }} class="{{ opt.cn ~'__link' }}">
+          {% filter typogrify %}{{ opt.text }}{% endfilter %}
+        </{{ element }}>
+      </span>
+    </span>
+  </span>
 {% endif %}

@@ -6,29 +6,33 @@
  cards
 -->
 <template>
-  <div :class="rootClass">
-    <div class="o-row">
-      <div v-if="loading" class="o-col">Loading...</div>
-      <template v-if="!loading">
-        <!-- <label for="search">Suche</label> -->
-        <!-- eslint-disable-next-line -->
-        <!-- <input id="search" v-model="searchTerm" type="text" name="search"> -->
-        <Card v-for="entry in entries"
-              :item="entry"
-              :key="entry.entryId"
-              class="o-col-12  o-col-s-8"/>
-      </template>
-    </div>
-    <div class="o-row">
-      <template v-if="!loading">
-        <template v-if="pagination.current_page > 1">
-          <button @click="getEndpoint(pagination.links.previous)">prev Page</button>
-        </template>
+  <div :class="`${rootClass}  ${cn}--vue`">
+    <div :class="`${cn}__wrapper`">
+      <div :class="`${cn}__inner`">
+        <div class="o-row">
+          <div v-if="loading" class="o-col">Loading...</div>
+          <template v-if="!loading">
+            <!-- <label for="search">Suche</label> -->
+            <!-- eslint-disable-next-line -->
+            <!-- <input id="search" v-model="searchTerm" type="text" name="search"> -->
+            <Card v-for="entry in entries"
+                  :item="entry"
+                  :key="entry.entryId"
+                  class="o-col-12  o-col-s-8"/>
+          </template>
+        </div>
+        <div class="o-row">
+          <template v-if="!loading">
+            <template v-if="pagination.current_page > 1">
+              <button @click="getEndpoint(pagination.links.previous)">prev Page</button>
+            </template>
 
-        <template v-if="pagination.current_page < pagination.total_pages">
-          <button @click="getEndpoint(pagination.links.next)">next Page</button>
-        </template>
-      </template>
+            <template v-if="pagination.current_page < pagination.total_pages">
+              <button @click="getEndpoint(pagination.links.next)">next Page</button>
+            </template>
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +42,7 @@
 
   export default {
     name: 'Cards',
-    components: {Card},
+    components: { Card },
     props: {
       modifiers: {
         type: Array,
@@ -63,7 +67,8 @@
           .slice(this.currentPage, 3);
       },
       rootClass() {
-        const modifiers = this.modifiers.map(mod => `${this.cn}--${mod}`).join('  ');
+        const modifiers = this.modifiers.map(mod => `${this.cn}--${mod}`)
+          .join('  ');
         return [this.cn, modifiers];
       },
     },

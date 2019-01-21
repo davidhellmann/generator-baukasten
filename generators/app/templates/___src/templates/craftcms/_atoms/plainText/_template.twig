@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   text: null
 } %}
 
@@ -20,16 +21,23 @@
 
 {# -- Modul -- #}
 {% if opt.text %}
-  <p class="{{ opt.cn }}
+  <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
             {% for customClass in opt.customClasses %}
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-            {% for key, value in opt.data %}
-              {{ 'data-' ~ key ~ '=' ~ value }}
-            {% endfor %}>
-    {% filter typogrify %}{{ opt.text | nl2br | raw }}{% endfilter %}
-  </p>
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <p>{% filter typogrify %}{{ opt.text | nl2br | raw }}{% endfilter %}</p>
+      </div>
+    </div>
+  </div>
 {% endif %}

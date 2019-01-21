@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   items: null,
   image: true,
   content: true,
@@ -31,41 +32,50 @@
 
 {# -- Modul -- #}
 {% if opt.items %}
-  <div class="o-row  {{ opt.cn }}
+  <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
     {% for key, value in opt.data %}
       {{ 'data-' ~ key ~ '=' ~ value }}
     {% endfor %}>
-    {% for item in opt.items %}
-      <div class="o-col-12  o-col-s-8 {{ opt.cn ~ '__item' }}">
-        {% include '_molecules/card/_template.twig' with {
-          opt: {
-            item: item,
-            image: opt.image,
-            content: opt.content,
-            link: opt.link
-          }
-        } only %}
-      </div>
-    {% endfor %}
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <div class="o-row">
+          {% for item in opt.items %}
+            <div class="o-col-12  o-col-s-8 {{ opt.cn ~ '__item' }}">
+              {% include '_molecules/card/_template.twig' with {
+                opt: {
+                  item: item,
+                  image: opt.image,
+                  content: opt.content,
+                  link: opt.link
+                }
+              } only %}
+            </div>
+          {% endfor %}
 
-    {% if opt.pagination and opt.pageInfo.totalPages > 1 %}
-      <div class="o-col-12  o-col-s-24  {{ opt.cn ~ '__pagination' }}">
-        {% if opt.paginationSimple %}
-          {# -- Pagination Simple -- #}
-          {% import '_partials/macros/_macro-paginationSimple.twig' as macroPaginationSimple %}
-          {{ macroPaginationSimple.paginationSimple(opt.pageInfo, craft, {}) }}
-        {% else %}
-          {# -- Pagination -- #}
-          {% import '_partials/macros/_macro-pagination.twig' as macroPagination %}
-          {{ macroPagination.pagination(opt.pageInfo, craft, {}) }}
-        {% endif %}
+          {% if opt.pagination and opt.pageInfo.totalPages > 1 %}
+            <div class="o-col-12  o-col-s-24  {{ opt.cn ~ '__pagination' }}">
+              {% if opt.paginationSimple %}
+                {# -- Pagination Simple -- #}
+                {% import '_partials/macros/_macro-paginationSimple.twig' as macroPaginationSimple %}
+                {{ macroPaginationSimple.paginationSimple(opt.pageInfo, craft, {}) }}
+              {% else %}
+                {# -- Pagination -- #}
+                {% import '_partials/macros/_macro-pagination.twig' as macroPagination %}
+                {{ macroPagination.pagination(opt.pageInfo, craft, {}) }}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
       </div>
-    {% endif %}
+    </div>
   </div>
 {% endif %}

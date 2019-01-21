@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   url: null,
   targetBlank: null,
   text: null,
@@ -23,37 +24,44 @@
 
 {# -- Modul -- #}
 {% if opt.text and opt.url %}
-  <a href="{{ opt.url }}" {{ opt.url starts with '#' ? 'data-scroll' : '' }}
-     class="{{ opt.cn }}
+  <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-            {{ opt.targetBlank ? 'target="_blank"'}}
-     itemprop="url"
-     role="button"
-      {% for item in opt.data %}
-        {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
-      {% endfor %}>
-    {% if opt.icon %}
+    {% for item in opt.data %}
+      {{ 'data-' ~ item.data ~ '=' ~ item.attribute }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <a href="{{ opt.url }}" {{ opt.url starts with '#' ? 'data-scroll' : '' }}
+           class="{{ opt.cn ~ '__link' }}" {{ opt.targetBlank ? 'target="_blank"' }}
+           itemprop="url"
+           role="button">
+          {% if opt.icon %}
+            {# -- Link Text -- #}
+            <span class="{{ opt.cn ~ '__text' }}">
+              {% filter typogrify %}{{ opt.text }}{% endfilter %}
+            </span>
 
-      {# -- Link Text -- #}
-      <span class="{{ opt.cn ~ '__text' }}">
-        {% filter typogrify %}{{ opt.text }}{% endfilter %}
-      </span>
-
-      {# -- Icon -- #}
-      {% include '_atoms/svgIcon/_template.twig' with {
-        opt: {
-          icon: opt.icon
-        }
-      } only %}
-    {% else %}
-      {% filter typogrify %}{{ opt.text }}{% endfilter %}
-    {% endif %}
-  </a>
+            {# -- Icon -- #}
+            {% include '_atoms/svgIcon/_template.twig' with {
+              opt: {
+                icon: opt.icon
+              }
+            } only %}
+          {% else %}
+            {% filter typogrify %}{{ opt.text }}{% endfilter %}
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
 {% endif %}
 
 

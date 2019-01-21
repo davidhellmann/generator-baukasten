@@ -7,11 +7,11 @@
 // Modul
 .a-divider {
   $root: &;
+  @include make-vr();
   @include make-section-padding();
 
   &__hr {
     border: 0;
-    @include make-vr();
     width: 100px;
     height: 2px;
     background-color: c('black', '10');

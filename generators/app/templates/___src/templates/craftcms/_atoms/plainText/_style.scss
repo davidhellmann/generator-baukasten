@@ -7,8 +7,10 @@
 // Modul
 .a-plainText {
   $root: &;
-  width: 100%;
-  max-width: 80ch;
+
+  p {
+    max-width: 80ch;
+  }
 }
 
 // Modul Modifiers Example

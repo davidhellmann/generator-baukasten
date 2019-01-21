@@ -12,12 +12,13 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-    cn: 'm-gridOverlay',
-    modifiers: [],
-    customClasses: ['o-section'],
-    data: {},
-    js: null,
-    cols: null | default(24)
+  cn: 'm-gridOverlay',
+  modifiers: [],
+  customClasses: ['o-section'],
+  data: {},
+  js: null,
+  vSpace: null,
+  cols: null | default(24)
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -31,16 +32,24 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-    <div class="o-row">
-      {% for i in 1..opt.cols %}
-        <div class="o-col"></div>
-      {% endfor %}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <div class="o-row">
+          {% for i in 1..opt.cols %}
+            <div class="o-col"></div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 {% endif %}

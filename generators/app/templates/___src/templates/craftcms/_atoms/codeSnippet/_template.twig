@@ -7,11 +7,12 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-    cn: 'a-codeSnippet',
+  cn: 'a-codeSnippet',
   modifiers: [],
   customClasses: [],
   data: {},
   js: true,
+  vSpace: null,
   open: true,
   textShow: 'Expand Code Block',
   textHide: 'Collapse Code Block',
@@ -31,19 +32,23 @@
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %} data-status="{{ opt.open ? 'open' : 'closed' }}">
-    {% spaceless %}
-      <pre class="line-numbers  language-{{ opt.language }}  {{ opt.cn ~ '__codeWrapper' }}">
-        <code class="{{ opt.cn ~ '__code' }}">{{- opt.snippet | e -}}</code>
-      </pre>
-    {% endspaceless %}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %} data-status="{{ opt.open ? 'open' : 'closed' }}">
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% spaceless %}
+          <pre class="line-numbers  language-{{ opt.language }}  {{ opt.cn ~ '__codeWrapper' }}">
+            <code class="{{ opt.cn ~ '__code' }}">{{- opt.snippet | e -}}</code>
+          </pre>
+        {% endspaceless %}
+      </div>
+    </div>
   </div>
   <span class="{{ opt.cn ~ '__toggle' }}"
         data-status="{{ opt.open ? 'open' : 'closed' }}"
         data-show="{{ opt.textShow }}"
         data-hide="{{ opt.textHide }}">
-    <span class="{{ opt.cn ~ '__toggleTextHolder' }} js-textHolder">{{ opt.open ? opt.textHide : opt.textShow  }}</span>
+    <span class="{{ opt.cn ~ '__toggleTextHolder' }} js-textHolder">{{ opt.open ? opt.textHide : opt.textShow }}</span>
   </span>
 {% endif %}

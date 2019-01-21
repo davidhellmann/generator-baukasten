@@ -14,12 +14,13 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-    cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
-    modifiers: [],
-    customClasses: [],
-    data: {},
-    js: null,
-    foo: null
+  cn: '<%= pathOptions.key.charAt(0) %>-<%= moduleName.replace('-', '_') %>',
+  modifiers: [],
+  customClasses: [],
+  data: {},
+  js: null,,
+  vSpace: null
+  foo: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -31,13 +32,20 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ '<%= pathOptions.key.charAt(0) %>-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-    <%= moduleName.replace('-', '_') %>
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <%= moduleName.replace('-', '_') %>
+      </div>
+    </div>
   </div>
 {% endif %}
 

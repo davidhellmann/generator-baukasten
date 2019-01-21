@@ -18,7 +18,7 @@ const input = {
     },
 
     addWrapperClass(el) {
-        const _parent = el.parentNode;
+        const _parent = el.parentNode.parentNode.parentNode;
 
         if (
             el.validity.badInput === true ||

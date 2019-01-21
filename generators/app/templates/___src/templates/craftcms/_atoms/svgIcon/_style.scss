@@ -7,10 +7,12 @@
 // Modul
 .a-svgIcon {
   $root: &;
-  @include make-vr();
-  display: inline-block;
-  width: 24px;
-  height: 24px;
+
+  &__icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+  }
 
   svg {
     width: 100%;
@@ -20,21 +22,29 @@
 
 // Modul Modifiers Example
 .a-svgIcon--32 {
-  width: 32px;
-  height: 32px;
+  .a-svgIcon__icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .a-svgIcon--48 {
-  width: 48px;
-  height: 48px;
+  .a-svgIcon__icon {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .a-svgIcon--64 {
-  width: 64px;
-  height: 64px;
+  .a-svgIcon__icon {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .a-svgIcon--96 {
-  width: 96px;
-  height: 96px;
+  .a-svgIcon__icon {
+    width: 96px;
+    height: 96px;
+  }
 }

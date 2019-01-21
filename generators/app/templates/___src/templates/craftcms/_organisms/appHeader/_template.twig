@@ -11,6 +11,7 @@
   modifiers: [],
   customClasses: [],
   data: {},
+  vSpace: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -21,20 +22,26 @@
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+            {% if opt.vSpace %}
+              {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+            {% endif %}
             {% for customClass in opt.customClasses %}
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.cn|replace({ 'o-' : 'js-' }) }}">
   {% cache %}
     {% block appHeader %}
-      {% include '_atoms/logo/_template.twig' with {
-          opt: {
+      <div class="{{ opt.cn ~ '__wrapper' }}">
+        <div class="{{ opt.cn ~ '__inner' }}">
+          {% include '_atoms/logo/_template.twig' with {
+            opt: {
               modifiers: [
                 'header'
               ],
               url: siteUrl
-          }
-      } %}
-
+            }
+          } %}
+        </div>
+      </div>
     {% endblock %}
   {% endcache %}
 </header>

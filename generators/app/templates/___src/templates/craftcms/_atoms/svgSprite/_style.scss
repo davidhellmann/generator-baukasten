@@ -7,30 +7,40 @@
 // Modul
 .a-svgSprite {
   $root: &;
-  @include make-vr();
-  width: 100%;
-  height: 100%;
-  max-width: 24px;
-  max-height: 24px;
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    max-width: 24px;
+    max-height: 24px;
+  }
 }
 
 // Modul Modifiers Example
 .a-svgSprite--32 {
-  max-width: 32px;
-  max-height: 32px;
+  .a-svgSprite__icon {
+    max-width: 32px;
+    max-height: 32px;
+  }
 }
 
 .a-svgSprite--48 {
-  max-width: 48px;
-  max-height: 48px;
+  .a-svgSprite__icon {
+    max-width: 48px;
+    max-height: 48px;
+  }
 }
 
 .a-svgSprite--64 {
-  max-width: 64px;
-  max-height: 64px;
+  .a-svgSprite__icon {
+    max-width: 64px;
+    max-height: 64px;
+  }
 }
 
 .a-svgSprite--96 {
-  max-width: 96px;
-  max-height: 96px;
+  .a-svgSprite__icon {
+    max-width: 96px;
+    max-height: 96px;
+  }
 }

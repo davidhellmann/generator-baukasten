@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   text: null,
   marginals: null,
 } %}
@@ -30,36 +31,43 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
     {% for key, value in opt.data %}
       {{ 'data-' ~ key ~ '=' ~ value }}
     {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
 
-    {# -- Marginal First -- #}
-    {% if opt.marginals | length >= 1 %}
-      {% set marginalFirst = opt.marginals.marginal[0] ?? null %}
-      {% if marginalFirst ?? null %}
-        <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--first' }}">
-          {% include '_contentBuilders/_contentBuilderModules.twig' with { data: marginalFirst } only %}
-        </aside>
-      {% endif %}
-    {% endif %}
+        {# -- Marginal First -- #}
+        {% if opt.marginals | length >= 1 %}
+          {% set marginalFirst = opt.marginals.marginal[0] ?? null %}
+          {% if marginalFirst ?? null %}
+            <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--first' }}">
+              {% include '_contentBuilders/_contentBuilderModules.twig' with { data: marginalFirst } only %}
+            </aside>
+          {% endif %}
+        {% endif %}
 
-    {# -- Text -- #}
-    <div class="{{ opt.cn ~ '__text' }}">
-      {{ opt.text | raw }}
+        {# -- Text -- #}
+        <div class="{{ opt.cn ~ '__text' }}">
+          {{ opt.text | raw }}
+        </div>
+
+        {# -- Marginal Last -- #}
+        {% if opt.marginals | length > 1 %}
+          {% set marginalLast = opt.marginals.marginal[0] ?? null %}
+          {% if marginalLast ?? null %}
+            <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--last' }}">
+              {% include '_contentBuilders/_contentBuilderModules.twig' with { data: marginalLast } only %}
+            </aside>
+          {% endif %}
+        {% endif %}
+      </div>
     </div>
-
-    {# -- Marginal Last -- #}
-    {% if opt.marginals | length > 1 %}
-      {% set marginalLast = opt.marginals.marginal[0] ?? null %}
-      {% if marginalLast ?? null %}
-        <aside class="{{ opt.cn ~ '__aside' }}  {{ opt.cn ~ '__aside--last' }}">
-          {% include '_contentBuilders/_contentBuilderModules.twig' with { data: marginalLast } only %}
-        </aside>
-      {% endif %}
-    {% endif %}
   </div>
 {% endif %}

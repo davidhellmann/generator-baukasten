@@ -12,42 +12,45 @@
 // Modul
 .a-select {
   $root: &;
-  width: 100%;
-  display: block;
-  position: relative;
-  @include make-vr(2);
+
+  &__inner {
+    width: 100%;
+    display: block;
+    position: relative;
+    @include make-vr(2);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      width: 10px;
+      height: 2px;
+      z-index: 100;
+      pointer-events: none;
+      background-color: c('black');
+    }
+
+    &::before {
+      transform: rotate(-45deg) translate(0, -50%);
+    }
+
+    &::after {
+      right: 23px;
+      transform: rotate(45deg) translate(0, -50%);
+    }
+  }
 
   &--default-selected select {
     color: c('black', '45');
   }
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    width: 10px;
-    height: 2px;
-    z-index: 100;
-    pointer-events: none;
-    background-color: c('black');
-  }
-
-  &::before {
-    transform: rotate(-45deg) translate(0, -50%);
-  }
-
-  &::after {
-    right: 23px;
-    transform: rotate(45deg) translate(0, -50%);
-  }
-  
   &__label {
     position: absolute;
     left: 10px;
     padding: 3px 6px;
-    top: 0;
+    top: -4px;
     background-color: transparent;
     transition: all 0.25s ease-out;
     backface-visibility: hidden;
@@ -71,7 +74,7 @@
       background-color: c('red');
     }
   }
-  
+
 
   select {
     -webkit-appearance: none; // stylelint-disable-line

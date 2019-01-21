@@ -8,7 +8,6 @@
 .o-imageSlider {
   $root: &;
   @include make-vr();
-  width: 100%;
 
   /* stylelint-disable */
   .flickity-prev-next-button {
@@ -39,10 +38,14 @@
   }
 
   &__slide {
-    width: 90%;
+    width: calc(100% - 32px);
     @include f(s(2), s(4), margin-right);
 
     @include media('>=m') {
+      width: calc(100% - 64px);
+    }
+
+    @include media('>=max') {
       width: 100%;
     }
   }

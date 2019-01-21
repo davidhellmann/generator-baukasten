@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   image: null,
   ratio: null,
   dominantColor: true,
@@ -32,39 +33,46 @@
               {% for modifier in opt.modifiers %}
                 {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'm-' : 'js-' }) : '' -}}"
-              {% for key, value in opt.data %}
-                {{- '  data-' ~ key ~ '=' ~ value -}}
-              {% endfor %}
-       itemprop=" associatedMedia"
-  itemscope itemtype="http://schema.org/ImageObject">
+    {% for key, value in opt.data %}
+      {{- '  data-' ~ key ~ '=' ~ value -}}
+    {% endfor %}>
 
-  <div class="{{- opt.cn ~ '__image' -}}">
-    {# -- image -- #}
-    {% include '_atoms/image/_template.twig' with {
-      opt: {
-        image: opt.image,
-        ratio: opt.ratio,
-        dominantColor: opt.dominantColor,
-        objectFit: opt.objectFit
-      }
-    } only %}
-  </div>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <div class="{{- opt.cn ~ '__figure' -}}"
+             itemprop=" associatedMedia"
+             itemscope itemtype="http://schema.org/ImageObject">
+          {# -- image -- #}
+          {% include '_atoms/image/_template.twig' with {
+            opt: {
+              image: opt.image,
+              ratio: opt.ratio,
+              dominantColor: opt.dominantColor,
+              objectFit: opt.objectFit
+            }
+          } only %}
+        </div>
 
-  {% if opt.caption %}
-    <div class="{{- opt.cn ~ '__caption' -}}">
-      {# -- caption -- #}
-      {% include '_molecules/caption/_template.twig' with {
-        opt: {
-          headline: opt.captionHeadline ?? null,
-          text: opt.captionText ?? null,
-          source: opt.captionSource ?? null,
-          sourceUrl: opt.captionSourceUrl ?? null
-        }
-      } only %}
+        {% if opt.caption %}
+          <div class="{{- opt.cn ~ '__caption' -}}">
+            {# -- caption -- #}
+            {% include '_molecules/caption/_template.twig' with {
+              opt: {
+                headline: opt.captionHeadline ?? null,
+                text: opt.captionText ?? null,
+                source: opt.captionSource ?? null,
+                sourceUrl: opt.captionSourceUrl ?? null
+              }
+            } only %}
+          </div>
+        {% endif %}
+      </div>
     </div>
-  {% endif %}
   </div>
 {% endif %}

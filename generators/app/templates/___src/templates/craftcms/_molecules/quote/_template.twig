@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   quote: null,
   source: null,
   sourceUrl: null
@@ -31,30 +32,37 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-    <blockquote class="{{ opt.cn ~ '__blockquote' }}">
-      <p>
-        {% filter typogrify %}{{ '"' ~ opt.quote ~ '"' | raw }}{% endfilter %}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <blockquote class="{{ opt.cn ~ '__blockquote' }}">
+          <p>
+            {% filter typogrify %}{{ '"' ~ opt.quote ~ '"' | raw }}{% endfilter %}
 
-      </p>
-      {% if opt.source %}
-        <footer>
-          <cite>
-            {% if opt.sourceUrl %}
-            <a href="{{ opt.sourceUrl }}" target="_blank">
-              {% endif %}
-              {{ opt.source }}
-              {% if opt.sourceUrl %}
-            </a>
-            {% endif %}
-          </cite>
-        </footer>
-      {% endif %}
-    </blockquote>
+          </p>
+          {% if opt.source %}
+            <footer>
+              <cite>
+                {% if opt.sourceUrl %}
+                <a href="{{ opt.sourceUrl }}" target="_blank">
+                  {% endif %}
+                  {{ opt.source }}
+                  {% if opt.sourceUrl %}
+                </a>
+                {% endif %}
+              </cite>
+            </footer>
+          {% endif %}
+        </blockquote>
+      </div>
+    </div>
   </div>
 {% endif %}

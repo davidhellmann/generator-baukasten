@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   image: null,
   ratio: null,
   text: null,
@@ -32,25 +33,32 @@
               {% for modifier in opt.modifiers %}
                 {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}"
-              {% for key, value in opt.data %}
-                {{- '  data-' ~ key ~ '=' ~ value -}}
-              {% endfor %}>
-    {% include '_molecules/figure/_template.twig' with {
-      opt: {
-        image: opt.image ?? null,
-        ratio: opt.ratio ?? null,
-        objectFit: opt.objectFit ?? 'cover'
-      }
-    } only %}
+    {% for key, value in opt.data %}
+      {{- '  data-' ~ key ~ '=' ~ value -}}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% include '_molecules/figure/_template.twig' with {
+          opt: {
+            image: opt.image ?? null,
+            ratio: opt.ratio ?? null,
+            objectFit: opt.objectFit ?? 'cover'
+          }
+        } only %}
 
-    {# -- Text -- #}
-    {% if opt.text %}
-      <div class="{{ opt.cn ~ '__text' }}">
-        {{ opt.text }}
+        {# -- Text -- #}
+        {% if opt.text %}
+          <div class="{{ opt.cn ~ '__text' }}">
+            {{ opt.text }}
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
+    </div>
   </div>
 {% endif %}

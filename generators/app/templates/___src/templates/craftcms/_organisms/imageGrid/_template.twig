@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   images: null,
   caption: null,
   ratio: null
@@ -22,30 +23,37 @@
 
 {# -- Modul -- #}
 {% if opt.images %}
-  <div class="o-row  {{ opt.cn }}
+  <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-    {% for image in opt.images %}
-      <div class="{{ opt.cn ~ '__item' }}">
-        {% include '_molecules/figure/_template.twig' with {
-          opt: {
-            image: image ?? null,
-            ratio: opt.ratio ?? null,
-            caption: opt.caption ?? null,
-            captionHeadline: image.imageTitle ?? null,
-            captionText: image.imageCaption ?? null,
-            captionSource: image.imageSource ?? null,
-            captionSourceUrl: image.imageSourceUrl ?? null
-          }
-        } only %}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% for image in opt.images %}
+          <div class="{{ opt.cn ~ '__item' }}">
+            {% include '_molecules/figure/_template.twig' with {
+              opt: {
+                image: image ?? null,
+                ratio: opt.ratio ?? null,
+                caption: opt.caption ?? null,
+                captionHeadline: image.imageTitle ?? null,
+                captionText: image.imageCaption ?? null,
+                captionSource: image.imageSource ?? null,
+                captionSourceUrl: image.imageSourceUrl ?? null
+              }
+            } only %}
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
   </div>
 {% endif %}

@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   text: null,
   icon: null,
   for: null,
@@ -29,38 +30,44 @@
 
 {# -- Modul -- #}
 {% if opt.text %}
-  <button {% if opt.type %}
-    type="{{ opt.type }}"
-  {% endif %} {% if opt.for %}
-    for="{{ opt.for }}"
-  {% endif %}
-    {{ opt.disabled ? 'disabled' }} class="{{ opt.cn }}
+  <div class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
     {% for key, value in opt.data %}
     data-{{ key }}="{{ value }}"
     {% endfor %}>
-    {% if opt.icon %}
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <button {% if opt.type %}
+          type="{{ opt.type }}"
+        {% endif %} {% if opt.for %}
+          for="{{ opt.for }}"
+        {% endif %}
+          {{ opt.disabled ? 'disabled' }} class="{{ opt.cn ~ '__button' }}">
+          {% if opt.icon %}
+            {# -- Link Text -- #}
+            <span class="{{ opt.cn ~ '__text' }}">{{ opt.text }}</span>
 
-      {# -- Link Text -- #}
-      <span class="{{ opt.cn ~ '__text' }}">
-        {{ opt.text }}
-      </span>
-
-      {# -- Icon -- #}
-      {% include '_atoms/svgIcon/_template.twig' with {
-        opt: {
-          icon: opt.icon
-        }
-      } only %}
-    {% else %}
-      {{ opt.text }}
-    {% endif %}
-  </button>
+            {# -- Icon -- #}
+            {% include '_atoms/svgIcon/_template.twig' with {
+              opt: {
+                icon: opt.icon
+              }
+            } only %}
+          {% else %}
+            {{ opt.text }}
+          {% endif %}
+        </button>
+      </div>
+    </div>
+  </div>
 {% endif %}
 
 

@@ -13,7 +13,6 @@
 .m-navMain {
   $root: &;
   @include make-vr();
-  width: 100%;
 }
 
 // Modul Modifiers Example

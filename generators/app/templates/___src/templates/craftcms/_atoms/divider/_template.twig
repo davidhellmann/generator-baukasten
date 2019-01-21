@@ -12,6 +12,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -22,11 +23,18 @@
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
             {% for customClass in opt.customClasses %}
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-            {% for key, value in opt.data %}
-              {{ 'data-' ~ key ~ '=' ~ value }}
-            {% endfor %}>
-  <hr class="{{  opt.cn ~ '__hr'  }}" role="separator">
+  {% for key, value in opt.data %}
+    {{ 'data-' ~ key ~ '=' ~ value }}
+  {% endfor %}>
+  <div class="{{ opt.cn ~ '__wrapper' }}">
+    <div class="{{ opt.cn ~ '__inner' }}">
+      <hr class="{{ opt.cn ~ '__hr' }}" role="separator">
+    </div>
+  </div>
 </div>

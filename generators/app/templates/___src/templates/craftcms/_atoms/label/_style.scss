@@ -8,12 +8,14 @@
 .a-label {
   $root: &;
   @include make-vr();
-  width: 100%;
-  display: inline-block;
   font-size: ms(-1);
-  text-transform: uppercase;
 
-  @include wf('sans-serif');
+  &__label {
+    display: inline-block;
+    text-transform: uppercase;
+
+    @include wf('sans-serif');
+  }
 }
 
 // Modul Modifiers Example

@@ -26,7 +26,7 @@ $defaultVariant = [
     'dominantColor' => true,
     'objectFit' => null,
     'maxWidth' => null,
-    'image' => \craft\elements\Asset::find()->id('169')->one(),
+    'image' => \craft\elements\Asset::find()->id('10')->one(),
 ];
 
 // When you need more as one variant this part is your friend.

@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   object: entry ?? null,
   text: null,
   size: 'h1',
@@ -37,21 +38,28 @@
   {% endif %}
 
   <{{ opt.size }} class="{{ opt.cn }}
-              {% for modifier in opt.modifiers %}
-                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}
-              {% for customClass in opt.customClasses %}
-                {{ customClass | length ? '  ' ~ customClass }}
-              {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-  {% if opt.link %}
-  <a class="{{ opt.cn ~ '__link' }}" href="{{ opt.link }}">
+  {% for modifier in opt.modifiers %}
+    {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+  {% endfor %}
+  {% if opt.vSpace %}
+    {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
   {% endif %}
-    {{ headline | nl2br }}
-  {% if opt.link %}
-  </a>
-  {% endif %}
-</{{ opt.size }}>
+  {% for customClass in opt.customClasses %}
+    {{ customClass | length ? '  ' ~ customClass }}
+  {% endfor %}  {{ opt.js ? opt.cn|replace({ 'm-' : 'js-' }) : '' }}"
+  {% for key, value in opt.data %}
+    {{ 'data-' ~ key ~ '=' ~ value }}
+  {% endfor %}>
+  <div class="{{ opt.cn ~ '__wrapper' }}">
+    <div class="{{ opt.cn ~ '__inner' }}">
+      {% if opt.link %}
+      <a class="{{ opt.cn ~ '__link' }}" href="{{ opt.link }}">
+        {% endif %}
+        {{ headline | nl2br }}
+        {% if opt.link %}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  </{{ opt.size }}>
 {% endif %}

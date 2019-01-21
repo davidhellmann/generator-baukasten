@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   image: null,
   caption: null,
   ratio: null,
@@ -31,22 +32,29 @@
               {% for modifier in opt.modifiers %}
                 {{- modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier -}}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{- opt.js ? '  ' ~ opt.cn|replace({ 'o-' : 'js-' }) : '' -}}"
-              {% for key, value in opt.data %}
-                {{- '  data-' ~ key ~ '=' ~ value -}}
-              {% endfor %}>
-    {% include '_molecules/figure/_template.twig' with {
-      opt: {
-        image: opt.image ?? null,
-        ratio: opt.ratio ?? null,
-        caption: opt.caption ?? null,
-        captionHeadline: opt.image.imageTitle ?? null,
-        captionText: opt.image.imageCaption ?? null,
-        captionSource: opt.image.imageSource ?? null,
-        captionSourceUrl: opt.image.imageSourceUrl ?? null
-      }
-    } only %}
+    {% for key, value in opt.data %}
+      {{- '  data-' ~ key ~ '=' ~ value -}}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% include '_molecules/figure/_template.twig' with {
+          opt: {
+            image: opt.image ?? null,
+            ratio: opt.ratio ?? null,
+            caption: opt.caption ?? null,
+            captionHeadline: opt.image.imageTitle ?? null,
+            captionText: opt.image.imageCaption ?? null,
+            captionSource: opt.image.imageSource ?? null,
+            captionSourceUrl: opt.image.imageSourceUrl ?? null
+          }
+        } only %}
+      </div>
+    </div>
   </div>
 {% endif %}

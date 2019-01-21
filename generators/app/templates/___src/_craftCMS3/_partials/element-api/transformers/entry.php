@@ -18,7 +18,7 @@ return function (Entry $entry) {
         'url' => $entry->url,
         'entryId' => $entry->id,
         'entryCustomH1' => $entry->entryCustomH1,
-        'entryIntroText' => $entry->entryIntroText,
+        'entryIntroText' => $entry->entrySummary,
         'entryImage' => [
             'src' => $entryImageSrc ?? null,
             'srcSet' => $entryImageSrcSet ?? null,

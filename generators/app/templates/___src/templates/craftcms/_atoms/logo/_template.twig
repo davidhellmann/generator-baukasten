@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   url: null,
   name: 'logo'
 } %}
@@ -30,19 +31,26 @@
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %}>
-    {% if opt.url %}
-      <a class="{{ opt.cn ~ '__link' }}" href="{{ opt.url }}">
-    {% endif %}
-      {% include '_partials/svg/' ~ opt.name ~ '.svg.twig' %}
-    {% if opt.url %}
-      </a>
-    {% endif %}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %}>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% if opt.url %}
+        <a class="{{ opt.cn ~ '__link' }}" href="{{ opt.url }}">
+          {% endif %}
+          {% include '_partials/svg/' ~ opt.name ~ '.svg.twig' %}
+          {% if opt.url %}
+        </a>
+        {% endif %}
+      </div>
+    </div>
   </div>
 {% endif %}
 

@@ -7,11 +7,15 @@
 // Modul
 .o-appFooter {
   $root: &;
-  background-color: c('black', '05');
-  padding: s(2);
-  font-size: ms(-2);
-  text-transform: uppercase;
-  text-align: center;
+  @include make-vr();
+
+  &__inner {
+    background-color: c('black', '05');
+    padding: s(2);
+    font-size: ms(-2);
+    text-transform: uppercase;
+    text-align: center;
+  }
 }
 
 // Modul Modifiers Example

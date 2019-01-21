@@ -8,10 +8,8 @@
 .a-infoText {
   $root: &;
   @include make-vr();
-  width: 100%;
   font-size: ms(-1);
   color: c('black', '50');
-
   @include wf('base');
 }
 

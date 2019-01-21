@@ -31,7 +31,7 @@ const radio = {
     },
 
     setElements() {
-        console.debug('Set Elements…')
+        console.debug('Set Elements…');
         this.cfg.el.$sample = document.querySelector(this.cfg.selectors.sample);
     },
 

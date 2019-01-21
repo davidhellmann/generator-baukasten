@@ -17,6 +17,7 @@
   customClasses: [],
   data: {},
   js: null,
+  vSpace: null,
   waypoint: null,
   waypointAni: null,
   name: null,
@@ -36,20 +37,27 @@
                 {% for modifier in opt.modifiers %}
                   {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
                 {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}">
-    <input class="{{ opt.cn ~ '__checkbox' }}"
-           type="checkbox"
-           {% if opt.id %}id="{{ opt.id }}"{% endif %}
-      {% if opt.name %}name="{{ opt.name }}"{% endif %}
-      {% if opt.checked %}checked="checked"{% endif %}
-      {% if opt.value %}value="{{ opt.value }}"{% endif %}
-      {% for key, value in opt.data %}
-        data-{{ key }}="{{ value }}"
-      {% endfor %}
-      {{ opt.disabled ? 'disabled' }}>
-    <label class="{{ opt.cn ~ '__label' }}" for="{{ opt.id }}">{{ opt.label | raw }}</label>
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        <input class="{{ opt.cn ~ '__checkbox' }}"
+               type="checkbox"
+               {% if opt.id %}id="{{ opt.id }}"{% endif %}
+          {% if opt.name %}name="{{ opt.name }}"{% endif %}
+          {% if opt.checked %}checked="checked"{% endif %}
+          {% if opt.value %}value="{{ opt.value }}"{% endif %}
+          {% for key, value in opt.data %}
+            data-{{ key }}="{{ value }}"
+          {% endfor %}
+          {{ opt.disabled ? 'disabled' }}>
+        <label class="{{ opt.cn ~ '__label' }}" for="{{ opt.id }}">{{ opt.label | raw }}</label>
+      </div>
+    </div>
   </div>
 {% endif %}
 

@@ -16,6 +16,7 @@
   modifiers: [],
   customClasses: [],
   data: {},
+  vSpace: null,
   js: null,
   images: null,
   ratio: null,
@@ -26,35 +27,42 @@
 
 {# -- Modul -- #}
 {% if opt.images %}
-  <div class="o-row  {{ opt.cn }}
+  <div class="{{ opt.cn }}
               {% for modifier in opt.modifiers %}
                 {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
               {% endfor %}
+              {% if opt.vSpace %}
+                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+              {% endif %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'o-' : 'js-' }) : '' }}"
-              {% for key, value in opt.data %}
-                {{ 'data-' ~ key ~ '=' ~ value }}
-              {% endfor %} itemscope itemtype="http://schema.org/ImageGallery">
-    {% for image in opt.images %}
-      {% set imageSrc = image.pluginOptimizedImagesAuto.src() %}
-      {% set imageMaxWidth = image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
-      {% set imageMaxHeight = (imageMaxWidth / image.width) * image.height %}
+    {% for key, value in opt.data %}
+      {{ 'data-' ~ key ~ '=' ~ value }}
+    {% endfor %} itemscope itemtype="http://schema.org/ImageGallery">
+    <div class="{{ opt.cn ~ '__wrapper' }}">
+      <div class="{{ opt.cn ~ '__inner' }}">
+        {% for image in opt.images %}
+          {% set imageSrc = image.pluginOptimizedImagesAuto.src() %}
+          {% set imageMaxWidth = image.pluginOptimizedImagesAuto.maxSrcsetWidth() %}
+          {% set imageMaxHeight = (imageMaxWidth / image.width) * image.height %}
 
-      <figure class="o-col-6  o-col-s-8  o-col-l-4  {{ opt.cn ~ '__figure' }}">
-        <a class="{{ opt.cn ~ '__link' }}"
-           href="{{ imageSrc }}"
-           itemprop="contentUrl"
-           data-size="{{ imageMaxWidth }}x{{ imageMaxHeight }}">
+          <figure class="o-col-3  o-col-s-8  o-col-l-4  {{ opt.cn ~ '__figure' }}">
+            <a class="{{ opt.cn ~ '__link' }}"
+               href="{{ imageSrc }}"
+               itemprop="contentUrl"
+               data-size="{{ imageMaxWidth }}x{{ imageMaxHeight }}">
 
-          {% include '_atoms/image/_template.twig' with {
-            opt: {
-              image: image,
-              ratio: opt.ratio
-            }
-          } only %}
-        </a>
-      </figure>
-    {% endfor %}
+              {% include '_atoms/image/_template.twig' with {
+                opt: {
+                  image: image ?? null,
+                  ratio: opt.ratio ?? null
+                }
+              } only %}
+            </a>
+          </figure>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 {% endif %}

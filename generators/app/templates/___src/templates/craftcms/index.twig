@@ -19,46 +19,46 @@
   {# -- Cache -- #}
   {% cache using key 'home' ~ craft.app.request.pathInfo ~ (craft.app.request.pageNum ? '/p' ~ craft.app.request.pageNum : '') %}
 
-    {% embed '_embeds/home/_template.twig' with {
-      opt: {
-        intro: true,
-        content: true
-      },
-      entry: entry
-    } only %}
+  {% embed '_embeds/home/_template.twig' with {
+    opt: {
+      intro: true,
+      content: true
+    },
+    entry: entry
+  } only %}
 
-      {# -- Block: Intro -- #}
-      {% block intro %}
-        {# -- Include Page Title -- #}
-        {% include '_molecules/pageTitle/_template.twig' with {
-          opt: {
-            object: entry,
-            size: 'h1'
-          }
-        } only %}
-      {% endblock %}
+    {# -- Block: Intro -- #}
+    {% block intro %}
+      {# -- Include Page Title -- #}
+      {% include '_molecules/pageTitle/_template.twig' with {
+        opt: {
+          object: entry,
+          size: 'h1'
+        }
+      } only %}
+    {% endblock %}
 
-      {# -- Block: Content -- #}
-      {% block content %}
+    {# -- Block: Content -- #}
+    {% block content %}
 
-        <ul>
-          <li><a href="{{ siteUrl }}articles">Articles Overview</a></li>
-          <li><a href="{{ siteUrl }}article/this-is-the-first-baukasten-article-to-show-you-the-content-builder">First Article</a></li>
-          {% if craft.app.plugins.isPluginEnabled('craft-gonzo') %}
-            <li><a href="{{ siteUrl }}patternlib">Pattern Library</a></li>
-          {% endif %}
-        </ul>
+      <ul>
+        <li><a href="{{ siteUrl }}articles">Articles Overview</a></li>
+        <li><a href="{{ siteUrl }}article/this-is-the-first-baukasten-article-to-show-you-the-content-builder">First Article</a></li>
+        {% if craft.app.plugins.isPluginEnabled('craft-gonzo') %}
+          <li><a href="{{ siteUrl }}patternlib">Pattern Library</a></li>
+        {% endif %}
+      </ul>
 
 
-        <div data-component="cards">
-          <cards></cards>
-        </div>
+      <div data-component="cards">
+        <cards></cards>
+      </div>
 
-        {# -- vueComp -- #}
-        {% include '_molecules/vueComp/_template.html' only %}
-      {% endblock %}
-    {% endembed %}
+      {# -- vueComp -- #}
+      {% include '_molecules/vueComp/_template.twig' only %}
+    {% endblock %}
+  {% endembed %}
 
-    {# -- Cache End -- #}
+  {# -- Cache End -- #}
   {% endcache %}
 {% endblock %}

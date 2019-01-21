@@ -13,15 +13,19 @@
 .m-definitionList {
   $root: &;
   @include make-vr();
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
 
-  @include media('>=m') {
-    grid-template-columns: 1fr 2fr;
+  &__inner {
+    @include make-row();
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include media('>=m') {
+      grid-template-columns: 1fr 2fr;
+    }
   }
 
   &__term {
+    @include make-col-padding();
     @include f(s(1), s(2), padding-bottom);
     @include f(s(1), s(2), margin-top);
     border-bottom: 1px dotted c('black', '25');
@@ -29,6 +33,7 @@
   }
 
   &__description {
+    @include make-col-padding();
     @include f(s(1), s(2), padding-bottom);
     @include f(s(1), s(2), margin-top);
     @include f(s(2), s(4), margin-bottom);

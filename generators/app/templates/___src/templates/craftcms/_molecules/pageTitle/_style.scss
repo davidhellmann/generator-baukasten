@@ -13,7 +13,10 @@
 .m-pageTitle {
   $root: &;
   @include make-vr();
-  width: 100%;
+
+  &__inner {
+    max-width: 28ch;
+  }
 }
 
 // Modul Modifiers Example

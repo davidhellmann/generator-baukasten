@@ -26,7 +26,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: c5da16f7-ac44-462d-b7f8-2966fd2e5256
-dateModified: 1547891687
+dateModified: 1548025282
 email:
   fromEmail: name@domain.com
   fromName: Baukasten
@@ -554,13 +554,13 @@ fields:
     settings:
       allowedKinds:
         - image
-      defaultUploadLocationSource: 'folder:1'
+      defaultUploadLocationSource: 'volume:4b291dea-4272-440b-835f-e7dcd2a16a95'
       defaultUploadLocationSubpath: ''
       limit: '1'
       localizeRelations: false
       restrictFiles: '1'
       selectionLabel: ''
-      singleUploadLocationSource: 'folder:3'
+      singleUploadLocationSource: 'volume:d26034c0-d69d-400b-bdb9-4dea16d91213'
       singleUploadLocationSubpath: ''
       source: null
       sources: '*'

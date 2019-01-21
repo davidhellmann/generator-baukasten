@@ -8,10 +8,9 @@
 .a-image {
   $root: &;
   @include make-vr();
-  width: 100%;
-  display: block;
 
   &__image {
+    display: block;
     width: 100%;
     max-width: 100%;
   }

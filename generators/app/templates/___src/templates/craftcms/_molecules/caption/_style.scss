@@ -7,11 +7,14 @@
 // Modul
 .m-caption {
   $root: &;
+  display: block;
   @include make-vr(1/2);
-  @include ms-respond(font-size, -1);
-  @include wf('sans-serif');
-  width: 100%;
-  color: c('black', '70');
+
+  &__inner {
+    @include ms-respond(font-size, -1);
+    @include wf('sans-serif');
+    color: c('black', '70');
+  }
 }
 
 // Modul Modifiers Example

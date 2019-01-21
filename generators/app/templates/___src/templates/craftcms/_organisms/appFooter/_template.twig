@@ -11,6 +11,7 @@
   modifiers: [],
   customClasses: [],
   data: {},
+  vSpace: null
 } %}
 
 {# -- Merge Default with Options -- #}
@@ -21,20 +22,26 @@
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
+            {% if opt.vSpace %}
+              {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
+            {% endif %}
             {% for customClass in opt.customClasses %}
               {{ customClass | length ? '  ' ~ customClass }}
             {% endfor %}  {{ opt.cn|replace({ 'o-' : 'js-' }) }}">
   {% cache %}
     {% block appFooter %}
-      Baukasten &copy;2014 &mdash; {{ "now"|date("Y") }}
+      <div class="{{ opt.cn ~ '__wrapper' }}">
+        <div class="{{ opt.cn ~ '__inner' }}">
+          Baukasten &copy;2014 &mdash; {{ "now"|date("Y") }}
 
-
-      {# -- Pagination Simple -- #}
-      {% import '_partials/macros/_macro-socialNetworks.twig' as macroSocialNetworks %}
-      {{ macroSocialNetworks.socialNetworks({
-        networks: 'all',
-        label: true,
-      }) }}
+          {# -- Pagination Simple -- #}
+          {% import '_partials/macros/_macro-socialNetworks.twig' as macroSocialNetworks %}
+          {{ macroSocialNetworks.socialNetworks({
+            networks: 'all',
+            label: true,
+          }) }}
+        </div>
+      </div>
     {% endblock %}
   {% endcache %}
 </footer>

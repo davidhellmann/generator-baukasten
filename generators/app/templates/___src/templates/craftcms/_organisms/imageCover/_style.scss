@@ -12,12 +12,12 @@
 // Modul
 .o-imageCover {
   $root: &;
+  @include make-vr();
   width: 100vw;
   height: 100vh;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  @include make-vr();
 
   &__text {
     position: absolute;
@@ -46,7 +46,7 @@
     }
   }
 
-  .m-figure {
+  .m-figure__figure {
     margin-top: 0;
     height: 100vh;
   }

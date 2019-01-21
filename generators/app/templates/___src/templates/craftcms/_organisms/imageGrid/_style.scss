@@ -8,12 +8,16 @@
 .o-imageGrid {
   $root: &;
 
+  &__inner {
+    @include make-row();
+  }
+
   &__item {
-    @include make-col(12, 12);
+    @include make-col(3, 6);
     @include make-col-padding();
 
     @include media('>=s') {
-      @include make-col(24, 24);
+      @include make-col(8, 24);
     }
   }
 }

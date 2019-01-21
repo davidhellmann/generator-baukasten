@@ -8,11 +8,14 @@
 .a-embed {
   $root: &;
   @include make-vr();
-  @include make-row();
-  @include make-row-margin(0);
 
-  &__holder {
-    @include make-col(12, 12);
+  &__wrapper {
+    @include make-row();
+  }
+
+  &__inner {
+    @include make-col(6, 6);
+    @include make-col-padding();
 
     @include media('>=s') {
       @include make-col(24, 24);
@@ -22,8 +25,8 @@
 
 // Modul Modifiers Example
 .a-embed--w-full {
-  &__holder {
-    @include make-col(12, 12);
+  .a-embed__inner {
+    @include make-col(6, 6);
 
     @include media('>=s') {
       @include make-col(24, 24);
@@ -32,8 +35,8 @@
 }
 
 .a-embed--w-threeQuarter {
-  .a-embed__holder {
-    @include make-col(12, 12);
+  .a-embed__inner {
+    @include make-col(6, 6);
 
     @include media('>=s') {
       @include make-col(16, 24);
@@ -41,7 +44,7 @@
   }
 
   &.a-embed--a-center {
-    .a-embed__holder {
+    .a-embed__inner {
       @include media('>=s') {
         @include col-offset(4, 24);
       }
@@ -49,7 +52,7 @@
   }
 
   &.a-embed--a-right {
-    .a-embed__holder {
+    .a-embed__inner {
       @include media('>=s') {
         @include col-offset(7, 24);
       }
@@ -58,8 +61,8 @@
 }
 
 .a-embed--w-half {
-  .a-embed__holder {
-    @include make-col(12, 12);
+  .a-embed__inner {
+    @include make-col(6, 6);
 
     @include media('>=s') {
       @include make-col(12, 24);
@@ -67,7 +70,7 @@
   }
 
   &.a-embed--a-center {
-    .a-embed__holder {
+    .a-embed__inner {
       @include media('>=s') {
         @include col-offset(6, 24);
       }
@@ -75,7 +78,7 @@
   }
 
   &.a-embed--a-right {
-    .a-embed__holder {
+    .a-embed__inner {
       @include media('>=s') {
         @include col-offset(12, 24);
       }

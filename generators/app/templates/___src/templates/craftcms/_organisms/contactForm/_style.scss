@@ -13,7 +13,6 @@
 .o-contactForm {
   $root: &;
   @include make-vr();
-  width: 100%;
 
   > form {
     width: 100%;

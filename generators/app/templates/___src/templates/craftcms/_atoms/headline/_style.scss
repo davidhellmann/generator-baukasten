@@ -7,7 +7,8 @@
 // Modul
 .a-headline {
   $root: &;
-  width: 100%;
+  @include make-vr(2);
+  @include f(s(-1), s(-2), margin-bottom);
 
   + .a-subline {
     margin-top: s(2);
