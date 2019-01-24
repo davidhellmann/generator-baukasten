@@ -114,7 +114,7 @@
                width="{{ imageMaxWidth }}"
                height="auto"
                alt="{{ opt.image.title }}"/>
-          <noscript><img src="{{ imageSrc }}" alt="{{ opt.image.title }}"></noscript>
+          <noscript><img src="{{ opt.image.getUrl() }}" alt="{{ opt.image.title }}"></noscript>
         </div>
       </div>
     </div>
