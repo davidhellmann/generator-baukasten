@@ -100,6 +100,7 @@ return array(
         'devMode' => true,
         'enableTemplateCaching' => true,
         'isSystemLive' => true,
+        'allowAdminChanges' => false,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],
