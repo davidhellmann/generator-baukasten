@@ -16,6 +16,14 @@
   $root: &;
   @include make-vr();
   width: 100%;
+
+  &__wrapper {
+    // Fill me
+  }
+
+  &__inner {
+    // Fill me
+  }
 }
 
 // Modul Modifiers Example
