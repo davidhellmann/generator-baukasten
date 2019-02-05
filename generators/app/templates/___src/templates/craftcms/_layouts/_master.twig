@@ -157,6 +157,10 @@
 {% include '_atoms/preloader/_template.twig' only %}
 
 <div class="o-appWrapper">
+  {% set phpTypographySettings = getPhpTypographySettings() %}
+  {% do phpTypographySettings.set_hyphenation_language(currentSite.language) %}
+  {% do phpTypographySettings.set_diacritic_language(currentSite.language) %}
+  
   {# -- App Header -- #}
   {% include '_organisms/appHeader/_template.twig' only %}
 
