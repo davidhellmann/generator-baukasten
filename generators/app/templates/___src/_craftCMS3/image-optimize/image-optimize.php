@@ -30,10 +30,10 @@ return [
         'transformMethod' => 'craft',
 
         // Domain for the Imgix transform service
-        // 'imgixDomain' => 'XXX',
+        // 'imgixDomain' => 'craftcms.imgix.net',
 
         // API key for the Imgix transform service
-        // 'imgixApiKey' => 'XXX',
+        // 'imgixApiKey' => 'UX5lE9voATc4ZY4eFIlvW25xaYTuqvdk',
 
         // Should image variant be created on Asset save (aka BeforePageLoad)
         'generateTransformsBeforePageLoad' => true,
@@ -52,10 +52,10 @@ return [
 
         // Controls whether Optimized Image Variants be created that would be up-scaled
         // to be larger than the original source image
-        'allowUpScaledImageVariants' => false,
+        'allowUpScaledImageVariants' => true,
 
         // Controls whether images scaled down >= 50% should be automatically sharpened
-        'autoSharpenScaledImages' => true,
+        'autoSharpenScaledImages' => false,
 
         // Default aspect ratios
         'defaultAspectRatios' => [
@@ -172,21 +172,14 @@ return [
 
     // Live (production) environment
     'live' => [
-        //  What transform method should be used for image transforms?
-        'transformMethod' => 'craft',
     ],
 
     // Staging (pre-production) environment
     'staging' => [
-        //  What transform method should be used for image transforms?
-        'transformMethod' => 'craft',
     ],
 
     // Local (development) environment
     'local' => [
-        //  What transform method should be used for image transforms?
-        'transformMethod' => 'craft',
-
         // Preset image processors
         'imageProcessors' => [
             // jpeg optimizers
