@@ -1,8 +1,11 @@
 {
-  "buttons": ["bold","italic","deleted","lists","link","horizontalrule"],
+  "buttons": ["bold","italic","lists","link","horizontalrule", "link"],
   "plugins": ["fullscreen"],
-  "linkNewTab": true,
   "pasteImages": false,
+  "linkNewTab": true,
   "pasteBlockTags": ["ul", "ol", "li"],
-  "pasteInlineTags": ["strong", "b", "u", "em", "i", "del", "sup", "sub"]
+  "pasteInlineTags": ["strong", "b", "u", "em", "i", "del", "sup", "sub", "a", "br"],
+  "pasteKeepStyle": ["strong", "b", "u", "em", "i", "del", "sup", "sub", "a", "br"],
+  "pastePlainText": false,
+  "pasteLinks": true
 }
