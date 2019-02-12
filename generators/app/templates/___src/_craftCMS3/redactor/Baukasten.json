@@ -1,5 +1,5 @@
 {
-  "buttons": ["bold","italic","lists","link","horizontalrule", "link"],
+  "buttons": ["bold","italic","lists","link","horizontalrule", "file"],
   "plugins": ["fullscreen"],
   "pasteImages": false,
   "linkNewTab": true,
