@@ -9,7 +9,9 @@ import '../../../../node_modules/lazysizes/plugins/respimg/ls.respimg';
 
 document.addEventListener('lazyloaded', (e) => {
     const target = e.target.parentNode;
-    target.style.backgroundColor = 'transparent';
+    if (target) {
+        target.style.backgroundColor = 'transparent';
+    }
 });
 
 // Settings
