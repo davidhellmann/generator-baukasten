@@ -52,7 +52,7 @@ return [
 
         // Controls whether Optimized Image Variants be created that would be up-scaled
         // to be larger than the original source image
-        'allowUpScaledImageVariants' => true,
+        'allowUpScaledImageVariants' => false,
 
         // Controls whether images scaled down >= 50% should be automatically sharpened
         'autoSharpenScaledImages' => false,
