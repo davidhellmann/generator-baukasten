@@ -22,7 +22,7 @@
 {% set contextLast = context[1] %}
 
 {# -- Modul -- #}
-<div class="{{ opt.cn }}
+<section class="{{ opt.cn }}
             {% for modifier in opt.modifiers %}
               {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
             {% endfor %}
