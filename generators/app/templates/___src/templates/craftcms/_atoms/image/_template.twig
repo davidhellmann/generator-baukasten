@@ -101,9 +101,11 @@
       <div class="{{ opt.cn ~ '__inner' }}">
         <div class="{{ opt.cn ~ '__picture' }}"
              {% if opt.dominantColor %}style="{{ 'background-color: ' ~ opt.image.pluginOptimizedImagesSquare.colorPalette[0] ?? 'black' }}"{% endif %}>
-          <source data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
-                  data-sizes="auto"
-                  type="image/webp"/>
+          {% if opt.image.extension == 'jpg' %}
+            <source data-srcset="{{ opt.maxWidth ? imageSrcsetMaxWidthWebP : imageSrcsetWebP }}"
+                    data-sizes="auto"
+                    type="image/webp"/>
+          {% endif %}
           <img class="{{ opt.cn ~ '__image' }}  lazyload"
             {% if opt.objectFit %}
               style="object-fit: {{ opt.objectFit }}; object-position: {{ focalpoint }}; font-size: 'object-fit: {{ opt.objectFit }};';"
