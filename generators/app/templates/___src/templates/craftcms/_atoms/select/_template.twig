@@ -17,7 +17,6 @@
   customClasses: [],
   data: {},
   js: null,
-  vSpace: null,
   info: null,
   array: null,
   object: null,
@@ -36,41 +35,34 @@
 {# -- Modul -- #}
 {% if opt.object or opt.array %}
   <div class="{{ opt.cn }}
-              {% for modifier in opt.modifiers %}
-                {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
-              {% endfor %}
-              {% if opt.vSpace %}
-                {{ '  ' ~ 'o-vSpace--' ~ opt.vSpace }}
-              {% endif %}
+                {% for modifier in opt.modifiers %}
+                  {{ modifier | length ? '  ' ~ opt.cn ~ '--' ~ modifier }}
+                {% endfor %}
               {% for customClass in opt.customClasses %}
                 {{ customClass | length ? '  ' ~ customClass }}
               {% endfor %}  {{ opt.js ? opt.cn|replace({ 'a-' : 'js-' }) : '' }}">
-    <div class="{{ opt.cn ~ '__wrapper' }}">
-      <div class="{{ opt.cn ~ '__inner' }}">
-        <select class="{{ opt.cn ~ '__select' }}"
-          {% if opt.required %} required data-required="true"{% endif %}
-          {% if opt.id %}id="{{ opt.id }}"{% endif %}
-          {% if opt.name %}name="{{ opt.name }}"{% endif %} {{ opt.disabled ? ' disabled' }}>
+    <select class="{{ opt.cn ~ '__select' }}"
+      {% if opt.required %} required data-required="true"{% endif %}
+      {% if opt.id %}id="{{ opt.id }}"{% endif %}
+      {% if opt.name %}name="{{ opt.name }}"{% endif %} {{ opt.disabled ? ' disabled' }}>
 
-          {% if opt.firstOption %}
-            <option value="{{ opt.firstOption.value }}">{{ opt.firstOption.text }}</option>
-          {% endif %}
-          {% if opt.object %}
-            {% for key, value in opt.object %}
-              <option value="{{ key }}" {% if key == opt.selected %} selected{% endif %}>{{ value }}</option>
-            {% endfor %}
-          {% endif %}
+      {% if opt.firstOption %}
+        <option value="{{ opt.firstOption.value }}">{{ opt.firstOption.text }}</option>
+      {% endif %}
+      {% if opt.object %}
+        {% for key, value in opt.object %}
+          <option value="{{ key }}" {% if key == opt.selected %} selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+      {% endif %}
 
-          {% if opt.array %}
-            {% for key, option in opt.array %}
-              <option value="{{ key }}">{{ option }}</option>
-            {% endfor %}
-          {% endif %}
-        </select>
-        <label class="{{ opt.cn ~ '__label' }}" for="{{ opt.id }}">{{ opt.label }}</label>
-        <span class="{{ opt.cn ~ '__info' }}">{{ opt.info }}</span>
-      </div>
-    </div>
+      {% if opt.array %}
+        {% for key, option in opt.array %}
+          <option value="{{ key }}" {% if key == opt.selected %} selected{% endif %}>{{ option }}</option>
+        {% endfor %}
+      {% endif %}
+    </select>
+    <label class="{{ opt.cn ~ '__label' }}" for="{{ opt.id }}">{{ opt.label }}</label>
+    <span class="{{ opt.cn ~ '__info' }}">{{ opt.info }}</span>
   </div>
 {% endif %}
 
