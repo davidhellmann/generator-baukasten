@@ -18,7 +18,6 @@ module.exports = {
         },
         {
             projectContext: [
-                'craftCMS3',
                 'wordpress'
             ],
             src: '___src/_system/',
