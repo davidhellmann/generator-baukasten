@@ -13,13 +13,8 @@
   }
 }
 
-.js .o-appWrapper  {
-  opacity: 0;
-  transition: none;
-}
-
 .js .is-complete .o-appWrapper,
 .js .is-livePreview .o-appWrapper  {
   opacity: 1;
-  transition: opacity 0.5s ease('out-cubic');
+  transition: opacity 0.25s 0.125s ease('out-cubic');
 }
