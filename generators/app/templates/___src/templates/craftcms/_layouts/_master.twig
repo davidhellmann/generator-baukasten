@@ -153,9 +153,6 @@
 <body id="home"
       class="{{ bodyClass is defined ? bodyClass }}  {{ craft.app.request.isLivePreview ? 'is-livePreview' }}  {{ craft.app.config.general.devMode ? 't-devMode' }}">
 
-{# -- Preloader#}
-{% include '_atoms/preloader/_template.twig' only %}
-
 <div class="o-appWrapper">
   {% set phpTypographySettings = getPhpTypographySettings() %}
   {% do phpTypographySettings.set_hyphenation_language(currentSite.language) %}
