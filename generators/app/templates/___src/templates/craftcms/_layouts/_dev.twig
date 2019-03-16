@@ -43,9 +43,6 @@
 <body id="home"
       class="{{ bodyClass is defined ? bodyClass }}  {{ craft.app.request.isLivePreview ? 'is-livePreview' }}  {{ craft.app.config.general.devMode ? 't-devMode' }}">
 
-{# -- Preloader#}
-{% include '_atoms/preloader/_template.twig' only %}
-
 <div class="o-appWrapper">
   {% block appContent %}
     Content
