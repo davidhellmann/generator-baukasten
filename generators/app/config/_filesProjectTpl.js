@@ -7,6 +7,10 @@ module.exports = {
         {
             src: '___src/scripts/critical.js',
             dest: 'scripts/critical.js'
+        },
+        {
+            src: '___src/scripts/FauxTwigExtension.php',
+            dest: 'scripts/FauxTwigExtension.php'
         }
     ]
 }
