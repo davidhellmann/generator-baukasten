@@ -11,6 +11,10 @@ module.exports = {
         {
             src: '___src/scripts/FauxTwigExtension.php',
             dest: 'scripts/FauxTwigExtension.php'
+        },
+        {
+            src: '___src/scripts/setup-db.sh',
+            dest: 'scripts/setup-db.sh'
         }
     ]
 }

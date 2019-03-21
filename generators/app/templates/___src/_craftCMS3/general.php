@@ -41,28 +41,28 @@ return array(
         'generateTransformsBeforePageLoad' => true,
         'omitScriptNameInUrls' => true,
         'usePathInfo' => true,
-        'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
+        'securityKey' => getenv('SECURITY_KEY'),
         'useProjectConfigFile' => true,
 
-        'siteUrl' => getenv('CRAFTENV_SITE_URL'),
+        'siteUrl' => getenv('SITE_URL'),
         // Multisite Settings
         // 'siteUrl' => [
-        //    'de' => getenv('CRAFTENV_SITE_URL') . 'de/',
-        //    'en' => getenv('CRAFTENV_SITE_URL') . 'en/',
+        //    'de' => getenv('SITE_URL_DE') . 'de/',
+        //    'en' => getenv('SITE_URL_EN') . 'en/',
         // ],
         // 'useEmailAsUsername' => true,
 
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
-            '@basePath' => getenv('CRAFTENV_BASE_PATH'),
-            '@baseUrl' => getenv('CRAFTENV_BASE_URL'),
+            '@basePath' => getenv('SITE_URL'),
+            '@baseUrl' => getenv('SITE_URL'),
         ],
         // Set the environmental variables
         'custom' => [
-            'basePath' => getenv('CRAFTENV_BASE_PATH'),
-            'baseUrl' => getenv('CRAFTENV_BASE_URL'),
-            'rootUrl' => getenv('CRAFTENV_SITE_URL'),
-            'craftEnv' => CRAFT_ENVIRONMENT,
+            'basePath' => getenv('SITE_URL'),
+            'baseUrl' => getenv('SITE_URL'),
+            'rootUrl' => getenv('SITE_URL'),
+            'craftEnv' => getenv('ENVIRONMENT'),
         ],
 
         // Custom Settings
@@ -113,7 +113,7 @@ return array(
     // Local (development) environment
     'local' => [
         'allowUpdates' => true,
-        'backupOnUpdate' => true,
+        'backupOnUpdate' => false,
         'devMode' => true,
         'enableTemplateCaching' => false,
         'isSystemLive' => true,

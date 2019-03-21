@@ -95,15 +95,15 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
-            src: '___src/_craftCMS3/.env.php',
-            dest: '___dist/.env.php'
+            src: '___src/_craftCMS3/.env',
+            dest: '___dist/.env'
         },
         {
             projectContext: [
                 'craftCMS3'
             ],
-            src: '___src/_craftCMS3/example.env.php',
-            dest: '___dist/example.env.php'
+            src: '___src/_craftCMS3/.env.example',
+            dest: '___dist/.env.example'
         },
         {
             projectContext: [

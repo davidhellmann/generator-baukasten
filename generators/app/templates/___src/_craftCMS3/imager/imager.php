@@ -21,8 +21,8 @@
 return array(
     // All environments
     '*' => [
-        'imagerSystemPath' => getenv('CRAFTENV_BASE_PATH') . '/uploads/imager/',
-        'imagerUrl' => '/uploads/imager/',
+        'imagerSystemPath' => getenv('SITE_URL') . 'uploads/imager/',
+        'imagerUrl' => 'uploads/imager/',
         'interlace' => true, // false, true ('line'), 'none', 'line', 'plane', 'partition'x
         'instanceReuseEnabled' => false,
         'allowUpscale' => false,
