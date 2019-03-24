@@ -15,6 +15,20 @@ module.exports = {
         {
             src: '___src/scripts/setup-db.sh',
             dest: 'scripts/setup-db.sh'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
+            src: '___src/_craftCMS3/.env',
+            dest: '___dist/.env'
+        },
+        {
+            projectContext: [
+                'craftCMS3'
+            ],
+            src: '___src/_craftCMS3/.env.example',
+            dest: '___dist/.env.example'
         }
     ]
 }

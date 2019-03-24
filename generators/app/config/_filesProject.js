@@ -95,20 +95,6 @@ module.exports = {
             projectContext: [
                 'craftCMS3'
             ],
-            src: '___src/_craftCMS3/.env',
-            dest: '___dist/.env'
-        },
-        {
-            projectContext: [
-                'craftCMS3'
-            ],
-            src: '___src/_craftCMS3/.env.example',
-            dest: '___dist/.env.example'
-        },
-        {
-            projectContext: [
-                'craftCMS3'
-            ],
             src: '___src/_craftCMS3/redactor/Baukasten.json',
             dest: '___dist/config/redactor/Baukasten.json'
         },

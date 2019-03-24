@@ -131,7 +131,14 @@ module.exports = class extends Generator {
         this.writePackageJSON().writing(this)
 
         if (this.props.craftCMS3Install) {
-            this.spawnCommandSync('cd', ['___dist', '&&', 'rm .env', '&&', 'rm .env.example'])
+            filesystem.remove('___dist/.env', err => {
+                if (err) return console.error(err)
+                console.log('success!')
+            });
+            filesystem.remove('___dist/.env.example', err => {
+                if (err) return console.error(err)
+                console.log('success!')
+            })
         }
 
         // Craft CMS 3
@@ -185,7 +192,6 @@ module.exports = class extends Generator {
                 this.fs.copy(
                     this.templatePath(file.src),
                     this.destinationPath(file.dest),
-                    { overwrite: true }
                 )
             }
         })
@@ -195,7 +201,8 @@ module.exports = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath(file.src),
                 this.destinationPath(file.dest),
-                this.props
+                this.props,
+                { overwrite: true }
             )
         })
     }
@@ -241,11 +248,13 @@ module.exports = class extends Generator {
         ))
 
 
-        this.logMessage({message: 'Setup Database'})
-        if (this.commands.yarn) {
-            this.spawnCommandSync('yarn', ['setup:db'])
-        } else {
-            this.spawnCommandSync('npm', ['run'], ['setup:db'])
+        if (this.props.importDB) {
+            this.logMessage({message: 'Setup Database'})
+            if (this.commands.yarn) {
+                this.spawnCommandSync('yarn', ['setup:db'])
+            } else {
+                this.spawnCommandSync('npm', ['run'], ['setup:db'])
+            }
         }
 
         this.logMessage({message: 'Init Project', short: false})
@@ -257,13 +266,6 @@ module.exports = class extends Generator {
             this.spawnCommandSync('yarn', ['start'])
         } else {
             this.spawnCommandSync('npm', ['run'], ['start'])
-        }
-
-        this.logMessage({message: 'Setup Database'})
-        if (this.commands.yarn) {
-            this.spawnCommandSync('yarn', ['setup:db'])
-        } else {
-            this.spawnCommandSync('npm', ['run'], ['setup:db'])
         }
     }
 }
