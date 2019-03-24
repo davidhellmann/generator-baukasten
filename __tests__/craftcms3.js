@@ -48,8 +48,8 @@ describe('it downloads craft & moves file', () => {
 
     it('adds environment file', () => {
         assert.file([
-            '___dist/.env.php',
-            '___dist/example.env.php',
+            '___dist/.env',
+            '___dist/.env.example',
             '___dist/config/general.php'
         ])
     })

@@ -130,6 +130,17 @@ module.exports = class extends Generator {
         // Package JSON
         this.writePackageJSON().writing(this)
 
+        if (this.props.craftCMS3Install) {
+            filesystem.remove('___dist/.env', err => {
+                if (err) return console.error(err)
+                console.log('success!')
+            });
+            filesystem.remove('___dist/.env.example', err => {
+                if (err) return console.error(err)
+                console.log('success!')
+            })
+        }
+
         // Craft CMS 3
         if (this.props.projectType === 'craftCMS3') {
             this.logMessage({message: 'Moving Craft Folders'});
@@ -180,7 +191,7 @@ module.exports = class extends Generator {
             if (file.projectContext.includes(this.props.projectType)) {
                 this.fs.copy(
                     this.templatePath(file.src),
-                    this.destinationPath(file.dest)
+                    this.destinationPath(file.dest),
                 )
             }
         })
@@ -190,7 +201,8 @@ module.exports = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath(file.src),
                 this.destinationPath(file.dest),
-                this.props
+                this.props,
+                { overwrite: true }
             )
         })
     }
@@ -234,6 +246,16 @@ module.exports = class extends Generator {
         this.log(yosay(
             `It was an honor to me to setup this project with you ${chalk.red('<3')}!`
         ))
+
+
+        if (this.props.importDB) {
+            this.logMessage({message: 'Setup Database'})
+            if (this.commands.yarn) {
+                this.spawnCommandSync('yarn', ['setup:db'])
+            } else {
+                this.spawnCommandSync('npm', ['run'], ['setup:db'])
+            }
+        }
 
         this.logMessage({message: 'Init Project', short: false})
 
