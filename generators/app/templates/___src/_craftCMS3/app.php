@@ -14,6 +14,10 @@
  */
 
 return [
+    'modules' => [
+        'my-module' => \modules\Module::class,
+    ],
+    //'bootstrap' => ['my-module'],
     'components' => [
         'queue' => [
             'ttr' => 3600,

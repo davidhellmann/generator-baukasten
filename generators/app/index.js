@@ -139,6 +139,10 @@ module.exports = class extends Generator {
                 if (err) return console.error(err)
                 console.log('success!')
             })
+            filesystem.remove('___dist/config/app.php', err => {
+                if (err) return console.error(err)
+                console.log('success!')
+            })
         }
 
         // Craft CMS 3
