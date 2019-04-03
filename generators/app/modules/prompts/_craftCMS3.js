@@ -1,6 +1,6 @@
 // Importing message & when helper function
-const message = require('../../helpers/prompts/_message')
-const when = require('../../helpers/prompts/_when')
+const message = require('../../helpers/prompts/_message');
+const when = require('../../helpers/prompts/_when');
 
 const promptsCraftCMS3 = [
     {
@@ -12,6 +12,15 @@ const promptsCraftCMS3 = [
             description: 'Do you want to install the Craft 3 version via Composer?'
         }),
         default: true
+    },
+    {
+        type: 'input',
+        name: 'securityKey',
+        message: message({
+            headline: 'Security Key',
+            description: 'The secure key Craft will use for hashing and encrypting data'
+        }),
+        default: [...Array(64)].map(i=>(~~(Math.random()*36)).toString(36)).join('') // jshint ignore:line
     },
     {
         type: 'input',
@@ -47,7 +56,7 @@ const promptsCraftCMS3 = [
             headline: 'Database password',
             description: 'Your database password'
         }),
-        default: 'root'
+        default: ''
     },
     {
         type: 'input',

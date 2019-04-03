@@ -42,7 +42,7 @@ return array(
         'omitScriptNameInUrls' => true,
         'usePathInfo' => true,
         'securityKey' => getenv('SECURITY_KEY'),
-        'useProjectConfigFile' => true,
+        'useProjectConfigFile' => false,
 
         'siteUrl' => getenv('SITE_URL'),
         // Multisite Settings
@@ -85,7 +85,7 @@ return array(
         'devMode' => false,
         'enableTemplateCaching' => true,
         'isSystemLive' => true,
-        'allowAdminChanges' => false,
+        'allowAdminChanges' => true,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],
@@ -101,7 +101,7 @@ return array(
         'devMode' => true,
         'enableTemplateCaching' => true,
         'isSystemLive' => true,
-        'allowAdminChanges' => false,
+        'allowAdminChanges' => true,
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
         ],

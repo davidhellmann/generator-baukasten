@@ -255,6 +255,13 @@ module.exports = class extends Generator {
             } else {
                 this.spawnCommandSync('npm', ['run'], ['setup:db'])
             }
+
+            this.logMessage({message: 'Install Plugins'})
+            if (this.commands.yarn) {
+                this.spawnCommandSync('yarn', ['install:plugins'])
+            } else {
+                this.spawnCommandSync('npm', ['run'], ['install:plugins'])
+            }
         }
 
         this.logMessage({message: 'Init Project', short: false})
