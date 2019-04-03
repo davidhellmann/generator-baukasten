@@ -2,7 +2,7 @@
  * modules
  */
 
-import preloader from '../../../templates/_atoms/preloader/_script';
+// import preloader from '../../../templates/_atoms/preloader/_script';
 import codeSnippet from '../../../templates/_atoms/codeSnippet/_script';
 import imageSlider from '../../../templates/_organisms/imageSlider/_script';
 import imageGallery from '../../../templates/_organisms/imageGallery/_script';
@@ -19,7 +19,7 @@ import cards from '../../../templates/_organisms/cards/_script';
 
 // Modules Array
 const modulesArray = [
-    preloader,
+    // preloader,
     codeSnippet,
     imageSlider,
     imageGallery,
