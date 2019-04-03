@@ -33,7 +33,7 @@ LOCAL_ROOT_PATH="___dist/"
 LOCAL_ASSETS_PATH=${LOCAL_ROOT_PATH}"web/uploads/"
 
 # Local user & group that should own the Craft CMS install
-LOCAL_CHOWN_USER="dh"
+LOCAL_CHOWN_USER="davidhellmann"
 LOCAL_CHOWN_GROUP="staff"
 
 # Local directories relative to LOCAL_ROOT_PATH that should be writeable by the $CHOWN_GROUP
