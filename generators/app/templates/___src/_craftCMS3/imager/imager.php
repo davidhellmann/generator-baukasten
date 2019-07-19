@@ -21,8 +21,8 @@
 return array(
     // All environments
     '*' => [
-        'imagerSystemPath' => getenv('SITE_URL') . 'uploads/imager/',
-        'imagerUrl' => 'uploads/imager/',
+        'imagerSystemPath' => getenv('BASEPATH') . 'uploads/imager/',
+        'imagerUrl' => '/uploads/imager/',
         'interlace' => true, // false, true ('line'), 'none', 'line', 'plane', 'partition'x
         'instanceReuseEnabled' => false,
         'allowUpscale' => false,
