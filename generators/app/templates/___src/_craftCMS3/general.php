@@ -54,12 +54,12 @@ return array(
 
         // Aliases parsed in sites’ settings, volumes’ settings, and Local volumes’ settings
         'aliases' => [
-            '@basePath' => getenv('SITE_URL'),
+            '@basePath' => getenv('BASEPATH'),
             '@baseUrl' => getenv('SITE_URL'),
         ],
         // Set the environmental variables
         'custom' => [
-            'basePath' => getenv('SITE_URL'),
+            'basePath' => getenv('BASEPATH'),
             'baseUrl' => getenv('SITE_URL'),
             'rootUrl' => getenv('SITE_URL'),
             'craftEnv' => getenv('ENVIRONMENT'),
