@@ -33,6 +33,11 @@
 {# -- Merge Default with Options -- #}
 {% set opt = opt is defined ? defaults|merge(opt) : defaults %}
 
+{% set pattern = opt.pattern %}
+{% if opt.type == 'email' %}
+  {% set pattern = opt.pattern ?? "^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" %}
+{% endif %}
+
 {# -- Modul -- #}
 {% if opt.type and opt.name and opt.label %}
   <div class="{{ opt.cn }}
